@@ -1,0 +1,38 @@
+# Dependencies and build output
+node_modules/
+dist/
+coverage/
+__pycache__/
+*.py[cod]
+
+# Local configuration
+.env*
+!.env.example
+.dev.vars*
+!.dev.vars.example
+*.local
+
+# Cloudflare and browser state
+.wrangler/
+.playwright-cli/
+
+# Working data
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/generated/*
+!data/generated/.gitkeep
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editors and operating systems
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+*.suo
+*.sw?
