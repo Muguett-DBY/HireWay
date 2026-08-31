@@ -1,4 +1,6 @@
+// Keep each feature's API logic in its own file.
 import { handleProfile } from './routes/profile'
+import { handleSkills } from './routes/skills'
 
 // Send API requests to their handler and page requests to React.
 export default {
@@ -12,20 +14,23 @@ export default {
     let response: Response
 
     try {
-      response =
-        path === '/api/profile'
-          ? await handleProfile(request, env)
-          : Response.json({ error: 'Not found.' }, { status: 404 })
+      if (path === '/api/profile') {
+        response = await handleProfile(request, env)
+      } else if (path === '/api/skills') {
+        response = await handleSkills(request, env)
+      } else {
+        response = Response.json({ error: 'Not found.' }, { status: 404 })
+      }
     } catch {
       // Keep personal details and recovery codes out of error logs.
-      console.error(JSON.stringify({ message: 'Profile request failed.' }))
+      console.error(JSON.stringify({ message: 'API request failed.' }))
       response = Response.json(
         { error: 'Something went wrong. Please try again.' },
         { status: 500 },
       )
     }
 
-    // Profile responses should not be stored in a shared cache.
+    // Keep profile and skill responses out of shared caches.
     response.headers.set('Cache-Control', 'no-store')
     return response
   },

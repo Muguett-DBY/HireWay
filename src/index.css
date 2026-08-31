@@ -185,3 +185,65 @@ button:focus-visible {
     margin-top: 28px;
   }
 }
+
+/* Keep the profile cards aligned as one page. */
+.profile-stack {
+  max-width: 580px;
+  margin: 28px auto;
+}
+
+.profile-stack .profile-card {
+  margin: 0 0 24px;
+}
+
+/* Keep skill actions compact beside the current list. */
+.skill-entry {
+  display: flex;
+  gap: 12px;
+}
+
+.skill-entry input {
+  min-width: 0;
+}
+
+.skill-entry button,
+.skills-list button {
+  width: auto;
+  margin-top: 0;
+  white-space: nowrap;
+}
+
+.empty-skills {
+  margin: 24px 0 0;
+  color: #52665c;
+}
+
+.skills-list {
+  display: grid;
+  gap: 10px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skills-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 12px;
+  border: 1px solid #dce5df;
+  border-radius: 6px;
+}
+
+/* Stack the skill field and button on smaller screens. */
+@media (max-width: 640px) {
+  .skill-entry {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .skill-entry button {
+    width: 100%;
+  }
+}
