@@ -1,25 +1,187 @@
+/* Keep the page readable without loading a font library. */
 :root {
-  color: #000000;
-  background: #ffffff;
   font-family: Arial, sans-serif;
+  color: #172d35;
+  background: #f7faf8;
+  font-synthesis: none;
 }
-
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   min-width: 320px;
-  min-height: 100vh;
-  background: #ffffff;
+}
+button,
+input,
+select {
+  font: inherit;
 }
 
-#root {
-  display: grid;
-  min-height: 100vh;
-  place-items: center;
+/* Use a small header and a centred content area. */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
   background: #ffffff;
+  border-bottom: 1px solid #dce5df;
 }
-
+.brand {
+  font-size: 22px;
+  font-weight: 700;
+  color: #147348;
+}
+main {
+  width: min(880px, 100%);
+  margin: 48px auto;
+  padding: 0 20px;
+}
+h1,
+.intro {
+  text-align: center;
+}
 h1 {
+  font-size: clamp(26px, 4vw, 34px);
+}
+.intro,
+.card > p,
+fieldset > p,
+.recovery-note p {
+  color: #52665c;
+  line-height: 1.6;
+}
+
+/* The home cards share a row when there is enough space. */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+.card {
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid #dce5df;
+  border-radius: 12px;
+  background: #ffffff;
+}
+.card h2 {
+  margin: 0 0 24px;
+  font-size: 20px;
+}
+.profile-card {
+  max-width: 580px;
+  margin: 28px auto;
+}
+fieldset {
+  min-width: 0;
   margin: 0;
-  font-size: 1.5rem;
-  font-weight: 400;
+  padding: 0;
+  border: 0;
+}
+legend {
+  padding: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Labels, fields, and buttons should be easy to use on a phone. */
+label {
+  display: block;
+  margin: 20px 0 8px;
+  font-weight: 600;
+}
+input,
+select {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid #8a9f92;
+  border-radius: 6px;
+  color: inherit;
+  background: #ffffff;
+}
+button {
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1px solid #147348;
+  border-radius: 6px;
+  background: #147348;
+  color: #ffffff;
+  cursor: pointer;
+}
+.card button {
+  width: 100%;
+  margin-top: 24px;
+}
+button.secondary {
+  background: #ffffff;
+  color: #147348;
+}
+button:disabled,
+fieldset:disabled {
+  opacity: 0.65;
+}
+button:disabled {
+  cursor: wait;
+}
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 3px solid #8fcbaa;
+  outline-offset: 2px;
+}
+
+/* Keep validation and save feedback close to the form. */
+[aria-invalid='true'] {
+  border-color: #b42318;
+}
+.field-error,
+.error {
+  color: #b42318;
+}
+.field-error {
+  margin: 6px 0 0;
+  font-size: 14px;
+}
+.notice {
+  padding: 12px 16px;
+  border-radius: 6px;
+}
+.error {
+  background: #fff0ee;
+}
+.success,
+.recovery-note {
+  background: #edf8f0;
+}
+.recovery-note {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 8px;
+}
+.recovery-note label {
+  margin-top: 0;
+}
+#saved-code {
+  font-family: monospace;
+  font-size: 14px;
+}
+.recovery-note p {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+/* Stack the entry cards on smaller screens. */
+@media (max-width: 640px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    padding: 20px;
+  }
+  main {
+    margin-top: 28px;
+  }
 }

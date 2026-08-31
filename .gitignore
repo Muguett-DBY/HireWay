@@ -36,3 +36,6 @@ npm-debug.log*
 Thumbs.db
 *.suo
 *.sw?
+# Generated TypeScript files
+*.tsbuildinfo
+worker-configuration.d.ts

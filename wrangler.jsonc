@@ -1,11 +1,35 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "hireway",
+
+  // Run API requests through this file.
+  "main": "worker/index.ts",
   "compatibility_date": "2026-08-25",
+
+  // Serve React pages while keeping API requests in the Worker.
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
     "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api", "/api/*"],
   },
+
+  // Make the existing database available as env.DB.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "hireway-db",
+      "database_id": "7c2c6e3f-2450-4dfd-9dde-a70816602814",
+      "migrations_dir": "./migrations",
+    },
+  ],
+
+  // Keep backend errors visible after deployment.
+  "observability": {
+    "enabled": true,
+  },
+
+  // Keep the existing domain.
   "routes": [
     {
       "pattern": "hireway.custard.top",

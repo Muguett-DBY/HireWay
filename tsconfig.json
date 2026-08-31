@@ -1,7 +1,10 @@
 {
   "files": [],
+
+  // Check the frontend, build config, and backend separately.
   "references": [
     { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+    { "path": "./tsconfig.node.json" },
+    { "path": "./tsconfig.worker.json" }
   ]
 }
