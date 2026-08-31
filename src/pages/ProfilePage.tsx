@@ -6,7 +6,8 @@ import {
   type ProfileErrors,
 } from '../lib/profileApi'
 import { addSkill, loadSkills, removeSkill, type Skill } from '../lib/skillsApi'
-
+// Use the helper that talks to the career goal endpoint.
+import { requestGoal } from '../lib/goalApi'
 // A new form starts with no background details.
 const emptyDetails: ProfileDetails = {
   qualification: '',
@@ -28,6 +29,11 @@ export function ProfilePage() {
   const [skillName, setSkillName] = useState('')
   const [skillError, setSkillError] = useState('')
   const [skillsBusy, setSkillsBusy] = useState(false)
+  // Keep the goal draft and its feedback separate from the other forms.
+  const [careerGoal, setCareerGoal] = useState('')
+  const [goalError, setGoalError] = useState('')
+  const [goalMessage, setGoalMessage] = useState('')
+  const [goalBusy, setGoalBusy] = useState(false)
 
   // Fill the form with the values that actually came back from D1.
   function showProfile(saved: Profile) {
@@ -59,6 +65,10 @@ export function ProfilePage() {
     setSkills([])
     setSkillName('')
     setSkillError('')
+    // Do not carry a previous profile's goal into a new profile.
+    setCareerGoal('')
+    setGoalError('')
+    setGoalMessage('')
     setScreen('profile')
   }
 
@@ -83,18 +93,32 @@ export function ProfilePage() {
         return
       }
 
-      // Load the skills before showing the restored profile.
-      const skillResult = await loadSkills(result.data.code)
+      // Fetch skills and the goal together before showing the profile.
+      const [skillResult, goalResult] = await Promise.all([
+        loadSkills(result.data.code),
+        requestGoal('GET', result.data.code),
+      ])
+
       if (!skillResult.ok) {
         setMessage(skillResult.data.error ?? 'Could not load your skills.')
         setFailed(true)
         return
       }
 
+      if (!goalResult.ok) {
+        setMessage(goalResult.data.error ?? 'Could not load your career goal.')
+        setFailed(true)
+        return
+      }
+
+      // Display the values returned by the three API requests.
       showProfile(result.data)
       setSkills(skillResult.data.skills)
       setSkillName('')
       setSkillError('')
+      setCareerGoal(goalResult.data.careerGoal)
+      setGoalError('')
+      setGoalMessage('')
       setMessage('Profile loaded.')
     } catch {
       setMessage('Could not connect. Please try again.')
@@ -137,7 +161,15 @@ export function ProfilePage() {
       }
 
       showProfile(result.data)
-      if (creating) setSkills([])
+
+      // New profiles start empty; education edits keep the skills and goal.
+      if (creating) {
+        setSkills([])
+        setCareerGoal('')
+        setGoalError('')
+        setGoalMessage('')
+      }
+
       setMessage('Profile saved.')
     } catch {
       setMessage('Could not save. Please try again.')
@@ -146,7 +178,42 @@ export function ProfilePage() {
       setBusy(false)
     }
   }
+  // Save one current goal after the main profile exists.
+  async function submitGoal(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setGoalError('')
+    setGoalMessage('')
 
+    if (!profile) {
+      setGoalError('Save your profile before choosing a career goal.')
+      return
+    }
+
+    const goal = careerGoal.trim()
+    if (!goal) {
+      setGoalError('Enter a career goal.')
+      return
+    }
+
+    setGoalBusy(true)
+
+    try {
+      const result = await requestGoal('PUT', profile.code, goal)
+
+      if (!result.ok) {
+        setGoalError(result.data.error ?? 'Could not save your career goal.')
+        return
+      }
+
+      // Use the saved value so the field matches the database.
+      setCareerGoal(result.data.careerGoal)
+      setGoalMessage('Career goal saved.')
+    } catch {
+      setGoalError('Could not connect. Please try again.')
+    } finally {
+      setGoalBusy(false)
+    }
+  }
   // Save one new skill after the main profile exists.
   async function submitSkill(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -211,13 +278,15 @@ export function ProfilePage() {
           <button
             type="button"
             className="secondary"
-            disabled={busy || skillsBusy}
+            disabled={busy || skillsBusy || goalBusy}
             onClick={() => {
               setScreen('home')
               setMessage('')
               setErrors({})
               setSkillName('')
               setSkillError('')
+              setGoalError('')
+              setGoalMessage('')
             }}
           >
             Back to home
@@ -451,6 +520,56 @@ export function ProfilePage() {
                   </ul>
                 )}
               </section>
+            )}
+            {/* A career goal is saved separately from education and skills. */}
+            {profile && (
+              <form
+                className="card profile-card"
+                onSubmit={submitGoal}
+                noValidate
+              >
+                <fieldset disabled={busy || goalBusy}>
+                  <legend>Career goal</legend>
+                  <p>Choose one role you would like to work towards.</p>
+
+                  <label htmlFor="career-goal">Target role *</label>
+                  <input
+                    id="career-goal"
+                    value={careerGoal}
+                    onChange={(event) => {
+                      setCareerGoal(event.target.value)
+                      setGoalError('')
+                      setGoalMessage('')
+                    }}
+                    maxLength={120}
+                    required
+                    aria-invalid={Boolean(goalError)}
+                    aria-describedby={
+                      goalError ? 'goal-help goal-error' : 'goal-help'
+                    }
+                  />
+
+                  <p id="goal-help">
+                    Saving a new goal replaces your previous goal.
+                  </p>
+
+                  {goalError && (
+                    <p id="goal-error" className="field-error" role="alert">
+                      {goalError}
+                    </p>
+                  )}
+
+                  <button type="submit">
+                    {goalBusy ? 'Saving...' : 'Save goal'}
+                  </button>
+                </fieldset>
+
+                {goalMessage && (
+                  <p className="notice success" role="status">
+                    {goalMessage}
+                  </p>
+                )}
+              </form>
             )}
           </div>
         )}
