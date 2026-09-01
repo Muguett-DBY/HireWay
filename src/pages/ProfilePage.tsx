@@ -22,6 +22,7 @@ export function ProfilePage() {
   const [profile, setProfile] = useState<Profile | null>(null)
   const [details, setDetails] = useState<ProfileDetails>(emptyDetails)
   const [recoveryCode, setRecoveryCode] = useState('')
+  const [copied, setCopied] = useState(false)
   const [errors, setErrors] = useState<ProfileErrors>({})
   const [message, setMessage] = useState('')
   const [failed, setFailed] = useState(false)
@@ -137,6 +138,24 @@ export function ProfilePage() {
       setFailed(true)
     } finally {
       setBusy(false)
+    }
+  }
+
+  async function copyRecoveryCode() {
+    if (!profile) return
+
+    try {
+      await navigator.clipboard.writeText(profile.code)
+      setCopied(true)
+
+      window.setTimeout(() => {
+        setCopied(false)
+      }, 1800)
+    } catch {
+      setMessage(
+        'Could not copy the recovery code. Please select and copy it manually.',
+      )
+      setFailed(true)
     }
   }
 
@@ -671,13 +690,45 @@ export function ProfilePage() {
                 {profile && (
                   <section className="recovery-note">
                     <label htmlFor="saved-code">Your recovery code</label>
-                    <input
-                      id="saved-code"
-                      value={profile.code}
-                      readOnly
-                      onFocus={(event) => event.currentTarget.select()}
-                      aria-describedby="code-help"
-                    />
+                    <div className="recovery-code-row">
+                      <input
+                        id="saved-code"
+                        value={profile.code}
+                        readOnly
+                        onFocus={(event) => event.currentTarget.select()}
+                        aria-describedby="code-help"
+                      />
+
+                      <button
+                        type="button"
+                        className={`copy-code-button ${copied ? 'copied' : ''}`}
+                        onClick={copyRecoveryCode}
+                        aria-label={
+                          copied ? 'Recovery code copied' : 'Copy recovery code'
+                        }
+                      >
+                        {copied ? (
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            strokeWidth="2.5"
+                            aria-hidden="true"
+                          >
+                            <path d="m5 12 4 4L19 6" />
+                          </svg>
+                        ) : (
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            strokeWidth="2"
+                            aria-hidden="true"
+                          >
+                            <rect x="9" y="9" width="10" height="10" rx="2" />
+                            <path d="M15 9V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+                          </svg>
+                        )}
+                      </button>
+                    </div>
                     <p id="code-help">
                       Keep this code private. Anyone with it can view and edit
                       your profile. Use it to return after closing or refreshing

@@ -679,8 +679,57 @@ select {
 }
 
 #saved-code {
+  width: 100%;
+  padding-right: 58px;
   font-family: ui-monospace, 'Cascadia Code', monospace;
   font-size: 14px;
+}
+
+.recovery-code-row {
+  position: relative;
+}
+
+/* Override the general card-button rule only for the recovery-code copy control. */
+.recovery-note .copy-code-button {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  display: grid;
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  min-height: 36px;
+  margin-top: 0;
+  padding: 0;
+  place-items: center;
+  transform: translateY(-50%);
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  color: #174235;
+  cursor: pointer;
+}
+
+.recovery-note .copy-code-button:hover:not(:disabled) {
+  transform: translateY(-50%);
+  border-color: #9bb7a7;
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.recovery-note .copy-code-button:focus-visible {
+  outline: 3px solid #79b998;
+  outline-offset: 2px;
+}
+
+.recovery-note .copy-code-button svg {
+  width: 19px;
+  height: 19px;
+  stroke: currentColor;
+}
+
+.recovery-note .copy-code-button.copied {
+  color: #147a4b;
 }
 
 .recovery-note p {
