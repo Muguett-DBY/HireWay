@@ -22,6 +22,7 @@ export function ProfilePage() {
   const [profile, setProfile] = useState<Profile | null>(null)
   const [details, setDetails] = useState<ProfileDetails>(emptyDetails)
   const [recoveryCode, setRecoveryCode] = useState('')
+  const [copied, setCopied] = useState(false)
   const [errors, setErrors] = useState<ProfileErrors>({})
   const [message, setMessage] = useState('')
   const [failed, setFailed] = useState(false)
@@ -137,6 +138,24 @@ export function ProfilePage() {
       setFailed(true)
     } finally {
       setBusy(false)
+    }
+  }
+
+  async function copyRecoveryCode() {
+    if (!profile) return
+
+    try {
+      await navigator.clipboard.writeText(profile.code)
+      setCopied(true)
+
+      window.setTimeout(() => {
+        setCopied(false)
+      }, 1800)
+    } catch {
+      setMessage(
+        'Could not copy the recovery code. Please select and copy it manually.',
+      )
+      setFailed(true)
     }
   }
 
@@ -671,13 +690,24 @@ export function ProfilePage() {
                 {profile && (
                   <section className="recovery-note">
                     <label htmlFor="saved-code">Your recovery code</label>
-                    <input
-                      id="saved-code"
-                      value={profile.code}
-                      readOnly
-                      onFocus={(event) => event.currentTarget.select()}
-                      aria-describedby="code-help"
-                    />
+                    <div className="recovery-code-row">
+                      <input
+                        id="saved-code"
+                        value={profile.code}
+                        readOnly
+                        onFocus={(event) => event.currentTarget.select()}
+                        aria-describedby="code-help"
+                      />
+
+                      <button
+                        type="button"
+                        className="copy-code-button"
+                        onClick={copyRecoveryCode}
+                        aria-label="Copy recovery code"
+                      >
+                        {copied ? 'Copied!' : 'Copy'}
+                      </button>
+                    </div>
                     <p id="code-help">
                       Keep this code private. Anyone with it can view and edit
                       your profile. Use it to return after closing or refreshing

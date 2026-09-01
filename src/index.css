@@ -683,6 +683,35 @@ select {
   font-size: 14px;
 }
 
+.recovery-code-row {
+  position: relative;
+}
+
+#saved-code {
+  width: 100%;
+  padding-right: 104px;
+}
+
+.copy-code-button {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: auto;
+  transform: translateY(-50%);
+  padding: 8px 12px;
+  border: 1px solid #8aa99a;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #174235;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.copy-code-button:hover {
+  background: #edf8f0;
+}
+
 .recovery-note p {
   margin-bottom: 0;
   font-size: 14px;
