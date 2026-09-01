@@ -2,6 +2,7 @@
 type Skill = {
   id: number
   name: string
+  skillCode: string | null
 }
 
 // Check the JSON shape before reading its fields.
@@ -48,7 +49,8 @@ export async function handleSkills(
   // Return this profile's skills in the order they were added.
   if (request.method === 'GET') {
     const result = await env.DB.prepare(
-      'SELECT id, name FROM profile_skill WHERE profile_code = ? ORDER BY id',
+      `SELECT id, name, skill_code AS skillCode
+       FROM profile_skill WHERE profile_code = ? ORDER BY id`,
     )
       .bind(code)
       .all<Skill>()
@@ -87,7 +89,35 @@ export async function handleSkills(
   }
 
   // Ignore spaces around the name, but keep the user's spelling.
-  const name = typeof input.name === 'string' ? input.name.trim() : ''
+  let name = typeof input.name === 'string' ? input.name.trim() : ''
+  const skillCode =
+    input.skillCode === undefined || input.skillCode === null
+      ? null
+      : typeof input.skillCode === 'string'
+        ? input.skillCode.trim() || null
+        : undefined
+
+  if (skillCode === undefined) {
+    return Response.json(
+      { error: 'Choose a valid skill or tool.' },
+      { status: 400 },
+    )
+  }
+
+  // A selected catalogue skill uses one canonical name everywhere.
+  if (skillCode) {
+    const option = await env.DB.prepare('SELECT name FROM skill WHERE code = ?')
+      .bind(skillCode)
+      .first<{ name: string }>()
+
+    if (!option) {
+      return Response.json(
+        { error: 'Choose a valid skill or tool.' },
+        { status: 400 },
+      )
+    }
+    name = option.name
+  }
 
   if (!name) {
     return Response.json({ error: 'Enter a skill name.' }, { status: 400 })
@@ -102,11 +132,11 @@ export async function handleSkills(
 
   // Let the database reject duplicates, even if two requests arrive together.
   const result = await env.DB.prepare(
-    `INSERT INTO profile_skill (profile_code, name)
-     VALUES (?, ?)
+    `INSERT INTO profile_skill (profile_code, name, skill_code)
+     VALUES (?, ?, ?)
      ON CONFLICT (profile_code, name) DO NOTHING`,
   )
-    .bind(code, name)
+    .bind(code, name, skillCode)
     .run()
 
   if (result.meta.changes === 0) {
@@ -116,5 +146,8 @@ export async function handleSkills(
     )
   }
 
-  return Response.json({ id: result.meta.last_row_id, name }, { status: 201 })
+  return Response.json(
+    { id: result.meta.last_row_id, name, skillCode },
+    { status: 201 },
+  )
 }
