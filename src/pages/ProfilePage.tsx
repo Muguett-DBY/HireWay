@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { findMajorMatches, findMajorOption } from '../data/educationOptions'
 import {
   requestProfile,
   type Profile,
@@ -34,6 +35,17 @@ export function ProfilePage() {
   const [goalError, setGoalError] = useState('')
   const [goalMessage, setGoalMessage] = useState('')
   const [goalBusy, setGoalBusy] = useState(false)
+
+  // Suggestions are derived from the current draft, so no extra state is needed.
+  const majorMatches = findMajorMatches(details.qualification)
+  const selectedMajor = findMajorOption(details.qualification)
+  const suggestedSkills =
+    selectedMajor?.skills.filter(
+      (suggestion) =>
+        !skills.some(
+          (skill) => skill.name.toLowerCase() === suggestion.toLowerCase(),
+        ),
+    ) ?? []
 
   // Fill the form with the values that actually came back from D1.
   function showProfile(saved: Profile) {
@@ -214,19 +226,10 @@ export function ProfilePage() {
       setGoalBusy(false)
     }
   }
-  // Save one new skill after the main profile exists.
-  async function submitSkill(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setSkillError('')
-
+  // Both typed and suggested skills use the same API request.
+  async function saveSkill(name: string) {
     if (!profile) {
       setSkillError('Save your profile before adding skills.')
-      return
-    }
-
-    const name = skillName.trim()
-    if (!name) {
-      setSkillError('Enter a skill name.')
       return
     }
 
@@ -245,6 +248,26 @@ export function ProfilePage() {
     } finally {
       setSkillsBusy(false)
     }
+  }
+
+  // Save a skill typed into the form.
+  async function submitSkill(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setSkillError('')
+
+    const name = skillName.trim()
+    if (!name) {
+      setSkillError('Enter a skill name.')
+      return
+    }
+
+    await saveSkill(name)
+  }
+
+  // A suggestion is still optional and only saves after the user clicks it.
+  async function addSuggestedSkill(name: string) {
+    setSkillError('')
+    await saveSkill(name)
   }
 
   // Remove only the selected skill from this profile.
@@ -528,20 +551,51 @@ export function ProfilePage() {
                   <legend>Background details</legend>
                   <p>Fields marked * are required.</p>
 
-                  <label htmlFor="qualification">Degree / Major *</label>
-                  <input
-                    id="qualification"
-                    value={details.qualification}
-                    onChange={(event) =>
-                      updateField('qualification', event.target.value)
-                    }
-                    maxLength={200}
-                    required
-                    aria-invalid={Boolean(errors.qualification)}
-                    aria-describedby={
-                      errors.qualification ? 'qualification-error' : undefined
-                    }
-                  />
+                  <label htmlFor="qualification">
+                    Major / Field of study *
+                  </label>
+                  <div className="autocomplete">
+                    <input
+                      id="qualification"
+                      value={details.qualification}
+                      onChange={(event) =>
+                        updateField('qualification', event.target.value)
+                      }
+                      placeholder="Start typing, for example Data"
+                      autoComplete="off"
+                      maxLength={200}
+                      required
+                      aria-invalid={Boolean(errors.qualification)}
+                      aria-describedby={
+                        errors.qualification
+                          ? 'qualification-help qualification-error'
+                          : 'qualification-help'
+                      }
+                      aria-expanded={!selectedMajor && majorMatches.length > 0}
+                      aria-controls="major-suggestions"
+                    />
+
+                    {/* Keep matching majors close to the field being typed. */}
+                    {!selectedMajor && majorMatches.length > 0 && (
+                      <ul className="autocomplete-menu" id="major-suggestions">
+                        {majorMatches.map((option) => (
+                          <li key={option.name}>
+                            <button
+                              type="button"
+                              onClick={() =>
+                                updateField('qualification', option.name)
+                              }
+                            >
+                              {option.name}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                  <p className="field-help" id="qualification-help">
+                    Choose a suggestion or keep your own field of study.
+                  </p>
                   {errors.qualification && (
                     <p
                       id="qualification-error"
@@ -638,6 +692,34 @@ export function ProfilePage() {
                 <section className="card profile-card skills-card">
                   <h2>Current skills</h2>
                   <p>Add the skills and tools you already use.</p>
+
+                  {/* Recommendations change when a known major is selected. */}
+                  {selectedMajor && (
+                    <div className="skill-recommendations">
+                      <div>
+                        <strong>Suggested for {selectedMajor.name}</strong>
+                        <span>Choose only the skills you already have.</span>
+                      </div>
+
+                      {suggestedSkills.length > 0 ? (
+                        <div className="suggestion-chips">
+                          {suggestedSkills.map((suggestion) => (
+                            <button
+                              type="button"
+                              className="skill-suggestion"
+                              key={suggestion}
+                              disabled={skillsBusy}
+                              onClick={() => addSuggestedSkill(suggestion)}
+                            >
+                              + {suggestion}
+                            </button>
+                          ))}
+                        </div>
+                      ) : (
+                        <p>All suggested skills are already in your profile.</p>
+                      )}
+                    </div>
+                  )}
 
                   <form onSubmit={submitSkill} noValidate>
                     <label htmlFor="skill-name">Skill or tool</label>

@@ -130,6 +130,12 @@ button.secondary {
   color: var(--green);
 }
 
+button.secondary:hover:not(:disabled) {
+  background: var(--green-soft);
+  color: var(--green-dark);
+  box-shadow: 0 8px 20px rgb(12 83 58 / 10%);
+}
+
 .site-header > button.secondary {
   min-height: 42px;
 }
@@ -582,6 +588,52 @@ select {
   background: #ffffff;
 }
 
+/* Major matches appear as a small menu directly below the input. */
+.autocomplete {
+  position: relative;
+}
+
+.autocomplete-menu {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 5px);
+  right: 0;
+  left: 0;
+  max-height: 270px;
+  margin: 0;
+  padding: 6px;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 16px 36px rgb(35 76 60 / 15%);
+  list-style: none;
+}
+
+.card .autocomplete-menu button {
+  width: 100%;
+  min-height: 42px;
+  margin: 0;
+  padding: 9px 11px;
+  border: 0;
+  background: #ffffff;
+  color: var(--ink);
+  text-align: left;
+}
+
+.card .autocomplete-menu button:hover {
+  transform: none;
+  background: var(--green-soft);
+  box-shadow: none;
+}
+
+.field-help {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
 .card button {
   width: 100%;
   margin-top: 24px;
@@ -644,6 +696,53 @@ select {
 
 .profile-stack .profile-card {
   margin: 0 0 24px;
+}
+
+/* Suggested skills stay separate from skills the user has already saved. */
+.skill-recommendations {
+  margin: 22px 0 26px;
+  padding: 16px;
+  border: 1px solid #cfe4d9;
+  border-radius: 11px;
+  background: #f2faf6;
+}
+
+.skill-recommendations > div:first-child {
+  display: grid;
+  gap: 4px;
+}
+
+.skill-recommendations > div:first-child span,
+.skill-recommendations > p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.skill-recommendations > p {
+  margin: 14px 0 0;
+}
+
+.suggestion-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.card .skill-suggestion {
+  width: auto;
+  min-height: 36px;
+  margin: 0;
+  padding: 7px 11px;
+  border-color: #b7d7c7;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--green-dark);
+  font-size: 13px;
+}
+
+.card .skill-suggestion:hover:not(:disabled) {
+  background: var(--green-soft);
 }
 
 /* Keep skill actions compact beside the current list. */
