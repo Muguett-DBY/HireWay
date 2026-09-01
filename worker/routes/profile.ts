@@ -2,6 +2,7 @@
 type Profile = {
   code: string
   qualification: string
+  qualificationCode: string | null
   educationLevel: string
   currentRole: string
 }
@@ -43,6 +44,7 @@ export async function handleProfile(
   if (request.method === 'GET') {
     const profile = await env.DB.prepare(
       `SELECT code, qualification,
+              qualification_code AS qualificationCode,
               education_level AS educationLevel,
               current_role AS currentRole
        FROM profile WHERE code = ?`,
@@ -62,8 +64,14 @@ export async function handleProfile(
   }
 
   // Spaces alone do not count as a qualification or education level.
-  const qualification =
+  let qualification =
     typeof input.qualification === 'string' ? input.qualification.trim() : ''
+  const qualificationCode =
+    input.qualificationCode === undefined || input.qualificationCode === null
+      ? null
+      : typeof input.qualificationCode === 'string'
+        ? input.qualificationCode.trim() || null
+        : undefined
   const educationLevel =
     typeof input.educationLevel === 'string' ? input.educationLevel.trim() : ''
   const currentRole =
@@ -72,6 +80,24 @@ export async function handleProfile(
 
   if (!qualification) errors.qualification = 'Enter your qualification.'
   if (!educationLevel) errors.educationLevel = 'Select your education level.'
+  if (qualificationCode === undefined) {
+    errors.qualification = 'Choose a valid field of study.'
+  }
+
+  // A catalogue code always saves the official display name beside it.
+  if (qualificationCode) {
+    const option = await env.DB.prepare(
+      'SELECT title FROM education_program WHERE code = ?',
+    )
+      .bind(qualificationCode)
+      .first<{ title: string }>()
+
+    if (option) {
+      qualification = option.title
+    } else {
+      errors.qualification = 'Choose a valid field of study.'
+    }
+  }
 
   // Keep saved text within the form's limits.
   if (qualification.length > 200) {
@@ -97,14 +123,21 @@ export async function handleProfile(
   // A new profile gets one random recovery code.
   if (request.method === 'POST') {
     await env.DB.prepare(
-      `INSERT INTO profile (code, qualification, education_level, current_role)
-       VALUES (?, ?, ?, ?)`,
+      `INSERT INTO profile (
+         code, qualification, qualification_code, education_level, current_role
+       ) VALUES (?, ?, ?, ?, ?)`,
     )
-      .bind(code, qualification, educationLevel, currentRole)
+      .bind(code, qualification, qualificationCode, educationLevel, currentRole)
       .run()
 
     return Response.json(
-      { code, qualification, educationLevel, currentRole },
+      {
+        code,
+        qualification,
+        qualificationCode,
+        educationLevel,
+        currentRole,
+      },
       { status: 201 },
     )
   }
@@ -112,16 +145,23 @@ export async function handleProfile(
   // Editing keeps the same code and updates the existing row.
   const result = await env.DB.prepare(
     `UPDATE profile
-     SET qualification = ?, education_level = ?, current_role = ?,
+     SET qualification = ?, qualification_code = ?,
+         education_level = ?, current_role = ?,
          updated_at = CURRENT_TIMESTAMP
      WHERE code = ?`,
   )
-    .bind(qualification, educationLevel, currentRole, code)
+    .bind(qualification, qualificationCode, educationLevel, currentRole, code)
     .run()
 
   if (result.meta.changes === 0) {
     return Response.json({ error: 'Profile not found.' }, { status: 404 })
   }
 
-  return Response.json({ code, qualification, educationLevel, currentRole })
+  return Response.json({
+    code,
+    qualification,
+    qualificationCode,
+    educationLevel,
+    currentRole,
+  })
 }

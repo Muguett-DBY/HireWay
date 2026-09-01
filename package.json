@@ -11,6 +11,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check": "npm run format:check && npm run lint && npm run build",
+    "data:build": "python scripts/data/build_reference_data.py",
+    "data:apply:local": "wrangler d1 execute hireway-db --local --file data/generated/reference_data.sql",
     "preview": "npm run build && vite preview",
     "deploy": "npm run build && wrangler deploy"
   },

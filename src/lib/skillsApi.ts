@@ -2,6 +2,7 @@
 export type Skill = {
   id: number
   name: string
+  skillCode: string | null
 }
 
 // API calls either return their expected data or one readable error.
@@ -14,6 +15,7 @@ async function requestSkillApi<T>(
   url: string,
   code: string,
   name?: string,
+  skillCode?: string | null,
 ): Promise<ApiResult<T>> {
   const response = await fetch(url, {
     method,
@@ -21,7 +23,7 @@ async function requestSkillApi<T>(
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + code,
     },
-    body: name === undefined ? undefined : JSON.stringify({ name }),
+    body: name === undefined ? undefined : JSON.stringify({ name, skillCode }),
     cache: 'no-store',
   })
 
@@ -36,8 +38,12 @@ export function loadSkills(code: string) {
 }
 
 // Save one skill and return its database ID.
-export function addSkill(code: string, name: string) {
-  return requestSkillApi<Skill>('POST', '/api/skills', code, name)
+export function addSkill(
+  code: string,
+  name: string,
+  skillCode: string | null = null,
+) {
+  return requestSkillApi<Skill>('POST', '/api/skills', code, name, skillCode)
 }
 
 // Remove one owned skill without changing the rest of the list.
