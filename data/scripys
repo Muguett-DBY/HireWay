@@ -123,6 +123,194 @@ def date_styles(z):
                 result.add(i)
     return result
 
-
 def excel_date(raw):
     return dt.datetime(1899, 12, 30) + dt.timedelta(days=float(raw))
+
+def iter_sheet_rows(path, sheet_name):
+    with zipfile.ZipFile(path) as z:
+        target = workbook_info(path)[sheet_name]
+        ss = shared_strings(z)
+        dstyles = date_styles(z)
+        with z.open(target) as fh:
+            for _, elem in ET.iterparse(fh, events=('end',)):
+                if not elem.tag.endswith('}row'):
+                    continue
+                rowdict = {}
+                for c in elem:
+                    if not c.tag.endswith('}c'):
+                        continue
+                    idx = col_idx(c.attrib.get('r'))
+                    typ = c.attrib.get('t')
+                    style = int(c.attrib.get('s', '0'))
+                    v = c.find('main:v', NS)
+                    if typ == 'inlineStr':
+                        val = ''.join((x.text or '') for x in c.findall('.//main:t', NS))
+                    elif v is None:
+                        val = None
+                    else:
+                        raw = v.text
+                        if typ == 's':
+                            val = ss[int(raw)]
+                        elif typ == 'b':
+                            val = bool(int(raw))
+                        elif typ in ('str', 'e'):
+                            val = raw
+                        elif style in dstyles:
+                            val = excel_date(raw)
+                        else:
+                            try:
+                                x = float(raw)
+                                val = int(x) if x.is_integer() else x
+                            except Exception:
+                                val = raw
+                    rowdict[idx] = val
+                if rowdict:
+                    row = [None] * (max(rowdict) + 1)
+                    for i, v in rowdict.items():
+                        row[i] = v
+                    yield row
+                else:
+                    yield []
+                elem.clear()
+
+
+def clean(v):
+    if v is None:
+        return None
+    if isinstance(v, str):
+        s = re.sub(r'\s+', ' ', v.strip())
+        return None if s.lower() in MISSING else s
+    return v
+
+
+def code(v):
+    v = clean(v)
+    if v is None:
+        return None
+    if isinstance(v, float) and v.is_integer():
+        v = int(v)
+    s = str(v).strip()
+    if s.endswith('.0'):
+        s = s[:-2]
+    return None if s in ('', '.') else s
+
+
+def snake(s):
+    if s is None:
+        return ''
+    s = re.sub(r'[¹²³⁴⁵⁶⁷⁸⁹⁰]', '', str(s).strip())
+    s = s.replace('%', ' pct ').replace('$', ' aud ').replace('&', ' and ')
+    s = re.sub(r'[\n\r]+', ' ', s)
+    s = re.sub(r'[()/\-]+', ' ', s)
+    s = re.sub(r'[^A-Za-z0-9]+', '_', s)
+    return re.sub(r'_+', '_', s).strip('_').lower()
+
+
+def parse_month(v):
+    if isinstance(v, dt.datetime):
+        return v.date().isoformat()
+    if isinstance(v, dt.date):
+        return v.isoformat()
+    if isinstance(v, str):
+        for fmt in ('%b-%y', '%b %y', '%Y-%m-%d'):
+            try:
+                return dt.datetime.strptime(v.strip(), fmt).date().isoformat()
+            except ValueError:
+                pass
+    return None
+
+
+def read_table(path, sheet, required_headers):
+    wanted = [required_headers] if isinstance(required_headers, str) else list(required_headers)
+    found = False
+    header = None
+    data = []
+    for r in iter_sheet_rows(path, sheet):
+        vals = [clean(x) for x in r]
+        if not found and all(any(str(x).strip().lower() == w.lower() for x in vals if x is not None) for w in wanted):
+            header = [snake(x) for x in vals]
+            found = True
+            continue
+        if found and any(x is not None for x in vals):
+            vals += [None] * (len(header) - len(vals))
+            data.append(vals[:len(header)])
+    if not found:
+        raise ValueError(f'Header not found: {path.name} / {sheet}')
+    last = max(i for i, h in enumerate(header) if h)
+    return header[:last+1], [r[:last+1] for r in data]
+
+
+def write_csv(name, header, rows):
+    p = OUT / name
+    with p.open('w', newline='', encoding='utf-8-sig') as f:
+        w = csv.writer(f)
+        w.writerow(header)
+        for r in rows:
+            w.writerow([clean(x) for x in r])
+    return p
+
+
+def stream_wide(path, sheet, header_pred, id_names, id_count, out_name, value_name, row_filter=None):
+    p = OUT / out_name
+    count = 0
+    with p.open('w', newline='', encoding='utf-8-sig') as f:
+        w = csv.writer(f)
+        w.writerow(id_names + ['date', value_name])
+        header = None
+        for r in iter_sheet_rows(path, sheet):
+            rr = [clean(x) for x in r]
+            if header is None:
+                if header_pred(rr):
+                    header = rr
+                continue
+            if not any(x is not None for x in rr):
+                continue
+            rr += [None] * (len(header) - len(rr))
+            if row_filter and not row_filter(rr, header):
+                continue
+            ids = rr[:id_count]
+            for j in range(id_count, len(header)):
+                date = parse_month(header[j])
+                if not date:
+                    continue
+                val = clean(rr[j])
+                if val is not None:
+                    w.writerow(ids + [date, val])
+                    count += 1
+    return count
+
+
+def latest_wide(path, sheet, header_pred, id_names, id_count, out_name, value_name, row_filter=None):
+    header = None
+    out = []
+    for r in iter_sheet_rows(path, sheet):
+        rr = [clean(x) for x in r]
+        if header is None:
+            if header_pred(rr):
+                header = rr
+            continue
+        if not any(x is not None for x in rr):
+            continue
+        rr += [None] * (len(header) - len(rr))
+        if row_filter and not row_filter(rr, header):
+            continue
+        date_cols = [j for j in range(id_count, len(header)) if parse_month(header[j])]
+        if not date_cols:
+            continue
+        j = date_cols[-1]
+        val = clean(rr[j])
+        if val is not None:
+            out.append(rr[:id_count] + [parse_month(header[j]), val])
+    write_csv(out_name, id_names + ['date', value_name], out)
+    return out
+
+
+def filtered_table(path, sheet, required_headers, predicate, out_name):
+    h, d = read_table(path, sheet, required_headers)
+    out = []
+    for r in d:
+        rec = {h[i]: clean(r[i]) for i in range(len(h))}
+        if predicate(rec):
+            out.append([rec.get(c) for c in h])
+    write_csv(out_name, h, out)
+    return h, out
