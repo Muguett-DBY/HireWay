@@ -701,11 +701,32 @@ export function ProfilePage() {
 
                       <button
                         type="button"
-                        className="copy-code-button"
+                        className={`copy-code-button ${copied ? 'copied' : ''}`}
                         onClick={copyRecoveryCode}
-                        aria-label="Copy recovery code"
+                        aria-label={
+                          copied ? 'Recovery code copied' : 'Copy recovery code'
+                        }
                       >
-                        {copied ? 'Copied!' : 'Copy'}
+                        {copied ? (
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            strokeWidth="2.5"
+                            aria-hidden="true"
+                          >
+                            <path d="m5 12 4 4L19 6" />
+                          </svg>
+                        ) : (
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            strokeWidth="2"
+                            aria-hidden="true"
+                          >
+                            <rect x="9" y="9" width="10" height="10" rx="2" />
+                            <path d="M15 9V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+                          </svg>
+                        )}
                       </button>
                     </div>
                     <p id="code-help">
