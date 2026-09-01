@@ -1,5 +1,4 @@
-import { useState, type FormEvent } from 'react'
-import { findMajorMatches, findMajorOption } from '../data/educationOptions'
+import { useEffect, useState, type FormEvent } from 'react'
 import {
   requestProfile,
   type Profile,
@@ -9,9 +8,16 @@ import {
 import { addSkill, loadSkills, removeSkill, type Skill } from '../lib/skillsApi'
 // Use the helper that talks to the career goal endpoint.
 import { requestGoal } from '../lib/goalApi'
+import {
+  loadSkillRecommendations,
+  searchOptions,
+  type CatalogueOption,
+  type SkillRecommendation,
+} from '../lib/optionsApi'
 // A new form starts with no background details.
 const emptyDetails: ProfileDetails = {
   qualification: '',
+  qualificationCode: null,
   educationLevel: '',
   currentRole: '',
 }
@@ -30,40 +36,174 @@ export function ProfilePage() {
   const [skillName, setSkillName] = useState('')
   const [skillError, setSkillError] = useState('')
   const [skillsBusy, setSkillsBusy] = useState(false)
+  const [majorOptions, setMajorOptions] = useState<CatalogueOption[]>([])
+  const [skillOptions, setSkillOptions] = useState<CatalogueOption[]>([])
+  const [skillCode, setSkillCode] = useState<string | null>(null)
   // Keep the goal draft and its feedback separate from the other forms.
   const [careerGoal, setCareerGoal] = useState('')
+  const [careerGoalCode, setCareerGoalCode] = useState<string | null>(null)
+  const [goalOptions, setGoalOptions] = useState<CatalogueOption[]>([])
   const [goalError, setGoalError] = useState('')
   const [goalMessage, setGoalMessage] = useState('')
   const [goalBusy, setGoalBusy] = useState(false)
+  const [recommendations, setRecommendations] = useState<SkillRecommendation[]>(
+    [],
+  )
+  const [recommendationsBusy, setRecommendationsBusy] = useState(false)
 
-  // Suggestions are derived from the current draft, so no extra state is needed.
-  const majorMatches = findMajorMatches(details.qualification)
-  const selectedMajor = findMajorOption(details.qualification)
-  const suggestedSkills =
-    selectedMajor?.skills.filter(
-      (suggestion) =>
-        !skills.some(
-          (skill) => skill.name.toLowerCase() === suggestion.toLowerCase(),
-        ),
-    ) ?? []
+  // Do not suggest a skill the profile has already saved.
+  const suggestedSkills = recommendations.filter(
+    (suggestion) =>
+      !skills.some(
+        (skill) =>
+          skill.skillCode === suggestion.code ||
+          skill.name.toLowerCase() === suggestion.label.toLowerCase(),
+      ),
+  )
+
+  // Wait briefly before searching so quick typing does not send every keystroke.
+  useEffect(() => {
+    if (details.qualificationCode || details.qualification.trim().length < 2) {
+      return
+    }
+
+    const controller = new AbortController()
+    const timer = window.setTimeout(() => {
+      void searchOptions(
+        'education',
+        details.qualification.trim(),
+        controller.signal,
+      )
+        .then(setMajorOptions)
+        .catch(() => {
+          if (!controller.signal.aborted) setMajorOptions([])
+        })
+    }, 180)
+
+    return () => {
+      window.clearTimeout(timer)
+      controller.abort()
+    }
+  }, [details.qualification, details.qualificationCode])
+
+  // Career goals come from Australian occupation titles and aliases.
+  useEffect(() => {
+    if (careerGoalCode || careerGoal.trim().length < 2) {
+      return
+    }
+
+    const controller = new AbortController()
+    const timer = window.setTimeout(() => {
+      void searchOptions('goals', careerGoal.trim(), controller.signal)
+        .then(setGoalOptions)
+        .catch(() => {
+          if (!controller.signal.aborted) setGoalOptions([])
+        })
+    }, 180)
+
+    return () => {
+      window.clearTimeout(timer)
+      controller.abort()
+    }
+  }, [careerGoal, careerGoalCode])
+
+  // Skills and named tools use the same O*NET-backed search box.
+  useEffect(() => {
+    if (skillCode || skillName.trim().length < 2) {
+      return
+    }
+
+    const controller = new AbortController()
+    const timer = window.setTimeout(() => {
+      void searchOptions('skills', skillName.trim(), controller.signal)
+        .then(setSkillOptions)
+        .catch(() => {
+          if (!controller.signal.aborted) setSkillOptions([])
+        })
+    }, 180)
+
+    return () => {
+      window.clearTimeout(timer)
+      controller.abort()
+    }
+  }, [skillCode, skillName])
+
+  // Refresh recommendations whenever a recognised major or goal changes.
+  useEffect(() => {
+    if (!details.qualificationCode && !careerGoalCode) {
+      return
+    }
+
+    const controller = new AbortController()
+    const timer = window.setTimeout(() => {
+      setRecommendationsBusy(true)
+      void loadSkillRecommendations(
+        details.qualificationCode,
+        careerGoalCode,
+        controller.signal,
+      )
+        .then(setRecommendations)
+        .catch(() => {
+          if (!controller.signal.aborted) setRecommendations([])
+        })
+        .finally(() => {
+          if (!controller.signal.aborted) setRecommendationsBusy(false)
+        })
+    }, 0)
+
+    return () => {
+      window.clearTimeout(timer)
+      controller.abort()
+    }
+  }, [careerGoalCode, details.qualificationCode])
 
   // Fill the form with the values that actually came back from D1.
   function showProfile(saved: Profile) {
     setProfile(saved)
     setDetails({
       qualification: saved.qualification,
+      qualificationCode: saved.qualificationCode,
       educationLevel: saved.educationLevel,
       currentRole: saved.currentRole,
     })
     setRecoveryCode(saved.code)
     setErrors({})
+    setMajorOptions([])
     setScreen('profile')
   }
 
   // Typing changes the draft, not the database.
-  function updateField(field: keyof ProfileDetails, value: string) {
+  function updateField(field: 'educationLevel' | 'currentRole', value: string) {
     setDetails((current) => ({ ...current, [field]: value }))
     setErrors((current) => ({ ...current, [field]: undefined }))
+    setMessage('')
+  }
+
+  // Editing the text clears an earlier catalogue choice until it is selected again.
+  function updateQualification(value: string) {
+    setDetails((current) => ({
+      ...current,
+      qualification: value,
+      qualificationCode: null,
+    }))
+    setMajorOptions([])
+    if (!careerGoalCode) {
+      setRecommendations([])
+      setRecommendationsBusy(false)
+    }
+    setErrors((current) => ({ ...current, qualification: undefined }))
+    setMessage('')
+  }
+
+  // Keep the official title and code together after a menu choice.
+  function selectMajor(option: CatalogueOption) {
+    setDetails((current) => ({
+      ...current,
+      qualification: option.label,
+      qualificationCode: option.code,
+    }))
+    setMajorOptions([])
+    setErrors((current) => ({ ...current, qualification: undefined }))
     setMessage('')
   }
 
@@ -76,11 +216,17 @@ export function ProfilePage() {
     setFailed(false)
     setSkills([])
     setSkillName('')
+    setSkillCode(null)
+    setSkillOptions([])
     setSkillError('')
     // Do not carry a previous profile's goal into a new profile.
     setCareerGoal('')
+    setCareerGoalCode(null)
+    setGoalOptions([])
     setGoalError('')
     setGoalMessage('')
+    setRecommendations([])
+    setRecommendationsBusy(false)
     setScreen('profile')
   }
 
@@ -124,11 +270,17 @@ export function ProfilePage() {
       }
 
       // Display the values returned by the three API requests.
+      setRecommendations([])
+      setRecommendationsBusy(false)
       showProfile(result.data)
       setSkills(skillResult.data.skills)
       setSkillName('')
+      setSkillCode(null)
+      setSkillOptions([])
       setSkillError('')
       setCareerGoal(goalResult.data.careerGoal)
+      setCareerGoalCode(goalResult.data.careerGoalCode)
+      setGoalOptions([])
       setGoalError('')
       setGoalMessage('')
       setMessage('Profile loaded.')
@@ -178,6 +330,7 @@ export function ProfilePage() {
       if (creating) {
         setSkills([])
         setCareerGoal('')
+        setCareerGoalCode(null)
         setGoalError('')
         setGoalMessage('')
       }
@@ -210,7 +363,12 @@ export function ProfilePage() {
     setGoalBusy(true)
 
     try {
-      const result = await requestGoal('PUT', profile.code, goal)
+      const result = await requestGoal(
+        'PUT',
+        profile.code,
+        goal,
+        careerGoalCode,
+      )
 
       if (!result.ok) {
         setGoalError(result.data.error ?? 'Could not save your career goal.')
@@ -219,6 +377,8 @@ export function ProfilePage() {
 
       // Use the saved value so the field matches the database.
       setCareerGoal(result.data.careerGoal)
+      setCareerGoalCode(result.data.careerGoalCode)
+      setGoalOptions([])
       setGoalMessage('Career goal saved.')
     } catch {
       setGoalError('Could not connect. Please try again.')
@@ -227,7 +387,7 @@ export function ProfilePage() {
     }
   }
   // Both typed and suggested skills use the same API request.
-  async function saveSkill(name: string) {
+  async function saveSkill(name: string, selectedCode: string | null = null) {
     if (!profile) {
       setSkillError('Save your profile before adding skills.')
       return
@@ -235,7 +395,7 @@ export function ProfilePage() {
 
     setSkillsBusy(true)
     try {
-      const result = await addSkill(profile.code, name)
+      const result = await addSkill(profile.code, name, selectedCode)
       if (!result.ok) {
         setSkillError(result.data.error ?? 'Could not add this skill.')
         return
@@ -243,6 +403,8 @@ export function ProfilePage() {
 
       setSkills((current) => [...current, result.data])
       setSkillName('')
+      setSkillCode(null)
+      setSkillOptions([])
     } catch {
       setSkillError('Could not connect. Please try again.')
     } finally {
@@ -261,13 +423,13 @@ export function ProfilePage() {
       return
     }
 
-    await saveSkill(name)
+    await saveSkill(name, skillCode)
   }
 
   // A suggestion is still optional and only saves after the user clicks it.
-  async function addSuggestedSkill(name: string) {
+  async function addSuggestedSkill(suggestion: SkillRecommendation) {
     setSkillError('')
-    await saveSkill(name)
+    await saveSkill(suggestion.label, suggestion.code)
   }
 
   // Remove only the selected skill from this profile.
@@ -559,7 +721,7 @@ export function ProfilePage() {
                       id="qualification"
                       value={details.qualification}
                       onChange={(event) =>
-                        updateField('qualification', event.target.value)
+                        updateQualification(event.target.value)
                       }
                       placeholder="Start typing, for example Data"
                       autoComplete="off"
@@ -571,22 +733,21 @@ export function ProfilePage() {
                           ? 'qualification-help qualification-error'
                           : 'qualification-help'
                       }
-                      aria-expanded={!selectedMajor && majorMatches.length > 0}
+                      aria-expanded={majorOptions.length > 0}
                       aria-controls="major-suggestions"
                     />
 
-                    {/* Keep matching majors close to the field being typed. */}
-                    {!selectedMajor && majorMatches.length > 0 && (
+                    {/* Keep matching fields of study close to the typed value. */}
+                    {majorOptions.length > 0 && (
                       <ul className="autocomplete-menu" id="major-suggestions">
-                        {majorMatches.map((option) => (
-                          <li key={option.name}>
+                        {majorOptions.map((option) => (
+                          <li key={option.code}>
                             <button
                               type="button"
-                              onClick={() =>
-                                updateField('qualification', option.name)
-                              }
+                              onClick={() => selectMajor(option)}
                             >
-                              {option.name}
+                              <strong>{option.label}</strong>
+                              <small>{option.description}</small>
                             </button>
                           </li>
                         ))}
@@ -693,30 +854,46 @@ export function ProfilePage() {
                   <h2>Current skills</h2>
                   <p>Add the skills and tools you already use.</p>
 
-                  {/* Recommendations change when a known major is selected. */}
-                  {selectedMajor && (
+                  {/* Recommendations use any recognised major or career goal. */}
+                  {(details.qualificationCode || careerGoalCode) && (
                     <div className="skill-recommendations">
                       <div>
-                        <strong>Suggested for {selectedMajor.name}</strong>
+                        <strong>
+                          Suggested from{' '}
+                          {details.qualificationCode && careerGoalCode
+                            ? 'your major and career goal'
+                            : details.qualificationCode
+                              ? 'your major'
+                              : 'your career goal'}
+                        </strong>
                         <span>Choose only the skills you already have.</span>
                       </div>
 
-                      {suggestedSkills.length > 0 ? (
+                      {recommendationsBusy ? (
+                        <p>Loading suggestions...</p>
+                      ) : suggestedSkills.length > 0 ? (
                         <div className="suggestion-chips">
                           {suggestedSkills.map((suggestion) => (
                             <button
                               type="button"
                               className="skill-suggestion"
-                              key={suggestion}
+                              key={suggestion.code}
                               disabled={skillsBusy}
                               onClick={() => addSuggestedSkill(suggestion)}
+                              title={
+                                suggestion.kind === 'tool'
+                                  ? 'Tool or technology'
+                                  : 'Transferable skill'
+                              }
                             >
-                              + {suggestion}
+                              + {suggestion.label}
                             </button>
                           ))}
                         </div>
                       ) : (
-                        <p>All suggested skills are already in your profile.</p>
+                        <p>
+                          No new suggestions are available for this selection.
+                        </p>
                       )}
                     </div>
                   )}
@@ -724,20 +901,57 @@ export function ProfilePage() {
                   <form onSubmit={submitSkill} noValidate>
                     <label htmlFor="skill-name">Skill or tool</label>
                     <div className="skill-entry">
-                      <input
-                        id="skill-name"
-                        value={skillName}
-                        onChange={(event) => {
-                          setSkillName(event.target.value)
-                          setSkillError('')
-                        }}
-                        maxLength={80}
-                        disabled={skillsBusy}
-                        aria-invalid={Boolean(skillError)}
-                        aria-describedby={
-                          skillError ? 'skill-error' : undefined
-                        }
-                      />
+                      <div className="autocomplete">
+                        <input
+                          id="skill-name"
+                          value={skillName}
+                          onChange={(event) => {
+                            setSkillName(event.target.value)
+                            setSkillCode(null)
+                            setSkillOptions([])
+                            setSkillError('')
+                          }}
+                          placeholder="Start typing, for example Python"
+                          autoComplete="off"
+                          maxLength={80}
+                          disabled={skillsBusy}
+                          aria-invalid={Boolean(skillError)}
+                          aria-describedby={
+                            skillError ? 'skill-error' : undefined
+                          }
+                          aria-expanded={skillOptions.length > 0}
+                          aria-controls="skill-suggestions"
+                        />
+
+                        {/* A selected option keeps its standard code when saved. */}
+                        {skillOptions.length > 0 && (
+                          <ul
+                            className="autocomplete-menu"
+                            id="skill-suggestions"
+                          >
+                            {skillOptions.map((option) => (
+                              <li key={option.code}>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setSkillName(option.label)
+                                    setSkillCode(option.code)
+                                    setSkillOptions([])
+                                    setSkillError('')
+                                  }}
+                                >
+                                  <strong>{option.label}</strong>
+                                  <small>
+                                    {option.kind === 'tool'
+                                      ? 'Tool or technology'
+                                      : 'Transferable skill'}
+                                  </small>
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
                       <button type="submit" disabled={skillsBusy}>
                         {skillsBusy ? 'Working...' : 'Add skill'}
                       </button>
@@ -785,21 +999,58 @@ export function ProfilePage() {
                     <p>Choose one role you would like to work towards.</p>
 
                     <label htmlFor="career-goal">Target role *</label>
-                    <input
-                      id="career-goal"
-                      value={careerGoal}
-                      onChange={(event) => {
-                        setCareerGoal(event.target.value)
-                        setGoalError('')
-                        setGoalMessage('')
-                      }}
-                      maxLength={120}
-                      required
-                      aria-invalid={Boolean(goalError)}
-                      aria-describedby={
-                        goalError ? 'goal-help goal-error' : 'goal-help'
-                      }
-                    />
+                    <div className="autocomplete">
+                      <input
+                        id="career-goal"
+                        value={careerGoal}
+                        onChange={(event) => {
+                          setCareerGoal(event.target.value)
+                          setCareerGoalCode(null)
+                          setGoalOptions([])
+                          if (!details.qualificationCode) {
+                            setRecommendations([])
+                            setRecommendationsBusy(false)
+                          }
+                          setGoalError('')
+                          setGoalMessage('')
+                        }}
+                        placeholder="Start typing, for example Data"
+                        autoComplete="off"
+                        maxLength={120}
+                        required
+                        aria-invalid={Boolean(goalError)}
+                        aria-describedby={
+                          goalError ? 'goal-help goal-error' : 'goal-help'
+                        }
+                        aria-expanded={goalOptions.length > 0}
+                        aria-controls="goal-suggestions"
+                      />
+
+                      {/* Alternative titles still save the main OSCA title. */}
+                      {goalOptions.length > 0 && (
+                        <ul className="autocomplete-menu" id="goal-suggestions">
+                          {goalOptions.map((option) => (
+                            <li key={option.code}>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setCareerGoal(option.label)
+                                  setCareerGoalCode(option.code)
+                                  setGoalOptions([])
+                                  setGoalError('')
+                                  setGoalMessage('')
+                                }}
+                              >
+                                <strong>{option.label}</strong>
+                                {option.description && (
+                                  <small>{option.description}</small>
+                                )}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
 
                     <p id="goal-help">
                       Saving a new goal replaces your previous goal.
@@ -822,6 +1073,19 @@ export function ProfilePage() {
                     </p>
                   )}
                 </form>
+              )}
+
+              {/* Keep the open-data sources visible beside the suggestions. */}
+              {profile && (
+                <aside className="data-source-note">
+                  <strong>Suggestion data</strong>
+                  <p>
+                    Fields of study use CIP 2020. Career goals use ABS OSCA
+                    2024. Skills and tools use the O*NET 31.0 Database by
+                    USDOL/ETA under CC BY 4.0. O*NET® is a trademark of
+                    USDOL/ETA.
+                  </p>
+                </aside>
               )}
             </div>
           </>

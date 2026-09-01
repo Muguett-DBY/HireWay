@@ -611,6 +611,8 @@ select {
 }
 
 .card .autocomplete-menu button {
+  display: grid;
+  gap: 3px;
   width: 100%;
   min-height: 42px;
   margin: 0;
@@ -619,6 +621,21 @@ select {
   background: #ffffff;
   color: var(--ink);
   text-align: left;
+}
+
+.card .autocomplete-menu button strong {
+  font-size: 14px;
+}
+
+.card .autocomplete-menu button small {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .card .autocomplete-menu button:hover {
@@ -755,6 +772,11 @@ select {
   min-width: 0;
 }
 
+.skill-entry > .autocomplete {
+  flex: 1;
+  min-width: 0;
+}
+
 .skill-entry button,
 .skills-list button {
   width: auto;
@@ -783,6 +805,24 @@ select {
   padding: 10px 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
+}
+
+/* Source notes explain where suggestions came from without interrupting a form. */
+.data-source-note {
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 4px 8px 24px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.data-source-note strong {
+  color: var(--ink);
+}
+
+.data-source-note p {
+  margin: 5px 0 0;
 }
 
 /* The hero becomes one column before either side starts feeling cramped. */

@@ -10,9 +10,9 @@ HireWay is a web-based career exploration platform designed to help young people
 
 The profile suggestions use three open-data sources:
 
-- ABS OSCA 2024 for Australian occupation names and aliases
-- CIP 2020 for fields of study and their occupation links
-- O*NET 31.0 for occupation skills and workplace technologies
+- [ABS OSCA 2024](https://www.abs.gov.au/statistics/classifications/osca-occupation-standard-classification-australia/2024-version-1-0/data-downloads) for Australian occupation names and aliases
+- [CIP 2020 to O*NET crosswalk](https://www.onetcenter.org/crosswalks.html) for fields of study and their occupation links
+- [O*NET 31.0](https://www.onetcenter.org/database.html) for occupation skills and workplace technologies
 
 Install the data script dependency and build the local import file:
 

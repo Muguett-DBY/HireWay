@@ -1,11 +1,14 @@
 // Keep the frontend field names aligned with the API.
 export type ProfileDetails = {
   qualification: string
+  qualificationCode: string | null
   educationLevel: string
   currentRole: string
 }
 export type Profile = ProfileDetails & { code: string }
-export type ProfileErrors = Partial<Record<keyof ProfileDetails, string>>
+export type ProfileErrors = Partial<
+  Record<'qualification' | 'educationLevel' | 'currentRole', string>
+>
 
 // Successful requests return a profile; failed requests return errors.
 type ProfileResult =
