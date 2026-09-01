@@ -272,9 +272,32 @@ export function ProfilePage() {
   return (
     <>
       {/* Keep navigation available without leaving the app. */}
-      <header className="site-header">
-        <span className="brand">HireWay</span>
-        {screen === 'profile' && (
+      <header className="site-header" id="top">
+        <button
+          type="button"
+          className="brand"
+          onClick={() => {
+            setScreen('home')
+            setMessage('')
+            setFailed(false)
+          }}
+          aria-label="HireWay home"
+        >
+          <span className="brand-mark" aria-hidden="true">
+            H
+          </span>
+          HireWay
+        </button>
+
+        {screen === 'home' ? (
+          <nav className="site-nav" aria-label="Main navigation">
+            <a href="#how-it-works">How it works</a>
+            <a href="#continue-profile">Continue profile</a>
+            <button type="button" onClick={startProfile} disabled={busy}>
+              Get started
+            </button>
+          </nav>
+        ) : (
           <button
             type="button"
             className="secondary"
@@ -294,284 +317,432 @@ export function ProfilePage() {
         )}
       </header>
 
-      <main>
-        <h1>
-          {screen === 'home' ? 'Start your career journey' : 'Your background'}
-        </h1>
-        <p className="intro">
-          {screen === 'home'
-            ? 'Create a profile or continue with your recovery code.'
-            : 'Tell us about your education and current role.'}
-        </p>
-
-        {/* Announce the result without replacing the user's input. */}
-        {message && (
-          <p
-            className={failed ? 'notice error' : 'notice success'}
-            role={failed ? 'alert' : 'status'}
-          >
-            {message}
-          </p>
-        )}
-
+      <main className={screen === 'home' ? 'landing-page' : 'profile-page'}>
         {screen === 'home' ? (
-          <div className="home-grid">
-            {/* Returning visitors can restore their saved details. */}
-            <form className="card" onSubmit={loadProfile} noValidate>
-              <h2>Continue your profile</h2>
-              <label htmlFor="recovery-code">Recovery code</label>
-              <input
-                id="recovery-code"
-                value={recoveryCode}
-                onChange={(event) => {
-                  setRecoveryCode(event.target.value)
-                  setMessage('')
-                }}
-                autoComplete="off"
-                spellCheck={false}
-                disabled={busy}
-              />
-              <button type="submit" disabled={busy}>
-                {busy ? 'Loading...' : 'Load profile'}
-              </button>
-            </form>
+          <>
+            {/* The first screen explains the product before asking for details. */}
+            <section className="hero" aria-labelledby="hero-title">
+              <div className="hero-copy">
+                <p className="eyebrow">Career planning, made clearer</p>
+                <h1 id="hero-title">
+                  Turn what you know into a career path you can act on.
+                </h1>
+                <p className="hero-summary">
+                  HireWay brings your education, current skills and career goal
+                  together, then helps you understand the next steps towards
+                  work that suits you.
+                </p>
 
-            {/* This only opens a blank form; it does not create a database row. */}
-            <section className="card">
-              <h2>Create a personal profile</h2>
-              <p>
-                No account is needed. Save your code after saving your details.
-              </p>
-              <button
-                type="button"
-                className="secondary"
-                onClick={startProfile}
-                disabled={busy}
+                <div className="hero-actions">
+                  <button type="button" onClick={startProfile} disabled={busy}>
+                    Build my profile
+                  </button>
+                  <a className="text-link" href="#how-it-works">
+                    See how it works
+                  </a>
+                </div>
+
+                <ul className="hero-points" aria-label="HireWay benefits">
+                  <li>No account required</li>
+                  <li>Private recovery code</li>
+                  <li>Data-informed direction</li>
+                </ul>
+              </div>
+
+              {/* This preview makes the pathway idea clear without fake results. */}
+              <div
+                className="pathway-preview"
+                aria-label="Career pathway preview"
               >
-                Create profile
-              </button>
-            </section>
-          </div>
-        ) : (
-          <div className="profile-stack">
-            <form
-              className="card profile-card"
-              onSubmit={saveProfile}
-              noValidate
-            >
-              {/* Disable the fields while a save is running. */}
-              <fieldset disabled={busy}>
-                <legend>Background details</legend>
-                <p>Fields marked * are required.</p>
-
-                <label htmlFor="qualification">Degree / Major *</label>
-                <input
-                  id="qualification"
-                  value={details.qualification}
-                  onChange={(event) =>
-                    updateField('qualification', event.target.value)
-                  }
-                  maxLength={200}
-                  required
-                  aria-invalid={Boolean(errors.qualification)}
-                  aria-describedby={
-                    errors.qualification ? 'qualification-error' : undefined
-                  }
-                />
-                {errors.qualification && (
-                  <p
-                    id="qualification-error"
-                    className="field-error"
-                    role="alert"
-                  >
-                    {errors.qualification}
-                  </p>
-                )}
-
-                <label htmlFor="education-level">Education level *</label>
-                <select
-                  id="education-level"
-                  value={details.educationLevel}
-                  onChange={(event) =>
-                    updateField('educationLevel', event.target.value)
-                  }
-                  required
-                  aria-invalid={Boolean(errors.educationLevel)}
-                  aria-describedby={
-                    errors.educationLevel ? 'education-error' : undefined
-                  }
-                >
-                  <option value="">Select your education level</option>
-                  <option value="High School">High School</option>
-                  <option value="Diploma / Certificate">
-                    Diploma / Certificate
-                  </option>
-                  <option value="Bachelor">Bachelor's degree</option>
-                  <option value="Master">Master's degree</option>
-                  <option value="Doctorate">Doctorate (PhD)</option>
-                  <option value="Other">Other</option>
-                </select>
-                {errors.educationLevel && (
-                  <p id="education-error" className="field-error" role="alert">
-                    {errors.educationLevel}
-                  </p>
-                )}
-
-                <label htmlFor="current-role">Current role (optional)</label>
-                <input
-                  id="current-role"
-                  value={details.currentRole}
-                  onChange={(event) =>
-                    updateField('currentRole', event.target.value)
-                  }
-                  maxLength={120}
-                  aria-invalid={Boolean(errors.currentRole)}
-                  aria-describedby={
-                    errors.currentRole ? 'role-error' : undefined
-                  }
-                />
-                {errors.currentRole && (
-                  <p id="role-error" className="field-error" role="alert">
-                    {errors.currentRole}
-                  </p>
-                )}
-
-                <button type="submit">
-                  {busy
-                    ? 'Saving...'
-                    : profile
-                      ? 'Save changes'
-                      : 'Save profile'}
-                </button>
-              </fieldset>
-
-              {/* Keep the code visible so the user can copy it. */}
-              {profile && (
-                <section className="recovery-note">
-                  <label htmlFor="saved-code">Your recovery code</label>
-                  <input
-                    id="saved-code"
-                    value={profile.code}
-                    readOnly
-                    onFocus={(event) => event.currentTarget.select()}
-                    aria-describedby="code-help"
-                  />
-                  <p id="code-help">
-                    Keep this code private. Anyone with it can view and edit
-                    your profile. Use it to return after closing or refreshing
-                    the page.
-                  </p>
-                </section>
-              )}
-            </form>
-
-            {/* Skills are linked to the profile created by the first form. */}
-            {profile && (
-              <section className="card profile-card skills-card">
-                <h2>Current skills</h2>
-                <p>Add the skills and tools you already use.</p>
-
-                <form onSubmit={submitSkill} noValidate>
-                  <label htmlFor="skill-name">Skill or tool</label>
-                  <div className="skill-entry">
-                    <input
-                      id="skill-name"
-                      value={skillName}
-                      onChange={(event) => {
-                        setSkillName(event.target.value)
-                        setSkillError('')
-                      }}
-                      maxLength={80}
-                      disabled={skillsBusy}
-                      aria-invalid={Boolean(skillError)}
-                      aria-describedby={skillError ? 'skill-error' : undefined}
-                    />
-                    <button type="submit" disabled={skillsBusy}>
-                      {skillsBusy ? 'Working...' : 'Add skill'}
-                    </button>
+                <div className="preview-heading">
+                  <div>
+                    <span className="preview-kicker">Your pathway</span>
+                    <strong>Data Analyst</strong>
                   </div>
+                  <span className="preview-status">Building</span>
+                </div>
 
-                  {skillError && (
-                    <p id="skill-error" className="field-error" role="alert">
-                      {skillError}
-                    </p>
-                  )}
-                </form>
+                <div className="preview-progress" aria-hidden="true">
+                  <span />
+                </div>
 
-                {/* Keep an empty message until the first skill is added. */}
-                {skills.length === 0 ? (
-                  <p className="empty-skills">No skills added yet.</p>
-                ) : (
-                  <ul className="skills-list">
-                    {skills.map((skill) => (
-                      <li key={skill.id}>
-                        <span>{skill.name}</span>
-                        <button
-                          type="button"
-                          className="secondary"
-                          disabled={skillsBusy}
-                          onClick={() => deleteSkill(skill.id)}
-                          aria-label={`Remove ${skill.name}`}
-                        >
-                          Remove
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="preview-grid">
+                  <article>
+                    <span>Background</span>
+                    <strong>Data Science</strong>
+                    <small>Profile saved</small>
+                  </article>
+                  <article>
+                    <span>Current skills</span>
+                    <strong>4 added</strong>
+                    <small>Ready to compare</small>
+                  </article>
+                </div>
+
+                <div className="preview-skills">
+                  <span>Python</span>
+                  <span>SQL</span>
+                  <span>Statistics</span>
+                  <span className="skill-gap">+ Skill gaps</span>
+                </div>
+              </div>
+            </section>
+
+            {/* Three short steps show what the user will do in HireWay. */}
+            <section
+              className="how-it-works"
+              id="how-it-works"
+              aria-labelledby="steps-title"
+            >
+              <div className="section-heading">
+                <p className="eyebrow">How it works</p>
+                <h2 id="steps-title">A clearer direction in three steps</h2>
+                <p>
+                  Start with what you already know. HireWay keeps the process
+                  simple and gives each detail a purpose.
+                </p>
+              </div>
+
+              <div className="steps-grid">
+                <article className="step-card">
+                  <span>01</span>
+                  <h3>Share your background</h3>
+                  <p>
+                    Add your education and current role to set a starting point.
+                  </p>
+                </article>
+                <article className="step-card">
+                  <span>02</span>
+                  <h3>Map your skills</h3>
+                  <p>
+                    Record the tools and strengths you can already bring to
+                    work.
+                  </p>
+                </article>
+                <article className="step-card">
+                  <span>03</span>
+                  <h3>Choose a direction</h3>
+                  <p>
+                    Set a career goal and build towards practical next steps.
+                  </p>
+                </article>
+              </div>
+            </section>
+
+            {/* New and returning visitors can act from the same section. */}
+            <section
+              className="profile-entry"
+              id="continue-profile"
+              aria-labelledby="entry-title"
+            >
+              <div className="entry-copy">
+                <p className="eyebrow">Ready when you are</p>
+                <h2 id="entry-title">
+                  Start fresh or pick up where you left off.
+                </h2>
+                <p>
+                  Your recovery code is all you need to return. Keep it private,
+                  because it gives access to your saved profile.
+                </p>
+                <button type="button" onClick={startProfile} disabled={busy}>
+                  Create a new profile
+                </button>
+              </div>
+
+              <form className="recovery-card" onSubmit={loadProfile} noValidate>
+                <h3>Continue your profile</h3>
+                <p>Enter the recovery code you saved earlier.</p>
+
+                {/* Announce a loading error beside the field that needs attention. */}
+                {message && (
+                  <p
+                    className={failed ? 'notice error' : 'notice success'}
+                    role={failed ? 'alert' : 'status'}
+                  >
+                    {message}
+                  </p>
                 )}
-              </section>
+
+                <label htmlFor="recovery-code">Recovery code</label>
+                <input
+                  id="recovery-code"
+                  value={recoveryCode}
+                  onChange={(event) => {
+                    setRecoveryCode(event.target.value)
+                    setMessage('')
+                    setFailed(false)
+                  }}
+                  autoComplete="off"
+                  spellCheck={false}
+                  disabled={busy}
+                />
+                <button type="submit" disabled={busy}>
+                  {busy ? 'Loading...' : 'Load profile'}
+                </button>
+              </form>
+            </section>
+
+            {/* Keep the data promise broad while the recommendation model grows. */}
+            <section className="data-callout">
+              <span aria-hidden="true">HW</span>
+              <div>
+                <p className="eyebrow">Built for better career decisions</p>
+                <h2>One profile, shaped into a practical pathway.</h2>
+                <p>
+                  HireWay is designed to connect personal experience with
+                  occupation, skills and labour market data in one clear view.
+                </p>
+              </div>
+            </section>
+
+            <footer className="landing-footer">
+              <strong>HireWay</strong>
+              <span>Find your direction. Build your next step.</span>
+            </footer>
+          </>
+        ) : (
+          <>
+            <h1>Your background</h1>
+            <p className="intro">
+              Tell us about your education and current role.
+            </p>
+
+            {/* Announce the result without replacing the user's input. */}
+            {message && (
+              <p
+                className={failed ? 'notice error' : 'notice success'}
+                role={failed ? 'alert' : 'status'}
+              >
+                {message}
+              </p>
             )}
-            {/* A career goal is saved separately from education and skills. */}
-            {profile && (
+
+            <div className="profile-stack">
               <form
                 className="card profile-card"
-                onSubmit={submitGoal}
+                onSubmit={saveProfile}
                 noValidate
               >
-                <fieldset disabled={busy || goalBusy}>
-                  <legend>Career goal</legend>
-                  <p>Choose one role you would like to work towards.</p>
+                {/* Disable the fields while a save is running. */}
+                <fieldset disabled={busy}>
+                  <legend>Background details</legend>
+                  <p>Fields marked * are required.</p>
 
-                  <label htmlFor="career-goal">Target role *</label>
+                  <label htmlFor="qualification">Degree / Major *</label>
                   <input
-                    id="career-goal"
-                    value={careerGoal}
-                    onChange={(event) => {
-                      setCareerGoal(event.target.value)
-                      setGoalError('')
-                      setGoalMessage('')
-                    }}
-                    maxLength={120}
+                    id="qualification"
+                    value={details.qualification}
+                    onChange={(event) =>
+                      updateField('qualification', event.target.value)
+                    }
+                    maxLength={200}
                     required
-                    aria-invalid={Boolean(goalError)}
+                    aria-invalid={Boolean(errors.qualification)}
                     aria-describedby={
-                      goalError ? 'goal-help goal-error' : 'goal-help'
+                      errors.qualification ? 'qualification-error' : undefined
                     }
                   />
+                  {errors.qualification && (
+                    <p
+                      id="qualification-error"
+                      className="field-error"
+                      role="alert"
+                    >
+                      {errors.qualification}
+                    </p>
+                  )}
 
-                  <p id="goal-help">
-                    Saving a new goal replaces your previous goal.
-                  </p>
+                  <label htmlFor="education-level">Education level *</label>
+                  <select
+                    id="education-level"
+                    value={details.educationLevel}
+                    onChange={(event) =>
+                      updateField('educationLevel', event.target.value)
+                    }
+                    required
+                    aria-invalid={Boolean(errors.educationLevel)}
+                    aria-describedby={
+                      errors.educationLevel ? 'education-error' : undefined
+                    }
+                  >
+                    <option value="">Select your education level</option>
+                    <option value="High School">High School</option>
+                    <option value="Diploma / Certificate">
+                      Diploma / Certificate
+                    </option>
+                    <option value="Bachelor">Bachelor's degree</option>
+                    <option value="Master">Master's degree</option>
+                    <option value="Doctorate">Doctorate (PhD)</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  {errors.educationLevel && (
+                    <p
+                      id="education-error"
+                      className="field-error"
+                      role="alert"
+                    >
+                      {errors.educationLevel}
+                    </p>
+                  )}
 
-                  {goalError && (
-                    <p id="goal-error" className="field-error" role="alert">
-                      {goalError}
+                  <label htmlFor="current-role">Current role (optional)</label>
+                  <input
+                    id="current-role"
+                    value={details.currentRole}
+                    onChange={(event) =>
+                      updateField('currentRole', event.target.value)
+                    }
+                    maxLength={120}
+                    aria-invalid={Boolean(errors.currentRole)}
+                    aria-describedby={
+                      errors.currentRole ? 'role-error' : undefined
+                    }
+                  />
+                  {errors.currentRole && (
+                    <p id="role-error" className="field-error" role="alert">
+                      {errors.currentRole}
                     </p>
                   )}
 
                   <button type="submit">
-                    {goalBusy ? 'Saving...' : 'Save goal'}
+                    {busy
+                      ? 'Saving...'
+                      : profile
+                        ? 'Save changes'
+                        : 'Save profile'}
                   </button>
                 </fieldset>
 
-                {goalMessage && (
-                  <p className="notice success" role="status">
-                    {goalMessage}
-                  </p>
+                {/* Keep the code visible so the user can copy it. */}
+                {profile && (
+                  <section className="recovery-note">
+                    <label htmlFor="saved-code">Your recovery code</label>
+                    <input
+                      id="saved-code"
+                      value={profile.code}
+                      readOnly
+                      onFocus={(event) => event.currentTarget.select()}
+                      aria-describedby="code-help"
+                    />
+                    <p id="code-help">
+                      Keep this code private. Anyone with it can view and edit
+                      your profile. Use it to return after closing or refreshing
+                      the page.
+                    </p>
+                  </section>
                 )}
               </form>
-            )}
-          </div>
+
+              {/* Skills are linked to the profile created by the first form. */}
+              {profile && (
+                <section className="card profile-card skills-card">
+                  <h2>Current skills</h2>
+                  <p>Add the skills and tools you already use.</p>
+
+                  <form onSubmit={submitSkill} noValidate>
+                    <label htmlFor="skill-name">Skill or tool</label>
+                    <div className="skill-entry">
+                      <input
+                        id="skill-name"
+                        value={skillName}
+                        onChange={(event) => {
+                          setSkillName(event.target.value)
+                          setSkillError('')
+                        }}
+                        maxLength={80}
+                        disabled={skillsBusy}
+                        aria-invalid={Boolean(skillError)}
+                        aria-describedby={
+                          skillError ? 'skill-error' : undefined
+                        }
+                      />
+                      <button type="submit" disabled={skillsBusy}>
+                        {skillsBusy ? 'Working...' : 'Add skill'}
+                      </button>
+                    </div>
+
+                    {skillError && (
+                      <p id="skill-error" className="field-error" role="alert">
+                        {skillError}
+                      </p>
+                    )}
+                  </form>
+
+                  {/* Keep an empty message until the first skill is added. */}
+                  {skills.length === 0 ? (
+                    <p className="empty-skills">No skills added yet.</p>
+                  ) : (
+                    <ul className="skills-list">
+                      {skills.map((skill) => (
+                        <li key={skill.id}>
+                          <span>{skill.name}</span>
+                          <button
+                            type="button"
+                            className="secondary"
+                            disabled={skillsBusy}
+                            onClick={() => deleteSkill(skill.id)}
+                            aria-label={`Remove ${skill.name}`}
+                          >
+                            Remove
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </section>
+              )}
+              {/* A career goal is saved separately from education and skills. */}
+              {profile && (
+                <form
+                  className="card profile-card"
+                  onSubmit={submitGoal}
+                  noValidate
+                >
+                  <fieldset disabled={busy || goalBusy}>
+                    <legend>Career goal</legend>
+                    <p>Choose one role you would like to work towards.</p>
+
+                    <label htmlFor="career-goal">Target role *</label>
+                    <input
+                      id="career-goal"
+                      value={careerGoal}
+                      onChange={(event) => {
+                        setCareerGoal(event.target.value)
+                        setGoalError('')
+                        setGoalMessage('')
+                      }}
+                      maxLength={120}
+                      required
+                      aria-invalid={Boolean(goalError)}
+                      aria-describedby={
+                        goalError ? 'goal-help goal-error' : 'goal-help'
+                      }
+                    />
+
+                    <p id="goal-help">
+                      Saving a new goal replaces your previous goal.
+                    </p>
+
+                    {goalError && (
+                      <p id="goal-error" className="field-error" role="alert">
+                        {goalError}
+                      </p>
+                    )}
+
+                    <button type="submit">
+                      {goalBusy ? 'Saving...' : 'Save goal'}
+                    </button>
+                  </fieldset>
+
+                  {goalMessage && (
+                    <p className="notice success" role="status">
+                      {goalMessage}
+                    </p>
+                  )}
+                </form>
+              )}
+            </div>
+          </>
         )}
       </main>
     </>
