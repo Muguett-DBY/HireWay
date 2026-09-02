@@ -1,1 +1,4 @@
 * text=auto eol=lf
+
+# Source snapshots keep the same bytes published by their providers.
+data/sources/** -text

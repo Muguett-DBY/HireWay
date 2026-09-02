@@ -10,7 +10,7 @@ This import prepares the catalogue data needed by the Iteration 1 career flow. I
 - Jobs and Skills Australia TOP qualification pathways linked to OSCA occupations
 - existing O*NET skill and tool records remain separate
 
-The generated SQL files stay in `data/generated` and are not committed because they can be rebuilt from the source files.
+The source snapshots are kept in `data/sources`. Generated SQL stays in `data/generated` and is not committed because it can be rebuilt.
 
 ## Source boundaries
 
@@ -22,15 +22,17 @@ The generated SQL files stay in `data/generated` and are not committed because t
 
 ## Build the local import
 
-Run these commands from the repository root. Replace the example source path if the cleaned dataset moves.
+Run these commands from the repository root. Both commands read the tracked source snapshots in `data/sources`.
 
 ```powershell
 # Build the existing OSCA, CIP and O*NET catalogue first.
 npm run data:build
 
 # Add the Australian education and qualification data prepared by the team.
-npm run data:build:iteration1 -- "E:\4.MONASH\2026 S2\FIT5120 Industry experience studio project - S2 2026\Project_Hireway\Datasets\cleaned_data_2"
+npm run data:build:iteration1
 ```
+
+An alternative cleaned-data directory can still be supplied after `--` when testing a newer team release.
 
 The second command writes:
 

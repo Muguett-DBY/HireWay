@@ -18,7 +18,8 @@ from openpyxl import load_workbook
 
 
 ROOT = Path(__file__).resolve().parents[2]
-RAW_DIR = ROOT / "data" / "raw"
+# Keep the exact source snapshot beside the scripts that consume it.
+RAW_DIR = ROOT / "data" / "sources" / "reference"
 GENERATED_DIR = ROOT / "data" / "generated"
 SQL_PATH = GENERATED_DIR / "reference_data.sql"
 REPORT_PATH = GENERATED_DIR / "reference_report.json"
