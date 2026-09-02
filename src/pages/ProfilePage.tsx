@@ -1325,10 +1325,10 @@ export function ProfilePage() {
                 <aside className="data-source-note">
                   <strong>Suggestion data</strong>
                   <p>
-                    Fields of study use CIP 2020. Target roles use ABS OSCA
-                    2024. Skills and tools use the O*NET 31.0 Database by
-                    USDOL/ETA under CC BY 4.0. O*NET® is a trademark of
-                    USDOL/ETA.
+                    Courses use Australian Government CRICOS data. Fields of
+                    study use ABS ASCED 2001. Target roles use ABS OSCA 2024.
+                    Skills and tools use the O*NET 31.0 Database by USDOL/ETA
+                    under CC BY 4.0. O*NET® is a trademark of USDOL/ETA.
                   </p>
                 </aside>
               )}
