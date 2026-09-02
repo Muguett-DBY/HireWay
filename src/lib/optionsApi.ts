@@ -8,10 +8,10 @@ export type CatalogueOption = {
 
 export type SkillRecommendation = CatalogueOption & {
   score: number
-  reason: 'education' | 'goal' | 'education and goal'
+  reason: 'education' | 'target role' | 'education and target role'
 }
 
-type OptionGroup = 'education' | 'goals' | 'skills'
+type OptionGroup = 'education' | 'occupations' | 'skills'
 
 // Let the page cancel an old search when the user keeps typing.
 export async function searchOptions(
@@ -29,15 +29,15 @@ export async function searchOptions(
   return data.options
 }
 
-// Recommendations can use the major, career goal, or both together.
+// Recommendations can use the major, target role, or both together.
 export async function loadSkillRecommendations(
   educationCode: string | null,
-  goalCode: string | null,
+  targetRoleCode: string | null,
   signal?: AbortSignal,
 ): Promise<SkillRecommendation[]> {
   const parameters = new URLSearchParams()
   if (educationCode) parameters.set('educationCode', educationCode)
-  if (goalCode) parameters.set('goalCode', goalCode)
+  if (targetRoleCode) parameters.set('targetRoleCode', targetRoleCode)
 
   if (parameters.size === 0) return []
   const response = await fetch(

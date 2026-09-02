@@ -10,12 +10,12 @@ type RecommendationRow = CatalogueOption & {
   score: number
   relevance: number
   educationMatch: number
-  goalMatch: number
+  targetRoleMatch: number
 }
 
 export type SkillRecommendation = CatalogueOption & {
   score: number
-  reason: 'education' | 'goal' | 'education and goal'
+  reason: 'education' | 'target role' | 'education and target role'
 }
 
 // Escape the three characters that have a special meaning in a LIKE pattern.
@@ -49,7 +49,7 @@ async function searchEducation(
 }
 
 // Search both principal OSCA titles and the alternative titles people use.
-async function searchGoals(
+async function searchOccupations(
   env: Env,
   query: string,
 ): Promise<CatalogueOption[]> {
@@ -135,30 +135,30 @@ async function searchSkills(
   return result.results
 }
 
-// Related O*NET occupations turn a chosen major or goal into skill suggestions.
+// Related O*NET occupations turn a chosen major or target role into suggestions.
 async function recommendSkills(
   env: Env,
   educationCode: string,
-  goalCode: string,
+  targetRoleCode: string,
 ): Promise<SkillRecommendation[]> {
-  if (!educationCode && !goalCode) return []
+  if (!educationCode && !targetRoleCode) return []
 
   const result = await env.DB.prepare(
     `WITH raw_selected AS (
-       SELECT onet_code, 1 AS education_match, 0 AS goal_match
+       SELECT onet_code, 1 AS education_match, 0 AS target_role_match
        FROM education_onet_map
        WHERE education_code = ?
 
        UNION ALL
 
-       SELECT onet_code, 0 AS education_match, 1 AS goal_match
+       SELECT onet_code, 0 AS education_match, 1 AS target_role_match
        FROM occupation_onet_map
        WHERE occupation_code = ?
      ),
      selected AS (
        SELECT onet_code,
               MAX(education_match) AS education_match,
-              MAX(goal_match) AS goal_match
+              MAX(target_role_match) AS target_role_match
        FROM raw_selected
        GROUP BY onet_code
      ),
@@ -170,14 +170,14 @@ async function recommendSkills(
               MAX(os.hot_technology) AS hot,
               MAX(os.in_demand) AS in_demand,
               MAX(selected.education_match) AS educationMatch,
-              MAX(selected.goal_match) AS goalMatch
+              MAX(selected.target_role_match) AS targetRoleMatch
        FROM selected
        JOIN onet_occupation_skill os ON os.onet_code = selected.onet_code
        JOIN skill s ON s.code = os.skill_code
        GROUP BY s.code, s.name, s.description, s.kind
      )
      SELECT code, label, description, kind, score,
-            educationMatch, goalMatch,
+            educationMatch, targetRoleMatch,
             ROUND(
               score * 0.4 +
               (100.0 * occupation_count / selected_count) * 0.4 +
@@ -188,7 +188,7 @@ async function recommendSkills(
      ORDER BY relevance DESC, label
      LIMIT 120`,
   )
-    .bind(educationCode, goalCode)
+    .bind(educationCode, targetRoleCode)
     .all<RecommendationRow>()
 
   // Familiar starting tools win close ties without overriding the source data.
@@ -230,10 +230,10 @@ async function recommendSkills(
     kind: item.kind,
     score: item.score,
     reason:
-      item.educationMatch && item.goalMatch
-        ? 'education and goal'
-        : item.goalMatch
-          ? 'goal'
+      item.educationMatch && item.targetRoleMatch
+        ? 'education and target role'
+        : item.targetRoleMatch
+          ? 'target role'
           : 'education',
   }))
 }
@@ -255,7 +255,7 @@ export async function handleOptions(
     const recommendations = await recommendSkills(
       env,
       (url.searchParams.get('educationCode') ?? '').trim(),
-      (url.searchParams.get('goalCode') ?? '').trim(),
+      (url.searchParams.get('targetRoleCode') ?? '').trim(),
     )
     return Response.json({ recommendations })
   }
@@ -266,8 +266,8 @@ export async function handleOptions(
   let options: CatalogueOption[]
   if (url.pathname === '/api/options/education') {
     options = await searchEducation(env, query)
-  } else if (url.pathname === '/api/options/goals') {
-    options = await searchGoals(env, query)
+  } else if (url.pathname === '/api/options/occupations') {
+    options = await searchOccupations(env, query)
   } else if (url.pathname === '/api/options/skills') {
     options = await searchSkills(env, query)
   } else {

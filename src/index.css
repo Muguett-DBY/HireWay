@@ -856,6 +856,14 @@ select {
   border-radius: 8px;
 }
 
+/* Show the saved role separately from the next search draft. */
+.selected-target-role {
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--green-soft);
+}
+
 /* Source notes explain where suggestions came from without interrupting a form. */
 .data-source-note {
   max-width: 580px;
