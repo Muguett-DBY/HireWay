@@ -29,20 +29,44 @@ async function searchEducation(
   query: string,
 ): Promise<CatalogueOption[]> {
   const term = likeValue(query)
+  const showOther = query.toLowerCase().includes('other') ? 1 : 0
   const result = await env.DB.prepare(
-    `SELECT code, title AS label, source AS description,
+    `SELECT ep.code, ep.title AS label,
+            CASE
+              WHEN ep.title LIKE '%, General' COLLATE NOCASE
+                THEN 'General field - ' || ep.source
+              WHEN ep.title LIKE '%, Other' COLLATE NOCASE
+                THEN 'Programs not listed separately - ' || ep.source
+              ELSE ep.source
+            END AS description,
             'education' AS kind
-     FROM education_program
-     WHERE title LIKE ? ESCAPE '~' COLLATE NOCASE
+     FROM education_program ep
+     WHERE ep.title LIKE ? ESCAPE '~' COLLATE NOCASE
+       AND (
+         ? = 1
+         OR ep.title NOT LIKE '%, Other' COLLATE NOCASE
+         OR NOT EXISTS (
+           SELECT 1
+           FROM education_program general_option
+           WHERE general_option.title =
+             SUBSTR(ep.title, 1, LENGTH(ep.title) - 7) || ', General'
+             COLLATE NOCASE
+         )
+       )
      ORDER BY CASE
-                WHEN title = ? COLLATE NOCASE THEN 0
-                WHEN title LIKE ? ESCAPE '~' COLLATE NOCASE THEN 1
+                WHEN ep.title = ? COLLATE NOCASE THEN 0
+                WHEN ep.title LIKE ? ESCAPE '~' COLLATE NOCASE THEN 1
                 ELSE 2
               END,
-              LENGTH(title), title
+              CASE
+                WHEN ep.title LIKE '%, General' COLLATE NOCASE THEN 0
+                WHEN ep.title LIKE '%, Other' COLLATE NOCASE THEN 2
+                ELSE 1
+              END,
+              LENGTH(ep.title), ep.title
      LIMIT 8`,
   )
-    .bind(`%${term}%`, query, `${term}%`)
+    .bind(`%${term}%`, showOther, query, `${term}%`)
     .all<CatalogueOption>()
 
   return result.results
