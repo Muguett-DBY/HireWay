@@ -9,6 +9,7 @@ import { addSkill, loadSkills, removeSkill, type Skill } from '../lib/skillsApi'
 // Use the helper that talks to the career goal endpoint.
 import { requestGoal } from '../lib/goalApi'
 import { requestTargetRole, type TargetRole } from '../lib/targetRoleApi'
+import { CareerDashboard } from '../components/CareerDashboard'
 import {
   loadSkillRecommendations,
   searchOptions,
@@ -25,7 +26,7 @@ const emptyDetails: ProfileDetails = {
 
 export function ProfilePage() {
   // Keep the saved record separate from the fields being edited.
-  const [screen, setScreen] = useState<'home' | 'profile'>('home')
+  const [screen, setScreen] = useState<'home' | 'profile' | 'dashboard'>('home')
   const [profile, setProfile] = useState<Profile | null>(null)
   const [details, setDetails] = useState<ProfileDetails>(emptyDetails)
   const [recoveryCode, setRecoveryCode] = useState('')
@@ -315,6 +316,7 @@ export function ProfilePage() {
       setTargetRoleError('')
       setTargetRoleMessage('')
       setMessage('Profile loaded.')
+      setScreen(targetRoleResult.data.targetRole ? 'dashboard' : 'profile')
     } catch {
       setMessage('Could not connect. Please try again.')
       setFailed(true)
@@ -473,6 +475,7 @@ export function ProfilePage() {
       setTargetRoleCode(result.data.targetRole.code)
       setTargetRoleOptions([])
       setTargetRoleMessage('Target role saved.')
+      setScreen('dashboard')
     } catch {
       setTargetRoleError('Could not connect. Please try again.')
     } finally {
@@ -576,28 +579,52 @@ export function ProfilePage() {
             </button>
           </nav>
         ) : (
-          <button
-            type="button"
-            className="secondary"
-            disabled={busy || skillsBusy || goalBusy || targetRoleBusy}
-            onClick={() => {
-              setScreen('home')
-              setMessage('')
-              setErrors({})
-              setSkillName('')
-              setSkillError('')
-              setGoalError('')
-              setGoalMessage('')
-              setTargetRoleError('')
-              setTargetRoleMessage('')
-            }}
-          >
-            Back to home
-          </button>
+          <nav className="workspace-nav" aria-label="Profile navigation">
+            {profile && targetRole && screen !== 'dashboard' && (
+              <button type="button" onClick={() => setScreen('dashboard')}>
+                Dashboard
+              </button>
+            )}
+            {profile && screen !== 'profile' && (
+              <button
+                type="button"
+                className="secondary"
+                onClick={() => setScreen('profile')}
+              >
+                Edit profile
+              </button>
+            )}
+            <button
+              type="button"
+              className="secondary"
+              disabled={busy || skillsBusy || goalBusy || targetRoleBusy}
+              onClick={() => {
+                setScreen('home')
+                setMessage('')
+                setErrors({})
+                setSkillName('')
+                setSkillError('')
+                setGoalError('')
+                setGoalMessage('')
+                setTargetRoleError('')
+                setTargetRoleMessage('')
+              }}
+            >
+              Home
+            </button>
+          </nav>
         )}
       </header>
 
-      <main className={screen === 'home' ? 'landing-page' : 'profile-page'}>
+      <main
+        className={
+          screen === 'home'
+            ? 'landing-page'
+            : screen === 'dashboard'
+              ? 'dashboard-page'
+              : 'profile-page'
+        }
+      >
         {screen === 'home' ? (
           <>
             {/* The first screen explains the product before asking for details. */}
@@ -780,6 +807,14 @@ export function ProfilePage() {
               <span>Find your direction. Build your next step.</span>
             </footer>
           </>
+        ) : screen === 'dashboard' && profile ? (
+          <CareerDashboard
+            profile={profile}
+            skills={skills}
+            careerGoal={careerGoal}
+            targetRole={targetRole}
+            onEditProfile={() => setScreen('profile')}
+          />
         ) : (
           <>
             <h1>Your background</h1>
