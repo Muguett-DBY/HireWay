@@ -1,0 +1,357 @@
+﻿major_code,major_name,narrow_field_code,narrow_field_name,broad_field_code,broad_field_name,data_source
+010101,Mathematics,0101,Mathematical Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010103,Statistics,0101,Mathematical Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010199,"Mathematical Sciences, n.e.c.",0101,Mathematical Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010301,Physics,0103,Physics and Astronomy,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010303,Astronomy,0103,Physics and Astronomy,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010501,Organic Chemistry,0105,Chemical Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010503,Inorganic Chemistry,0105,Chemical Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010599,"Chemical Sciences, n.e.c.",0105,Chemical Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010701,Atmospheric Sciences,0107,Earth Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010703,Geology,0107,Earth Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010705,Geophysics,0107,Earth Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010707,Geochemistry,0107,Earth Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010709,Soil Science,0107,Earth Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010711,Hydrology,0107,Earth Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010713,Oceanography,0107,Earth Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010799,"Earth Sciences, n.e.c.",0107,Earth Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010901,Biochemistry and Cell Biology,0109,Biological Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010903,Botany,0109,Biological Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010905,Ecology and Evolution,0109,Biological Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010907,Marine Science,0109,Biological Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010909,Genetics,0109,Biological Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010911,Microbiology,0109,Biological Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010913,Human Biology,0109,Biological Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010915,Zoology,0109,Biological Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+010999,"Biological Sciences, n.e.c.",0109,Biological Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+019901,Medical Science,0199,Other Natural and Physical Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+019903,Forensic Science,0199,Other Natural and Physical Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+019905,Food Science and Biotechnology,0199,Other Natural and Physical Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+019907,Pharmacology,0199,Other Natural and Physical Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+019909,Laboratory Technology,0199,Other Natural and Physical Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+019999,"Natural and Physical Sciences, n.e.c.",0199,Other Natural and Physical Sciences,01,NATURAL AND PHYSICAL SCIENCES,ASCED 2001
+020101,Formal Language Theory,0201,Computer Science,02,INFORMATION TECHNOLOGY,ASCED 2001
+020103,Programming,0201,Computer Science,02,INFORMATION TECHNOLOGY,ASCED 2001
+020105,Computational Theory,0201,Computer Science,02,INFORMATION TECHNOLOGY,ASCED 2001
+020107,Compiler Construction,0201,Computer Science,02,INFORMATION TECHNOLOGY,ASCED 2001
+020109,Algorithms,0201,Computer Science,02,INFORMATION TECHNOLOGY,ASCED 2001
+020111,Data Structures,0201,Computer Science,02,INFORMATION TECHNOLOGY,ASCED 2001
+020113,Networks and Communications,0201,Computer Science,02,INFORMATION TECHNOLOGY,ASCED 2001
+020115,Computer Graphics,0201,Computer Science,02,INFORMATION TECHNOLOGY,ASCED 2001
+020117,Operating Systems,0201,Computer Science,02,INFORMATION TECHNOLOGY,ASCED 2001
+020119,Artificial Intelligence,0201,Computer Science,02,INFORMATION TECHNOLOGY,ASCED 2001
+020199,"Computer Science, n.e.c.",0201,Computer Science,02,INFORMATION TECHNOLOGY,ASCED 2001
+020301,Conceptual Modelling,0203,Information Systems,02,INFORMATION TECHNOLOGY,ASCED 2001
+020303,Database Management,0203,Information Systems,02,INFORMATION TECHNOLOGY,ASCED 2001
+020305,Systems Analysis and Design,0203,Information Systems,02,INFORMATION TECHNOLOGY,ASCED 2001
+020307,Decision Support Systems,0203,Information Systems,02,INFORMATION TECHNOLOGY,ASCED 2001
+020399,"Information Systems, n.e.c.",0203,Information Systems,02,INFORMATION TECHNOLOGY,ASCED 2001
+029901,Security Science,0299,Other Information Technology,02,INFORMATION TECHNOLOGY,ASCED 2001
+029999,"Information Technology, n.e.c.",0299,Other Information Technology,02,INFORMATION TECHNOLOGY,ASCED 2001
+030101,Manufacturing Engineering,0301,Manufacturing Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030103,Printing,0301,Manufacturing Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030105,Textile Making,0301,Manufacturing Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030107,Garment Making,0301,Manufacturing Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030109,Footwear Making,0301,Manufacturing Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030111,Wood Machining and Turning,0301,Manufacturing Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030113,Cabinet Making,0301,Manufacturing Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030115,Furniture Upholstery and Renovation,0301,Manufacturing Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030117,Furniture Polishing,0301,Manufacturing Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030199,"Manufacturing Engineering and Technology, n.e.c.",0301,Manufacturing Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030301,Chemical Engineering,0303,Process and Resources Engineering,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030303,Mining Engineering,0303,Process and Resources Engineering,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030305,Materials Engineering,0303,Process and Resources Engineering,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030307,Food Processing Technology,0303,Process and Resources Engineering,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030399,"Process and Resources Engineering, n.e.c.",0303,Process and Resources Engineering,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030501,Automotive Engineering,0305,Automotive Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030503,Vehicle Mechanics,0305,Automotive Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030505,Automotive Electrics and Electronics,0305,Automotive Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030507,Automotive Vehicle Refinishing,0305,Automotive Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030509,Automotive Body Construction,0305,Automotive Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030511,Panel Beating,0305,Automotive Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030513,Upholstery and Vehicle Trimming,0305,Automotive Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030515,Automotive Vehicle Operations,0305,Automotive Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030599,"Automotive Engineering and Technology, n.e.c.",0305,Automotive Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030701,Mechanical Engineering,0307,Mechanical and Industrial Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030703,Industrial Engineering,0307,Mechanical and Industrial Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030705,Toolmaking,0307,Mechanical and Industrial Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030707,"Metal Fitting, Turning and Machining",0307,Mechanical and Industrial Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030709,Sheetmetal Working,0307,Mechanical and Industrial Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030711,Boilermaking and Welding,0307,Mechanical and Industrial Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030713,Metal Casting and Patternmaking,0307,Mechanical and Industrial Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030715,Precision Metalworking,0307,Mechanical and Industrial Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030717,Plant and Machine Operations,0307,Mechanical and Industrial Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030799,"Mechanical and Industrial Engineering and Technology, n.e.c.",0307,Mechanical and Industrial Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030901,Construction Engineering,0309,Civil Engineering,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030903,Structural Engineering,0309,Civil Engineering,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030905,Building Services Engineering,0309,Civil Engineering,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030907,Water and Sanitary Engineering,0309,Civil Engineering,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030909,Transport Engineering,0309,Civil Engineering,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030911,Geotechnical Engineering,0309,Civil Engineering,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030913,Ocean Engineering,0309,Civil Engineering,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+030999,"Civil Engineering, n.e.c.",0309,Civil Engineering,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031101,Surveying,0311,Geomatic Engineering,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031103,Mapping Science,0311,Geomatic Engineering,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031199,"Geomatic Engineering, n.e.c.",0311,Geomatic Engineering,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031301,Electrical Engineering,0313,Electrical and Electronic Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031303,Electronic Engineering,0313,Electrical and Electronic Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031305,Computer Engineering,0313,Electrical and Electronic Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031307,Communications Technologies,0313,Electrical and Electronic Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031309,Communications Equipment Installation and Maintenance,0313,Electrical and Electronic Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031311,Powerline Installation and Maintenance,0313,Electrical and Electronic Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031313,"Electrical Fitting, Electrical Mechanics",0313,Electrical and Electronic Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031315,Refrigeration and Air Conditioning Mechanics,0313,Electrical and Electronic Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031317,Electronic Equipment Servicing,0313,Electrical and Electronic Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031399,"Electrical and Electronic Engineering and Technology, n.e.c.",0313,Electrical and Electronic Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031501,Aerospace Engineering,0315,Aerospace Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031503,Aircraft Maintenance Engineering,0315,Aerospace Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031505,Aircraft Operation,0315,Aerospace Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031507,Air Traffic Control,0315,Aerospace Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031599,"Aerospace Engineering and Technology, n.e.c.",0315,Aerospace Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031701,Maritime Engineering,0317,Maritime Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031703,Marine Construction,0317,Maritime Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031705,Marine Craft Operation,0317,Maritime Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+031799,"Maritime Engineering and Technology, n.e.c.",0317,Maritime Engineering and Technology,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+039901,Environmental Engineering,0399,Other Engineering and Related Technologies,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+039903,Biomedical Engineering,0399,Other Engineering and Related Technologies,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+039905,Fire Technology,0399,Other Engineering and Related Technologies,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+039907,Rail Operations,0399,Other Engineering and Related Technologies,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+039909,Cleaning,0399,Other Engineering and Related Technologies,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+039999,"Engineering and Related Technologies, n.e.c.",0399,Other Engineering and Related Technologies,03,ENGINEERING AND RELATED TECHNOLOGIES,ASCED 2001
+040101,Architecture,0401,Architecture and Urban Environment,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040103,Urban Design and Regional Planning,0401,Architecture and Urban Environment,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040105,Landscape Architecture,0401,Architecture and Urban Environment,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040107,Interior and Environmental Design,0401,Architecture and Urban Environment,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040199,"Architecture and Urban Environment, n.e.c.",0401,Architecture and Urban Environment,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040301,Building Science and Technology,0403,Building,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040303,Building Construction Management,0403,Building,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040305,Building Surveying,0403,Building,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040307,Building Construction Economics,0403,Building,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040309,Bricklaying and Stonemasonry,0403,Building,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040311,Carpentry and Joinery,0403,Building,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040313,"Ceiling, Wall and Floor Fixing",0403,Building,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040315,Roof Fixing,0403,Building,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040317,Plastering,0403,Building,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040319,Furnishing Installation,0403,Building,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040321,Floor Coverings,0403,Building,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040323,Glazing,0403,Building,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040325,"Painting, Decorating and Sign Writing",0403,Building,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040327,Plumbing,0403,Building,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040329,Scaffolding and Rigging,0403,Building,04,ARCHITECTURE AND BUILDING,ASCED 2001
+040399,"Building, n.e.c.",0403,Building,04,ARCHITECTURE AND BUILDING,ASCED 2001
+050101,Agricultural Science,0501,Agriculture,05,"AGRICULTURE, ENVIRONMENTAL AND RELATED STUDIES",ASCED 2001
+050103,Wool Science,0501,Agriculture,05,"AGRICULTURE, ENVIRONMENTAL AND RELATED STUDIES",ASCED 2001
+050105,Animal Husbandry,0501,Agriculture,05,"AGRICULTURE, ENVIRONMENTAL AND RELATED STUDIES",ASCED 2001
+050199,"Agriculture, n.e.c.",0501,Agriculture,05,"AGRICULTURE, ENVIRONMENTAL AND RELATED STUDIES",ASCED 2001
+050301,Horticulture,0503,Horticulture and Viticulture,05,"AGRICULTURE, ENVIRONMENTAL AND RELATED STUDIES",ASCED 2001
+050303,Viticulture,0503,Horticulture and Viticulture,05,"AGRICULTURE, ENVIRONMENTAL AND RELATED STUDIES",ASCED 2001
+050501,Forestry Studies,0505,Forestry Studies,05,"AGRICULTURE, ENVIRONMENTAL AND RELATED STUDIES",ASCED 2001
+050701,Aquaculture,0507,Fisheries Studies,05,"AGRICULTURE, ENVIRONMENTAL AND RELATED STUDIES",ASCED 2001
+050799,"Fisheries Studies, n.e.c.",0507,Fisheries Studies,05,"AGRICULTURE, ENVIRONMENTAL AND RELATED STUDIES",ASCED 2001
+050901,"Land, Parks and Wildlife Management",0509,Environmental Studies,05,"AGRICULTURE, ENVIRONMENTAL AND RELATED STUDIES",ASCED 2001
+050999,"Environmental Studies, n.e.c.",0509,Environmental Studies,05,"AGRICULTURE, ENVIRONMENTAL AND RELATED STUDIES",ASCED 2001
+059901,Pest and Weed Control,0599,"Other Agriculture, Environmental and Related Studies",05,"AGRICULTURE, ENVIRONMENTAL AND RELATED STUDIES",ASCED 2001
+059999,"Agriculture, Environmental and Related Studies, n.e.c.",0599,"Other Agriculture, Environmental and Related Studies",05,"AGRICULTURE, ENVIRONMENTAL AND RELATED STUDIES",ASCED 2001
+060101,General Medicine,0601,Medical Studies,06,HEALTH,ASCED 2001
+060103,Surgery,0601,Medical Studies,06,HEALTH,ASCED 2001
+060105,Psychiatry,0601,Medical Studies,06,HEALTH,ASCED 2001
+060107,Obstetrics and Gynaecology,0601,Medical Studies,06,HEALTH,ASCED 2001
+060109,Paediatrics,0601,Medical Studies,06,HEALTH,ASCED 2001
+060111,Anaesthesiology,0601,Medical Studies,06,HEALTH,ASCED 2001
+060113,Pathology,0601,Medical Studies,06,HEALTH,ASCED 2001
+060115,Radiology,0601,Medical Studies,06,HEALTH,ASCED 2001
+060117,Internal Medicine,0601,Medical Studies,06,HEALTH,ASCED 2001
+060119,General Practice,0601,Medical Studies,06,HEALTH,ASCED 2001
+060199,"Medical Studies, n.e.c.",0601,Medical Studies,06,HEALTH,ASCED 2001
+060301,General Nursing,0603,Nursing,06,HEALTH,ASCED 2001
+060303,Midwifery,0603,Nursing,06,HEALTH,ASCED 2001
+060305,Mental Health Nursing,0603,Nursing,06,HEALTH,ASCED 2001
+060307,Community Nursing,0603,Nursing,06,HEALTH,ASCED 2001
+060309,Critical Care Nursing,0603,Nursing,06,HEALTH,ASCED 2001
+060311,Aged Care Nursing,0603,Nursing,06,HEALTH,ASCED 2001
+060313,Palliative Care Nursing,0603,Nursing,06,HEALTH,ASCED 2001
+060315,Mothercraft Nursing and Family and Child Health Nursing,0603,Nursing,06,HEALTH,ASCED 2001
+060399,"Nursing, n.e.c.",0603,Nursing,06,HEALTH,ASCED 2001
+060501,Pharmacy,0605,Pharmacy,06,HEALTH,ASCED 2001
+060701,Dentistry,0607,Dental Studies,06,HEALTH,ASCED 2001
+060703,Dental Assisting,0607,Dental Studies,06,HEALTH,ASCED 2001
+060705,Dental Technology,0607,Dental Studies,06,HEALTH,ASCED 2001
+060799,"Dental Studies, n.e.c.",0607,Dental Studies,06,HEALTH,ASCED 2001
+060901,Optometry,0609,Optical Science,06,HEALTH,ASCED 2001
+060903,Optical Technology,0609,Optical Science,06,HEALTH,ASCED 2001
+060999,"Optical Science, n.e.c.",0609,Optical Science,06,HEALTH,ASCED 2001
+061101,Veterinary Science,0611,Veterinary Studies,06,HEALTH,ASCED 2001
+061103,Veterinary Assisting,0611,Veterinary Studies,06,HEALTH,ASCED 2001
+061199,"Veterinary Studies, n.e.c.",0611,Veterinary Studies,06,HEALTH,ASCED 2001
+061301,Occupational Health and Safety,0613,Public Health,06,HEALTH,ASCED 2001
+061303,Environmental Health,0613,Public Health,06,HEALTH,ASCED 2001
+061305,Indigenous Health,0613,Public Health,06,HEALTH,ASCED 2001
+061307,Health Promotion,0613,Public Health,06,HEALTH,ASCED 2001
+061309,Community Health,0613,Public Health,06,HEALTH,ASCED 2001
+061311,Epidemiology,0613,Public Health,06,HEALTH,ASCED 2001
+061399,"Public Health, n.e.c.",0613,Public Health,06,HEALTH,ASCED 2001
+061501,Radiography,0615,Radiography,06,HEALTH,ASCED 2001
+061701,Physiotherapy,0617,Rehabilitation Therapies,06,HEALTH,ASCED 2001
+061703,Occupational Therapy,0617,Rehabilitation Therapies,06,HEALTH,ASCED 2001
+061705,Chiropractic and Osteopathy,0617,Rehabilitation Therapies,06,HEALTH,ASCED 2001
+061707,Speech Pathology,0617,Rehabilitation Therapies,06,HEALTH,ASCED 2001
+061709,Audiology,0617,Rehabilitation Therapies,06,HEALTH,ASCED 2001
+061711,Massage Therapy,0617,Rehabilitation Therapies,06,HEALTH,ASCED 2001
+061713,Podiatry,0617,Rehabilitation Therapies,06,HEALTH,ASCED 2001
+061799,"Rehabilitation Therapies, n.e.c.",0617,Rehabilitation Therapies,06,HEALTH,ASCED 2001
+061901,Naturopathy,0619,Complementary Therapies,06,HEALTH,ASCED 2001
+061903,Acupuncture,0619,Complementary Therapies,06,HEALTH,ASCED 2001
+061905,Traditional Chinese Medicine,0619,Complementary Therapies,06,HEALTH,ASCED 2001
+061999,"Complementary Therapies, n.e.c.",0619,Complementary Therapies,06,HEALTH,ASCED 2001
+069901,Nutrition and Dietetics,0699,Other Health,06,HEALTH,ASCED 2001
+069903,Human Movement,0699,Other Health,06,HEALTH,ASCED 2001
+069905,Paramedical Studies,0699,Other Health,06,HEALTH,ASCED 2001
+069907,First Aid,0699,Other Health,06,HEALTH,ASCED 2001
+069999,"Health, n.e.c.",0699,Other Health,06,HEALTH,ASCED 2001
+070101,Teacher Education: Early Childhood,0701,Teacher Education,07,EDUCATION,ASCED 2001
+070103,Teacher Education: Primary,0701,Teacher Education,07,EDUCATION,ASCED 2001
+070105,Teacher Education: Secondary,0701,Teacher Education,07,EDUCATION,ASCED 2001
+070107,Teacher-Librarianship,0701,Teacher Education,07,EDUCATION,ASCED 2001
+070109,Teacher Education: Vocational Education and Training,0701,Teacher Education,07,EDUCATION,ASCED 2001
+070111,Teacher Education: Higher Education,0701,Teacher Education,07,EDUCATION,ASCED 2001
+070113,Teacher Education: Special Education,0701,Teacher Education,07,EDUCATION,ASCED 2001
+070115,English as a Second Language Teaching,0701,Teacher Education,07,EDUCATION,ASCED 2001
+070117,Nursing Education Teacher Training,0701,Teacher Education,07,EDUCATION,ASCED 2001
+070199,"Teacher Education, n.e.c.",0701,Teacher Education,07,EDUCATION,ASCED 2001
+070301,Curriculum Studies,0703,Curriculum and Education Studies,07,EDUCATION,ASCED 2001
+070303,Education Studies,0703,Curriculum and Education Studies,07,EDUCATION,ASCED 2001
+079999,"Education, n.e.c.",0799,Other Education,07,EDUCATION,ASCED 2001
+080101,Accounting,0801,Accounting,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080301,Business Management,0803,Business and Management,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080303,Human Resource Management,0803,Business and Management,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080305,Personal Management Training,0803,Business and Management,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080307,Organisation Management,0803,Business and Management,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080309,Industrial Relations,0803,Business and Management,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080311,International Business,0803,Business and Management,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080313,Public and Health Care Administration,0803,Business and Management,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080315,Project Management,0803,Business and Management,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080317,Quality Management,0803,Business and Management,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080319,Hospitality Management,0803,Business and Management,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080321,Farm Management and Agribusiness,0803,Business and Management,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080323,Tourism Management,0803,Business and Management,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080399,"Business and Management, n.e.c.",0803,Business and Management,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080501,Sales,0805,Sales and Marketing,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080503,Real Estate,0805,Sales and Marketing,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080505,Marketing,0805,Sales and Marketing,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080507,Advertising,0805,Sales and Marketing,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080509,Public Relations,0805,Sales and Marketing,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080599,"Sales and Marketing, n.e.c.",0805,Sales and Marketing,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080701,Tourism,0807,Tourism,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080901,Secretarial and Clerical Studies,0809,Office Studies,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080903,Keyboard Skills,0809,Office Studies,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080905,Practical Computing Skills,0809,Office Studies,08,MANAGEMENT AND COMMERCE,ASCED 2001
+080999,"Office Studies, n.e.c.",0809,Office Studies,08,MANAGEMENT AND COMMERCE,ASCED 2001
+081101,Banking and Finance,0811,"Banking, Finance and Related Fields",08,MANAGEMENT AND COMMERCE,ASCED 2001
+081103,Insurance and Actuarial Studies,0811,"Banking, Finance and Related Fields",08,MANAGEMENT AND COMMERCE,ASCED 2001
+081105,Investment and Securities,0811,"Banking, Finance and Related Fields",08,MANAGEMENT AND COMMERCE,ASCED 2001
+081199,"Banking, Finance and Related Fields, n.e.c.",0811,"Banking, Finance and Related Fields",08,MANAGEMENT AND COMMERCE,ASCED 2001
+089901,"Purchasing, Warehousing and Distribution",0899,Other Management and Commerce,08,MANAGEMENT AND COMMERCE,ASCED 2001
+089903,Valuation,0899,Other Management and Commerce,08,MANAGEMENT AND COMMERCE,ASCED 2001
+089999,"Management and Commerce, n.e.c.",0899,Other Management and Commerce,08,MANAGEMENT AND COMMERCE,ASCED 2001
+090101,Political Science,0901,Political Science and Policy Studies,09,SOCIETY AND CULTURE,ASCED 2001
+090103,Policy Studies,0901,Political Science and Policy Studies,09,SOCIETY AND CULTURE,ASCED 2001
+090301,Sociology,0903,Studies in Human Society,09,SOCIETY AND CULTURE,ASCED 2001
+090303,Anthropology,0903,Studies in Human Society,09,SOCIETY AND CULTURE,ASCED 2001
+090305,History,0903,Studies in Human Society,09,SOCIETY AND CULTURE,ASCED 2001
+090307,Archaeology,0903,Studies in Human Society,09,SOCIETY AND CULTURE,ASCED 2001
+090309,Human Geography,0903,Studies in Human Society,09,SOCIETY AND CULTURE,ASCED 2001
+090311,Indigenous Studies,0903,Studies in Human Society,09,SOCIETY AND CULTURE,ASCED 2001
+090313,Gender Specific Studies,0903,Studies in Human Society,09,SOCIETY AND CULTURE,ASCED 2001
+090399,"Studies in Human Society, n.e.c.",0903,Studies in Human Society,09,SOCIETY AND CULTURE,ASCED 2001
+090501,Social Work,0905,Human Welfare Studies and Services,09,SOCIETY AND CULTURE,ASCED 2001
+090503,Children's Services,0905,Human Welfare Studies and Services,09,SOCIETY AND CULTURE,ASCED 2001
+090505,Youth Work,0905,Human Welfare Studies and Services,09,SOCIETY AND CULTURE,ASCED 2001
+090507,Care for the Aged,0905,Human Welfare Studies and Services,09,SOCIETY AND CULTURE,ASCED 2001
+090509,Care for the Disabled,0905,Human Welfare Studies and Services,09,SOCIETY AND CULTURE,ASCED 2001
+090511,Residential Client Care,0905,Human Welfare Studies and Services,09,SOCIETY AND CULTURE,ASCED 2001
+090513,Counselling,0905,Human Welfare Studies and Services,09,SOCIETY AND CULTURE,ASCED 2001
+090515,Welfare Studies,0905,Human Welfare Studies and Services,09,SOCIETY AND CULTURE,ASCED 2001
+090599,"Human Welfare Studies and Services, n.e.c.",0905,Human Welfare Studies and Services,09,SOCIETY AND CULTURE,ASCED 2001
+090701,Psychology,0907,Behavioural Science,09,SOCIETY AND CULTURE,ASCED 2001
+090799,"Behavioural Science, n.e.c.",0907,Behavioural Science,09,SOCIETY AND CULTURE,ASCED 2001
+090901,Business and Commercial Law,0909,Law,09,SOCIETY AND CULTURE,ASCED 2001
+090903,Constitutional Law,0909,Law,09,SOCIETY AND CULTURE,ASCED 2001
+090905,Criminal Law,0909,Law,09,SOCIETY AND CULTURE,ASCED 2001
+090907,Family Law,0909,Law,09,SOCIETY AND CULTURE,ASCED 2001
+090909,International Law,0909,Law,09,SOCIETY AND CULTURE,ASCED 2001
+090911,Taxation Law,0909,Law,09,SOCIETY AND CULTURE,ASCED 2001
+090913,Legal Practice,0909,Law,09,SOCIETY AND CULTURE,ASCED 2001
+090999,"Law, n.e.c.",0909,Law,09,SOCIETY AND CULTURE,ASCED 2001
+091101,Justice Administration,0911,Justice and Law Enforcement,09,SOCIETY AND CULTURE,ASCED 2001
+091103,Legal Studies,0911,Justice and Law Enforcement,09,SOCIETY AND CULTURE,ASCED 2001
+091105,Police Studies,0911,Justice and Law Enforcement,09,SOCIETY AND CULTURE,ASCED 2001
+091199,"Justice and Law Enforcement, n.e.c.",0911,Justice and Law Enforcement,09,SOCIETY AND CULTURE,ASCED 2001
+091301,Librarianship and Information Management,0913,"Librarianship, Information Management and Curatorial Studies",09,SOCIETY AND CULTURE,ASCED 2001
+091303,Curatorial Studies,0913,"Librarianship, Information Management and Curatorial Studies",09,SOCIETY AND CULTURE,ASCED 2001
+091501,English Language,0915,Language and Literature,09,SOCIETY AND CULTURE,ASCED 2001
+091503,Northern European Languages,0915,Language and Literature,09,SOCIETY AND CULTURE,ASCED 2001
+091505,Southern European Languages,0915,Language and Literature,09,SOCIETY AND CULTURE,ASCED 2001
+091507,Eastern European Languages,0915,Language and Literature,09,SOCIETY AND CULTURE,ASCED 2001
+091509,Southwest Asian and North African Languages,0915,Language and Literature,09,SOCIETY AND CULTURE,ASCED 2001
+091511,Southern Asian Languages,0915,Language and Literature,09,SOCIETY AND CULTURE,ASCED 2001
+091513,Southeast Asian Languages,0915,Language and Literature,09,SOCIETY AND CULTURE,ASCED 2001
+091515,Eastern Asian Languages,0915,Language and Literature,09,SOCIETY AND CULTURE,ASCED 2001
+091517,Australian Indigenous Languages,0915,Language and Literature,09,SOCIETY AND CULTURE,ASCED 2001
+091519,Translating and Interpreting,0915,Language and Literature,09,SOCIETY AND CULTURE,ASCED 2001
+091521,Linguistics,0915,Language and Literature,09,SOCIETY AND CULTURE,ASCED 2001
+091523,Literature,0915,Language and Literature,09,SOCIETY AND CULTURE,ASCED 2001
+091599,"Language and Literature, n.e.c.",0915,Language and Literature,09,SOCIETY AND CULTURE,ASCED 2001
+091701,Philosophy,0917,Philosophy and Religious Studies,09,SOCIETY AND CULTURE,ASCED 2001
+091703,Religious Studies,0917,Philosophy and Religious Studies,09,SOCIETY AND CULTURE,ASCED 2001
+091901,Economics,0919,Economics and Econometrics,09,SOCIETY AND CULTURE,ASCED 2001
+091903,Econometrics,0919,Economics and Econometrics,09,SOCIETY AND CULTURE,ASCED 2001
+092101,Sport and Recreation Activities,0921,Sport and Recreation,09,SOCIETY AND CULTURE,ASCED 2001
+092103,"Sports Coaching, Officiating and Instruction",0921,Sport and Recreation,09,SOCIETY AND CULTURE,ASCED 2001
+092199,"Sport and Recreation, n.e.c.",0921,Sport and Recreation,09,SOCIETY AND CULTURE,ASCED 2001
+099901,Family and Consumer Studies,0999,Other Society and Culture,09,SOCIETY AND CULTURE,ASCED 2001
+099903,Criminology,0999,Other Society and Culture,09,SOCIETY AND CULTURE,ASCED 2001
+099905,Security Services,0999,Other Society and Culture,09,SOCIETY AND CULTURE,ASCED 2001
+099999,"Society and Culture, n.e.c.",0999,Other Society and Culture,09,SOCIETY AND CULTURE,ASCED 2001
+100101,Music,1001,Performing Arts,10,CREATIVE ARTS,ASCED 2001
+100103,Drama and Theatre Studies,1001,Performing Arts,10,CREATIVE ARTS,ASCED 2001
+100105,Dance,1001,Performing Arts,10,CREATIVE ARTS,ASCED 2001
+100199,"Performing Arts, n.e.c.",1001,Performing Arts,10,CREATIVE ARTS,ASCED 2001
+100301,Fine Arts,1003,Visual Arts and Crafts,10,CREATIVE ARTS,ASCED 2001
+100303,Photography,1003,Visual Arts and Crafts,10,CREATIVE ARTS,ASCED 2001
+100305,Crafts,1003,Visual Arts and Crafts,10,CREATIVE ARTS,ASCED 2001
+100307,Jewellery Making,1003,Visual Arts and Crafts,10,CREATIVE ARTS,ASCED 2001
+100309,Floristry,1003,Visual Arts and Crafts,10,CREATIVE ARTS,ASCED 2001
+100399,"Visual Arts and Crafts, n.e.c.",1003,Visual Arts and Crafts,10,CREATIVE ARTS,ASCED 2001
+100501,Graphic Arts and Design Studies,1005,Graphic and Design Studies,10,CREATIVE ARTS,ASCED 2001
+100503,Textile Design,1005,Graphic and Design Studies,10,CREATIVE ARTS,ASCED 2001
+100505,Fashion Design,1005,Graphic and Design Studies,10,CREATIVE ARTS,ASCED 2001
+100599,"Graphic and Design Studies, n.e.c.",1005,Graphic and Design Studies,10,CREATIVE ARTS,ASCED 2001
+100701,Audio Visual Studies,1007,Communication and Media Studies,10,CREATIVE ARTS,ASCED 2001
+100703,Journalism,1007,Communication and Media Studies,10,CREATIVE ARTS,ASCED 2001
+100705,Written Communication,1007,Communication and Media Studies,10,CREATIVE ARTS,ASCED 2001
+100707,Verbal Communication,1007,Communication and Media Studies,10,CREATIVE ARTS,ASCED 2001
+100799,"Communication and Media Studies, n.e.c.",1007,Communication and Media Studies,10,CREATIVE ARTS,ASCED 2001
+109999,"Creative Arts, n.e.c.",1099,Other Creative Arts,10,CREATIVE ARTS,ASCED 2001
+110101,Hospitality,1101,Food and Hospitality,11,"FOOD, HOSPITALITY AND PERSONAL SERVICES",ASCED 2001
+110103,Food and Beverage Service,1101,Food and Hospitality,11,"FOOD, HOSPITALITY AND PERSONAL SERVICES",ASCED 2001
+110105,Butchery,1101,Food and Hospitality,11,"FOOD, HOSPITALITY AND PERSONAL SERVICES",ASCED 2001
+110107,Baking and Pastrymaking,1101,Food and Hospitality,11,"FOOD, HOSPITALITY AND PERSONAL SERVICES",ASCED 2001
+110109,Cookery,1101,Food and Hospitality,11,"FOOD, HOSPITALITY AND PERSONAL SERVICES",ASCED 2001
+110111,Food Hygiene,1101,Food and Hospitality,11,"FOOD, HOSPITALITY AND PERSONAL SERVICES",ASCED 2001
+110199,"Food and Hospitality, n.e.c.",1101,Food and Hospitality,11,"FOOD, HOSPITALITY AND PERSONAL SERVICES",ASCED 2001
+110301,Beauty Therapy,1103,Personal Services,11,"FOOD, HOSPITALITY AND PERSONAL SERVICES",ASCED 2001
+110303,Hairdressing,1103,Personal Services,11,"FOOD, HOSPITALITY AND PERSONAL SERVICES",ASCED 2001
+110399,"Personal Services, n.e.c.",1103,Personal Services,11,"FOOD, HOSPITALITY AND PERSONAL SERVICES",ASCED 2001
+120101,General Primary and Secondary Education Programmes,1201,General Education Programmes,12,MIXED FIELD PROGRAMMES,ASCED 2001
+120103,Literacy and Numeracy Programmes,1201,General Education Programmes,12,MIXED FIELD PROGRAMMES,ASCED 2001
+120105,Learning Skills Programmes,1201,General Education Programmes,12,MIXED FIELD PROGRAMMES,ASCED 2001
+120199,"General Education Programmes, n.e.c.",1201,General Education Programmes,12,MIXED FIELD PROGRAMMES,ASCED 2001
+120301,Social and Interpersonal Skills Programmes,1203,Social Skills Programmes,12,MIXED FIELD PROGRAMMES,ASCED 2001
+120303,Survival Skills Programmes,1203,Social Skills Programmes,12,MIXED FIELD PROGRAMMES,ASCED 2001
+120305,Parental Education Programmes,1203,Social Skills Programmes,12,MIXED FIELD PROGRAMMES,ASCED 2001
+120399,"Social Skills Programmes, n.e.c.",1203,Social Skills Programmes,12,MIXED FIELD PROGRAMMES,ASCED 2001
+120501,Career Development Programmes,1205,Employment Skills Programmes,12,MIXED FIELD PROGRAMMES,ASCED 2001
+120503,Job Search Skills Programmes,1205,Employment Skills Programmes,12,MIXED FIELD PROGRAMMES,ASCED 2001
+120505,Work Practices Programmes,1205,Employment Skills Programmes,12,MIXED FIELD PROGRAMMES,ASCED 2001
+120599,"Employment Skills Programmes, n.e.c.",1205,Employment Skills Programmes,12,MIXED FIELD PROGRAMMES,ASCED 2001
+129999,"Mixed Field Programmes, n.e.c.",1299,Other Mixed Field Programmes,12,MIXED FIELD PROGRAMMES,ASCED 2001
