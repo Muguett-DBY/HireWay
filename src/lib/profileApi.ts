@@ -2,6 +2,8 @@
 export type ProfileDetails = {
   qualification: string
   qualificationCode: string | null
+  degreeCode: string | null
+  majorCode: string | null
   educationLevel: string
   currentRole: string
 }

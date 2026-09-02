@@ -1,8 +1,12 @@
+import { simplifyEducationLevel } from '../lib/education'
+
 // Use the same field names in API requests and responses.
 type Profile = {
   code: string
   qualification: string
   qualificationCode: string | null
+  degreeCode: string | null
+  majorCode: string | null
   educationLevel: string
   currentRole: string
 }
@@ -45,6 +49,8 @@ export async function handleProfile(
     const profile = await env.DB.prepare(
       `SELECT code, qualification,
               qualification_code AS qualificationCode,
+              degree_code AS degreeCode,
+              major_code AS majorCode,
               education_level AS educationLevel,
               current_role AS currentRole
        FROM profile WHERE code = ?`,
@@ -63,49 +69,77 @@ export async function handleProfile(
     return Response.json({ error: 'Send a JSON object.' }, { status: 400 })
   }
 
-  // Spaces alone do not count as a qualification or education level.
-  let qualification =
-    typeof input.qualification === 'string' ? input.qualification.trim() : ''
-  const qualificationCode =
-    input.qualificationCode === undefined || input.qualificationCode === null
+  // The selected codes decide which official study title is saved.
+  const degreeCode =
+    input.degreeCode === null
       ? null
-      : typeof input.qualificationCode === 'string'
-        ? input.qualificationCode.trim() || null
+      : typeof input.degreeCode === 'string'
+        ? input.degreeCode.trim() || null
         : undefined
-  const educationLevel =
+  const majorCode =
+    typeof input.majorCode === 'string' ? input.majorCode.trim() : undefined
+  let qualification = ''
+  let educationLevel =
     typeof input.educationLevel === 'string' ? input.educationLevel.trim() : ''
   const currentRole =
     typeof input.currentRole === 'string' ? input.currentRole.trim() : ''
   const errors: Record<string, string> = {}
 
-  if (!qualification) errors.qualification = 'Enter your qualification.'
-  if (!educationLevel) errors.educationLevel = 'Select your education level.'
-  if (qualificationCode === undefined) {
-    errors.qualification = 'Choose a valid field of study.'
+  if (degreeCode === undefined || !majorCode) {
+    errors.qualification =
+      'Choose a course or field of study from the suggestions.'
   }
 
-  // A catalogue code always saves the official display name beside it.
-  if (qualificationCode) {
-    const option = await env.DB.prepare(
-      'SELECT title FROM education_program WHERE code = ?',
-    )
-      .bind(qualificationCode)
-      .first<{ title: string }>()
+  // A course choice must use one of the ASCED fields linked to that course.
+  if (majorCode) {
+    if (degreeCode) {
+      const option = await env.DB.prepare(
+        `SELECT d.title, d.education_level AS educationLevel
+         FROM degree_option d
+         JOIN degree_major_map dm ON dm.degree_code = d.code
+         WHERE d.code = ? AND dm.major_code = ?`,
+      )
+        .bind(degreeCode, majorCode)
+        .first<{ title: string; educationLevel: string }>()
 
-    if (option) {
-      qualification = option.title
-    } else {
-      errors.qualification = 'Choose a valid field of study.'
+      if (option) {
+        qualification = option.title
+        educationLevel = simplifyEducationLevel(option.educationLevel)
+      } else {
+        errors.qualification =
+          'Choose a course or field of study from the suggestions.'
+      }
+    } else if (degreeCode === null) {
+      const option = await env.DB.prepare(
+        'SELECT title FROM major_option WHERE code = ?',
+      )
+        .bind(majorCode)
+        .first<{ title: string }>()
+
+      if (option) {
+        qualification = option.title
+      } else {
+        errors.qualification =
+          'Choose a course or field of study from the suggestions.'
+      }
     }
   }
 
-  // Keep saved text within the form's limits.
-  if (qualification.length > 200) {
-    errors.qualification = 'Use 200 characters or fewer.'
+  const educationLevels = new Set([
+    'High School',
+    'Diploma / Certificate',
+    'Bachelor',
+    'Master',
+    'Doctorate',
+    'Other',
+  ])
+  if (!educationLevel) {
+    errors.educationLevel = 'Select your education level.'
+  } else if (!educationLevels.has(educationLevel)) {
+    errors.educationLevel = 'Choose a valid education level.'
   }
-  if (educationLevel.length > 80) {
-    errors.educationLevel = 'Use 80 characters or fewer.'
-  }
+
+  // Keep optional profile text within the form's limit.
   if (currentRole.length > 120) {
     errors.currentRole = 'Use 120 characters or fewer.'
   }
@@ -124,17 +158,27 @@ export async function handleProfile(
   if (request.method === 'POST') {
     await env.DB.prepare(
       `INSERT INTO profile (
-         code, qualification, qualification_code, education_level, current_role
-       ) VALUES (?, ?, ?, ?, ?)`,
+         code, qualification, qualification_code, degree_code, major_code,
+         education_level, current_role
+       ) VALUES (?, ?, NULL, ?, ?, ?, ?)`,
     )
-      .bind(code, qualification, qualificationCode, educationLevel, currentRole)
+      .bind(
+        code,
+        qualification,
+        degreeCode,
+        majorCode,
+        educationLevel,
+        currentRole,
+      )
       .run()
 
     return Response.json(
       {
         code,
         qualification,
-        qualificationCode,
+        qualificationCode: null,
+        degreeCode,
+        majorCode,
         educationLevel,
         currentRole,
       },
@@ -145,12 +189,19 @@ export async function handleProfile(
   // Editing keeps the same code and updates the existing row.
   const result = await env.DB.prepare(
     `UPDATE profile
-     SET qualification = ?, qualification_code = ?,
-         education_level = ?, current_role = ?,
+     SET qualification = ?, qualification_code = NULL,
+         degree_code = ?, major_code = ?, education_level = ?, current_role = ?,
          updated_at = CURRENT_TIMESTAMP
      WHERE code = ?`,
   )
-    .bind(qualification, qualificationCode, educationLevel, currentRole, code)
+    .bind(
+      qualification,
+      degreeCode,
+      majorCode,
+      educationLevel,
+      currentRole,
+      code,
+    )
     .run()
 
   if (result.meta.changes === 0) {
@@ -160,7 +211,9 @@ export async function handleProfile(
   return Response.json({
     code,
     qualification,
-    qualificationCode,
+    qualificationCode: null,
+    degreeCode,
+    majorCode,
     educationLevel,
     currentRole,
   })
