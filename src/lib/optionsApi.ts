@@ -6,6 +6,15 @@ export type CatalogueOption = {
   kind: 'education' | 'occupation' | 'skill' | 'tool'
 }
 
+export type StudyOption = {
+  degreeCode: string | null
+  majorCode: string
+  label: string
+  description: string
+  educationLevel: string | null
+  kind: 'course' | 'major'
+}
+
 export type SkillRecommendation = CatalogueOption & {
   score: number
   reason: 'education' | 'target role' | 'education and target role'
@@ -26,6 +35,21 @@ export async function searchOptions(
 
   if (!response.ok) throw new Error('Could not load suggestions.')
   const data: { options: CatalogueOption[] } = await response.json()
+  return data.options
+}
+
+// Course names and ASCED fields share one search box on the profile form.
+export async function searchStudyOptions(
+  query: string,
+  signal?: AbortSignal,
+): Promise<StudyOption[]> {
+  const response = await fetch(
+    `/api/options/studies?q=${encodeURIComponent(query)}`,
+    { signal },
+  )
+
+  if (!response.ok) throw new Error('Could not load study suggestions.')
+  const data: { options: StudyOption[] } = await response.json()
   return data.options
 }
 

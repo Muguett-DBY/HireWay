@@ -1,9 +1,25 @@
+import { simplifyEducationLevel } from '../lib/education'
+
 // Every autocomplete menu uses the same small response shape.
 type CatalogueOption = {
   code: string
   label: string
   description: string
   kind: 'education' | 'occupation' | 'skill' | 'tool'
+}
+
+type StudyOption = {
+  degreeCode: string | null
+  majorCode: string
+  label: string
+  description: string
+  educationLevel: string | null
+  kind: 'course' | 'major'
+}
+
+type StudyRow = Omit<StudyOption, 'educationLevel'> & {
+  educationLevel: string | null
+  matchRank: number
 }
 
 type RecommendationRow = CatalogueOption & {
@@ -70,6 +86,82 @@ async function searchEducation(
     .all<CatalogueOption>()
 
   return result.results
+}
+
+// One search covers both named CRICOS courses and Australian fields of study.
+async function searchStudies(env: Env, query: string): Promise<StudyOption[]> {
+  const term = likeValue(query)
+  const contains = `%${term}%`
+  const prefix = `${term}%`
+  const result = await env.DB.prepare(
+    `WITH matches AS (
+       SELECT d.code AS degreeCode, m.code AS majorCode,
+              d.title AS label,
+              d.education_level || ' - ' || m.title AS description,
+              d.education_level AS educationLevel,
+              'course' AS kind,
+              CASE
+                WHEN d.title = ? COLLATE NOCASE THEN 0
+                WHEN d.title LIKE ? ESCAPE '~' COLLATE NOCASE THEN 1
+                ELSE 2
+              END AS matchRank
+       FROM degree_option d
+       JOIN degree_major_map dm ON dm.degree_code = d.code
+       JOIN major_option m ON m.code = dm.major_code
+       WHERE d.title LIKE ? ESCAPE '~' COLLATE NOCASE
+
+       UNION ALL
+
+       SELECT NULL AS degreeCode, m.code AS majorCode,
+              m.title AS label,
+              'ASCED field - ' || m.narrow_field_name || ' - ' ||
+                m.broad_field_name AS description,
+              NULL AS educationLevel,
+              'major' AS kind,
+              CASE
+                WHEN m.title = ? COLLATE NOCASE THEN 0
+                WHEN m.title LIKE ? ESCAPE '~' COLLATE NOCASE THEN 1
+                WHEN m.narrow_field_name = ? COLLATE NOCASE THEN 2
+                WHEN m.narrow_field_name LIKE ? ESCAPE '~' COLLATE NOCASE THEN 3
+                ELSE 4
+              END AS matchRank
+       FROM major_option m
+       WHERE m.title LIKE ? ESCAPE '~' COLLATE NOCASE
+          OR m.narrow_field_name LIKE ? ESCAPE '~' COLLATE NOCASE
+          OR m.broad_field_name LIKE ? ESCAPE '~' COLLATE NOCASE
+     )
+     SELECT degreeCode, majorCode, label, description,
+            educationLevel, kind, MIN(matchRank) AS matchRank
+     FROM matches
+     GROUP BY degreeCode, majorCode, label, description, educationLevel, kind
+     ORDER BY matchRank, CASE kind WHEN 'course' THEN 0 ELSE 1 END,
+              LENGTH(label), label, majorCode
+     LIMIT 10`,
+  )
+    .bind(
+      query,
+      prefix,
+      contains,
+      query,
+      prefix,
+      query,
+      prefix,
+      contains,
+      contains,
+      contains,
+    )
+    .all<StudyRow>()
+
+  return result.results.map((row) => ({
+    degreeCode: row.degreeCode,
+    majorCode: row.majorCode,
+    label: row.label,
+    description: row.description,
+    educationLevel: row.educationLevel
+      ? simplifyEducationLevel(row.educationLevel)
+      : null,
+    kind: row.kind,
+  }))
 }
 
 // Search both principal OSCA titles and the alternative titles people use.
@@ -262,7 +354,7 @@ async function recommendSkills(
   }))
 }
 
-// Route the four public catalogue endpoints through one small handler.
+// Route the public catalogue endpoints through one small handler.
 export async function handleOptions(
   request: Request,
   env: Env,
@@ -286,6 +378,10 @@ export async function handleOptions(
 
   const query = (url.searchParams.get('q') ?? '').trim().slice(0, 80)
   if (query.length < 2) return Response.json({ options: [] })
+
+  if (url.pathname === '/api/options/studies') {
+    return Response.json({ options: await searchStudies(env, query) })
+  }
 
   let options: CatalogueOption[]
   if (url.pathname === '/api/options/education') {
