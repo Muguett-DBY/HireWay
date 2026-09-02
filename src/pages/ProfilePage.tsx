@@ -13,13 +13,17 @@ import { CareerDashboard } from '../components/CareerDashboard'
 import {
   loadSkillRecommendations,
   searchOptions,
+  searchStudyOptions,
   type CatalogueOption,
   type SkillRecommendation,
+  type StudyOption,
 } from '../lib/optionsApi'
 // A new form starts with no background details.
 const emptyDetails: ProfileDetails = {
   qualification: '',
   qualificationCode: null,
+  degreeCode: null,
+  majorCode: null,
   educationLevel: '',
   currentRole: '',
 }
@@ -39,7 +43,7 @@ export function ProfilePage() {
   const [skillName, setSkillName] = useState('')
   const [skillError, setSkillError] = useState('')
   const [skillsBusy, setSkillsBusy] = useState(false)
-  const [majorOptions, setMajorOptions] = useState<CatalogueOption[]>([])
+  const [studyOptions, setStudyOptions] = useState<StudyOption[]>([])
   const [skillOptions, setSkillOptions] = useState<CatalogueOption[]>([])
   const [skillCode, setSkillCode] = useState<string | null>(null)
   // Keep the goal draft and its feedback separate from the other forms.
@@ -74,20 +78,16 @@ export function ProfilePage() {
 
   // Wait briefly before searching so quick typing does not send every keystroke.
   useEffect(() => {
-    if (details.qualificationCode || details.qualification.trim().length < 2) {
+    if (details.majorCode || details.qualification.trim().length < 2) {
       return
     }
 
     const controller = new AbortController()
     const timer = window.setTimeout(() => {
-      void searchOptions(
-        'education',
-        details.qualification.trim(),
-        controller.signal,
-      )
-        .then(setMajorOptions)
+      void searchStudyOptions(details.qualification.trim(), controller.signal)
+        .then(setStudyOptions)
         .catch(() => {
-          if (!controller.signal.aborted) setMajorOptions([])
+          if (!controller.signal.aborted) setStudyOptions([])
         })
     }, 180)
 
@@ -95,7 +95,7 @@ export function ProfilePage() {
       window.clearTimeout(timer)
       controller.abort()
     }
-  }, [details.qualification, details.qualificationCode])
+  }, [details.majorCode, details.qualification])
 
   // Target roles come from Australian occupation titles and aliases.
   useEffect(() => {
@@ -178,12 +178,14 @@ export function ProfilePage() {
     setDetails({
       qualification: saved.qualification,
       qualificationCode: saved.qualificationCode,
+      degreeCode: saved.degreeCode,
+      majorCode: saved.majorCode,
       educationLevel: saved.educationLevel,
       currentRole: saved.currentRole,
     })
     setRecoveryCode(saved.code)
     setErrors({})
-    setMajorOptions([])
+    setStudyOptions([])
     setScreen('profile')
   }
 
@@ -200,8 +202,10 @@ export function ProfilePage() {
       ...current,
       qualification: value,
       qualificationCode: null,
+      degreeCode: null,
+      majorCode: null,
     }))
-    setMajorOptions([])
+    setStudyOptions([])
     if (!targetRole) {
       setRecommendations([])
       setRecommendationsBusy(false)
@@ -210,15 +214,22 @@ export function ProfilePage() {
     setMessage('')
   }
 
-  // Keep the official title and code together after a menu choice.
-  function selectMajor(option: CatalogueOption) {
+  // One menu choice keeps the course and ASCED field together.
+  function selectStudy(option: StudyOption) {
     setDetails((current) => ({
       ...current,
       qualification: option.label,
-      qualificationCode: option.code,
+      qualificationCode: null,
+      degreeCode: option.degreeCode,
+      majorCode: option.majorCode,
+      educationLevel: option.educationLevel ?? current.educationLevel,
     }))
-    setMajorOptions([])
-    setErrors((current) => ({ ...current, qualification: undefined }))
+    setStudyOptions([])
+    setErrors((current) => ({
+      ...current,
+      qualification: undefined,
+      educationLevel: undefined,
+    }))
     setMessage('')
   }
 
@@ -350,8 +361,9 @@ export function ProfilePage() {
     setFailed(false)
     const nextErrors: ProfileErrors = {}
 
-    if (!details.qualification.trim()) {
-      nextErrors.qualification = 'Enter your qualification.'
+    if (!details.majorCode) {
+      nextErrors.qualification =
+        'Choose a course or field of study from the suggestions.'
     }
     if (!details.educationLevel) {
       nextErrors.educationLevel = 'Select your education level.'
@@ -844,7 +856,7 @@ export function ProfilePage() {
                   <p>Fields marked * are required.</p>
 
                   <label htmlFor="qualification">
-                    Major / Field of study *
+                    Course or field of study *
                   </label>
                   <div className="autocomplete">
                     <input
@@ -853,9 +865,9 @@ export function ProfilePage() {
                       onChange={(event) =>
                         updateQualification(event.target.value)
                       }
-                      placeholder="Start typing, for example Data"
+                      placeholder="Search for a course or field"
                       autoComplete="off"
-                      maxLength={200}
+                      maxLength={240}
                       required
                       aria-invalid={Boolean(errors.qualification)}
                       aria-describedby={
@@ -863,18 +875,20 @@ export function ProfilePage() {
                           ? 'qualification-help qualification-error'
                           : 'qualification-help'
                       }
-                      aria-expanded={majorOptions.length > 0}
-                      aria-controls="major-suggestions"
+                      aria-expanded={studyOptions.length > 0}
+                      aria-controls="study-suggestions"
                     />
 
-                    {/* Keep matching fields of study close to the typed value. */}
-                    {majorOptions.length > 0 && (
-                      <ul className="autocomplete-menu" id="major-suggestions">
-                        {majorOptions.map((option) => (
-                          <li key={option.code}>
+                    {/* Course and ASCED matches stay in one suggestion list. */}
+                    {studyOptions.length > 0 && (
+                      <ul className="autocomplete-menu" id="study-suggestions">
+                        {studyOptions.map((option) => (
+                          <li
+                            key={`${option.degreeCode ?? 'major'}:${option.majorCode}`}
+                          >
                             <button
                               type="button"
-                              onClick={() => selectMajor(option)}
+                              onClick={() => selectStudy(option)}
                             >
                               <strong>{option.label}</strong>
                               <small>{option.description}</small>
@@ -885,7 +899,8 @@ export function ProfilePage() {
                     )}
                   </div>
                   <p className="field-help" id="qualification-help">
-                    Choose a suggestion or keep your own field of study.
+                    Choose one suggestion so your study can be used in later
+                    analysis.
                   </p>
                   {errors.qualification && (
                     <p
