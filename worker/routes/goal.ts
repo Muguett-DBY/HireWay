@@ -1,7 +1,6 @@
 // Use camelCase in the JSON sent to the page.
 type CareerGoal = {
   careerGoal: string
-  careerGoalCode: string | null
 }
 
 // Check the JSON shape before reading its fields.
@@ -37,8 +36,7 @@ export async function handleGoal(
   // An empty goal means this profile has not chosen one yet.
   if (request.method === 'GET') {
     const goal = await env.DB.prepare(
-      `SELECT career_goal AS careerGoal,
-              career_goal_code AS careerGoalCode
+      `SELECT career_goal AS careerGoal
        FROM profile WHERE code = ?`,
     )
       .bind(code)
@@ -56,64 +54,34 @@ export async function handleGoal(
   }
 
   // Ignore outer spaces and reject a blank goal.
-  let careerGoal =
+  const careerGoal =
     typeof input.careerGoal === 'string' ? input.careerGoal.trim() : ''
-  const careerGoalCode =
-    input.careerGoalCode === undefined || input.careerGoalCode === null
-      ? null
-      : typeof input.careerGoalCode === 'string'
-        ? input.careerGoalCode.trim() || null
-        : undefined
-
-  if (careerGoalCode === undefined) {
-    return Response.json(
-      { error: 'Choose a valid career goal.' },
-      { status: 400 },
-    )
-  }
-
-  // A selected OSCA goal keeps its official title in the profile.
-  if (careerGoalCode) {
-    const option = await env.DB.prepare(
-      'SELECT title FROM occupation WHERE code = ?',
-    )
-      .bind(careerGoalCode)
-      .first<{ title: string }>()
-
-    if (!option) {
-      return Response.json(
-        { error: 'Choose a valid career goal.' },
-        { status: 400 },
-      )
-    }
-    careerGoal = option.title
-  }
 
   if (!careerGoal) {
     return Response.json({ error: 'Enter a career goal.' }, { status: 400 })
   }
 
-  // Keep the goal short enough to display as a job title.
-  if (careerGoal.length > 120) {
+  // Leave room for a short personal aim rather than forcing a job title.
+  if (careerGoal.length > 240) {
     return Response.json(
-      { error: 'Use 120 characters or fewer.' },
+      { error: 'Use 240 characters or fewer.' },
       { status: 400 },
     )
   }
 
-  // Update the same profile row without changing its education or skills.
+  // The old catalogue column is cleared now that target roles have their own field.
   const result = await env.DB.prepare(
     `UPDATE profile
-     SET career_goal = ?, career_goal_code = ?,
+     SET career_goal = ?, career_goal_code = NULL,
          updated_at = CURRENT_TIMESTAMP
      WHERE code = ?`,
   )
-    .bind(careerGoal, careerGoalCode, code)
+    .bind(careerGoal, code)
     .run()
 
   if (result.meta.changes === 0) {
     return Response.json({ error: 'Profile not found.' }, { status: 404 })
   }
 
-  return Response.json({ careerGoal, careerGoalCode })
+  return Response.json({ careerGoal })
 }

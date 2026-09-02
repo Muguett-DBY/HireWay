@@ -8,6 +8,8 @@ import {
 import { addSkill, loadSkills, removeSkill, type Skill } from '../lib/skillsApi'
 // Use the helper that talks to the career goal endpoint.
 import { requestGoal } from '../lib/goalApi'
+import { requestTargetRole, type TargetRole } from '../lib/targetRoleApi'
+import { CareerDashboard } from '../components/CareerDashboard'
 import {
   loadSkillRecommendations,
   searchOptions,
@@ -24,7 +26,7 @@ const emptyDetails: ProfileDetails = {
 
 export function ProfilePage() {
   // Keep the saved record separate from the fields being edited.
-  const [screen, setScreen] = useState<'home' | 'profile'>('home')
+  const [screen, setScreen] = useState<'home' | 'profile' | 'dashboard'>('home')
   const [profile, setProfile] = useState<Profile | null>(null)
   const [details, setDetails] = useState<ProfileDetails>(emptyDetails)
   const [recoveryCode, setRecoveryCode] = useState('')
@@ -42,11 +44,19 @@ export function ProfilePage() {
   const [skillCode, setSkillCode] = useState<string | null>(null)
   // Keep the goal draft and its feedback separate from the other forms.
   const [careerGoal, setCareerGoal] = useState('')
-  const [careerGoalCode, setCareerGoalCode] = useState<string | null>(null)
-  const [goalOptions, setGoalOptions] = useState<CatalogueOption[]>([])
   const [goalError, setGoalError] = useState('')
   const [goalMessage, setGoalMessage] = useState('')
   const [goalBusy, setGoalBusy] = useState(false)
+  // Keep a typed occupation separate from the role already saved in D1.
+  const [targetRole, setTargetRole] = useState<TargetRole | null>(null)
+  const [targetRoleQuery, setTargetRoleQuery] = useState('')
+  const [targetRoleCode, setTargetRoleCode] = useState<string | null>(null)
+  const [targetRoleOptions, setTargetRoleOptions] = useState<CatalogueOption[]>(
+    [],
+  )
+  const [targetRoleError, setTargetRoleError] = useState('')
+  const [targetRoleMessage, setTargetRoleMessage] = useState('')
+  const [targetRoleBusy, setTargetRoleBusy] = useState(false)
   const [recommendations, setRecommendations] = useState<SkillRecommendation[]>(
     [],
   )
@@ -87,18 +97,22 @@ export function ProfilePage() {
     }
   }, [details.qualification, details.qualificationCode])
 
-  // Career goals come from Australian occupation titles and aliases.
+  // Target roles come from Australian occupation titles and aliases.
   useEffect(() => {
-    if (careerGoalCode || careerGoal.trim().length < 2) {
+    if (targetRoleCode || targetRoleQuery.trim().length < 2) {
       return
     }
 
     const controller = new AbortController()
     const timer = window.setTimeout(() => {
-      void searchOptions('goals', careerGoal.trim(), controller.signal)
-        .then(setGoalOptions)
+      void searchOptions(
+        'occupations',
+        targetRoleQuery.trim(),
+        controller.signal,
+      )
+        .then(setTargetRoleOptions)
         .catch(() => {
-          if (!controller.signal.aborted) setGoalOptions([])
+          if (!controller.signal.aborted) setTargetRoleOptions([])
         })
     }, 180)
 
@@ -106,7 +120,7 @@ export function ProfilePage() {
       window.clearTimeout(timer)
       controller.abort()
     }
-  }, [careerGoal, careerGoalCode])
+  }, [targetRoleCode, targetRoleQuery])
 
   // Skills and named tools use the same O*NET-backed search box.
   useEffect(() => {
@@ -129,9 +143,9 @@ export function ProfilePage() {
     }
   }, [skillCode, skillName])
 
-  // Refresh recommendations whenever a recognised major or goal changes.
+  // Refresh recommendations whenever a recognised major or target role changes.
   useEffect(() => {
-    if (!details.qualificationCode && !careerGoalCode) {
+    if (!details.qualificationCode && !targetRole) {
       return
     }
 
@@ -140,7 +154,7 @@ export function ProfilePage() {
       setRecommendationsBusy(true)
       void loadSkillRecommendations(
         details.qualificationCode,
-        careerGoalCode,
+        targetRole?.code ?? null,
         controller.signal,
       )
         .then(setRecommendations)
@@ -156,7 +170,7 @@ export function ProfilePage() {
       window.clearTimeout(timer)
       controller.abort()
     }
-  }, [careerGoalCode, details.qualificationCode])
+  }, [details.qualificationCode, targetRole])
 
   // Fill the form with the values that actually came back from D1.
   function showProfile(saved: Profile) {
@@ -188,7 +202,7 @@ export function ProfilePage() {
       qualificationCode: null,
     }))
     setMajorOptions([])
-    if (!careerGoalCode) {
+    if (!targetRole) {
       setRecommendations([])
       setRecommendationsBusy(false)
     }
@@ -222,10 +236,14 @@ export function ProfilePage() {
     setSkillError('')
     // Do not carry a previous profile's goal into a new profile.
     setCareerGoal('')
-    setCareerGoalCode(null)
-    setGoalOptions([])
     setGoalError('')
     setGoalMessage('')
+    setTargetRole(null)
+    setTargetRoleQuery('')
+    setTargetRoleCode(null)
+    setTargetRoleOptions([])
+    setTargetRoleError('')
+    setTargetRoleMessage('')
     setRecommendations([])
     setRecommendationsBusy(false)
     setScreen('profile')
@@ -252,10 +270,11 @@ export function ProfilePage() {
         return
       }
 
-      // Fetch skills and the goal together before showing the profile.
-      const [skillResult, goalResult] = await Promise.all([
+      // Fetch the other saved sections before showing the complete profile.
+      const [skillResult, goalResult, targetRoleResult] = await Promise.all([
         loadSkills(result.data.code),
         requestGoal('GET', result.data.code),
+        requestTargetRole('GET', result.data.code),
       ])
 
       if (!skillResult.ok) {
@@ -270,7 +289,15 @@ export function ProfilePage() {
         return
       }
 
-      // Display the values returned by the three API requests.
+      if (!targetRoleResult.ok) {
+        setMessage(
+          targetRoleResult.data.error ?? 'Could not load your target role.',
+        )
+        setFailed(true)
+        return
+      }
+
+      // Display the values returned by all four API requests.
       setRecommendations([])
       setRecommendationsBusy(false)
       showProfile(result.data)
@@ -280,11 +307,16 @@ export function ProfilePage() {
       setSkillOptions([])
       setSkillError('')
       setCareerGoal(goalResult.data.careerGoal)
-      setCareerGoalCode(goalResult.data.careerGoalCode)
-      setGoalOptions([])
       setGoalError('')
       setGoalMessage('')
+      setTargetRole(targetRoleResult.data.targetRole)
+      setTargetRoleQuery(targetRoleResult.data.targetRole?.title ?? '')
+      setTargetRoleCode(targetRoleResult.data.targetRole?.code ?? null)
+      setTargetRoleOptions([])
+      setTargetRoleError('')
+      setTargetRoleMessage('')
       setMessage('Profile loaded.')
+      setScreen(targetRoleResult.data.targetRole ? 'dashboard' : 'profile')
     } catch {
       setMessage('Could not connect. Please try again.')
       setFailed(true)
@@ -349,9 +381,14 @@ export function ProfilePage() {
       if (creating) {
         setSkills([])
         setCareerGoal('')
-        setCareerGoalCode(null)
         setGoalError('')
         setGoalMessage('')
+        setTargetRole(null)
+        setTargetRoleQuery('')
+        setTargetRoleCode(null)
+        setTargetRoleOptions([])
+        setTargetRoleError('')
+        setTargetRoleMessage('')
       }
 
       setMessage('Profile saved.')
@@ -382,12 +419,7 @@ export function ProfilePage() {
     setGoalBusy(true)
 
     try {
-      const result = await requestGoal(
-        'PUT',
-        profile.code,
-        goal,
-        careerGoalCode,
-      )
+      const result = await requestGoal('PUT', profile.code, goal)
 
       if (!result.ok) {
         setGoalError(result.data.error ?? 'Could not save your career goal.')
@@ -396,13 +428,58 @@ export function ProfilePage() {
 
       // Use the saved value so the field matches the database.
       setCareerGoal(result.data.careerGoal)
-      setCareerGoalCode(result.data.careerGoalCode)
-      setGoalOptions([])
       setGoalMessage('Career goal saved.')
     } catch {
       setGoalError('Could not connect. Please try again.')
     } finally {
       setGoalBusy(false)
+    }
+  }
+
+  // Save a catalogue occupation as the profile's current target role.
+  async function submitTargetRole(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setTargetRoleError('')
+    setTargetRoleMessage('')
+
+    if (!profile) {
+      setTargetRoleError('Save your profile before choosing a target role.')
+      return
+    }
+
+    if (!targetRoleCode) {
+      setTargetRoleError('Choose a target role from the suggestions.')
+      return
+    }
+
+    setTargetRoleBusy(true)
+    try {
+      const result = await requestTargetRole(
+        'PUT',
+        profile.code,
+        targetRoleCode,
+      )
+
+      if (!result.ok || !result.data.targetRole) {
+        setTargetRoleError(
+          result.ok
+            ? 'Could not save your target role.'
+            : (result.data.error ?? 'Could not save your target role.'),
+        )
+        return
+      }
+
+      // The official title returned by D1 replaces the search draft.
+      setTargetRole(result.data.targetRole)
+      setTargetRoleQuery(result.data.targetRole.title)
+      setTargetRoleCode(result.data.targetRole.code)
+      setTargetRoleOptions([])
+      setTargetRoleMessage('Target role saved.')
+      setScreen('dashboard')
+    } catch {
+      setTargetRoleError('Could not connect. Please try again.')
+    } finally {
+      setTargetRoleBusy(false)
     }
   }
   // Both typed and suggested skills use the same API request.
@@ -502,26 +579,52 @@ export function ProfilePage() {
             </button>
           </nav>
         ) : (
-          <button
-            type="button"
-            className="secondary"
-            disabled={busy || skillsBusy || goalBusy}
-            onClick={() => {
-              setScreen('home')
-              setMessage('')
-              setErrors({})
-              setSkillName('')
-              setSkillError('')
-              setGoalError('')
-              setGoalMessage('')
-            }}
-          >
-            Back to home
-          </button>
+          <nav className="workspace-nav" aria-label="Profile navigation">
+            {profile && targetRole && screen !== 'dashboard' && (
+              <button type="button" onClick={() => setScreen('dashboard')}>
+                Dashboard
+              </button>
+            )}
+            {profile && screen !== 'profile' && (
+              <button
+                type="button"
+                className="secondary"
+                onClick={() => setScreen('profile')}
+              >
+                Edit profile
+              </button>
+            )}
+            <button
+              type="button"
+              className="secondary"
+              disabled={busy || skillsBusy || goalBusy || targetRoleBusy}
+              onClick={() => {
+                setScreen('home')
+                setMessage('')
+                setErrors({})
+                setSkillName('')
+                setSkillError('')
+                setGoalError('')
+                setGoalMessage('')
+                setTargetRoleError('')
+                setTargetRoleMessage('')
+              }}
+            >
+              Home
+            </button>
+          </nav>
         )}
       </header>
 
-      <main className={screen === 'home' ? 'landing-page' : 'profile-page'}>
+      <main
+        className={
+          screen === 'home'
+            ? 'landing-page'
+            : screen === 'dashboard'
+              ? 'dashboard-page'
+              : 'profile-page'
+        }
+      >
         {screen === 'home' ? (
           <>
             {/* The first screen explains the product before asking for details. */}
@@ -704,6 +807,14 @@ export function ProfilePage() {
               <span>Find your direction. Build your next step.</span>
             </footer>
           </>
+        ) : screen === 'dashboard' && profile ? (
+          <CareerDashboard
+            profile={profile}
+            skills={skills}
+            careerGoal={careerGoal}
+            targetRole={targetRole}
+            onEditProfile={() => setScreen('profile')}
+          />
         ) : (
           <>
             <h1>Your background</h1>
@@ -905,17 +1016,17 @@ export function ProfilePage() {
                   <h2>Current skills</h2>
                   <p>Add the skills and tools you already use.</p>
 
-                  {/* Recommendations use any recognised major or career goal. */}
-                  {(details.qualificationCode || careerGoalCode) && (
+                  {/* Recommendations use any recognised major or target role. */}
+                  {(details.qualificationCode || targetRole) && (
                     <div className="skill-recommendations">
                       <div>
                         <strong>
                           Suggested from{' '}
-                          {details.qualificationCode && careerGoalCode
-                            ? 'your major and career goal'
+                          {details.qualificationCode && targetRole
+                            ? 'your major and target role'
                             : details.qualificationCode
                               ? 'your major'
-                              : 'your career goal'}
+                              : 'your target role'}
                         </strong>
                         <span>Choose only the skills you already have.</span>
                       </div>
@@ -1047,61 +1158,27 @@ export function ProfilePage() {
                 >
                   <fieldset disabled={busy || goalBusy}>
                     <legend>Career goal</legend>
-                    <p>Choose one role you would like to work towards.</p>
+                    <p>
+                      Describe the direction you would like your career to take.
+                    </p>
 
-                    <label htmlFor="career-goal">Target role *</label>
-                    <div className="autocomplete">
-                      <input
-                        id="career-goal"
-                        value={careerGoal}
-                        onChange={(event) => {
-                          setCareerGoal(event.target.value)
-                          setCareerGoalCode(null)
-                          setGoalOptions([])
-                          if (!details.qualificationCode) {
-                            setRecommendations([])
-                            setRecommendationsBusy(false)
-                          }
-                          setGoalError('')
-                          setGoalMessage('')
-                        }}
-                        placeholder="Start typing, for example Data"
-                        autoComplete="off"
-                        maxLength={120}
-                        required
-                        aria-invalid={Boolean(goalError)}
-                        aria-describedby={
-                          goalError ? 'goal-help goal-error' : 'goal-help'
-                        }
-                        aria-expanded={goalOptions.length > 0}
-                        aria-controls="goal-suggestions"
-                      />
-
-                      {/* Alternative titles still save the main OSCA title. */}
-                      {goalOptions.length > 0 && (
-                        <ul className="autocomplete-menu" id="goal-suggestions">
-                          {goalOptions.map((option) => (
-                            <li key={option.code}>
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  setCareerGoal(option.label)
-                                  setCareerGoalCode(option.code)
-                                  setGoalOptions([])
-                                  setGoalError('')
-                                  setGoalMessage('')
-                                }}
-                              >
-                                <strong>{option.label}</strong>
-                                {option.description && (
-                                  <small>{option.description}</small>
-                                )}
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
+                    <label htmlFor="career-goal">Your goal *</label>
+                    <input
+                      id="career-goal"
+                      value={careerGoal}
+                      onChange={(event) => {
+                        setCareerGoal(event.target.value)
+                        setGoalError('')
+                        setGoalMessage('')
+                      }}
+                      placeholder="For example, use data to improve public services"
+                      maxLength={240}
+                      required
+                      aria-invalid={Boolean(goalError)}
+                      aria-describedby={
+                        goalError ? 'goal-help goal-error' : 'goal-help'
+                      }
+                    />
 
                     <p id="goal-help">
                       Saving a new goal replaces your previous goal.
@@ -1126,12 +1203,114 @@ export function ProfilePage() {
                 </form>
               )}
 
+              {/* A target role is a specific occupation from the OSCA catalogue. */}
+              {profile && (
+                <form
+                  className="card profile-card target-role-card"
+                  onSubmit={submitTargetRole}
+                  noValidate
+                >
+                  <fieldset disabled={busy || targetRoleBusy}>
+                    <legend>Target role</legend>
+                    <p>
+                      Search Australian occupations and choose one direction.
+                    </p>
+
+                    <label htmlFor="target-role">Occupation *</label>
+                    <div className="autocomplete">
+                      <input
+                        id="target-role"
+                        value={targetRoleQuery}
+                        onChange={(event) => {
+                          setTargetRoleQuery(event.target.value)
+                          setTargetRoleCode(null)
+                          setTargetRoleOptions([])
+                          setTargetRoleError('')
+                          setTargetRoleMessage('')
+                        }}
+                        placeholder="Start typing, for example Data Analyst"
+                        autoComplete="off"
+                        maxLength={120}
+                        required
+                        aria-invalid={Boolean(targetRoleError)}
+                        aria-describedby={
+                          targetRoleError
+                            ? 'target-role-help target-role-error'
+                            : 'target-role-help'
+                        }
+                        aria-expanded={targetRoleOptions.length > 0}
+                        aria-controls="target-role-suggestions"
+                      />
+
+                      {/* Alias matches still save the official OSCA occupation. */}
+                      {targetRoleOptions.length > 0 && (
+                        <ul
+                          className="autocomplete-menu"
+                          id="target-role-suggestions"
+                        >
+                          {targetRoleOptions.map((option) => (
+                            <li key={option.code}>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setTargetRoleQuery(option.label)
+                                  setTargetRoleCode(option.code)
+                                  setTargetRoleOptions([])
+                                  setTargetRoleError('')
+                                  setTargetRoleMessage('')
+                                }}
+                              >
+                                <strong>{option.label}</strong>
+                                {option.description && (
+                                  <small>{option.description}</small>
+                                )}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+
+                    <p id="target-role-help">
+                      Choose a suggestion before saving. A new choice replaces
+                      the current target role.
+                    </p>
+
+                    {targetRoleError && (
+                      <p
+                        id="target-role-error"
+                        className="field-error"
+                        role="alert"
+                      >
+                        {targetRoleError}
+                      </p>
+                    )}
+
+                    <button type="submit">
+                      {targetRoleBusy ? 'Saving...' : 'Save target role'}
+                    </button>
+                  </fieldset>
+
+                  {targetRole && (
+                    <p className="selected-target-role">
+                      Current target: <strong>{targetRole.title}</strong>
+                    </p>
+                  )}
+
+                  {targetRoleMessage && (
+                    <p className="notice success" role="status">
+                      {targetRoleMessage}
+                    </p>
+                  )}
+                </form>
+              )}
+
               {/* Keep the open-data sources visible beside the suggestions. */}
               {profile && (
                 <aside className="data-source-note">
                   <strong>Suggestion data</strong>
                   <p>
-                    Fields of study use CIP 2020. Career goals use ABS OSCA
+                    Fields of study use CIP 2020. Target roles use ABS OSCA
                     2024. Skills and tools use the O*NET 31.0 Database by
                     USDOL/ETA under CC BY 4.0. O*NET® is a trademark of
                     USDOL/ETA.
