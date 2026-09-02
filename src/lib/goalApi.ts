@@ -2,7 +2,7 @@
 type GoalResult =
   | {
       ok: true
-      data: { careerGoal: string; careerGoalCode: string | null }
+      data: { careerGoal: string }
     }
   | { ok: false; data: { error?: string } }
 
@@ -11,7 +11,6 @@ export async function requestGoal(
   method: 'GET' | 'PUT',
   code: string,
   careerGoal?: string,
-  careerGoalCode?: string | null,
 ): Promise<GoalResult> {
   const response = await fetch('/api/goal', {
     method,
@@ -19,10 +18,7 @@ export async function requestGoal(
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + code,
     },
-    body:
-      careerGoal === undefined
-        ? undefined
-        : JSON.stringify({ careerGoal, careerGoalCode }),
+    body: careerGoal === undefined ? undefined : JSON.stringify({ careerGoal }),
     cache: 'no-store',
   })
 
