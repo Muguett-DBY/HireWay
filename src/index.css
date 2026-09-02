@@ -1010,6 +1010,180 @@ select {
   width: auto;
 }
 
+/* Role information stays readable even when one source has no matching rows. */
+.role-requirements {
+  display: grid;
+  gap: 22px;
+  padding: clamp(26px, 5vw, 46px);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--paper);
+  box-shadow: 0 12px 40px rgb(35 76 60 / 6%);
+}
+
+.requirements-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+}
+
+.requirements-heading h2 {
+  max-width: 680px;
+  margin: 0;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+
+.requirements-heading > p {
+  max-width: 390px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.requirements-status {
+  margin: 0;
+  color: var(--muted);
+}
+
+.requirements-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.requirement-panel {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: #fbfdfc;
+}
+
+.requirement-label {
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.requirement-list {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-requirement-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.skill-requirement-list li {
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green-dark);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.qualification-list {
+  display: grid;
+  gap: 12px;
+}
+
+.qualification-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 5px 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.qualification-list li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.qualification-list div {
+  display: grid;
+  gap: 4px;
+}
+
+.qualification-list small,
+.qualification-list p,
+.requirements-unavailable,
+.requirements-sources span,
+.requirements-sources > p {
+  color: var(--muted);
+}
+
+.qualification-list li > span {
+  align-self: start;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: var(--blue-soft);
+  color: #315e9d;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.qualification-list p {
+  grid-column: 1 / -1;
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.requirements-unavailable {
+  margin: 18px 0 0;
+  line-height: 1.6;
+}
+
+.requirements-sources {
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.requirements-sources h3 {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+
+.requirements-sources ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.requirements-sources li {
+  display: grid;
+  gap: 3px;
+}
+
+.requirements-sources a {
+  color: var(--green-dark);
+  font-weight: 750;
+  text-underline-offset: 3px;
+}
+
+.requirements-sources span,
+.requirements-sources > p {
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.requirements-sources > p {
+  margin: 15px 0 0;
+}
+
 /* The hero becomes one column before either side starts feeling cramped. */
 @media (max-width: 900px) {
   .hero {
@@ -1032,6 +1206,16 @@ select {
   }
 
   .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .requirements-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .requirements-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -1164,6 +1348,19 @@ select {
   .dashboard-hero button,
   .dashboard-actions button {
     width: 100%;
+  }
+
+  .role-requirements {
+    padding: 24px 18px;
+    border-radius: 16px;
+  }
+
+  .qualification-list li {
+    grid-template-columns: 1fr;
+  }
+
+  .qualification-list li > span {
+    justify-self: start;
   }
 
   .card {

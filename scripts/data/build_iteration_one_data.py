@@ -587,10 +587,10 @@ def build_import(source_dir: Path) -> dict[str, object]:
         ),
         (
             "Australian training pathways",
-            "Australian Jobs and Skills Councils",
-            "https://www.dewr.gov.au/skills-reform/jobs-and-skills-councils",
-            "Licence not stated in the supplied cleaned dataset",
-            "Qualification-to-occupation pathways supplied by the project team.",
+            "Jobs and Skills Australia",
+            "https://www.jobsandskills.gov.au/data/training-occupation-pathways",
+            "Creative Commons Attribution 4.0 International",
+            "VET qualification-to-occupation links from the TOP dataset.",
             accessed_on,
         ),
     ]
@@ -771,10 +771,6 @@ def build_import(source_dir: Path) -> dict[str, object]:
         warnings.append(
             "Some CRICOS field codes are broader or unspecified and are not selectable detailed majors."
         )
-    warnings.append(
-        "The cleaned training pathway file does not state a redistribution licence; confirm it before production import."
-    )
-
     report = {
         "source_directory": str(source_dir.resolve()),
         "files": {

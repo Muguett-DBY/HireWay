@@ -1,6 +1,7 @@
 import type { Profile } from '../lib/profileApi'
 import type { Skill } from '../lib/skillsApi'
 import type { TargetRole } from '../lib/targetRoleApi'
+import { RoleRequirements } from './RoleRequirements'
 
 type CareerDashboardProps = {
   profile: Profile
@@ -67,6 +68,15 @@ export function CareerDashboard({
           )}
         </article>
       </div>
+
+      {/* Requirements load only after a catalogue occupation has been saved. */}
+      {targetRole && (
+        <RoleRequirements
+          key={targetRole.code}
+          profileCode={profile.code}
+          targetRole={targetRole}
+        />
+      )}
 
       {/* Editing stays in the existing profile flow instead of duplicating forms. */}
       <div className="dashboard-actions">
