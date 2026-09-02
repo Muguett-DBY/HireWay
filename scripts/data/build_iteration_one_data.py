@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[2]
 GENERATED_DIR = ROOT / "data" / "generated"
 SQL_PATH = GENERATED_DIR / "iteration_one_reference_data.sql"
 REPORT_PATH = GENERATED_DIR / "iteration_one_reference_report.json"
+DEFAULT_SOURCE_DIR = ROOT / "data" / "sources" / "iteration-1"
 
 FILES = {
     "levels": "hireway_degree_level_options.csv",
@@ -800,12 +801,18 @@ def build_import(source_dir: Path) -> dict[str, object]:
 
 
 def main() -> None:
-    """Read the source directory supplied on the command line."""
+    """Use the tracked snapshot unless another source directory is supplied."""
 
     parser = argparse.ArgumentParser(
         description="Build the Iteration 1 D1 import from cleaned CSV files."
     )
-    parser.add_argument("source_dir", type=Path, help="Path to cleaned_data_2")
+    parser.add_argument(
+        "source_dir",
+        nargs="?",
+        type=Path,
+        default=DEFAULT_SOURCE_DIR,
+        help="Path to cleaned_data_2 (defaults to data/sources/iteration-1)",
+    )
     arguments = parser.parse_args()
 
     report = build_import(arguments.source_dir)
