@@ -329,12 +329,12 @@ def read_onet_skills(paths: dict[str, Path]) -> tuple[dict, set, set]:
 
     skills_by_name: dict[str, SkillRecord] = {}
     aliases: set[tuple[str, str]] = set()
-    relationships: dict[tuple[str, str], tuple[float, int, int]] = {}
+    relationships: dict[tuple[str, str], tuple[float, int, int, str]] = {}
 
     # Importance is reported on a zero-to-five scale, so convert it to percent.
-    for key, kind in (
-        ("onet_essential", "skill"),
-        ("onet_transferable", "skill"),
+    for key, requirement_type in (
+        ("onet_essential", "essential_skill"),
+        ("onet_transferable", "transferable_skill"),
     ):
         with paths[key].open(encoding="utf-8-sig", newline="") as source:
             for row in csv.DictReader(source):
@@ -345,13 +345,21 @@ def read_onet_skills(paths: dict[str, Path]) -> tuple[dict, set, set]:
                 suggested_code = f"onet-skill:{clean_text(row['Element ID'])}"
                 record = skills_by_name.setdefault(
                     name_key,
-                    SkillRecord(suggested_code, name, "", kind, "O*NET 31.0"),
+                    SkillRecord(suggested_code, name, "", "skill", "O*NET 31.0"),
                 )
                 code = record.code
                 score = min(100.0, float(row["Data Value"]) * 20)
                 relationship_key = (clean_text(row["O*NET-SOC Code"]), code)
-                old = relationships.get(relationship_key, (0.0, 0, 0))
-                relationships[relationship_key] = (max(score, old[0]), 0, 0)
+                old = relationships.get(
+                    relationship_key,
+                    (0.0, 0, 0, requirement_type),
+                )
+                relationships[relationship_key] = (
+                    max(score, old[0]),
+                    0,
+                    0,
+                    requirement_type,
+                )
 
     # Named workplace examples make the recommendations useful to real users.
     with paths["onet_software"].open(
@@ -379,16 +387,22 @@ def read_onet_skills(paths: dict[str, Path]) -> tuple[dict, set, set]:
             in_demand = int(row["In Demand"] == "Y")
             score = 55 + (25 * hot) + (20 * in_demand)
             relationship_key = (clean_text(row["O*NET-SOC Code"]), code)
-            old = relationships.get(relationship_key, (0.0, 0, 0))
+            old = relationships.get(relationship_key, (0.0, 0, 0, "tool"))
             relationships[relationship_key] = (
                 max(float(score), old[0]),
                 max(hot, old[1]),
                 max(in_demand, old[2]),
+                "tool",
             )
 
     return skills_by_name, aliases, {
-        (onet_code, skill_code, score, hot, in_demand)
-        for (onet_code, skill_code), (score, hot, in_demand) in relationships.items()
+        (onet_code, skill_code, score, hot, in_demand, requirement_type)
+        for (onet_code, skill_code), (
+            score,
+            hot,
+            in_demand,
+            requirement_type,
+        ) in relationships.items()
     }
 
 
@@ -479,7 +493,12 @@ def validate_reference_data(
         ),
         "skill_scores_in_range": all(
             0 <= score <= 100 and hot in (0, 1) and in_demand in (0, 1)
-            for _, _, score, hot, in_demand in occupation_skills
+            for _, _, score, hot, in_demand, _ in occupation_skills
+        ),
+        "requirement_types_known": all(
+            requirement_type
+            in {"essential_skill", "transferable_skill", "tool"}
+            for *_, requirement_type in occupation_skills
         ),
         "mapping_confidence_in_range": all(
             0.78 <= confidence <= 1
@@ -654,10 +673,18 @@ def build_sql(paths: dict[str, Path]) -> dict[str, object]:
     )
     statements += insert_many(
         "onet_occupation_skill",
-        ("onet_code", "skill_code", "score", "hot_technology", "in_demand"),
+        (
+            "onet_code",
+            "skill_code",
+            "score",
+            "hot_technology",
+            "in_demand",
+            "requirement_type",
+        ),
         occupation_skills,
         "(onet_code, skill_code) DO UPDATE SET score = excluded.score, "
-        "hot_technology = excluded.hot_technology, in_demand = excluded.in_demand",
+        "hot_technology = excluded.hot_technology, in_demand = excluded.in_demand, "
+        "requirement_type = excluded.requirement_type",
     )
     statements += insert_many(
         "occupation_onet_map",
