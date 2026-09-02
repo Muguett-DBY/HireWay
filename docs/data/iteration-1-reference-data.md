@@ -7,8 +7,8 @@ This import prepares the catalogue data needed by the Iteration 1 career flow. I
 - active Australian education levels and course names from CRICOS
 - detailed Australian fields of education from ASCED 2001
 - Australian OSCA occupation titles, aliases, descriptions and tasks
-- qualification pathways linked to OSCA occupations
-- O*NET relationship types used to separate essential skills, transferable skills and tools
+- Jobs and Skills Australia TOP qualification pathways linked to OSCA occupations
+- existing O*NET skill and tool records remain separate
 
 The generated SQL files stay in `data/generated` and are not committed because they can be rebuilt from the source files.
 
@@ -17,9 +17,8 @@ The generated SQL files stay in `data/generated` and are not committed because t
 - [CRICOS](https://data.gov.au/data/dataset/cricos) course data is published by the Australian Government Department of Education under the Creative Commons Attribution 2.5 Australia licence.
 - [ASCED 2001](https://www.abs.gov.au/statistics/classifications/australian-standard-classification-education-asced/latest-release) is published by the Australian Bureau of Statistics. ABS website material is generally available under the Creative Commons Attribution 4.0 International licence.
 - [OSCA 2024](https://www.abs.gov.au/statistics/classifications/osca-occupation-standard-classification-australia/2024-version-1-0) is the Australian occupation classification used by HireWay.
+- [Training Occupation Pathways](https://www.jobsandskills.gov.au/data/training-occupation-pathways) is published by Jobs and Skills Australia under the Creative Commons Attribution 4.0 International licence. Reuse includes the attribution `© Commonwealth of Australia`.
 - [O*NET 31.0](https://www.onetcenter.org/license_db.html) is United States occupational information licensed under Creative Commons Attribution 4.0 International. It must be labelled as US guidance, not Australian employer requirements.
-
-The supplied `training_occupation_pathways.csv` file does not state its redistribution licence. Its source must be confirmed before importing it into the production database. The local build keeps this gap visible in the data-quality report.
 
 ## Build the local import
 
@@ -69,4 +68,4 @@ npx wrangler d1 execute hireway-db --local --persist-to $iterationOneState --com
 npx wrangler d1 execute hireway-db --local --persist-to $iterationOneState --command "SELECT requirement_type, COUNT(*) AS total FROM onet_occupation_skill GROUP BY requirement_type ORDER BY requirement_type;"
 ```
 
-Do not add `--remote` until the migration, generated report and source licences have been reviewed.
+Do not add `--remote` until the migrations and generated report have been reviewed.
