@@ -8,7 +8,7 @@ export type CatalogueOption = {
 
 export type StudyOption = {
   degreeCode: string | null
-  majorCode: string
+  majorCode: string | null
   label: string
   description: string
   educationLevel: string | null

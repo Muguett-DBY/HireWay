@@ -10,7 +10,7 @@ type CatalogueOption = {
 
 type StudyOption = {
   degreeCode: string | null
-  majorCode: string
+  majorCode: string | null
   label: string
   description: string
   educationLevel: string | null
@@ -95,9 +95,12 @@ async function searchStudies(env: Env, query: string): Promise<StudyOption[]> {
   const prefix = `${term}%`
   const result = await env.DB.prepare(
     `WITH matches AS (
-       SELECT d.code AS degreeCode, m.code AS majorCode,
+       SELECT d.code AS degreeCode, NULL AS majorCode,
               d.title AS label,
-              d.education_level || ' - ' || m.title AS description,
+              d.education_level || ' - CRICOS course - ' ||
+                d.provider_count ||
+                CASE d.provider_count WHEN 1 THEN ' provider' ELSE ' providers' END
+                AS description,
               d.education_level AS educationLevel,
               'course' AS kind,
               CASE
@@ -106,8 +109,6 @@ async function searchStudies(env: Env, query: string): Promise<StudyOption[]> {
                 ELSE 2
               END AS matchRank
        FROM degree_option d
-       JOIN degree_major_map dm ON dm.degree_code = d.code
-       JOIN major_option m ON m.code = dm.major_code
        WHERE d.title LIKE ? ESCAPE '~' COLLATE NOCASE
 
        UNION ALL
@@ -135,8 +136,8 @@ async function searchStudies(env: Env, query: string): Promise<StudyOption[]> {
      FROM matches
      GROUP BY degreeCode, majorCode, label, description, educationLevel, kind
      ORDER BY matchRank, CASE kind WHEN 'course' THEN 0 ELSE 1 END,
-              LENGTH(label), label, majorCode
-     LIMIT 10`,
+              LENGTH(label), label, COALESCE(degreeCode, majorCode)
+     LIMIT 6`,
   )
     .bind(
       query,

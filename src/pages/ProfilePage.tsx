@@ -78,7 +78,11 @@ export function ProfilePage() {
 
   // Wait briefly before searching so quick typing does not send every keystroke.
   useEffect(() => {
-    if (details.majorCode || details.qualification.trim().length < 2) {
+    if (
+      details.degreeCode ||
+      details.majorCode ||
+      details.qualification.trim().length < 2
+    ) {
       return
     }
 
@@ -95,7 +99,7 @@ export function ProfilePage() {
       window.clearTimeout(timer)
       controller.abort()
     }
-  }, [details.majorCode, details.qualification])
+  }, [details.degreeCode, details.majorCode, details.qualification])
 
   // Target roles come from Australian occupation titles and aliases.
   useEffect(() => {
@@ -214,7 +218,7 @@ export function ProfilePage() {
     setMessage('')
   }
 
-  // One menu choice keeps the course and ASCED field together.
+  // One menu lets the user choose either a named course or an ASCED field.
   function selectStudy(option: StudyOption) {
     setDetails((current) => ({
       ...current,
@@ -361,7 +365,7 @@ export function ProfilePage() {
     setFailed(false)
     const nextErrors: ProfileErrors = {}
 
-    if (!details.majorCode) {
+    if (!details.degreeCode && !details.majorCode) {
       nextErrors.qualification =
         'Choose a course or field of study from the suggestions.'
     }
@@ -879,18 +883,23 @@ export function ProfilePage() {
                       aria-controls="study-suggestions"
                     />
 
-                    {/* Course and ASCED matches stay in one suggestion list. */}
+                    {/* Course and ASCED matches stay in one short suggestion list. */}
                     {studyOptions.length > 0 && (
                       <ul className="autocomplete-menu" id="study-suggestions">
                         {studyOptions.map((option) => (
-                          <li
-                            key={`${option.degreeCode ?? 'major'}:${option.majorCode}`}
-                          >
+                          <li key={option.degreeCode ?? option.majorCode}>
                             <button
                               type="button"
                               onClick={() => selectStudy(option)}
                             >
-                              <strong>{option.label}</strong>
+                              <span className="study-option-heading">
+                                <strong>{option.label}</strong>
+                                <span>
+                                  {option.kind === 'course'
+                                    ? 'Course'
+                                    : 'Field'}
+                                </span>
+                              </span>
                               <small>{option.description}</small>
                             </button>
                           </li>
@@ -899,8 +908,8 @@ export function ProfilePage() {
                     )}
                   </div>
                   <p className="field-help" id="qualification-help">
-                    Choose one suggestion so your study can be used in later
-                    analysis.
+                    Choose a CRICOS course or an ASCED field so it can be used
+                    in later analysis.
                   </p>
                   {errors.qualification && (
                     <p

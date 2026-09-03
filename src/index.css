@@ -646,6 +646,25 @@ select {
   font-size: 14px;
 }
 
+.study-option-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.study-option-heading > span {
+  flex: 0 0 auto;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green-dark);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .card .autocomplete-menu button small {
   display: -webkit-box;
   overflow: hidden;
