@@ -77,7 +77,11 @@ export async function handleProfile(
         ? input.degreeCode.trim() || null
         : undefined
   const majorCode =
-    typeof input.majorCode === 'string' ? input.majorCode.trim() : undefined
+    input.majorCode === null
+      ? null
+      : typeof input.majorCode === 'string'
+        ? input.majorCode.trim() || null
+        : undefined
   let qualification = ''
   let educationLevel =
     typeof input.educationLevel === 'string' ? input.educationLevel.trim() : ''
@@ -85,45 +89,48 @@ export async function handleProfile(
     typeof input.currentRole === 'string' ? input.currentRole.trim() : ''
   const errors: Record<string, string> = {}
 
-  if (degreeCode === undefined || !majorCode) {
+  if (
+    degreeCode === undefined ||
+    majorCode === undefined ||
+    (!degreeCode && !majorCode)
+  ) {
     errors.qualification =
       'Choose a course or field of study from the suggestions.'
   }
 
-  // A course choice must use one of the ASCED fields linked to that course.
-  if (majorCode) {
-    if (degreeCode) {
-      const option = await env.DB.prepare(
-        `SELECT d.title, d.education_level AS educationLevel
-         FROM degree_option d
-         JOIN degree_major_map dm ON dm.degree_code = d.code
-         WHERE d.code = ? AND dm.major_code = ?`,
-      )
-        .bind(degreeCode, majorCode)
-        .first<{ title: string; educationLevel: string }>()
+  // A course and a field are separate catalogue choices in the same search box.
+  if (degreeCode) {
+    const option = await env.DB.prepare(
+      `SELECT title, education_level AS educationLevel
+       FROM degree_option WHERE code = ?`,
+    )
+      .bind(degreeCode)
+      .first<{ title: string; educationLevel: string }>()
 
-      if (option) {
-        qualification = option.title
-        educationLevel = simplifyEducationLevel(option.educationLevel)
-      } else {
-        errors.qualification =
-          'Choose a course or field of study from the suggestions.'
-      }
-    } else if (degreeCode === null) {
-      const option = await env.DB.prepare(
-        'SELECT title FROM major_option WHERE code = ?',
-      )
-        .bind(majorCode)
-        .first<{ title: string }>()
+    if (option) {
+      qualification = option.title
+      educationLevel = simplifyEducationLevel(option.educationLevel)
+    } else {
+      errors.qualification =
+        'Choose a course or field of study from the suggestions.'
+    }
+  } else if (majorCode) {
+    const option = await env.DB.prepare(
+      'SELECT title FROM major_option WHERE code = ?',
+    )
+      .bind(majorCode)
+      .first<{ title: string }>()
 
-      if (option) {
-        qualification = option.title
-      } else {
-        errors.qualification =
-          'Choose a course or field of study from the suggestions.'
-      }
+    if (option) {
+      qualification = option.title
+    } else {
+      errors.qualification =
+        'Choose a course or field of study from the suggestions.'
     }
   }
+
+  // A named course does not need one arbitrary ASCED field attached to it.
+  const savedMajorCode = degreeCode ? null : majorCode
 
   const educationLevels = new Set([
     'High School',
@@ -166,7 +173,7 @@ export async function handleProfile(
         code,
         qualification,
         degreeCode,
-        majorCode,
+        savedMajorCode,
         educationLevel,
         currentRole,
       )
@@ -178,7 +185,7 @@ export async function handleProfile(
         qualification,
         qualificationCode: null,
         degreeCode,
-        majorCode,
+        majorCode: savedMajorCode,
         educationLevel,
         currentRole,
       },
@@ -197,7 +204,7 @@ export async function handleProfile(
     .bind(
       qualification,
       degreeCode,
-      majorCode,
+      savedMajorCode,
       educationLevel,
       currentRole,
       code,
@@ -213,7 +220,7 @@ export async function handleProfile(
     qualification,
     qualificationCode: null,
     degreeCode,
-    majorCode,
+    majorCode: savedMajorCode,
     educationLevel,
     currentRole,
   })
