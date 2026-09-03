@@ -96,7 +96,21 @@ export async function handleRoleRequirements(
          SELECT code, name, description, score, priority_rank,
                 ROW_NUMBER() OVER (
                   PARTITION BY priority_rank
-                  ORDER BY score DESC, name
+                  ORDER BY score DESC,
+                    CASE WHEN priority_rank = 2 THEN
+                      CASE name
+                        WHEN 'Python' THEN 0
+                        WHEN 'SQL' THEN 1
+                        WHEN 'Microsoft Excel' THEN 2
+                        WHEN 'R' THEN 3
+                        WHEN 'Power BI' THEN 4
+                        WHEN 'Tableau' THEN 5
+                        WHEN 'Git' THEN 6
+                        WHEN 'JavaScript' THEN 7
+                        ELSE 20
+                      END
+                    ELSE 0 END,
+                    name
                 ) AS category_rank
          FROM grouped_requirements
        )
@@ -107,8 +121,9 @@ export async function handleRoleRequirements(
                 ELSE 'bonus'
               END AS priority
        FROM ranked_requirements
-       WHERE category_rank <= 6
-       ORDER BY priority_rank, score DESC, name`,
+       WHERE (priority_rank IN (0, 1) AND category_rank <= 4)
+          OR (priority_rank = 2 AND category_rank <= 5)
+       ORDER BY priority_rank, category_rank`,
     )
       .bind(role.code)
       .all<RoleSkill>(),

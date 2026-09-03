@@ -5,6 +5,8 @@ export type Skill = {
   skillCode: string | null
 }
 
+export type SaveSkillResult = { ok: true } | { ok: false; error: string }
+
 // API calls either return their expected data or one readable error.
 type ApiResult<T> =
   { ok: true; data: T } | { ok: false; data: { error?: string } }
