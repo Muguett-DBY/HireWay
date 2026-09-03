@@ -19,6 +19,8 @@
     "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
+    "lucide": "^1.40.0",
+    "morphicons": "^1.7.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },

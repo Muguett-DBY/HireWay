@@ -1,4 +1,6 @@
 import { useEffect, useState, type FormEvent } from 'react'
+import { Check, Copy } from 'lucide'
+import { MorphIcon } from 'morphicons/react'
 import {
   requestProfile,
   type Profile,
@@ -16,6 +18,7 @@ import {
 import { requestGoal } from '../lib/goalApi'
 import { requestTargetRole, type TargetRole } from '../lib/targetRoleApi'
 import { CareerDashboard } from '../components/CareerDashboard'
+import { EducationLevelSelect } from '../components/EducationLevelSelect'
 import {
   loadSkillRecommendations,
   searchOptions,
@@ -950,28 +953,14 @@ export function ProfilePage() {
                   )}
 
                   <label htmlFor="education-level">Education level *</label>
-                  <select
-                    id="education-level"
+                  <EducationLevelSelect
                     value={details.educationLevel}
-                    onChange={(event) =>
-                      updateField('educationLevel', event.target.value)
-                    }
-                    required
-                    aria-invalid={Boolean(errors.educationLevel)}
-                    aria-describedby={
+                    onChange={(value) => updateField('educationLevel', value)}
+                    invalid={Boolean(errors.educationLevel)}
+                    describedBy={
                       errors.educationLevel ? 'education-error' : undefined
                     }
-                  >
-                    <option value="">Select your education level</option>
-                    <option value="High School">High School</option>
-                    <option value="Diploma / Certificate">
-                      Diploma / Certificate
-                    </option>
-                    <option value="Bachelor">Bachelor's degree</option>
-                    <option value="Master">Master's degree</option>
-                    <option value="Doctorate">Doctorate (PhD)</option>
-                    <option value="Other">Other</option>
-                  </select>
+                  />
                   {errors.educationLevel && (
                     <p
                       id="education-error"
@@ -1031,26 +1020,13 @@ export function ProfilePage() {
                           copied ? 'Recovery code copied' : 'Copy recovery code'
                         }
                       >
-                        {copied ? (
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            strokeWidth="2.5"
-                            aria-hidden="true"
-                          >
-                            <path d="m5 12 4 4L19 6" />
-                          </svg>
-                        ) : (
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            strokeWidth="2"
-                            aria-hidden="true"
-                          >
-                            <rect x="9" y="9" width="10" height="10" rx="2" />
-                            <path d="M15 9V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
-                          </svg>
-                        )}
+                        <MorphIcon
+                          icon={copied ? Check : Copy}
+                          size={19}
+                          strokeWidth={2}
+                          spring="snappy"
+                          reducedMotion="user"
+                        />
                       </button>
                     </div>
                     <p id="code-help">

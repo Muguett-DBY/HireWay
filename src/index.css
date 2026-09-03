@@ -607,6 +607,109 @@ select {
   background: #ffffff;
 }
 
+/* Keep this custom listbox anchored to the education field on every platform. */
+.education-select {
+  position: relative;
+}
+
+.profile-card .education-select-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 48px;
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid #8a9f92;
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--ink);
+  font-weight: 400;
+  text-align: left;
+}
+
+.profile-card .education-select-trigger:hover:not(:disabled) {
+  transform: none;
+  border-color: var(--green);
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.education-select-trigger .placeholder {
+  color: var(--muted);
+}
+
+.education-select-trigger > svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.education-select-menu {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 5px);
+  right: 0;
+  left: 0;
+  max-height: min(336px, 50vh);
+  margin: 0;
+  padding: 6px;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 16px 36px rgb(35 76 60 / 15%);
+  list-style: none;
+}
+
+.profile-card .education-select-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 46px;
+  margin: 0;
+  padding: 10px 12px;
+  transform: none;
+  border: 0;
+  border-radius: 7px;
+  background: #ffffff;
+  color: var(--ink);
+  font-weight: 500;
+  text-align: left;
+  box-shadow: none;
+}
+
+.profile-card .education-select-option:hover:not(:disabled),
+.profile-card .education-select-option.active {
+  transform: none;
+  background: var(--green-soft);
+  box-shadow: none;
+}
+
+.profile-card .education-select-option.selected {
+  color: var(--green-dark);
+  font-weight: 750;
+}
+
+.education-select-option svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
 /* Major matches appear as a small menu directly below the input. */
 .autocomplete {
   position: relative;
