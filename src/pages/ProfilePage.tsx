@@ -1,5 +1,6 @@
 import { useEffect, useState, type FormEvent } from 'react'
-import { Check, Copy } from 'lucide-react'
+import { Check, Copy } from 'lucide'
+import { MorphIcon } from 'morphicons/react'
 import {
   requestProfile,
   type Profile,
@@ -1019,11 +1020,13 @@ export function ProfilePage() {
                           copied ? 'Recovery code copied' : 'Copy recovery code'
                         }
                       >
-                        {copied ? (
-                          <Check strokeWidth={2.5} aria-hidden="true" />
-                        ) : (
-                          <Copy strokeWidth={2} aria-hidden="true" />
-                        )}
+                        <MorphIcon
+                          icon={copied ? Check : Copy}
+                          size={19}
+                          strokeWidth={2}
+                          spring="snappy"
+                          reducedMotion="user"
+                        />
                       </button>
                     </div>
                     <p id="code-help">
