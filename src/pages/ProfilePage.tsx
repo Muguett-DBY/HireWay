@@ -16,6 +16,7 @@ import {
 import { requestGoal } from '../lib/goalApi'
 import { requestTargetRole, type TargetRole } from '../lib/targetRoleApi'
 import { CareerDashboard } from '../components/CareerDashboard'
+import { EducationLevelSelect } from '../components/EducationLevelSelect'
 import {
   loadSkillRecommendations,
   searchOptions,
@@ -950,28 +951,14 @@ export function ProfilePage() {
                   )}
 
                   <label htmlFor="education-level">Education level *</label>
-                  <select
-                    id="education-level"
+                  <EducationLevelSelect
                     value={details.educationLevel}
-                    onChange={(event) =>
-                      updateField('educationLevel', event.target.value)
-                    }
-                    required
-                    aria-invalid={Boolean(errors.educationLevel)}
-                    aria-describedby={
+                    onChange={(value) => updateField('educationLevel', value)}
+                    invalid={Boolean(errors.educationLevel)}
+                    describedBy={
                       errors.educationLevel ? 'education-error' : undefined
                     }
-                  >
-                    <option value="">Select your education level</option>
-                    <option value="High School">High School</option>
-                    <option value="Diploma / Certificate">
-                      Diploma / Certificate
-                    </option>
-                    <option value="Bachelor">Bachelor's degree</option>
-                    <option value="Master">Master's degree</option>
-                    <option value="Doctorate">Doctorate (PhD)</option>
-                    <option value="Other">Other</option>
-                  </select>
+                  />
                   {errors.educationLevel && (
                     <p
                       id="education-error"
