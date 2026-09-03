@@ -41,5 +41,36 @@ Vite
 Cloudflare Workers / Wrangler
 Australian Open Data
 
+Development
+
+Install dependencies:
+
+npm install
+
+Start the development server:
+
+npm run dev
+
+Build the project:
+
+npm run build
+
+Run project checks:
+
+npm run check
+
+Deploy:
+
+npm run deploy
+Project Goal
+
+Our goal is to make Australian career and labour-market information easier to understand and more accessible, helping users move from:
+
+“I want to become…”
+
+to
+
+“Here is what I need to do next.”
+
 `Team
 Developed as part of the Monash University FIT5120 Industry Experience project.
