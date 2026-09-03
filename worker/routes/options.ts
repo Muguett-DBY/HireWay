@@ -1,4 +1,5 @@
 import { simplifyEducationLevel } from '../lib/education'
+import { findStudySkillNames } from '../lib/studySkills'
 
 // Every autocomplete menu uses the same small response shape.
 type CatalogueOption = {
@@ -27,6 +28,10 @@ type RecommendationRow = CatalogueOption & {
   relevance: number
   educationMatch: number
   targetRoleMatch: number
+}
+
+type StudyTitleRow = {
+  title: string
 }
 
 export type SkillRecommendation = CatalogueOption & {
@@ -252,8 +257,8 @@ async function searchSkills(
   return result.results
 }
 
-// Related O*NET occupations turn a chosen major or target role into suggestions.
-async function recommendSkills(
+// Related O*NET occupations turn a legacy study code or target role into suggestions.
+async function recommendFromOccupations(
   env: Env,
   educationCode: string,
   targetRoleCode: string,
@@ -355,6 +360,77 @@ async function recommendSkills(
   }))
 }
 
+// A selected CRICOS course or ASCED field chooses a short O*NET starter set.
+async function recommendFromStudy(
+  env: Env,
+  degreeCode: string,
+  majorCode: string,
+): Promise<SkillRecommendation[]> {
+  if (!degreeCode && !majorCode) return []
+
+  const study = await env.DB.prepare(
+    `SELECT title FROM degree_option WHERE code = ?
+     UNION ALL
+     SELECT title FROM major_option WHERE code = ?
+     LIMIT 1`,
+  )
+    .bind(degreeCode, majorCode)
+    .first<StudyTitleRow>()
+
+  if (!study) return []
+  const names = findStudySkillNames(study.title)
+  if (names.length === 0) return []
+
+  const placeholders = names.map(() => '?').join(', ')
+  const result = await env.DB.prepare(
+    `SELECT code, name AS label, description, kind
+     FROM skill WHERE name IN (${placeholders})`,
+  )
+    .bind(...names)
+    .all<CatalogueOption>()
+  const order = new Map(names.map((name, index) => [name, index]))
+
+  return result.results
+    .sort(
+      (left, right) =>
+        (order.get(left.label) ?? names.length) -
+        (order.get(right.label) ?? names.length),
+    )
+    .map((item, index) => ({
+      ...item,
+      score: 100 - index,
+      reason: 'education',
+    }))
+}
+
+// Study starters stay visible while matching role data adds a few extra choices.
+async function recommendSkills(
+  env: Env,
+  educationCode: string,
+  degreeCode: string,
+  majorCode: string,
+  targetRoleCode: string,
+): Promise<SkillRecommendation[]> {
+  const [studyRecommendations, roleRecommendations] = await Promise.all([
+    recommendFromStudy(env, degreeCode, majorCode),
+    recommendFromOccupations(env, educationCode, targetRoleCode),
+  ])
+  const roleCodes = new Set(roleRecommendations.map((item) => item.code))
+  const combined = studyRecommendations.map((item) => ({
+    ...item,
+    reason: roleCodes.has(item.code)
+      ? ('education and target role' as const)
+      : item.reason,
+  }))
+  const studyCodes = new Set(studyRecommendations.map((item) => item.code))
+
+  for (const item of roleRecommendations) {
+    if (!studyCodes.has(item.code)) combined.push(item)
+  }
+
+  return combined.slice(0, 10)
+}
+
 // Route the public catalogue endpoints through one small handler.
 export async function handleOptions(
   request: Request,
@@ -372,6 +448,8 @@ export async function handleOptions(
     const recommendations = await recommendSkills(
       env,
       (url.searchParams.get('educationCode') ?? '').trim(),
+      (url.searchParams.get('degreeCode') ?? '').trim(),
+      (url.searchParams.get('majorCode') ?? '').trim(),
       (url.searchParams.get('targetRoleCode') ?? '').trim(),
     )
     return Response.json({ recommendations })
