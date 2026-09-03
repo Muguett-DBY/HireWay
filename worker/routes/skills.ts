@@ -88,39 +88,28 @@ export async function handleSkills(
     return Response.json({ error: 'Send a JSON object.' }, { status: 400 })
   }
 
-  // Ignore spaces around the name, but keep the user's spelling.
-  let name = typeof input.name === 'string' ? input.name.trim() : ''
+  // Free text is gone: every saved skill must come from the catalogue search.
+  const name = typeof input.name === 'string' ? input.name.trim() : ''
   const skillCode =
-    input.skillCode === undefined || input.skillCode === null
-      ? null
-      : typeof input.skillCode === 'string'
-        ? input.skillCode.trim() || null
-        : undefined
+    typeof input.skillCode === 'string' ? input.skillCode.trim() : ''
 
-  if (skillCode === undefined) {
+  if (!skillCode || !name) {
     return Response.json(
-      { error: 'Choose a valid skill or tool.' },
+      { error: 'Choose a skill or tool from the suggestions.' },
       { status: 400 },
     )
   }
 
-  // A selected catalogue skill uses one canonical name everywhere.
-  if (skillCode) {
-    const option = await env.DB.prepare('SELECT name FROM skill WHERE code = ?')
-      .bind(skillCode)
-      .first<{ name: string }>()
+  // The catalogue name replaces the typed text so records stay consistent.
+  const option = await env.DB.prepare('SELECT name FROM skill WHERE code = ?')
+    .bind(skillCode)
+    .first<{ name: string }>()
 
-    if (!option) {
-      return Response.json(
-        { error: 'Choose a valid skill or tool.' },
-        { status: 400 },
-      )
-    }
-    name = option.name
-  }
-
-  if (!name) {
-    return Response.json({ error: 'Enter a skill name.' }, { status: 400 })
+  if (!option || option.name.toLowerCase() !== name.toLowerCase()) {
+    return Response.json(
+      { error: 'Choose a skill or tool from the suggestions.' },
+      { status: 400 },
+    )
   }
 
   if (name.length > 80) {

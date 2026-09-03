@@ -40,11 +40,7 @@ export function loadSkills(code: string) {
 }
 
 // Save one skill and return its database ID.
-export function addSkill(
-  code: string,
-  name: string,
-  skillCode: string | null = null,
-) {
+export function addSkill(code: string, name: string, skillCode: string) {
   return requestSkillApi<Skill>('POST', '/api/skills', code, name, skillCode)
 }
 
