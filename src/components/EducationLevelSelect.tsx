@@ -1,4 +1,6 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
+import { ChevronDown, ChevronUp } from 'lucide'
+import { MorphIcon } from 'morphicons/react'
 
 const educationLevels = [
   { value: '', label: 'Select your education level' },
@@ -141,9 +143,13 @@ export function EducationLevelSelect({
         <span className={value ? undefined : 'placeholder'}>
           {selectedOption.label}
         </span>
-        <svg viewBox="0 0 20 20" aria-hidden="true">
-          <path d="m5 7.5 5 5 5-5" />
-        </svg>
+        <MorphIcon
+          icon={open ? ChevronUp : ChevronDown}
+          size={20}
+          strokeWidth={1.7}
+          spring="snappy"
+          reducedMotion="user"
+        />
       </button>
 
       {open && (

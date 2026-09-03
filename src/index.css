@@ -649,11 +649,6 @@ select {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.7;
-  transition: transform 160ms ease;
-}
-
-.education-select-trigger[aria-expanded='true'] > svg {
-  transform: rotate(180deg);
 }
 
 .education-select-menu {
