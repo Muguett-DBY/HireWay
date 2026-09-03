@@ -53,14 +53,18 @@ export async function searchStudyOptions(
   return data.options
 }
 
-// Recommendations can use the major, target role, or both together.
+// Recommendations can use the selected study, target role, or both together.
 export async function loadSkillRecommendations(
   educationCode: string | null,
+  degreeCode: string | null,
+  majorCode: string | null,
   targetRoleCode: string | null,
   signal?: AbortSignal,
 ): Promise<SkillRecommendation[]> {
   const parameters = new URLSearchParams()
   if (educationCode) parameters.set('educationCode', educationCode)
+  if (degreeCode) parameters.set('degreeCode', degreeCode)
+  if (majorCode) parameters.set('majorCode', majorCode)
   if (targetRoleCode) parameters.set('targetRoleCode', targetRoleCode)
 
   if (parameters.size === 0) return []

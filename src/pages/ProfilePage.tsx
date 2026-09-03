@@ -147,9 +147,14 @@ export function ProfilePage() {
     }
   }, [skillCode, skillName])
 
-  // Refresh recommendations whenever a recognised major or target role changes.
+  // Refresh suggestions whenever a saved study choice or target role changes.
   useEffect(() => {
-    if (!details.qualificationCode && !targetRole) {
+    if (
+      !details.qualificationCode &&
+      !details.degreeCode &&
+      !details.majorCode &&
+      !targetRole
+    ) {
       return
     }
 
@@ -158,6 +163,8 @@ export function ProfilePage() {
       setRecommendationsBusy(true)
       void loadSkillRecommendations(
         details.qualificationCode,
+        details.degreeCode,
+        details.majorCode,
         targetRole?.code ?? null,
         controller.signal,
       )
@@ -174,7 +181,12 @@ export function ProfilePage() {
       window.clearTimeout(timer)
       controller.abort()
     }
-  }, [details.qualificationCode, targetRole])
+  }, [
+    details.degreeCode,
+    details.majorCode,
+    details.qualificationCode,
+    targetRole,
+  ])
 
   // Fill the form with the values that actually came back from D1.
   function showProfile(saved: Profile) {
@@ -1040,19 +1052,30 @@ export function ProfilePage() {
                   <h2>Current skills</h2>
                   <p>Add the skills and tools you already use.</p>
 
-                  {/* Recommendations use any recognised major or target role. */}
-                  {(details.qualificationCode || targetRole) && (
+                  {/* Suggestions use a recognised study choice or target role. */}
+                  {(details.qualificationCode ||
+                    details.degreeCode ||
+                    details.majorCode ||
+                    targetRole) && (
                     <div className="skill-recommendations">
                       <div>
                         <strong>
                           Suggested from{' '}
-                          {details.qualificationCode && targetRole
-                            ? 'your major and target role'
-                            : details.qualificationCode
-                              ? 'your major'
+                          {(details.qualificationCode ||
+                            details.degreeCode ||
+                            details.majorCode) &&
+                          targetRole
+                            ? 'your study and target role'
+                            : details.qualificationCode ||
+                                details.degreeCode ||
+                                details.majorCode
+                              ? 'your study'
                               : 'your target role'}
                         </strong>
-                        <span>Choose only the skills you already have.</span>
+                        <span>
+                          Add only the skills you already have. Study starters
+                          use existing O*NET skill and tool names.
+                        </span>
                       </div>
 
                       {recommendationsBusy ? (
