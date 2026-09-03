@@ -5,7 +5,13 @@ import {
   type ProfileDetails,
   type ProfileErrors,
 } from '../lib/profileApi'
-import { addSkill, loadSkills, removeSkill, type Skill } from '../lib/skillsApi'
+import {
+  addSkill,
+  loadSkills,
+  removeSkill,
+  type SaveSkillResult,
+  type Skill,
+} from '../lib/skillsApi'
 // Use the helper that talks to the career goal endpoint.
 import { requestGoal } from '../lib/goalApi'
 import { requestTargetRole, type TargetRole } from '../lib/targetRoleApi'
@@ -511,26 +517,35 @@ export function ProfilePage() {
     }
   }
   // Both typed and suggested skills use the same API request.
-  async function saveSkill(name: string, selectedCode: string | null = null) {
+  async function saveSkill(
+    name: string,
+    selectedCode: string | null = null,
+  ): Promise<SaveSkillResult> {
     if (!profile) {
-      setSkillError('Save your profile before adding skills.')
-      return
+      const error = 'Save your profile before adding skills.'
+      setSkillError(error)
+      return { ok: false, error }
     }
 
+    setSkillError('')
     setSkillsBusy(true)
     try {
       const result = await addSkill(profile.code, name, selectedCode)
       if (!result.ok) {
-        setSkillError(result.data.error ?? 'Could not add this skill.')
-        return
+        const error = result.data.error ?? 'Could not add this skill.'
+        setSkillError(error)
+        return { ok: false, error }
       }
 
       setSkills((current) => [...current, result.data])
       setSkillName('')
       setSkillCode(null)
       setSkillOptions([])
+      return { ok: true }
     } catch {
-      setSkillError('Could not connect. Please try again.')
+      const error = 'Could not connect. Please try again.'
+      setSkillError(error)
+      return { ok: false, error }
     } finally {
       setSkillsBusy(false)
     }
@@ -842,6 +857,7 @@ export function ProfilePage() {
             careerGoal={careerGoal}
             targetRole={targetRole}
             onEditProfile={() => setScreen('profile')}
+            onAddSkill={saveSkill}
           />
         ) : (
           <>

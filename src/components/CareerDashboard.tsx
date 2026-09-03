@@ -1,5 +1,5 @@
 import type { Profile } from '../lib/profileApi'
-import type { Skill } from '../lib/skillsApi'
+import type { SaveSkillResult, Skill } from '../lib/skillsApi'
 import type { TargetRole } from '../lib/targetRoleApi'
 import { RoleRequirements } from './RoleRequirements'
 
@@ -9,6 +9,7 @@ type CareerDashboardProps = {
   careerGoal: string
   targetRole: TargetRole | null
   onEditProfile: () => void
+  onAddSkill: (name: string, skillCode: string) => Promise<SaveSkillResult>
 }
 
 // The dashboard brings the saved profile into one quick summary.
@@ -18,6 +19,7 @@ export function CareerDashboard({
   careerGoal,
   targetRole,
   onEditProfile,
+  onAddSkill,
 }: CareerDashboardProps) {
   return (
     <section className="career-dashboard" aria-labelledby="dashboard-title">
@@ -75,6 +77,8 @@ export function CareerDashboard({
           key={targetRole.code}
           profileCode={profile.code}
           targetRole={targetRole}
+          savedSkills={skills}
+          onAddSkill={onAddSkill}
         />
       )}
 

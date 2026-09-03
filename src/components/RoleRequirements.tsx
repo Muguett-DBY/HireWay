@@ -1,30 +1,34 @@
 import { useEffect, useState } from 'react'
 import {
   loadRoleRequirements,
+  type RoleSkill,
   type RoleRequirements as RoleRequirementsData,
 } from '../lib/roleRequirementsApi'
+import type { SaveSkillResult, Skill } from '../lib/skillsApi'
 import type { TargetRole } from '../lib/targetRoleApi'
 
 type RoleRequirementsProps = {
   profileCode: string
   targetRole: TargetRole
+  savedSkills: Skill[]
+  onAddSkill: (name: string, skillCode: string) => Promise<SaveSkillResult>
 }
 
 const priorityGroups = [
   {
     key: 'essential',
-    title: 'Essential',
-    description: 'Foundational skills to prioritise first.',
+    title: 'Core skills',
+    description: 'Broad O*NET abilities commonly associated with this role.',
   },
   {
     key: 'recommended',
-    title: 'Recommended',
-    description: 'Transferable skills worth building next.',
+    title: 'Transferable skills',
+    description: 'Abilities that can carry across jobs and industries.',
   },
   {
     key: 'bonus',
-    title: 'Bonus',
-    description: 'Tools that can strengthen your profile.',
+    title: 'Common tools',
+    description: 'Named software and technologies found in the source data.',
   },
 ] as const
 
@@ -32,12 +36,46 @@ const priorityGroups = [
 export function RoleRequirements({
   profileCode,
   targetRole,
+  savedSkills,
+  onAddSkill,
 }: RoleRequirementsProps) {
   const [requirements, setRequirements] = useState<RoleRequirementsData | null>(
     null,
   )
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [addingSkillCode, setAddingSkillCode] = useState('')
+  const [skillFeedback, setSkillFeedback] = useState('')
+  const [skillFailed, setSkillFailed] = useState(false)
+
+  const savedSkillCodes = new Set(
+    savedSkills.flatMap((skill) =>
+      skill.skillCode ? [skill.skillCode] : [skill.name.toLowerCase()],
+    ),
+  )
+
+  function hasSkill(skill: RoleSkill) {
+    return (
+      savedSkillCodes.has(skill.code) ||
+      savedSkillCodes.has(skill.name.toLowerCase())
+    )
+  }
+
+  // Dashboard chips add to the same current-skills list as the profile form.
+  async function addRoleSkill(skill: RoleSkill) {
+    setAddingSkillCode(skill.code)
+    setSkillFeedback('')
+    setSkillFailed(false)
+
+    const result = await onAddSkill(skill.name, skill.code)
+    if (result.ok) {
+      setSkillFeedback(`${skill.name} added to your current skills.`)
+    } else {
+      setSkillFeedback(result.error)
+      setSkillFailed(true)
+    }
+    setAddingSkillCode('')
+  }
 
   useEffect(() => {
     const controller = new AbortController()
@@ -80,8 +118,8 @@ export function RoleRequirements({
       <aside className="guidance-note" aria-label="Requirement guidance">
         <strong>Use these priorities as a guide.</strong>
         <p>
-          They summarise general US career data. Individual Australian employers
-          may ask for different skills, tools or qualifications.
+          They summarise related US O*NET occupations. Select an item only if it
+          is a skill or tool you already use.
         </p>
       </aside>
 
@@ -130,7 +168,32 @@ export function RoleRequirements({
                         {skills.length > 0 ? (
                           <ul className="requirement-list skill-requirement-list">
                             {skills.map((skill) => (
-                              <li key={skill.code}>{skill.name}</li>
+                              <li key={skill.code}>
+                                <button
+                                  type="button"
+                                  className={
+                                    hasSkill(skill)
+                                      ? 'requirement-skill saved'
+                                      : 'requirement-skill'
+                                  }
+                                  disabled={
+                                    hasSkill(skill) ||
+                                    addingSkillCode === skill.code
+                                  }
+                                  onClick={() => addRoleSkill(skill)}
+                                  aria-label={
+                                    hasSkill(skill)
+                                      ? `${skill.name} is already saved`
+                                      : `Add ${skill.name} to current skills`
+                                  }
+                                >
+                                  {hasSkill(skill)
+                                    ? `✓ ${skill.name}`
+                                    : addingSkillCode === skill.code
+                                      ? 'Adding...'
+                                      : `+ ${skill.name}`}
+                                </button>
+                              </li>
                             ))}
                           </ul>
                         ) : (
@@ -147,31 +210,56 @@ export function RoleRequirements({
                   No suitable skill data is available for this role yet.
                 </p>
               )}
+
+              {skillFeedback && (
+                <p
+                  className={skillFailed ? 'notice error' : 'notice success'}
+                  role={skillFailed ? 'alert' : 'status'}
+                >
+                  {skillFeedback}
+                </p>
+              )}
             </article>
 
-            <article className="requirement-panel">
-              <span className="requirement-label">Training pathways</span>
+            <details className="requirement-panel training-pathways">
+              <summary>
+                <span>
+                  <strong>Optional Australian VET pathways</strong>
+                  <small>
+                    These courses are linked to the occupation, not required by
+                    every employer.
+                  </small>
+                </span>
+                <span>{requirements.qualifications.length}</span>
+              </summary>
               {requirements.qualifications.length > 0 ? (
-                <ul className="requirement-list qualification-list">
-                  {requirements.qualifications.map((qualification) => (
-                    <li key={qualification.code}>
-                      <div>
-                        <strong>{qualification.title}</strong>
-                        <small>{qualification.qualificationLevel}</small>
-                      </div>
-                      <span>{qualification.relationship}</span>
-                      {qualification.specialConditions && (
-                        <p>{qualification.specialConditions}</p>
-                      )}
-                    </li>
-                  ))}
-                </ul>
+                <>
+                  <p className="training-explanation">
+                    Diplomas appear here because Jobs and Skills Australia links
+                    them as possible vocational training routes. They do not
+                    replace or assess your selected course.
+                  </p>
+                  <ul className="requirement-list qualification-list">
+                    {requirements.qualifications.map((qualification) => (
+                      <li key={qualification.code}>
+                        <div>
+                          <strong>{qualification.title}</strong>
+                          <small>{qualification.qualificationLevel}</small>
+                        </div>
+                        <span>{qualification.relationship}</span>
+                        {qualification.specialConditions && (
+                          <p>{qualification.specialConditions}</p>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </>
               ) : (
                 <p className="requirements-unavailable">
                   No suitable qualification data is available for this role yet.
                 </p>
               )}
-            </article>
+            </details>
           </div>
 
           {/* Source links make the boundary between Australian and US data clear. */}
@@ -195,9 +283,9 @@ export function RoleRequirements({
               ))}
             </ul>
             <p>
-              Priority groups use O*NET categories and do not guarantee what an
-              Australian employer will require. TOP content is © Commonwealth of
-              Australia.
+              Skill groups use O*NET categories and do not guarantee what an
+              Australian employer will require. TOP pathways are optional and
+              are © Commonwealth of Australia.
             </p>
           </aside>
         </>

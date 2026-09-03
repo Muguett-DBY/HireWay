@@ -142,7 +142,7 @@ async function searchStudies(env: Env, query: string): Promise<StudyOption[]> {
      GROUP BY degreeCode, majorCode, label, description, educationLevel, kind
      ORDER BY matchRank, CASE kind WHEN 'course' THEN 0 ELSE 1 END,
               LENGTH(label), label, COALESCE(degreeCode, majorCode)
-     LIMIT 6`,
+     LIMIT 5`,
   )
     .bind(
       query,
