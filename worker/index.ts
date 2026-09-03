@@ -2,6 +2,9 @@
 import { handleProfile } from './routes/profile'
 import { handleSkills } from './routes/skills'
 import { handleGoal } from './routes/goal'
+import { handleOptions } from './routes/options'
+import { handleTargetRole } from './routes/targetRole'
+import { handleRoleRequirements } from './routes/roleRequirements'
 
 // Send API requests to their handler and page requests to React.
 export default {
@@ -21,6 +24,15 @@ export default {
         response = await handleSkills(request, env)
       } else if (path === '/api/goal') {
         response = await handleGoal(request, env)
+      } else if (path === '/api/target-role') {
+        response = await handleTargetRole(request, env)
+      } else if (path === '/api/role-requirements') {
+        response = await handleRoleRequirements(request, env)
+      } else if (
+        path.startsWith('/api/options/') ||
+        path === '/api/recommendations/skills'
+      ) {
+        response = await handleOptions(request, env)
       } else {
         response = Response.json({ error: 'Not found.' }, { status: 404 })
       }
@@ -33,8 +45,15 @@ export default {
       )
     }
 
-    // Keep personal data out of browser and shared caches.
-    response.headers.set('Cache-Control', 'no-store')
+    // Personal records stay private; public catalogues can be reused for an hour.
+    response.headers.set(
+      'Cache-Control',
+      response.ok &&
+        (path.startsWith('/api/options/') ||
+          path.startsWith('/api/recommendations/'))
+        ? 'public, max-age=3600'
+        : 'no-store',
+    )
     return response
   },
 } satisfies ExportedHandler<Env>

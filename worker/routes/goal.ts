@@ -36,7 +36,8 @@ export async function handleGoal(
   // An empty goal means this profile has not chosen one yet.
   if (request.method === 'GET') {
     const goal = await env.DB.prepare(
-      'SELECT career_goal AS careerGoal FROM profile WHERE code = ?',
+      `SELECT career_goal AS careerGoal
+       FROM profile WHERE code = ?`,
     )
       .bind(code)
       .first<CareerGoal>()
@@ -60,18 +61,19 @@ export async function handleGoal(
     return Response.json({ error: 'Enter a career goal.' }, { status: 400 })
   }
 
-  // Keep the goal short enough to display as a job title.
-  if (careerGoal.length > 120) {
+  // Leave room for a short personal aim rather than forcing a job title.
+  if (careerGoal.length > 240) {
     return Response.json(
-      { error: 'Use 120 characters or fewer.' },
+      { error: 'Use 240 characters or fewer.' },
       { status: 400 },
     )
   }
 
-  // Update the same profile row without changing its education or skills.
+  // The old catalogue column is cleared now that target roles have their own field.
   const result = await env.DB.prepare(
     `UPDATE profile
-     SET career_goal = ?, updated_at = CURRENT_TIMESTAMP
+     SET career_goal = ?, career_goal_code = NULL,
+         updated_at = CURRENT_TIMESTAMP
      WHERE code = ?`,
   )
     .bind(careerGoal, code)

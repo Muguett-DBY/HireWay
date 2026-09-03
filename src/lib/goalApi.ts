@@ -1,6 +1,9 @@
 // The goal endpoint returns either saved text or a readable error.
 type GoalResult =
-  | { ok: true; data: { careerGoal: string } }
+  | {
+      ok: true
+      data: { careerGoal: string }
+    }
   | { ok: false; data: { error?: string } }
 
 // Read or replace the goal using the profile's recovery code.

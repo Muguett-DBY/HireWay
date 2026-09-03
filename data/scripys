@@ -32,7 +32,7 @@ def pick_csv(filename, required=True):
         if required:
             raise FileNotFoundError(
                 f'Cannot find CSV input: {filename}\n'
-                f'Please put the O*NET CSV files in the same folder as this script:\n{BASE}'
+                f'Please put the required CSV file in the same folder as this script:\n{BASE}'
             )
         print(f'[SKIP] optional CSV not found: {filename}')
         return None
@@ -126,3 +126,1115 @@ def date_styles(z):
 
 def excel_date(raw):
     return dt.datetime(1899, 12, 30) + dt.timedelta(days=float(raw))
+
+
+def iter_sheet_rows(path, sheet_name):
+    with zipfile.ZipFile(path) as z:
+        target = workbook_info(path)[sheet_name]
+        ss = shared_strings(z)
+        dstyles = date_styles(z)
+        with z.open(target) as fh:
+            for _, elem in ET.iterparse(fh, events=('end',)):
+                if not elem.tag.endswith('}row'):
+                    continue
+                rowdict = {}
+                for c in elem:
+                    if not c.tag.endswith('}c'):
+                        continue
+                    idx = col_idx(c.attrib.get('r'))
+                    typ = c.attrib.get('t')
+                    style = int(c.attrib.get('s', '0'))
+                    v = c.find('main:v', NS)
+                    if typ == 'inlineStr':
+                        val = ''.join((x.text or '') for x in c.findall('.//main:t', NS))
+                    elif v is None:
+                        val = None
+                    else:
+                        raw = v.text
+                        if typ == 's':
+                            val = ss[int(raw)]
+                        elif typ == 'b':
+                            val = bool(int(raw))
+                        elif typ in ('str', 'e'):
+                            val = raw
+                        elif style in dstyles:
+                            val = excel_date(raw)
+                        else:
+                            try:
+                                x = float(raw)
+                                val = int(x) if x.is_integer() else x
+                            except Exception:
+                                val = raw
+                    rowdict[idx] = val
+                if rowdict:
+                    row = [None] * (max(rowdict) + 1)
+                    for i, v in rowdict.items():
+                        row[i] = v
+                    yield row
+                else:
+                    yield []
+                elem.clear()
+
+
+def clean(v):
+    if v is None:
+        return None
+    if isinstance(v, str):
+        s = re.sub(r'\s+', ' ', v.strip())
+        return None if s.lower() in MISSING else s
+    return v
+
+
+def code(v):
+    v = clean(v)
+    if v is None:
+        return None
+    if isinstance(v, float) and v.is_integer():
+        v = int(v)
+    s = str(v).strip()
+    if s.endswith('.0'):
+        s = s[:-2]
+    return None if s in ('', '.') else s
+
+
+def fixed_code(v, width):
+    """Return a classification code as text with preserved leading zeros."""
+    s = code(v)
+    if s is None:
+        return None
+    return s.zfill(width) if s.isdigit() else s
+
+
+def split_code_label(v):
+    """Split values such as '0201 - Computer Science' into code and label."""
+    s = clean(v)
+    if s is None:
+        return None, None
+    m = re.match(r'^\s*([0-9]+)\s*-\s*(.+?)\s*$', str(s))
+    if m:
+        return m.group(1), clean(m.group(2))
+    return None, s
+
+
+def money_aud(v):
+    """Convert CRICOS currency strings such as '$13,300.00' to numeric AUD values."""
+    s = clean(v)
+    if s is None:
+        return None
+    s = re.sub(r'[^0-9.\-]', '', str(s))
+    try:
+        x = float(s)
+        return int(x) if x.is_integer() else x
+    except (TypeError, ValueError):
+        return None
+
+
+def snake(s):
+    if s is None:
+        return ''
+    s = re.sub(r'[¹²³⁴⁵⁶⁷⁸⁹⁰]', '', str(s).strip())
+    s = s.replace('%', ' pct ').replace('$', ' aud ').replace('&', ' and ')
+    s = re.sub(r'[\n\r]+', ' ', s)
+    s = re.sub(r'[()/\-]+', ' ', s)
+    s = re.sub(r'[^A-Za-z0-9]+', '_', s)
+    return re.sub(r'_+', '_', s).strip('_').lower()
+
+
+def parse_month(v):
+    if isinstance(v, dt.datetime):
+        return v.date().isoformat()
+    if isinstance(v, dt.date):
+        return v.isoformat()
+    if isinstance(v, str):
+        for fmt in ('%b-%y', '%b %y', '%Y-%m-%d'):
+            try:
+                return dt.datetime.strptime(v.strip(), fmt).date().isoformat()
+            except ValueError:
+                pass
+    return None
+
+
+def read_table(path, sheet, required_headers):
+    wanted = [required_headers] if isinstance(required_headers, str) else list(required_headers)
+    found = False
+    header = None
+    data = []
+    for r in iter_sheet_rows(path, sheet):
+        vals = [clean(x) for x in r]
+        if not found and all(any(str(x).strip().lower() == w.lower() for x in vals if x is not None) for w in wanted):
+            header = [snake(x) for x in vals]
+            found = True
+            continue
+        if found and any(x is not None for x in vals):
+            vals += [None] * (len(header) - len(vals))
+            data.append(vals[:len(header)])
+    if not found:
+        raise ValueError(f'Header not found: {path.name} / {sheet}')
+    last = max(i for i, h in enumerate(header) if h)
+    return header[:last+1], [r[:last+1] for r in data]
+
+
+def write_csv(name, header, rows):
+    p = OUT / name
+    with p.open('w', newline='', encoding='utf-8-sig') as f:
+        w = csv.writer(f)
+        w.writerow(header)
+        for r in rows:
+            w.writerow([clean(x) for x in r])
+    return p
+
+
+def stream_wide(path, sheet, header_pred, id_names, id_count, out_name, value_name, row_filter=None):
+    p = OUT / out_name
+    count = 0
+    with p.open('w', newline='', encoding='utf-8-sig') as f:
+        w = csv.writer(f)
+        w.writerow(id_names + ['date', value_name])
+        header = None
+        for r in iter_sheet_rows(path, sheet):
+            rr = [clean(x) for x in r]
+            if header is None:
+                if header_pred(rr):
+                    header = rr
+                continue
+            if not any(x is not None for x in rr):
+                continue
+            rr += [None] * (len(header) - len(rr))
+            if row_filter and not row_filter(rr, header):
+                continue
+            ids = rr[:id_count]
+            for j in range(id_count, len(header)):
+                date = parse_month(header[j])
+                if not date:
+                    continue
+                val = clean(rr[j])
+                if val is not None:
+                    w.writerow(ids + [date, val])
+                    count += 1
+    return count
+
+
+def latest_wide(path, sheet, header_pred, id_names, id_count, out_name, value_name, row_filter=None):
+    header = None
+    out = []
+    for r in iter_sheet_rows(path, sheet):
+        rr = [clean(x) for x in r]
+        if header is None:
+            if header_pred(rr):
+                header = rr
+            continue
+        if not any(x is not None for x in rr):
+            continue
+        rr += [None] * (len(header) - len(rr))
+        if row_filter and not row_filter(rr, header):
+            continue
+        date_cols = [j for j in range(id_count, len(header)) if parse_month(header[j])]
+        if not date_cols:
+            continue
+        j = date_cols[-1]
+        val = clean(rr[j])
+        if val is not None:
+            out.append(rr[:id_count] + [parse_month(header[j]), val])
+    write_csv(out_name, id_names + ['date', value_name], out)
+    return out
+
+
+def filtered_table(path, sheet, required_headers, predicate, out_name):
+    h, d = read_table(path, sheet, required_headers)
+    out = []
+    for r in d:
+        rec = {h[i]: clean(r[i]) for i in range(len(h))}
+        if predicate(rec):
+            out.append([rec.get(c) for c in h])
+    write_csv(out_name, h, out)
+    return h, out
+
+
+# Input files
+ANZSCO = pick('ANZSCO Occupation data - February 2026*.xlsx')
+INDUSTRY = pick('industry_data_-_february_2026*.xlsx')
+VAC_SKILL = pick('internet_vacancies_anzsco_skill_level_states_and_territories_-_july_2026*.xlsx')
+VAC2_STATE = pick('internet_vacancies_anzsco2_occupations_states_and_territories_-_july_2026*.xlsx')
+VAC2_REGION = pick('internet_vacancies_anzsco2_occupations_gccsa_and_sa4_regions_-_july_2026*.xlsx')
+VAC2_IVI = pick('internet_vacancies_anzsco2_occupations_ivi_regions_-_july_2026*.xlsx')
+VAC4_STATE = pick('internet_vacancies_anzsco4_occupations_states_and_territories_-_july_2026*.xlsx')
+VAC4_REMOTE = pick('internet_vacancies_anzsco4_occupations_jsa_remoteness_and_northern_australia_classification_-_july_2026*.xlsx')
+NAT_OCC = pick('national_occupation_trend_-_february_2026*.xlsx')
+STATE_OCC = pick('state_occupation_trend_-_february_2026*.xlsx')
+NAT_IND = pick('national_industry_trend_-_february_2026*.xlsx')
+STATE_IND = pick('state_industry_trend_-_february_2026*.xlsx')
+TRAINING = pick('training_occupation_pathways_version_1.0*.xlsx')
+OSCA_CENSUS = pick('osca_occupation_data_-_2021_census*.xlsx')
+ABS_INCOME = pick('Income and work data summary - first and second release*.xlsx')
+PROJECTION = pick('employment_projections_-_may_2025_to_may_2035*.xlsx')
+OSCA_CORR = pick('OSCA correspondence tables v2*.xlsx')
+OSCA_DESC = pick('OSCA Category Descriptions*.xlsx')
+OSCA_INDEX = pick('OSCA index of principal titles alternative titles and specialisations*.xlsx')
+OSCA_STRUCT = pick('OSCA structure*.xlsx')
+
+# Australian education inputs for Degree / Major autocomplete
+CRICOS_COURSES = pick_csv('cricos-courses*.csv')
+ASCED = pick('1272.0 australian standard classification of education (asced) structures*.xlsx')
+
+# O*NET / US occupational skills inputs
+ONET_ESSENTIAL = pick_csv('essential_skills.csv')
+ONET_TRANSFERABLE = pick_csv('transferable_skills.csv')
+ONET_SOFTWARE = pick_csv('software_skills.csv')
+ONET_ABILITIES = pick_csv('abilities.csv')
+ONET_KNOWLEDGE = pick_csv('knowledge.csv')
+ONET_EDUCATION = pick_csv('education.csv')
+ONET_EDUCATION_CAT = pick_csv('education_categories.csv')
+ONET_TRAINING = pick_csv('training_and_experience.csv')
+ONET_TRAINING_CAT = pick_csv('training_and_experience_categories.csv')
+ONET_JOB_ZONES = pick_csv('job_zones.csv')
+ONET_JOB_ZONE_REF = pick_csv('job_zone_reference.csv')
+ONET_CAREER_INTERESTS = pick_csv('career_interest_types.csv')
+ONET_SPECIFIC_INTERESTS = pick_csv('specific_interest_areas.csv')
+ONET_INTEREST_KEYWORDS = pick_csv('career_interest_type_keywords.csv')
+ONET_INTEREST_MAP = pick_csv('specific_interest_areas_to_career_interest_types.csv')
+ONET_INTEREST_ACTIVITIES = pick_csv('interests_illustrative_activities.csv')
+ONET_INTEREST_OCCUPATIONS = pick_csv('interests_illustrative_occupations.csv')
+ONET_TASK_STATEMENTS = pick_csv('task_statements.csv')
+ONET_TASK_RATINGS = pick_csv('task_ratings.csv')
+ONET_TASK_CATEGORIES = pick_csv('task_categories.csv')
+ONET_EMERGING_TASKS = pick_csv('emerging_tasks.csv')
+
+# ANZSCO master
+h1, d1 = read_table(ANZSCO, 'Table_1', ['ANZSCO Code', 'Occupation'])
+i1 = {x:i for i,x in enumerate(h1)}
+master = {}
+for r in d1:
+    c = code(r[i1['anzsco_code']])
+    if not c: continue
+    rec = {h1[i]: clean(r[i]) for i in range(len(h1))}
+    rec['anzsco_code'] = c
+    rec['anzsco_level'] = len(c)
+    rec['anzsco4_code'] = c[:4] if len(c) >= 4 else c
+    master[c] = rec
+for sheet in ('Table_2', 'Table_4'):
+    h, d = read_table(ANZSCO, sheet, ['ANZSCO Code', 'Occupation'])
+    ix = {x:i for i,x in enumerate(h)}
+    for r in d:
+        c = code(r[ix['anzsco_code']])
+        if c not in master: continue
+        for i, col in enumerate(h):
+            if col not in ('anzsco_code', 'occupation'):
+                master[c][col] = clean(r[i])
+master_cols = ['anzsco_code','anzsco_level','anzsco4_code','occupation','description','employed','part_time_share_pct','female_share_pct','median_weekly_earnings_aud','median_age','annual_employment_growth','share_of_workers_who_work_full_time_hours_pct','average_full_time_hours_worked_per_week','median_full_time_earnings_per_week_aud','median_full_time_hourly_earnings_aud']
+write_csv('occupation_anzsco_master.csv', master_cols, ([r.get(c) for c in master_cols] for r in master.values()))
+
+h,d = read_table(ANZSCO, 'Table_3', ['ANZSCO Code','Occupation','Tasks'])
+ix = {x:i for i,x in enumerate(h)}; ranks=defaultdict(int); rows=[]
+for r in d:
+    c=code(r[ix['anzsco_code']]); task=clean(r[ix['tasks']])
+    if c and task:
+        ranks[c]+=1; rows.append([c,r[ix['occupation']],ranks[c],task])
+write_csv('occupation_anzsco_tasks.csv',['anzsco_code','occupation','task_rank','task'],rows)
+
+h,d = read_table(ANZSCO, 'Table_5', ['ANZSCO Code','Occupation'])
+ix={x:i for i,x in enumerate(h)}; ic=[c for c in h if c.startswith('industry')][0]; ranks=defaultdict(int); rows=[]
+for r in d:
+    c=code(r[ix['anzsco_code']]); val=clean(r[ix[ic]])
+    if c and val:
+        ranks[c]+=1; rows.append([c,r[ix['occupation']],ranks[c],val])
+write_csv('occupation_anzsco_industries.csv',['anzsco_code','occupation','industry_rank','industry'],rows)
+
+for sheet, outname, groupname in [
+    ('Table_6','occupation_anzsco_state_share.csv','state'),
+    ('Table_7','occupation_anzsco_age_profile.csv','age_group'),
+    ('Table_8','occupation_anzsco_education_profile.csv','education_level')]:
+    h,d=read_table(ANZSCO,sheet,['ANZSCO Code','Occupation']); ix={x:i for i,x in enumerate(h)}; rows=[]
+    for r in d:
+        c=code(r[ix['anzsco_code']])
+        if not c: continue
+        for col in h:
+            if col in ('anzsco_code','occupation'): continue
+            val=clean(r[ix[col]])
+            if val is None: continue
+            label=col.replace('_pct','')
+            if groupname=='state': label=label.upper()
+            rows.append([c,r[ix['occupation']],label,val])
+    write_csv(outname,['anzsco_code','occupation',groupname,'share_pct'],rows)
+
+# Industry files
+h,d=read_table(INDUSTRY,'Table_1',['Industry','Employed']); write_csv('industry_master.csv',h,d)
+stream_wide(INDUSTRY,'Table_2',lambda r: len(r)>1 and str(r[0]).lower()=='industry' and parse_month(r[1]),['industry'],1,'industry_employment_history.csv','employed')
+h,d=read_table(INDUSTRY,'Table_3',['Industry','Sector','Employed']); ix={x:i for i,x in enumerate(h)}; ranks=defaultdict(int); rows=[]
+for r in d:
+    ind=clean(r[ix['industry']]); sec=clean(r[ix['sector']])
+    if ind and sec: ranks[ind]+=1; rows.append([ind,ranks[ind],sec,clean(r[ix['employed']])])
+write_csv('industry_sector_employment.csv',['industry','sector_rank','sector','employed'],rows)
+h,d=read_table(INDUSTRY,'Table_4',['Industry','ANZSCO Code']); ix={x:i for i,x in enumerate(h)}; occ=[x for x in h if x.startswith('occupation')][0]; ranks=defaultdict(int); rows=[]
+for r in d:
+    ind=clean(r[ix['industry']]); c=code(r[ix['anzsco_code']]); title=clean(r[ix[occ]])
+    if ind and c and title: ranks[ind]+=1; rows.append([ind,ranks[ind],c,title])
+write_csv('industry_top_occupations.csv',['industry','occupation_rank','anzsco_code','occupation'],rows)
+
+# Vacancy files
+latest_wide(VAC_SKILL,'Trend',lambda r: len(r)>=5 and str(r[0]).lower()=='level' and parse_month(r[4]),['level','title','state','skill_level'],4,'vacancy_skill_level_state_latest.csv','vacancies')
+stream_wide(VAC2_STATE,'Trend',lambda r: len(r)>=5 and str(r[0]).lower()=='level' and str(r[1]).lower()=='anzsco_code' and parse_month(r[4]),['level','anzsco_code','title','state'],4,'vacancy_anzsco2_state_long.csv','vacancies')
+valid_code=lambda rr,h: code(rr[0]) is not None
+stream_wide(VAC4_STATE,'4 digit 3 month average',lambda r: len(r)>=4 and str(r[0]).lower()=='anzsco_code' and parse_month(r[3]),['anzsco_code','anzsco_title','state'],3,'vacancy_anzsco4_state_long.csv','vacancies',valid_code)
+latest_wide(VAC4_STATE,'4 digit 3 month average',lambda r: len(r)>=4 and str(r[0]).lower()=='anzsco_code' and parse_month(r[3]),['anzsco_code','anzsco_title','state'],3,'vacancy_anzsco4_state_latest.csv','vacancies',valid_code)
+latest_wide(VAC2_REGION,'Averaged',lambda r: len(r)>=8 and str(r[0]).lower()=='level' and parse_month(r[7]),['level','state','region_name','region_code','region_level','anzsco_code','anzsco_title'],7,'vacancy_anzsco2_gccsa_sa4_latest.csv','vacancies')
+latest_wide(VAC2_IVI,'Averaged',lambda r: len(r)>=6 and str(r[0]).lower()=='level' and parse_month(r[5]),['level','state','region','anzsco_code','anzsco_title'],5,'vacancy_anzsco2_ivi_region_latest.csv','vacancies')
+latest_wide(VAC4_REMOTE,'JSA Remoteness',lambda r: len(r)>=5 and str(r[0]).lower()=='level' and parse_month(r[4]),['level','anzsco_code','anzsco_title','jsa_remoteness'],4,'vacancy_anzsco4_remoteness_latest.csv','vacancies')
+latest_wide(VAC4_REMOTE,'JSA Northern Australia',lambda r: len(r)>=5 and str(r[0]).lower()=='level' and parse_month(r[4]),['level','anzsco_code','anzsco_title','northern_australia'],4,'vacancy_anzsco4_northern_australia_latest.csv','vacancies')
+
+# Occupation trends: non-NFD ANZSCO 4-digit only
+filtered_table(NAT_OCC,'Table_1',['ANZSCO Level','Code (Text)'],lambda x: str(x.get('anzsco_level'))=='4' and str(x.get('nfd_indicator')).upper()=='N','national_occupation_trend_summary.csv')
+stream_wide(NAT_OCC,'Table_2',lambda r: len(r)>=6 and str(r[0]).lower()=='anzsco level' and parse_month(r[5]),['anzsco_level','nfd_indicator','anzsco_code','anzsco_title','skill_level'],5,'national_occupation_trend_long.csv','employment_thousands',lambda r,h: str(r[0])=='4' and str(r[1]).upper()=='N')
+filtered_table(STATE_OCC,'Table_1',['State','ANZSCO Level','Code (Text)'],lambda x: str(x.get('anzsco_level'))=='4' and str(x.get('nfd_indicator')).upper()=='N','state_occupation_trend_summary.csv')
+stream_wide(STATE_OCC,'Table_2',lambda r: len(r)>=7 and str(r[0]).lower()=='state' and str(r[1]).lower()=='anzsco level' and parse_month(r[6]),['state','anzsco_level','nfd_indicator','anzsco_code','anzsco_title','skill_level'],6,'state_occupation_trend_long.csv','employment_thousands',lambda r,h: str(r[1])=='4' and str(r[2]).upper()=='N')
+
+# Industry trends: ANZSIC divisions only
+filtered_table(NAT_IND,'Table_1',['ANZSIC Level','Code (Text)'],lambda x: str(x.get('anzsic_level'))=='1' and str(x.get('nfd_indicator')).upper()=='N','national_industry_trend_summary.csv')
+stream_wide(NAT_IND,'Table_2',lambda r: len(r)>=6 and str(r[0]).lower()=='anzsic level' and parse_month(r[5]),['anzsic_level','nfd_indicator','anzsic_code','anzsic_title','industry_1_digit_code'],5,'national_industry_trend_long.csv','employment_thousands',lambda r,h: str(r[0])=='1' and str(r[1]).upper()=='N')
+filtered_table(STATE_IND,'Table_1',['State','ANZSIC Level','Code (Text)'],lambda x: str(x.get('anzsic_level'))=='1' and str(x.get('nfd_indicator')).upper()=='N','state_industry_trend_summary.csv')
+stream_wide(STATE_IND,'Table_2',lambda r: len(r)>=7 and str(r[0]).lower()=='state' and str(r[1]).lower()=='anzsic level' and parse_month(r[6]),['state','anzsic_level','nfd_indicator','anzsic_code','anzsic_title','industry_1_digit_code'],6,'state_industry_trend_long.csv','employment_thousands',lambda r,h: str(r[1])=='1' and str(r[2]).upper()=='N')
+
+# OSCA current catalogue
+h,d=read_table(OSCA_DESC,'Table 1',['Identifier','Principal Title']); ix={x:i for i,x in enumerate(h)}; osca={}; rows=[]
+for r in d:
+    c=code(r[ix['identifier']])
+    if not c: continue
+    rec={h[i]:clean(r[i]) for i in range(len(h))}; rec['identifier']=c; osca[c]=rec; rows.append([rec.get(x) for x in h])
+write_csv('occupation_osca_master.csv',['osca_code' if x=='identifier' else x for x in h],rows)
+rows=[]
+for c,rec in osca.items():
+    for i,t in enumerate([x.strip() for x in str(rec.get('main_tasks') or '').split(';') if x.strip()],1):
+        rows.append([c,rec.get('principal_title'),i,t])
+write_csv('occupation_osca_tasks.csv',['osca_code','occupation','task_rank','task'],rows)
+
+h,d=read_table(OSCA_INDEX,'Table 1',['Identifier','Description','Category']); ix={x:i for i,x in enumerate(h)}; title_rows=[]
+for r in d:
+    c=code(r[ix['identifier']]); title=clean(r[ix['description']]); typ=clean(r[ix['category']])
+    if c and title and typ: title_rows.append([c,title,typ])
+write_csv('occupation_osca_titles_index.csv',['osca_code','title','title_type'],title_rows)
+
+# OSCA hierarchy
+hier=[]; major_code=major_title=sub_code=sub_title=minor_code=minor_title=unit_code=unit_title=None
+for r in iter_sheet_rows(OSCA_STRUCT,'Table 5'):
+    rr=[clean(x) for x in r]+[None]*7
+    if code(rr[0]): major_code=code(rr[0]); major_title=clean(rr[1])
+    if code(rr[1]) and clean(rr[2]): sub_code=code(rr[1]); sub_title=clean(rr[2])
+    if code(rr[2]) and clean(rr[3]): minor_code=code(rr[2]); minor_title=clean(rr[3])
+    if code(rr[3]) and clean(rr[4]): unit_code=code(rr[3]); unit_title=clean(rr[4])
+    if code(rr[4]) and clean(rr[5]): hier.append([major_code,major_title,sub_code,sub_title,minor_code,minor_title,unit_code,unit_title,code(rr[4]),clean(rr[5]),clean(rr[6])])
+write_csv('occupation_osca_structure.csv',['major_group_code','major_group','sub_major_group_code','sub_major_group','minor_group_code','minor_group','unit_group_code','unit_group','osca_code','occupation','skill_level'],hier)
+
+# Official ANZSCO v1.3 -> OSCA bridge
+mapping=[]; current_code=current_title=None
+rows=list(iter_sheet_rows(OSCA_CORR,'Table 1'))
+for r in rows[5:]:
+    rr=[clean(x) for x in r]+[None]*5
+    if code(rr[0]): current_code=code(rr[0]); current_title=clean(rr[1])
+    oc=code(rr[2])
+    if current_code and oc: mapping.append([current_code,current_title,oc,clean(rr[4]),'partial' if str(clean(rr[3])).lower()=='p' else 'full'])
+write_csv('anzsco_v13_to_osca_2024.csv',['anzsco_code','anzsco_title','osca_code','osca_title','mapping_type'],mapping)
+
+# Training pathways
+h,d=read_table(TRAINING,'Table_1',['Qualification_Code','Qualification_Title','OSCA_Code']); ix={x:i for i,x in enumerate(h)}; train=[]; seen=set()
+for r in d:
+    q=code(r[ix['qualification_code']]); o=code(r[ix['osca_code']])
+    if not q or not o: continue
+    row=[q,clean(r[ix['qualification_title']]),o,clean(r[ix['osca_description']]),clean(r[ix['pathway']]),clean(r[ix['special_conditions']]),clean(r[ix['special_conditions_description']]),clean(r[ix['jsc']])]
+    if tuple(row) not in seen: seen.add(tuple(row)); train.append(row)
+write_csv('training_occupation_pathways.csv',['qualification_code','qualification_title','osca_code','osca_description','pathway','special_conditions','special_conditions_description','jsc'],train)
+
+# Employment projections: non-NFD ANZSCO 4-digit only
+proj_rows=[]; src=list(iter_sheet_rows(PROJECTION,'Table_6 Occupation Unit Group'))
+for r in src[9:]:
+    rr=[clean(x) for x in r]+[None]*12
+    c=code(rr[2])
+    if str(rr[0])!='4' or str(rr[1]).upper()!='N' or not c: continue
+    five_pct=rr[9]*100 if isinstance(rr[9],(int,float)) else rr[9]
+    ten_pct=rr[11]*100 if isinstance(rr[11],(int,float)) else rr[11]
+    proj_rows.append([c,rr[3],rr[4],rr[5],rr[6],rr[7],rr[8],five_pct,rr[10],ten_pct])
+proj_cols=['anzsco4_code','occupation','skill_level','employment_may_2025_thousands','employment_may_2030_thousands','employment_may_2035_thousands','change_5y_thousands','change_5y_pct','change_10y_thousands','change_10y_pct']
+write_csv('employment_projection_anzsco4.csv',proj_cols,proj_rows)
+
+# OSCA Census 2021 summary
+h,d=read_table(OSCA_CENSUS,'Table_1',['OSCA level','OSCA code','Occupation name']); ix={x:i for i,x in enumerate(h)}; rows=[]
+for r in d:
+    c=code(r[ix['osca_code']])
+    if c: r[ix['osca_code']]=c; rows.append(r)
+write_csv('osca_census_2021_summary.csv',h,rows)
+
+# ABS supplementary tables
+def abs_counts(sheet,out_name,label_name):
+    start=False; out=[]
+    for r in iter_sheet_rows(ABS_INCOME,sheet):
+        rr=[clean(x) for x in r]+[None]*4
+        if not start:
+            if rr[1]=='Males' and rr[2]=='Females' and rr[3]=='Persons': start=True
+            continue
+        if clean(rr[0]) and any(isinstance(x,(int,float)) for x in rr[1:4]): out.append(rr[:4])
+    write_csv(out_name,[label_name,'males','females','persons'],out)
+abs_counts('Table 11','abs_occupation_4digit_by_sex_2021.csv','occupation_label')
+abs_counts('Table 9','abs_industry_4digit_by_sex_2021.csv','industry_label')
+
+# Joined ANZSCO market table
+proj={r[0]:r for r in proj_rows}
+vac=defaultdict(dict)
+with (OUT/'vacancy_anzsco4_state_latest.csv').open(encoding='utf-8-sig') as f:
+    for rec in csv.DictReader(f):
+        c=code(rec['anzsco_code']); st=rec['state']
+        if c:
+            try: vac[c][st]=float(rec['vacancies'])
+            except Exception: pass
+states=['AUST','NSW','VIC','QLD','SA','WA','TAS','NT','ACT']
+cols=['anzsco4_code','occupation','description','employed','median_weekly_earnings_aud','median_age','annual_employment_growth','average_full_time_hours_worked_per_week']+[f'vacancies_{s.lower()}_jul_2026' for s in states]+proj_cols[3:]
+rows=[]
+for c,rec in sorted(master.items()):
+    if len(c)!=4: continue
+    pr=proj.get(c); pvals=pr[3:] if pr else [None]*7
+    rows.append([c,rec.get('occupation'),rec.get('description'),rec.get('employed'),rec.get('median_weekly_earnings_aud'),rec.get('median_age'),rec.get('annual_employment_growth'),rec.get('average_full_time_hours_worked_per_week')]+[vac[c].get(s) for s in states]+pvals)
+write_csv('hireway_role_market_anzsco4.csv',cols,rows)
+
+# Joined OSCA role catalogue
+map_osca=defaultdict(list)
+for a,at,o,ot,mt in mapping: map_osca[o].append((a,at,mt))
+train_osca=defaultdict(list)
+for r in train: train_osca[r[2]].append(r)
+titles=defaultdict(lambda:defaultdict(list))
+for o,t,typ in title_rows: titles[o][typ].append(t)
+cols=['osca_code','occupation','alternative_titles','specialisations','lead_statement','registration_or_licensing','skill_level','main_tasks','mapped_anzsco_codes','mapped_anzsco_titles','mapping_types','qualification_count']
+rows=[]
+for o,rec in sorted(osca.items()):
+    maps=map_osca[o]; mapped_codes=sorted(set(x[0] for x in maps)); mapped_titles=list(dict.fromkeys(x[1] for x in maps if x[1])); mtypes=sorted(set(x[2] for x in maps))
+    rows.append([o,rec.get('principal_title'),'; '.join(titles[o].get('Alternative Title',[])) or rec.get('alternative_title'),'; '.join(titles[o].get('Specialisation',[])) or rec.get('specialisations'),rec.get('lead_statement'),rec.get('registration_or_licensing'),rec.get('skill_level'),rec.get('main_tasks'),'; '.join(mapped_codes) or None,'; '.join(mapped_titles) or None,'; '.join(mtypes) or None,len(train_osca[o])])
+write_csv('hireway_role_catalog_osca.csv',cols,rows)
+
+cricos_active_rows = []
+cricos_course_major_links = []
+degree_agg = {}
+degree_level_stats = defaultdict(lambda: {'courses': 0, 'course_names': set(), 'providers': set()})
+
+cricos_cols = [
+    'cricos_provider_code','institution_name','cricos_course_code','course_name',
+    'vet_national_code','dual_qualification','course_level',
+    'primary_broad_field_code','primary_broad_field_name',
+    'primary_narrow_field_code','primary_narrow_field_name',
+    'primary_detailed_field_code','primary_detailed_field_name',
+    'secondary_broad_field_code','secondary_broad_field_name',
+    'secondary_narrow_field_code','secondary_narrow_field_name',
+    'secondary_detailed_field_code','secondary_detailed_field_name',
+    'foundation_studies','work_component','work_component_hours_per_week',
+    'work_component_weeks','work_component_total_hours','course_language',
+    'duration_weeks','tuition_fee_aud','non_tuition_fee_aud',
+    'estimated_total_course_cost_aud','data_source'
+]
+
+for rec in csv_rows(CRICOS_COURSES):
+    if str(clean(rec.get('Expired')) or '').lower() != 'no':
+        continue
+
+    p_broad_code, p_broad_name = split_code_label(rec.get('Field of Education 1 Broad Field'))
+    p_narrow_code, p_narrow_name = split_code_label(rec.get('Field of Education 1 Narrow Field'))
+    p_detail_code, p_detail_name = split_code_label(rec.get('Field of Education 1 Detailed Field'))
+    s_broad_code, s_broad_name = split_code_label(rec.get('Field of Education 2 Broad Field'))
+    s_narrow_code, s_narrow_name = split_code_label(rec.get('Field of Education 2 Narrow Field'))
+    s_detail_code, s_detail_name = split_code_label(rec.get('Field of Education 2 Detailed Field'))
+
+    provider_code = code(rec.get('CRICOS Provider Code'))
+    institution = clean(rec.get('Institution Name'))
+    course_code = code(rec.get('CRICOS Course Code'))
+    course_name = clean(rec.get('Course Name'))
+    course_level = clean(rec.get('Course Level'))
+
+    row = [
+        provider_code, institution, course_code, course_name,
+        code(rec.get('VET National Code')), clean(rec.get('Dual Qualification')), course_level,
+        fixed_code(p_broad_code, 2), p_broad_name,
+        fixed_code(p_narrow_code, 4), p_narrow_name,
+        fixed_code(p_detail_code, 6), p_detail_name,
+        fixed_code(s_broad_code, 2), s_broad_name,
+        fixed_code(s_narrow_code, 4), s_narrow_name,
+        fixed_code(s_detail_code, 6), s_detail_name,
+        clean(rec.get('Foundation Studies')), clean(rec.get('Work Component')),
+        num(rec.get('Work Component Hours/Week')), int_or_none(rec.get('Work Component Weeks')),
+        int_or_none(rec.get('Work Component Total Hours')), clean(rec.get('Course Language')),
+        int_or_none(rec.get('Duration (Weeks)')), money_aud(rec.get('Tuition Fee')),
+        money_aud(rec.get('Non Tuition Fee')), money_aud(rec.get('Estimated Total Course Cost')),
+        'CRICOS'
+    ]
+    cricos_active_rows.append(row)
+
+    for rank, bc, bn, nc, nn, dc, dn in [
+        (1, p_broad_code, p_broad_name, p_narrow_code, p_narrow_name, p_detail_code, p_detail_name),
+        (2, s_broad_code, s_broad_name, s_narrow_code, s_narrow_name, s_detail_code, s_detail_name),
+    ]:
+        if dc or dn:
+            cricos_course_major_links.append([
+                course_code, course_name, course_level, rank,
+                fixed_code(bc, 2), bn, fixed_code(nc, 4), nn,
+                fixed_code(dc, 6), dn, 'CRICOS'
+            ])
+
+    if course_name:
+        key = (course_name, course_level)
+        g = degree_agg.setdefault(key, {
+            'providers': set(), 'course_codes': set(), 'primary_fields': set(),
+            'primary_field_codes': set()
+        })
+        if provider_code:
+            g['providers'].add(provider_code)
+        if course_code:
+            g['course_codes'].add(course_code)
+        if p_detail_name:
+            g['primary_fields'].add(p_detail_name)
+        if p_detail_code:
+            g['primary_field_codes'].add(fixed_code(p_detail_code, 6))
+
+    if course_level:
+        g = degree_level_stats[course_level]
+        g['courses'] += 1
+        if course_name:
+            g['course_names'].add(course_name)
+        if provider_code:
+            g['providers'].add(provider_code)
+
+write_csv('cricos_active_courses.csv', cricos_cols, cricos_active_rows)
+write_csv(
+    'cricos_course_major_links.csv',
+    ['cricos_course_code','course_name','course_level','field_rank',
+     'broad_field_code','broad_field_name','narrow_field_code','narrow_field_name',
+     'field_code','field_name','data_source'],
+    cricos_course_major_links
+)
+
+degree_rows = []
+for (course_name, course_level), g in sorted(degree_agg.items(), key=lambda x: ((x[0][1] or ''), x[0][0] or '')):
+    degree_rows.append([
+        course_name, course_level, len(g['course_codes']), len(g['providers']),
+        '; '.join(sorted(g['primary_field_codes'])) or None,
+        '; '.join(sorted(g['primary_fields'])) or None,
+        'CRICOS'
+    ])
+write_csv(
+    'hireway_degree_options.csv',
+    ['course_name','course_level','active_cricos_course_count','provider_count',
+     'primary_field_codes','primary_field_names','data_source'],
+    degree_rows
+)
+
+level_rows = []
+for course_level, g in sorted(degree_level_stats.items()):
+    level_rows.append([course_level, g['courses'], len(g['course_names']), len(g['providers']), 'CRICOS'])
+write_csv(
+    'hireway_degree_level_options.csv',
+    ['course_level','active_cricos_course_count','unique_course_name_count','provider_count','data_source'],
+    level_rows
+)
+
+# ASCED Level of Education hierarchy.
+asced_level_rows = []
+asced_broad_level = asced_broad_level_name = None
+asced_narrow_level = asced_narrow_level_name = None
+for r in list(iter_sheet_rows(ASCED, 'Table 1'))[7:]:
+    rr = [clean(x) for x in r] + [None] * 4
+    if code(rr[0]) and clean(rr[1]):
+        asced_broad_level = fixed_code(rr[0], 1)
+        asced_broad_level_name = clean(rr[1])
+        asced_narrow_level = asced_narrow_level_name = None
+        asced_level_rows.append([
+            'broad', asced_broad_level, asced_broad_level_name,
+            asced_broad_level, asced_broad_level_name, None, None, None, None, 'ASCED 2001'
+        ])
+    elif code(rr[1]) and clean(rr[2]):
+        asced_narrow_level = fixed_code(rr[1], 2)
+        asced_narrow_level_name = clean(rr[2])
+        asced_level_rows.append([
+            'narrow', asced_narrow_level, asced_narrow_level_name,
+            asced_broad_level, asced_broad_level_name,
+            asced_narrow_level, asced_narrow_level_name, None, None, 'ASCED 2001'
+        ])
+    elif code(rr[2]) and clean(rr[3]):
+        dc = fixed_code(rr[2], 3)
+        dn = clean(rr[3])
+        asced_level_rows.append([
+            'detailed', dc, dn,
+            asced_broad_level, asced_broad_level_name,
+            asced_narrow_level, asced_narrow_level_name,
+            dc, dn, 'ASCED 2001'
+        ])
+
+write_csv(
+    'asced_level_of_education.csv',
+    ['classification_level','asced_level_code','level_name',
+     'broad_level_code','broad_level_name','narrow_level_code','narrow_level_name',
+     'detailed_level_code','detailed_level_name','data_source'],
+    asced_level_rows
+)
+
+# ASCED Field of Education hierarchy and Major autocomplete options.
+asced_field_rows = []
+asced_major_rows = []
+asced_broad_code = asced_broad_name = None
+asced_narrow_code = asced_narrow_name = None
+for r in list(iter_sheet_rows(ASCED, 'Table 2'))[7:]:
+    rr = [clean(x) for x in r] + [None] * 4
+    if code(rr[0]) and clean(rr[1]):
+        asced_broad_code = fixed_code(rr[0], 2)
+        asced_broad_name = clean(rr[1])
+        asced_narrow_code = asced_narrow_name = None
+        asced_field_rows.append([
+            'broad', asced_broad_code, asced_broad_name,
+            asced_broad_code, asced_broad_name, None, None, None, None, 'ASCED 2001'
+        ])
+    elif code(rr[1]) and clean(rr[2]):
+        asced_narrow_code = fixed_code(rr[1], 4)
+        asced_narrow_name = clean(rr[2])
+        asced_field_rows.append([
+            'narrow', asced_narrow_code, asced_narrow_name,
+            asced_broad_code, asced_broad_name,
+            asced_narrow_code, asced_narrow_name, None, None, 'ASCED 2001'
+        ])
+    elif code(rr[2]) and clean(rr[3]):
+        detailed_code = fixed_code(rr[2], 6)
+        detailed_name = clean(rr[3])
+        row = [
+            'detailed', detailed_code, detailed_name,
+            asced_broad_code, asced_broad_name,
+            asced_narrow_code, asced_narrow_name,
+            detailed_code, detailed_name, 'ASCED 2001'
+        ]
+        asced_field_rows.append(row)
+        asced_major_rows.append([
+            detailed_code, detailed_name,
+            asced_narrow_code, asced_narrow_name,
+            asced_broad_code, asced_broad_name,
+            'ASCED 2001'
+        ])
+
+write_csv(
+    'asced_field_of_education.csv',
+    ['classification_level','asced_field_code','field_name',
+     'broad_field_code','broad_field_name','narrow_field_code','narrow_field_name',
+     'detailed_field_code','detailed_field_name','data_source'],
+    asced_field_rows
+)
+write_csv(
+    'hireway_major_options.csv',
+    ['major_code','major_name','narrow_field_code','narrow_field_name',
+     'broad_field_code','broad_field_name','data_source'],
+    asced_major_rows
+)
+
+def clean_onet_code(v):
+    v = clean(v)
+    return str(v).strip() if v is not None else None
+
+
+def pivot_onet_rating_file(path, out_name, requirement_type):
+    """Pivot O*NET IM/LV rows to one row per occupation + element."""
+    grouped = {}
+    for rec in csv_rows(path):
+        if yn(rec.get('Recommend Suppress')) == 'Y':
+            continue
+        soc = clean_onet_code(rec.get('O*NET-SOC Code'))
+        element = clean(rec.get('Element ID'))
+        if not soc or not element:
+            continue
+        key = (soc, element)
+        g = grouped.setdefault(key, {
+            'onet_soc_code': soc,
+            'title': clean(rec.get('Title')),
+            'element_id': element,
+            'element_name': clean(rec.get('Element Name')),
+            'importance': None,
+            'level': None,
+            'importance_n': None,
+            'level_n': None,
+            'not_relevant': None,
+            'date': clean(rec.get('Date')),
+            'domain_source': clean(rec.get('Domain Source')),
+        })
+        sid = clean(rec.get('Scale ID'))
+        if sid == 'IM':
+            g['importance'] = num(rec.get('Data Value'))
+            g['importance_n'] = int_or_none(rec.get('N'))
+        elif sid == 'LV':
+            g['level'] = num(rec.get('Data Value'))
+            g['level_n'] = int_or_none(rec.get('N'))
+            g['not_relevant'] = yn(rec.get('Not Relevant'))
+
+    cols = [
+        'onet_soc_code','title','requirement_type','element_id','element_name',
+        'importance','level','importance_n','level_n','not_relevant',
+        'date','domain_source','data_source'
+    ]
+    rows = []
+    for g in grouped.values():
+        rows.append([
+            g['onet_soc_code'], g['title'], requirement_type, g['element_id'], g['element_name'],
+            g['importance'], g['level'], g['importance_n'], g['level_n'], g['not_relevant'],
+            g['date'], g['domain_source'], 'O*NET'
+        ])
+    rows.sort(key=lambda r: (r[0], -(r[5] if isinstance(r[5], (int, float)) else -1), r[4] or ''))
+    write_csv(out_name, cols, rows)
+    return rows
+
+
+onet_essential = pivot_onet_rating_file(ONET_ESSENTIAL, 'onet_essential_skills.csv', 'essential_skill')
+onet_transferable = pivot_onet_rating_file(ONET_TRANSFERABLE, 'onet_transferable_skills.csv', 'transferable_skill')
+onet_knowledge = pivot_onet_rating_file(ONET_KNOWLEDGE, 'onet_knowledge.csv', 'knowledge')
+onet_abilities = pivot_onet_rating_file(ONET_ABILITIES, 'onet_abilities.csv', 'ability')
+
+onet_all_requirements = onet_essential + onet_transferable + onet_knowledge + onet_abilities
+write_csv(
+    'onet_requirements_all.csv',
+    ['onet_soc_code','title','requirement_type','element_id','element_name','importance','level','importance_n','level_n','not_relevant','date','domain_source','data_source'],
+    onet_all_requirements
+)
+
+# Software / technology tools
+software_rows = []
+seen = set()
+for rec in csv_rows(ONET_SOFTWARE):
+    soc = clean_onet_code(rec.get('O*NET-SOC Code'))
+    example = clean(rec.get('Workplace Example'))
+    if not soc or not example:
+        continue
+    row = [
+        soc, clean(rec.get('Title')), example, clean(rec.get('Element ID')),
+        clean(rec.get('Element Name')), yn(rec.get('Hot Technology')),
+        yn(rec.get('In Demand')), 'O*NET'
+    ]
+    if tuple(row) not in seen:
+        seen.add(tuple(row))
+        software_rows.append(row)
+write_csv(
+    'onet_software_skills.csv',
+    ['onet_soc_code','title','software_or_tool','element_id','software_category','hot_technology','in_demand','data_source'],
+    software_rows
+)
+
+# Education categories + distribution
+edu_cat = {}
+for rec in csv_rows(ONET_EDUCATION_CAT):
+    edu_cat[(clean(rec.get('Scale ID')), int_or_none(rec.get('Category')))] = clean(rec.get('Category Description'))
+
+edu_rows = []
+edu_top = {}
+for rec in csv_rows(ONET_EDUCATION):
+    if yn(rec.get('Recommend Suppress')) == 'Y':
+        continue
+    soc = clean_onet_code(rec.get('O*NET-SOC Code'))
+    cat = int_or_none(rec.get('Category'))
+    sid = clean(rec.get('Scale ID'))
+    if not soc or cat is None:
+        continue
+    share = num(rec.get('Data Value'))
+    row = [
+        soc, clean(rec.get('Title')), sid, clean(rec.get('Scale Name')), cat,
+        edu_cat.get((sid, cat)), share, clean(rec.get('Date')),
+        clean(rec.get('Domain Source')), 'O*NET'
+    ]
+    edu_rows.append(row)
+    if share is not None and (soc not in edu_top or share > edu_top[soc][6]):
+        edu_top[soc] = row
+write_csv('onet_education_distribution.csv', ['onet_soc_code','title','scale_id','scale_name','category','category_description','share_pct','date','domain_source','data_source'], edu_rows)
+write_csv('onet_education_top.csv', ['onet_soc_code','title','scale_id','scale_name','category','category_description','share_pct','date','domain_source','data_source'], edu_top.values())
+
+# Training and experience categories + distribution
+train_cat = {}
+for rec in csv_rows(ONET_TRAINING_CAT):
+    train_cat[(clean(rec.get('Scale ID')), int_or_none(rec.get('Category')))] = clean(rec.get('Category Description'))
+
+onet_train_rows = []
+onet_train_top = {}
+for rec in csv_rows(ONET_TRAINING):
+    if yn(rec.get('Recommend Suppress')) == 'Y':
+        continue
+    soc = clean_onet_code(rec.get('O*NET-SOC Code'))
+    cat = int_or_none(rec.get('Category'))
+    sid = clean(rec.get('Scale ID'))
+    if not soc or cat is None:
+        continue
+    share = num(rec.get('Data Value'))
+    row = [
+        soc, clean(rec.get('Title')), clean(rec.get('Element ID')), clean(rec.get('Element Name')),
+        sid, clean(rec.get('Scale Name')), cat, train_cat.get((sid, cat)), share,
+        clean(rec.get('Date')), clean(rec.get('Domain Source')), 'O*NET'
+    ]
+    onet_train_rows.append(row)
+    key = (soc, sid)
+    if share is not None and (key not in onet_train_top or share > onet_train_top[key][8]):
+        onet_train_top[key] = row
+write_csv('onet_training_experience_distribution.csv', ['onet_soc_code','title','element_id','element_name','scale_id','scale_name','category','category_description','share_pct','date','domain_source','data_source'], onet_train_rows)
+write_csv('onet_training_experience_top.csv', ['onet_soc_code','title','element_id','element_name','scale_id','scale_name','category','category_description','share_pct','date','domain_source','data_source'], onet_train_top.values())
+
+# Job zones + reference descriptions
+zone_ref = {}
+for rec in csv_rows(ONET_JOB_ZONE_REF):
+    z = int_or_none(rec.get('Job Zone'))
+    if z is not None:
+        zone_ref[z] = rec
+
+job_zone_rows = []
+for rec in csv_rows(ONET_JOB_ZONES):
+    soc = clean_onet_code(rec.get('O*NET-SOC Code'))
+    z = int_or_none(rec.get('Job Zone'))
+    if not soc:
+        continue
+    ref = zone_ref.get(z, {})
+    job_zone_rows.append([
+        soc, clean(rec.get('Title')), z, clean(ref.get('Name')), clean(ref.get('Experience')),
+        clean(ref.get('Education')), clean(ref.get('Job Training')), clean(ref.get('SVP Range')),
+        clean(rec.get('Date')), clean(rec.get('Domain Source')), 'O*NET'
+    ])
+write_csv('onet_job_zones.csv', ['onet_soc_code','title','job_zone','zone_name','experience','education','job_training','svp_range','date','domain_source','data_source'], job_zone_rows)
+
+# Career interests
+career_interest_rows = []
+for rec in csv_rows(ONET_CAREER_INTERESTS):
+    soc = clean_onet_code(rec.get('O*NET-SOC Code'))
+    if soc:
+        career_interest_rows.append([
+            soc, clean(rec.get('Title')), clean(rec.get('Element ID')),
+            clean(rec.get('Element Name')), num(rec.get('Data Value')),
+            clean(rec.get('Date')), clean(rec.get('Domain Source')), 'O*NET'
+        ])
+career_interest_rows.sort(key=lambda r: (r[0], -(r[4] if isinstance(r[4], (int, float)) else -1)))
+write_csv('onet_career_interest_types.csv', ['onet_soc_code','title','element_id','interest_type','score','date','domain_source','data_source'], career_interest_rows)
+
+specific_interest_rows = []
+for rec in csv_rows(ONET_SPECIFIC_INTERESTS):
+    soc = clean_onet_code(rec.get('O*NET-SOC Code'))
+    if soc:
+        specific_interest_rows.append([
+            soc, clean(rec.get('Title')), clean(rec.get('Element ID')), clean(rec.get('Element Name')),
+            clean(rec.get('Scale ID')), clean(rec.get('Scale Name')), num(rec.get('Data Value')),
+            clean(rec.get('Date')), clean(rec.get('Domain Source')), 'O*NET'
+        ])
+write_csv('onet_specific_interest_areas.csv', ['onet_soc_code','title','element_id','interest_area','scale_id','scale_name','value','date','domain_source','data_source'], specific_interest_rows)
+
+# Clean copies of interest reference tables
+def clean_copy_csv(path, out_name):
+    records = list(csv_rows(path))
+    if not records:
+        return []
+    original = list(records[0].keys())
+    write_csv(out_name, [snake(c) for c in original], ([rec.get(c) for c in original] for rec in records))
+    return records
+
+clean_copy_csv(ONET_INTEREST_KEYWORDS, 'onet_career_interest_keywords.csv')
+clean_copy_csv(ONET_INTEREST_MAP, 'onet_specific_to_career_interest_map.csv')
+clean_copy_csv(ONET_INTEREST_ACTIVITIES, 'onet_interest_illustrative_activities.csv')
+clean_copy_csv(ONET_INTEREST_OCCUPATIONS, 'onet_interest_illustrative_occupations.csv')
+
+# Tasks: statement + importance + relevance + dominant frequency category
+freq_desc = {}
+for rec in csv_rows(ONET_TASK_CATEGORIES):
+    if clean(rec.get('Scale ID')) == 'FT':
+        freq_desc[int_or_none(rec.get('Category'))] = clean(rec.get('Category Description'))
+
+task_rating = {}
+for rec in csv_rows(ONET_TASK_RATINGS):
+    if yn(rec.get('Recommend Suppress')) == 'Y':
+        continue
+    soc = clean_onet_code(rec.get('O*NET-SOC Code'))
+    tid = code(rec.get('Task ID'))
+    if not soc or not tid:
+        continue
+    key = (soc, tid)
+    g = task_rating.setdefault(key, {'importance': None, 'relevance': None, 'freq_cat': None, 'freq_pct': None})
+    sid = clean(rec.get('Scale ID'))
+    val = num(rec.get('Data Value'))
+    if sid == 'IM':
+        g['importance'] = val
+    elif sid == 'RT':
+        g['relevance'] = val
+    elif sid == 'FT':
+        cat = int_or_none(rec.get('Category'))
+        if val is not None and (g['freq_pct'] is None or val > g['freq_pct']):
+            g['freq_pct'] = val
+            g['freq_cat'] = cat
+
+task_rows = []
+for rec in csv_rows(ONET_TASK_STATEMENTS):
+    soc = clean_onet_code(rec.get('O*NET-SOC Code'))
+    tid = code(rec.get('Task ID'))
+    if not soc or not tid:
+        continue
+    rating = task_rating.get((soc, tid), {})
+    cat = rating.get('freq_cat')
+    task_rows.append([
+        soc, clean(rec.get('Title')), tid, clean(rec.get('Task')), clean(rec.get('Task Type')),
+        rating.get('importance'), rating.get('relevance'), cat, freq_desc.get(cat),
+        rating.get('freq_pct'), int_or_none(rec.get('Incumbents Responding')),
+        clean(rec.get('Date')), clean(rec.get('Domain Source')), 'O*NET'
+    ])
+task_rows.sort(key=lambda r: (r[0], -(r[5] if isinstance(r[5], (int, float)) else -1), r[2]))
+write_csv('onet_tasks.csv', ['onet_soc_code','title','task_id','task','task_type','importance','relevance','dominant_frequency_category','dominant_frequency','dominant_frequency_share_pct','incumbents_responding','date','domain_source','data_source'], task_rows)
+
+# Emerging tasks
+emerging_task_rows = []
+for rec in csv_rows(ONET_EMERGING_TASKS):
+    soc = clean_onet_code(rec.get('O*NET-SOC Code'))
+    if soc:
+        emerging_task_rows.append([
+            soc, clean(rec.get('Title')), clean(rec.get('Task')), clean(rec.get('Category')),
+            code(rec.get('Original Task ID')), clean(rec.get('Original Task')),
+            clean(rec.get('Date')), clean(rec.get('Domain Source')), 'O*NET'
+        ])
+write_csv('onet_emerging_tasks.csv', ['onet_soc_code','title','task','category','original_task_id','original_task','date','domain_source','data_source'], emerging_task_rows)
+
+# Compact role-level O*NET profile for frontend prototyping
+def top_requirement_names(rows, n=6):
+    by = defaultdict(list)
+    for r in rows:
+        score = r[5] if isinstance(r[5], (int, float)) else -1
+        by[r[0]].append((score, r[4]))
+    return {
+        k: '; '.join(name for _, name in sorted(v, key=lambda x: (-x[0], x[1] or ''))[:n] if name)
+        for k, v in by.items()
+    }
+
+ess_top = top_requirement_names(onet_essential)
+trans_top = top_requirement_names(onet_transferable)
+know_top = top_requirement_names(onet_knowledge)
+abil_top = top_requirement_names(onet_abilities)
+
+hot_tools = defaultdict(list)
+demand_tools = defaultdict(list)
+all_titles = {}
+for r in software_rows:
+    all_titles[r[0]] = r[1]
+    if r[5] == 'Y': hot_tools[r[0]].append(r[2])
+    if r[6] == 'Y': demand_tools[r[0]].append(r[2])
+for r in onet_all_requirements:
+    all_titles[r[0]] = r[1]
+for r in job_zone_rows:
+    all_titles[r[0]] = r[1]
+
+interest_top = defaultdict(list)
+for r in career_interest_rows:
+    interest_top[r[0]].append((r[4], r[3]))
+
+specific_top = defaultdict(list)
+for r in specific_interest_rows:
+    if r[4] == 'DS':
+        specific_top[r[0]].append((r[6], r[3]))
+
+task_top = defaultdict(list)
+for r in task_rows:
+    task_top[r[0]].append((r[5] if isinstance(r[5], (int, float)) else -1, r[3]))
+
+zone_by = {r[0]: r[2] for r in job_zone_rows}
+edu_by = {r[0]: r[5] for r in edu_top.values()}
+
+profile_rows = []
+for soc in sorted(all_titles):
+    profile_rows.append([
+        soc,
+        all_titles.get(soc),
+        zone_by.get(soc),
+        edu_by.get(soc),
+        ess_top.get(soc),
+        trans_top.get(soc),
+        know_top.get(soc),
+        abil_top.get(soc),
+        '; '.join(dict.fromkeys(hot_tools.get(soc, []))) or None,
+        '; '.join(dict.fromkeys(demand_tools.get(soc, []))) or None,
+        '; '.join(x[1] for x in sorted(interest_top.get(soc, []), key=lambda x: -(x[0] if isinstance(x[0], (int, float)) else -1))[:3]),
+        '; '.join(x[1] for x in sorted(specific_top.get(soc, []), key=lambda x: -(x[0] if isinstance(x[0], (int, float)) else -1))[:5]),
+        '; '.join(x[1] for x in sorted(task_top.get(soc, []), key=lambda x: -x[0])[:5]),
+        'O*NET'
+    ])
+write_csv(
+    'hireway_onet_role_profile.csv',
+    ['onet_soc_code','title','job_zone','top_education','top_essential_skills','top_transferable_skills','top_knowledge','top_abilities','hot_technologies','in_demand_technologies','top_career_interests','top_specific_interest_areas','top_tasks','data_source'],
+    profile_rows
+)
+
+# Reports
+# Avoid re-reading every large output CSV just to count rows.
+# Key row counts are tracked directly from in-memory processing variables below.
+anz4={c for c in master if len(c)==4}; anz6={c for c in master if len(c)==6}; map_src={r[0] for r in mapping}; proj_codes={r[0] for r in proj_rows}; vac_aust={c for c,d in vac.items() if d.get('AUST') is not None}
+metrics=[
+    ['anzsco_master_rows',len(master)],['anzsco_4digit_rows',len(anz4)],['anzsco_6digit_rows',len(anz6)],['osca_6digit_rows',len(osca)],
+    ['anzsco6_mapping_coverage_count',len(anz6 & map_src)],['anzsco6_mapping_coverage_pct',round(len(anz6 & map_src)/len(anz6)*100,2)],
+    ['projection_anzsco4_coverage_count',len(anz4 & proj_codes)],['projection_anzsco4_coverage_pct',round(len(anz4 & proj_codes)/len(anz4)*100,2)],
+    ['vacancy_aust_anzsco4_coverage_count',len(anz4 & vac_aust)],['vacancy_aust_anzsco4_coverage_pct',round(len(anz4 & vac_aust)/len(anz4)*100,2)],
+    ['anzsco4_missing_median_weekly_earnings',sum(1 for c in anz4 if master[c].get('median_weekly_earnings_aud') is None)],
+    ['anzsco4_missing_annual_employment_growth',sum(1 for c in anz4 if master[c].get('annual_employment_growth') is None)],
+    ['training_pathway_rows',len(train)],
+    ['onet_role_profile_rows',len(profile_rows)],
+    ['onet_essential_skill_rows',len(onet_essential)],
+    ['onet_transferable_skill_rows',len(onet_transferable)],
+    ['onet_knowledge_rows',len(onet_knowledge)],
+    ['onet_ability_rows',len(onet_abilities)],
+    ['onet_software_rows',len(software_rows)],
+    ['onet_task_rows',len(task_rows)],
+    ['onet_emerging_task_rows',len(emerging_task_rows)],
+    ['cricos_active_course_rows',len(cricos_active_rows)],
+    ['cricos_unique_degree_course_options',len(degree_rows)],
+    ['cricos_degree_level_options',len(level_rows)],
+    ['cricos_course_major_link_rows',len(cricos_course_major_links)],
+    ['asced_level_of_education_rows',len(asced_level_rows)],
+    ['asced_field_of_education_rows',len(asced_field_rows)],
+    ['asced_major_option_rows',len(asced_major_rows)]
+]
+write_csv('cleaning_report.csv',['metric','value'],metrics)
+
+# README and source notes
+(OUT/'README.md').write_text('''# HireWay Final Cleaned Data
+
+Recommended application tables:
+- hireway_degree_level_options.csv: Australian degree/course-level dropdown options from active CRICOS courses.
+- hireway_degree_options.csv: unique active Australian CRICOS course names for Degree/Course autocomplete.
+- hireway_major_options.csv: official ASCED detailed Fields of Education for Major autocomplete.
+- cricos_course_major_links.csv: links active CRICOS courses to their primary/secondary Fields of Education.
+- hireway_role_catalog_osca.csv: current OSCA role catalogue and search data.
+- hireway_role_market_anzsco4.csv: employment, salary, vacancy and projection market data.
+- anzsco_v13_to_osca_2024.csv: official bridge between legacy ANZSCO v1.3 and OSCA 2024.
+- training_occupation_pathways.csv: qualifications and pathways.
+- onet_requirements_all.csv: O*NET skills/knowledge/abilities ratings.
+- onet_software_skills.csv: O*NET software and technology tools.
+- onet_tasks.csv: O*NET task statements and ratings.
+
+Education cleaning rules:
+- CRICOS application-facing outputs include only records where Expired = No.
+- CRICOS provider/course/classification identifiers are stored as text.
+- CRICOS currency strings are converted to numeric AUD fields.
+- Primary and secondary CRICOS Fields of Education are split into separate code/name columns.
+- ASCED codes preserve leading zeros and are retained in broad/narrow/detailed hierarchies.
+- Major autocomplete uses ASCED Detailed Fields of Education.
+
+General cleaning rules:
+- Classification codes are text.
+- Missing/suppressed values are left missing; no artificial imputation is performed.
+- Wide time series are converted to long format.
+- Projection ratios are converted to ordinary percentage values.
+- The supplied ANZSCO occupation data matches the official ANZSCO v1.3 -> OSCA correspondence.
+
+Source boundary:
+- Australian labour-market, education, qualification and occupation data remain the primary Australian sources.
+- O*NET data are US occupational skills intelligence and should be labelled as such in HireWay; do not present O*NET ratings as Australian employer requirements.
+''', encoding='utf-8')
+
+old_gap = OUT/'DATA_GAP_SKILLS.md'
+if old_gap.exists():
+    old_gap.unlink()
+(OUT/'DATA_SOURCE_NOTES.md').write_text('''# Data source notes
+
+Degree / course candidates: CRICOS active courses (Australia).
+Major candidates: ASCED Field of Education (Australia).
+Skills, knowledge, abilities, tools and task ratings: O*NET (United States).
+Australian occupation and labour-market information: ABS / Jobs and Skills Australia datasets supplied to this pipeline.
+
+Do not silently mix classification systems. Keep CRICOS/ASCED, ANZSCO/OSCA and O*NET-SOC identifiers in their own columns unless a validated crosswalk is used.
+''', encoding='utf-8')
+
+# Local-only completion summary
+csv_files = sorted(OUT.glob('*.csv'))
+print()
+print('=' * 60)
+print('HireWay local data cleaning finished.')
+print(f'Cleaned CSV files: {len(csv_files)}')
+print(f'Output folder: {OUT}')
+print('No database was created.')
+print('=' * 60)
