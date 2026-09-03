@@ -3,6 +3,7 @@ export type RoleSkill = {
   name: string
   description: string
   score: number
+  priority: 'essential' | 'recommended' | 'bonus'
 }
 
 export type RoleQualification = {

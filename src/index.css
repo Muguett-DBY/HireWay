@@ -1048,6 +1048,22 @@ select {
   color: var(--muted);
 }
 
+.guidance-note {
+  display: grid;
+  gap: 4px;
+  padding: 15px 17px;
+  border-left: 4px solid #3f6fa8;
+  border-radius: 10px;
+  background: #f1f6fc;
+  color: #244d7a;
+}
+
+.guidance-note p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 .requirements-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1060,6 +1076,10 @@ select {
   border: 1px solid var(--line);
   border-radius: 15px;
   background: #fbfdfc;
+}
+
+.priority-panel {
+  background: #f8fbf9;
 }
 
 .requirement-label {
@@ -1076,10 +1096,81 @@ select {
   list-style: none;
 }
 
+.priority-groups {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.priority-group {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-left-width: 5px;
+  border-radius: 12px;
+  background: var(--paper);
+}
+
+.priority-essential {
+  border-left-color: #b94545;
+  background: #fff8f7;
+}
+
+.priority-recommended {
+  border-left-color: #c47a20;
+  background: #fffaf2;
+}
+
+.priority-bonus {
+  border-left-color: #3f6fa8;
+  background: #f5f8fd;
+}
+
+.priority-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.priority-heading h3,
+.priority-heading p {
+  margin: 0;
+}
+
+.priority-heading h3 {
+  font-size: 16px;
+}
+
+.priority-heading p,
+.priority-empty {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.priority-heading > span {
+  display: grid;
+  flex: 0 0 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 80%);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.priority-empty {
+  margin-bottom: 0;
+}
+
 .skill-requirement-list {
   display: flex;
   flex-wrap: wrap;
   gap: 9px;
+}
+
+.priority-group .skill-requirement-list {
+  margin-top: 12px;
 }
 
 .skill-requirement-list li {
