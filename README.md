@@ -6,7 +6,7 @@ HireWay is a web-based career exploration platform designed to help young people
 
 Live Website: https://hireway.custard.top
 
-About the Project
+`About the Project
 
 Choosing a future career can be difficult, especially for young people who may not know what skills, qualifications, or opportunities are available.
 
@@ -14,13 +14,14 @@ HireWay aims to simplify career exploration by transforming Australian open labo
 
 Users can explore occupations and understand:
 
-Career requirements
+`Career requirements
 Required skills and knowledge
 Education and training pathways
 Employment outlook
 Labour-market demand
 Potential skill gaps
-Data Sources
+
+`Data Sources
 
 HireWay uses Australian open data and occupational datasets, including information related to:
 
@@ -32,3 +33,13 @@ Labour-market trends
 Employment outlook
 
 The data is processed and integrated to support career exploration and recommendation features.
+
+`Technology Stack
+React
+TypeScript
+Vite
+Cloudflare Workers / Wrangler
+Australian Open Data
+
+`Team
+Developed as part of the Monash University FIT5120 Industry Experience project.
