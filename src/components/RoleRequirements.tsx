@@ -10,6 +10,24 @@ type RoleRequirementsProps = {
   targetRole: TargetRole
 }
 
+const priorityGroups = [
+  {
+    key: 'essential',
+    title: 'Essential',
+    description: 'Foundational skills to prioritise first.',
+  },
+  {
+    key: 'recommended',
+    title: 'Recommended',
+    description: 'Transferable skills worth building next.',
+  },
+  {
+    key: 'bonus',
+    title: 'Bonus',
+    description: 'Tools that can strengthen your profile.',
+  },
+] as const
+
 // This section turns the saved occupation into practical role information.
 export function RoleRequirements({
   profileCode,
@@ -59,6 +77,14 @@ export function RoleRequirements({
         </p>
       </div>
 
+      <aside className="guidance-note" aria-label="Requirement guidance">
+        <strong>Use these priorities as a guide.</strong>
+        <p>
+          They summarise general US career data. Individual Australian employers
+          may ask for different skills, tools or qualifications.
+        </p>
+      </aside>
+
       {loading && (
         <p className="requirements-status" role="status">
           Loading role information...
@@ -75,14 +101,47 @@ export function RoleRequirements({
         <>
           {/* Missing data stays visible instead of being replaced with guesses. */}
           <div className="requirements-grid">
-            <article className="requirement-panel">
-              <span className="requirement-label">Common skills</span>
+            <article className="requirement-panel priority-panel">
+              <span className="requirement-label">Skills and tools</span>
               {requirements.skills.length > 0 ? (
-                <ul className="requirement-list skill-requirement-list">
-                  {requirements.skills.map((skill) => (
-                    <li key={skill.code}>{skill.name}</li>
-                  ))}
-                </ul>
+                <div className="priority-groups">
+                  {/* Each O*NET category gets its own visible priority level. */}
+                  {priorityGroups.map((group) => {
+                    const skills = requirements.skills.filter(
+                      (skill) => skill.priority === group.key,
+                    )
+
+                    return (
+                      <section
+                        className={`priority-group priority-${group.key}`}
+                        key={group.key}
+                        aria-labelledby={`priority-${group.key}-title`}
+                      >
+                        <div className="priority-heading">
+                          <div>
+                            <h3 id={`priority-${group.key}-title`}>
+                              {group.title}
+                            </h3>
+                            <p>{group.description}</p>
+                          </div>
+                          <span>{skills.length}</span>
+                        </div>
+
+                        {skills.length > 0 ? (
+                          <ul className="requirement-list skill-requirement-list">
+                            {skills.map((skill) => (
+                              <li key={skill.code}>{skill.name}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p className="priority-empty">
+                            No suitable items are available in this category.
+                          </p>
+                        )}
+                      </section>
+                    )
+                  })}
+                </div>
               ) : (
                 <p className="requirements-unavailable">
                   No suitable skill data is available for this role yet.
@@ -136,9 +195,9 @@ export function RoleRequirements({
               ))}
             </ul>
             <p>
-              Skills use US O*NET data and do not represent a guarantee of what
-              every Australian employer will require. TOP content is ©
-              Commonwealth of Australia.
+              Priority groups use O*NET categories and do not guarantee what an
+              Australian employer will require. TOP content is © Commonwealth of
+              Australia.
             </p>
           </aside>
         </>

@@ -10,6 +10,11 @@ This import prepares the catalogue data needed by the Iteration 1 career flow. I
 - Jobs and Skills Australia TOP qualification pathways linked to OSCA occupations
 - existing O*NET skill and tool records remain separate
 
+The role page presents O*NET basic skills as **Essential**, transferable skills
+as **Recommended**, and software or technology examples as **Bonus**. These
+labels are a simple exploration order, not a guarantee of an employer's hiring
+requirements.
+
 The source snapshots are kept in `data/sources`. Generated SQL stays in `data/generated` and is not committed because it can be rebuilt.
 
 ## Source boundaries

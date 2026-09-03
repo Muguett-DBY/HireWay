@@ -8,6 +8,7 @@ type RoleSkill = {
   name: string
   description: string
   score: number
+  priority: 'essential' | 'recommended' | 'bonus'
 }
 
 type RoleQualification = {
@@ -74,15 +75,40 @@ export async function handleRoleRequirements(
   // Independent lookups can run together once the target role is known.
   const [skillResult, qualificationResult, sourceResult] = await Promise.all([
     env.DB.prepare(
-      `SELECT s.code, s.name, s.description,
-              ROUND(AVG(os.score), 1) AS score
-       FROM occupation_onet_map map
-       JOIN onet_occupation_skill os ON os.onet_code = map.onet_code
-       JOIN skill s ON s.code = os.skill_code
-       WHERE map.occupation_code = ? AND s.kind = 'skill'
-       GROUP BY s.code, s.name, s.description
-       ORDER BY score DESC, s.name
-       LIMIT 8`,
+      `WITH grouped_requirements AS (
+         SELECT s.code, s.name, s.description,
+                ROUND(AVG(os.score), 1) AS score,
+                MIN(
+                  CASE os.requirement_type
+                    WHEN 'essential_skill' THEN 0
+                    WHEN 'transferable_skill' THEN 1
+                    WHEN 'tool' THEN 2
+                    ELSE 1
+                  END
+                ) AS priority_rank
+         FROM occupation_onet_map map
+         JOIN onet_occupation_skill os ON os.onet_code = map.onet_code
+         JOIN skill s ON s.code = os.skill_code
+         WHERE map.occupation_code = ?
+         GROUP BY s.code, s.name, s.description
+       ),
+       ranked_requirements AS (
+         SELECT code, name, description, score, priority_rank,
+                ROW_NUMBER() OVER (
+                  PARTITION BY priority_rank
+                  ORDER BY score DESC, name
+                ) AS category_rank
+         FROM grouped_requirements
+       )
+       SELECT code, name, description, score,
+              CASE priority_rank
+                WHEN 0 THEN 'essential'
+                WHEN 1 THEN 'recommended'
+                ELSE 'bonus'
+              END AS priority
+       FROM ranked_requirements
+       WHERE category_rank <= 6
+       ORDER BY priority_rank, score DESC, name`,
     )
       .bind(role.code)
       .all<RoleSkill>(),
