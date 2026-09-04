@@ -1,10 +1,11 @@
 // Keep each feature's API logic in its own file.
 import { handleProfile } from './routes/profile'
 import { handleSkills } from './routes/skills'
-import { handleGoal } from './routes/goal'
 import { handleOptions } from './routes/options'
 import { handleTargetRole } from './routes/targetRole'
 import { handleRoleRequirements } from './routes/roleRequirements'
+import { handleRoleFeedback } from './routes/roleFeedback'
+import { handleRoleSuggestions } from './routes/roleSuggestions'
 
 // Send API requests to their handler and page requests to React.
 export default {
@@ -22,12 +23,14 @@ export default {
         response = await handleProfile(request, env)
       } else if (path === '/api/skills') {
         response = await handleSkills(request, env)
-      } else if (path === '/api/goal') {
-        response = await handleGoal(request, env)
       } else if (path === '/api/target-role') {
         response = await handleTargetRole(request, env)
       } else if (path === '/api/role-requirements') {
         response = await handleRoleRequirements(request, env)
+      } else if (path === '/api/role-feedback') {
+        response = await handleRoleFeedback(request, env)
+      } else if (path === '/api/recommendations/roles') {
+        response = await handleRoleSuggestions(request, env)
       } else if (
         path.startsWith('/api/options/') ||
         path === '/api/recommendations/skills'
@@ -45,14 +48,15 @@ export default {
       )
     }
 
-    // Personal records stay private; public catalogues can be reused for an hour.
+    // Public catalogues may be reused for an hour; anything tied to a
+    // recovery code - including role suggestions - must never be cached.
+    const isPublicCatalogue =
+      response.ok &&
+      (path.startsWith('/api/options/') ||
+        path === '/api/recommendations/skills')
     response.headers.set(
       'Cache-Control',
-      response.ok &&
-        (path.startsWith('/api/options/') ||
-          path.startsWith('/api/recommendations/'))
-        ? 'public, max-age=3600'
-        : 'no-store',
+      isPublicCatalogue ? 'public, max-age=3600' : 'no-store',
     )
     return response
   },
