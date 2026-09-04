@@ -531,9 +531,9 @@ a:focus-visible {
   color: var(--ink);
 }
 
-/* Profile forms stay narrow so fields are easy to scan and edit. */
+/* Profile stages use the desktop width without making individual fields too wide. */
 .profile-page {
-  width: min(880px, 100%);
+  width: min(1120px, 100%);
   margin: 48px auto;
   padding: 0 20px;
 }
@@ -547,6 +547,10 @@ a:focus-visible {
   margin-bottom: 10px;
   font-size: clamp(30px, 4vw, 40px);
   letter-spacing: -0.035em;
+}
+
+.profile-page > h1:focus {
+  outline: none;
 }
 
 .intro,
@@ -895,14 +899,236 @@ select {
   font-size: 14px;
 }
 
-/* Keep the profile cards aligned as one page. */
+/* Pair one active form with a controlled, non-clickable line sidebar. */
+.profile-wizard {
+  display: grid;
+  grid-template-columns: minmax(230px, 270px) minmax(0, 640px);
+  justify-content: center;
+  align-items: start;
+  gap: clamp(32px, 5vw, 56px);
+  margin: 32px auto 64px;
+}
+
+.profile-wizard-sidebar {
+  position: sticky;
+  top: 94px;
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+
+.profile-progress {
+  padding: 22px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgb(255 255 255 / 78%);
+  box-shadow: 0 10px 35px rgb(35 76 60 / 5%);
+}
+
+.profile-progress-eyebrow {
+  margin: 0 0 18px;
+  color: var(--green-dark);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.profile-progress-summary {
+  display: none;
+}
+
+.profile-progress-list {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.profile-progress-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 42px 25px minmax(0, 1fr);
+  align-items: start;
+  color: #82948b;
+}
+
+.profile-progress-item:not(:last-child)::after {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 11px;
+  height: 1px;
+  transform: translateY(-50%);
+  background: #b8c9c0;
+  content: '';
+}
+
+.profile-progress-marker {
+  width: 22px;
+  height: 2px;
+  margin-top: 10px;
+  border-radius: 999px;
+  background: #b8c9c0;
+  transition:
+    width 220ms ease,
+    background-color 220ms ease;
+}
+
+.profile-progress-index {
+  padding-top: 1px;
+  font-family: ui-monospace, 'Cascadia Code', monospace;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.profile-progress-copy {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.profile-progress-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.profile-progress-description {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.profile-progress-item.completed {
+  color: #577166;
+}
+
+.profile-progress-item.completed .profile-progress-marker {
+  width: 30px;
+  background: #73ae8f;
+}
+
+.profile-progress-item.current {
+  color: var(--green-dark);
+}
+
+.profile-progress-item.current .profile-progress-marker {
+  width: 42px;
+  background: var(--green);
+}
+
+.profile-progress-item.current .profile-progress-label {
+  font-weight: 800;
+}
+
+.profile-progress-check {
+  color: var(--green);
+  font-size: 13px;
+}
+
+.profile-progress-state {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.wizard-recovery-note {
+  margin: 0;
+  padding: 14px;
+  border: 1px solid #cfe4d9;
+}
+
+.wizard-recovery-note #saved-code {
+  font-size: 12px;
+}
+
+/* Keep the active stage aligned without stacking every form on one page. */
 .profile-stack {
-  max-width: 580px;
-  margin: 28px auto;
+  min-width: 0;
+  max-width: 640px;
+  margin: 0;
 }
 
 .profile-stack .profile-card {
+  max-width: none;
   margin: 0 0 24px;
+}
+
+.profile-stage-content > .profile-card {
+  animation: profile-stage-enter 220ms ease-out both;
+}
+
+@keyframes profile-stage-enter {
+  from {
+    transform: translateY(7px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.profile-step-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.card .profile-step-actions button {
+  width: 100%;
+  margin: 0;
+}
+
+.profile-review-card > .eyebrow {
+  margin-bottom: 8px;
+}
+
+.profile-review-card h2 {
+  margin-bottom: 20px;
+}
+
+.profile-review-list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+
+.profile-review-list > div {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.7fr) minmax(0, 1.3fr);
+  gap: 20px;
+  padding: 13px 0;
+  border-top: 1px solid var(--line);
+}
+
+.profile-review-list dt {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.profile-review-list dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.profile-stage-content .data-source-note {
+  max-width: none;
 }
 
 /* Suggested skills stay separate from skills the user has already saved. */
@@ -1487,6 +1713,26 @@ select {
     grid-template-columns: 1fr;
   }
 
+  .profile-wizard {
+    grid-template-columns: minmax(0, 640px);
+    gap: 18px;
+  }
+
+  .profile-wizard-sidebar {
+    position: static;
+  }
+
+  .profile-progress-summary {
+    display: block;
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .profile-progress-eyebrow {
+    margin-bottom: 6px;
+  }
+
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
@@ -1613,6 +1859,47 @@ select {
     margin-top: 28px;
   }
 
+  .profile-progress {
+    padding: 18px;
+  }
+
+  .profile-progress-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .profile-progress-item {
+    display: block;
+    min-width: 0;
+  }
+
+  .profile-progress-item::after {
+    display: none;
+  }
+
+  .profile-progress-marker,
+  .profile-progress-item.completed .profile-progress-marker,
+  .profile-progress-item.current .profile-progress-marker {
+    display: block;
+    width: 100%;
+    height: 4px;
+    margin: 0;
+  }
+
+  .profile-progress-index,
+  .profile-progress-copy {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .wizard-recovery-note {
+    order: 2;
+  }
+
   .dashboard-page {
     margin: 28px auto 56px;
     padding: 0 18px;
@@ -1657,6 +1944,15 @@ select {
   .skill-entry button {
     width: 100%;
   }
+
+  .profile-step-actions,
+  .profile-review-list > div {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-review-list > div {
+    gap: 5px;
+  }
 }
 
 /* Respect reduced-motion preferences without changing the layout. */
@@ -1666,6 +1962,14 @@ select {
   }
 
   button {
+    transition: none;
+  }
+
+  .profile-stage-content > .profile-card {
+    animation: none;
+  }
+
+  .profile-progress-marker {
     transition: none;
   }
 }
