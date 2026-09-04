@@ -14,10 +14,10 @@ import {
   type SaveSkillResult,
   type Skill,
 } from '../lib/skillsApi'
-// Use the helper that talks to the career goal endpoint.
-import { requestGoal } from '../lib/goalApi'
 import { requestTargetRole, type TargetRole } from '../lib/targetRoleApi'
 import { CareerDashboard } from '../components/CareerDashboard'
+import { Stepper } from '../components/Stepper'
+import type { RoleSuggestion } from '../lib/suggestionApi'
 import { EducationLevelSelect } from '../components/EducationLevelSelect'
 import {
   loadSkillRecommendations,
@@ -37,11 +37,44 @@ const emptyDetails: ProfileDetails = {
   currentRole: '',
 }
 
+// Returning visitors resume from the saved code instead of typing it again.
+const RECOVERY_CODE_KEY = 'hireway.recoveryCode'
+const DRAFT_KEY = 'hireway.backgroundDraft'
+
+// The unsaved background form survives a refresh through a small draft.
+function saveDraft(next: ProfileDetails) {
+  window.localStorage.setItem(DRAFT_KEY, JSON.stringify(next))
+}
+
+function readDraft(): ProfileDetails | null {
+  try {
+    const raw = window.localStorage.getItem(DRAFT_KEY)
+    return raw ? { ...emptyDetails, ...JSON.parse(raw) } : null
+  } catch {
+    return null
+  }
+}
+
+// The saved code lets a returning visitor skip the sign-in form.
+function rememberCode(code: string) {
+  window.localStorage.setItem(RECOVERY_CODE_KEY, code)
+}
+
+function forgetSavedLogin() {
+  window.localStorage.removeItem(RECOVERY_CODE_KEY)
+  window.localStorage.removeItem(DRAFT_KEY)
+}
+
 export function ProfilePage() {
   // Keep the saved record separate from the fields being edited.
-  const [screen, setScreen] = useState<'home' | 'profile' | 'dashboard'>('home')
+  const [screen, setScreen] = useState<'home' | 'wizard' | 'dashboard'>('home')
+  // The wizard walks through background, skills and direction in order.
+  const [step, setStep] = useState<1 | 2 | 3>(1)
   const [profile, setProfile] = useState<Profile | null>(null)
-  const [details, setDetails] = useState<ProfileDetails>(emptyDetails)
+  // An abandoned background draft gives its owner a head start on return.
+  const [details, setDetails] = useState<ProfileDetails>(
+    () => readDraft() ?? emptyDetails,
+  )
   const [recoveryCode, setRecoveryCode] = useState('')
   const [copied, setCopied] = useState(false)
   const [errors, setErrors] = useState<ProfileErrors>({})
@@ -55,11 +88,6 @@ export function ProfilePage() {
   const [studyOptions, setStudyOptions] = useState<StudyOption[]>([])
   const [skillOptions, setSkillOptions] = useState<CatalogueOption[]>([])
   const [skillCode, setSkillCode] = useState<string | null>(null)
-  // Keep the goal draft and its feedback separate from the other forms.
-  const [careerGoal, setCareerGoal] = useState('')
-  const [goalError, setGoalError] = useState('')
-  const [goalMessage, setGoalMessage] = useState('')
-  const [goalBusy, setGoalBusy] = useState(false)
   // Keep a typed occupation separate from the role already saved in D1.
   const [targetRole, setTargetRole] = useState<TargetRole | null>(null)
   const [targetRoleQuery, setTargetRoleQuery] = useState('')
@@ -74,6 +102,8 @@ export function ProfilePage() {
     [],
   )
   const [recommendationsBusy, setRecommendationsBusy] = useState(false)
+  // Suggestion cards reload whenever quiz answers or the target role change.
+  const [suggestionsRefresh, setSuggestionsRefresh] = useState(0)
 
   // Do not suggest a skill the profile has already saved.
   const suggestedSkills = recommendations.filter(
@@ -211,25 +241,65 @@ export function ProfilePage() {
     setRecoveryCode(saved.code)
     setErrors({})
     setStudyOptions([])
-    setScreen('profile')
   }
+
+  // On the first render, resume the login this browser remembers. The work
+  // is deferred so the landing screen can paint before the restore begins.
+  useEffect(() => {
+    const storedCode = window.localStorage.getItem(RECOVERY_CODE_KEY)
+
+    if (!storedCode) return
+
+    const timer = window.setTimeout(() => {
+      setRecoveryCode(storedCode)
+      setBusy(true)
+      void fetchProfileBundle(storedCode)
+        .then((bundle) => {
+          if (!bundle) {
+            // A code that no longer works should not keep failing on reload.
+            forgetSavedLogin()
+            setRecoveryCode('')
+            return
+          }
+          applyLoadedProfile(bundle)
+          setScreen(bundle.targetRole ? 'dashboard' : 'wizard')
+          setStep(3)
+        })
+        .catch(() => {
+          // Leave the stored code in place for the next successful connection.
+        })
+        .finally(() => setBusy(false))
+    }, 0)
+
+    return () => window.clearTimeout(timer)
+    // Bundle helpers are stable component closures, so the effect runs once.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // Typing changes the draft, not the database.
   function updateField(field: 'educationLevel' | 'currentRole', value: string) {
-    setDetails((current) => ({ ...current, [field]: value }))
+    setDetails((current) => {
+      const next = { ...current, [field]: value }
+      saveDraft(next)
+      return next
+    })
     setErrors((current) => ({ ...current, [field]: undefined }))
     setMessage('')
   }
 
   // Editing the text clears an earlier catalogue choice until it is selected again.
   function updateQualification(value: string) {
-    setDetails((current) => ({
-      ...current,
-      qualification: value,
-      qualificationCode: null,
-      degreeCode: null,
-      majorCode: null,
-    }))
+    setDetails((current) => {
+      const next = {
+        ...current,
+        qualification: value,
+        qualificationCode: null,
+        degreeCode: null,
+        majorCode: null,
+      }
+      saveDraft(next)
+      return next
+    })
     setStudyOptions([])
     if (!targetRole) {
       setRecommendations([])
@@ -241,14 +311,18 @@ export function ProfilePage() {
 
   // One menu lets the user choose either a named course or an ASCED field.
   function selectStudy(option: StudyOption) {
-    setDetails((current) => ({
-      ...current,
-      qualification: option.label,
-      qualificationCode: null,
-      degreeCode: option.degreeCode,
-      majorCode: option.majorCode,
-      educationLevel: option.educationLevel ?? current.educationLevel,
-    }))
+    setDetails((current) => {
+      const next = {
+        ...current,
+        qualification: option.label,
+        qualificationCode: null,
+        degreeCode: option.degreeCode,
+        majorCode: option.majorCode,
+        educationLevel: option.educationLevel ?? current.educationLevel,
+      }
+      saveDraft(next)
+      return next
+    })
     setStudyOptions([])
     setErrors((current) => ({
       ...current,
@@ -261,7 +335,9 @@ export function ProfilePage() {
   // Starting again clears the form without deleting a saved profile.
   function startProfile() {
     setProfile(null)
-    setDetails(emptyDetails)
+    // An abandoned background draft gives the new profile a head start.
+    const draft = readDraft()
+    setDetails(draft ?? emptyDetails)
     setErrors({})
     setMessage('')
     setFailed(false)
@@ -270,10 +346,6 @@ export function ProfilePage() {
     setSkillCode(null)
     setSkillOptions([])
     setSkillError('')
-    // Do not carry a previous profile's goal into a new profile.
-    setCareerGoal('')
-    setGoalError('')
-    setGoalMessage('')
     setTargetRole(null)
     setTargetRoleQuery('')
     setTargetRoleCode(null)
@@ -282,7 +354,55 @@ export function ProfilePage() {
     setTargetRoleMessage('')
     setRecommendations([])
     setRecommendationsBusy(false)
-    setScreen('profile')
+    setStep(1)
+    setScreen('wizard')
+  }
+
+  type ProfileBundle = {
+    profile: Profile
+    skills: Skill[]
+    targetRole: TargetRole | null
+  }
+
+  // Every saved section is fetched together so one failure aborts the load.
+  async function fetchProfileBundle(
+    code: string,
+  ): Promise<ProfileBundle | null> {
+    const result = await requestProfile('GET', code)
+    if (!result.ok) return null
+
+    const [skillResult, targetRoleResult] = await Promise.all([
+      loadSkills(result.data.code),
+      requestTargetRole('GET', result.data.code),
+    ])
+
+    if (!skillResult.ok || !targetRoleResult.ok) {
+      return null
+    }
+
+    return {
+      profile: result.data,
+      skills: skillResult.data.skills,
+      targetRole: targetRoleResult.data.targetRole,
+    }
+  }
+
+  // One place fills every field from a fully loaded profile bundle.
+  function applyLoadedProfile(bundle: ProfileBundle) {
+    showProfile(bundle.profile)
+    setSkills(bundle.skills)
+    setSkillName('')
+    setSkillCode(null)
+    setSkillOptions([])
+    setSkillError('')
+    setTargetRole(bundle.targetRole)
+    setTargetRoleQuery(bundle.targetRole?.title ?? '')
+    setTargetRoleCode(bundle.targetRole?.code ?? null)
+    setTargetRoleOptions([])
+    setTargetRoleError('')
+    setTargetRoleMessage('')
+    setRecommendations([])
+    setRecommendationsBusy(false)
   }
 
   // Use a recovery code to load an existing record.
@@ -299,60 +419,22 @@ export function ProfilePage() {
 
     setBusy(true)
     try {
-      const result = await requestProfile('GET', recoveryCode.trim())
-      if (!result.ok) {
-        setMessage(result.data.error ?? 'Could not load your profile.')
+      const bundle = await fetchProfileBundle(recoveryCode.trim())
+      if (!bundle) {
+        setMessage('Could not load a profile with that code.')
         setFailed(true)
         return
       }
 
-      // Fetch the other saved sections before showing the complete profile.
-      const [skillResult, goalResult, targetRoleResult] = await Promise.all([
-        loadSkills(result.data.code),
-        requestGoal('GET', result.data.code),
-        requestTargetRole('GET', result.data.code),
-      ])
-
-      if (!skillResult.ok) {
-        setMessage(skillResult.data.error ?? 'Could not load your skills.')
-        setFailed(true)
-        return
-      }
-
-      if (!goalResult.ok) {
-        setMessage(goalResult.data.error ?? 'Could not load your career goal.')
-        setFailed(true)
-        return
-      }
-
-      if (!targetRoleResult.ok) {
-        setMessage(
-          targetRoleResult.data.error ?? 'Could not load your target role.',
-        )
-        setFailed(true)
-        return
-      }
-
-      // Display the values returned by all four API requests.
-      setRecommendations([])
-      setRecommendationsBusy(false)
-      showProfile(result.data)
-      setSkills(skillResult.data.skills)
-      setSkillName('')
-      setSkillCode(null)
-      setSkillOptions([])
-      setSkillError('')
-      setCareerGoal(goalResult.data.careerGoal)
-      setGoalError('')
-      setGoalMessage('')
-      setTargetRole(targetRoleResult.data.targetRole)
-      setTargetRoleQuery(targetRoleResult.data.targetRole?.title ?? '')
-      setTargetRoleCode(targetRoleResult.data.targetRole?.code ?? null)
-      setTargetRoleOptions([])
-      setTargetRoleError('')
-      setTargetRoleMessage('')
+      applyLoadedProfile(bundle)
+      rememberCode(bundle.profile.code)
       setMessage('Profile loaded.')
-      setScreen(targetRoleResult.data.targetRole ? 'dashboard' : 'profile')
+      if (bundle.targetRole) {
+        setScreen('dashboard')
+      } else {
+        setStep(3)
+        setScreen('wizard')
+      }
     } catch {
       setMessage('Could not connect. Please try again.')
       setFailed(true)
@@ -413,13 +495,15 @@ export function ProfilePage() {
       }
 
       showProfile(result.data)
+      rememberCode(result.data.code)
 
-      // New profiles start empty; education edits keep the skills and goal.
+      // A finished background step clears its draft and opens the skills step.
+      window.localStorage.removeItem(DRAFT_KEY)
+      setStep(2)
+
+      // New profiles start empty; education edits keep the saved skills.
       if (creating) {
         setSkills([])
-        setCareerGoal('')
-        setGoalError('')
-        setGoalMessage('')
         setTargetRole(null)
         setTargetRoleQuery('')
         setTargetRoleCode(null)
@@ -436,43 +520,6 @@ export function ProfilePage() {
       setBusy(false)
     }
   }
-  // Save one current goal after the main profile exists.
-  async function submitGoal(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setGoalError('')
-    setGoalMessage('')
-
-    if (!profile) {
-      setGoalError('Save your profile before choosing a career goal.')
-      return
-    }
-
-    const goal = careerGoal.trim()
-    if (!goal) {
-      setGoalError('Enter a career goal.')
-      return
-    }
-
-    setGoalBusy(true)
-
-    try {
-      const result = await requestGoal('PUT', profile.code, goal)
-
-      if (!result.ok) {
-        setGoalError(result.data.error ?? 'Could not save your career goal.')
-        return
-      }
-
-      // Use the saved value so the field matches the database.
-      setCareerGoal(result.data.careerGoal)
-      setGoalMessage('Career goal saved.')
-    } catch {
-      setGoalError('Could not connect. Please try again.')
-    } finally {
-      setGoalBusy(false)
-    }
-  }
-
   // Save a catalogue occupation as the profile's current target role.
   async function submitTargetRole(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -519,10 +566,10 @@ export function ProfilePage() {
       setTargetRoleBusy(false)
     }
   }
-  // Both typed and suggested skills use the same API request.
+  // Both suggested and searched skills use the same API request.
   async function saveSkill(
     name: string,
-    selectedCode: string | null = null,
+    selectedCode: string,
   ): Promise<SaveSkillResult> {
     if (!profile) {
       const error = 'Save your profile before adding skills.'
@@ -554,18 +601,17 @@ export function ProfilePage() {
     }
   }
 
-  // Save a skill typed into the form.
+  // Save a skill typed into the form; only catalogue selections get through.
   async function submitSkill(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setSkillError('')
 
-    const name = skillName.trim()
-    if (!name) {
-      setSkillError('Enter a skill name.')
+    if (!skillCode) {
+      setSkillError('Choose a skill or tool from the suggestions.')
       return
     }
 
-    await saveSkill(name, skillCode)
+    await saveSkill(skillName.trim(), skillCode)
   }
 
   // A suggestion is still optional and only saves after the user clicks it.
@@ -593,6 +639,27 @@ export function ProfilePage() {
       setSkillError('Could not connect. Please try again.')
     } finally {
       setSkillsBusy(false)
+    }
+  }
+
+  // Picking a suggested role saves it with the same call as the search box.
+  async function chooseSuggestedRole(suggestion: RoleSuggestion) {
+    if (!profile) return
+
+    try {
+      const result = await requestTargetRole(
+        'PUT',
+        profile.code,
+        suggestion.code,
+      )
+      if (!result.ok || !result.data.targetRole) return
+
+      setTargetRole(result.data.targetRole)
+      setTargetRoleQuery(result.data.targetRole.title)
+      setTargetRoleCode(result.data.targetRole.code)
+      setSuggestionsRefresh((current) => current + 1)
+    } catch {
+      // The card stays interactive so the user can retry the choice.
     }
   }
 
@@ -631,27 +698,28 @@ export function ProfilePage() {
                 Dashboard
               </button>
             )}
-            {profile && screen !== 'profile' && (
+            {profile && screen !== 'wizard' && (
               <button
                 type="button"
                 className="secondary"
-                onClick={() => setScreen('profile')}
+                onClick={() => {
+                  setStep(3)
+                  setScreen('wizard')
+                }}
               >
-                Edit profile
+                Edit pathway
               </button>
             )}
             <button
               type="button"
               className="secondary"
-              disabled={busy || skillsBusy || goalBusy || targetRoleBusy}
+              disabled={busy || skillsBusy || targetRoleBusy}
               onClick={() => {
                 setScreen('home')
                 setMessage('')
                 setErrors({})
                 setSkillName('')
                 setSkillError('')
-                setGoalError('')
-                setGoalMessage('')
                 setTargetRoleError('')
                 setTargetRoleMessage('')
               }}
@@ -671,6 +739,7 @@ export function ProfilePage() {
               : 'profile-page'
         }
       >
+        {' '}
         {screen === 'home' ? (
           <>
             {/* The first screen explains the product before asking for details. */}
@@ -681,9 +750,9 @@ export function ProfilePage() {
                   Turn what you know into a career path you can act on.
                 </h1>
                 <p className="hero-summary">
-                  HireWay brings your education, current skills and career goal
-                  together, then helps you understand the next steps towards
-                  work that suits you.
+                  HireWay brings your education and current skills together,
+                  then shows the Australian outlook behind the careers that suit
+                  you.
                 </p>
 
                 <div className="hero-actions">
@@ -775,9 +844,7 @@ export function ProfilePage() {
                 <article className="step-card">
                   <span>03</span>
                   <h3>Choose a direction</h3>
-                  <p>
-                    Set a career goal and build towards practical next steps.
-                  </p>
+                  <p>Pick a target role and see the demand behind it.</p>
                 </article>
               </div>
             </section>
@@ -857,506 +924,610 @@ export function ProfilePage() {
           <CareerDashboard
             profile={profile}
             skills={skills}
-            careerGoal={careerGoal}
             targetRole={targetRole}
-            onEditProfile={() => setScreen('profile')}
+            suggestionsRefresh={suggestionsRefresh}
+            onEditProfile={() => {
+              setStep(3)
+              setScreen('wizard')
+            }}
             onAddSkill={saveSkill}
+            onChooseRole={chooseSuggestedRole}
           />
         ) : (
           <>
-            <h1>Your background</h1>
-            <p className="intro">
-              Tell us about your education and current role.
-            </p>
+            {/* The stepper doubles as a progress bar and a way to go back. */}
+            <Stepper
+              items={[
+                { id: 1, label: 'Background', unlocked: true },
+                { id: 2, label: 'Skills', unlocked: Boolean(profile) },
+                { id: 3, label: 'Direction', unlocked: Boolean(profile) },
+                // The dashboard greets unfinished profiles with next steps.
+                { id: 4, label: 'Dashboard', unlocked: Boolean(profile) },
+              ]}
+              currentId={step}
+              onSelect={(id) => {
+                if (id === 4) {
+                  setScreen('dashboard')
+                } else {
+                  setStep(id as 1 | 2 | 3)
+                  setScreen('wizard')
+                }
+              }}
+            />
 
-            {/* Announce the result without replacing the user's input. */}
-            {message && (
-              <p
-                className={failed ? 'notice error' : 'notice success'}
-                role={failed ? 'alert' : 'status'}
-              >
-                {message}
-              </p>
-            )}
+            {/* A profile is required from step 2 on; anything else falls back. */}
+            {(step === 1 || !profile) && (
+              <>
+                <h1>Your background</h1>
+                <p className="intro">
+                  Tell us about your education and current role.
+                </p>
 
-            <div className="profile-stack">
-              <form
-                className="card profile-card"
-                onSubmit={saveProfile}
-                noValidate
-              >
-                {/* Disable the fields while a save is running. */}
-                <fieldset disabled={busy}>
-                  <legend>Background details</legend>
-                  <p>Fields marked * are required.</p>
-
-                  <label htmlFor="qualification">
-                    Course or field of study *
-                  </label>
-                  <div className="autocomplete">
-                    <input
-                      id="qualification"
-                      value={details.qualification}
-                      onChange={(event) =>
-                        updateQualification(event.target.value)
-                      }
-                      placeholder="Search for a course or field"
-                      autoComplete="off"
-                      maxLength={240}
-                      required
-                      aria-invalid={Boolean(errors.qualification)}
-                      aria-describedby={
-                        errors.qualification
-                          ? 'qualification-help qualification-error'
-                          : 'qualification-help'
-                      }
-                      aria-expanded={studyOptions.length > 0}
-                      aria-controls="study-suggestions"
-                    />
-
-                    {/* Course and ASCED matches stay in one short suggestion list. */}
-                    {studyOptions.length > 0 && (
-                      <ul className="autocomplete-menu" id="study-suggestions">
-                        {studyOptions.map((option) => (
-                          <li key={option.degreeCode ?? option.majorCode}>
-                            <button
-                              type="button"
-                              onClick={() => selectStudy(option)}
-                            >
-                              <span className="study-option-heading">
-                                <strong>{option.label}</strong>
-                                <span>
-                                  {option.kind === 'course'
-                                    ? 'Course'
-                                    : 'Field'}
-                                </span>
-                              </span>
-                              <small>{option.description}</small>
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                  <p className="field-help" id="qualification-help">
-                    Choose a CRICOS course or an ASCED field so it can be used
-                    in later analysis.
+                {/* Announce the result without replacing the user's input. */}
+                {message && (
+                  <p
+                    className={failed ? 'notice error' : 'notice success'}
+                    role={failed ? 'alert' : 'status'}
+                  >
+                    {message}
                   </p>
-                  {errors.qualification && (
-                    <p
-                      id="qualification-error"
-                      className="field-error"
-                      role="alert"
-                    >
-                      {errors.qualification}
-                    </p>
-                  )}
-
-                  <label htmlFor="education-level">Education level *</label>
-                  <EducationLevelSelect
-                    value={details.educationLevel}
-                    onChange={(value) => updateField('educationLevel', value)}
-                    invalid={Boolean(errors.educationLevel)}
-                    describedBy={
-                      errors.educationLevel ? 'education-error' : undefined
-                    }
-                  />
-                  {errors.educationLevel && (
-                    <p
-                      id="education-error"
-                      className="field-error"
-                      role="alert"
-                    >
-                      {errors.educationLevel}
-                    </p>
-                  )}
-
-                  <label htmlFor="current-role">Current role (optional)</label>
-                  <input
-                    id="current-role"
-                    value={details.currentRole}
-                    onChange={(event) =>
-                      updateField('currentRole', event.target.value)
-                    }
-                    maxLength={120}
-                    aria-invalid={Boolean(errors.currentRole)}
-                    aria-describedby={
-                      errors.currentRole ? 'role-error' : undefined
-                    }
-                  />
-                  {errors.currentRole && (
-                    <p id="role-error" className="field-error" role="alert">
-                      {errors.currentRole}
-                    </p>
-                  )}
-
-                  <button type="submit">
-                    {busy
-                      ? 'Saving...'
-                      : profile
-                        ? 'Save changes'
-                        : 'Save profile'}
-                  </button>
-                </fieldset>
-
-                {/* Keep the code visible so the user can copy it. */}
-                {profile && (
-                  <section className="recovery-note">
-                    <label htmlFor="saved-code">Your recovery code</label>
-                    <div className="recovery-code-row">
-                      <input
-                        id="saved-code"
-                        value={profile.code}
-                        readOnly
-                        onFocus={(event) => event.currentTarget.select()}
-                        aria-describedby="code-help"
-                      />
-
-                      <button
-                        type="button"
-                        className={`copy-code-button ${copied ? 'copied' : ''}`}
-                        onClick={copyRecoveryCode}
-                        aria-label={
-                          copied ? 'Recovery code copied' : 'Copy recovery code'
-                        }
-                      >
-                        <MorphIcon
-                          icon={copied ? Check : Copy}
-                          size={19}
-                          strokeWidth={2}
-                          spring="snappy"
-                          reducedMotion="user"
-                        />
-                      </button>
-                    </div>
-                    <p id="code-help">
-                      Keep this code private. Anyone with it can view and edit
-                      your profile. Use it to return after closing or refreshing
-                      the page.
-                    </p>
-                  </section>
                 )}
-              </form>
 
-              {/* Skills are linked to the profile created by the first form. */}
-              {profile && (
-                <section className="card profile-card skills-card">
-                  <h2>Current skills</h2>
-                  <p>Add the skills and tools you already use.</p>
+                <div className="profile-stack">
+                  <form
+                    className="card profile-card"
+                    onSubmit={saveProfile}
+                    noValidate
+                  >
+                    {/* Disable the fields while a save is running. */}
+                    <fieldset disabled={busy}>
+                      <legend>Background details</legend>
+                      <p>Fields marked * are required.</p>
 
-                  {/* Suggestions use a recognised study choice or target role. */}
-                  {(details.qualificationCode ||
-                    details.degreeCode ||
-                    details.majorCode ||
-                    targetRole) && (
-                    <div className="skill-recommendations">
-                      <div>
-                        <strong>
-                          Suggested from{' '}
-                          {(details.qualificationCode ||
-                            details.degreeCode ||
-                            details.majorCode) &&
-                          targetRole
-                            ? 'your study and target role'
-                            : details.qualificationCode ||
-                                details.degreeCode ||
-                                details.majorCode
-                              ? 'your study'
-                              : 'your target role'}
-                        </strong>
-                        <span>
-                          Add only the skills you already have. Study starters
-                          use existing O*NET skill and tool names.
-                        </span>
-                      </div>
-
-                      {recommendationsBusy ? (
-                        <p>Loading suggestions...</p>
-                      ) : suggestedSkills.length > 0 ? (
-                        <div className="suggestion-chips">
-                          {suggestedSkills.map((suggestion) => (
-                            <button
-                              type="button"
-                              className="skill-suggestion"
-                              key={suggestion.code}
-                              disabled={skillsBusy}
-                              onClick={() => addSuggestedSkill(suggestion)}
-                              title={
-                                suggestion.kind === 'tool'
-                                  ? 'Tool or technology'
-                                  : 'Transferable skill'
-                              }
-                            >
-                              + {suggestion.label}
-                            </button>
-                          ))}
-                        </div>
-                      ) : (
-                        <p>
-                          No new suggestions are available for this selection.
-                        </p>
-                      )}
-                    </div>
-                  )}
-
-                  <form onSubmit={submitSkill} noValidate>
-                    <label htmlFor="skill-name">Skill or tool</label>
-                    <div className="skill-entry">
+                      <label htmlFor="qualification">
+                        What did you study? *
+                      </label>
                       <div className="autocomplete">
                         <input
-                          id="skill-name"
-                          value={skillName}
-                          onChange={(event) => {
-                            setSkillName(event.target.value)
-                            setSkillCode(null)
-                            setSkillOptions([])
-                            setSkillError('')
-                          }}
-                          placeholder="Start typing, for example Python"
-                          autoComplete="off"
-                          maxLength={80}
-                          disabled={skillsBusy}
-                          aria-invalid={Boolean(skillError)}
-                          aria-describedby={
-                            skillError ? 'skill-error' : undefined
+                          id="qualification"
+                          value={details.qualification}
+                          onChange={(event) =>
+                            updateQualification(event.target.value)
                           }
-                          aria-expanded={skillOptions.length > 0}
-                          aria-controls="skill-suggestions"
+                          placeholder="Search your course, e.g. Master of Data Science"
+                          autoComplete="off"
+                          maxLength={240}
+                          required
+                          aria-invalid={Boolean(errors.qualification)}
+                          aria-describedby={
+                            errors.qualification
+                              ? 'qualification-help qualification-error'
+                              : 'qualification-help'
+                          }
+                          aria-expanded={studyOptions.length > 0}
+                          aria-controls="study-suggestions"
                         />
 
-                        {/* A selected option keeps its standard code when saved. */}
-                        {skillOptions.length > 0 && (
+                        {/* Course and ASCED matches stay in one short suggestion list. */}
+                        {studyOptions.length > 0 && (
                           <ul
                             className="autocomplete-menu"
-                            id="skill-suggestions"
+                            id="study-suggestions"
                           >
-                            {skillOptions.map((option) => (
-                              <li key={option.code}>
+                            {studyOptions.map((option) => (
+                              <li key={option.degreeCode ?? option.majorCode}>
                                 <button
                                   type="button"
-                                  onClick={() => {
-                                    setSkillName(option.label)
-                                    setSkillCode(option.code)
-                                    setSkillOptions([])
-                                    setSkillError('')
-                                  }}
+                                  onClick={() => selectStudy(option)}
                                 >
-                                  <strong>{option.label}</strong>
-                                  <small>
-                                    {option.kind === 'tool'
-                                      ? 'Tool or technology'
-                                      : 'Transferable skill'}
-                                  </small>
+                                  <span className="study-option-heading">
+                                    <strong>{option.label}</strong>
+                                    <span>
+                                      {option.kind === 'course'
+                                        ? 'Exact course'
+                                        : 'Field of study'}
+                                    </span>
+                                  </span>
+                                  <small>{option.description}</small>
                                 </button>
                               </li>
                             ))}
                           </ul>
                         )}
                       </div>
-                      <button type="submit" disabled={skillsBusy}>
-                        {skillsBusy ? 'Working...' : 'Add skill'}
-                      </button>
-                    </div>
-
-                    {skillError && (
-                      <p id="skill-error" className="field-error" role="alert">
-                        {skillError}
+                      <p className="field-help" id="qualification-help">
+                        Pick your exact course if it appears - otherwise pick
+                        the closest field, like Accounting or Data Science.
+                        Courses come from the Australian CRICOS register.
                       </p>
-                    )}
-                  </form>
+                      {errors.qualification && (
+                        <p
+                          id="qualification-error"
+                          className="field-error"
+                          role="alert"
+                        >
+                          {errors.qualification}
+                        </p>
+                      )}
 
-                  {/* Keep an empty message until the first skill is added. */}
-                  {skills.length === 0 ? (
-                    <p className="empty-skills">No skills added yet.</p>
-                  ) : (
-                    <ul className="skills-list">
-                      {skills.map((skill) => (
-                        <li key={skill.id}>
-                          <span>{skill.name}</span>
+                      {/* A picked course already fixes the education level. */}
+                      {details.degreeCode ? (
+                        <>
+                          <label>Education level</label>
+                          <p className="derived-level">
+                            {details.educationLevel || 'Set automatically'}{' '}
+                            <small>from your course</small>
+                          </p>
+                        </>
+                      ) : (
+                        <>
+                          <label htmlFor="education-level">
+                            Education level *
+                          </label>
+                          <EducationLevelSelect
+                            value={details.educationLevel}
+                            onChange={(value) =>
+                              updateField('educationLevel', value)
+                            }
+                            invalid={Boolean(errors.educationLevel)}
+                            describedBy={
+                              errors.educationLevel
+                                ? 'education-error'
+                                : undefined
+                            }
+                          />
+                          {errors.educationLevel && (
+                            <p
+                              id="education-error"
+                              className="field-error"
+                              role="alert"
+                            >
+                              {errors.educationLevel}
+                            </p>
+                          )}
+                        </>
+                      )}
+
+                      <label htmlFor="current-role">
+                        Current role (optional)
+                      </label>
+                      <input
+                        id="current-role"
+                        value={details.currentRole}
+                        onChange={(event) =>
+                          updateField('currentRole', event.target.value)
+                        }
+                        maxLength={120}
+                        aria-invalid={Boolean(errors.currentRole)}
+                        aria-describedby={
+                          errors.currentRole ? 'role-error' : undefined
+                        }
+                      />
+                      {errors.currentRole && (
+                        <p id="role-error" className="field-error" role="alert">
+                          {errors.currentRole}
+                        </p>
+                      )}
+
+                      <button type="submit">
+                        {busy ? 'Saving...' : 'Save and continue'}
+                      </button>
+                    </fieldset>
+
+                    {/* Keep the code visible so the user can copy it. */}
+                    {profile && (
+                      <section className="recovery-note">
+                        <label htmlFor="saved-code">Your recovery code</label>
+                        <div className="recovery-code-row">
+                          <input
+                            id="saved-code"
+                            value={profile.code}
+                            readOnly
+                            onFocus={(event) => event.currentTarget.select()}
+                            aria-describedby="code-help"
+                          />
+
                           <button
                             type="button"
-                            className="secondary"
-                            disabled={skillsBusy}
-                            onClick={() => deleteSkill(skill.id)}
-                            aria-label={`Remove ${skill.name}`}
+                            className={`copy-code-button ${copied ? 'copied' : ''}`}
+                            onClick={copyRecoveryCode}
+                            aria-label={
+                              copied
+                                ? 'Recovery code copied'
+                                : 'Copy recovery code'
+                            }
                           >
-                            Remove
+                            <MorphIcon
+                              icon={copied ? Check : Copy}
+                              size={19}
+                              strokeWidth={2}
+                              spring="snappy"
+                              reducedMotion="user"
+                            />
                           </button>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </section>
-              )}
-              {/* A career goal is saved separately from education and skills. */}
-              {profile && (
-                <form
-                  className="card profile-card"
-                  onSubmit={submitGoal}
-                  noValidate
-                >
-                  <fieldset disabled={busy || goalBusy}>
-                    <legend>Career goal</legend>
-                    <p>
-                      Describe the direction you would like your career to take.
-                    </p>
-
-                    <label htmlFor="career-goal">Your goal *</label>
-                    <input
-                      id="career-goal"
-                      value={careerGoal}
-                      onChange={(event) => {
-                        setCareerGoal(event.target.value)
-                        setGoalError('')
-                        setGoalMessage('')
-                      }}
-                      placeholder="For example, use data to improve public services"
-                      maxLength={240}
-                      required
-                      aria-invalid={Boolean(goalError)}
-                      aria-describedby={
-                        goalError ? 'goal-help goal-error' : 'goal-help'
-                      }
-                    />
-
-                    <p id="goal-help">
-                      Saving a new goal replaces your previous goal.
-                    </p>
-
-                    {goalError && (
-                      <p id="goal-error" className="field-error" role="alert">
-                        {goalError}
-                      </p>
-                    )}
-
-                    <button type="submit">
-                      {goalBusy ? 'Saving...' : 'Save goal'}
-                    </button>
-                  </fieldset>
-
-                  {goalMessage && (
-                    <p className="notice success" role="status">
-                      {goalMessage}
-                    </p>
-                  )}
-                </form>
-              )}
-
-              {/* A target role is a specific occupation from the OSCA catalogue. */}
-              {profile && (
-                <form
-                  className="card profile-card target-role-card"
-                  onSubmit={submitTargetRole}
-                  noValidate
-                >
-                  <fieldset disabled={busy || targetRoleBusy}>
-                    <legend>Target role</legend>
-                    <p>
-                      Search Australian occupations and choose one direction.
-                    </p>
-
-                    <label htmlFor="target-role">Occupation *</label>
-                    <div className="autocomplete">
-                      <input
-                        id="target-role"
-                        value={targetRoleQuery}
-                        onChange={(event) => {
-                          setTargetRoleQuery(event.target.value)
-                          setTargetRoleCode(null)
-                          setTargetRoleOptions([])
-                          setTargetRoleError('')
-                          setTargetRoleMessage('')
-                        }}
-                        placeholder="Start typing, for example Data Analyst"
-                        autoComplete="off"
-                        maxLength={120}
-                        required
-                        aria-invalid={Boolean(targetRoleError)}
-                        aria-describedby={
-                          targetRoleError
-                            ? 'target-role-help target-role-error'
-                            : 'target-role-help'
-                        }
-                        aria-expanded={targetRoleOptions.length > 0}
-                        aria-controls="target-role-suggestions"
-                      />
-
-                      {/* Alias matches still save the official OSCA occupation. */}
-                      {targetRoleOptions.length > 0 && (
-                        <ul
-                          className="autocomplete-menu"
-                          id="target-role-suggestions"
+                        </div>
+                        <p id="code-help">
+                          Keep this code private. Anyone with it can view and
+                          edit your profile. Use it to return after closing or
+                          refreshing the page. This browser remembers it for
+                          you.
+                        </p>
+                        <button
+                          type="button"
+                          className="secondary forget-login-button"
+                          onClick={() => {
+                            forgetSavedLogin()
+                            setRecoveryCode('')
+                            setMessage('This browser forgot your saved code.')
+                          }}
                         >
-                          {targetRoleOptions.map((option) => (
-                            <li key={option.code}>
+                          Forget the code on this device
+                        </button>
+                      </section>
+                    )}
+                  </form>
+                </div>
+              </>
+            )}
+
+            {/* Step 2 collects the skills the catalogue can match against. */}
+            {step === 2 && profile && (
+              <>
+                <h1>Your skills</h1>
+                <p className="intro">
+                  Add what you can already do so roles can be matched to you.
+                </p>
+
+                <div className="profile-stack">
+                  {/* Skills are linked to the profile created by the first form. */}
+                  {profile && (
+                    <section className="card profile-card skills-card">
+                      <h2>Current skills</h2>
+                      <p>Add the skills and tools you already use.</p>
+
+                      {/* Suggestions use a recognised study choice or target role. */}
+                      {(details.qualificationCode ||
+                        details.degreeCode ||
+                        details.majorCode ||
+                        targetRole) && (
+                        <div className="skill-recommendations">
+                          <div>
+                            <strong>
+                              Suggested from{' '}
+                              {(details.qualificationCode ||
+                                details.degreeCode ||
+                                details.majorCode) &&
+                              targetRole
+                                ? 'your study and target role'
+                                : details.qualificationCode ||
+                                    details.degreeCode ||
+                                    details.majorCode
+                                  ? 'your study'
+                                  : 'your target role'}
+                            </strong>
+                            <span>
+                              Add only the skills you already have. Study
+                              starters use existing O*NET skill and tool names.
+                            </span>
+                          </div>
+
+                          {recommendationsBusy ? (
+                            <p>Loading suggestions...</p>
+                          ) : suggestedSkills.length > 0 ? (
+                            <div className="suggestion-chips">
+                              {suggestedSkills.map((suggestion) => (
+                                <button
+                                  type="button"
+                                  className="skill-suggestion"
+                                  key={suggestion.code}
+                                  disabled={skillsBusy}
+                                  onClick={() => addSuggestedSkill(suggestion)}
+                                  title={
+                                    suggestion.kind === 'tool'
+                                      ? 'Tool or technology'
+                                      : 'Transferable skill'
+                                  }
+                                >
+                                  + {suggestion.label}
+                                </button>
+                              ))}
+                            </div>
+                          ) : (
+                            <p>
+                              No new suggestions are available for this
+                              selection.
+                            </p>
+                          )}
+                        </div>
+                      )}
+
+                      <form onSubmit={submitSkill} noValidate>
+                        <label htmlFor="skill-name">Skill or tool</label>
+                        <div className="skill-entry">
+                          <div className="autocomplete">
+                            <input
+                              id="skill-name"
+                              value={skillName}
+                              onChange={(event) => {
+                                setSkillName(event.target.value)
+                                setSkillCode(null)
+                                setSkillOptions([])
+                                setSkillError('')
+                              }}
+                              placeholder="Start typing, for example Python"
+                              autoComplete="off"
+                              maxLength={80}
+                              disabled={skillsBusy}
+                              aria-invalid={Boolean(skillError)}
+                              aria-describedby={
+                                skillError ? 'skill-error' : 'skill-help'
+                              }
+                              aria-expanded={skillOptions.length > 0}
+                              aria-controls="skill-suggestions"
+                            />
+
+                            {/* A selected option keeps its standard code when saved. */}
+                            {skillOptions.length > 0 && (
+                              <ul
+                                className="autocomplete-menu"
+                                id="skill-suggestions"
+                              >
+                                {skillOptions.map((option) => (
+                                  <li key={option.code}>
+                                    <button
+                                      type="button"
+                                      onClick={() => {
+                                        setSkillName(option.label)
+                                        setSkillCode(option.code)
+                                        setSkillOptions([])
+                                        setSkillError('')
+                                      }}
+                                    >
+                                      <strong>{option.label}</strong>
+                                      <small>
+                                        {option.kind === 'tool'
+                                          ? 'Tool or technology'
+                                          : 'Transferable skill'}
+                                      </small>
+                                    </button>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                          <button
+                            type="submit"
+                            disabled={skillsBusy || !skillCode}
+                          >
+                            {skillsBusy ? 'Working...' : 'Add skill'}
+                          </button>
+                        </div>
+
+                        <p id="skill-help">
+                          Pick a suggestion so every skill can be compared with
+                          real occupation data.
+                        </p>
+
+                        {skillError && (
+                          <p
+                            id="skill-error"
+                            className="field-error"
+                            role="alert"
+                          >
+                            {skillError}
+                          </p>
+                        )}
+                      </form>
+
+                      {/* Keep an empty message until the first skill is added. */}
+                      {skills.length === 0 ? (
+                        <p className="empty-skills">No skills added yet.</p>
+                      ) : (
+                        <ul className="skills-list">
+                          {skills.map((skill) => (
+                            <li key={skill.id}>
+                              <span>{skill.name}</span>
                               <button
                                 type="button"
-                                onClick={() => {
-                                  setTargetRoleQuery(option.label)
-                                  setTargetRoleCode(option.code)
-                                  setTargetRoleOptions([])
-                                  setTargetRoleError('')
-                                  setTargetRoleMessage('')
-                                }}
+                                className="secondary"
+                                disabled={skillsBusy}
+                                onClick={() => deleteSkill(skill.id)}
+                                aria-label={`Remove ${skill.name}`}
                               >
-                                <strong>{option.label}</strong>
-                                {option.description && (
-                                  <small>{option.description}</small>
-                                )}
+                                Remove
                               </button>
                             </li>
                           ))}
                         </ul>
                       )}
-                    </div>
+                    </section>
+                  )}
 
-                    <p id="target-role-help">
-                      Choose a suggestion before saving. A new choice replaces
-                      the current target role.
-                    </p>
-
-                    {targetRoleError && (
-                      <p
-                        id="target-role-error"
-                        className="field-error"
-                        role="alert"
-                      >
-                        {targetRoleError}
-                      </p>
-                    )}
-
-                    <button type="submit">
-                      {targetRoleBusy ? 'Saving...' : 'Save target role'}
+                  {/* Step navigation keeps progress obvious between cards. */}
+                  <div className="wizard-nav">
+                    <button
+                      type="button"
+                      className="secondary"
+                      onClick={() => setStep(1)}
+                    >
+                      Back
                     </button>
-                  </fieldset>
+                    <button type="button" onClick={() => setStep(3)}>
+                      Continue
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
 
-                  {targetRole && (
-                    <p className="selected-target-role">
-                      Current target: <strong>{targetRole.title}</strong>
-                    </p>
+            {/* Step 3 turns the profile into a concrete target role. */}
+            {step === 3 && profile && (
+              <>
+                <h1>Your target role</h1>
+                <p className="intro">
+                  Search Australian occupations and pick one direction to plan
+                  towards.
+                </p>
+
+                <div className="profile-stack">
+                  {/* A target role is a specific occupation from the OSCA catalogue. */}
+                  {profile && (
+                    <form
+                      className="card profile-card target-role-card"
+                      onSubmit={submitTargetRole}
+                      noValidate
+                    >
+                      <fieldset disabled={busy || targetRoleBusy}>
+                        <legend>Target role</legend>
+                        <p>
+                          Search Australian occupations and choose one
+                          direction.
+                        </p>
+
+                        <label htmlFor="target-role">Occupation *</label>
+                        <div className="autocomplete">
+                          <input
+                            id="target-role"
+                            value={targetRoleQuery}
+                            onChange={(event) => {
+                              setTargetRoleQuery(event.target.value)
+                              setTargetRoleCode(null)
+                              setTargetRoleOptions([])
+                              setTargetRoleError('')
+                              setTargetRoleMessage('')
+                            }}
+                            placeholder="Start typing, for example Data Analyst"
+                            autoComplete="off"
+                            maxLength={120}
+                            required
+                            aria-invalid={Boolean(targetRoleError)}
+                            aria-describedby={
+                              targetRoleError
+                                ? 'target-role-help target-role-error'
+                                : 'target-role-help'
+                            }
+                            aria-expanded={targetRoleOptions.length > 0}
+                            aria-controls="target-role-suggestions"
+                          />
+
+                          {/* Alias matches still save the official OSCA occupation. */}
+                          {targetRoleOptions.length > 0 && (
+                            <ul
+                              className="autocomplete-menu"
+                              id="target-role-suggestions"
+                            >
+                              {targetRoleOptions.map((option) => (
+                                <li key={option.code}>
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setTargetRoleQuery(option.label)
+                                      setTargetRoleCode(option.code)
+                                      setTargetRoleOptions([])
+                                      setTargetRoleError('')
+                                      setTargetRoleMessage('')
+                                    }}
+                                  >
+                                    <span className="occupation-option-heading">
+                                      <strong>{option.label}</strong>
+                                      {/* Projections make the search data driven. */}
+                                      {option.growth5yPercent != null && (
+                                        <span
+                                          className={`growth-badge ${
+                                            option.growth5yPercent >= 2
+                                              ? 'positive'
+                                              : ''
+                                          }`}
+                                        >
+                                          {option.growth5yPercent > 0
+                                            ? '▲'
+                                            : '▼'}{' '}
+                                          {Math.abs(
+                                            Math.round(
+                                              option.growth5yPercent * 10,
+                                            ) / 10,
+                                          )}
+                                          % in 5 yrs
+                                        </span>
+                                      )}
+                                    </span>
+                                    {option.description && (
+                                      <small>{option.description}</small>
+                                    )}
+                                  </button>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+
+                        <p id="target-role-help">
+                          Choose a suggestion before saving. A new choice
+                          replaces the current target role.
+                        </p>
+
+                        {targetRoleError && (
+                          <p
+                            id="target-role-error"
+                            className="field-error"
+                            role="alert"
+                          >
+                            {targetRoleError}
+                          </p>
+                        )}
+
+                        <button type="submit">
+                          {targetRoleBusy ? 'Saving...' : 'Save target role'}
+                        </button>
+                      </fieldset>
+
+                      {targetRole && (
+                        <p className="selected-target-role">
+                          Current target: <strong>{targetRole.title}</strong>
+                        </p>
+                      )}
+
+                      {targetRoleMessage && (
+                        <p className="notice success" role="status">
+                          {targetRoleMessage}
+                        </p>
+                      )}
+                    </form>
                   )}
 
-                  {targetRoleMessage && (
-                    <p className="notice success" role="status">
-                      {targetRoleMessage}
-                    </p>
+                  {/* Keep the open-data sources visible beside the suggestions. */}
+                  {profile && (
+                    <aside className="data-source-note">
+                      <strong>Suggestion data</strong>
+                      <p>
+                        Courses use Australian Government CRICOS data. Fields of
+                        study use ABS ASCED 2001. Target roles use ABS OSCA
+                        2024. Skills and tools use the O*NET 31.0 Database by
+                        USDOL/ETA under CC BY 4.0. O*NET® is a trademark of
+                        USDOL/ETA.
+                      </p>
+                    </aside>
                   )}
-                </form>
-              )}
 
-              {/* Keep the open-data sources visible beside the suggestions. */}
-              {profile && (
-                <aside className="data-source-note">
-                  <strong>Suggestion data</strong>
-                  <p>
-                    Courses use Australian Government CRICOS data. Fields of
-                    study use ABS ASCED 2001. Target roles use ABS OSCA 2024.
-                    Skills and tools use the O*NET 31.0 Database by USDOL/ETA
-                    under CC BY 4.0. O*NET® is a trademark of USDOL/ETA.
-                  </p>
-                </aside>
-              )}
-            </div>
+                  {/* The dashboard works with or without a saved target role. */}
+                  <div className="wizard-nav">
+                    <button
+                      type="button"
+                      className="secondary"
+                      onClick={() => setStep(2)}
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setScreen('dashboard')}
+                    >
+                      Go to dashboard
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
           </>
         )}
       </main>

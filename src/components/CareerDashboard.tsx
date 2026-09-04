@@ -1,25 +1,29 @@
 import type { Profile } from '../lib/profileApi'
 import type { SaveSkillResult, Skill } from '../lib/skillsApi'
+import type { RoleSuggestion } from '../lib/suggestionApi'
 import type { TargetRole } from '../lib/targetRoleApi'
 import { RoleRequirements } from './RoleRequirements'
+import { CareerSuggestions } from './CareerSuggestions'
 
 type CareerDashboardProps = {
   profile: Profile
   skills: Skill[]
-  careerGoal: string
   targetRole: TargetRole | null
+  suggestionsRefresh: number
   onEditProfile: () => void
   onAddSkill: (name: string, skillCode: string) => Promise<SaveSkillResult>
+  onChooseRole: (suggestion: RoleSuggestion) => void
 }
 
 // The dashboard brings the saved profile into one quick summary.
 export function CareerDashboard({
   profile,
   skills,
-  careerGoal,
   targetRole,
+  suggestionsRefresh,
   onEditProfile,
   onAddSkill,
+  onChooseRole,
 }: CareerDashboardProps) {
   return (
     <section className="career-dashboard" aria-labelledby="dashboard-title">
@@ -50,12 +54,6 @@ export function CareerDashboard({
           )}
         </article>
 
-        <article className="dashboard-card">
-          <span>Career goal</span>
-          <h2>{careerGoal || 'Not added yet'}</h2>
-          <p>A personal aim can stay broader than one occupation.</p>
-        </article>
-
         <article className="dashboard-card dashboard-skills-card">
           <span>Current skills</span>
           <h2>{skills.length} saved</h2>
@@ -70,6 +68,14 @@ export function CareerDashboard({
           )}
         </article>
       </div>
+
+      {/* Suggestions load either side of the chosen target role. */}
+      <CareerSuggestions
+        profileCode={profile.code}
+        currentTargetRole={targetRole}
+        refreshKey={suggestionsRefresh}
+        onChooseRole={onChooseRole}
+      />
 
       {/* Requirements load only after a catalogue occupation has been saved. */}
       {targetRole && (

@@ -22,11 +22,24 @@ export type RoleSource = {
   licence: string
 }
 
+export type RoleMarket = {
+  employedMay2025: number | null
+  employedMay2030: number | null
+  employedMay2035: number | null
+  change5yPercent: number | null
+  change10yPercent: number | null
+  medianWeeklyEarnings: number | null
+  outlook: string
+  vacancies: { state: string; vacancies: number }[]
+}
+
 export type RoleRequirements = {
   targetRole: { code: string; title: string }
   skills: RoleSkill[]
   qualifications: RoleQualification[]
+  tasks: string[]
   sources: RoleSource[]
+  market: RoleMarket | null
 }
 
 type RoleRequirementsResult =

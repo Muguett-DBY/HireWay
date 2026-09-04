@@ -4,6 +4,8 @@ export type CatalogueOption = {
   label: string
   description: string
   kind: 'education' | 'occupation' | 'skill' | 'tool'
+  // Only occupation results carry the five-year projection figure.
+  growth5yPercent?: number | null
 }
 
 export type StudyOption = {
