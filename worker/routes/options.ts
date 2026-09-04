@@ -7,6 +7,8 @@ type CatalogueOption = {
   label: string
   description: string
   kind: 'education' | 'occupation' | 'skill' | 'tool'
+  // Only occupation results carry the five-year projection figure.
+  growth5yPercent?: number | null
 }
 
 type StudyOption = {
@@ -170,6 +172,40 @@ async function searchStudies(env: Env, query: string): Promise<StudyOption[]> {
   }))
 }
 
+// Growth figures arrive separately so the search query stays simple.
+async function attachGrowth(
+  env: Env,
+  options: CatalogueOption[],
+): Promise<CatalogueOption[]> {
+  const codes = options.map((option) => option.code)
+  if (codes.length === 0) return options
+
+  const placeholders = codes.map(() => '?').join(', ')
+  const result = await env.DB.prepare(
+    `SELECT map.occupation_code AS code, market.change_5y_percent AS growth
+     FROM occupation_anzsco_map map
+     JOIN anzsco4_market market ON market.anzsco4_code = map.anzsco_code
+     JOIN dataset_release release ON release.id = market.dataset_release_id
+     JOIN data_source source ON source.id = release.data_source_id
+     WHERE map.occupation_code IN (${placeholders})
+       AND source.name = 'Australian labour market outlook'
+     ORDER BY map.is_primary DESC, release.id DESC`,
+  )
+    .bind(...codes)
+    .all<{ code: string; growth: number | null }>()
+
+  // Keep the first (preferred) mapping per occupation.
+  const growthByCode = new Map<string, number | null>()
+  for (const row of result.results) {
+    if (!growthByCode.has(row.code)) growthByCode.set(row.code, row.growth)
+  }
+
+  return options.map((option) => ({
+    ...option,
+    growth5yPercent: growthByCode.get(option.code) ?? null,
+  }))
+}
+
 // Search both principal OSCA titles and the alternative titles people use.
 async function searchOccupations(
   env: Env,
@@ -211,7 +247,7 @@ async function searchOccupations(
     .bind(query, prefix, contains, query, prefix, contains)
     .all<CatalogueOption>()
 
-  return result.results
+  return attachGrowth(env, result.results)
 }
 
 // Skill aliases let a search for a long O*NET name still find its short label.

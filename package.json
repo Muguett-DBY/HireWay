@@ -13,8 +13,12 @@
     "check": "npm run format:check && npm run lint && npm run build",
     "data:build": "python scripts/data/build_reference_data.py",
     "data:build:iteration1": "python scripts/data/build_iteration_one_data.py",
+    "data:build:market": "python scripts/data/build_market_data.py",
+    "data:build:discovery": "python scripts/data/build_discovery_data.py",
     "data:apply:local": "wrangler d1 execute hireway-db --local --file data/generated/reference_data.sql",
     "data:apply:iteration1:local": "wrangler d1 execute hireway-db --local --file data/generated/iteration_one_reference_data.sql",
+    "data:apply:market:local": "wrangler d1 execute hireway-db --local --file data/generated/market_data.sql",
+    "data:apply:discovery:local": "wrangler d1 execute hireway-db --local --file data/generated/discovery_data.sql",
     "preview": "npm run build && vite preview",
     "deploy": "npm run build && wrangler deploy"
   },
