@@ -1795,7 +1795,6 @@ select {
   border: 1px solid #cfe4d9;
   border-radius: 20px;
   background: linear-gradient(145deg, #f2faf6 0%, #ffffff 72%);
-  animation: market-outlook-in 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .market-heading {
@@ -2111,13 +2110,19 @@ select {
   stroke-linejoin: round;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  animation: trajectory-draw 520ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both;
+}
+
+.trajectory-card.is-visible .trajectory-line {
+  animation: trajectory-draw 900ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
 }
 
 .trajectory-area {
   fill: rgb(22 116 81 / 12%);
   opacity: 0;
-  animation: trajectory-area-in 420ms ease-out 160ms both;
+}
+
+.trajectory-card.is-visible .trajectory-area {
+  animation: trajectory-area-in 720ms ease-out 260ms both;
 }
 
 .trajectory-dot {
@@ -2125,8 +2130,11 @@ select {
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
-  animation: trajectory-dot-in 260ms cubic-bezier(0.22, 1, 0.36, 1)
-    var(--trajectory-delay, 220ms) both;
+}
+
+.trajectory-card.is-visible .trajectory-dot {
+  animation: trajectory-dot-in 440ms cubic-bezier(0.22, 1, 0.36, 1)
+    var(--trajectory-delay, 360ms) both;
 }
 
 .trajectory-milestones {
@@ -2226,27 +2234,18 @@ select {
   width: 100%;
   border-radius: 999px;
   background: linear-gradient(90deg, #217f5d, var(--green));
-  transform: scaleX(var(--state-share));
+  transform: scaleX(0);
   transform-origin: left center;
-  animation: state-bar-in 460ms cubic-bezier(0.22, 1, 0.36, 1)
+}
+
+.market-states.is-visible .market-state-chart .state-bar span {
+  animation: state-bar-in 880ms cubic-bezier(0.22, 1, 0.36, 1)
     var(--state-delay) both;
 }
 
 .market-state-chart strong {
   font-size: 12px;
   text-align: right;
-}
-
-@keyframes market-outlook-in {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 @keyframes trajectory-draw {
@@ -2288,16 +2287,11 @@ select {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .market-outlook,
   .trajectory-line,
   .trajectory-area,
   .trajectory-dot,
   .market-state-chart .state-bar span {
     animation: none;
-  }
-
-  .market-outlook {
-    transform: none;
   }
 
   .trajectory-line {
@@ -2307,6 +2301,10 @@ select {
   .trajectory-area,
   .trajectory-dot {
     opacity: 1;
+  }
+
+  .market-state-chart .state-bar span {
+    transform: scaleX(var(--state-share));
   }
 }
 

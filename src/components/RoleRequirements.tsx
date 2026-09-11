@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import {
   loadRoleRequirements,
   type RoleMarket,
@@ -334,7 +334,36 @@ export function RoleRequirements({
 
 // Every projected figure comes from Australian Government sources, so the
 // panel keeps the outlook story next to its numbers instead of hiding it.
+function useRevealOnView<T extends HTMLElement>(threshold = 0.75) {
+  const elementRef = useRef<T>(null)
+  const [isVisible, setIsVisible] = useState(
+    () => typeof IntersectionObserver === 'undefined',
+  )
+
+  useEffect(() => {
+    const element = elementRef.current
+    if (!element || typeof IntersectionObserver === 'undefined') return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return
+        setIsVisible(true)
+        observer.disconnect()
+      },
+      { threshold },
+    )
+    observer.observe(element)
+
+    return () => observer.disconnect()
+  }, [threshold])
+
+  return { elementRef, isVisible }
+}
+
 function MarketOutlook({ market }: { market: RoleMarket | null }) {
+  const { elementRef: statesHeadingRef, isVisible: statesAreVisible } =
+    useRevealOnView<HTMLDivElement>()
+
   if (!market) {
     return (
       <section className="market-outlook" aria-labelledby="market-title">
@@ -429,8 +458,10 @@ function MarketOutlook({ market }: { market: RoleMarket | null }) {
 
       {/* Vacancies per state share one scale so the bars compare directly. */}
       {market.vacancies.length > 0 && (
-        <div className="market-states">
-          <div className="market-states-heading">
+        <div
+          className={`market-states${statesAreVisible ? ' is-visible' : ''}`}
+        >
+          <div ref={statesHeadingRef} className="market-states-heading">
             <span>Demand by state</span>
             <small>Highest demand first</small>
           </div>
@@ -453,7 +484,7 @@ function MarketOutlook({ market }: { market: RoleMarket | null }) {
                       style={
                         {
                           '--state-share': String(share),
-                          '--state-delay': `${index * 35}ms`,
+                          '--state-delay': `${index * 90}ms`,
                         } as CSSProperties
                       }
                     />
@@ -476,6 +507,9 @@ function EmploymentTrajectory({
 }: {
   points: { year: string; value: number }[]
 }) {
+  const { elementRef: trajectoryHeadingRef, isVisible: trajectoryIsVisible } =
+    useRevealOnView<HTMLDivElement>()
+
   if (points.length < 2) return null
 
   const width = 320
@@ -498,8 +532,11 @@ function EmploymentTrajectory({
   const area = `${padX},${baselineY} ${line} ${width - padX},${baselineY}`
 
   return (
-    <article className="trajectory-card" aria-label="Employment trajectory">
-      <div className="trajectory-heading">
+    <article
+      className={`trajectory-card${trajectoryIsVisible ? ' is-visible' : ''}`}
+      aria-label="Employment trajectory"
+    >
+      <div ref={trajectoryHeadingRef} className="trajectory-heading">
         <h4>Employment trajectory</h4>
         <span>2025–2035</span>
       </div>
@@ -520,7 +557,7 @@ function EmploymentTrajectory({
               r="3.5"
               style={
                 {
-                  '--trajectory-delay': `${220 + index * 80}ms`,
+                  '--trajectory-delay': `${360 + index * 140}ms`,
                 } as CSSProperties
               }
             />
