@@ -16,6 +16,7 @@ import {
 } from '../lib/skillsApi'
 import { requestTargetRole, type TargetRole } from '../lib/targetRoleApi'
 import { CareerDashboard } from '../components/CareerDashboard'
+import { SpecularButton } from '../components/SpecularButton'
 import { Stepper } from '../components/Stepper'
 import type { RoleSuggestion } from '../lib/suggestionApi'
 import { EducationLevelSelect } from '../components/EducationLevelSelect'
@@ -756,9 +757,25 @@ export function ProfilePage() {
                 </p>
 
                 <div className="hero-actions">
-                  <button type="button" onClick={startProfile} disabled={busy}>
+                  <SpecularButton
+                    size="lg"
+                    radius={9}
+                    tint="#ffffff"
+                    tintOpacity={0}
+                    textColor="#ffffff"
+                    lineColor="#ffffff"
+                    baseColor="#167451"
+                    intensity={1.4}
+                    shineSize={16}
+                    shineFade={26}
+                    thickness={2.2}
+                    speed={0.3}
+                    proximity={280}
+                    onClick={startProfile}
+                    disabled={busy}
+                  >
                     Build my profile
-                  </button>
+                  </SpecularButton>
                   <a className="text-link" href="#how-it-works">
                     See how it works
                   </a>
