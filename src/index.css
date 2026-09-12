@@ -1791,10 +1791,10 @@ select {
 /* The outlook panel turns raw projections into one readable story. */
 .market-outlook {
   margin: 0 0 26px;
-  padding: 22px;
+  padding: clamp(20px, 3vw, 28px);
   border: 1px solid #cfe4d9;
-  border-radius: 14px;
-  background: linear-gradient(160deg, #f2faf6, #ffffff);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #f2faf6 0%, #ffffff 72%);
 }
 
 .market-heading {
@@ -1806,14 +1806,15 @@ select {
 
 .market-heading h3 {
   margin: 4px 0 6px;
-  font-size: 22px;
+  font-size: clamp(22px, 3vw, 30px);
   letter-spacing: -0.02em;
 }
 
 .market-heading p {
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 .market-growth {
@@ -1826,8 +1827,10 @@ select {
 
 .market-earnings {
   flex-shrink: 0;
-  padding: 12px 16px;
-  border-radius: 11px;
+  min-width: 180px;
+  padding: 14px 18px;
+  border: 1px solid rgb(207 228 217 / 75%);
+  border-radius: 16px;
   background: var(--green-soft);
   text-align: right;
 }
@@ -1840,21 +1843,23 @@ select {
 }
 
 .market-earnings strong {
-  font-size: 24px;
+  font-size: clamp(24px, 3vw, 30px);
   letter-spacing: -0.02em;
 }
 
 .market-facts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 14px;
-  margin-top: 18px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
+  align-items: start;
+  gap: 16px;
+  margin-top: 22px;
 }
 
 .market-facts article {
-  padding: 12px 14px;
+  min-width: 0;
+  padding: 16px 18px;
   border: 1px solid var(--line);
-  border-radius: 11px;
+  border-radius: 16px;
   background: #ffffff;
 }
 
@@ -1873,6 +1878,26 @@ select {
 .market-facts small {
   color: var(--muted);
   font-size: 12px;
+}
+
+.hiring-demand-total {
+  font-size: clamp(24px, 3vw, 30px) !important;
+  letter-spacing: -0.03em;
+}
+
+.hiring-demand-note {
+  margin: 22px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.hiring-demand-note strong {
+  display: inline;
+  margin: 0;
+  font-size: inherit;
 }
 
 /* Occupation suggestions show the projected trend beside each title. */
@@ -1904,7 +1929,12 @@ select {
   }
 
   .market-earnings {
+    width: 100%;
     text-align: left;
+  }
+
+  .market-facts {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -2038,39 +2068,134 @@ select {
   text-align: center;
 }
 
-/* Employment trajectory: one small SVG chart per target role. */
+/* Employment trajectory: a compact line visual with readable HTML labels. */
+.trajectory-card {
+  overflow: hidden;
+}
+
+.trajectory-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.trajectory-heading h4 {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.trajectory-heading > span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 650;
+}
+
 .trajectory-chart {
   display: block;
   width: 100%;
-  max-width: 280px;
-  margin-top: 6px;
+  max-width: none;
+  height: auto;
+  margin-top: 12px;
+  overflow: visible;
 }
 
 .trajectory-line {
   fill: none;
   stroke: var(--green);
-  stroke-width: 2.5;
+  stroke-width: 2.75;
   stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.trajectory-card.is-visible .trajectory-line {
+  animation: trajectory-draw 900ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
 }
 
 .trajectory-area {
   fill: rgb(22 116 81 / 12%);
+  opacity: 0;
+}
+
+.trajectory-card.is-visible .trajectory-area {
+  animation: trajectory-area-in 720ms ease-out 260ms both;
 }
 
 .trajectory-dot {
   fill: var(--green-dark);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
-.trajectory-year {
-  fill: var(--muted);
-  font-size: 10px;
+.trajectory-card.is-visible .trajectory-dot {
+  animation: trajectory-dot-in 440ms cubic-bezier(0.22, 1, 0.36, 1)
+    var(--trajectory-delay, 360ms) both;
+}
+
+.trajectory-milestones {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.trajectory-milestones li {
+  display: grid;
+  gap: 2px;
+}
+
+.trajectory-milestones span {
+  color: var(--muted);
+  font-size: 12px;
   font-weight: 650;
 }
 
-.trajectory-value {
-  fill: var(--ink);
+.trajectory-milestones strong {
+  margin-top: 0;
+  font-size: clamp(14px, 2vw, 18px);
+  letter-spacing: -0.02em;
+}
+
+.trajectory-milestones small,
+.trajectory-caption {
+  color: var(--muted);
   font-size: 11px;
+}
+
+.trajectory-caption {
+  display: block;
+  margin-top: 14px;
+}
+
+.market-states {
+  margin-top: 20px;
+}
+
+.market-states-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.market-states-heading > span {
+  color: var(--ink);
+  font-size: 14px;
   font-weight: 700;
+}
+
+.market-states-heading small {
+  color: var(--muted);
+  font-size: 11px;
 }
 
 /* State vacancy bars share one scale so states compare at a glance. */
@@ -2097,7 +2222,7 @@ select {
 
 .market-state-chart .state-bar {
   display: block;
-  height: 10px;
+  height: 9px;
   border-radius: 999px;
   background: #e2ece7;
   overflow: hidden;
@@ -2106,13 +2231,81 @@ select {
 .market-state-chart .state-bar span {
   display: block;
   height: 100%;
+  width: 100%;
   border-radius: 999px;
   background: linear-gradient(90deg, #217f5d, var(--green));
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.market-states.is-visible .market-state-chart .state-bar span {
+  animation: state-bar-in 880ms cubic-bezier(0.22, 1, 0.36, 1)
+    var(--state-delay) both;
 }
 
 .market-state-chart strong {
   font-size: 12px;
   text-align: right;
+}
+
+@keyframes trajectory-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes trajectory-area-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes trajectory-dot-in {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes state-bar-in {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(var(--state-share));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trajectory-line,
+  .trajectory-area,
+  .trajectory-dot,
+  .market-state-chart .state-bar span {
+    animation: none;
+  }
+
+  .trajectory-line {
+    stroke-dashoffset: 0;
+  }
+
+  .trajectory-area,
+  .trajectory-dot {
+    opacity: 1;
+  }
+
+  .market-state-chart .state-bar span {
+    transform: scaleX(var(--state-share));
+  }
 }
 
 /* The stacked factor bar shows what each match score is made of. */

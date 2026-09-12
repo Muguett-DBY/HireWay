@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import {
   loadRoleRequirements,
   type RoleMarket,
@@ -149,7 +149,7 @@ export function RoleRequirements({
       {requirements && !loading && (
         <>
           {/* The outlook panel answers whether the role has a future. */}
-          <MarketOutlook market={requirements.market} />
+          <MarketOutlook key={targetRole.code} market={requirements.market} />
 
           {/* Official OSCA task statements describe the day-to-day work. */}
           {requirements.tasks.length > 0 && (
@@ -334,7 +334,36 @@ export function RoleRequirements({
 
 // Every projected figure comes from Australian Government sources, so the
 // panel keeps the outlook story next to its numbers instead of hiding it.
+function useRevealOnView<T extends HTMLElement>(threshold = 0.75) {
+  const elementRef = useRef<T>(null)
+  const [isVisible, setIsVisible] = useState(
+    () => typeof IntersectionObserver === 'undefined',
+  )
+
+  useEffect(() => {
+    const element = elementRef.current
+    if (!element || typeof IntersectionObserver === 'undefined') return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return
+        setIsVisible(true)
+        observer.disconnect()
+      },
+      { threshold },
+    )
+    observer.observe(element)
+
+    return () => observer.disconnect()
+  }, [threshold])
+
+  return { elementRef, isVisible }
+}
+
 function MarketOutlook({ market }: { market: RoleMarket | null }) {
+  const { elementRef: statesHeadingRef, isVisible: statesAreVisible } =
+    useRevealOnView<HTMLDivElement>()
+
   if (!market) {
     return (
       <section className="market-outlook" aria-labelledby="market-title">
@@ -398,9 +427,9 @@ function MarketOutlook({ market }: { market: RoleMarket | null }) {
           )}
         />
         {market.vacancies.length > 0 && (
-          <article>
+          <article className="hiring-demand-card">
             <span>Hiring demand</span>
-            <strong>
+            <strong className="hiring-demand-total">
               {numberFormat.format(
                 market.vacancies.reduce(
                   (total, entry) => total + entry.vacancies,
@@ -417,34 +446,55 @@ function MarketOutlook({ market }: { market: RoleMarket | null }) {
                 .join(', ')}
               {market.vacancies.length > 3 ? ' and more' : ''}
             </small>
+            {market.vacancies[0] && (
+              <p className="hiring-demand-note">
+                Most listings are in{' '}
+                <strong>{market.vacancies[0].state}</strong>.
+              </p>
+            )}
           </article>
         )}
       </div>
 
       {/* Vacancies per state share one scale so the bars compare directly. */}
       {market.vacancies.length > 0 && (
-        <ul className="market-state-chart" aria-label="Vacancies by state">
-          {market.vacancies.map((entry) => {
-            const share = Math.round((entry.vacancies / topVacancy) * 100)
-            return (
-              <li key={entry.state}>
-                <span className="state-name">{entry.state}</span>
-                <span
-                  className="state-bar"
-                  role="img"
-                  aria-label={`${entry.state}: ${Math.round(entry.vacancies)} vacancies`}
-                >
-                  <span style={{ width: `${Math.max(share, 2)}%` }} />
-                </span>
-                <strong>
-                  {entry.vacancies % 1 === 0
-                    ? numberFormat.format(entry.vacancies)
-                    : `~${Math.round(entry.vacancies)}`}
-                </strong>
-              </li>
-            )
-          })}
-        </ul>
+        <div
+          className={`market-states${statesAreVisible ? ' is-visible' : ''}`}
+        >
+          <div ref={statesHeadingRef} className="market-states-heading">
+            <span>Demand by state</span>
+            <small>Highest demand first</small>
+          </div>
+          <ul className="market-state-chart" aria-label="Vacancies by state">
+            {market.vacancies.map((entry, index) => {
+              const share = Math.max(entry.vacancies / topVacancy, 0.02)
+              const displayValue =
+                entry.vacancies % 1 === 0
+                  ? numberFormat.format(entry.vacancies)
+                  : `~${Math.round(entry.vacancies)}`
+              return (
+                <li key={entry.state}>
+                  <span className="state-name">{entry.state}</span>
+                  <span
+                    className="state-bar"
+                    role="img"
+                    aria-label={`${entry.state}: ${Math.round(entry.vacancies)} vacancies`}
+                  >
+                    <span
+                      style={
+                        {
+                          '--state-share': String(share),
+                          '--state-delay': `${index * 90}ms`,
+                        } as CSSProperties
+                      }
+                    />
+                  </span>
+                  <strong>{displayValue}</strong>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
       )}
     </section>
   )
@@ -457,12 +507,16 @@ function EmploymentTrajectory({
 }: {
   points: { year: string; value: number }[]
 }) {
+  const { elementRef: trajectoryHeadingRef, isVisible: trajectoryIsVisible } =
+    useRevealOnView<HTMLDivElement>()
+
   if (points.length < 2) return null
 
-  const width = 260
-  const height = 96
-  const padX = 8
-  const padY = 18
+  const width = 320
+  const height = 84
+  const padX = 28
+  const padY = 16
+  const baselineY = height - 12
   const values = points.map((point) => point.value)
   const min = Math.min(...values)
   const max = Math.max(...values)
@@ -475,42 +529,60 @@ function EmploymentTrajectory({
     ...point,
   }))
   const line = coords.map((c) => `${c.x},${c.y}`).join(' ')
-  const area = `${padX},${height - 14} ${line} ${width - padX},${height - 14}`
+  const area = `${padX},${baselineY} ${line} ${width - padX},${baselineY}`
 
   return (
-    <article>
-      <span>Employment trajectory</span>
+    <article
+      className={`trajectory-card${trajectoryIsVisible ? ' is-visible' : ''}`}
+      aria-label="Employment trajectory"
+    >
+      <div ref={trajectoryHeadingRef} className="trajectory-heading">
+        <h4>Employment trajectory</h4>
+        <span>2025–2035</span>
+      </div>
       <svg
         className="trajectory-chart"
         viewBox={`0 0 ${width} ${height}`}
-        role="img"
-        aria-label={`Employment from ${points[0].value && numberFormat.format(points[0].value)} in ${points[0].year} to ${numberFormat.format(points[points.length - 1].value)} in ${points[points.length - 1].year}`}
+        aria-hidden="true"
+        focusable="false"
       >
         <polygon className="trajectory-area" points={area} />
-        <polyline className="trajectory-line" points={line} />
-        {coords.map((c) => (
+        <polyline className="trajectory-line" points={line} pathLength="1" />
+        {coords.map((c, index) => (
           <g key={c.year}>
-            <circle className="trajectory-dot" cx={c.x} cy={c.y} r="3.5" />
-            <text
-              className="trajectory-year"
-              x={c.x}
-              y={height - 2}
-              textAnchor="middle"
-            >
-              {c.year}
-            </text>
-            <text
-              className="trajectory-value"
-              x={c.x}
-              y={c.y - 8}
-              textAnchor="middle"
-            >
-              {numberFormat.format(Math.round(c.value))}
-            </text>
+            <circle
+              className="trajectory-dot"
+              cx={c.x}
+              cy={c.y}
+              r="3.5"
+              style={
+                {
+                  '--trajectory-delay': `${360 + index * 140}ms`,
+                } as CSSProperties
+              }
+            />
           </g>
         ))}
       </svg>
-      <small>People employed (projected)</small>
+      <ol
+        className="trajectory-milestones"
+        aria-label="Projected employment by year"
+      >
+        {points.map((point, index) => (
+          <li key={point.year}>
+            <span>{point.year}</span>
+            <strong>{numberFormat.format(Math.round(point.value))}</strong>
+            <small>
+              {index === 0
+                ? 'Current'
+                : index === points.length - 1
+                  ? 'Projected'
+                  : 'Forecast'}
+            </small>
+          </li>
+        ))}
+      </ol>
+      <small className="trajectory-caption">People employed · projected</small>
     </article>
   )
 }
