@@ -1,0 +1,89 @@
+﻿classification_level,asced_level_code,level_name,broad_level_code,broad_level_name,narrow_level_code,narrow_level_name,detailed_level_code,detailed_level_name,data_source
+broad,1,POSTGRADUATE DEGREE LEVEL,1,POSTGRADUATE DEGREE LEVEL,,,,,ASCED 2001
+narrow,11,Doctoral Degree Level,1,POSTGRADUATE DEGREE LEVEL,11,Doctoral Degree Level,,,ASCED 2001
+detailed,111,Higher Doctorate,1,POSTGRADUATE DEGREE LEVEL,11,Doctoral Degree Level,111,Higher Doctorate,ASCED 2001
+detailed,112,Doctorate by Research,1,POSTGRADUATE DEGREE LEVEL,11,Doctoral Degree Level,112,Doctorate by Research,ASCED 2001
+detailed,113,Doctorate by Coursework,1,POSTGRADUATE DEGREE LEVEL,11,Doctoral Degree Level,113,Doctorate by Coursework,ASCED 2001
+detailed,114,Professional Specialist Qualification at Doctoral Degree Level,1,POSTGRADUATE DEGREE LEVEL,11,Doctoral Degree Level,114,Professional Specialist Qualification at Doctoral Degree Level,ASCED 2001
+detailed,115,Statement of Attainment at Doctoral Degree Level,1,POSTGRADUATE DEGREE LEVEL,11,Doctoral Degree Level,115,Statement of Attainment at Doctoral Degree Level,ASCED 2001
+detailed,116,Bridging and Enabling Course at Doctoral Degree Level,1,POSTGRADUATE DEGREE LEVEL,11,Doctoral Degree Level,116,Bridging and Enabling Course at Doctoral Degree Level,ASCED 2001
+narrow,12,Master Degree Level,1,POSTGRADUATE DEGREE LEVEL,12,Master Degree Level,,,ASCED 2001
+detailed,121,Master Degree by Research,1,POSTGRADUATE DEGREE LEVEL,12,Master Degree Level,121,Master Degree by Research,ASCED 2001
+detailed,122,Master Degree by Coursework,1,POSTGRADUATE DEGREE LEVEL,12,Master Degree Level,122,Master Degree by Coursework,ASCED 2001
+detailed,123,Professional Specialist Qualification at Master Degree Level,1,POSTGRADUATE DEGREE LEVEL,12,Master Degree Level,123,Professional Specialist Qualification at Master Degree Level,ASCED 2001
+detailed,124,Statement of Attainment at Master Degree Level,1,POSTGRADUATE DEGREE LEVEL,12,Master Degree Level,124,Statement of Attainment at Master Degree Level,ASCED 2001
+detailed,125,Bridging and Enabling Course at Master Degree Level,1,POSTGRADUATE DEGREE LEVEL,12,Master Degree Level,125,Bridging and Enabling Course at Master Degree Level,ASCED 2001
+broad,2,GRADUATE DIPLOMA AND GRADUATE CERTIFICATE LEVEL,2,GRADUATE DIPLOMA AND GRADUATE CERTIFICATE LEVEL,,,,,ASCED 2001
+narrow,21,Graduate Diploma Level,2,GRADUATE DIPLOMA AND GRADUATE CERTIFICATE LEVEL,21,Graduate Diploma Level,,,ASCED 2001
+detailed,211,Graduate Diploma,2,GRADUATE DIPLOMA AND GRADUATE CERTIFICATE LEVEL,21,Graduate Diploma Level,211,Graduate Diploma,ASCED 2001
+detailed,212,Graduate Qualifying or Preliminary,2,GRADUATE DIPLOMA AND GRADUATE CERTIFICATE LEVEL,21,Graduate Diploma Level,212,Graduate Qualifying or Preliminary,ASCED 2001
+detailed,213,Professional Specialist Qualification at Graduate Diploma Level,2,GRADUATE DIPLOMA AND GRADUATE CERTIFICATE LEVEL,21,Graduate Diploma Level,213,Professional Specialist Qualification at Graduate Diploma Level,ASCED 2001
+detailed,214,Statement of Attainment at Graduate Diploma Level,2,GRADUATE DIPLOMA AND GRADUATE CERTIFICATE LEVEL,21,Graduate Diploma Level,214,Statement of Attainment at Graduate Diploma Level,ASCED 2001
+detailed,215,Bridging and Enabling Course at Graduate Diploma Level,2,GRADUATE DIPLOMA AND GRADUATE CERTIFICATE LEVEL,21,Graduate Diploma Level,215,Bridging and Enabling Course at Graduate Diploma Level,ASCED 2001
+narrow,22,Graduate Certificate Level,2,GRADUATE DIPLOMA AND GRADUATE CERTIFICATE LEVEL,22,Graduate Certificate Level,,,ASCED 2001
+detailed,221,Graduate Certificate,2,GRADUATE DIPLOMA AND GRADUATE CERTIFICATE LEVEL,22,Graduate Certificate Level,221,Graduate Certificate,ASCED 2001
+detailed,222,Professional Specialist Qualification at Graduate Certificate Level,2,GRADUATE DIPLOMA AND GRADUATE CERTIFICATE LEVEL,22,Graduate Certificate Level,222,Professional Specialist Qualification at Graduate Certificate Level,ASCED 2001
+detailed,223,Statement of Attainment at Graduate Certificate Level,2,GRADUATE DIPLOMA AND GRADUATE CERTIFICATE LEVEL,22,Graduate Certificate Level,223,Statement of Attainment at Graduate Certificate Level,ASCED 2001
+detailed,224,Bridging and Enabling Course at Graduate Certificate Level,2,GRADUATE DIPLOMA AND GRADUATE CERTIFICATE LEVEL,22,Graduate Certificate Level,224,Bridging and Enabling Course at Graduate Certificate Level,ASCED 2001
+broad,3,BACHELOR DEGREE LEVEL,3,BACHELOR DEGREE LEVEL,,,,,ASCED 2001
+narrow,31,Bachelor Degree Level,3,BACHELOR DEGREE LEVEL,31,Bachelor Degree Level,,,ASCED 2001
+detailed,311,Bachelor (Honours) Degree,3,BACHELOR DEGREE LEVEL,31,Bachelor Degree Level,311,Bachelor (Honours) Degree,ASCED 2001
+detailed,312,Bachelor (Pass) Degree,3,BACHELOR DEGREE LEVEL,31,Bachelor Degree Level,312,Bachelor (Pass) Degree,ASCED 2001
+detailed,313,Statement of Attainment at Bachelor Degree Level,3,BACHELOR DEGREE LEVEL,31,Bachelor Degree Level,313,Statement of Attainment at Bachelor Degree Level,ASCED 2001
+detailed,314,Bridging and Enabling Course at Bachelor Degree Level,3,BACHELOR DEGREE LEVEL,31,Bachelor Degree Level,314,Bridging and Enabling Course at Bachelor Degree Level,ASCED 2001
+broad,4,ADVANCED DIPLOMA AND DIPLOMA LEVEL,4,ADVANCED DIPLOMA AND DIPLOMA LEVEL,,,,,ASCED 2001
+narrow,41,Advanced Diploma and Associate Degree Level,4,ADVANCED DIPLOMA AND DIPLOMA LEVEL,41,Advanced Diploma and Associate Degree Level,,,ASCED 2001
+detailed,411,Advanced Diploma,4,ADVANCED DIPLOMA AND DIPLOMA LEVEL,41,Advanced Diploma and Associate Degree Level,411,Advanced Diploma,ASCED 2001
+detailed,412,Statement of Attainment at Advanced Diploma Level,4,ADVANCED DIPLOMA AND DIPLOMA LEVEL,41,Advanced Diploma and Associate Degree Level,412,Statement of Attainment at Advanced Diploma Level,ASCED 2001
+detailed,413,Associate Degree,4,ADVANCED DIPLOMA AND DIPLOMA LEVEL,41,Advanced Diploma and Associate Degree Level,413,Associate Degree,ASCED 2001
+detailed,414,Statement of Attainment at Associate Degree Level,4,ADVANCED DIPLOMA AND DIPLOMA LEVEL,41,Advanced Diploma and Associate Degree Level,414,Statement of Attainment at Associate Degree Level,ASCED 2001
+detailed,415,Bridging and Enabling Course at Advanced Diploma and Associate Degree Level,4,ADVANCED DIPLOMA AND DIPLOMA LEVEL,41,Advanced Diploma and Associate Degree Level,415,Bridging and Enabling Course at Advanced Diploma and Associate Degree Level,ASCED 2001
+narrow,42,Diploma Level,4,ADVANCED DIPLOMA AND DIPLOMA LEVEL,42,Diploma Level,,,ASCED 2001
+detailed,421,Diploma,4,ADVANCED DIPLOMA AND DIPLOMA LEVEL,42,Diploma Level,421,Diploma,ASCED 2001
+detailed,422,Statement of Attainment at Diploma Level,4,ADVANCED DIPLOMA AND DIPLOMA LEVEL,42,Diploma Level,422,Statement of Attainment at Diploma Level,ASCED 2001
+detailed,423,Bridging and Enabling Course at Diploma Level,4,ADVANCED DIPLOMA AND DIPLOMA LEVEL,42,Diploma Level,423,Bridging and Enabling Course at Diploma Level,ASCED 2001
+broad,5,CERTIFICATE LEVEL,5,CERTIFICATE LEVEL,,,,,ASCED 2001
+narrow,51,Certificate III & IV Level,5,CERTIFICATE LEVEL,51,Certificate III & IV Level,,,ASCED 2001
+detailed,511,Certificate IV,5,CERTIFICATE LEVEL,51,Certificate III & IV Level,511,Certificate IV,ASCED 2001
+detailed,512,Statement of Attainment at Certificate IV Level,5,CERTIFICATE LEVEL,51,Certificate III & IV Level,512,Statement of Attainment at Certificate IV Level,ASCED 2001
+detailed,513,Bridging and Enabling Course at Certificate IV Level,5,CERTIFICATE LEVEL,51,Certificate III & IV Level,513,Bridging and Enabling Course at Certificate IV Level,ASCED 2001
+detailed,514,Certificate III,5,CERTIFICATE LEVEL,51,Certificate III & IV Level,514,Certificate III,ASCED 2001
+detailed,515,Statement of Attainment at Certificate III Level,5,CERTIFICATE LEVEL,51,Certificate III & IV Level,515,Statement of Attainment at Certificate III Level,ASCED 2001
+detailed,516,Bridging and Enabling Course at Certificate III Level,5,CERTIFICATE LEVEL,51,Certificate III & IV Level,516,Bridging and Enabling Course at Certificate III Level,ASCED 2001
+narrow,52,Certificate I & II Level,5,CERTIFICATE LEVEL,52,Certificate I & II Level,,,ASCED 2001
+detailed,521,Certificate II,5,CERTIFICATE LEVEL,52,Certificate I & II Level,521,Certificate II,ASCED 2001
+detailed,522,Statement of Attainment at Certificate II Level,5,CERTIFICATE LEVEL,52,Certificate I & II Level,522,Statement of Attainment at Certificate II Level,ASCED 2001
+detailed,523,Bridging and Enabling Course at Certificate II Level,5,CERTIFICATE LEVEL,52,Certificate I & II Level,523,Bridging and Enabling Course at Certificate II Level,ASCED 2001
+detailed,524,Certificate I,5,CERTIFICATE LEVEL,52,Certificate I & II Level,524,Certificate I,ASCED 2001
+detailed,525,Statement of Attainment at Certificate I Level,5,CERTIFICATE LEVEL,52,Certificate I & II Level,525,Statement of Attainment at Certificate I Level,ASCED 2001
+broad,6,SECONDARY EDUCATION,6,SECONDARY EDUCATION,,,,,ASCED 2001
+narrow,61,Senior Secondary Education,6,SECONDARY EDUCATION,61,Senior Secondary Education,,,ASCED 2001
+detailed,611,Year 12,6,SECONDARY EDUCATION,61,Senior Secondary Education,611,Year 12,ASCED 2001
+detailed,612,Bridging and Enabling Course at Senior Secondary Level,6,SECONDARY EDUCATION,61,Senior Secondary Education,612,Bridging and Enabling Course at Senior Secondary Level,ASCED 2001
+detailed,613,Year 11,6,SECONDARY EDUCATION,61,Senior Secondary Education,613,Year 11,ASCED 2001
+narrow,62,Junior Secondary Education,6,SECONDARY EDUCATION,62,Junior Secondary Education,,,ASCED 2001
+detailed,621,Year 10,6,SECONDARY EDUCATION,62,Junior Secondary Education,621,Year 10,ASCED 2001
+detailed,622,Year 9,6,SECONDARY EDUCATION,62,Junior Secondary Education,622,Year 9,ASCED 2001
+detailed,623,Year 8,6,SECONDARY EDUCATION,62,Junior Secondary Education,623,Year 8,ASCED 2001
+detailed,624,Year 7 (excluding SA),6,SECONDARY EDUCATION,62,Junior Secondary Education,624,Year 7 (excluding SA),ASCED 2001
+broad,7,PRIMARY EDUCATION,7,PRIMARY EDUCATION,,,,,ASCED 2001
+narrow,71,Primary Education,7,PRIMARY EDUCATION,71,Primary Education,,,ASCED 2001
+detailed,711,Year 7 (SA),7,PRIMARY EDUCATION,71,Primary Education,711,Year 7 (SA),ASCED 2001
+detailed,712,Year 6,7,PRIMARY EDUCATION,71,Primary Education,712,Year 6,ASCED 2001
+detailed,713,Year 5,7,PRIMARY EDUCATION,71,Primary Education,713,Year 5,ASCED 2001
+detailed,714,Year 4,7,PRIMARY EDUCATION,71,Primary Education,714,Year 4,ASCED 2001
+detailed,715,Year 3,7,PRIMARY EDUCATION,71,Primary Education,715,Year 3,ASCED 2001
+detailed,716,Year 2,7,PRIMARY EDUCATION,71,Primary Education,716,Year 2,ASCED 2001
+detailed,717,Year 1,7,PRIMARY EDUCATION,71,Primary Education,717,Year 1,ASCED 2001
+detailed,718,Pre-Year 1,7,PRIMARY EDUCATION,71,Primary Education,718,Pre-Year 1,ASCED 2001
+broad,8,PRE-PRIMARY EDUCATION,8,PRE-PRIMARY EDUCATION,,,,,ASCED 2001
+narrow,81,Pre-primary Education,8,PRE-PRIMARY EDUCATION,81,Pre-primary Education,,,ASCED 2001
+detailed,811,Pre-primary Education,8,PRE-PRIMARY EDUCATION,81,Pre-primary Education,811,Pre-primary Education,ASCED 2001
+broad,9,OTHER EDUCATION,9,OTHER EDUCATION,,,,,ASCED 2001
+narrow,91,Non-award Courses,9,OTHER EDUCATION,91,Non-award Courses,,,ASCED 2001
+detailed,911,Non-award Courses in Higher Education,9,OTHER EDUCATION,91,Non-award Courses,911,Non-award Courses in Higher Education,ASCED 2001
+detailed,912,Other Non-award Courses,9,OTHER EDUCATION,91,Non-award Courses,912,Other Non-award Courses,ASCED 2001
+narrow,99,Miscellaneous Education,9,OTHER EDUCATION,99,Miscellaneous Education,,,ASCED 2001
+detailed,991,Statements of Attainment not Identifiable by Level,9,OTHER EDUCATION,99,Miscellaneous Education,991,Statements of Attainment not Identifiable by Level,ASCED 2001
+detailed,992,Bridging and Enabling Courses not Identifiable by Level,9,OTHER EDUCATION,99,Miscellaneous Education,992,Bridging and Enabling Courses not Identifiable by Level,ASCED 2001
+detailed,999,"Education, n.e.c.",9,OTHER EDUCATION,99,Miscellaneous Education,999,"Education, n.e.c.",ASCED 2001

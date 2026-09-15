@@ -1,0 +1,740 @@
+﻿industry_label,males,females,persons
+"Agriculture, Forestry and Fishing, nfd",2217,1068,3286
+"Agriculture, nfd",19033,8334,27368
+"Nursery and Floriculture Production, nfd",83,67,145
+Nursery Production (Under Cover),67,136,206
+Nursery Production (Outdoors),4979,4555,9532
+Turf Growing,839,250,1089
+Floriculture Production (Under Cover),0,4,4
+Floriculture Production (Outdoors),1268,1135,2406
+"Mushroom and Vegetable Growing, nfd",96,67,162
+Mushroom Growing,1153,1422,2580
+Vegetable Growing (Under Cover),815,514,1327
+Vegetable Growing (Outdoors),10130,6147,16273
+"Fruit and Tree Nut Growing, nfd",2834,1377,4210
+Grape Growing,4296,1713,6009
+Kiwifruit Growing,47,23,70
+Berry Fruit Growing,2777,2150,4925
+Apple and Pear Growing,950,503,1452
+Stone Fruit Growing,554,243,805
+Citrus Fruit Growing,1611,919,2527
+Olive Growing,294,193,489
+Other Fruit and Tree Nut Growing,4945,2249,7197
+"Sheep, Beef Cattle and Grain Farming, nfd",531,216,742
+Sheep Farming (Specialised),12921,5356,18278
+Beef Cattle Farming (Specialised),28843,15600,44450
+Beef Cattle Feedlots (Specialised),720,368,1091
+Sheep-Beef Cattle Farming,5308,2206,7521
+Grain-Sheep or Grain-Beef Cattle Farming,13513,4762,18276
+Rice Growing,0,3,5
+Other Grain Growing,13964,4977,18945
+"Other Crop Growing, nfd",7,0,10
+Sugar Cane Growing,3332,884,4210
+Cotton Growing,849,275,1121
+Other Crop Growing nec,1323,530,1856
+Dairy Cattle Farming,11479,5971,17445
+"Poultry Farming, nfd",1243,493,1735
+Poultry Farming (Meat),1395,719,2115
+Poultry Farming (Eggs),2195,1714,3903
+Deer Farming,15,16,27
+"Other Livestock Farming, nfd",7,12,15
+Horse Farming,1697,2020,3718
+Pig Farming,1478,605,2084
+Beekeeping,1179,460,1635
+Other Livestock Farming nec,507,630,1136
+"Aquaculture, nfd",719,251,976
+Offshore Longline and Rack Aquaculture,1670,559,2227
+Offshore Caged Aquaculture,924,346,1272
+Onshore Aquaculture,687,230,912
+"Forestry and Logging, nfd",142,27,175
+Forestry,3064,788,3846
+Logging,2318,304,2624
+"Fishing, Hunting and Trapping, nfd",101,11,109
+"Fishing, nfd",2371,557,2929
+Rock Lobster and Crab Potting,820,203,1018
+Prawn Fishing,281,64,345
+Line Fishing,43,6,46
+"Fish Trawling, Seining and Netting",48,9,63
+Other Fishing,338,93,436
+Hunting and Trapping,269,50,321
+"Agriculture, Forestry and Fishing Support Services, nfd",34,24,61
+Forestry Support Services,2366,1015,3383
+"Agriculture and Fishing Support Services, nfd",495,211,704
+Cotton Ginning,297,174,466
+Shearing Services,1896,706,2597
+Other Agriculture and Fishing Support Services,11213,4126,15340
+"Total Agriculture, Forestry and Fishing",191574,90651,282227
+"Mining, nfd",12001,2799,14801
+Coal Mining,41789,7827,49616
+Oil and Gas Extraction,14231,4463,18693
+"Metal Ore Mining, nfd",590,123,713
+Iron Ore Mining,33850,8879,42728
+Bauxite Mining,2341,666,3005
+Copper Ore Mining,7134,1754,8892
+Gold Ore Mining,21161,4672,25827
+Mineral Sand Mining,2963,742,3704
+Nickel Ore Mining,1680,366,2043
+Silver-Lead-Zinc Ore Mining,4010,689,4697
+Other Metal Ore Mining,2844,618,3458
+"Non-Metallic Mineral Mining and Quarrying, nfd",920,194,1118
+"Construction Material Mining, nfd",10,4,18
+Gravel and Sand Quarrying,1506,248,1751
+Other Construction Material Mining,4296,816,5113
+Other Non-Metallic Mineral Mining and Quarrying,2725,698,3427
+"Exploration and Other Mining Support Services, nfd",50,3,57
+"Exploration, nfd",197,60,253
+Petroleum Exploration,874,240,1114
+Mineral Exploration,6128,1892,8019
+Other Mining Support Services,13395,2324,15715
+Total Mining,174695,40064,214759
+"Manufacturing, nfd",42213,14762,56976
+"Food Product Manufacturing, nfd",7301,5219,12515
+"Meat and Meat Product Manufacturing, nfd",202,88,292
+Meat Processing,24005,9885,33892
+Poultry Processing,8827,5879,14707
+Cured Meat and Smallgoods Manufacturing,3120,2053,5172
+Seafood Processing,963,630,1586
+"Dairy Product Manufacturing, nfd",255,154,408
+Milk and Cream Processing,2636,1109,3749
+Ice Cream Manufacturing,1005,713,1722
+Cheese and Other Dairy Product Manufacturing,7693,4083,11777
+Fruit and Vegetable Processing,5192,3667,8854
+Oil and Fat Manufacturing,625,457,1080
+"Grain Mill and Cereal Product Manufacturing, nfd",64,32,96
+Grain Mill Product Manufacturing,2040,806,2847
+"Cereal, Pasta and Baking Mix Manufacturing",2591,1708,4298
+"Bakery Product Manufacturing, nfd",158,155,311
+Bread Manufacturing (Factory based),13941,11711,25653
+Cake and Pastry Manufacturing (Factory based),2762,4125,6887
+Biscuit Manufacturing (Factory based),1384,1592,2979
+Bakery Product Manufacturing (Non-factory based),4660,10858,15515
+"Sugar and Confectionery Manufacturing, nfd",12,7,13
+Sugar Manufacturing,3576,824,4401
+Confectionery Manufacturing,4471,3894,8365
+"Other Food Product Manufacturing, nfd",20,15,29
+"Potato, Corn and Other Crisp Manufacturing",971,653,1616
+Prepared Animal and Bird Feed Manufacturing,3201,1500,4701
+Other Food Product Manufacturing nec,5709,4751,10467
+"Beverage and Tobacco Product Manufacturing, nfd",168,63,229
+"Beverage Manufacturing, nfd",212,114,333
+"Soft Drink, Cordial and Syrup Manufacturing",5224,2139,7364
+Beer Manufacturing,4645,1852,6499
+Spirit Manufacturing,479,329,807
+Wine and Other Alcoholic Beverage Manufacturing,10155,6507,16660
+Cigarette and Tobacco Product Manufacturing,15,10,28
+"Textile, Leather, Clothing and Footwear Manufacturing, nfd",542,673,1219
+"Textile Manufacturing, nfd",52,46,93
+Wool Scouring,79,26,106
+Natural Textile Manufacturing,104,62,166
+Synthetic Textile Manufacturing,351,155,506
+"Leather Tanning, Fur Dressing and Leather Product Manufacturing",649,395,1041
+"Textile Product Manufacturing, nfd",38,30,68
+Textile Floor Covering Manufacturing,826,513,1338
+"Rope, Cordage and Twine Manufacturing",75,28,106
+Cut and Sewn Textile Product Manufacturing,2038,2439,4476
+Textile Finishing and Other Textile Product Manufacturing,421,706,1121
+Knitted Product Manufacturing,101,145,240
+"Clothing and Footwear Manufacturing, nfd",11,37,51
+Clothing Manufacturing,2340,7238,9578
+Footwear Manufacturing,595,655,1250
+"Wood Product Manufacturing, nfd",198,34,231
+"Log Sawmilling and Timber Dressing, nfd",1160,286,1443
+Log Sawmilling,4353,684,5038
+Wood Chipping,361,64,422
+Timber Resawing and Dressing,661,128,788
+"Other Wood Product Manufacturing, nfd",635,137,773
+Prefabricated Wooden Building Manufacturing,55,19,71
+Wooden Structural Fitting and Component Manufacturing,11978,2313,14289
+Veneer and Plywood Manufacturing,440,105,548
+Reconstituted Wood Product Manufacturing,1221,257,1477
+Other Wood Product Manufacturing nec,1747,495,2244
+"Pulp, Paper and Converted Paper Product Manufacturing, nfd",638,172,810
+"Pulp, Paper and Paperboard Manufacturing",1802,326,2128
+"Converted Paper Product Manufacturing, nfd",9,3,9
+Corrugated Paperboard and Paperboard Container Manufacturing,4054,789,4841
+Paper Bag Manufacturing,293,183,475
+Paper Stationery Manufacturing,1613,940,2555
+Sanitary Paper Product Manufacturing,1182,372,1550
+Other Converted Paper Product Manufacturing,984,406,1391
+"Printing (including the Reproduction of Recorded Media), nfd",6,4,10
+"Printing and Printing Support Services, nfd",24,14,41
+Printing,14703,7665,22367
+Printing Support Services,1148,874,2023
+Reproduction of Recorded Media,285,214,501
+"Petroleum and Coal Product Manufacturing, nfd",21,9,31
+Petroleum Refining and Petroleum Fuel Manufacturing,1167,301,1475
+Other Petroleum and Coal Product Manufacturing,744,188,938
+"Basic Chemical and Chemical Product Manufacturing, nfd",1386,543,1935
+"Basic Chemical Manufacturing, nfd",35,18,53
+Industrial Gas Manufacturing,1460,425,1890
+Basic Organic Chemical Manufacturing,388,150,536
+Basic Inorganic Chemical Manufacturing,1147,356,1498
+"Basic Polymer Manufacturing, nfd",94,29,122
+Synthetic Resin and Synthetic Rubber Manufacturing,1858,570,2428
+Other Basic Polymer Manufacturing,239,62,300
+"Fertiliser and Pesticide Manufacturing, nfd",3,5,9
+Fertiliser Manufacturing,2155,851,3003
+Pesticide Manufacturing,634,273,907
+"Pharmaceutical and Medicinal Product Manufacturing, nfd",89,77,171
+Human Pharmaceutical and Medicinal Product Manufacturing,7616,7763,15386
+Veterinary Pharmaceutical and Medicinal Product Manufacturing,263,277,543
+"Cleaning Compound and Toiletry Preparation Manufacturing, nfd",25,20,47
+Cleaning Compound Manufacturing,1782,1671,3455
+Cosmetic and Toiletry Preparation Manufacturing,1306,1837,3142
+"Other Basic Chemical Product Manufacturing, nfd",0,0,3
+Photographic Chemical Product Manufacturing,6,0,6
+Explosive Manufacturing,2092,696,2786
+Other Basic Chemical Product Manufacturing nec,64,71,133
+"Polymer Product and Rubber Product Manufacturing, nfd",429,121,545
+"Polymer Product Manufacturing, nfd",2093,782,2877
+Polymer Film and Sheet Packaging Material Manufacturing,1999,698,2696
+Rigid and Semi-Rigid Polymer Product Manufacturing,5221,2125,7350
+Polymer Foam Product Manufacturing,510,192,698
+Tyre Manufacturing,1612,236,1850
+Adhesive Manufacturing,848,403,1259
+Paint and Coatings Manufacturing,3750,1478,5230
+Other Polymer Product Manufacturing,1368,378,1748
+Natural Rubber Product Manufacturing,546,155,706
+"Non-Metallic Mineral Product Manufacturing, nfd",391,97,487
+Glass and Glass Product Manufacturing,5478,1147,6619
+"Ceramic Product Manufacturing, nfd",67,97,161
+Clay Brick Manufacturing,1108,184,1296
+Other Ceramic Product Manufacturing,483,317,801
+"Cement, Lime, Plaster and Concrete Product Manufacturing, nfd",193,61,252
+Cement and Lime Manufacturing,2538,466,3004
+Plaster Product Manufacturing,1033,227,1259
+Ready-Mixed Concrete Manufacturing,6038,844,6879
+Concrete Product Manufacturing,2521,628,3153
+Other Non-Metallic Mineral Product Manufacturing,5280,1146,6423
+"Primary Metal and Metal Product Manufacturing, nfd",654,70,716
+Iron Smelting and Steel Manufacturing,19835,3927,23759
+"Basic Ferrous Metal Product Manufacturing, nfd",17,0,14
+Iron and Steel Casting,1420,253,1670
+Steel Pipe and Tube Manufacturing,523,70,590
+"Basic Non-Ferrous Metal Manufacturing, nfd",6919,1025,7943
+Alumina Production,4488,933,5421
+Aluminium Smelting,4139,779,4909
+"Copper, Silver, Lead and Zinc Smelting and Refining",1580,143,1732
+Other Basic Non-Ferrous Metal Manufacturing,1219,405,1623
+"Basic Non-Ferrous Metal Product Manufacturing, nfd",56,9,62
+Non-Ferrous Metal Casting,153,29,183
+"Aluminium Rolling, Drawing, Extruding",1552,458,2007
+Other Basic Non-Ferrous Metal Product Manufacturing,2967,596,3560
+"Fabricated Metal Product Manufacturing, nfd",416,37,454
+Iron and Steel Forging,131,50,178
+"Structural Metal Product Manufacturing, nfd",99,33,132
+Structural Steel Fabricating,6268,1002,7275
+Prefabricated Metal Building Manufacturing,1308,287,1596
+Architectural Aluminium Product Manufacturing,6238,1589,7825
+Metal Roof and Guttering Manufacturing (except Aluminium),982,287,1270
+Other Structural Metal Product Manufacturing,3841,1039,4876
+"Metal Container Manufacturing, nfd",20,0,21
+"Boiler, Tank and Other Heavy Gauge Metal Container Manufacturing",1625,171,1802
+Other Metal Container Manufacturing,1313,281,1600
+Sheet Metal Product Manufacturing (except Metal Structural and Container Products),2317,481,2792
+"Other Fabricated Metal Product Manufacturing, nfd",655,86,743
+Spring and Wire Product Manufacturing,1644,444,2084
+"Nut, Bolt, Screw and Rivet Manufacturing",555,123,674
+Metal Coating and Finishing,3077,667,3745
+Other Fabricated Metal Product Manufacturing nec,4263,1242,5509
+"Transport Equipment Manufacturing, nfd",886,226,1112
+"Motor Vehicle and Motor Vehicle Part Manufacturing, nfd",463,107,572
+Motor Vehicle Manufacturing,6819,1271,8081
+Motor Vehicle Body and Trailer Manufacturing,11082,2020,13099
+Automotive Electrical Component Manufacturing,442,150,590
+Other Motor Vehicle Parts Manufacturing,7229,1634,8864
+"Other Transport Equipment Manufacturing, nfd",226,28,260
+Shipbuilding and Repair Services,8523,1956,10477
+Boatbuilding and Repair Services,5431,694,6127
+Railway Rolling Stock Manufacturing and Repair Services,4081,630,4718
+Aircraft Manufacturing and Repair Services,6131,1208,7336
+Other Transport Equipment Manufacturing nec,662,203,863
+"Machinery and Equipment Manufacturing, nfd",4200,1036,5237
+"Professional and Scientific Equipment Manufacturing, nfd",33,18,51
+"Photographic, Optical and Ophthalmic Equipment Manufacturing",539,283,820
+Medical and Surgical Equipment Manufacturing,5381,4707,10089
+Other Professional and Scientific Equipment Manufacturing,1468,508,1971
+"Computer and Electronic Equipment Manufacturing, nfd",1003,389,1395
+Computer and Electronic Office Equipment Manufacturing,841,282,1130
+Communication Equipment Manufacturing,2291,683,2976
+Other Electronic Equipment Manufacturing,2574,1054,3636
+"Electrical Equipment Manufacturing, nfd",76,28,103
+Electric Cable and Wire Manufacturing,1229,379,1608
+Electric Lighting Equipment Manufacturing,1623,685,2307
+Other Electrical Equipment Manufacturing,5273,1167,6442
+"Domestic Appliance Manufacturing, nfd",13,6,16
+Whiteware Appliance Manufacturing,960,378,1339
+Other Domestic Appliance Manufacturing,1642,528,2168
+"Pump, Compressor, Heating and Ventilation Equipment Manufacturing, nfd",16,9,25
+Pump and Compressor Manufacturing,1985,509,2500
+"Fixed Space Heating, Cooling and Ventilation Equipment Manufacturing",1718,475,2190
+"Specialised Machinery and Equipment Manufacturing, nfd",73,15,86
+Agricultural Machinery and Equipment Manufacturing,2052,433,2490
+Mining and Construction Machinery Manufacturing,4757,861,5616
+Machine Tool and Parts Manufacturing,1183,254,1438
+Other Specialised Machinery and Equipment Manufacturing,1587,308,1895
+"Other Machinery and Equipment Manufacturing, nfd",24,0,24
+Lifting and Material Handling Equipment Manufacturing,2928,595,3519
+Other Machinery and Equipment Manufacturing nec,5059,1017,6078
+"Furniture and Other Manufacturing, nfd",54,15,71
+"Furniture Manufacturing, nfd",578,215,790
+Wooden Furniture and Upholstered Seat Manufacturing,11058,2038,13100
+Metal Furniture Manufacturing,518,90,607
+Mattress Manufacturing,827,457,1285
+Other Furniture Manufacturing,7211,1961,9174
+"Other Manufacturing, nfd",13,19,32
+Jewellery and Silverware Manufacturing,1584,1824,3404
+"Toy, Sporting and Recreational Product Manufacturing",1384,559,1943
+Other Manufacturing nec,1404,616,2017
+Total Manufacturing,503739,211021,714759
+"Electricity, Gas, Water and Waste Services, nfd",1923,679,2598
+"Electricity Supply, nfd",5722,1558,7272
+"Electricity Generation, nfd",195,52,248
+Fossil Fuel Electricity Generation,5360,1275,6630
+Hydro-Electricity Generation,1231,481,1718
+Other Electricity Generation,1454,416,1868
+Electricity Transmission,2618,882,3502
+Electricity Distribution,20854,6441,27293
+On Selling Electricity and Electricity Market Operation,5993,3647,9636
+Gas Supply,3646,1458,5104
+"Water Supply, Sewerage and Drainage Services, nfd",533,165,698
+Water Supply,20775,9666,30440
+Sewerage and Drainage Services,965,189,1153
+"Waste Collection, Treatment and Disposal Services, nfd",2121,666,2790
+"Waste Collection Services, nfd",4366,1412,5783
+Solid Waste Collection Services,10410,2414,12825
+Other Waste Collection Services,752,238,989
+"Waste Treatment, Disposal and Remediation Services, nfd",193,49,238
+Waste Treatment and Disposal Services,3796,1166,4966
+Waste Remediation and Materials Recovery Services,6892,1714,8606
+"Total Electricity, Gas, Water and Waste Services",99798,34567,134368
+"Construction, nfd",45914,9773,55683
+"Building Construction, nfd",31002,5933,36934
+"Residential Building Construction, nfd",167,28,193
+House Construction,84002,22823,106824
+Other Residential Building Construction,38874,7444,46323
+Non-Residential Building Construction,74498,15295,89793
+"Heavy and Civil Engineering Construction, nfd",1002,157,1159
+Road and Bridge Construction,32568,6394,38956
+Other Heavy and Civil Engineering Construction,60449,14451,74897
+"Construction Services, nfd",6409,1363,7773
+"Land Development and Site Preparation Services, nfd",43,11,56
+Land Development and Subdivision,3695,1709,5411
+Site Preparation Services,34110,5922,40029
+"Building Structure Services, nfd",68,16,78
+Concreting Services,36176,4080,40262
+Bricklaying Services,14489,880,15366
+Roofing Services,15674,2225,17900
+Structural Steel Erection Services,4787,647,5436
+"Building Installation Services, nfd",619,168,796
+Plumbing Services,65174,9492,74662
+Electrical Services,97508,13778,111289
+Air Conditioning and Heating Services,15465,2830,18299
+Fire and Security Alarm Installation Services,9511,2076,11587
+Other Building Installation Services,8692,1791,10489
+"Building Completion Services, nfd",309,58,365
+Plastering and Ceiling Services,19643,1892,21540
+Carpentry Services,69250,4795,74044
+Tiling and Carpeting Services,21866,2749,24616
+Painting and Decorating Services,37799,5056,42857
+Glazing Services,9898,1985,11886
+"Other Construction Services, nfd",118,28,147
+Landscape Construction Services,40856,6552,47412
+Hire of Construction Machinery with Operator,3581,716,4300
+Other Construction Services nec,26435,3852,30292
+Total Construction,910676,156968,1067645
+"Wholesale Trade, nfd",8373,5227,13597
+"Basic Material Wholesaling, nfd",270,149,415
+"Agricultural Product Wholesaling, nfd",86,44,132
+Wool Wholesaling,388,151,538
+Cereal Grain Wholesaling,1027,458,1484
+Other Agricultural Product Wholesaling,7696,5487,13187
+"Mineral, Metal and Chemical Wholesaling, nfd",11,8,19
+Petroleum Product Wholesaling,4743,2371,7115
+Metal and Mineral Wholesaling,6826,1815,8642
+Industrial and Agricultural Chemical Product Wholesaling,3092,1525,4617
+"Timber and Hardware Goods Wholesaling, nfd",57,24,83
+Timber Wholesaling,4294,1099,5395
+Plumbing Goods Wholesaling,5443,1858,7305
+Other Hardware Goods Wholesaling,17508,6540,24052
+"Machinery and Equipment Wholesaling, nfd",853,329,1188
+"Specialised Industrial Machinery and Equipment Wholesaling, nfd",16,3,19
+Agricultural and Construction Machinery Wholesaling,11397,2974,14373
+Other Specialised Industrial Machinery and Equipment Wholesaling,11185,3228,14410
+"Other Machinery and Equipment Wholesaling, nfd",514,220,740
+Professional and Scientific Goods Wholesaling,8037,6765,14804
+Computer and Computer Peripheral Wholesaling,8051,3175,11222
+Telecommunication Goods Wholesaling,2998,921,3925
+Other Electrical and Electronic Goods Wholesaling,15670,6210,21879
+Other Machinery and Equipment Wholesaling nec,5361,1618,6985
+"Motor Vehicle and Motor Vehicle Parts Wholesaling, nfd",285,98,386
+Car Wholesaling,5610,1770,7388
+Commercial Vehicle Wholesaling,3619,833,4454
+Trailer and Other Motor Vehicle Wholesaling,412,136,558
+Motor Vehicle New Parts Wholesaling,9319,2729,12045
+Motor Vehicle Dismantling and Used Parts Wholesaling,1687,270,1960
+"Grocery, Liquor and Tobacco Product Wholesaling, nfd",379,217,596
+General Line Grocery Wholesaling,6277,2720,8996
+"Meat, Poultry and Smallgoods Wholesaling",3303,1450,4752
+Dairy Produce Wholesaling,610,361,971
+Fish and Seafood Wholesaling,1589,895,2487
+Fruit and Vegetable Wholesaling,4929,2634,7562
+Liquor and Tobacco Product Wholesaling,2636,1713,4346
+Other Grocery Wholesaling,11776,8206,19985
+"Other Goods Wholesaling, nfd",175,138,306
+"Textile, Clothing and Footwear Wholesaling, nfd",14,10,27
+Textile Product Wholesaling,1035,1155,2196
+Clothing and Footwear Wholesaling,4045,5936,9983
+Pharmaceutical and Toiletry Goods Wholesaling,7284,11440,18716
+"Furniture, Floor Covering and Other Goods Wholesaling, nfd",368,260,622
+Furniture and Floor Covering Wholesaling,2333,1534,3873
+Jewellery and Watch Wholesaling,430,605,1042
+Kitchen and Diningware Wholesaling,919,1187,2107
+Toy and Sporting Goods Wholesaling,1681,1025,2700
+Book and Magazine Wholesaling,427,547,977
+Paper Product Wholesaling,2195,1934,4135
+Other Goods Wholesaling nec,4255,2797,7054
+Commission-Based Wholesaling,3319,2197,5515
+Total Wholesale Trade,204844,107022,311863
+"Retail Trade, nfd",16316,17976,34285
+"Motor Vehicle and Motor Vehicle Parts Retailing, nfd",84,21,111
+"Motor Vehicle Retailing, nfd",666,289,955
+Car Retailing,38480,12010,50493
+Motor Cycle Retailing,1580,389,1973
+Trailer and Other Motor Vehicle Retailing,1315,539,1848
+"Motor Vehicle Parts and Tyre Retailing, nfd",37,19,53
+Motor Vehicle Parts Retailing,12044,4458,16500
+Tyre Retailing,4282,1100,5386
+Fuel Retailing,19203,16564,35761
+"Food Retailing, nfd",2145,3014,5167
+Supermarket and Grocery Stores,136521,163285,299810
+"Specialised Food Retailing, nfd",122,91,215
+"Fresh Meat, Fish and Poultry Retailing",13685,6375,20062
+Fruit and Vegetable Retailing,7246,6567,13810
+Liquor Retailing,17311,10582,27889
+Other Specialised Food Retailing,6962,15301,22267
+"Other Store-Based Retailing, nfd",893,1280,2173
+"Furniture, Floor Coverings, Houseware and Textile Goods Retailing, nfd",194,249,444
+Furniture Retailing,11146,12165,23308
+Floor Coverings Retailing,2579,1435,4011
+Houseware Retailing,953,2788,3734
+Manchester and Other Textile Goods Retailing,2486,10192,12671
+"Electrical and Electronic Goods Retailing, nfd",172,94,263
+"Electrical, Electronic and Gas Appliance Retailing",23392,15042,38433
+Computer and Computer Peripheral Retailing,6244,2827,9070
+Other Electrical and Electronic Goods Retailing,1754,1183,2936
+"Hardware, Building and Garden Supplies Retailing, nfd",109,51,159
+Hardware and Building Supplies Retailing,32286,26838,59126
+Garden Supplies Retailing,2374,2338,4712
+"Recreational Goods Retailing, nfd",84,73,160
+Sport and Camping Equipment Retailing,11264,5212,16476
+Entertainment Media Retailing,1893,1445,3339
+Toy and Game Retailing,1828,2660,4486
+Newspaper and Book Retailing,4683,9022,13703
+Marine Equipment Retailing,1822,625,2442
+"Clothing, Footwear and Personal Accessory Retailing, nfd",58,159,212
+Clothing Retailing,18317,74384,92703
+Footwear Retailing,6691,12870,19560
+Watch and Jewellery Retailing,3892,14215,18108
+Other Personal Accessory Retailing,605,3271,3875
+Department Stores,21271,48969,70243
+"Pharmaceutical and Other Store-Based Retailing, nfd",254,166,415
+"Pharmaceutical, Cosmetic and Toiletry Goods Retailing",17962,63232,81194
+Stationery Goods Retailing,4371,5784,10160
+Antique and Used Goods Retailing,3290,4240,7527
+Flower Retailing,1141,6667,7811
+Other Store-Based Retailing nec,13707,24227,37926
+"Non-Store Retailing and Retail Commission-Based Buying and/or Selling, nfd",126,200,324
+Non-Store Retailing,5114,5920,11035
+Retail Commission-Based Buying and/or Selling,121,151,269
+Total Retail Trade,481042,618571,1099617
+"Accommodation and Food Services, nfd",913,916,1830
+Accommodation,44622,62854,107476
+"Food and Beverage Services, nfd",10817,10203,21016
+"Cafes, Restaurants and Takeaway Food Services, nfd",1006,1205,2215
+Cafes and Restaurants,118391,149613,268005
+Takeaway Food Services,110196,122495,232691
+Catering Services,14309,17414,31722
+"Pubs, Taverns and Bars",38799,37802,76602
+Clubs (Hospitality),19793,22395,42184
+Total Accommodation and Food Services,358848,424891,783737
+"Transport, Postal and Warehousing, nfd",17784,6885,24672
+"Road Transport, nfd",603,131,740
+Road Freight Transport,114649,20690,135344
+"Road Passenger Transport, nfd",1972,531,2502
+Interurban and Rural Bus Transport,3160,984,4143
+Urban Bus Transport (Including Tramway),30491,6393,36874
+Taxi and Other Road Transport,30044,3658,33700
+"Rail Transport, nfd",3810,967,4775
+Rail Freight Transport,8086,1894,9986
+Rail Passenger Transport,22498,7610,30106
+"Water Transport, nfd",1923,949,2871
+Water Freight Transport,1755,492,2250
+Water Passenger Transport,1476,823,2298
+Air and Space Transport,23884,13675,37563
+"Other Transport, nfd",0,0,0
+Scenic and Sightseeing Transport,3067,1883,4951
+"Pipeline and Other Transport, nfd",3,0,3
+Pipeline Transport,1511,583,2089
+Other Transport nec,435,277,709
+"Postal and Courier Pick-up and Delivery Services, nfd",444,121,569
+Postal Services,26791,18548,45334
+Courier Pick-up and Delivery Services,41194,9671,50869
+"Transport Support Services, nfd",128,48,174
+"Water Transport Support Services, nfd",86,36,121
+Stevedoring Services,2583,228,2810
+Port and Water Transport Terminal Operations,6365,1613,7975
+Other Water Transport Support Services,2728,827,3553
+Airport Operations and Other Air Transport Support Services,7969,3609,11584
+"Other Transport Support Services, nfd",45,26,71
+Customs Agency Services,774,606,1374
+Freight Forwarding Services,15816,7323,23138
+Other Transport Support Services nec,11632,4766,16399
+"Warehousing and Storage Services, nfd",198,49,247
+Grain Storage Services,2245,754,2998
+Other Warehousing and Storage Services,31292,12266,43558
+"Total Transport, Postal and Warehousing",417438,128926,546364
+"Information Media and Telecommunications, nfd",2101,1711,3812
+"Publishing (except Internet and Music Publishing), nfd",756,1053,1806
+"Newspaper, Periodical, Book and Directory Publishing, nfd",28,26,53
+Newspaper Publishing,4812,4984,9794
+Magazine and Other Periodical Publishing,1243,1939,3177
+Book Publishing,1649,3268,4917
+Directory and Mailing List Publishing,243,201,445
+"Other Publishing (except Software, Music and Internet)",58,113,176
+Software Publishing,3316,1800,5119
+"Motion Picture and Sound Recording Activities, nfd",165,61,226
+"Motion Picture and Video Activities, nfd",447,254,701
+Motion Picture and Video Production,8567,5240,13807
+Motion Picture and Video Distribution,175,210,382
+Motion Picture Exhibition,4124,4549,8675
+Post-production Services and Other Motion Picture and Video Activities,1403,657,2065
+"Sound Recording and Music Publishing, nfd",56,13,66
+Music Publishing,230,229,458
+Music and Other Sound Recording Activities,824,213,1036
+"Broadcasting (except Internet), nfd",586,268,844
+Radio Broadcasting,2850,2610,5459
+"Television Broadcasting, nfd",65,76,142
+Free-to-Air Television Broadcasting,7447,6864,14313
+Cable and Other Subscription Broadcasting,1380,845,2222
+Internet Publishing and Broadcasting,1416,1429,2841
+"Telecommunications Services, nfd",12129,4133,16252
+Wired Telecommunications Network Operation,7761,3492,11255
+Other Telecommunications Network Operation,19343,8694,28034
+Other Telecommunications Services,206,82,286
+"Internet Service Providers, Web Search Portals and Data Processing Services, nfd",131,42,164
+Internet Service Providers and Web Search Portals,8323,3389,11709
+"Data Processing, Web Hosting and Electronic Information Storage Services, nfd",98,42,141
+Data Processing and Web Hosting Services,5005,2149,7152
+Electronic Information Storage Services,1751,668,2424
+"Library and Other Information Services, nfd",0,0,0
+Libraries and Archives,1855,4945,6796
+Other Information Services,44,56,100
+Total Information Media and Telecommunications,100578,66291,166872
+"Financial and Insurance Services, nfd",5943,4447,10388
+"Finance, nfd",11873,9624,21491
+Central Banking,1227,998,2227
+"Depository Financial Intermediation, nfd",4,6,10
+Banking,74883,83482,158358
+Building Society Operation,258,604,858
+Credit Union Operation,1217,2292,3509
+Other Depository Financial Intermediation,1696,1368,3064
+Non-Depository Financing,3891,3663,7549
+Financial Asset Investing,5219,4397,9613
+"Insurance and Superannuation Funds, nfd",62,84,146
+Life Insurance,4892,5372,10267
+"Health and General Insurance, nfd",62,97,164
+Health Insurance,4449,8359,12805
+General Insurance,27673,36634,64302
+Superannuation Funds,4999,5292,10288
+"Auxiliary Finance and Insurance Services, nfd",106,46,152
+"Auxiliary Finance and Investment Services, nfd",1029,583,1618
+Financial Asset Broking Services,9925,5413,15334
+Other Auxiliary Finance and Investment Services,52191,42747,94933
+Auxiliary Insurance Services,8246,9772,18018
+Total Financial and Insurance Services,219849,225280,445121
+"Rental, Hiring and Real Estate Services, nfd",362,442,804
+"Rental and Hiring Services (except Real Estate), nfd",860,333,1192
+"Motor Vehicle and Transport Equipment Rental and Hiring, nfd",598,390,991
+Passenger Car Rental and Hiring,3343,2412,5751
+Other Motor Vehicle and Transport Equipment Rental and Hiring,2198,784,2987
+Farm Animal and Bloodstock Leasing,6,0,10
+"Other Goods and Equipment Rental and Hiring, nfd",360,138,502
+Heavy Machinery and Scaffolding Rental and Hiring,7203,2158,9359
+Video and Other Electronic Media Rental and Hiring,86,77,162
+Other Goods and Equipment Rental and Hiring nec,5818,2953,8771
+Non-Financial Intangible Assets (except Copyrights) Leasing,143,195,336
+"Property Operators and Real Estate Services, nfd",3360,4157,7520
+"Property Operators, nfd",456,505,953
+Residential Property Operators,3344,4857,8199
+Non-Residential Property Operators,11254,9562,20816
+Real Estate Services,52149,67138,119283
+"Total Rental, Hiring and Real Estate Services",91528,96089,187621
+"Professional, Scientific and Technical Services, nfd",3227,2221,5450
+"Professional, Scientific and Technical Services (except Computer System Design and Related Services), nfd",2362,1848,4211
+Scientific Research Services,16375,19625,35996
+"Architectural, Engineering and Technical Services, nfd",3189,1149,4342
+Architectural Services,28247,18851,47095
+Surveying and Mapping Services,7163,2076,9244
+Engineering Design and Engineering Consulting Services,71565,23892,95456
+Other Specialised Design Services,12646,16591,29235
+Scientific Testing and Analysis Services,11686,6687,18375
+"Legal and Accounting Services, nfd",19,20,38
+Legal Services,42627,80332,122958
+Accounting Services,62161,84388,146553
+Advertising Services,19517,22542,42065
+Market Research and Statistical Services,9689,11929,21621
+"Management and Related Consulting Services, nfd",1630,1484,3112
+Corporate Head Office Management Services,6981,5218,12200
+Management Advice and Related Consulting Services,38426,34402,72828
+Veterinary Services,4990,23596,28583
+"Other Professional, Scientific and Technical Services, nfd",39,22,60
+Professional Photographic Services,5217,6619,11833
+"Other Professional, Scientific and Technical Services nec",5525,6605,12132
+Computer System Design and Related Services,162046,59664,221712
+"Total Professional, Scientific and Technical Services",515326,429767,945094
+"Administrative and Support Services, nfd",146,580,723
+"Administrative Services, nfd",197,919,1111
+"Employment Services, nfd",124,184,308
+Employment Placement and Recruitment Services,21803,35015,56817
+Labour Supply Services,25780,24614,50396
+Travel Agency and Tour Arrangement Services,7292,13245,20537
+"Other Administrative Services, nfd",115,386,500
+Office Administrative Services,4183,5870,10051
+Document Preparation Services,497,1498,1997
+Credit Reporting and Debt Collection Services,2411,2711,5123
+Call Centre Operation,5000,5797,10792
+Other Administrative Services nec,9642,11103,20747
+"Building Cleaning, Pest Control and Other Support Services, nfd",27,16,46
+"Building Cleaning, Pest Control and Gardening Services, nfd",89,37,123
+Building and Other Industrial Cleaning Services,60251,85350,145595
+Building Pest Control Services,6704,2455,9159
+Gardening Services,37926,6588,44512
+Packaging Services,5071,4820,9886
+Total Administrative and Support Services,187252,201179,388432
+"Public Administration and Safety, nfd",1003,1168,2174
+"Public Administration, nfd",4761,5944,10707
+Central Government Administration,52788,82504,135293
+State Government Administration,70962,103376,174336
+Local Government Administration,78462,77947,156402
+Justice,5498,9882,15383
+"Government Representation, nfd",3,0,4
+Domestic Government Representation,311,401,710
+Foreign Government Representation,471,601,1076
+Defence,62726,22292,85021
+"Public Order, Safety and Regulatory Services, nfd",178,91,271
+"Public Order and Safety Services, nfd",202,91,288
+Police Services,52018,30047,82065
+Investigation and Security Services,37990,10695,48686
+Fire Protection and Other Emergency Services,17657,5548,23207
+Correctional and Detention Services,20445,17173,37616
+Other Public Order and Safety Services,7879,3715,11594
+Regulatory Services,5745,6466,12213
+Total Public Administration and Safety,419100,377933,797031
+"Education and Training, nfd",9338,17463,26801
+"Preschool and School Education, nfd",102,472,573
+Preschool Education,3163,72458,75613
+"School Education, nfd",2254,5953,8200
+Primary Education,39433,225820,265249
+Secondary Education,67320,138043,205360
+Combined Primary and Secondary Education,41543,105445,146993
+Special School Education,2879,14122,16996
+"Tertiary Education, nfd",625,1074,1701
+Technical and Vocational Education and Training,23665,34341,58010
+Higher Education,65370,93157,158526
+"Adult, Community and Other Education, nfd",266,425,695
+"Adult, Community and Other Education, nfd",124,186,314
+Sports and Physical Recreation Instruction,13168,19985,33154
+Arts Education,5766,16412,22182
+"Adult, Community and Other Education nec",14049,23366,37415
+Educational Support Services,1331,2196,3527
+Total Education and Training,290405,770920,1061320
+"Health Care and Social Assistance, nfd",6592,21555,28146
+"Hospitals, nfd",14,30,46
+Hospitals (except Psychiatric Hospitals),123424,421735,545158
+Psychiatric Hospitals,1497,3107,4610
+"Medical and Other Health Care Services, nfd",6493,19677,26173
+"Medical Services, nfd",96,310,412
+General Practice Medical Services,28978,80668,109649
+Specialist Medical Services,9733,30160,39894
+Pathology and Diagnostic Imaging Services,13498,40215,53712
+"Allied Health Services, nfd",454,1673,2126
+Dental Services,10992,45818,56814
+Optometry and Optical Dispensing,5497,14002,19497
+Physiotherapy Services,9260,18982,28243
+Chiropractic and Osteopathic Services,3314,6882,10193
+Other Allied Health Services,17528,75603,93132
+"Other Health Care Services, nfd",22,64,92
+Ambulance Services,11427,11460,22889
+Other Health Care Services nec,2151,6901,9048
+"Residential Care Services, nfd",68,195,259
+Aged Care Residential Services,45074,213203,258274
+Other Residential Care Services,7132,17561,24692
+"Social Assistance Services, nfd",6217,18981,25194
+Child Care Services,7236,108010,115250
+Other Social Assistance Services,73840,204388,278221
+Total Health Care and Social Assistance,390529,1361188,1751717
+"Arts and Recreation Services, nfd",2494,2522,5019
+"Heritage Activities, nfd",58,56,115
+Museum Operation,3641,6252,9889
+"Parks and Gardens Operations, nfd",122,30,154
+Zoological and Botanical Gardens Operation,1619,2652,4269
+Nature Reserves and Conservation Parks Operation,5485,3252,8733
+"Creative and Performing Arts Activities, nfd",513,891,1404
+Performing Arts Operation,2961,3257,6218
+"Creative Artists, Musicians, Writers and Performers",11033,13330,24366
+Performing Arts Venue Operation,2147,2662,4810
+"Sports and Recreation Activities, nfd",1200,920,2115
+"Sports and Physical Recreation Activities, nfd",1043,867,1910
+Health and Fitness Centres and Gymnasia Operation,9921,17600,27522
+Sports and Physical Recreation Clubs and Sports Professionals,9523,6119,15637
+"Sports and Physical Recreation Venues, Grounds and Facilities Operation",11049,7889,18938
+Sports and Physical Recreation Administrative Service,4315,3189,7502
+"Horse and Dog Racing Activities, nfd",22,28,46
+Horse and Dog Racing Administration and Track Operation,1329,888,2216
+Other Horse and Dog Racing Activities,4476,3838,8316
+"Amusement and Other Recreation Activities, nfd",125,137,265
+Amusement Parks and Centres Operation,3602,3885,7486
+Amusement and Other Recreational Activities nec,2062,2448,4510
+"Gambling Activities, nfd",21,11,31
+Casino Operation,9299,7049,16350
+Lottery Operation,573,902,1477
+Other Gambling Activities,6017,3156,9176
+Total Arts and Recreation Services,94655,93826,188479
+"Other Services, nfd",179,101,279
+"Repair and Maintenance, nfd",6796,1384,8181
+"Automotive Repair and Maintenance, nfd",1802,273,2077
+Automotive Electrical Services,5457,956,6420
+"Automotive Body, Paint and Interior Repair",30768,5455,36224
+Other Automotive Repair and Maintenance,63251,11540,74789
+"Machinery and Equipment Repair and Maintenance, nfd",1739,339,2074
+Domestic Appliance Repair and Maintenance,7300,1677,8973
+Electronic (except Domestic Appliance) and Precision Equipment Repair and Maintenance,6635,1784,8416
+Other Machinery and Equipment Repair and Maintenance,24331,4222,28553
+"Other Repair and Maintenance, nfd",169,55,230
+Clothing and Footwear Repair,963,1462,2431
+Other Repair and Maintenance nec,4675,1240,5914
+"Personal and Other Services, nfd",42,127,167
+"Personal Care Services, nfd",24,112,136
+Hairdressing and Beauty Services,12579,85171,97748
+Diet and Weight Reduction Centre Operation,84,417,507
+"Funeral, Crematorium and Cemetery Services",3658,3840,7499
+"Other Personal Services, nfd",52,156,212
+Laundry and Dry-Cleaning Services,7732,7792,15520
+Photographic Film Processing,445,484,933
+Parking Services,1726,578,2304
+Brothel Keeping and Prostitution Services,208,518,726
+Other Personal Services nec,14000,25844,39843
+Religious Services,15819,16157,31974
+"Civic, Professional and Other Interest Group Services, nfd",164,407,570
+Business and Professional Association Services,3452,5470,8925
+Labour Association Services,2181,2901,5077
+Other Interest Group Services nec,11546,23987,35532
+"Private Households Employing Staff and Undifferentiated Goods and Service-Producing Activities of Households for Own Use, nfd",12,38,47
+Private Households Employing Staff,78,3082,3151
+Undifferentiated Goods-Producing Activities of Households for Own Use,0,0,0
+Undifferentiated Service-Producing Activities of Households for Own Use,8,23,34
+Total Other Services,227859,207598,435459
+Inadequately described,231303,138630,369939
+Not stated,89169,67826,156996
+Total,6200207,5849207,12049410
