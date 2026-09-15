@@ -1,0 +1,21 @@
+﻿industry,employed,female_share_pct,part_time_share_pct,median_weekly_earnings,workforce_share_pct,median_age
+"Agriculture, Forestry and Fishing",292200,32,28,1358,2,51
+Mining,314500,20,5,2832,2.1,42
+Manufacturing,868100,30,17,1654,5.9,43
+"Electricity, Gas, Water and Waste Services",216300,28,10,2134,1.5,41
+Construction,1371500,13,14,1600,9.3,37
+Wholesale Trade,328900,32,17,1588,2.2,43
+Retail Trade,1338300,55,50,1300,9.1,33
+Accommodation and Food Services,967200,52,61,1300,6.5,26
+"Transport, Postal and Warehousing",754500,22,23,1608,5.1,43
+Information Media and Telecommunications,178100,41,22,1875,1.2,38
+Financial and Insurance Services,546000,52,14,2163,3.7,41
+"Rental, Hiring and Real Estate Services",226200,48,24,1700,1.5,42
+"Professional, Scientific and Technical Services",1401200,44,20,2071,9.5,40
+Administrative and Support Services,434200,52,40,1494,2.9,41
+Public Administration and Safety,976200,50,15,1913,6.6,42
+Education and Training,1318100,70,39,1903,8.9,42
+Health Care and Social Assistance,2409000,76,43,1689,16.3,40
+Arts and Recreation Services,262700,48,48,1713,1.8,35
+Other Services,579900,44,33,1400,3.9,38
+All Industries,,,,1741,,
