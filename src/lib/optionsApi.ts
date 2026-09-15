@@ -3,7 +3,7 @@ export type CatalogueOption = {
   code: string
   label: string
   description: string
-  kind: 'education' | 'occupation' | 'skill' | 'tool'
+  kind: 'education' | 'occupation' | 'skill' | 'tool' | 'knowledge'
   // Only occupation results carry the five-year projection figure.
   growth5yPercent?: number | null
 }
@@ -55,19 +55,15 @@ export async function searchStudyOptions(
   return data.options
 }
 
-// Recommendations can use the selected study, target role, or both together.
+// Recommendations only use the selected course or ASCED field.
 export async function loadSkillRecommendations(
-  educationCode: string | null,
   degreeCode: string | null,
   majorCode: string | null,
-  targetRoleCode: string | null,
   signal?: AbortSignal,
 ): Promise<SkillRecommendation[]> {
   const parameters = new URLSearchParams()
-  if (educationCode) parameters.set('educationCode', educationCode)
   if (degreeCode) parameters.set('degreeCode', degreeCode)
   if (majorCode) parameters.set('majorCode', majorCode)
-  if (targetRoleCode) parameters.set('targetRoleCode', targetRoleCode)
 
   if (parameters.size === 0) return []
   const response = await fetch(

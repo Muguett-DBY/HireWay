@@ -1,12 +1,11 @@
 import { simplifyEducationLevel } from '../lib/education'
-import { findStudySkillNames } from '../lib/studySkills'
 
 // Every autocomplete menu uses the same small response shape.
 type CatalogueOption = {
   code: string
   label: string
   description: string
-  kind: 'education' | 'occupation' | 'skill' | 'tool'
+  kind: 'education' | 'occupation' | 'skill' | 'tool' | 'knowledge'
   // Only occupation results carry the five-year projection figure.
   growth5yPercent?: number | null
 }
@@ -23,17 +22,6 @@ type StudyOption = {
 type StudyRow = Omit<StudyOption, 'educationLevel'> & {
   educationLevel: string | null
   matchRank: number
-}
-
-type RecommendationRow = CatalogueOption & {
-  score: number
-  relevance: number
-  educationMatch: number
-  targetRoleMatch: number
-}
-
-type StudyTitleRow = {
-  title: string
 }
 
 export type SkillRecommendation = CatalogueOption & {
@@ -293,178 +281,39 @@ async function searchSkills(
   return result.results
 }
 
-// Related O*NET occupations turn a legacy study code or target role into suggestions.
-async function recommendFromOccupations(
-  env: Env,
-  educationCode: string,
-  targetRoleCode: string,
-): Promise<SkillRecommendation[]> {
-  if (!educationCode && !targetRoleCode) return []
-
-  const result = await env.DB.prepare(
-    `WITH raw_selected AS (
-       SELECT onet_code, 1 AS education_match, 0 AS target_role_match
-       FROM education_onet_map
-       WHERE education_code = ?
-
-       UNION ALL
-
-       SELECT onet_code, 0 AS education_match, 1 AS target_role_match
-       FROM occupation_onet_map
-       WHERE occupation_code = ?
-     ),
-     selected AS (
-       SELECT onet_code,
-              MAX(education_match) AS education_match,
-              MAX(target_role_match) AS target_role_match
-       FROM raw_selected
-       GROUP BY onet_code
-     ),
-     scored AS (
-       SELECT s.code, s.name AS label, s.description, s.kind,
-              ROUND(AVG(os.score), 1) AS score,
-              COUNT(DISTINCT os.onet_code) AS occupation_count,
-              (SELECT COUNT(*) FROM selected) AS selected_count,
-              MAX(os.hot_technology) AS hot,
-              MAX(os.in_demand) AS in_demand,
-              MAX(selected.education_match) AS educationMatch,
-              MAX(selected.target_role_match) AS targetRoleMatch
-       FROM selected
-       JOIN onet_occupation_skill os ON os.onet_code = selected.onet_code
-       JOIN skill s ON s.code = os.skill_code
-       GROUP BY s.code, s.name, s.description, s.kind
-     )
-     SELECT code, label, description, kind, score,
-            educationMatch, targetRoleMatch,
-            ROUND(
-              score * 0.4 +
-              (100.0 * occupation_count / selected_count) * 0.4 +
-              hot * 5 + in_demand * 15,
-              1
-            ) AS relevance
-     FROM scored
-     ORDER BY relevance DESC, label
-     LIMIT 120`,
-  )
-    .bind(educationCode, targetRoleCode)
-    .all<RecommendationRow>()
-
-  // Familiar starting tools win close ties without overriding the source data.
-  const starterTools = [
-    'Python',
-    'SQL',
-    'Microsoft Excel',
-    'R',
-    'Power BI',
-    'Tableau',
-    'Git',
-    'JavaScript',
-  ]
-  const toolBonus = new Map(
-    starterTools.map((name, index) => [name, 8 - index * 0.6]),
-  )
-  const sortRecommendations = (
-    left: RecommendationRow,
-    right: RecommendationRow,
-  ) =>
-    right.relevance +
-      (toolBonus.get(right.label) ?? 0) -
-      (left.relevance + (toolBonus.get(left.label) ?? 0)) ||
-    left.label.localeCompare(right.label)
-
-  const skills = result.results
-    .filter((item) => item.kind === 'skill')
-    .sort(sortRecommendations)
-    .slice(0, 6)
-  const tools = result.results
-    .filter((item) => item.kind === 'tool')
-    .sort(sortRecommendations)
-    .slice(0, 10)
-
-  return [...skills, ...tools].map((item) => ({
-    code: item.code,
-    label: item.label,
-    description: item.description,
-    kind: item.kind,
-    score: item.score,
-    reason:
-      item.educationMatch && item.targetRoleMatch
-        ? 'education and target role'
-        : item.targetRoleMatch
-          ? 'target role'
-          : 'education',
-  }))
-}
-
-// A selected CRICOS course or ASCED field chooses a short O*NET starter set.
-async function recommendFromStudy(
+// Study-only recommendations. No target-role or keyword fallback.
+async function recommendSkills(
   env: Env,
   degreeCode: string,
   majorCode: string,
 ): Promise<SkillRecommendation[]> {
   if (!degreeCode && !majorCode) return []
-
-  const study = await env.DB.prepare(
-    `SELECT title FROM degree_option WHERE code = ?
-     UNION ALL
-     SELECT title FROM major_option WHERE code = ?
-     LIMIT 1`,
-  )
-    .bind(degreeCode, majorCode)
-    .first<StudyTitleRow>()
-
-  if (!study) return []
-  const names = findStudySkillNames(study.title)
-  if (names.length === 0) return []
-
-  const placeholders = names.map(() => '?').join(', ')
   const result = await env.DB.prepare(
-    `SELECT code, name AS label, description, kind
-     FROM skill WHERE name IN (${placeholders})`,
+    `WITH selected_fields AS (
+       SELECT major_code FROM degree_major_map WHERE degree_code = ?
+       UNION SELECT code FROM major_option WHERE code = ? AND ? = ''
+     ), candidates AS (
+       SELECT s.code, s.name AS label, s.description, s.kind,
+              MAX(m.relevance) AS score
+       FROM selected_fields f
+       JOIN study_skill_map m ON m.major_code = f.major_code
+       JOIN skill s ON s.code = m.skill_code
+       GROUP BY s.code
+     ), ranked AS (
+       SELECT *, ROW_NUMBER() OVER (
+         PARTITION BY kind ORDER BY score DESC, label
+       ) AS category_rank FROM candidates
+     )
+     SELECT code,label,description,kind,score FROM ranked
+     WHERE (kind = 'knowledge' AND category_rank <= 4)
+        OR (kind = 'tool' AND category_rank <= 4)
+        OR (kind = 'skill' AND category_rank <= 2)
+     ORDER BY CASE kind WHEN 'knowledge' THEN 0 WHEN 'tool' THEN 1 ELSE 2 END,
+              score DESC,label`,
   )
-    .bind(...names)
-    .all<CatalogueOption>()
-  const order = new Map(names.map((name, index) => [name, index]))
-
-  return result.results
-    .sort(
-      (left, right) =>
-        (order.get(left.label) ?? names.length) -
-        (order.get(right.label) ?? names.length),
-    )
-    .map((item, index) => ({
-      ...item,
-      score: 100 - index,
-      reason: 'education',
-    }))
-}
-
-// Study starters stay visible while matching role data adds a few extra choices.
-async function recommendSkills(
-  env: Env,
-  educationCode: string,
-  degreeCode: string,
-  majorCode: string,
-  targetRoleCode: string,
-): Promise<SkillRecommendation[]> {
-  const [studyRecommendations, roleRecommendations] = await Promise.all([
-    recommendFromStudy(env, degreeCode, majorCode),
-    recommendFromOccupations(env, educationCode, targetRoleCode),
-  ])
-  const roleCodes = new Set(roleRecommendations.map((item) => item.code))
-  const combined = studyRecommendations.map((item) => ({
-    ...item,
-    reason: roleCodes.has(item.code)
-      ? ('education and target role' as const)
-      : item.reason,
-  }))
-  const studyCodes = new Set(studyRecommendations.map((item) => item.code))
-
-  for (const item of roleRecommendations) {
-    if (!studyCodes.has(item.code)) combined.push(item)
-  }
-
-  return combined.slice(0, 10)
+    .bind(degreeCode, majorCode, degreeCode)
+    .all<CatalogueOption & { score: number }>()
+  return result.results.map((item) => ({ ...item, reason: 'education' }))
 }
 
 // Route the public catalogue endpoints through one small handler.
@@ -483,10 +332,8 @@ export async function handleOptions(
   if (url.pathname === '/api/recommendations/skills') {
     const recommendations = await recommendSkills(
       env,
-      (url.searchParams.get('educationCode') ?? '').trim(),
       (url.searchParams.get('degreeCode') ?? '').trim(),
       (url.searchParams.get('majorCode') ?? '').trim(),
-      (url.searchParams.get('targetRoleCode') ?? '').trim(),
     )
     return Response.json({ recommendations })
   }

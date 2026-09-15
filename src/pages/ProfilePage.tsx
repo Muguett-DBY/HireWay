@@ -103,6 +103,7 @@ export function ProfilePage() {
     [],
   )
   const [recommendationsBusy, setRecommendationsBusy] = useState(false)
+  const [recommendationsError, setRecommendationsError] = useState('')
   // Suggestion cards reload whenever quiz answers or the target role change.
   const [suggestionsRefresh, setSuggestionsRefresh] = useState(0)
 
@@ -187,46 +188,37 @@ export function ProfilePage() {
     }
   }, [skillCode, skillName])
 
-  // Refresh suggestions whenever a saved study choice or target role changes.
+  // This form step only uses the selected course or field, never the target role.
   useEffect(() => {
-    if (
-      !details.qualificationCode &&
-      !details.degreeCode &&
-      !details.majorCode &&
-      !targetRole
-    ) {
-      return
-    }
-
     const controller = new AbortController()
     const timer = window.setTimeout(() => {
       setRecommendationsBusy(true)
+      setRecommendationsError('')
+      setRecommendations([])
       void loadSkillRecommendations(
-        details.qualificationCode,
         details.degreeCode,
         details.majorCode,
-        targetRole?.code ?? null,
         controller.signal,
       )
-        .then(setRecommendations)
+        .then((items) => {
+          if (!controller.signal.aborted) setRecommendations(items)
+        })
         .catch(() => {
-          if (!controller.signal.aborted) setRecommendations([])
+          if (!controller.signal.aborted) {
+            setRecommendationsError(
+              'Could not load suggestions. Please refresh to try again.',
+            )
+          }
         })
         .finally(() => {
           if (!controller.signal.aborted) setRecommendationsBusy(false)
         })
     }, 0)
-
     return () => {
       window.clearTimeout(timer)
       controller.abort()
     }
-  }, [
-    details.degreeCode,
-    details.majorCode,
-    details.qualificationCode,
-    targetRole,
-  ])
+  }, [details.degreeCode, details.majorCode])
 
   // Fill the form with the values that actually came back from D1.
   function showProfile(saved: Profile) {
@@ -1202,34 +1194,23 @@ export function ProfilePage() {
                       <h2>Current skills</h2>
                       <p>Add the skills and tools you already use.</p>
 
-                      {/* Suggestions use a recognised study choice or target role. */}
-                      {(details.qualificationCode ||
-                        details.degreeCode ||
-                        details.majorCode ||
-                        targetRole) && (
+                      {/* Only the saved study selection supplies these suggestions. */}
+                      {(details.degreeCode || details.majorCode) && (
                         <div className="skill-recommendations">
                           <div>
-                            <strong>
-                              Suggested from{' '}
-                              {(details.qualificationCode ||
-                                details.degreeCode ||
-                                details.majorCode) &&
-                              targetRole
-                                ? 'your study and target role'
-                                : details.qualificationCode ||
-                                    details.degreeCode ||
-                                    details.majorCode
-                                  ? 'your study'
-                                  : 'your target role'}
-                            </strong>
+                            <strong>Suggested from your study</strong>
                             <span>
-                              Add only the skills you already have. Study
-                              starters use existing O*NET skill and tool names.
+                              Optional knowledge, skills and tools linked
+                              through related occupations. These use US O*NET
+                              data and project-maintained subject mappings; add
+                              only what you already know or use.
                             </span>
                           </div>
 
                           {recommendationsBusy ? (
                             <p>Loading suggestions...</p>
+                          ) : recommendationsError ? (
+                            <p role="alert">{recommendationsError}</p>
                           ) : suggestedSkills.length > 0 ? (
                             <div className="suggestion-chips">
                               {suggestedSkills.map((suggestion) => (
@@ -1242,7 +1223,9 @@ export function ProfilePage() {
                                   title={
                                     suggestion.kind === 'tool'
                                       ? 'Tool or technology'
-                                      : 'Transferable skill'
+                                      : suggestion.kind === 'knowledge'
+                                        ? 'Subject knowledge'
+                                        : 'Transferable skill'
                                   }
                                 >
                                   + {suggestion.label}
@@ -1251,8 +1234,9 @@ export function ProfilePage() {
                             </div>
                           ) : (
                             <p>
-                              No new suggestions are available for this
-                              selection.
+                              {recommendations.length > 0
+                                ? 'You have added all the suggested skills. You can search for more below.'
+                                : 'No recommended skills are available for your study yet. You can search and add skills below.'}
                             </p>
                           )}
                         </div>
@@ -1304,7 +1288,9 @@ export function ProfilePage() {
                                       <small>
                                         {option.kind === 'tool'
                                           ? 'Tool or technology'
-                                          : 'Transferable skill'}
+                                          : option.kind === 'knowledge'
+                                            ? 'Subject knowledge'
+                                            : 'Transferable skill'}
                                       </small>
                                     </button>
                                   </li>
