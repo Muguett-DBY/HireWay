@@ -1,0 +1,3169 @@
+﻿anzsco_code,anzsco_title,state,date,vacancies
+0,Australia Total,AUST,2026-07-01,212327.33333
+1111,Chief Executives and Managing Directors,AUST,2026-07-01,369.33333
+1112,General Managers,AUST,2026-07-01,719.66667
+1211,Aquaculture Farmers,AUST,2026-07-01,2.66667
+1212,Crop Farmers,AUST,2026-07-01,20
+1213,Livestock Farmers,AUST,2026-07-01,60.33333
+1214,Mixed Crop and Livestock Farmers,AUST,2026-07-01,114
+1311,Advertising and Sales Managers,AUST,2026-07-01,4703.66667
+1321,Corporate Services Managers,AUST,2026-07-01,678
+1322,Finance Managers,AUST,2026-07-01,934
+1323,Human Resource Managers,AUST,2026-07-01,594.66667
+1324,Policy and Planning Managers,AUST,2026-07-01,1697
+1325,Research and Development Managers,AUST,2026-07-01,119
+1331,Construction Managers,AUST,2026-07-01,3938
+1332,Engineering Managers,AUST,2026-07-01,344
+1333,"Importers, Exporters and Wholesalers",AUST,2026-07-01,29
+1334,Manufacturers,AUST,2026-07-01,37.66667
+1335,Production Managers,AUST,2026-07-01,1229
+1336,"Supply, Distribution and Procurement Managers",AUST,2026-07-01,505.66667
+1341,Child Care Centre Managers,AUST,2026-07-01,308
+1342,Health and Welfare Services Managers,AUST,2026-07-01,399.33333
+1343,School Principals,AUST,2026-07-01,159.33333
+1344,Other Education Managers,AUST,2026-07-01,112.33333
+1351,ICT Managers,AUST,2026-07-01,521.33333
+1399,Other Specialist Managers,AUST,2026-07-01,729
+1411,Cafe and Restaurant Managers,AUST,2026-07-01,607.33333
+1412,Caravan Park and Camping Ground Managers,AUST,2026-07-01,6.66667
+1413,Hotel and Motel Managers,AUST,2026-07-01,604.33333
+1414,Licensed Club Managers,AUST,2026-07-01,147
+1419,Other Accommodation and Hospitality Managers,AUST,2026-07-01,103.66667
+1421,Retail Managers,AUST,2026-07-01,3636
+1491,"Amusement, Fitness and Sports Centre Managers",AUST,2026-07-01,277.66667
+1492,Call or Contact Centre and Customer Service Managers,AUST,2026-07-01,584.66667
+1493,Conference and Event Organisers,AUST,2026-07-01,433.33333
+1494,Transport Services Managers,AUST,2026-07-01,217
+1499,"Other Hospitality, Retail and Service Managers",AUST,2026-07-01,943.33333
+2111,"Actors, Dancers and Other Entertainers",AUST,2026-07-01,297.33333
+2112,Music Professionals,AUST,2026-07-01,10.33333
+2113,Photographers,AUST,2026-07-01,29
+2114,Visual Arts and Crafts Professionals,AUST,2026-07-01,4.33333
+2121,"Artistic Directors, and Media Producers and Presenters",AUST,2026-07-01,13.33333
+2122,"Authors, and Book and Script Editors",AUST,2026-07-01,79
+2123,"Film, Television, Radio and Stage Directors",AUST,2026-07-01,76
+2124,Journalists and Other Writers,AUST,2026-07-01,790.33333
+2211,Accountants,AUST,2026-07-01,3343
+2212,"Auditors, Company Secretaries and Corporate Treasurers",AUST,2026-07-01,645.66667
+2221,Financial Brokers,AUST,2026-07-01,225.66667
+2222,Financial Dealers,AUST,2026-07-01,48.33333
+2223,Financial Investment Advisers and Managers,AUST,2026-07-01,644.33333
+2231,Human Resource Professionals,AUST,2026-07-01,2404.66667
+2232,ICT Trainers,AUST,2026-07-01,6.33333
+2233,Training and Development Professionals,AUST,2026-07-01,834.66667
+2241,"Actuaries, Mathematicians and Statisticians",AUST,2026-07-01,141
+2242,"Archivists, Curators and Records Managers",AUST,2026-07-01,95.66667
+2243,Economists,AUST,2026-07-01,26.33333
+2244,Intelligence and Policy Analysts,AUST,2026-07-01,554.66667
+2245,Land Economists and Valuers,AUST,2026-07-01,82.33333
+2246,Librarians,AUST,2026-07-01,80
+2247,Management and Organisation Analysts,AUST,2026-07-01,751.66667
+2249,Other Information and Organisation Professionals,AUST,2026-07-01,277.33333
+2251,Advertising and Marketing Professionals,AUST,2026-07-01,1781.66667
+2252,ICT Sales Professionals,AUST,2026-07-01,26.66667
+2253,Public Relations Professionals,AUST,2026-07-01,656
+2254,Technical Sales Representatives,AUST,2026-07-01,281.33333
+2311,Air Transport Professionals,AUST,2026-07-01,113
+2312,Marine Transport Professionals,AUST,2026-07-01,53
+2321,Architects and Landscape Architects,AUST,2026-07-01,444
+2322,Surveyors and Spatial Scientists,AUST,2026-07-01,410
+2323,"Fashion, Industrial and Jewellery Designers",AUST,2026-07-01,94.33333
+2324,"Graphic and Web Designers, and Illustrators",AUST,2026-07-01,411.33333
+2325,Interior Designers,AUST,2026-07-01,223
+2326,Urban and Regional Planners,AUST,2026-07-01,242.33333
+2331,Chemical and Materials Engineers,AUST,2026-07-01,39
+2332,Civil Engineering Professionals,AUST,2026-07-01,2275.66667
+2333,Electrical Engineers,AUST,2026-07-01,535.33333
+2334,Electronics Engineers,AUST,2026-07-01,53.33333
+2335,"Industrial, Mechanical and Production Engineers",AUST,2026-07-01,868.66667
+2336,Mining Engineers,AUST,2026-07-01,857.33333
+2339,Other Engineering Professionals,AUST,2026-07-01,350.33333
+2341,Agricultural and Forestry Scientists,AUST,2026-07-01,30.66667
+2342,"Chemists, and Food and Wine Scientists",AUST,2026-07-01,117.66667
+2343,Environmental Scientists,AUST,2026-07-01,443.33333
+2344,Geologists and Geophysicists,AUST,2026-07-01,236.66667
+2345,Life Scientists,AUST,2026-07-01,187.33333
+2346,Medical Laboratory Scientists,AUST,2026-07-01,94.33333
+2347,Veterinarians,AUST,2026-07-01,157.66667
+2349,Other Natural and Physical Science Professionals,AUST,2026-07-01,62.33333
+2411,Early Childhood (Pre-primary School) Teachers,AUST,2026-07-01,1082.66667
+2412,Primary School Teachers,AUST,2026-07-01,436.66667
+2413,Middle School Teachers (Aus) / Intermediate School Teachers (NZ),AUST,2026-07-01,4
+2414,Secondary School Teachers,AUST,2026-07-01,743.66667
+2415,Special Education Teachers,AUST,2026-07-01,53.33333
+2421,University Lecturers and Tutors,AUST,2026-07-01,320
+2422,Vocational Education Teachers (Aus) / Polytechnic Teachers (NZ),AUST,2026-07-01,57
+2491,Education Advisers and Reviewers,AUST,2026-07-01,51.33333
+2492,Private Tutors and Teachers,AUST,2026-07-01,91.33333
+2493,Teachers of English to Speakers of Other Languages,AUST,2026-07-01,6.66667
+2511,Nutrition Professionals,AUST,2026-07-01,124.66667
+2512,Medical Imaging Professionals,AUST,2026-07-01,855.66667
+2513,Occupational and Environmental Health Professionals,AUST,2026-07-01,1006.66667
+2514,Optometrists and Orthoptists,AUST,2026-07-01,110.66667
+2515,Pharmacists,AUST,2026-07-01,513.33333
+2519,Other Health Diagnostic and Promotion Professionals,AUST,2026-07-01,47
+2521,Chiropractors and Osteopaths,AUST,2026-07-01,15.66667
+2522,Complementary Health Therapists,AUST,2026-07-01,74.66667
+2523,Dental Practitioners,AUST,2026-07-01,543.33333
+2524,Occupational Therapists,AUST,2026-07-01,1497.33333
+2525,Physiotherapists,AUST,2026-07-01,1220.33333
+2526,Podiatrists,AUST,2026-07-01,222
+2527,Audiologists and Speech Pathologists/Therapists,AUST,2026-07-01,1004
+2531,General Practitioners and Resident Medical Officers,AUST,2026-07-01,5590.33333
+2532,Anaesthetists,AUST,2026-07-01,52
+2533,Specialist Physicians,AUST,2026-07-01,451
+2534,Psychiatrists,AUST,2026-07-01,193
+2535,Surgeons,AUST,2026-07-01,78.66667
+2539,Other Medical Practitioners,AUST,2026-07-01,290.66667
+2541,Midwives,AUST,2026-07-01,242
+2542,Nurse Educators and Researchers,AUST,2026-07-01,174
+2543,Nurse Managers,AUST,2026-07-01,250.33333
+2544,Registered Nurses,AUST,2026-07-01,7344
+2611,ICT Business and Systems Analysts,AUST,2026-07-01,1743.33333
+2612,Multimedia Specialists and Web Developers,AUST,2026-07-01,66.33333
+2613,Software and Applications Programmers,AUST,2026-07-01,3049
+2621,"Database and Systems Administrators, and ICT Security Specialists",AUST,2026-07-01,533
+2631,Computer Network Professionals,AUST,2026-07-01,370.66667
+2632,ICT Support and Test Engineers,AUST,2026-07-01,325.66667
+2633,Telecommunications Engineering Professionals,AUST,2026-07-01,65.33333
+2711,Barristers,AUST,2026-07-01,61.66667
+2713,Solicitors,AUST,2026-07-01,1771.33333
+2721,Counsellors,AUST,2026-07-01,429.66667
+2722,Ministers of Religion,AUST,2026-07-01,65.66667
+2723,Psychologists,AUST,2026-07-01,610.66667
+2724,Social Professionals,AUST,2026-07-01,310.33333
+2725,Social Workers,AUST,2026-07-01,1231.66667
+2726,"Welfare, Recreation and Community Arts Workers",AUST,2026-07-01,2150.33333
+3111,Agricultural Technicians,AUST,2026-07-01,85
+3112,Medical Technicians,AUST,2026-07-01,458
+3113,Primary Products Inspectors,AUST,2026-07-01,14.33333
+3114,Science Technicians,AUST,2026-07-01,137.33333
+3121,"Architectural, Building and Surveying Technicians",AUST,2026-07-01,2244.33333
+3122,Civil Engineering Draftspersons and Technicians,AUST,2026-07-01,219.66667
+3123,Electrical Engineering Draftspersons and Technicians,AUST,2026-07-01,206.33333
+3124,Electronic Engineering Draftspersons and Technicians,AUST,2026-07-01,69.66667
+3125,Mechanical Engineering Draftspersons and Technicians,AUST,2026-07-01,193
+3126,Safety Inspectors,AUST,2026-07-01,144
+3129,Other Building and Engineering Technicians,AUST,2026-07-01,620.33333
+3131,ICT Support Technicians,AUST,2026-07-01,892
+3132,Telecommunications Technical Specialists,AUST,2026-07-01,35
+3211,Automotive Electricians,AUST,2026-07-01,372.66667
+3212,Motor Mechanics,AUST,2026-07-01,3378.66667
+3221,"Metal Casting, Forging and Finishing Trades Workers",AUST,2026-07-01,8.66667
+3222,Sheetmetal Trades Workers,AUST,2026-07-01,383
+3223,Structural Steel and Welding Trades Workers,AUST,2026-07-01,1519
+3231,Aircraft Maintenance Engineers,AUST,2026-07-01,129.33333
+3232,Metal Fitters and Machinists,AUST,2026-07-01,3005.66667
+3233,Precision Metal Trades Workers,AUST,2026-07-01,59.66667
+3234,Toolmakers and Engineering Patternmakers,AUST,2026-07-01,16.66667
+3241,Panelbeaters,AUST,2026-07-01,229.66667
+3242,Vehicle Body Builders and Trimmers,AUST,2026-07-01,26
+3243,Vehicle Painters,AUST,2026-07-01,51.33333
+3311,Bricklayers and Stonemasons,AUST,2026-07-01,87.66667
+3312,Carpenters and Joiners,AUST,2026-07-01,1011
+3321,Floor Finishers,AUST,2026-07-01,37.66667
+3322,Painting Trades Workers,AUST,2026-07-01,543
+3331,Glaziers,AUST,2026-07-01,96.66667
+3332,Plasterers,AUST,2026-07-01,75.66667
+3333,Roof Tilers,AUST,2026-07-01,120.33333
+3334,Wall and Floor Tilers,AUST,2026-07-01,89.66667
+3341,Plumbers,AUST,2026-07-01,1448.66667
+3411,Electricians,AUST,2026-07-01,3337
+3421,Airconditioning and Refrigeration Mechanics,AUST,2026-07-01,457
+3422,Electrical Distribution Trades Workers,AUST,2026-07-01,170.33333
+3423,Electronics Trades Workers,AUST,2026-07-01,134
+3424,Telecommunications Trades Workers,AUST,2026-07-01,87
+3511,Bakers and Pastrycooks,AUST,2026-07-01,406
+3512,Butchers and Smallgoods Makers,AUST,2026-07-01,140
+3513,Chefs,AUST,2026-07-01,2735.66667
+3514,Cooks,AUST,2026-07-01,1014
+3611,Animal Attendants and Trainers,AUST,2026-07-01,122.66667
+3612,Shearers,AUST,2026-07-01,0.66667
+3613,Veterinary Nurses,AUST,2026-07-01,135
+3621,Florists,AUST,2026-07-01,18
+3622,Gardeners,AUST,2026-07-01,866.33333
+3623,Greenkeepers,AUST,2026-07-01,198
+3624,Nurserypersons,AUST,2026-07-01,51
+3911,Hairdressers,AUST,2026-07-01,499.33333
+3921,"Binders, Finishers and Screen Printers",AUST,2026-07-01,10
+3922,Graphic Pre-press Trades Workers,AUST,2026-07-01,30.33333
+3923,Printers,AUST,2026-07-01,26.33333
+3931,Canvas and Leather Goods Makers,AUST,2026-07-01,1.66667
+3932,Clothing Trades Workers,AUST,2026-07-01,26.33333
+3933,Upholsterers,AUST,2026-07-01,11.66667
+3941,Cabinetmakers,AUST,2026-07-01,281.66667
+3942,Wood Machinists and Other Wood Trades Workers,AUST,2026-07-01,54.66667
+3991,Boat Builders and Shipwrights,AUST,2026-07-01,20.66667
+3992,"Chemical, Gas, Petroleum and Power Generation Plant Operators",AUST,2026-07-01,62
+3993,"Gallery, Library and Museum Technicians",AUST,2026-07-01,34.33333
+3994,Jewellers,AUST,2026-07-01,42
+3995,Performing Arts Technicians,AUST,2026-07-01,93
+3996,Signwriters,AUST,2026-07-01,26.33333
+3999,Other Miscellaneous Technicians and Trades Workers,AUST,2026-07-01,1161.66667
+4111,Ambulance Officers and Paramedics,AUST,2026-07-01,54
+4112,"Dental Hygienists, Technicians and Therapists",AUST,2026-07-01,176.66667
+4113,Diversional Therapists,AUST,2026-07-01,57.33333
+4114,Enrolled and Mothercraft Nurses,AUST,2026-07-01,729.66667
+4115,Indigenous Health Workers,AUST,2026-07-01,74
+4116,Massage Therapists,AUST,2026-07-01,137.66667
+4117,Welfare Support Workers,AUST,2026-07-01,1327.33333
+4211,Child Carers,AUST,2026-07-01,3087
+4221,Education Aides,AUST,2026-07-01,1700
+4231,Aged and Disabled Carers,AUST,2026-07-01,3499.33333
+4232,Dental Assistants,AUST,2026-07-01,796
+4233,Nursing Support and Personal Care Workers,AUST,2026-07-01,1680
+4234,Special Care Workers,AUST,2026-07-01,52.33333
+4311,Bar Attendants and Baristas,AUST,2026-07-01,996
+4312,Cafe Workers,AUST,2026-07-01,377
+4313,Gaming Workers,AUST,2026-07-01,92
+4314,Hotel Service Managers,AUST,2026-07-01,205
+4315,Waiters,AUST,2026-07-01,1493.66667
+4412,Fire and Emergency Workers,AUST,2026-07-01,88.66667
+4413,Police,AUST,2026-07-01,13.66667
+4421,Prison Officers,AUST,2026-07-01,31.66667
+4422,Security Officers and Guards,AUST,2026-07-01,912.33333
+4511,Beauty Therapists,AUST,2026-07-01,352.33333
+4512,Driving Instructors,AUST,2026-07-01,23.66667
+4513,Funeral Workers,AUST,2026-07-01,54.66667
+4514,"Gallery, Museum and Tour Guides",AUST,2026-07-01,61.66667
+4515,Personal Care Consultants,AUST,2026-07-01,0
+4516,Tourism and Travel Advisers,AUST,2026-07-01,262.66667
+4517,Travel Attendants,AUST,2026-07-01,23.33333
+4521,Fitness Instructors,AUST,2026-07-01,347.66667
+4522,Outdoor Adventure Guides,AUST,2026-07-01,12.66667
+4523,"Sports Coaches, Instructors and Officials",AUST,2026-07-01,954
+4524,Sportspersons,AUST,2026-07-01,103
+5111,"Contract, Program and Project Administrators",AUST,2026-07-01,2099
+5121,Office Managers,AUST,2026-07-01,1049.33333
+5122,Practice Managers,AUST,2026-07-01,342.33333
+5211,Personal Assistants,AUST,2026-07-01,302.66667
+5212,Secretaries,AUST,2026-07-01,893
+5311,General Clerks,AUST,2026-07-01,9284
+5321,Keyboard Operators,AUST,2026-07-01,124.33333
+5411,Call or Contact Centre Workers,AUST,2026-07-01,1388
+5412,Information Officers,AUST,2026-07-01,523.33333
+5421,Receptionists,AUST,2026-07-01,2251.66667
+5511,Accounting Clerks,AUST,2026-07-01,1773
+5512,Bookkeepers,AUST,2026-07-01,431
+5513,Payroll Clerks,AUST,2026-07-01,1233.33333
+5521,Bank Workers,AUST,2026-07-01,736.66667
+5522,Credit and Loans Officers,AUST,2026-07-01,1444.66667
+5523,"Insurance, Money Market and Statistical Clerks",AUST,2026-07-01,45
+5611,Betting Clerks,AUST,2026-07-01,1.66667
+5612,Couriers and Postal Deliverers,AUST,2026-07-01,360.33333
+5613,Filing and Registry Clerks,AUST,2026-07-01,138
+5614,Mail Sorters,AUST,2026-07-01,20
+5615,Survey Interviewers,AUST,2026-07-01,234.66667
+5616,Switchboard Operators,AUST,2026-07-01,10.66667
+5619,Other Clerical and Office Support Workers,AUST,2026-07-01,61.66667
+5911,Purchasing and Supply Logistics Clerks,AUST,2026-07-01,2182
+5912,Transport and Despatch Clerks,AUST,2026-07-01,921.66667
+5991,Conveyancers and Legal Executives,AUST,2026-07-01,346
+5992,Court and Legal Clerks,AUST,2026-07-01,347.66667
+5993,Debt Collectors,AUST,2026-07-01,182.66667
+5994,Human Resource Clerks,AUST,2026-07-01,59
+5995,Inspectors and Regulatory Officers,AUST,2026-07-01,1237.66667
+5996,"Insurance Investigators, Loss Adjusters and Risk Surveyors",AUST,2026-07-01,651.66667
+5997,Library Assistants,AUST,2026-07-01,39.33333
+5999,Other Miscellaneous Clerical and Administrative Workers,AUST,2026-07-01,277
+6111,"Auctioneers, and Stock and Station Agents",AUST,2026-07-01,4.66667
+6112,Insurance Agents,AUST,2026-07-01,554
+6113,Sales Representatives,AUST,2026-07-01,2385.66667
+6121,Real Estate Sales Agents,AUST,2026-07-01,1852.66667
+6211,Sales Assistants (General),AUST,2026-07-01,8674.33333
+6212,ICT Sales Assistants,AUST,2026-07-01,7.66667
+6213,Motor Vehicle and Vehicle Parts Salespersons,AUST,2026-07-01,847
+6214,Pharmacy Sales Assistants,AUST,2026-07-01,299.66667
+6215,Retail Supervisors,AUST,2026-07-01,212.33333
+6216,Service Station Attendants,AUST,2026-07-01,23
+6217,Street Vendors and Related Salespersons,AUST,2026-07-01,15.33333
+6219,Other Sales Assistants and Salespersons,AUST,2026-07-01,38.33333
+6311,Checkout Operators and Office Cashiers,AUST,2026-07-01,72.66667
+6391,Models and Sales Demonstrators,AUST,2026-07-01,645.33333
+6392,Retail and Wool Buyers,AUST,2026-07-01,66.66667
+6393,Telemarketers,AUST,2026-07-01,58.33333
+6394,Ticket Salespersons,AUST,2026-07-01,51.66667
+6395,Visual Merchandisers,AUST,2026-07-01,74.33333
+6399,Other Sales Support Workers,AUST,2026-07-01,184.66667
+7111,"Clay, Concrete, Glass and Stone Processing Machine Operators",AUST,2026-07-01,1.33333
+7112,Industrial Spraypainters,AUST,2026-07-01,209.66667
+7113,Paper and Wood Processing Machine Operators,AUST,2026-07-01,16.66667
+7114,Photographic Developers and Printers,AUST,2026-07-01,2.66667
+7115,Plastics and Rubber Production Machine Operators,AUST,2026-07-01,48
+7116,Sewing Machinists,AUST,2026-07-01,98
+7117,Textile and Footwear Production Machine Operators,AUST,2026-07-01,15.33333
+7119,Other Machine Operators,AUST,2026-07-01,824.66667
+7121,"Crane, Hoist and Lift Operators",AUST,2026-07-01,386.33333
+7122,"Drillers, Miners and Shot Firers",AUST,2026-07-01,988.33333
+7123,Engineering Production Workers,AUST,2026-07-01,184
+7129,Other Stationary Plant Operators,AUST,2026-07-01,416.33333
+7211,"Agricultural, Forestry and Horticultural Plant Operators",AUST,2026-07-01,83.33333
+7212,Earthmoving Plant Operators,AUST,2026-07-01,1342.33333
+7213,Forklift Drivers,AUST,2026-07-01,1878.33333
+7219,Other Mobile Plant Operators,AUST,2026-07-01,347
+7311,Automobile Drivers,AUST,2026-07-01,49
+7312,Bus and Coach Drivers,AUST,2026-07-01,373
+7313,Train and Tram Drivers,AUST,2026-07-01,92.33333
+7321,Delivery Drivers,AUST,2026-07-01,959.33333
+7331,Truck Drivers,AUST,2026-07-01,2795
+7411,Storepersons,AUST,2026-07-01,2248.33333
+8111,Car Detailers,AUST,2026-07-01,150.33333
+8112,Commercial Cleaners,AUST,2026-07-01,1858
+8113,Domestic Cleaners,AUST,2026-07-01,36.66667
+8114,Housekeepers,AUST,2026-07-01,688.33333
+8115,Laundry Workers,AUST,2026-07-01,92.33333
+8116,Other Cleaners,AUST,2026-07-01,74.33333
+8211,Building and Plumbing Labourers,AUST,2026-07-01,928.33333
+8212,Concreters,AUST,2026-07-01,162.66667
+8213,Fencers,AUST,2026-07-01,42
+8214,Insulation and Home Improvement Installers,AUST,2026-07-01,76
+8215,Paving and Surfacing Labourers,AUST,2026-07-01,15.66667
+8216,Railway Track Workers,AUST,2026-07-01,26.33333
+8217,Structural Steel Construction Workers,AUST,2026-07-01,360.66667
+8219,Other Construction and Mining Labourers,AUST,2026-07-01,118.33333
+8311,Food and Drink Factory Workers,AUST,2026-07-01,115
+8312,"Meat Boners and Slicers, and Slaughterers",AUST,2026-07-01,41.33333
+8313,"Meat, Poultry and Seafood Process Workers",AUST,2026-07-01,63
+8321,Packers,AUST,2026-07-01,541.66667
+8322,Product Assemblers,AUST,2026-07-01,207.33333
+8391,Metal Engineering Process Workers,AUST,2026-07-01,15
+8392,Plastics and Rubber Factory Workers,AUST,2026-07-01,0.33333
+8393,Product Quality Controllers,AUST,2026-07-01,520
+8394,Timber and Wood Process Workers,AUST,2026-07-01,16
+8399,Other Factory Process Workers,AUST,2026-07-01,331.33333
+8411,Aquaculture Workers,AUST,2026-07-01,1.33333
+8412,Crop Farm Workers,AUST,2026-07-01,85
+8413,Forestry and Logging Workers,AUST,2026-07-01,26
+8414,Garden and Nursery Labourers,AUST,2026-07-01,259.66667
+8415,Livestock Farm Workers,AUST,2026-07-01,151
+8416,Mixed Crop and Livestock Farm Workers,AUST,2026-07-01,170.66667
+8419,"Other Farm, Forestry and Garden Workers",AUST,2026-07-01,115
+8511,Fast Food Cooks,AUST,2026-07-01,28.33333
+8512,Food Trades Assistants,AUST,2026-07-01,24
+8513,Kitchenhands,AUST,2026-07-01,785.33333
+8911,Freight and Furniture Handlers,AUST,2026-07-01,186
+8912,Shelf Fillers,AUST,2026-07-01,56
+8991,Caretakers,AUST,2026-07-01,121.33333
+8992,Deck and Fishing Hands,AUST,2026-07-01,26
+8993,Handypersons,AUST,2026-07-01,727
+8994,Motor Vehicle Parts and Accessories Fitters,AUST,2026-07-01,218.66667
+8995,Printing Assistants and Table Workers,AUST,2026-07-01,77
+8996,Recycling and Rubbish Collectors,AUST,2026-07-01,22.66667
+8997,Vending Machine Attendants,AUST,2026-07-01,6
+8999,Other Miscellaneous Labourers,AUST,2026-07-01,3821.66667
+0,New South Wales Total,NSW,2026-07-01,63136.66667
+1111,Chief Executives and Managing Directors,NSW,2026-07-01,117.66667
+1112,General Managers,NSW,2026-07-01,213.33333
+1211,Aquaculture Farmers,NSW,2026-07-01,2
+1212,Crop Farmers,NSW,2026-07-01,3.33333
+1213,Livestock Farmers,NSW,2026-07-01,17
+1214,Mixed Crop and Livestock Farmers,NSW,2026-07-01,27.66667
+1311,Advertising and Sales Managers,NSW,2026-07-01,1723.33333
+1321,Corporate Services Managers,NSW,2026-07-01,200
+1322,Finance Managers,NSW,2026-07-01,356.66667
+1323,Human Resource Managers,NSW,2026-07-01,179
+1324,Policy and Planning Managers,NSW,2026-07-01,541.66667
+1325,Research and Development Managers,NSW,2026-07-01,46.33333
+1331,Construction Managers,NSW,2026-07-01,1136.33333
+1332,Engineering Managers,NSW,2026-07-01,115.66667
+1333,"Importers, Exporters and Wholesalers",NSW,2026-07-01,8.66667
+1334,Manufacturers,NSW,2026-07-01,12
+1335,Production Managers,NSW,2026-07-01,349.66667
+1336,"Supply, Distribution and Procurement Managers",NSW,2026-07-01,173
+1341,Child Care Centre Managers,NSW,2026-07-01,85.33333
+1342,Health and Welfare Services Managers,NSW,2026-07-01,98.33333
+1343,School Principals,NSW,2026-07-01,45.33333
+1344,Other Education Managers,NSW,2026-07-01,28.33333
+1351,ICT Managers,NSW,2026-07-01,164.33333
+1399,Other Specialist Managers,NSW,2026-07-01,250.66667
+1411,Cafe and Restaurant Managers,NSW,2026-07-01,201.66667
+1412,Caravan Park and Camping Ground Managers,NSW,2026-07-01,1.33333
+1413,Hotel and Motel Managers,NSW,2026-07-01,173
+1414,Licensed Club Managers,NSW,2026-07-01,52.66667
+1419,Other Accommodation and Hospitality Managers,NSW,2026-07-01,31.33333
+1421,Retail Managers,NSW,2026-07-01,1108.33333
+1491,"Amusement, Fitness and Sports Centre Managers",NSW,2026-07-01,67
+1492,Call or Contact Centre and Customer Service Managers,NSW,2026-07-01,178.33333
+1493,Conference and Event Organisers,NSW,2026-07-01,167
+1494,Transport Services Managers,NSW,2026-07-01,62
+1499,"Other Hospitality, Retail and Service Managers",NSW,2026-07-01,307.33333
+2111,"Actors, Dancers and Other Entertainers",NSW,2026-07-01,69.66667
+2112,Music Professionals,NSW,2026-07-01,3
+2113,Photographers,NSW,2026-07-01,5.66667
+2114,Visual Arts and Crafts Professionals,NSW,2026-07-01,1.33333
+2121,"Artistic Directors, and Media Producers and Presenters",NSW,2026-07-01,5.66667
+2122,"Authors, and Book and Script Editors",NSW,2026-07-01,21
+2123,"Film, Television, Radio and Stage Directors",NSW,2026-07-01,28
+2124,Journalists and Other Writers,NSW,2026-07-01,248
+2211,Accountants,NSW,2026-07-01,1099
+2212,"Auditors, Company Secretaries and Corporate Treasurers",NSW,2026-07-01,229.33333
+2221,Financial Brokers,NSW,2026-07-01,79.33333
+2222,Financial Dealers,NSW,2026-07-01,21
+2223,Financial Investment Advisers and Managers,NSW,2026-07-01,222
+2231,Human Resource Professionals,NSW,2026-07-01,715.33333
+2232,ICT Trainers,NSW,2026-07-01,1.66667
+2233,Training and Development Professionals,NSW,2026-07-01,192
+2241,"Actuaries, Mathematicians and Statisticians",NSW,2026-07-01,63.66667
+2242,"Archivists, Curators and Records Managers",NSW,2026-07-01,21.66667
+2243,Economists,NSW,2026-07-01,12
+2244,Intelligence and Policy Analysts,NSW,2026-07-01,159.66667
+2245,Land Economists and Valuers,NSW,2026-07-01,28.33333
+2246,Librarians,NSW,2026-07-01,35.33333
+2247,Management and Organisation Analysts,NSW,2026-07-01,260.66667
+2249,Other Information and Organisation Professionals,NSW,2026-07-01,60.66667
+2251,Advertising and Marketing Professionals,NSW,2026-07-01,664.66667
+2252,ICT Sales Professionals,NSW,2026-07-01,12.33333
+2253,Public Relations Professionals,NSW,2026-07-01,224.66667
+2254,Technical Sales Representatives,NSW,2026-07-01,83.33333
+2311,Air Transport Professionals,NSW,2026-07-01,32.66667
+2312,Marine Transport Professionals,NSW,2026-07-01,4.33333
+2321,Architects and Landscape Architects,NSW,2026-07-01,156.33333
+2322,Surveyors and Spatial Scientists,NSW,2026-07-01,105
+2323,"Fashion, Industrial and Jewellery Designers",NSW,2026-07-01,32
+2324,"Graphic and Web Designers, and Illustrators",NSW,2026-07-01,151
+2325,Interior Designers,NSW,2026-07-01,84.66667
+2326,Urban and Regional Planners,NSW,2026-07-01,81.66667
+2331,Chemical and Materials Engineers,NSW,2026-07-01,7.66667
+2332,Civil Engineering Professionals,NSW,2026-07-01,653.33333
+2333,Electrical Engineers,NSW,2026-07-01,130
+2334,Electronics Engineers,NSW,2026-07-01,16.66667
+2335,"Industrial, Mechanical and Production Engineers",NSW,2026-07-01,224.66667
+2336,Mining Engineers,NSW,2026-07-01,98.66667
+2339,Other Engineering Professionals,NSW,2026-07-01,108.66667
+2341,Agricultural and Forestry Scientists,NSW,2026-07-01,7
+2342,"Chemists, and Food and Wine Scientists",NSW,2026-07-01,34.33333
+2343,Environmental Scientists,NSW,2026-07-01,118.66667
+2344,Geologists and Geophysicists,NSW,2026-07-01,18
+2345,Life Scientists,NSW,2026-07-01,52
+2346,Medical Laboratory Scientists,NSW,2026-07-01,14
+2347,Veterinarians,NSW,2026-07-01,49.66667
+2349,Other Natural and Physical Science Professionals,NSW,2026-07-01,9
+2411,Early Childhood (Pre-primary School) Teachers,NSW,2026-07-01,365.33333
+2412,Primary School Teachers,NSW,2026-07-01,100.33333
+2413,Middle School Teachers (Aus) / Intermediate School Teachers (NZ),NSW,2026-07-01,0.33333
+2414,Secondary School Teachers,NSW,2026-07-01,201
+2415,Special Education Teachers,NSW,2026-07-01,13.33333
+2421,University Lecturers and Tutors,NSW,2026-07-01,105
+2422,Vocational Education Teachers (Aus) / Polytechnic Teachers (NZ),NSW,2026-07-01,9.66667
+2491,Education Advisers and Reviewers,NSW,2026-07-01,13.33333
+2492,Private Tutors and Teachers,NSW,2026-07-01,25.33333
+2493,Teachers of English to Speakers of Other Languages,NSW,2026-07-01,1.66667
+2511,Nutrition Professionals,NSW,2026-07-01,22.66667
+2512,Medical Imaging Professionals,NSW,2026-07-01,226.66667
+2513,Occupational and Environmental Health Professionals,NSW,2026-07-01,219.33333
+2514,Optometrists and Orthoptists,NSW,2026-07-01,37.33333
+2515,Pharmacists,NSW,2026-07-01,98.33333
+2519,Other Health Diagnostic and Promotion Professionals,NSW,2026-07-01,11
+2521,Chiropractors and Osteopaths,NSW,2026-07-01,2.33333
+2522,Complementary Health Therapists,NSW,2026-07-01,14.66667
+2523,Dental Practitioners,NSW,2026-07-01,141.33333
+2524,Occupational Therapists,NSW,2026-07-01,431.66667
+2525,Physiotherapists,NSW,2026-07-01,351.33333
+2526,Podiatrists,NSW,2026-07-01,46
+2527,Audiologists and Speech Pathologists/Therapists,NSW,2026-07-01,281.33333
+2531,General Practitioners and Resident Medical Officers,NSW,2026-07-01,2759.66667
+2532,Anaesthetists,NSW,2026-07-01,20
+2533,Specialist Physicians,NSW,2026-07-01,94
+2534,Psychiatrists,NSW,2026-07-01,52
+2535,Surgeons,NSW,2026-07-01,45.66667
+2539,Other Medical Practitioners,NSW,2026-07-01,150.66667
+2541,Midwives,NSW,2026-07-01,70
+2542,Nurse Educators and Researchers,NSW,2026-07-01,50.66667
+2543,Nurse Managers,NSW,2026-07-01,59.66667
+2544,Registered Nurses,NSW,2026-07-01,2532.33333
+2611,ICT Business and Systems Analysts,NSW,2026-07-01,620.33333
+2612,Multimedia Specialists and Web Developers,NSW,2026-07-01,23.66667
+2613,Software and Applications Programmers,NSW,2026-07-01,1067.66667
+2621,"Database and Systems Administrators, and ICT Security Specialists",NSW,2026-07-01,170.66667
+2631,Computer Network Professionals,NSW,2026-07-01,133.66667
+2632,ICT Support and Test Engineers,NSW,2026-07-01,99.33333
+2633,Telecommunications Engineering Professionals,NSW,2026-07-01,17.66667
+2711,Barristers,NSW,2026-07-01,24
+2713,Solicitors,NSW,2026-07-01,600
+2721,Counsellors,NSW,2026-07-01,129.33333
+2722,Ministers of Religion,NSW,2026-07-01,19
+2723,Psychologists,NSW,2026-07-01,161.33333
+2724,Social Professionals,NSW,2026-07-01,104.33333
+2725,Social Workers,NSW,2026-07-01,285.66667
+2726,"Welfare, Recreation and Community Arts Workers",NSW,2026-07-01,641
+3111,Agricultural Technicians,NSW,2026-07-01,19.33333
+3112,Medical Technicians,NSW,2026-07-01,124.33333
+3113,Primary Products Inspectors,NSW,2026-07-01,6.66667
+3114,Science Technicians,NSW,2026-07-01,26
+3121,"Architectural, Building and Surveying Technicians",NSW,2026-07-01,640.66667
+3122,Civil Engineering Draftspersons and Technicians,NSW,2026-07-01,52.33333
+3123,Electrical Engineering Draftspersons and Technicians,NSW,2026-07-01,60
+3124,Electronic Engineering Draftspersons and Technicians,NSW,2026-07-01,27.66667
+3125,Mechanical Engineering Draftspersons and Technicians,NSW,2026-07-01,41.66667
+3126,Safety Inspectors,NSW,2026-07-01,31
+3129,Other Building and Engineering Technicians,NSW,2026-07-01,118
+3131,ICT Support Technicians,NSW,2026-07-01,276.66667
+3132,Telecommunications Technical Specialists,NSW,2026-07-01,9
+3211,Automotive Electricians,NSW,2026-07-01,76.33333
+3212,Motor Mechanics,NSW,2026-07-01,806
+3221,"Metal Casting, Forging and Finishing Trades Workers",NSW,2026-07-01,4
+3222,Sheetmetal Trades Workers,NSW,2026-07-01,85.33333
+3223,Structural Steel and Welding Trades Workers,NSW,2026-07-01,266
+3231,Aircraft Maintenance Engineers,NSW,2026-07-01,25.66667
+3232,Metal Fitters and Machinists,NSW,2026-07-01,613.33333
+3233,Precision Metal Trades Workers,NSW,2026-07-01,15
+3234,Toolmakers and Engineering Patternmakers,NSW,2026-07-01,5.33333
+3241,Panelbeaters,NSW,2026-07-01,63.33333
+3242,Vehicle Body Builders and Trimmers,NSW,2026-07-01,4.33333
+3243,Vehicle Painters,NSW,2026-07-01,15.66667
+3311,Bricklayers and Stonemasons,NSW,2026-07-01,21.33333
+3312,Carpenters and Joiners,NSW,2026-07-01,242
+3321,Floor Finishers,NSW,2026-07-01,6.33333
+3322,Painting Trades Workers,NSW,2026-07-01,113.33333
+3331,Glaziers,NSW,2026-07-01,14.33333
+3332,Plasterers,NSW,2026-07-01,18
+3333,Roof Tilers,NSW,2026-07-01,30
+3334,Wall and Floor Tilers,NSW,2026-07-01,25
+3341,Plumbers,NSW,2026-07-01,335.33333
+3411,Electricians,NSW,2026-07-01,828.66667
+3421,Airconditioning and Refrigeration Mechanics,NSW,2026-07-01,115.66667
+3422,Electrical Distribution Trades Workers,NSW,2026-07-01,50.66667
+3423,Electronics Trades Workers,NSW,2026-07-01,37
+3424,Telecommunications Trades Workers,NSW,2026-07-01,20.33333
+3511,Bakers and Pastrycooks,NSW,2026-07-01,110.33333
+3512,Butchers and Smallgoods Makers,NSW,2026-07-01,39.66667
+3513,Chefs,NSW,2026-07-01,816.66667
+3514,Cooks,NSW,2026-07-01,301.66667
+3611,Animal Attendants and Trainers,NSW,2026-07-01,42.66667
+3612,Shearers,NSW,2026-07-01,0.66667
+3613,Veterinary Nurses,NSW,2026-07-01,31.66667
+3621,Florists,NSW,2026-07-01,5.33333
+3622,Gardeners,NSW,2026-07-01,234
+3623,Greenkeepers,NSW,2026-07-01,65.66667
+3624,Nurserypersons,NSW,2026-07-01,17
+3911,Hairdressers,NSW,2026-07-01,141.66667
+3921,"Binders, Finishers and Screen Printers",NSW,2026-07-01,2.33333
+3922,Graphic Pre-press Trades Workers,NSW,2026-07-01,6
+3923,Printers,NSW,2026-07-01,5
+3931,Canvas and Leather Goods Makers,NSW,2026-07-01,1
+3932,Clothing Trades Workers,NSW,2026-07-01,7
+3933,Upholsterers,NSW,2026-07-01,3
+3941,Cabinetmakers,NSW,2026-07-01,66
+3942,Wood Machinists and Other Wood Trades Workers,NSW,2026-07-01,11
+3991,Boat Builders and Shipwrights,NSW,2026-07-01,6.33333
+3992,"Chemical, Gas, Petroleum and Power Generation Plant Operators",NSW,2026-07-01,11.66667
+3993,"Gallery, Library and Museum Technicians",NSW,2026-07-01,8.66667
+3994,Jewellers,NSW,2026-07-01,13
+3995,Performing Arts Technicians,NSW,2026-07-01,31.66667
+3996,Signwriters,NSW,2026-07-01,4.66667
+3999,Other Miscellaneous Technicians and Trades Workers,NSW,2026-07-01,375
+4111,Ambulance Officers and Paramedics,NSW,2026-07-01,14.33333
+4112,"Dental Hygienists, Technicians and Therapists",NSW,2026-07-01,35.66667
+4113,Diversional Therapists,NSW,2026-07-01,19
+4114,Enrolled and Mothercraft Nurses,NSW,2026-07-01,132
+4115,Indigenous Health Workers,NSW,2026-07-01,17.66667
+4116,Massage Therapists,NSW,2026-07-01,33.66667
+4117,Welfare Support Workers,NSW,2026-07-01,349.66667
+4211,Child Carers,NSW,2026-07-01,962.66667
+4221,Education Aides,NSW,2026-07-01,412.66667
+4231,Aged and Disabled Carers,NSW,2026-07-01,1168
+4232,Dental Assistants,NSW,2026-07-01,217.33333
+4233,Nursing Support and Personal Care Workers,NSW,2026-07-01,615.33333
+4234,Special Care Workers,NSW,2026-07-01,8
+4311,Bar Attendants and Baristas,NSW,2026-07-01,323
+4312,Cafe Workers,NSW,2026-07-01,138
+4313,Gaming Workers,NSW,2026-07-01,28.33333
+4314,Hotel Service Managers,NSW,2026-07-01,70.66667
+4315,Waiters,NSW,2026-07-01,549.66667
+4412,Fire and Emergency Workers,NSW,2026-07-01,16
+4413,Police,NSW,2026-07-01,1
+4421,Prison Officers,NSW,2026-07-01,11.66667
+4422,Security Officers and Guards,NSW,2026-07-01,253.66667
+4511,Beauty Therapists,NSW,2026-07-01,101.33333
+4512,Driving Instructors,NSW,2026-07-01,7.66667
+4513,Funeral Workers,NSW,2026-07-01,13.66667
+4514,"Gallery, Museum and Tour Guides",NSW,2026-07-01,12.66667
+4515,Personal Care Consultants,NSW,2026-07-01,0
+4516,Tourism and Travel Advisers,NSW,2026-07-01,78.33333
+4517,Travel Attendants,NSW,2026-07-01,3
+4521,Fitness Instructors,NSW,2026-07-01,118
+4522,Outdoor Adventure Guides,NSW,2026-07-01,0.66667
+4523,"Sports Coaches, Instructors and Officials",NSW,2026-07-01,268
+4524,Sportspersons,NSW,2026-07-01,31
+5111,"Contract, Program and Project Administrators",NSW,2026-07-01,593.33333
+5121,Office Managers,NSW,2026-07-01,309.33333
+5122,Practice Managers,NSW,2026-07-01,97.66667
+5211,Personal Assistants,NSW,2026-07-01,93.66667
+5212,Secretaries,NSW,2026-07-01,289.66667
+5311,General Clerks,NSW,2026-07-01,2325
+5321,Keyboard Operators,NSW,2026-07-01,31.33333
+5411,Call or Contact Centre Workers,NSW,2026-07-01,444.33333
+5412,Information Officers,NSW,2026-07-01,184
+5421,Receptionists,NSW,2026-07-01,590
+5511,Accounting Clerks,NSW,2026-07-01,571.66667
+5512,Bookkeepers,NSW,2026-07-01,132.33333
+5513,Payroll Clerks,NSW,2026-07-01,356.33333
+5521,Bank Workers,NSW,2026-07-01,271
+5522,Credit and Loans Officers,NSW,2026-07-01,513.66667
+5523,"Insurance, Money Market and Statistical Clerks",NSW,2026-07-01,16.33333
+5611,Betting Clerks,NSW,2026-07-01,0
+5612,Couriers and Postal Deliverers,NSW,2026-07-01,97
+5613,Filing and Registry Clerks,NSW,2026-07-01,26
+5614,Mail Sorters,NSW,2026-07-01,5.33333
+5615,Survey Interviewers,NSW,2026-07-01,79.33333
+5616,Switchboard Operators,NSW,2026-07-01,1.33333
+5619,Other Clerical and Office Support Workers,NSW,2026-07-01,24
+5911,Purchasing and Supply Logistics Clerks,NSW,2026-07-01,578.33333
+5912,Transport and Despatch Clerks,NSW,2026-07-01,275
+5991,Conveyancers and Legal Executives,NSW,2026-07-01,99
+5992,Court and Legal Clerks,NSW,2026-07-01,103
+5993,Debt Collectors,NSW,2026-07-01,75.33333
+5994,Human Resource Clerks,NSW,2026-07-01,13.66667
+5995,Inspectors and Regulatory Officers,NSW,2026-07-01,449.66667
+5996,"Insurance Investigators, Loss Adjusters and Risk Surveyors",NSW,2026-07-01,244.66667
+5997,Library Assistants,NSW,2026-07-01,13
+5999,Other Miscellaneous Clerical and Administrative Workers,NSW,2026-07-01,99.33333
+6111,"Auctioneers, and Stock and Station Agents",NSW,2026-07-01,1.33333
+6112,Insurance Agents,NSW,2026-07-01,185.33333
+6113,Sales Representatives,NSW,2026-07-01,796.66667
+6121,Real Estate Sales Agents,NSW,2026-07-01,560.33333
+6211,Sales Assistants (General),NSW,2026-07-01,2511.66667
+6212,ICT Sales Assistants,NSW,2026-07-01,2.66667
+6213,Motor Vehicle and Vehicle Parts Salespersons,NSW,2026-07-01,235.33333
+6214,Pharmacy Sales Assistants,NSW,2026-07-01,69.66667
+6215,Retail Supervisors,NSW,2026-07-01,40
+6216,Service Station Attendants,NSW,2026-07-01,7.66667
+6217,Street Vendors and Related Salespersons,NSW,2026-07-01,4.66667
+6219,Other Sales Assistants and Salespersons,NSW,2026-07-01,10.33333
+6311,Checkout Operators and Office Cashiers,NSW,2026-07-01,14.66667
+6391,Models and Sales Demonstrators,NSW,2026-07-01,216
+6392,Retail and Wool Buyers,NSW,2026-07-01,23.33333
+6393,Telemarketers,NSW,2026-07-01,12
+6394,Ticket Salespersons,NSW,2026-07-01,14.33333
+6395,Visual Merchandisers,NSW,2026-07-01,18.66667
+6399,Other Sales Support Workers,NSW,2026-07-01,44
+7111,"Clay, Concrete, Glass and Stone Processing Machine Operators",NSW,2026-07-01,0.33333
+7112,Industrial Spraypainters,NSW,2026-07-01,46
+7113,Paper and Wood Processing Machine Operators,NSW,2026-07-01,4
+7114,Photographic Developers and Printers,NSW,2026-07-01,0.66667
+7115,Plastics and Rubber Production Machine Operators,NSW,2026-07-01,7.33333
+7116,Sewing Machinists,NSW,2026-07-01,31
+7117,Textile and Footwear Production Machine Operators,NSW,2026-07-01,3
+7119,Other Machine Operators,NSW,2026-07-01,225.66667
+7121,"Crane, Hoist and Lift Operators",NSW,2026-07-01,86.33333
+7122,"Drillers, Miners and Shot Firers",NSW,2026-07-01,131.66667
+7123,Engineering Production Workers,NSW,2026-07-01,48
+7129,Other Stationary Plant Operators,NSW,2026-07-01,75.33333
+7211,"Agricultural, Forestry and Horticultural Plant Operators",NSW,2026-07-01,14.66667
+7212,Earthmoving Plant Operators,NSW,2026-07-01,247.33333
+7213,Forklift Drivers,NSW,2026-07-01,573
+7219,Other Mobile Plant Operators,NSW,2026-07-01,73.33333
+7311,Automobile Drivers,NSW,2026-07-01,14.66667
+7312,Bus and Coach Drivers,NSW,2026-07-01,110.66667
+7313,Train and Tram Drivers,NSW,2026-07-01,31.33333
+7321,Delivery Drivers,NSW,2026-07-01,262
+7331,Truck Drivers,NSW,2026-07-01,676.33333
+7411,Storepersons,NSW,2026-07-01,554.66667
+8111,Car Detailers,NSW,2026-07-01,37.33333
+8112,Commercial Cleaners,NSW,2026-07-01,515.33333
+8113,Domestic Cleaners,NSW,2026-07-01,7.66667
+8114,Housekeepers,NSW,2026-07-01,214.33333
+8115,Laundry Workers,NSW,2026-07-01,27.33333
+8116,Other Cleaners,NSW,2026-07-01,17
+8211,Building and Plumbing Labourers,NSW,2026-07-01,207.66667
+8212,Concreters,NSW,2026-07-01,31
+8213,Fencers,NSW,2026-07-01,5
+8214,Insulation and Home Improvement Installers,NSW,2026-07-01,13.33333
+8215,Paving and Surfacing Labourers,NSW,2026-07-01,4.66667
+8216,Railway Track Workers,NSW,2026-07-01,5.33333
+8217,Structural Steel Construction Workers,NSW,2026-07-01,56.66667
+8219,Other Construction and Mining Labourers,NSW,2026-07-01,21.33333
+8311,Food and Drink Factory Workers,NSW,2026-07-01,32
+8312,"Meat Boners and Slicers, and Slaughterers",NSW,2026-07-01,7.66667
+8313,"Meat, Poultry and Seafood Process Workers",NSW,2026-07-01,15.33333
+8321,Packers,NSW,2026-07-01,161.66667
+8322,Product Assemblers,NSW,2026-07-01,55.33333
+8391,Metal Engineering Process Workers,NSW,2026-07-01,1.66667
+8392,Plastics and Rubber Factory Workers,NSW,2026-07-01,0
+8393,Product Quality Controllers,NSW,2026-07-01,147.33333
+8394,Timber and Wood Process Workers,NSW,2026-07-01,4
+8399,Other Factory Process Workers,NSW,2026-07-01,96.33333
+8411,Aquaculture Workers,NSW,2026-07-01,0.33333
+8412,Crop Farm Workers,NSW,2026-07-01,16.33333
+8413,Forestry and Logging Workers,NSW,2026-07-01,3.66667
+8414,Garden and Nursery Labourers,NSW,2026-07-01,59
+8415,Livestock Farm Workers,NSW,2026-07-01,30.33333
+8416,Mixed Crop and Livestock Farm Workers,NSW,2026-07-01,52
+8419,"Other Farm, Forestry and Garden Workers",NSW,2026-07-01,31.66667
+8511,Fast Food Cooks,NSW,2026-07-01,6
+8512,Food Trades Assistants,NSW,2026-07-01,3
+8513,Kitchenhands,NSW,2026-07-01,207
+8911,Freight and Furniture Handlers,NSW,2026-07-01,44
+8912,Shelf Fillers,NSW,2026-07-01,11
+8991,Caretakers,NSW,2026-07-01,35.33333
+8992,Deck and Fishing Hands,NSW,2026-07-01,2
+8993,Handypersons,NSW,2026-07-01,190.33333
+8994,Motor Vehicle Parts and Accessories Fitters,NSW,2026-07-01,47
+8995,Printing Assistants and Table Workers,NSW,2026-07-01,23
+8996,Recycling and Rubbish Collectors,NSW,2026-07-01,5.33333
+8997,Vending Machine Attendants,NSW,2026-07-01,1
+8999,Other Miscellaneous Labourers,NSW,2026-07-01,1052
+0,Victoria Total,VIC,2026-07-01,46152.33333
+1111,Chief Executives and Managing Directors,VIC,2026-07-01,92.33333
+1112,General Managers,VIC,2026-07-01,189.33333
+1211,Aquaculture Farmers,VIC,2026-07-01,0
+1212,Crop Farmers,VIC,2026-07-01,5.66667
+1213,Livestock Farmers,VIC,2026-07-01,14.33333
+1214,Mixed Crop and Livestock Farmers,VIC,2026-07-01,35.33333
+1311,Advertising and Sales Managers,VIC,2026-07-01,1189.33333
+1321,Corporate Services Managers,VIC,2026-07-01,157.33333
+1322,Finance Managers,VIC,2026-07-01,243.66667
+1323,Human Resource Managers,VIC,2026-07-01,167.33333
+1324,Policy and Planning Managers,VIC,2026-07-01,397.33333
+1325,Research and Development Managers,VIC,2026-07-01,32.33333
+1331,Construction Managers,VIC,2026-07-01,795.33333
+1332,Engineering Managers,VIC,2026-07-01,74.33333
+1333,"Importers, Exporters and Wholesalers",VIC,2026-07-01,11.33333
+1334,Manufacturers,VIC,2026-07-01,9.66667
+1335,Production Managers,VIC,2026-07-01,292.66667
+1336,"Supply, Distribution and Procurement Managers",VIC,2026-07-01,126.33333
+1341,Child Care Centre Managers,VIC,2026-07-01,80.66667
+1342,Health and Welfare Services Managers,VIC,2026-07-01,99.66667
+1343,School Principals,VIC,2026-07-01,38
+1344,Other Education Managers,VIC,2026-07-01,34.33333
+1351,ICT Managers,VIC,2026-07-01,136
+1399,Other Specialist Managers,VIC,2026-07-01,186.33333
+1411,Cafe and Restaurant Managers,VIC,2026-07-01,118.33333
+1412,Caravan Park and Camping Ground Managers,VIC,2026-07-01,2.33333
+1413,Hotel and Motel Managers,VIC,2026-07-01,102.66667
+1414,Licensed Club Managers,VIC,2026-07-01,33
+1419,Other Accommodation and Hospitality Managers,VIC,2026-07-01,18
+1421,Retail Managers,VIC,2026-07-01,844.66667
+1491,"Amusement, Fitness and Sports Centre Managers",VIC,2026-07-01,78
+1492,Call or Contact Centre and Customer Service Managers,VIC,2026-07-01,119.33333
+1493,Conference and Event Organisers,VIC,2026-07-01,101.66667
+1494,Transport Services Managers,VIC,2026-07-01,53.66667
+1499,"Other Hospitality, Retail and Service Managers",VIC,2026-07-01,215.33333
+2111,"Actors, Dancers and Other Entertainers",VIC,2026-07-01,71.33333
+2112,Music Professionals,VIC,2026-07-01,3.66667
+2113,Photographers,VIC,2026-07-01,8
+2114,Visual Arts and Crafts Professionals,VIC,2026-07-01,1.33333
+2121,"Artistic Directors, and Media Producers and Presenters",VIC,2026-07-01,4.33333
+2122,"Authors, and Book and Script Editors",VIC,2026-07-01,12.33333
+2123,"Film, Television, Radio and Stage Directors",VIC,2026-07-01,14.33333
+2124,Journalists and Other Writers,VIC,2026-07-01,194
+2211,Accountants,VIC,2026-07-01,808.66667
+2212,"Auditors, Company Secretaries and Corporate Treasurers",VIC,2026-07-01,156
+2221,Financial Brokers,VIC,2026-07-01,60.33333
+2222,Financial Dealers,VIC,2026-07-01,14.33333
+2223,Financial Investment Advisers and Managers,VIC,2026-07-01,179
+2231,Human Resource Professionals,VIC,2026-07-01,543
+2232,ICT Trainers,VIC,2026-07-01,2.66667
+2233,Training and Development Professionals,VIC,2026-07-01,152.33333
+2241,"Actuaries, Mathematicians and Statisticians",VIC,2026-07-01,42.33333
+2242,"Archivists, Curators and Records Managers",VIC,2026-07-01,30.33333
+2243,Economists,VIC,2026-07-01,7.33333
+2244,Intelligence and Policy Analysts,VIC,2026-07-01,145.66667
+2245,Land Economists and Valuers,VIC,2026-07-01,18.33333
+2246,Librarians,VIC,2026-07-01,16.33333
+2247,Management and Organisation Analysts,VIC,2026-07-01,195
+2249,Other Information and Organisation Professionals,VIC,2026-07-01,53
+2251,Advertising and Marketing Professionals,VIC,2026-07-01,546.33333
+2252,ICT Sales Professionals,VIC,2026-07-01,4.66667
+2253,Public Relations Professionals,VIC,2026-07-01,163.33333
+2254,Technical Sales Representatives,VIC,2026-07-01,61.66667
+2311,Air Transport Professionals,VIC,2026-07-01,17
+2312,Marine Transport Professionals,VIC,2026-07-01,5
+2321,Architects and Landscape Architects,VIC,2026-07-01,102.66667
+2322,Surveyors and Spatial Scientists,VIC,2026-07-01,48.33333
+2323,"Fashion, Industrial and Jewellery Designers",VIC,2026-07-01,34.66667
+2324,"Graphic and Web Designers, and Illustrators",VIC,2026-07-01,128
+2325,Interior Designers,VIC,2026-07-01,68.66667
+2326,Urban and Regional Planners,VIC,2026-07-01,61.33333
+2331,Chemical and Materials Engineers,VIC,2026-07-01,10.66667
+2332,Civil Engineering Professionals,VIC,2026-07-01,349
+2333,Electrical Engineers,VIC,2026-07-01,99
+2334,Electronics Engineers,VIC,2026-07-01,12.66667
+2335,"Industrial, Mechanical and Production Engineers",VIC,2026-07-01,178.33333
+2336,Mining Engineers,VIC,2026-07-01,16
+2339,Other Engineering Professionals,VIC,2026-07-01,88.33333
+2341,Agricultural and Forestry Scientists,VIC,2026-07-01,7.66667
+2342,"Chemists, and Food and Wine Scientists",VIC,2026-07-01,39.33333
+2343,Environmental Scientists,VIC,2026-07-01,65
+2344,Geologists and Geophysicists,VIC,2026-07-01,9
+2345,Life Scientists,VIC,2026-07-01,38.33333
+2346,Medical Laboratory Scientists,VIC,2026-07-01,37.33333
+2347,Veterinarians,VIC,2026-07-01,36.66667
+2349,Other Natural and Physical Science Professionals,VIC,2026-07-01,12.33333
+2411,Early Childhood (Pre-primary School) Teachers,VIC,2026-07-01,299.33333
+2412,Primary School Teachers,VIC,2026-07-01,113
+2413,Middle School Teachers (Aus) / Intermediate School Teachers (NZ),VIC,2026-07-01,0.33333
+2414,Secondary School Teachers,VIC,2026-07-01,206
+2415,Special Education Teachers,VIC,2026-07-01,12.66667
+2421,University Lecturers and Tutors,VIC,2026-07-01,62.33333
+2422,Vocational Education Teachers (Aus) / Polytechnic Teachers (NZ),VIC,2026-07-01,16.66667
+2491,Education Advisers and Reviewers,VIC,2026-07-01,13.66667
+2492,Private Tutors and Teachers,VIC,2026-07-01,31
+2493,Teachers of English to Speakers of Other Languages,VIC,2026-07-01,3
+2511,Nutrition Professionals,VIC,2026-07-01,49
+2512,Medical Imaging Professionals,VIC,2026-07-01,226
+2513,Occupational and Environmental Health Professionals,VIC,2026-07-01,168.66667
+2514,Optometrists and Orthoptists,VIC,2026-07-01,18
+2515,Pharmacists,VIC,2026-07-01,143
+2519,Other Health Diagnostic and Promotion Professionals,VIC,2026-07-01,15
+2521,Chiropractors and Osteopaths,VIC,2026-07-01,9
+2522,Complementary Health Therapists,VIC,2026-07-01,20.66667
+2523,Dental Practitioners,VIC,2026-07-01,113
+2524,Occupational Therapists,VIC,2026-07-01,374
+2525,Physiotherapists,VIC,2026-07-01,335.33333
+2526,Podiatrists,VIC,2026-07-01,74.33333
+2527,Audiologists and Speech Pathologists/Therapists,VIC,2026-07-01,263
+2531,General Practitioners and Resident Medical Officers,VIC,2026-07-01,878
+2532,Anaesthetists,VIC,2026-07-01,14.33333
+2533,Specialist Physicians,VIC,2026-07-01,151.33333
+2534,Psychiatrists,VIC,2026-07-01,43.33333
+2535,Surgeons,VIC,2026-07-01,20.66667
+2539,Other Medical Practitioners,VIC,2026-07-01,62
+2541,Midwives,VIC,2026-07-01,62
+2542,Nurse Educators and Researchers,VIC,2026-07-01,63
+2543,Nurse Managers,VIC,2026-07-01,74.33333
+2544,Registered Nurses,VIC,2026-07-01,1681.33333
+2611,ICT Business and Systems Analysts,VIC,2026-07-01,469
+2612,Multimedia Specialists and Web Developers,VIC,2026-07-01,23
+2613,Software and Applications Programmers,VIC,2026-07-01,823.33333
+2621,"Database and Systems Administrators, and ICT Security Specialists",VIC,2026-07-01,130.66667
+2631,Computer Network Professionals,VIC,2026-07-01,89
+2632,ICT Support and Test Engineers,VIC,2026-07-01,90
+2633,Telecommunications Engineering Professionals,VIC,2026-07-01,12.66667
+2711,Barristers,VIC,2026-07-01,18.33333
+2713,Solicitors,VIC,2026-07-01,487.66667
+2721,Counsellors,VIC,2026-07-01,74.33333
+2722,Ministers of Religion,VIC,2026-07-01,19
+2723,Psychologists,VIC,2026-07-01,171.66667
+2724,Social Professionals,VIC,2026-07-01,86.33333
+2725,Social Workers,VIC,2026-07-01,339
+2726,"Welfare, Recreation and Community Arts Workers",VIC,2026-07-01,464
+3111,Agricultural Technicians,VIC,2026-07-01,13.66667
+3112,Medical Technicians,VIC,2026-07-01,140.33333
+3113,Primary Products Inspectors,VIC,2026-07-01,3
+3114,Science Technicians,VIC,2026-07-01,20
+3121,"Architectural, Building and Surveying Technicians",VIC,2026-07-01,395.66667
+3122,Civil Engineering Draftspersons and Technicians,VIC,2026-07-01,24.33333
+3123,Electrical Engineering Draftspersons and Technicians,VIC,2026-07-01,30.33333
+3124,Electronic Engineering Draftspersons and Technicians,VIC,2026-07-01,12.33333
+3125,Mechanical Engineering Draftspersons and Technicians,VIC,2026-07-01,27
+3126,Safety Inspectors,VIC,2026-07-01,32.33333
+3129,Other Building and Engineering Technicians,VIC,2026-07-01,64.33333
+3131,ICT Support Technicians,VIC,2026-07-01,234.66667
+3132,Telecommunications Technical Specialists,VIC,2026-07-01,6.66667
+3211,Automotive Electricians,VIC,2026-07-01,45.33333
+3212,Motor Mechanics,VIC,2026-07-01,638.33333
+3221,"Metal Casting, Forging and Finishing Trades Workers",VIC,2026-07-01,2.33333
+3222,Sheetmetal Trades Workers,VIC,2026-07-01,73.33333
+3223,Structural Steel and Welding Trades Workers,VIC,2026-07-01,225.33333
+3231,Aircraft Maintenance Engineers,VIC,2026-07-01,9.33333
+3232,Metal Fitters and Machinists,VIC,2026-07-01,383.66667
+3233,Precision Metal Trades Workers,VIC,2026-07-01,21
+3234,Toolmakers and Engineering Patternmakers,VIC,2026-07-01,5.66667
+3241,Panelbeaters,VIC,2026-07-01,55
+3242,Vehicle Body Builders and Trimmers,VIC,2026-07-01,4.33333
+3243,Vehicle Painters,VIC,2026-07-01,14.33333
+3311,Bricklayers and Stonemasons,VIC,2026-07-01,18
+3312,Carpenters and Joiners,VIC,2026-07-01,179
+3321,Floor Finishers,VIC,2026-07-01,6.33333
+3322,Painting Trades Workers,VIC,2026-07-01,74.66667
+3331,Glaziers,VIC,2026-07-01,12.66667
+3332,Plasterers,VIC,2026-07-01,8.66667
+3333,Roof Tilers,VIC,2026-07-01,13
+3334,Wall and Floor Tilers,VIC,2026-07-01,10.66667
+3341,Plumbers,VIC,2026-07-01,370.66667
+3411,Electricians,VIC,2026-07-01,525.33333
+3421,Airconditioning and Refrigeration Mechanics,VIC,2026-07-01,80
+3422,Electrical Distribution Trades Workers,VIC,2026-07-01,50
+3423,Electronics Trades Workers,VIC,2026-07-01,19.33333
+3424,Telecommunications Trades Workers,VIC,2026-07-01,14
+3511,Bakers and Pastrycooks,VIC,2026-07-01,106.66667
+3512,Butchers and Smallgoods Makers,VIC,2026-07-01,35.33333
+3513,Chefs,VIC,2026-07-01,622.33333
+3514,Cooks,VIC,2026-07-01,222
+3611,Animal Attendants and Trainers,VIC,2026-07-01,31
+3612,Shearers,VIC,2026-07-01,0
+3613,Veterinary Nurses,VIC,2026-07-01,31
+3621,Florists,VIC,2026-07-01,5
+3622,Gardeners,VIC,2026-07-01,188.33333
+3623,Greenkeepers,VIC,2026-07-01,28.33333
+3624,Nurserypersons,VIC,2026-07-01,8.66667
+3911,Hairdressers,VIC,2026-07-01,92.66667
+3921,"Binders, Finishers and Screen Printers",VIC,2026-07-01,3.66667
+3922,Graphic Pre-press Trades Workers,VIC,2026-07-01,8.33333
+3923,Printers,VIC,2026-07-01,12.33333
+3931,Canvas and Leather Goods Makers,VIC,2026-07-01,0.33333
+3932,Clothing Trades Workers,VIC,2026-07-01,8.66667
+3933,Upholsterers,VIC,2026-07-01,3.66667
+3941,Cabinetmakers,VIC,2026-07-01,55.66667
+3942,Wood Machinists and Other Wood Trades Workers,VIC,2026-07-01,6.33333
+3991,Boat Builders and Shipwrights,VIC,2026-07-01,3.33333
+3992,"Chemical, Gas, Petroleum and Power Generation Plant Operators",VIC,2026-07-01,4.66667
+3993,"Gallery, Library and Museum Technicians",VIC,2026-07-01,10.66667
+3994,Jewellers,VIC,2026-07-01,11.33333
+3995,Performing Arts Technicians,VIC,2026-07-01,23.66667
+3996,Signwriters,VIC,2026-07-01,5
+3999,Other Miscellaneous Technicians and Trades Workers,VIC,2026-07-01,231
+4111,Ambulance Officers and Paramedics,VIC,2026-07-01,11.66667
+4112,"Dental Hygienists, Technicians and Therapists",VIC,2026-07-01,38.33333
+4113,Diversional Therapists,VIC,2026-07-01,15.33333
+4114,Enrolled and Mothercraft Nurses,VIC,2026-07-01,238.66667
+4115,Indigenous Health Workers,VIC,2026-07-01,17.66667
+4116,Massage Therapists,VIC,2026-07-01,35.66667
+4117,Welfare Support Workers,VIC,2026-07-01,279.66667
+4211,Child Carers,VIC,2026-07-01,600.33333
+4221,Education Aides,VIC,2026-07-01,545.66667
+4231,Aged and Disabled Carers,VIC,2026-07-01,792.33333
+4232,Dental Assistants,VIC,2026-07-01,185
+4233,Nursing Support and Personal Care Workers,VIC,2026-07-01,427.66667
+4234,Special Care Workers,VIC,2026-07-01,15
+4311,Bar Attendants and Baristas,VIC,2026-07-01,202
+4312,Cafe Workers,VIC,2026-07-01,79.66667
+4313,Gaming Workers,VIC,2026-07-01,27
+4314,Hotel Service Managers,VIC,2026-07-01,58.33333
+4315,Waiters,VIC,2026-07-01,337.33333
+4412,Fire and Emergency Workers,VIC,2026-07-01,8.33333
+4413,Police,VIC,2026-07-01,1.33333
+4421,Prison Officers,VIC,2026-07-01,9.33333
+4422,Security Officers and Guards,VIC,2026-07-01,215.33333
+4511,Beauty Therapists,VIC,2026-07-01,93.33333
+4512,Driving Instructors,VIC,2026-07-01,3
+4513,Funeral Workers,VIC,2026-07-01,8.66667
+4514,"Gallery, Museum and Tour Guides",VIC,2026-07-01,4.66667
+4515,Personal Care Consultants,VIC,2026-07-01,0
+4516,Tourism and Travel Advisers,VIC,2026-07-01,53.66667
+4517,Travel Attendants,VIC,2026-07-01,2
+4521,Fitness Instructors,VIC,2026-07-01,81.33333
+4522,Outdoor Adventure Guides,VIC,2026-07-01,3.33333
+4523,"Sports Coaches, Instructors and Officials",VIC,2026-07-01,240.33333
+4524,Sportspersons,VIC,2026-07-01,23.66667
+5111,"Contract, Program and Project Administrators",VIC,2026-07-01,417
+5121,Office Managers,VIC,2026-07-01,253
+5122,Practice Managers,VIC,2026-07-01,80
+5211,Personal Assistants,VIC,2026-07-01,94.33333
+5212,Secretaries,VIC,2026-07-01,209.33333
+5311,General Clerks,VIC,2026-07-01,2027.33333
+5321,Keyboard Operators,VIC,2026-07-01,25.66667
+5411,Call or Contact Centre Workers,VIC,2026-07-01,329.33333
+5412,Information Officers,VIC,2026-07-01,123.66667
+5421,Receptionists,VIC,2026-07-01,536.33333
+5511,Accounting Clerks,VIC,2026-07-01,455.66667
+5512,Bookkeepers,VIC,2026-07-01,115.33333
+5513,Payroll Clerks,VIC,2026-07-01,397.33333
+5521,Bank Workers,VIC,2026-07-01,168.33333
+5522,Credit and Loans Officers,VIC,2026-07-01,342.33333
+5523,"Insurance, Money Market and Statistical Clerks",VIC,2026-07-01,12.66667
+5611,Betting Clerks,VIC,2026-07-01,0.33333
+5612,Couriers and Postal Deliverers,VIC,2026-07-01,63.33333
+5613,Filing and Registry Clerks,VIC,2026-07-01,25.33333
+5614,Mail Sorters,VIC,2026-07-01,2
+5615,Survey Interviewers,VIC,2026-07-01,35.33333
+5616,Switchboard Operators,VIC,2026-07-01,8
+5619,Other Clerical and Office Support Workers,VIC,2026-07-01,11.33333
+5911,Purchasing and Supply Logistics Clerks,VIC,2026-07-01,542.66667
+5912,Transport and Despatch Clerks,VIC,2026-07-01,203.33333
+5991,Conveyancers and Legal Executives,VIC,2026-07-01,69.66667
+5992,Court and Legal Clerks,VIC,2026-07-01,125.66667
+5993,Debt Collectors,VIC,2026-07-01,41
+5994,Human Resource Clerks,VIC,2026-07-01,10.33333
+5995,Inspectors and Regulatory Officers,VIC,2026-07-01,303.66667
+5996,"Insurance Investigators, Loss Adjusters and Risk Surveyors",VIC,2026-07-01,154
+5997,Library Assistants,VIC,2026-07-01,5.33333
+5999,Other Miscellaneous Clerical and Administrative Workers,VIC,2026-07-01,73.33333
+6111,"Auctioneers, and Stock and Station Agents",VIC,2026-07-01,1.66667
+6112,Insurance Agents,VIC,2026-07-01,145
+6113,Sales Representatives,VIC,2026-07-01,525.33333
+6121,Real Estate Sales Agents,VIC,2026-07-01,420.33333
+6211,Sales Assistants (General),VIC,2026-07-01,1919
+6212,ICT Sales Assistants,VIC,2026-07-01,2
+6213,Motor Vehicle and Vehicle Parts Salespersons,VIC,2026-07-01,184.33333
+6214,Pharmacy Sales Assistants,VIC,2026-07-01,59.66667
+6215,Retail Supervisors,VIC,2026-07-01,42.33333
+6216,Service Station Attendants,VIC,2026-07-01,2.66667
+6217,Street Vendors and Related Salespersons,VIC,2026-07-01,6.66667
+6219,Other Sales Assistants and Salespersons,VIC,2026-07-01,4.66667
+6311,Checkout Operators and Office Cashiers,VIC,2026-07-01,13.33333
+6391,Models and Sales Demonstrators,VIC,2026-07-01,155.66667
+6392,Retail and Wool Buyers,VIC,2026-07-01,30.33333
+6393,Telemarketers,VIC,2026-07-01,14.66667
+6394,Ticket Salespersons,VIC,2026-07-01,13.33333
+6395,Visual Merchandisers,VIC,2026-07-01,20.66667
+6399,Other Sales Support Workers,VIC,2026-07-01,20.33333
+7111,"Clay, Concrete, Glass and Stone Processing Machine Operators",VIC,2026-07-01,0.33333
+7112,Industrial Spraypainters,VIC,2026-07-01,48.33333
+7113,Paper and Wood Processing Machine Operators,VIC,2026-07-01,5.66667
+7114,Photographic Developers and Printers,VIC,2026-07-01,1.33333
+7115,Plastics and Rubber Production Machine Operators,VIC,2026-07-01,6
+7116,Sewing Machinists,VIC,2026-07-01,22.33333
+7117,Textile and Footwear Production Machine Operators,VIC,2026-07-01,6
+7119,Other Machine Operators,VIC,2026-07-01,185.33333
+7121,"Crane, Hoist and Lift Operators",VIC,2026-07-01,51
+7122,"Drillers, Miners and Shot Firers",VIC,2026-07-01,34
+7123,Engineering Production Workers,VIC,2026-07-01,48.33333
+7129,Other Stationary Plant Operators,VIC,2026-07-01,56.33333
+7211,"Agricultural, Forestry and Horticultural Plant Operators",VIC,2026-07-01,13.33333
+7212,Earthmoving Plant Operators,VIC,2026-07-01,143
+7213,Forklift Drivers,VIC,2026-07-01,362
+7219,Other Mobile Plant Operators,VIC,2026-07-01,39
+7311,Automobile Drivers,VIC,2026-07-01,5.66667
+7312,Bus and Coach Drivers,VIC,2026-07-01,59.66667
+7313,Train and Tram Drivers,VIC,2026-07-01,7
+7321,Delivery Drivers,VIC,2026-07-01,155.33333
+7331,Truck Drivers,VIC,2026-07-01,373.33333
+7411,Storepersons,VIC,2026-07-01,399
+8111,Car Detailers,VIC,2026-07-01,22
+8112,Commercial Cleaners,VIC,2026-07-01,399.66667
+8113,Domestic Cleaners,VIC,2026-07-01,9.33333
+8114,Housekeepers,VIC,2026-07-01,138.33333
+8115,Laundry Workers,VIC,2026-07-01,28.66667
+8116,Other Cleaners,VIC,2026-07-01,16.33333
+8211,Building and Plumbing Labourers,VIC,2026-07-01,107.33333
+8212,Concreters,VIC,2026-07-01,20.33333
+8213,Fencers,VIC,2026-07-01,11.33333
+8214,Insulation and Home Improvement Installers,VIC,2026-07-01,11.66667
+8215,Paving and Surfacing Labourers,VIC,2026-07-01,4.33333
+8216,Railway Track Workers,VIC,2026-07-01,1
+8217,Structural Steel Construction Workers,VIC,2026-07-01,23.66667
+8219,Other Construction and Mining Labourers,VIC,2026-07-01,3.66667
+8311,Food and Drink Factory Workers,VIC,2026-07-01,23.66667
+8312,"Meat Boners and Slicers, and Slaughterers",VIC,2026-07-01,8
+8313,"Meat, Poultry and Seafood Process Workers",VIC,2026-07-01,20
+8321,Packers,VIC,2026-07-01,133.66667
+8322,Product Assemblers,VIC,2026-07-01,65.33333
+8391,Metal Engineering Process Workers,VIC,2026-07-01,1
+8392,Plastics and Rubber Factory Workers,VIC,2026-07-01,0
+8393,Product Quality Controllers,VIC,2026-07-01,126.66667
+8394,Timber and Wood Process Workers,VIC,2026-07-01,3
+8399,Other Factory Process Workers,VIC,2026-07-01,70.33333
+8411,Aquaculture Workers,VIC,2026-07-01,0.33333
+8412,Crop Farm Workers,VIC,2026-07-01,17.33333
+8413,Forestry and Logging Workers,VIC,2026-07-01,6.33333
+8414,Garden and Nursery Labourers,VIC,2026-07-01,54.66667
+8415,Livestock Farm Workers,VIC,2026-07-01,67.66667
+8416,Mixed Crop and Livestock Farm Workers,VIC,2026-07-01,27
+8419,"Other Farm, Forestry and Garden Workers",VIC,2026-07-01,17.66667
+8511,Fast Food Cooks,VIC,2026-07-01,8.33333
+8512,Food Trades Assistants,VIC,2026-07-01,3.33333
+8513,Kitchenhands,VIC,2026-07-01,198.33333
+8911,Freight and Furniture Handlers,VIC,2026-07-01,24.33333
+8912,Shelf Fillers,VIC,2026-07-01,4
+8991,Caretakers,VIC,2026-07-01,24.66667
+8992,Deck and Fishing Hands,VIC,2026-07-01,3.33333
+8993,Handypersons,VIC,2026-07-01,138.66667
+8994,Motor Vehicle Parts and Accessories Fitters,VIC,2026-07-01,28.33333
+8995,Printing Assistants and Table Workers,VIC,2026-07-01,24.33333
+8996,Recycling and Rubbish Collectors,VIC,2026-07-01,5.33333
+8997,Vending Machine Attendants,VIC,2026-07-01,1.33333
+8999,Other Miscellaneous Labourers,VIC,2026-07-01,606.33333
+0,Queensland Total,QLD,2026-07-01,50515.33333
+1111,Chief Executives and Managing Directors,QLD,2026-07-01,66.33333
+1112,General Managers,QLD,2026-07-01,157.66667
+1211,Aquaculture Farmers,QLD,2026-07-01,0
+1212,Crop Farmers,QLD,2026-07-01,1
+1213,Livestock Farmers,QLD,2026-07-01,14.66667
+1214,Mixed Crop and Livestock Farmers,QLD,2026-07-01,19
+1311,Advertising and Sales Managers,QLD,2026-07-01,985.33333
+1321,Corporate Services Managers,QLD,2026-07-01,156
+1322,Finance Managers,QLD,2026-07-01,184
+1323,Human Resource Managers,QLD,2026-07-01,116
+1324,Policy and Planning Managers,QLD,2026-07-01,330
+1325,Research and Development Managers,QLD,2026-07-01,18.66667
+1331,Construction Managers,QLD,2026-07-01,997.33333
+1332,Engineering Managers,QLD,2026-07-01,74.66667
+1333,"Importers, Exporters and Wholesalers",QLD,2026-07-01,6
+1334,Manufacturers,QLD,2026-07-01,10
+1335,Production Managers,QLD,2026-07-01,268.66667
+1336,"Supply, Distribution and Procurement Managers",QLD,2026-07-01,94.33333
+1341,Child Care Centre Managers,QLD,2026-07-01,76.33333
+1342,Health and Welfare Services Managers,QLD,2026-07-01,93.66667
+1343,School Principals,QLD,2026-07-01,40.33333
+1344,Other Education Managers,QLD,2026-07-01,27
+1351,ICT Managers,QLD,2026-07-01,97.66667
+1399,Other Specialist Managers,QLD,2026-07-01,135
+1411,Cafe and Restaurant Managers,QLD,2026-07-01,132
+1412,Caravan Park and Camping Ground Managers,QLD,2026-07-01,0.33333
+1413,Hotel and Motel Managers,QLD,2026-07-01,178.66667
+1414,Licensed Club Managers,QLD,2026-07-01,38
+1419,Other Accommodation and Hospitality Managers,QLD,2026-07-01,26.66667
+1421,Retail Managers,QLD,2026-07-01,841.66667
+1491,"Amusement, Fitness and Sports Centre Managers",QLD,2026-07-01,65.33333
+1492,Call or Contact Centre and Customer Service Managers,QLD,2026-07-01,154.33333
+1493,Conference and Event Organisers,QLD,2026-07-01,79.66667
+1494,Transport Services Managers,QLD,2026-07-01,53.33333
+1499,"Other Hospitality, Retail and Service Managers",QLD,2026-07-01,211.66667
+2111,"Actors, Dancers and Other Entertainers",QLD,2026-07-01,74
+2112,Music Professionals,QLD,2026-07-01,1.66667
+2113,Photographers,QLD,2026-07-01,7.66667
+2114,Visual Arts and Crafts Professionals,QLD,2026-07-01,1
+2121,"Artistic Directors, and Media Producers and Presenters",QLD,2026-07-01,1.33333
+2122,"Authors, and Book and Script Editors",QLD,2026-07-01,20.33333
+2123,"Film, Television, Radio and Stage Directors",QLD,2026-07-01,17.33333
+2124,Journalists and Other Writers,QLD,2026-07-01,127.33333
+2211,Accountants,QLD,2026-07-01,802.66667
+2212,"Auditors, Company Secretaries and Corporate Treasurers",QLD,2026-07-01,116.33333
+2221,Financial Brokers,QLD,2026-07-01,39.66667
+2222,Financial Dealers,QLD,2026-07-01,7.33333
+2223,Financial Investment Advisers and Managers,QLD,2026-07-01,119
+2231,Human Resource Professionals,QLD,2026-07-01,544.66667
+2232,ICT Trainers,QLD,2026-07-01,0.66667
+2233,Training and Development Professionals,QLD,2026-07-01,200.33333
+2241,"Actuaries, Mathematicians and Statisticians",QLD,2026-07-01,22.33333
+2242,"Archivists, Curators and Records Managers",QLD,2026-07-01,10
+2243,Economists,QLD,2026-07-01,2.33333
+2244,Intelligence and Policy Analysts,QLD,2026-07-01,88.66667
+2245,Land Economists and Valuers,QLD,2026-07-01,19.33333
+2246,Librarians,QLD,2026-07-01,14.33333
+2247,Management and Organisation Analysts,QLD,2026-07-01,151.66667
+2249,Other Information and Organisation Professionals,QLD,2026-07-01,64.66667
+2251,Advertising and Marketing Professionals,QLD,2026-07-01,321.33333
+2252,ICT Sales Professionals,QLD,2026-07-01,6.33333
+2253,Public Relations Professionals,QLD,2026-07-01,118
+2254,Technical Sales Representatives,QLD,2026-07-01,66.66667
+2311,Air Transport Professionals,QLD,2026-07-01,30.33333
+2312,Marine Transport Professionals,QLD,2026-07-01,20
+2321,Architects and Landscape Architects,QLD,2026-07-01,87.66667
+2322,Surveyors and Spatial Scientists,QLD,2026-07-01,136
+2323,"Fashion, Industrial and Jewellery Designers",QLD,2026-07-01,16.66667
+2324,"Graphic and Web Designers, and Illustrators",QLD,2026-07-01,77.33333
+2325,Interior Designers,QLD,2026-07-01,42
+2326,Urban and Regional Planners,QLD,2026-07-01,44.66667
+2331,Chemical and Materials Engineers,QLD,2026-07-01,5.66667
+2332,Civil Engineering Professionals,QLD,2026-07-01,657
+2333,Electrical Engineers,QLD,2026-07-01,132
+2334,Electronics Engineers,QLD,2026-07-01,8.66667
+2335,"Industrial, Mechanical and Production Engineers",QLD,2026-07-01,211.66667
+2336,Mining Engineers,QLD,2026-07-01,231.33333
+2339,Other Engineering Professionals,QLD,2026-07-01,74
+2341,Agricultural and Forestry Scientists,QLD,2026-07-01,6.33333
+2342,"Chemists, and Food and Wine Scientists",QLD,2026-07-01,24
+2343,Environmental Scientists,QLD,2026-07-01,97.33333
+2344,Geologists and Geophysicists,QLD,2026-07-01,25
+2345,Life Scientists,QLD,2026-07-01,45.66667
+2346,Medical Laboratory Scientists,QLD,2026-07-01,21.33333
+2347,Veterinarians,QLD,2026-07-01,34.66667
+2349,Other Natural and Physical Science Professionals,QLD,2026-07-01,10.66667
+2411,Early Childhood (Pre-primary School) Teachers,QLD,2026-07-01,242
+2412,Primary School Teachers,QLD,2026-07-01,151.33333
+2413,Middle School Teachers (Aus) / Intermediate School Teachers (NZ),QLD,2026-07-01,1.33333
+2414,Secondary School Teachers,QLD,2026-07-01,241
+2415,Special Education Teachers,QLD,2026-07-01,21.33333
+2421,University Lecturers and Tutors,QLD,2026-07-01,50
+2422,Vocational Education Teachers (Aus) / Polytechnic Teachers (NZ),QLD,2026-07-01,19
+2491,Education Advisers and Reviewers,QLD,2026-07-01,11.66667
+2492,Private Tutors and Teachers,QLD,2026-07-01,21
+2493,Teachers of English to Speakers of Other Languages,QLD,2026-07-01,2
+2511,Nutrition Professionals,QLD,2026-07-01,21
+2512,Medical Imaging Professionals,QLD,2026-07-01,214
+2513,Occupational and Environmental Health Professionals,QLD,2026-07-01,238
+2514,Optometrists and Orthoptists,QLD,2026-07-01,29.66667
+2515,Pharmacists,QLD,2026-07-01,155.33333
+2519,Other Health Diagnostic and Promotion Professionals,QLD,2026-07-01,4.33333
+2521,Chiropractors and Osteopaths,QLD,2026-07-01,2.33333
+2522,Complementary Health Therapists,QLD,2026-07-01,11
+2523,Dental Practitioners,QLD,2026-07-01,145
+2524,Occupational Therapists,QLD,2026-07-01,276.33333
+2525,Physiotherapists,QLD,2026-07-01,266
+2526,Podiatrists,QLD,2026-07-01,52
+2527,Audiologists and Speech Pathologists/Therapists,QLD,2026-07-01,222.33333
+2531,General Practitioners and Resident Medical Officers,QLD,2026-07-01,974
+2532,Anaesthetists,QLD,2026-07-01,11.33333
+2533,Specialist Physicians,QLD,2026-07-01,94.66667
+2534,Psychiatrists,QLD,2026-07-01,48
+2535,Surgeons,QLD,2026-07-01,3
+2539,Other Medical Practitioners,QLD,2026-07-01,24.66667
+2541,Midwives,QLD,2026-07-01,45.66667
+2542,Nurse Educators and Researchers,QLD,2026-07-01,23.33333
+2543,Nurse Managers,QLD,2026-07-01,46.66667
+2544,Registered Nurses,QLD,2026-07-01,1467
+2611,ICT Business and Systems Analysts,QLD,2026-07-01,293.33333
+2612,Multimedia Specialists and Web Developers,QLD,2026-07-01,12
+2613,Software and Applications Programmers,QLD,2026-07-01,476.66667
+2621,"Database and Systems Administrators, and ICT Security Specialists",QLD,2026-07-01,91.66667
+2631,Computer Network Professionals,QLD,2026-07-01,46.33333
+2632,ICT Support and Test Engineers,QLD,2026-07-01,56.66667
+2633,Telecommunications Engineering Professionals,QLD,2026-07-01,12.33333
+2711,Barristers,QLD,2026-07-01,5.66667
+2713,Solicitors,QLD,2026-07-01,419
+2721,Counsellors,QLD,2026-07-01,109
+2722,Ministers of Religion,QLD,2026-07-01,11.33333
+2723,Psychologists,QLD,2026-07-01,126
+2724,Social Professionals,QLD,2026-07-01,45.66667
+2725,Social Workers,QLD,2026-07-01,252.66667
+2726,"Welfare, Recreation and Community Arts Workers",QLD,2026-07-01,564.33333
+3111,Agricultural Technicians,QLD,2026-07-01,14.33333
+3112,Medical Technicians,QLD,2026-07-01,87.66667
+3113,Primary Products Inspectors,QLD,2026-07-01,1.66667
+3114,Science Technicians,QLD,2026-07-01,30
+3121,"Architectural, Building and Surveying Technicians",QLD,2026-07-01,672.33333
+3122,Civil Engineering Draftspersons and Technicians,QLD,2026-07-01,78
+3123,Electrical Engineering Draftspersons and Technicians,QLD,2026-07-01,49.66667
+3124,Electronic Engineering Draftspersons and Technicians,QLD,2026-07-01,14.66667
+3125,Mechanical Engineering Draftspersons and Technicians,QLD,2026-07-01,53.66667
+3126,Safety Inspectors,QLD,2026-07-01,27.66667
+3129,Other Building and Engineering Technicians,QLD,2026-07-01,154.33333
+3131,ICT Support Technicians,QLD,2026-07-01,179
+3132,Telecommunications Technical Specialists,QLD,2026-07-01,7
+3211,Automotive Electricians,QLD,2026-07-01,91.66667
+3212,Motor Mechanics,QLD,2026-07-01,814
+3221,"Metal Casting, Forging and Finishing Trades Workers",QLD,2026-07-01,0.33333
+3222,Sheetmetal Trades Workers,QLD,2026-07-01,117.66667
+3223,Structural Steel and Welding Trades Workers,QLD,2026-07-01,425.33333
+3231,Aircraft Maintenance Engineers,QLD,2026-07-01,46
+3232,Metal Fitters and Machinists,QLD,2026-07-01,870.66667
+3233,Precision Metal Trades Workers,QLD,2026-07-01,8.66667
+3234,Toolmakers and Engineering Patternmakers,QLD,2026-07-01,3
+3241,Panelbeaters,QLD,2026-07-01,52.33333
+3242,Vehicle Body Builders and Trimmers,QLD,2026-07-01,6.66667
+3243,Vehicle Painters,QLD,2026-07-01,7.33333
+3311,Bricklayers and Stonemasons,QLD,2026-07-01,19.66667
+3312,Carpenters and Joiners,QLD,2026-07-01,294.33333
+3321,Floor Finishers,QLD,2026-07-01,13.33333
+3322,Painting Trades Workers,QLD,2026-07-01,147
+3331,Glaziers,QLD,2026-07-01,36.33333
+3332,Plasterers,QLD,2026-07-01,25
+3333,Roof Tilers,QLD,2026-07-01,54
+3334,Wall and Floor Tilers,QLD,2026-07-01,28
+3341,Plumbers,QLD,2026-07-01,329.66667
+3411,Electricians,QLD,2026-07-01,831.33333
+3421,Airconditioning and Refrigeration Mechanics,QLD,2026-07-01,129
+3422,Electrical Distribution Trades Workers,QLD,2026-07-01,23
+3423,Electronics Trades Workers,QLD,2026-07-01,36.33333
+3424,Telecommunications Trades Workers,QLD,2026-07-01,23
+3511,Bakers and Pastrycooks,QLD,2026-07-01,97
+3512,Butchers and Smallgoods Makers,QLD,2026-07-01,33.66667
+3513,Chefs,QLD,2026-07-01,647.66667
+3514,Cooks,QLD,2026-07-01,242
+3611,Animal Attendants and Trainers,QLD,2026-07-01,24.66667
+3612,Shearers,QLD,2026-07-01,0
+3613,Veterinary Nurses,QLD,2026-07-01,35
+3621,Florists,QLD,2026-07-01,4.66667
+3622,Gardeners,QLD,2026-07-01,205
+3623,Greenkeepers,QLD,2026-07-01,52.33333
+3624,Nurserypersons,QLD,2026-07-01,8.66667
+3911,Hairdressers,QLD,2026-07-01,149.66667
+3921,"Binders, Finishers and Screen Printers",QLD,2026-07-01,1
+3922,Graphic Pre-press Trades Workers,QLD,2026-07-01,10.33333
+3923,Printers,QLD,2026-07-01,5.66667
+3931,Canvas and Leather Goods Makers,QLD,2026-07-01,0.33333
+3932,Clothing Trades Workers,QLD,2026-07-01,9
+3933,Upholsterers,QLD,2026-07-01,3
+3941,Cabinetmakers,QLD,2026-07-01,83
+3942,Wood Machinists and Other Wood Trades Workers,QLD,2026-07-01,21.33333
+3991,Boat Builders and Shipwrights,QLD,2026-07-01,8.66667
+3992,"Chemical, Gas, Petroleum and Power Generation Plant Operators",QLD,2026-07-01,16
+3993,"Gallery, Library and Museum Technicians",QLD,2026-07-01,5.66667
+3994,Jewellers,QLD,2026-07-01,9
+3995,Performing Arts Technicians,QLD,2026-07-01,19.33333
+3996,Signwriters,QLD,2026-07-01,10.33333
+3999,Other Miscellaneous Technicians and Trades Workers,QLD,2026-07-01,248.66667
+4111,Ambulance Officers and Paramedics,QLD,2026-07-01,9.66667
+4112,"Dental Hygienists, Technicians and Therapists",QLD,2026-07-01,41.66667
+4113,Diversional Therapists,QLD,2026-07-01,9.33333
+4114,Enrolled and Mothercraft Nurses,QLD,2026-07-01,139
+4115,Indigenous Health Workers,QLD,2026-07-01,25.66667
+4116,Massage Therapists,QLD,2026-07-01,30.33333
+4117,Welfare Support Workers,QLD,2026-07-01,356.66667
+4211,Child Carers,QLD,2026-07-01,1038
+4221,Education Aides,QLD,2026-07-01,427
+4231,Aged and Disabled Carers,QLD,2026-07-01,897.33333
+4232,Dental Assistants,QLD,2026-07-01,189.66667
+4233,Nursing Support and Personal Care Workers,QLD,2026-07-01,340.66667
+4234,Special Care Workers,QLD,2026-07-01,14.66667
+4311,Bar Attendants and Baristas,QLD,2026-07-01,229.33333
+4312,Cafe Workers,QLD,2026-07-01,72
+4313,Gaming Workers,QLD,2026-07-01,23
+4314,Hotel Service Managers,QLD,2026-07-01,44.33333
+4315,Waiters,QLD,2026-07-01,320.33333
+4412,Fire and Emergency Workers,QLD,2026-07-01,26
+4413,Police,QLD,2026-07-01,2
+4421,Prison Officers,QLD,2026-07-01,4.33333
+4422,Security Officers and Guards,QLD,2026-07-01,185.33333
+4511,Beauty Therapists,QLD,2026-07-01,83
+4512,Driving Instructors,QLD,2026-07-01,6
+4513,Funeral Workers,QLD,2026-07-01,16.33333
+4514,"Gallery, Museum and Tour Guides",QLD,2026-07-01,20
+4515,Personal Care Consultants,QLD,2026-07-01,0
+4516,Tourism and Travel Advisers,QLD,2026-07-01,70.33333
+4517,Travel Attendants,QLD,2026-07-01,6.33333
+4521,Fitness Instructors,QLD,2026-07-01,75.66667
+4522,Outdoor Adventure Guides,QLD,2026-07-01,4
+4523,"Sports Coaches, Instructors and Officials",QLD,2026-07-01,221.66667
+4524,Sportspersons,QLD,2026-07-01,30.33333
+5111,"Contract, Program and Project Administrators",QLD,2026-07-01,483.33333
+5121,Office Managers,QLD,2026-07-01,240
+5122,Practice Managers,QLD,2026-07-01,92.66667
+5211,Personal Assistants,QLD,2026-07-01,48
+5212,Secretaries,QLD,2026-07-01,188.33333
+5311,General Clerks,QLD,2026-07-01,2348.33333
+5321,Keyboard Operators,QLD,2026-07-01,28.66667
+5411,Call or Contact Centre Workers,QLD,2026-07-01,317.33333
+5412,Information Officers,QLD,2026-07-01,113.66667
+5421,Receptionists,QLD,2026-07-01,534
+5511,Accounting Clerks,QLD,2026-07-01,387.33333
+5512,Bookkeepers,QLD,2026-07-01,94.33333
+5513,Payroll Clerks,QLD,2026-07-01,253
+5521,Bank Workers,QLD,2026-07-01,148.66667
+5522,Credit and Loans Officers,QLD,2026-07-01,307.33333
+5523,"Insurance, Money Market and Statistical Clerks",QLD,2026-07-01,6.66667
+5611,Betting Clerks,QLD,2026-07-01,1.33333
+5612,Couriers and Postal Deliverers,QLD,2026-07-01,95.33333
+5613,Filing and Registry Clerks,QLD,2026-07-01,30.33333
+5614,Mail Sorters,QLD,2026-07-01,6
+5615,Survey Interviewers,QLD,2026-07-01,43.66667
+5616,Switchboard Operators,QLD,2026-07-01,0.66667
+5619,Other Clerical and Office Support Workers,QLD,2026-07-01,12
+5911,Purchasing and Supply Logistics Clerks,QLD,2026-07-01,504
+5912,Transport and Despatch Clerks,QLD,2026-07-01,225
+5991,Conveyancers and Legal Executives,QLD,2026-07-01,128
+5992,Court and Legal Clerks,QLD,2026-07-01,76.66667
+5993,Debt Collectors,QLD,2026-07-01,29.66667
+5994,Human Resource Clerks,QLD,2026-07-01,18
+5995,Inspectors and Regulatory Officers,QLD,2026-07-01,221.33333
+5996,"Insurance Investigators, Loss Adjusters and Risk Surveyors",QLD,2026-07-01,169.33333
+5997,Library Assistants,QLD,2026-07-01,16
+5999,Other Miscellaneous Clerical and Administrative Workers,QLD,2026-07-01,54.33333
+6111,"Auctioneers, and Stock and Station Agents",QLD,2026-07-01,1.33333
+6112,Insurance Agents,QLD,2026-07-01,138
+6113,Sales Representatives,QLD,2026-07-01,579.33333
+6121,Real Estate Sales Agents,QLD,2026-07-01,491.33333
+6211,Sales Assistants (General),QLD,2026-07-01,2232.66667
+6212,ICT Sales Assistants,QLD,2026-07-01,1.66667
+6213,Motor Vehicle and Vehicle Parts Salespersons,QLD,2026-07-01,211.33333
+6214,Pharmacy Sales Assistants,QLD,2026-07-01,100
+6215,Retail Supervisors,QLD,2026-07-01,63.33333
+6216,Service Station Attendants,QLD,2026-07-01,6.33333
+6217,Street Vendors and Related Salespersons,QLD,2026-07-01,2.66667
+6219,Other Sales Assistants and Salespersons,QLD,2026-07-01,11.33333
+6311,Checkout Operators and Office Cashiers,QLD,2026-07-01,22
+6391,Models and Sales Demonstrators,QLD,2026-07-01,121
+6392,Retail and Wool Buyers,QLD,2026-07-01,7.66667
+6393,Telemarketers,QLD,2026-07-01,21
+6394,Ticket Salespersons,QLD,2026-07-01,13.66667
+6395,Visual Merchandisers,QLD,2026-07-01,19
+6399,Other Sales Support Workers,QLD,2026-07-01,52.66667
+7111,"Clay, Concrete, Glass and Stone Processing Machine Operators",QLD,2026-07-01,0.66667
+7112,Industrial Spraypainters,QLD,2026-07-01,64
+7113,Paper and Wood Processing Machine Operators,QLD,2026-07-01,2.66667
+7114,Photographic Developers and Printers,QLD,2026-07-01,0.66667
+7115,Plastics and Rubber Production Machine Operators,QLD,2026-07-01,10.66667
+7116,Sewing Machinists,QLD,2026-07-01,21
+7117,Textile and Footwear Production Machine Operators,QLD,2026-07-01,4.66667
+7119,Other Machine Operators,QLD,2026-07-01,242.66667
+7121,"Crane, Hoist and Lift Operators",QLD,2026-07-01,95.66667
+7122,"Drillers, Miners and Shot Firers",QLD,2026-07-01,254.66667
+7123,Engineering Production Workers,QLD,2026-07-01,45.66667
+7129,Other Stationary Plant Operators,QLD,2026-07-01,130
+7211,"Agricultural, Forestry and Horticultural Plant Operators",QLD,2026-07-01,21.33333
+7212,Earthmoving Plant Operators,QLD,2026-07-01,461.66667
+7213,Forklift Drivers,QLD,2026-07-01,593.66667
+7219,Other Mobile Plant Operators,QLD,2026-07-01,97.33333
+7311,Automobile Drivers,QLD,2026-07-01,10.66667
+7312,Bus and Coach Drivers,QLD,2026-07-01,91
+7313,Train and Tram Drivers,QLD,2026-07-01,34.33333
+7321,Delivery Drivers,QLD,2026-07-01,294.66667
+7331,Truck Drivers,QLD,2026-07-01,880.33333
+7411,Storepersons,QLD,2026-07-01,656.33333
+8111,Car Detailers,QLD,2026-07-01,58.66667
+8112,Commercial Cleaners,QLD,2026-07-01,485
+8113,Domestic Cleaners,QLD,2026-07-01,9.66667
+8114,Housekeepers,QLD,2026-07-01,183
+8115,Laundry Workers,QLD,2026-07-01,18.66667
+8116,Other Cleaners,QLD,2026-07-01,20.66667
+8211,Building and Plumbing Labourers,QLD,2026-07-01,301
+8212,Concreters,QLD,2026-07-01,56
+8213,Fencers,QLD,2026-07-01,9
+8214,Insulation and Home Improvement Installers,QLD,2026-07-01,18
+8215,Paving and Surfacing Labourers,QLD,2026-07-01,3.66667
+8216,Railway Track Workers,QLD,2026-07-01,5.66667
+8217,Structural Steel Construction Workers,QLD,2026-07-01,93
+8219,Other Construction and Mining Labourers,QLD,2026-07-01,24
+8311,Food and Drink Factory Workers,QLD,2026-07-01,21.33333
+8312,"Meat Boners and Slicers, and Slaughterers",QLD,2026-07-01,15.33333
+8313,"Meat, Poultry and Seafood Process Workers",QLD,2026-07-01,16.66667
+8321,Packers,QLD,2026-07-01,152
+8322,Product Assemblers,QLD,2026-07-01,47
+8391,Metal Engineering Process Workers,QLD,2026-07-01,7.66667
+8392,Plastics and Rubber Factory Workers,QLD,2026-07-01,0.33333
+8393,Product Quality Controllers,QLD,2026-07-01,118
+8394,Timber and Wood Process Workers,QLD,2026-07-01,2.66667
+8399,Other Factory Process Workers,QLD,2026-07-01,93.66667
+8411,Aquaculture Workers,QLD,2026-07-01,0.33333
+8412,Crop Farm Workers,QLD,2026-07-01,23
+8413,Forestry and Logging Workers,QLD,2026-07-01,5.33333
+8414,Garden and Nursery Labourers,QLD,2026-07-01,69
+8415,Livestock Farm Workers,QLD,2026-07-01,23.33333
+8416,Mixed Crop and Livestock Farm Workers,QLD,2026-07-01,42.33333
+8419,"Other Farm, Forestry and Garden Workers",QLD,2026-07-01,38.33333
+8511,Fast Food Cooks,QLD,2026-07-01,7.33333
+8512,Food Trades Assistants,QLD,2026-07-01,6.66667
+8513,Kitchenhands,QLD,2026-07-01,197
+8911,Freight and Furniture Handlers,QLD,2026-07-01,63.66667
+8912,Shelf Fillers,QLD,2026-07-01,14.66667
+8991,Caretakers,QLD,2026-07-01,24.66667
+8992,Deck and Fishing Hands,QLD,2026-07-01,10
+8993,Handypersons,QLD,2026-07-01,190.66667
+8994,Motor Vehicle Parts and Accessories Fitters,QLD,2026-07-01,75.66667
+8995,Printing Assistants and Table Workers,QLD,2026-07-01,12
+8996,Recycling and Rubbish Collectors,QLD,2026-07-01,7.33333
+8997,Vending Machine Attendants,QLD,2026-07-01,2.33333
+8999,Other Miscellaneous Labourers,QLD,2026-07-01,1219
+0,South Australia Total,SA,2026-07-01,14373
+1111,Chief Executives and Managing Directors,SA,2026-07-01,25.33333
+1112,General Managers,SA,2026-07-01,45.33333
+1211,Aquaculture Farmers,SA,2026-07-01,0.33333
+1212,Crop Farmers,SA,2026-07-01,5.66667
+1213,Livestock Farmers,SA,2026-07-01,5.66667
+1214,Mixed Crop and Livestock Farmers,SA,2026-07-01,9.33333
+1311,Advertising and Sales Managers,SA,2026-07-01,231.33333
+1321,Corporate Services Managers,SA,2026-07-01,62
+1322,Finance Managers,SA,2026-07-01,44
+1323,Human Resource Managers,SA,2026-07-01,30.33333
+1324,Policy and Planning Managers,SA,2026-07-01,97
+1325,Research and Development Managers,SA,2026-07-01,4.33333
+1331,Construction Managers,SA,2026-07-01,266.66667
+1332,Engineering Managers,SA,2026-07-01,21
+1333,"Importers, Exporters and Wholesalers",SA,2026-07-01,1
+1334,Manufacturers,SA,2026-07-01,1.33333
+1335,Production Managers,SA,2026-07-01,81.33333
+1336,"Supply, Distribution and Procurement Managers",SA,2026-07-01,31
+1341,Child Care Centre Managers,SA,2026-07-01,21.66667
+1342,Health and Welfare Services Managers,SA,2026-07-01,31.66667
+1343,School Principals,SA,2026-07-01,9.66667
+1344,Other Education Managers,SA,2026-07-01,4.33333
+1351,ICT Managers,SA,2026-07-01,29.33333
+1399,Other Specialist Managers,SA,2026-07-01,50.33333
+1411,Cafe and Restaurant Managers,SA,2026-07-01,36.33333
+1412,Caravan Park and Camping Ground Managers,SA,2026-07-01,1
+1413,Hotel and Motel Managers,SA,2026-07-01,55.66667
+1414,Licensed Club Managers,SA,2026-07-01,9.66667
+1419,Other Accommodation and Hospitality Managers,SA,2026-07-01,8.66667
+1421,Retail Managers,SA,2026-07-01,240
+1491,"Amusement, Fitness and Sports Centre Managers",SA,2026-07-01,21.66667
+1492,Call or Contact Centre and Customer Service Managers,SA,2026-07-01,39
+1493,Conference and Event Organisers,SA,2026-07-01,21.66667
+1494,Transport Services Managers,SA,2026-07-01,14.33333
+1499,"Other Hospitality, Retail and Service Managers",SA,2026-07-01,50
+2111,"Actors, Dancers and Other Entertainers",SA,2026-07-01,19.33333
+2112,Music Professionals,SA,2026-07-01,0.33333
+2113,Photographers,SA,2026-07-01,1
+2114,Visual Arts and Crafts Professionals,SA,2026-07-01,0
+2121,"Artistic Directors, and Media Producers and Presenters",SA,2026-07-01,0.33333
+2122,"Authors, and Book and Script Editors",SA,2026-07-01,5.33333
+2123,"Film, Television, Radio and Stage Directors",SA,2026-07-01,5
+2124,Journalists and Other Writers,SA,2026-07-01,47.33333
+2211,Accountants,SA,2026-07-01,165.33333
+2212,"Auditors, Company Secretaries and Corporate Treasurers",SA,2026-07-01,40.33333
+2221,Financial Brokers,SA,2026-07-01,18.66667
+2222,Financial Dealers,SA,2026-07-01,1.33333
+2223,Financial Investment Advisers and Managers,SA,2026-07-01,39.33333
+2231,Human Resource Professionals,SA,2026-07-01,147.66667
+2232,ICT Trainers,SA,2026-07-01,0
+2233,Training and Development Professionals,SA,2026-07-01,53.66667
+2241,"Actuaries, Mathematicians and Statisticians",SA,2026-07-01,4
+2242,"Archivists, Curators and Records Managers",SA,2026-07-01,9
+2243,Economists,SA,2026-07-01,0
+2244,Intelligence and Policy Analysts,SA,2026-07-01,31.33333
+2245,Land Economists and Valuers,SA,2026-07-01,4.33333
+2246,Librarians,SA,2026-07-01,3
+2247,Management and Organisation Analysts,SA,2026-07-01,38
+2249,Other Information and Organisation Professionals,SA,2026-07-01,24
+2251,Advertising and Marketing Professionals,SA,2026-07-01,69
+2252,ICT Sales Professionals,SA,2026-07-01,1
+2253,Public Relations Professionals,SA,2026-07-01,34.66667
+2254,Technical Sales Representatives,SA,2026-07-01,20.33333
+2311,Air Transport Professionals,SA,2026-07-01,5
+2312,Marine Transport Professionals,SA,2026-07-01,4.66667
+2321,Architects and Landscape Architects,SA,2026-07-01,21
+2322,Surveyors and Spatial Scientists,SA,2026-07-01,21.33333
+2323,"Fashion, Industrial and Jewellery Designers",SA,2026-07-01,3.33333
+2324,"Graphic and Web Designers, and Illustrators",SA,2026-07-01,17.33333
+2325,Interior Designers,SA,2026-07-01,12
+2326,Urban and Regional Planners,SA,2026-07-01,11.33333
+2331,Chemical and Materials Engineers,SA,2026-07-01,5
+2332,Civil Engineering Professionals,SA,2026-07-01,141.66667
+2333,Electrical Engineers,SA,2026-07-01,34.33333
+2334,Electronics Engineers,SA,2026-07-01,6.33333
+2335,"Industrial, Mechanical and Production Engineers",SA,2026-07-01,61.66667
+2336,Mining Engineers,SA,2026-07-01,37.66667
+2339,Other Engineering Professionals,SA,2026-07-01,23.33333
+2341,Agricultural and Forestry Scientists,SA,2026-07-01,4
+2342,"Chemists, and Food and Wine Scientists",SA,2026-07-01,4.33333
+2343,Environmental Scientists,SA,2026-07-01,20.66667
+2344,Geologists and Geophysicists,SA,2026-07-01,8.33333
+2345,Life Scientists,SA,2026-07-01,18.33333
+2346,Medical Laboratory Scientists,SA,2026-07-01,12.66667
+2347,Veterinarians,SA,2026-07-01,8
+2349,Other Natural and Physical Science Professionals,SA,2026-07-01,5.33333
+2411,Early Childhood (Pre-primary School) Teachers,SA,2026-07-01,41.33333
+2412,Primary School Teachers,SA,2026-07-01,14
+2413,Middle School Teachers (Aus) / Intermediate School Teachers (NZ),SA,2026-07-01,1.66667
+2414,Secondary School Teachers,SA,2026-07-01,14.66667
+2415,Special Education Teachers,SA,2026-07-01,2.66667
+2421,University Lecturers and Tutors,SA,2026-07-01,18
+2422,Vocational Education Teachers (Aus) / Polytechnic Teachers (NZ),SA,2026-07-01,2
+2491,Education Advisers and Reviewers,SA,2026-07-01,3
+2492,Private Tutors and Teachers,SA,2026-07-01,3.33333
+2493,Teachers of English to Speakers of Other Languages,SA,2026-07-01,0
+2511,Nutrition Professionals,SA,2026-07-01,15.33333
+2512,Medical Imaging Professionals,SA,2026-07-01,60
+2513,Occupational and Environmental Health Professionals,SA,2026-07-01,68.66667
+2514,Optometrists and Orthoptists,SA,2026-07-01,8
+2515,Pharmacists,SA,2026-07-01,61.33333
+2519,Other Health Diagnostic and Promotion Professionals,SA,2026-07-01,3
+2521,Chiropractors and Osteopaths,SA,2026-07-01,0.66667
+2522,Complementary Health Therapists,SA,2026-07-01,10.66667
+2523,Dental Practitioners,SA,2026-07-01,41.66667
+2524,Occupational Therapists,SA,2026-07-01,137
+2525,Physiotherapists,SA,2026-07-01,97.66667
+2526,Podiatrists,SA,2026-07-01,21.33333
+2527,Audiologists and Speech Pathologists/Therapists,SA,2026-07-01,45.33333
+2531,General Practitioners and Resident Medical Officers,SA,2026-07-01,294.66667
+2532,Anaesthetists,SA,2026-07-01,2.33333
+2533,Specialist Physicians,SA,2026-07-01,33.33333
+2534,Psychiatrists,SA,2026-07-01,11.33333
+2535,Surgeons,SA,2026-07-01,1
+2539,Other Medical Practitioners,SA,2026-07-01,24.66667
+2541,Midwives,SA,2026-07-01,25.66667
+2542,Nurse Educators and Researchers,SA,2026-07-01,9.66667
+2543,Nurse Managers,SA,2026-07-01,19
+2544,Registered Nurses,SA,2026-07-01,711.33333
+2611,ICT Business and Systems Analysts,SA,2026-07-01,91
+2612,Multimedia Specialists and Web Developers,SA,2026-07-01,2.33333
+2613,Software and Applications Programmers,SA,2026-07-01,162.33333
+2621,"Database and Systems Administrators, and ICT Security Specialists",SA,2026-07-01,32
+2631,Computer Network Professionals,SA,2026-07-01,24.66667
+2632,ICT Support and Test Engineers,SA,2026-07-01,26
+2633,Telecommunications Engineering Professionals,SA,2026-07-01,7.33333
+2711,Barristers,SA,2026-07-01,4.33333
+2713,Solicitors,SA,2026-07-01,64
+2721,Counsellors,SA,2026-07-01,23.33333
+2722,Ministers of Religion,SA,2026-07-01,5.33333
+2723,Psychologists,SA,2026-07-01,42.33333
+2724,Social Professionals,SA,2026-07-01,17
+2725,Social Workers,SA,2026-07-01,103
+2726,"Welfare, Recreation and Community Arts Workers",SA,2026-07-01,157.33333
+3111,Agricultural Technicians,SA,2026-07-01,7
+3112,Medical Technicians,SA,2026-07-01,36.33333
+3113,Primary Products Inspectors,SA,2026-07-01,2
+3114,Science Technicians,SA,2026-07-01,11
+3121,"Architectural, Building and Surveying Technicians",SA,2026-07-01,127
+3122,Civil Engineering Draftspersons and Technicians,SA,2026-07-01,12.66667
+3123,Electrical Engineering Draftspersons and Technicians,SA,2026-07-01,14.33333
+3124,Electronic Engineering Draftspersons and Technicians,SA,2026-07-01,3
+3125,Mechanical Engineering Draftspersons and Technicians,SA,2026-07-01,15.66667
+3126,Safety Inspectors,SA,2026-07-01,19.33333
+3129,Other Building and Engineering Technicians,SA,2026-07-01,38
+3131,ICT Support Technicians,SA,2026-07-01,47.66667
+3132,Telecommunications Technical Specialists,SA,2026-07-01,2
+3211,Automotive Electricians,SA,2026-07-01,17.33333
+3212,Motor Mechanics,SA,2026-07-01,241
+3221,"Metal Casting, Forging and Finishing Trades Workers",SA,2026-07-01,0.33333
+3222,Sheetmetal Trades Workers,SA,2026-07-01,19.33333
+3223,Structural Steel and Welding Trades Workers,SA,2026-07-01,118.33333
+3231,Aircraft Maintenance Engineers,SA,2026-07-01,11.66667
+3232,Metal Fitters and Machinists,SA,2026-07-01,201.66667
+3233,Precision Metal Trades Workers,SA,2026-07-01,5.66667
+3234,Toolmakers and Engineering Patternmakers,SA,2026-07-01,2
+3241,Panelbeaters,SA,2026-07-01,20
+3242,Vehicle Body Builders and Trimmers,SA,2026-07-01,0.33333
+3243,Vehicle Painters,SA,2026-07-01,1.66667
+3311,Bricklayers and Stonemasons,SA,2026-07-01,4
+3312,Carpenters and Joiners,SA,2026-07-01,80.33333
+3321,Floor Finishers,SA,2026-07-01,3.33333
+3322,Painting Trades Workers,SA,2026-07-01,34.66667
+3331,Glaziers,SA,2026-07-01,3.66667
+3332,Plasterers,SA,2026-07-01,6
+3333,Roof Tilers,SA,2026-07-01,10
+3334,Wall and Floor Tilers,SA,2026-07-01,6
+3341,Plumbers,SA,2026-07-01,100.33333
+3411,Electricians,SA,2026-07-01,233.66667
+3421,Airconditioning and Refrigeration Mechanics,SA,2026-07-01,29
+3422,Electrical Distribution Trades Workers,SA,2026-07-01,5.33333
+3423,Electronics Trades Workers,SA,2026-07-01,4
+3424,Telecommunications Trades Workers,SA,2026-07-01,7.33333
+3511,Bakers and Pastrycooks,SA,2026-07-01,27
+3512,Butchers and Smallgoods Makers,SA,2026-07-01,10.33333
+3513,Chefs,SA,2026-07-01,201.33333
+3514,Cooks,SA,2026-07-01,82.66667
+3611,Animal Attendants and Trainers,SA,2026-07-01,9
+3612,Shearers,SA,2026-07-01,0
+3613,Veterinary Nurses,SA,2026-07-01,8.66667
+3621,Florists,SA,2026-07-01,1.66667
+3622,Gardeners,SA,2026-07-01,67.33333
+3623,Greenkeepers,SA,2026-07-01,12.33333
+3624,Nurserypersons,SA,2026-07-01,4
+3911,Hairdressers,SA,2026-07-01,31
+3921,"Binders, Finishers and Screen Printers",SA,2026-07-01,1
+3922,Graphic Pre-press Trades Workers,SA,2026-07-01,2
+3923,Printers,SA,2026-07-01,3
+3931,Canvas and Leather Goods Makers,SA,2026-07-01,0
+3932,Clothing Trades Workers,SA,2026-07-01,0.33333
+3933,Upholsterers,SA,2026-07-01,1
+3941,Cabinetmakers,SA,2026-07-01,20.33333
+3942,Wood Machinists and Other Wood Trades Workers,SA,2026-07-01,2.66667
+3991,Boat Builders and Shipwrights,SA,2026-07-01,0.66667
+3992,"Chemical, Gas, Petroleum and Power Generation Plant Operators",SA,2026-07-01,3.66667
+3993,"Gallery, Library and Museum Technicians",SA,2026-07-01,1
+3994,Jewellers,SA,2026-07-01,2
+3995,Performing Arts Technicians,SA,2026-07-01,2.33333
+3996,Signwriters,SA,2026-07-01,0.66667
+3999,Other Miscellaneous Technicians and Trades Workers,SA,2026-07-01,74
+4111,Ambulance Officers and Paramedics,SA,2026-07-01,2.66667
+4112,"Dental Hygienists, Technicians and Therapists",SA,2026-07-01,23.66667
+4113,Diversional Therapists,SA,2026-07-01,4.33333
+4114,Enrolled and Mothercraft Nurses,SA,2026-07-01,142.66667
+4115,Indigenous Health Workers,SA,2026-07-01,2
+4116,Massage Therapists,SA,2026-07-01,12.66667
+4117,Welfare Support Workers,SA,2026-07-01,84
+4211,Child Carers,SA,2026-07-01,164
+4221,Education Aides,SA,2026-07-01,89
+4231,Aged and Disabled Carers,SA,2026-07-01,286
+4232,Dental Assistants,SA,2026-07-01,72.33333
+4233,Nursing Support and Personal Care Workers,SA,2026-07-01,111
+4234,Special Care Workers,SA,2026-07-01,9.66667
+4311,Bar Attendants and Baristas,SA,2026-07-01,57.66667
+4312,Cafe Workers,SA,2026-07-01,31.33333
+4313,Gaming Workers,SA,2026-07-01,11.66667
+4314,Hotel Service Managers,SA,2026-07-01,8.33333
+4315,Waiters,SA,2026-07-01,61
+4412,Fire and Emergency Workers,SA,2026-07-01,2.33333
+4413,Police,SA,2026-07-01,3
+4421,Prison Officers,SA,2026-07-01,2
+4422,Security Officers and Guards,SA,2026-07-01,61.66667
+4511,Beauty Therapists,SA,2026-07-01,19
+4512,Driving Instructors,SA,2026-07-01,0.66667
+4513,Funeral Workers,SA,2026-07-01,5.33333
+4514,"Gallery, Museum and Tour Guides",SA,2026-07-01,7
+4515,Personal Care Consultants,SA,2026-07-01,0
+4516,Tourism and Travel Advisers,SA,2026-07-01,19.66667
+4517,Travel Attendants,SA,2026-07-01,2.66667
+4521,Fitness Instructors,SA,2026-07-01,25.33333
+4522,Outdoor Adventure Guides,SA,2026-07-01,1
+4523,"Sports Coaches, Instructors and Officials",SA,2026-07-01,69.66667
+4524,Sportspersons,SA,2026-07-01,5.33333
+5111,"Contract, Program and Project Administrators",SA,2026-07-01,128.66667
+5121,Office Managers,SA,2026-07-01,59.33333
+5122,Practice Managers,SA,2026-07-01,18.66667
+5211,Personal Assistants,SA,2026-07-01,22
+5212,Secretaries,SA,2026-07-01,64
+5311,General Clerks,SA,2026-07-01,731.66667
+5321,Keyboard Operators,SA,2026-07-01,11
+5411,Call or Contact Centre Workers,SA,2026-07-01,118.33333
+5412,Information Officers,SA,2026-07-01,25.33333
+5421,Receptionists,SA,2026-07-01,174
+5511,Accounting Clerks,SA,2026-07-01,93.66667
+5512,Bookkeepers,SA,2026-07-01,16.66667
+5513,Payroll Clerks,SA,2026-07-01,63.66667
+5521,Bank Workers,SA,2026-07-01,50
+5522,Credit and Loans Officers,SA,2026-07-01,81.33333
+5523,"Insurance, Money Market and Statistical Clerks",SA,2026-07-01,2
+5611,Betting Clerks,SA,2026-07-01,0
+5612,Couriers and Postal Deliverers,SA,2026-07-01,33.66667
+5613,Filing and Registry Clerks,SA,2026-07-01,11
+5614,Mail Sorters,SA,2026-07-01,0.66667
+5615,Survey Interviewers,SA,2026-07-01,33
+5616,Switchboard Operators,SA,2026-07-01,0.33333
+5619,Other Clerical and Office Support Workers,SA,2026-07-01,4.66667
+5911,Purchasing and Supply Logistics Clerks,SA,2026-07-01,153.33333
+5912,Transport and Despatch Clerks,SA,2026-07-01,58.33333
+5991,Conveyancers and Legal Executives,SA,2026-07-01,15
+5992,Court and Legal Clerks,SA,2026-07-01,11.66667
+5993,Debt Collectors,SA,2026-07-01,13.33333
+5994,Human Resource Clerks,SA,2026-07-01,8
+5995,Inspectors and Regulatory Officers,SA,2026-07-01,71.33333
+5996,"Insurance Investigators, Loss Adjusters and Risk Surveyors",SA,2026-07-01,37
+5997,Library Assistants,SA,2026-07-01,1.33333
+5999,Other Miscellaneous Clerical and Administrative Workers,SA,2026-07-01,16.33333
+6111,"Auctioneers, and Stock and Station Agents",SA,2026-07-01,0
+6112,Insurance Agents,SA,2026-07-01,23.66667
+6113,Sales Representatives,SA,2026-07-01,148
+6121,Real Estate Sales Agents,SA,2026-07-01,93
+6211,Sales Assistants (General),SA,2026-07-01,604
+6212,ICT Sales Assistants,SA,2026-07-01,0
+6213,Motor Vehicle and Vehicle Parts Salespersons,SA,2026-07-01,60
+6214,Pharmacy Sales Assistants,SA,2026-07-01,42.66667
+6215,Retail Supervisors,SA,2026-07-01,11
+6216,Service Station Attendants,SA,2026-07-01,1.66667
+6217,Street Vendors and Related Salespersons,SA,2026-07-01,0.33333
+6219,Other Sales Assistants and Salespersons,SA,2026-07-01,5.33333
+6311,Checkout Operators and Office Cashiers,SA,2026-07-01,11.66667
+6391,Models and Sales Demonstrators,SA,2026-07-01,57.33333
+6392,Retail and Wool Buyers,SA,2026-07-01,1.33333
+6393,Telemarketers,SA,2026-07-01,1.33333
+6394,Ticket Salespersons,SA,2026-07-01,2
+6395,Visual Merchandisers,SA,2026-07-01,3.33333
+6399,Other Sales Support Workers,SA,2026-07-01,26.66667
+7111,"Clay, Concrete, Glass and Stone Processing Machine Operators",SA,2026-07-01,0
+7112,Industrial Spraypainters,SA,2026-07-01,15.66667
+7113,Paper and Wood Processing Machine Operators,SA,2026-07-01,0.66667
+7114,Photographic Developers and Printers,SA,2026-07-01,0
+7115,Plastics and Rubber Production Machine Operators,SA,2026-07-01,4
+7116,Sewing Machinists,SA,2026-07-01,10
+7117,Textile and Footwear Production Machine Operators,SA,2026-07-01,0.33333
+7119,Other Machine Operators,SA,2026-07-01,77.33333
+7121,"Crane, Hoist and Lift Operators",SA,2026-07-01,27.33333
+7122,"Drillers, Miners and Shot Firers",SA,2026-07-01,48.33333
+7123,Engineering Production Workers,SA,2026-07-01,14
+7129,Other Stationary Plant Operators,SA,2026-07-01,36
+7211,"Agricultural, Forestry and Horticultural Plant Operators",SA,2026-07-01,6
+7212,Earthmoving Plant Operators,SA,2026-07-01,110
+7213,Forklift Drivers,SA,2026-07-01,124.66667
+7219,Other Mobile Plant Operators,SA,2026-07-01,22.66667
+7311,Automobile Drivers,SA,2026-07-01,12.33333
+7312,Bus and Coach Drivers,SA,2026-07-01,27.33333
+7313,Train and Tram Drivers,SA,2026-07-01,4
+7321,Delivery Drivers,SA,2026-07-01,79
+7331,Truck Drivers,SA,2026-07-01,212.66667
+7411,Storepersons,SA,2026-07-01,174.66667
+8111,Car Detailers,SA,2026-07-01,13.66667
+8112,Commercial Cleaners,SA,2026-07-01,166.33333
+8113,Domestic Cleaners,SA,2026-07-01,6.66667
+8114,Housekeepers,SA,2026-07-01,55.33333
+8115,Laundry Workers,SA,2026-07-01,5
+8116,Other Cleaners,SA,2026-07-01,5.66667
+8211,Building and Plumbing Labourers,SA,2026-07-01,88
+8212,Concreters,SA,2026-07-01,12.33333
+8213,Fencers,SA,2026-07-01,4.33333
+8214,Insulation and Home Improvement Installers,SA,2026-07-01,10.66667
+8215,Paving and Surfacing Labourers,SA,2026-07-01,1
+8216,Railway Track Workers,SA,2026-07-01,1.33333
+8217,Structural Steel Construction Workers,SA,2026-07-01,23.33333
+8219,Other Construction and Mining Labourers,SA,2026-07-01,5
+8311,Food and Drink Factory Workers,SA,2026-07-01,22
+8312,"Meat Boners and Slicers, and Slaughterers",SA,2026-07-01,3
+8313,"Meat, Poultry and Seafood Process Workers",SA,2026-07-01,2
+8321,Packers,SA,2026-07-01,43.33333
+8322,Product Assemblers,SA,2026-07-01,18
+8391,Metal Engineering Process Workers,SA,2026-07-01,2
+8392,Plastics and Rubber Factory Workers,SA,2026-07-01,0
+8393,Product Quality Controllers,SA,2026-07-01,31
+8394,Timber and Wood Process Workers,SA,2026-07-01,4
+8399,Other Factory Process Workers,SA,2026-07-01,33.33333
+8411,Aquaculture Workers,SA,2026-07-01,0
+8412,Crop Farm Workers,SA,2026-07-01,6
+8413,Forestry and Logging Workers,SA,2026-07-01,2.33333
+8414,Garden and Nursery Labourers,SA,2026-07-01,23.66667
+8415,Livestock Farm Workers,SA,2026-07-01,11.33333
+8416,Mixed Crop and Livestock Farm Workers,SA,2026-07-01,14
+8419,"Other Farm, Forestry and Garden Workers",SA,2026-07-01,8.66667
+8511,Fast Food Cooks,SA,2026-07-01,3.66667
+8512,Food Trades Assistants,SA,2026-07-01,7.66667
+8513,Kitchenhands,SA,2026-07-01,68
+8911,Freight and Furniture Handlers,SA,2026-07-01,12
+8912,Shelf Fillers,SA,2026-07-01,6.66667
+8991,Caretakers,SA,2026-07-01,8
+8992,Deck and Fishing Hands,SA,2026-07-01,2
+8993,Handypersons,SA,2026-07-01,65.33333
+8994,Motor Vehicle Parts and Accessories Fitters,SA,2026-07-01,14
+8995,Printing Assistants and Table Workers,SA,2026-07-01,7.33333
+8996,Recycling and Rubbish Collectors,SA,2026-07-01,0.66667
+8997,Vending Machine Attendants,SA,2026-07-01,0.33333
+8999,Other Miscellaneous Labourers,SA,2026-07-01,294.66667
+0,Western Australia Total,WA,2026-07-01,27606
+1111,Chief Executives and Managing Directors,WA,2026-07-01,33.33333
+1112,General Managers,WA,2026-07-01,79
+1211,Aquaculture Farmers,WA,2026-07-01,0
+1212,Crop Farmers,WA,2026-07-01,2.66667
+1213,Livestock Farmers,WA,2026-07-01,7
+1214,Mixed Crop and Livestock Farmers,WA,2026-07-01,15.33333
+1311,Advertising and Sales Managers,WA,2026-07-01,446.33333
+1321,Corporate Services Managers,WA,2026-07-01,67.33333
+1322,Finance Managers,WA,2026-07-01,71.33333
+1323,Human Resource Managers,WA,2026-07-01,68
+1324,Policy and Planning Managers,WA,2026-07-01,209.66667
+1325,Research and Development Managers,WA,2026-07-01,12
+1331,Construction Managers,WA,2026-07-01,519.33333
+1332,Engineering Managers,WA,2026-07-01,43
+1333,"Importers, Exporters and Wholesalers",WA,2026-07-01,1.33333
+1334,Manufacturers,WA,2026-07-01,4
+1335,Production Managers,WA,2026-07-01,169
+1336,"Supply, Distribution and Procurement Managers",WA,2026-07-01,65.66667
+1341,Child Care Centre Managers,WA,2026-07-01,25
+1342,Health and Welfare Services Managers,WA,2026-07-01,45.33333
+1343,School Principals,WA,2026-07-01,16
+1344,Other Education Managers,WA,2026-07-01,8
+1351,ICT Managers,WA,2026-07-01,49
+1399,Other Specialist Managers,WA,2026-07-01,71
+1411,Cafe and Restaurant Managers,WA,2026-07-01,88.33333
+1412,Caravan Park and Camping Ground Managers,WA,2026-07-01,1.33333
+1413,Hotel and Motel Managers,WA,2026-07-01,58.66667
+1414,Licensed Club Managers,WA,2026-07-01,5.33333
+1419,Other Accommodation and Hospitality Managers,WA,2026-07-01,14.66667
+1421,Retail Managers,WA,2026-07-01,448
+1491,"Amusement, Fitness and Sports Centre Managers",WA,2026-07-01,31.33333
+1492,Call or Contact Centre and Customer Service Managers,WA,2026-07-01,74.33333
+1493,Conference and Event Organisers,WA,2026-07-01,44.66667
+1494,Transport Services Managers,WA,2026-07-01,28.66667
+1499,"Other Hospitality, Retail and Service Managers",WA,2026-07-01,105
+2111,"Actors, Dancers and Other Entertainers",WA,2026-07-01,52
+2112,Music Professionals,WA,2026-07-01,1
+2113,Photographers,WA,2026-07-01,5
+2114,Visual Arts and Crafts Professionals,WA,2026-07-01,0.33333
+2121,"Artistic Directors, and Media Producers and Presenters",WA,2026-07-01,0.66667
+2122,"Authors, and Book and Script Editors",WA,2026-07-01,11.66667
+2123,"Film, Television, Radio and Stage Directors",WA,2026-07-01,8.66667
+2124,Journalists and Other Writers,WA,2026-07-01,85.33333
+2211,Accountants,WA,2026-07-01,361.66667
+2212,"Auditors, Company Secretaries and Corporate Treasurers",WA,2026-07-01,66.66667
+2221,Financial Brokers,WA,2026-07-01,22.66667
+2222,Financial Dealers,WA,2026-07-01,2.66667
+2223,Financial Investment Advisers and Managers,WA,2026-07-01,57
+2231,Human Resource Professionals,WA,2026-07-01,353.33333
+2232,ICT Trainers,WA,2026-07-01,0
+2233,Training and Development Professionals,WA,2026-07-01,189
+2241,"Actuaries, Mathematicians and Statisticians",WA,2026-07-01,7.33333
+2242,"Archivists, Curators and Records Managers",WA,2026-07-01,10.66667
+2243,Economists,WA,2026-07-01,3
+2244,Intelligence and Policy Analysts,WA,2026-07-01,67.66667
+2245,Land Economists and Valuers,WA,2026-07-01,7
+2246,Librarians,WA,2026-07-01,5.66667
+2247,Management and Organisation Analysts,WA,2026-07-01,68.66667
+2249,Other Information and Organisation Professionals,WA,2026-07-01,56.33333
+2251,Advertising and Marketing Professionals,WA,2026-07-01,138.66667
+2252,ICT Sales Professionals,WA,2026-07-01,1.66667
+2253,Public Relations Professionals,WA,2026-07-01,68
+2254,Technical Sales Representatives,WA,2026-07-01,43.33333
+2311,Air Transport Professionals,WA,2026-07-01,17
+2312,Marine Transport Professionals,WA,2026-07-01,15
+2321,Architects and Landscape Architects,WA,2026-07-01,34.33333
+2322,Surveyors and Spatial Scientists,WA,2026-07-01,86.66667
+2323,"Fashion, Industrial and Jewellery Designers",WA,2026-07-01,7.33333
+2324,"Graphic and Web Designers, and Illustrators",WA,2026-07-01,22.33333
+2325,Interior Designers,WA,2026-07-01,12
+2326,Urban and Regional Planners,WA,2026-07-01,32.66667
+2331,Chemical and Materials Engineers,WA,2026-07-01,9.66667
+2332,Civil Engineering Professionals,WA,2026-07-01,387.66667
+2333,Electrical Engineers,WA,2026-07-01,121.33333
+2334,Electronics Engineers,WA,2026-07-01,8
+2335,"Industrial, Mechanical and Production Engineers",WA,2026-07-01,169.33333
+2336,Mining Engineers,WA,2026-07-01,452.66667
+2339,Other Engineering Professionals,WA,2026-07-01,44
+2341,Agricultural and Forestry Scientists,WA,2026-07-01,3.66667
+2342,"Chemists, and Food and Wine Scientists",WA,2026-07-01,9.66667
+2343,Environmental Scientists,WA,2026-07-01,114
+2344,Geologists and Geophysicists,WA,2026-07-01,171.33333
+2345,Life Scientists,WA,2026-07-01,19.66667
+2346,Medical Laboratory Scientists,WA,2026-07-01,2.66667
+2347,Veterinarians,WA,2026-07-01,21.66667
+2349,Other Natural and Physical Science Professionals,WA,2026-07-01,22.66667
+2411,Early Childhood (Pre-primary School) Teachers,WA,2026-07-01,99
+2412,Primary School Teachers,WA,2026-07-01,31.33333
+2413,Middle School Teachers (Aus) / Intermediate School Teachers (NZ),WA,2026-07-01,0.33333
+2414,Secondary School Teachers,WA,2026-07-01,51
+2415,Special Education Teachers,WA,2026-07-01,1.66667
+2421,University Lecturers and Tutors,WA,2026-07-01,49
+2422,Vocational Education Teachers (Aus) / Polytechnic Teachers (NZ),WA,2026-07-01,5
+2491,Education Advisers and Reviewers,WA,2026-07-01,3.66667
+2492,Private Tutors and Teachers,WA,2026-07-01,6.66667
+2493,Teachers of English to Speakers of Other Languages,WA,2026-07-01,0
+2511,Nutrition Professionals,WA,2026-07-01,11.66667
+2512,Medical Imaging Professionals,WA,2026-07-01,72.33333
+2513,Occupational and Environmental Health Professionals,WA,2026-07-01,261.33333
+2514,Optometrists and Orthoptists,WA,2026-07-01,10
+2515,Pharmacists,WA,2026-07-01,27
+2519,Other Health Diagnostic and Promotion Professionals,WA,2026-07-01,8.66667
+2521,Chiropractors and Osteopaths,WA,2026-07-01,0.66667
+2522,Complementary Health Therapists,WA,2026-07-01,6.66667
+2523,Dental Practitioners,WA,2026-07-01,69
+2524,Occupational Therapists,WA,2026-07-01,162.66667
+2525,Physiotherapists,WA,2026-07-01,101.66667
+2526,Podiatrists,WA,2026-07-01,13.66667
+2527,Audiologists and Speech Pathologists/Therapists,WA,2026-07-01,118.66667
+2531,General Practitioners and Resident Medical Officers,WA,2026-07-01,359.33333
+2532,Anaesthetists,WA,2026-07-01,2
+2533,Specialist Physicians,WA,2026-07-01,27.33333
+2534,Psychiatrists,WA,2026-07-01,17.66667
+2535,Surgeons,WA,2026-07-01,3
+2539,Other Medical Practitioners,WA,2026-07-01,10
+2541,Midwives,WA,2026-07-01,19.66667
+2542,Nurse Educators and Researchers,WA,2026-07-01,12
+2543,Nurse Managers,WA,2026-07-01,29.33333
+2544,Registered Nurses,WA,2026-07-01,550.66667
+2611,ICT Business and Systems Analysts,WA,2026-07-01,135.33333
+2612,Multimedia Specialists and Web Developers,WA,2026-07-01,3.66667
+2613,Software and Applications Programmers,WA,2026-07-01,221
+2621,"Database and Systems Administrators, and ICT Security Specialists",WA,2026-07-01,46.33333
+2631,Computer Network Professionals,WA,2026-07-01,26.66667
+2632,ICT Support and Test Engineers,WA,2026-07-01,22.66667
+2633,Telecommunications Engineering Professionals,WA,2026-07-01,8
+2711,Barristers,WA,2026-07-01,3
+2713,Solicitors,WA,2026-07-01,129.66667
+2721,Counsellors,WA,2026-07-01,58.66667
+2722,Ministers of Religion,WA,2026-07-01,8.33333
+2723,Psychologists,WA,2026-07-01,65.33333
+2724,Social Professionals,WA,2026-07-01,33.33333
+2725,Social Workers,WA,2026-07-01,130
+2726,"Welfare, Recreation and Community Arts Workers",WA,2026-07-01,204.66667
+3111,Agricultural Technicians,WA,2026-07-01,8.33333
+3112,Medical Technicians,WA,2026-07-01,50.66667
+3113,Primary Products Inspectors,WA,2026-07-01,1
+3114,Science Technicians,WA,2026-07-01,44
+3121,"Architectural, Building and Surveying Technicians",WA,2026-07-01,329
+3122,Civil Engineering Draftspersons and Technicians,WA,2026-07-01,45.33333
+3123,Electrical Engineering Draftspersons and Technicians,WA,2026-07-01,44.33333
+3124,Electronic Engineering Draftspersons and Technicians,WA,2026-07-01,9
+3125,Mechanical Engineering Draftspersons and Technicians,WA,2026-07-01,46.33333
+3126,Safety Inspectors,WA,2026-07-01,24.33333
+3129,Other Building and Engineering Technicians,WA,2026-07-01,225.33333
+3131,ICT Support Technicians,WA,2026-07-01,89.66667
+3132,Telecommunications Technical Specialists,WA,2026-07-01,5.66667
+3211,Automotive Electricians,WA,2026-07-01,124.33333
+3212,Motor Mechanics,WA,2026-07-01,730.66667
+3221,"Metal Casting, Forging and Finishing Trades Workers",WA,2026-07-01,1.66667
+3222,Sheetmetal Trades Workers,WA,2026-07-01,78.66667
+3223,Structural Steel and Welding Trades Workers,WA,2026-07-01,444.33333
+3231,Aircraft Maintenance Engineers,WA,2026-07-01,26.66667
+3232,Metal Fitters and Machinists,WA,2026-07-01,850.33333
+3233,Precision Metal Trades Workers,WA,2026-07-01,5.66667
+3234,Toolmakers and Engineering Patternmakers,WA,2026-07-01,0.66667
+3241,Panelbeaters,WA,2026-07-01,27
+3242,Vehicle Body Builders and Trimmers,WA,2026-07-01,10
+3243,Vehicle Painters,WA,2026-07-01,8
+3311,Bricklayers and Stonemasons,WA,2026-07-01,22
+3312,Carpenters and Joiners,WA,2026-07-01,153.33333
+3321,Floor Finishers,WA,2026-07-01,7
+3322,Painting Trades Workers,WA,2026-07-01,152
+3331,Glaziers,WA,2026-07-01,24.33333
+3332,Plasterers,WA,2026-07-01,12.66667
+3333,Roof Tilers,WA,2026-07-01,11
+3334,Wall and Floor Tilers,WA,2026-07-01,17
+3341,Plumbers,WA,2026-07-01,247.33333
+3411,Electricians,WA,2026-07-01,804.66667
+3421,Airconditioning and Refrigeration Mechanics,WA,2026-07-01,75.66667
+3422,Electrical Distribution Trades Workers,WA,2026-07-01,28.33333
+3423,Electronics Trades Workers,WA,2026-07-01,26.33333
+3424,Telecommunications Trades Workers,WA,2026-07-01,18.66667
+3511,Bakers and Pastrycooks,WA,2026-07-01,49.33333
+3512,Butchers and Smallgoods Makers,WA,2026-07-01,13.33333
+3513,Chefs,WA,2026-07-01,322
+3514,Cooks,WA,2026-07-01,121.66667
+3611,Animal Attendants and Trainers,WA,2026-07-01,8.66667
+3612,Shearers,WA,2026-07-01,0
+3613,Veterinary Nurses,WA,2026-07-01,22
+3621,Florists,WA,2026-07-01,0
+3622,Gardeners,WA,2026-07-01,137.33333
+3623,Greenkeepers,WA,2026-07-01,26
+3624,Nurserypersons,WA,2026-07-01,9.33333
+3911,Hairdressers,WA,2026-07-01,58.66667
+3921,"Binders, Finishers and Screen Printers",WA,2026-07-01,2
+3922,Graphic Pre-press Trades Workers,WA,2026-07-01,2.66667
+3923,Printers,WA,2026-07-01,0
+3931,Canvas and Leather Goods Makers,WA,2026-07-01,0
+3932,Clothing Trades Workers,WA,2026-07-01,1
+3933,Upholsterers,WA,2026-07-01,1
+3941,Cabinetmakers,WA,2026-07-01,46.33333
+3942,Wood Machinists and Other Wood Trades Workers,WA,2026-07-01,11.33333
+3991,Boat Builders and Shipwrights,WA,2026-07-01,1.66667
+3992,"Chemical, Gas, Petroleum and Power Generation Plant Operators",WA,2026-07-01,19.33333
+3993,"Gallery, Library and Museum Technicians",WA,2026-07-01,7
+3994,Jewellers,WA,2026-07-01,4.33333
+3995,Performing Arts Technicians,WA,2026-07-01,12.66667
+3996,Signwriters,WA,2026-07-01,4.33333
+3999,Other Miscellaneous Technicians and Trades Workers,WA,2026-07-01,177.33333
+4111,Ambulance Officers and Paramedics,WA,2026-07-01,10.33333
+4112,"Dental Hygienists, Technicians and Therapists",WA,2026-07-01,26.33333
+4113,Diversional Therapists,WA,2026-07-01,4.33333
+4114,Enrolled and Mothercraft Nurses,WA,2026-07-01,57.33333
+4115,Indigenous Health Workers,WA,2026-07-01,5.66667
+4116,Massage Therapists,WA,2026-07-01,17.66667
+4117,Welfare Support Workers,WA,2026-07-01,162.33333
+4211,Child Carers,WA,2026-07-01,198
+4221,Education Aides,WA,2026-07-01,126.33333
+4231,Aged and Disabled Carers,WA,2026-07-01,211
+4232,Dental Assistants,WA,2026-07-01,95.33333
+4233,Nursing Support and Personal Care Workers,WA,2026-07-01,107
+4234,Special Care Workers,WA,2026-07-01,5
+4311,Bar Attendants and Baristas,WA,2026-07-01,113.33333
+4312,Cafe Workers,WA,2026-07-01,37.66667
+4313,Gaming Workers,WA,2026-07-01,0.33333
+4314,Hotel Service Managers,WA,2026-07-01,16.66667
+4315,Waiters,WA,2026-07-01,148.66667
+4412,Fire and Emergency Workers,WA,2026-07-01,32.33333
+4413,Police,WA,2026-07-01,4
+4421,Prison Officers,WA,2026-07-01,1.33333
+4422,Security Officers and Guards,WA,2026-07-01,84
+4511,Beauty Therapists,WA,2026-07-01,37
+4512,Driving Instructors,WA,2026-07-01,5
+4513,Funeral Workers,WA,2026-07-01,8.33333
+4514,"Gallery, Museum and Tour Guides",WA,2026-07-01,8
+4515,Personal Care Consultants,WA,2026-07-01,0
+4516,Tourism and Travel Advisers,WA,2026-07-01,32.33333
+4517,Travel Attendants,WA,2026-07-01,7.66667
+4521,Fitness Instructors,WA,2026-07-01,31.33333
+4522,Outdoor Adventure Guides,WA,2026-07-01,0
+4523,"Sports Coaches, Instructors and Officials",WA,2026-07-01,107.66667
+4524,Sportspersons,WA,2026-07-01,7.33333
+5111,"Contract, Program and Project Administrators",WA,2026-07-01,354.33333
+5121,Office Managers,WA,2026-07-01,122
+5122,Practice Managers,WA,2026-07-01,35.33333
+5211,Personal Assistants,WA,2026-07-01,25
+5212,Secretaries,WA,2026-07-01,87.33333
+5311,General Clerks,WA,2026-07-01,1296.33333
+5321,Keyboard Operators,WA,2026-07-01,17.66667
+5411,Call or Contact Centre Workers,WA,2026-07-01,139.33333
+5412,Information Officers,WA,2026-07-01,46
+5421,Receptionists,WA,2026-07-01,304
+5511,Accounting Clerks,WA,2026-07-01,221
+5512,Bookkeepers,WA,2026-07-01,63
+5513,Payroll Clerks,WA,2026-07-01,127
+5521,Bank Workers,WA,2026-07-01,68
+5522,Credit and Loans Officers,WA,2026-07-01,128.66667
+5523,"Insurance, Money Market and Statistical Clerks",WA,2026-07-01,5.33333
+5611,Betting Clerks,WA,2026-07-01,0
+5612,Couriers and Postal Deliverers,WA,2026-07-01,51.33333
+5613,Filing and Registry Clerks,WA,2026-07-01,39.66667
+5614,Mail Sorters,WA,2026-07-01,3.33333
+5615,Survey Interviewers,WA,2026-07-01,36.66667
+5616,Switchboard Operators,WA,2026-07-01,0
+5619,Other Clerical and Office Support Workers,WA,2026-07-01,6.33333
+5911,Purchasing and Supply Logistics Clerks,WA,2026-07-01,320.33333
+5912,Transport and Despatch Clerks,WA,2026-07-01,130.33333
+5991,Conveyancers and Legal Executives,WA,2026-07-01,22.66667
+5992,Court and Legal Clerks,WA,2026-07-01,23
+5993,Debt Collectors,WA,2026-07-01,17
+5994,Human Resource Clerks,WA,2026-07-01,6
+5995,Inspectors and Regulatory Officers,WA,2026-07-01,130
+5996,"Insurance Investigators, Loss Adjusters and Risk Surveyors",WA,2026-07-01,35.33333
+5997,Library Assistants,WA,2026-07-01,1.66667
+5999,Other Miscellaneous Clerical and Administrative Workers,WA,2026-07-01,25.33333
+6111,"Auctioneers, and Stock and Station Agents",WA,2026-07-01,0.33333
+6112,Insurance Agents,WA,2026-07-01,43.66667
+6113,Sales Representatives,WA,2026-07-01,261.66667
+6121,Real Estate Sales Agents,WA,2026-07-01,221.66667
+6211,Sales Assistants (General),WA,2026-07-01,999.33333
+6212,ICT Sales Assistants,WA,2026-07-01,0.33333
+6213,Motor Vehicle and Vehicle Parts Salespersons,WA,2026-07-01,126
+6214,Pharmacy Sales Assistants,WA,2026-07-01,19.66667
+6215,Retail Supervisors,WA,2026-07-01,41.66667
+6216,Service Station Attendants,WA,2026-07-01,3.66667
+6217,Street Vendors and Related Salespersons,WA,2026-07-01,0.66667
+6219,Other Sales Assistants and Salespersons,WA,2026-07-01,4
+6311,Checkout Operators and Office Cashiers,WA,2026-07-01,8.33333
+6391,Models and Sales Demonstrators,WA,2026-07-01,57.66667
+6392,Retail and Wool Buyers,WA,2026-07-01,4
+6393,Telemarketers,WA,2026-07-01,7
+6394,Ticket Salespersons,WA,2026-07-01,4.33333
+6395,Visual Merchandisers,WA,2026-07-01,7.33333
+6399,Other Sales Support Workers,WA,2026-07-01,31.66667
+7111,"Clay, Concrete, Glass and Stone Processing Machine Operators",WA,2026-07-01,0
+7112,Industrial Spraypainters,WA,2026-07-01,33.33333
+7113,Paper and Wood Processing Machine Operators,WA,2026-07-01,3.33333
+7114,Photographic Developers and Printers,WA,2026-07-01,0
+7115,Plastics and Rubber Production Machine Operators,WA,2026-07-01,19.33333
+7116,Sewing Machinists,WA,2026-07-01,7.33333
+7117,Textile and Footwear Production Machine Operators,WA,2026-07-01,1
+7119,Other Machine Operators,WA,2026-07-01,77.66667
+7121,"Crane, Hoist and Lift Operators",WA,2026-07-01,116
+7122,"Drillers, Miners and Shot Firers",WA,2026-07-01,486.66667
+7123,Engineering Production Workers,WA,2026-07-01,23.33333
+7129,Other Stationary Plant Operators,WA,2026-07-01,102
+7211,"Agricultural, Forestry and Horticultural Plant Operators",WA,2026-07-01,24.33333
+7212,Earthmoving Plant Operators,WA,2026-07-01,335
+7213,Forklift Drivers,WA,2026-07-01,195.33333
+7219,Other Mobile Plant Operators,WA,2026-07-01,102.33333
+7311,Automobile Drivers,WA,2026-07-01,4
+7312,Bus and Coach Drivers,WA,2026-07-01,57.33333
+7313,Train and Tram Drivers,WA,2026-07-01,13
+7321,Delivery Drivers,WA,2026-07-01,111
+7331,Truck Drivers,WA,2026-07-01,525.33333
+7411,Storepersons,WA,2026-07-01,368.33333
+8111,Car Detailers,WA,2026-07-01,12.66667
+8112,Commercial Cleaners,WA,2026-07-01,213.33333
+8113,Domestic Cleaners,WA,2026-07-01,3
+8114,Housekeepers,WA,2026-07-01,64
+8115,Laundry Workers,WA,2026-07-01,9
+8116,Other Cleaners,WA,2026-07-01,10.33333
+8211,Building and Plumbing Labourers,WA,2026-07-01,178.66667
+8212,Concreters,WA,2026-07-01,37.66667
+8213,Fencers,WA,2026-07-01,9.33333
+8214,Insulation and Home Improvement Installers,WA,2026-07-01,19.66667
+8215,Paving and Surfacing Labourers,WA,2026-07-01,1.66667
+8216,Railway Track Workers,WA,2026-07-01,12.33333
+8217,Structural Steel Construction Workers,WA,2026-07-01,155
+8219,Other Construction and Mining Labourers,WA,2026-07-01,62.33333
+8311,Food and Drink Factory Workers,WA,2026-07-01,10.33333
+8312,"Meat Boners and Slicers, and Slaughterers",WA,2026-07-01,5.66667
+8313,"Meat, Poultry and Seafood Process Workers",WA,2026-07-01,6
+8321,Packers,WA,2026-07-01,41.66667
+8322,Product Assemblers,WA,2026-07-01,18
+8391,Metal Engineering Process Workers,WA,2026-07-01,2.33333
+8392,Plastics and Rubber Factory Workers,WA,2026-07-01,0
+8393,Product Quality Controllers,WA,2026-07-01,54.66667
+8394,Timber and Wood Process Workers,WA,2026-07-01,2
+8399,Other Factory Process Workers,WA,2026-07-01,28.66667
+8411,Aquaculture Workers,WA,2026-07-01,0
+8412,Crop Farm Workers,WA,2026-07-01,12.33333
+8413,Forestry and Logging Workers,WA,2026-07-01,8
+8414,Garden and Nursery Labourers,WA,2026-07-01,42.66667
+8415,Livestock Farm Workers,WA,2026-07-01,11
+8416,Mixed Crop and Livestock Farm Workers,WA,2026-07-01,20.66667
+8419,"Other Farm, Forestry and Garden Workers",WA,2026-07-01,11.66667
+8511,Fast Food Cooks,WA,2026-07-01,3
+8512,Food Trades Assistants,WA,2026-07-01,2.66667
+8513,Kitchenhands,WA,2026-07-01,73
+8911,Freight and Furniture Handlers,WA,2026-07-01,29.66667
+8912,Shelf Fillers,WA,2026-07-01,14.33333
+8991,Caretakers,WA,2026-07-01,13.66667
+8992,Deck and Fishing Hands,WA,2026-07-01,6.66667
+8993,Handypersons,WA,2026-07-01,99
+8994,Motor Vehicle Parts and Accessories Fitters,WA,2026-07-01,47.33333
+8995,Printing Assistants and Table Workers,WA,2026-07-01,9.33333
+8996,Recycling and Rubbish Collectors,WA,2026-07-01,3.66667
+8997,Vending Machine Attendants,WA,2026-07-01,1
+8999,Other Miscellaneous Labourers,WA,2026-07-01,503.66667
+0,Tasmania Total,TAS,2026-07-01,3292.33333
+1111,Chief Executives and Managing Directors,TAS,2026-07-01,8.33333
+1112,General Managers,TAS,2026-07-01,12.66667
+1211,Aquaculture Farmers,TAS,2026-07-01,0.33333
+1212,Crop Farmers,TAS,2026-07-01,1.66667
+1213,Livestock Farmers,TAS,2026-07-01,1.66667
+1214,Mixed Crop and Livestock Farmers,TAS,2026-07-01,4.66667
+1311,Advertising and Sales Managers,TAS,2026-07-01,39.66667
+1321,Corporate Services Managers,TAS,2026-07-01,9.33333
+1322,Finance Managers,TAS,2026-07-01,10.33333
+1323,Human Resource Managers,TAS,2026-07-01,8.66667
+1324,Policy and Planning Managers,TAS,2026-07-01,26
+1325,Research and Development Managers,TAS,2026-07-01,0
+1331,Construction Managers,TAS,2026-07-01,37
+1332,Engineering Managers,TAS,2026-07-01,3
+1333,"Importers, Exporters and Wholesalers",TAS,2026-07-01,0
+1334,Manufacturers,TAS,2026-07-01,0.33333
+1335,Production Managers,TAS,2026-07-01,23.66667
+1336,"Supply, Distribution and Procurement Managers",TAS,2026-07-01,6.33333
+1341,Child Care Centre Managers,TAS,2026-07-01,4.33333
+1342,Health and Welfare Services Managers,TAS,2026-07-01,10.33333
+1343,School Principals,TAS,2026-07-01,4
+1344,Other Education Managers,TAS,2026-07-01,2
+1351,ICT Managers,TAS,2026-07-01,8
+1399,Other Specialist Managers,TAS,2026-07-01,4.33333
+1411,Cafe and Restaurant Managers,TAS,2026-07-01,7.66667
+1412,Caravan Park and Camping Ground Managers,TAS,2026-07-01,0.33333
+1413,Hotel and Motel Managers,TAS,2026-07-01,10.66667
+1414,Licensed Club Managers,TAS,2026-07-01,2.33333
+1419,Other Accommodation and Hospitality Managers,TAS,2026-07-01,0.33333
+1421,Retail Managers,TAS,2026-07-01,49.33333
+1491,"Amusement, Fitness and Sports Centre Managers",TAS,2026-07-01,6.33333
+1492,Call or Contact Centre and Customer Service Managers,TAS,2026-07-01,4
+1493,Conference and Event Organisers,TAS,2026-07-01,4.66667
+1494,Transport Services Managers,TAS,2026-07-01,3
+1499,"Other Hospitality, Retail and Service Managers",TAS,2026-07-01,8.66667
+2111,"Actors, Dancers and Other Entertainers",TAS,2026-07-01,4.66667
+2112,Music Professionals,TAS,2026-07-01,0.33333
+2113,Photographers,TAS,2026-07-01,0.33333
+2114,Visual Arts and Crafts Professionals,TAS,2026-07-01,0
+2121,"Artistic Directors, and Media Producers and Presenters",TAS,2026-07-01,0.33333
+2122,"Authors, and Book and Script Editors",TAS,2026-07-01,1.33333
+2123,"Film, Television, Radio and Stage Directors",TAS,2026-07-01,0.66667
+2124,Journalists and Other Writers,TAS,2026-07-01,13
+2211,Accountants,TAS,2026-07-01,33.66667
+2212,"Auditors, Company Secretaries and Corporate Treasurers",TAS,2026-07-01,6.66667
+2221,Financial Brokers,TAS,2026-07-01,1
+2222,Financial Dealers,TAS,2026-07-01,0.33333
+2223,Financial Investment Advisers and Managers,TAS,2026-07-01,5.33333
+2231,Human Resource Professionals,TAS,2026-07-01,28
+2232,ICT Trainers,TAS,2026-07-01,0
+2233,Training and Development Professionals,TAS,2026-07-01,17.33333
+2241,"Actuaries, Mathematicians and Statisticians",TAS,2026-07-01,0.66667
+2242,"Archivists, Curators and Records Managers",TAS,2026-07-01,1.66667
+2243,Economists,TAS,2026-07-01,0
+2244,Intelligence and Policy Analysts,TAS,2026-07-01,13
+2245,Land Economists and Valuers,TAS,2026-07-01,2
+2246,Librarians,TAS,2026-07-01,0.66667
+2247,Management and Organisation Analysts,TAS,2026-07-01,5
+2249,Other Information and Organisation Professionals,TAS,2026-07-01,4.66667
+2251,Advertising and Marketing Professionals,TAS,2026-07-01,9.66667
+2252,ICT Sales Professionals,TAS,2026-07-01,0
+2253,Public Relations Professionals,TAS,2026-07-01,9
+2254,Technical Sales Representatives,TAS,2026-07-01,1.33333
+2311,Air Transport Professionals,TAS,2026-07-01,1.66667
+2312,Marine Transport Professionals,TAS,2026-07-01,0.66667
+2321,Architects and Landscape Architects,TAS,2026-07-01,1.33333
+2322,Surveyors and Spatial Scientists,TAS,2026-07-01,5
+2323,"Fashion, Industrial and Jewellery Designers",TAS,2026-07-01,0
+2324,"Graphic and Web Designers, and Illustrators",TAS,2026-07-01,2
+2325,Interior Designers,TAS,2026-07-01,0
+2326,Urban and Regional Planners,TAS,2026-07-01,4.66667
+2331,Chemical and Materials Engineers,TAS,2026-07-01,0
+2332,Civil Engineering Professionals,TAS,2026-07-01,16
+2333,Electrical Engineers,TAS,2026-07-01,10
+2334,Electronics Engineers,TAS,2026-07-01,0.33333
+2335,"Industrial, Mechanical and Production Engineers",TAS,2026-07-01,4.66667
+2336,Mining Engineers,TAS,2026-07-01,5
+2339,Other Engineering Professionals,TAS,2026-07-01,1
+2341,Agricultural and Forestry Scientists,TAS,2026-07-01,1.66667
+2342,"Chemists, and Food and Wine Scientists",TAS,2026-07-01,3
+2343,Environmental Scientists,TAS,2026-07-01,10.66667
+2344,Geologists and Geophysicists,TAS,2026-07-01,1.33333
+2345,Life Scientists,TAS,2026-07-01,2
+2346,Medical Laboratory Scientists,TAS,2026-07-01,3.33333
+2347,Veterinarians,TAS,2026-07-01,3.66667
+2349,Other Natural and Physical Science Professionals,TAS,2026-07-01,0.33333
+2411,Early Childhood (Pre-primary School) Teachers,TAS,2026-07-01,15
+2412,Primary School Teachers,TAS,2026-07-01,7
+2413,Middle School Teachers (Aus) / Intermediate School Teachers (NZ),TAS,2026-07-01,0
+2414,Secondary School Teachers,TAS,2026-07-01,5
+2415,Special Education Teachers,TAS,2026-07-01,0.33333
+2421,University Lecturers and Tutors,TAS,2026-07-01,5.66667
+2422,Vocational Education Teachers (Aus) / Polytechnic Teachers (NZ),TAS,2026-07-01,2.66667
+2491,Education Advisers and Reviewers,TAS,2026-07-01,0.33333
+2492,Private Tutors and Teachers,TAS,2026-07-01,0.66667
+2493,Teachers of English to Speakers of Other Languages,TAS,2026-07-01,0
+2511,Nutrition Professionals,TAS,2026-07-01,0.33333
+2512,Medical Imaging Professionals,TAS,2026-07-01,31
+2513,Occupational and Environmental Health Professionals,TAS,2026-07-01,12.66667
+2514,Optometrists and Orthoptists,TAS,2026-07-01,3.33333
+2515,Pharmacists,TAS,2026-07-01,8.66667
+2519,Other Health Diagnostic and Promotion Professionals,TAS,2026-07-01,0.66667
+2521,Chiropractors and Osteopaths,TAS,2026-07-01,0
+2522,Complementary Health Therapists,TAS,2026-07-01,5
+2523,Dental Practitioners,TAS,2026-07-01,13.33333
+2524,Occupational Therapists,TAS,2026-07-01,37.33333
+2525,Physiotherapists,TAS,2026-07-01,26.66667
+2526,Podiatrists,TAS,2026-07-01,7.33333
+2527,Audiologists and Speech Pathologists/Therapists,TAS,2026-07-01,29.66667
+2531,General Practitioners and Resident Medical Officers,TAS,2026-07-01,155
+2532,Anaesthetists,TAS,2026-07-01,1.33333
+2533,Specialist Physicians,TAS,2026-07-01,26
+2534,Psychiatrists,TAS,2026-07-01,17
+2535,Surgeons,TAS,2026-07-01,4
+2539,Other Medical Practitioners,TAS,2026-07-01,9.66667
+2541,Midwives,TAS,2026-07-01,7
+2542,Nurse Educators and Researchers,TAS,2026-07-01,5.33333
+2543,Nurse Managers,TAS,2026-07-01,8.33333
+2544,Registered Nurses,TAS,2026-07-01,152.33333
+2611,ICT Business and Systems Analysts,TAS,2026-07-01,15
+2612,Multimedia Specialists and Web Developers,TAS,2026-07-01,0
+2613,Software and Applications Programmers,TAS,2026-07-01,25
+2621,"Database and Systems Administrators, and ICT Security Specialists",TAS,2026-07-01,7.33333
+2631,Computer Network Professionals,TAS,2026-07-01,3.33333
+2632,ICT Support and Test Engineers,TAS,2026-07-01,3.33333
+2633,Telecommunications Engineering Professionals,TAS,2026-07-01,1
+2711,Barristers,TAS,2026-07-01,0.33333
+2713,Solicitors,TAS,2026-07-01,13.33333
+2721,Counsellors,TAS,2026-07-01,8.66667
+2722,Ministers of Religion,TAS,2026-07-01,1.33333
+2723,Psychologists,TAS,2026-07-01,11.66667
+2724,Social Professionals,TAS,2026-07-01,8.33333
+2725,Social Workers,TAS,2026-07-01,42.66667
+2726,"Welfare, Recreation and Community Arts Workers",TAS,2026-07-01,37
+3111,Agricultural Technicians,TAS,2026-07-01,19
+3112,Medical Technicians,TAS,2026-07-01,5
+3113,Primary Products Inspectors,TAS,2026-07-01,0
+3114,Science Technicians,TAS,2026-07-01,2.33333
+3121,"Architectural, Building and Surveying Technicians",TAS,2026-07-01,22.33333
+3122,Civil Engineering Draftspersons and Technicians,TAS,2026-07-01,1.33333
+3123,Electrical Engineering Draftspersons and Technicians,TAS,2026-07-01,4
+3124,Electronic Engineering Draftspersons and Technicians,TAS,2026-07-01,0.66667
+3125,Mechanical Engineering Draftspersons and Technicians,TAS,2026-07-01,2.33333
+3126,Safety Inspectors,TAS,2026-07-01,1.33333
+3129,Other Building and Engineering Technicians,TAS,2026-07-01,7
+3131,ICT Support Technicians,TAS,2026-07-01,14.66667
+3132,Telecommunications Technical Specialists,TAS,2026-07-01,1.66667
+3211,Automotive Electricians,TAS,2026-07-01,8.33333
+3212,Motor Mechanics,TAS,2026-07-01,49
+3221,"Metal Casting, Forging and Finishing Trades Workers",TAS,2026-07-01,0
+3222,Sheetmetal Trades Workers,TAS,2026-07-01,2.33333
+3223,Structural Steel and Welding Trades Workers,TAS,2026-07-01,17
+3231,Aircraft Maintenance Engineers,TAS,2026-07-01,0
+3232,Metal Fitters and Machinists,TAS,2026-07-01,39.33333
+3233,Precision Metal Trades Workers,TAS,2026-07-01,1
+3234,Toolmakers and Engineering Patternmakers,TAS,2026-07-01,0
+3241,Panelbeaters,TAS,2026-07-01,2.66667
+3242,Vehicle Body Builders and Trimmers,TAS,2026-07-01,0
+3243,Vehicle Painters,TAS,2026-07-01,1
+3311,Bricklayers and Stonemasons,TAS,2026-07-01,1
+3312,Carpenters and Joiners,TAS,2026-07-01,19
+3321,Floor Finishers,TAS,2026-07-01,0.66667
+3322,Painting Trades Workers,TAS,2026-07-01,6.66667
+3331,Glaziers,TAS,2026-07-01,2.33333
+3332,Plasterers,TAS,2026-07-01,1.66667
+3333,Roof Tilers,TAS,2026-07-01,0.33333
+3334,Wall and Floor Tilers,TAS,2026-07-01,1.66667
+3341,Plumbers,TAS,2026-07-01,12.66667
+3411,Electricians,TAS,2026-07-01,37.66667
+3421,Airconditioning and Refrigeration Mechanics,TAS,2026-07-01,3.33333
+3422,Electrical Distribution Trades Workers,TAS,2026-07-01,6.33333
+3423,Electronics Trades Workers,TAS,2026-07-01,0.33333
+3424,Telecommunications Trades Workers,TAS,2026-07-01,0.66667
+3511,Bakers and Pastrycooks,TAS,2026-07-01,9.33333
+3512,Butchers and Smallgoods Makers,TAS,2026-07-01,2.66667
+3513,Chefs,TAS,2026-07-01,44.33333
+3514,Cooks,TAS,2026-07-01,11
+3611,Animal Attendants and Trainers,TAS,2026-07-01,2.33333
+3612,Shearers,TAS,2026-07-01,0
+3613,Veterinary Nurses,TAS,2026-07-01,2.66667
+3621,Florists,TAS,2026-07-01,0.33333
+3622,Gardeners,TAS,2026-07-01,5.33333
+3623,Greenkeepers,TAS,2026-07-01,4
+3624,Nurserypersons,TAS,2026-07-01,1.66667
+3911,Hairdressers,TAS,2026-07-01,5
+3921,"Binders, Finishers and Screen Printers",TAS,2026-07-01,0
+3922,Graphic Pre-press Trades Workers,TAS,2026-07-01,0.66667
+3923,Printers,TAS,2026-07-01,0
+3931,Canvas and Leather Goods Makers,TAS,2026-07-01,0
+3932,Clothing Trades Workers,TAS,2026-07-01,0
+3933,Upholsterers,TAS,2026-07-01,0
+3941,Cabinetmakers,TAS,2026-07-01,2.66667
+3942,Wood Machinists and Other Wood Trades Workers,TAS,2026-07-01,1.33333
+3991,Boat Builders and Shipwrights,TAS,2026-07-01,0
+3992,"Chemical, Gas, Petroleum and Power Generation Plant Operators",TAS,2026-07-01,2.33333
+3993,"Gallery, Library and Museum Technicians",TAS,2026-07-01,1
+3994,Jewellers,TAS,2026-07-01,0.66667
+3995,Performing Arts Technicians,TAS,2026-07-01,2
+3996,Signwriters,TAS,2026-07-01,0.33333
+3999,Other Miscellaneous Technicians and Trades Workers,TAS,2026-07-01,18.66667
+4111,Ambulance Officers and Paramedics,TAS,2026-07-01,1.66667
+4112,"Dental Hygienists, Technicians and Therapists",TAS,2026-07-01,4
+4113,Diversional Therapists,TAS,2026-07-01,2
+4114,Enrolled and Mothercraft Nurses,TAS,2026-07-01,8.33333
+4115,Indigenous Health Workers,TAS,2026-07-01,2.66667
+4116,Massage Therapists,TAS,2026-07-01,2.66667
+4117,Welfare Support Workers,TAS,2026-07-01,29.33333
+4211,Child Carers,TAS,2026-07-01,26.66667
+4221,Education Aides,TAS,2026-07-01,44.33333
+4231,Aged and Disabled Carers,TAS,2026-07-01,65
+4232,Dental Assistants,TAS,2026-07-01,14
+4233,Nursing Support and Personal Care Workers,TAS,2026-07-01,44.66667
+4234,Special Care Workers,TAS,2026-07-01,0
+4311,Bar Attendants and Baristas,TAS,2026-07-01,45.33333
+4312,Cafe Workers,TAS,2026-07-01,5.33333
+4313,Gaming Workers,TAS,2026-07-01,1.33333
+4314,Hotel Service Managers,TAS,2026-07-01,3
+4315,Waiters,TAS,2026-07-01,27
+4412,Fire and Emergency Workers,TAS,2026-07-01,0.33333
+4413,Police,TAS,2026-07-01,0.33333
+4421,Prison Officers,TAS,2026-07-01,0.66667
+4422,Security Officers and Guards,TAS,2026-07-01,17.66667
+4511,Beauty Therapists,TAS,2026-07-01,1.33333
+4512,Driving Instructors,TAS,2026-07-01,0
+4513,Funeral Workers,TAS,2026-07-01,1
+4514,"Gallery, Museum and Tour Guides",TAS,2026-07-01,2
+4515,Personal Care Consultants,TAS,2026-07-01,0
+4516,Tourism and Travel Advisers,TAS,2026-07-01,0.66667
+4517,Travel Attendants,TAS,2026-07-01,0
+4521,Fitness Instructors,TAS,2026-07-01,2.33333
+4522,Outdoor Adventure Guides,TAS,2026-07-01,0.66667
+4523,"Sports Coaches, Instructors and Officials",TAS,2026-07-01,14.33333
+4524,Sportspersons,TAS,2026-07-01,0.66667
+5111,"Contract, Program and Project Administrators",TAS,2026-07-01,19.33333
+5121,Office Managers,TAS,2026-07-01,18.33333
+5122,Practice Managers,TAS,2026-07-01,3.66667
+5211,Personal Assistants,TAS,2026-07-01,4.66667
+5212,Secretaries,TAS,2026-07-01,14.66667
+5311,General Clerks,TAS,2026-07-01,152
+5321,Keyboard Operators,TAS,2026-07-01,3
+5411,Call or Contact Centre Workers,TAS,2026-07-01,13.66667
+5412,Information Officers,TAS,2026-07-01,13
+5421,Receptionists,TAS,2026-07-01,41.33333
+5511,Accounting Clerks,TAS,2026-07-01,17
+5512,Bookkeepers,TAS,2026-07-01,2.66667
+5513,Payroll Clerks,TAS,2026-07-01,13.66667
+5521,Bank Workers,TAS,2026-07-01,9.33333
+5522,Credit and Loans Officers,TAS,2026-07-01,17.66667
+5523,"Insurance, Money Market and Statistical Clerks",TAS,2026-07-01,1
+5611,Betting Clerks,TAS,2026-07-01,0
+5612,Couriers and Postal Deliverers,TAS,2026-07-01,7
+5613,Filing and Registry Clerks,TAS,2026-07-01,0.66667
+5614,Mail Sorters,TAS,2026-07-01,2
+5615,Survey Interviewers,TAS,2026-07-01,1
+5616,Switchboard Operators,TAS,2026-07-01,0.33333
+5619,Other Clerical and Office Support Workers,TAS,2026-07-01,1.33333
+5911,Purchasing and Supply Logistics Clerks,TAS,2026-07-01,25.33333
+5912,Transport and Despatch Clerks,TAS,2026-07-01,7.66667
+5991,Conveyancers and Legal Executives,TAS,2026-07-01,2.33333
+5992,Court and Legal Clerks,TAS,2026-07-01,3
+5993,Debt Collectors,TAS,2026-07-01,2.33333
+5994,Human Resource Clerks,TAS,2026-07-01,1.33333
+5995,Inspectors and Regulatory Officers,TAS,2026-07-01,19
+5996,"Insurance Investigators, Loss Adjusters and Risk Surveyors",TAS,2026-07-01,3
+5997,Library Assistants,TAS,2026-07-01,0.66667
+5999,Other Miscellaneous Clerical and Administrative Workers,TAS,2026-07-01,3
+6111,"Auctioneers, and Stock and Station Agents",TAS,2026-07-01,0
+6112,Insurance Agents,TAS,2026-07-01,5.33333
+6113,Sales Representatives,TAS,2026-07-01,33.66667
+6121,Real Estate Sales Agents,TAS,2026-07-01,11.66667
+6211,Sales Assistants (General),TAS,2026-07-01,161.33333
+6212,ICT Sales Assistants,TAS,2026-07-01,1
+6213,Motor Vehicle and Vehicle Parts Salespersons,TAS,2026-07-01,12
+6214,Pharmacy Sales Assistants,TAS,2026-07-01,3
+6215,Retail Supervisors,TAS,2026-07-01,3.66667
+6216,Service Station Attendants,TAS,2026-07-01,0
+6217,Street Vendors and Related Salespersons,TAS,2026-07-01,0.33333
+6219,Other Sales Assistants and Salespersons,TAS,2026-07-01,1.33333
+6311,Checkout Operators and Office Cashiers,TAS,2026-07-01,0.66667
+6391,Models and Sales Demonstrators,TAS,2026-07-01,8
+6392,Retail and Wool Buyers,TAS,2026-07-01,0
+6393,Telemarketers,TAS,2026-07-01,1.66667
+6394,Ticket Salespersons,TAS,2026-07-01,1
+6395,Visual Merchandisers,TAS,2026-07-01,1
+6399,Other Sales Support Workers,TAS,2026-07-01,1.66667
+7111,"Clay, Concrete, Glass and Stone Processing Machine Operators",TAS,2026-07-01,0
+7112,Industrial Spraypainters,TAS,2026-07-01,1
+7113,Paper and Wood Processing Machine Operators,TAS,2026-07-01,0.33333
+7114,Photographic Developers and Printers,TAS,2026-07-01,0
+7115,Plastics and Rubber Production Machine Operators,TAS,2026-07-01,0.33333
+7116,Sewing Machinists,TAS,2026-07-01,4.66667
+7117,Textile and Footwear Production Machine Operators,TAS,2026-07-01,0.33333
+7119,Other Machine Operators,TAS,2026-07-01,3.66667
+7121,"Crane, Hoist and Lift Operators",TAS,2026-07-01,4
+7122,"Drillers, Miners and Shot Firers",TAS,2026-07-01,14.66667
+7123,Engineering Production Workers,TAS,2026-07-01,2.33333
+7129,Other Stationary Plant Operators,TAS,2026-07-01,7
+7211,"Agricultural, Forestry and Horticultural Plant Operators",TAS,2026-07-01,1.33333
+7212,Earthmoving Plant Operators,TAS,2026-07-01,7.33333
+7213,Forklift Drivers,TAS,2026-07-01,12.66667
+7219,Other Mobile Plant Operators,TAS,2026-07-01,3.66667
+7311,Automobile Drivers,TAS,2026-07-01,0.33333
+7312,Bus and Coach Drivers,TAS,2026-07-01,14.66667
+7313,Train and Tram Drivers,TAS,2026-07-01,0
+7321,Delivery Drivers,TAS,2026-07-01,22.66667
+7331,Truck Drivers,TAS,2026-07-01,42.33333
+7411,Storepersons,TAS,2026-07-01,26.66667
+8111,Car Detailers,TAS,2026-07-01,3
+8112,Commercial Cleaners,TAS,2026-07-01,26.33333
+8113,Domestic Cleaners,TAS,2026-07-01,0
+8114,Housekeepers,TAS,2026-07-01,11
+8115,Laundry Workers,TAS,2026-07-01,1
+8116,Other Cleaners,TAS,2026-07-01,2
+8211,Building and Plumbing Labourers,TAS,2026-07-01,12
+8212,Concreters,TAS,2026-07-01,0.66667
+8213,Fencers,TAS,2026-07-01,1.33333
+8214,Insulation and Home Improvement Installers,TAS,2026-07-01,1
+8215,Paving and Surfacing Labourers,TAS,2026-07-01,0.33333
+8216,Railway Track Workers,TAS,2026-07-01,0
+8217,Structural Steel Construction Workers,TAS,2026-07-01,0.66667
+8219,Other Construction and Mining Labourers,TAS,2026-07-01,0.33333
+8311,Food and Drink Factory Workers,TAS,2026-07-01,5.33333
+8312,"Meat Boners and Slicers, and Slaughterers",TAS,2026-07-01,1.33333
+8313,"Meat, Poultry and Seafood Process Workers",TAS,2026-07-01,1.66667
+8321,Packers,TAS,2026-07-01,4.33333
+8322,Product Assemblers,TAS,2026-07-01,2
+8391,Metal Engineering Process Workers,TAS,2026-07-01,0
+8392,Plastics and Rubber Factory Workers,TAS,2026-07-01,0
+8393,Product Quality Controllers,TAS,2026-07-01,6
+8394,Timber and Wood Process Workers,TAS,2026-07-01,0.33333
+8399,Other Factory Process Workers,TAS,2026-07-01,6.33333
+8411,Aquaculture Workers,TAS,2026-07-01,0
+8412,Crop Farm Workers,TAS,2026-07-01,8.33333
+8413,Forestry and Logging Workers,TAS,2026-07-01,0
+8414,Garden and Nursery Labourers,TAS,2026-07-01,2
+8415,Livestock Farm Workers,TAS,2026-07-01,5.33333
+8416,Mixed Crop and Livestock Farm Workers,TAS,2026-07-01,8.33333
+8419,"Other Farm, Forestry and Garden Workers",TAS,2026-07-01,2.33333
+8511,Fast Food Cooks,TAS,2026-07-01,0
+8512,Food Trades Assistants,TAS,2026-07-01,0.66667
+8513,Kitchenhands,TAS,2026-07-01,19
+8911,Freight and Furniture Handlers,TAS,2026-07-01,4
+8912,Shelf Fillers,TAS,2026-07-01,3.66667
+8991,Caretakers,TAS,2026-07-01,6
+8992,Deck and Fishing Hands,TAS,2026-07-01,0
+8993,Handypersons,TAS,2026-07-01,11.33333
+8994,Motor Vehicle Parts and Accessories Fitters,TAS,2026-07-01,2.66667
+8995,Printing Assistants and Table Workers,TAS,2026-07-01,0.33333
+8996,Recycling and Rubbish Collectors,TAS,2026-07-01,0
+8997,Vending Machine Attendants,TAS,2026-07-01,0
+8999,Other Miscellaneous Labourers,TAS,2026-07-01,53.66667
+0,Northern Territory Total,NT,2026-07-01,2757.66667
+1111,Chief Executives and Managing Directors,NT,2026-07-01,12
+1112,General Managers,NT,2026-07-01,10.33333
+1211,Aquaculture Farmers,NT,2026-07-01,0
+1212,Crop Farmers,NT,2026-07-01,0
+1213,Livestock Farmers,NT,2026-07-01,0
+1214,Mixed Crop and Livestock Farmers,NT,2026-07-01,2
+1311,Advertising and Sales Managers,NT,2026-07-01,18
+1321,Corporate Services Managers,NT,2026-07-01,9.33333
+1322,Finance Managers,NT,2026-07-01,7.66667
+1323,Human Resource Managers,NT,2026-07-01,11
+1324,Policy and Planning Managers,NT,2026-07-01,31
+1325,Research and Development Managers,NT,2026-07-01,0.33333
+1331,Construction Managers,NT,2026-07-01,49
+1332,Engineering Managers,NT,2026-07-01,3
+1333,"Importers, Exporters and Wholesalers",NT,2026-07-01,0
+1334,Manufacturers,NT,2026-07-01,0.33333
+1335,Production Managers,NT,2026-07-01,23
+1336,"Supply, Distribution and Procurement Managers",NT,2026-07-01,2.33333
+1341,Child Care Centre Managers,NT,2026-07-01,5
+1342,Health and Welfare Services Managers,NT,2026-07-01,10.66667
+1343,School Principals,NT,2026-07-01,3.33333
+1344,Other Education Managers,NT,2026-07-01,0.66667
+1351,ICT Managers,NT,2026-07-01,4.33333
+1399,Other Specialist Managers,NT,2026-07-01,10
+1411,Cafe and Restaurant Managers,NT,2026-07-01,5.33333
+1412,Caravan Park and Camping Ground Managers,NT,2026-07-01,0
+1413,Hotel and Motel Managers,NT,2026-07-01,11.66667
+1414,Licensed Club Managers,NT,2026-07-01,3
+1419,Other Accommodation and Hospitality Managers,NT,2026-07-01,1.66667
+1421,Retail Managers,NT,2026-07-01,32.66667
+1491,"Amusement, Fitness and Sports Centre Managers",NT,2026-07-01,3.33333
+1492,Call or Contact Centre and Customer Service Managers,NT,2026-07-01,5.33333
+1493,Conference and Event Organisers,NT,2026-07-01,3
+1494,Transport Services Managers,NT,2026-07-01,1.66667
+1499,"Other Hospitality, Retail and Service Managers",NT,2026-07-01,15.66667
+2111,"Actors, Dancers and Other Entertainers",NT,2026-07-01,1.66667
+2112,Music Professionals,NT,2026-07-01,0
+2113,Photographers,NT,2026-07-01,0.33333
+2114,Visual Arts and Crafts Professionals,NT,2026-07-01,0
+2121,"Artistic Directors, and Media Producers and Presenters",NT,2026-07-01,0.33333
+2122,"Authors, and Book and Script Editors",NT,2026-07-01,2.33333
+2123,"Film, Television, Radio and Stage Directors",NT,2026-07-01,0.66667
+2124,Journalists and Other Writers,NT,2026-07-01,10
+2211,Accountants,NT,2026-07-01,12.33333
+2212,"Auditors, Company Secretaries and Corporate Treasurers",NT,2026-07-01,9.66667
+2221,Financial Brokers,NT,2026-07-01,0.66667
+2222,Financial Dealers,NT,2026-07-01,0.33333
+2223,Financial Investment Advisers and Managers,NT,2026-07-01,3.66667
+2231,Human Resource Professionals,NT,2026-07-01,29
+2232,ICT Trainers,NT,2026-07-01,0
+2233,Training and Development Professionals,NT,2026-07-01,14.66667
+2241,"Actuaries, Mathematicians and Statisticians",NT,2026-07-01,0.33333
+2242,"Archivists, Curators and Records Managers",NT,2026-07-01,3
+2243,Economists,NT,2026-07-01,0
+2244,Intelligence and Policy Analysts,NT,2026-07-01,5.33333
+2245,Land Economists and Valuers,NT,2026-07-01,0.66667
+2246,Librarians,NT,2026-07-01,2
+2247,Management and Organisation Analysts,NT,2026-07-01,6.66667
+2249,Other Information and Organisation Professionals,NT,2026-07-01,5.33333
+2251,Advertising and Marketing Professionals,NT,2026-07-01,7
+2252,ICT Sales Professionals,NT,2026-07-01,0
+2253,Public Relations Professionals,NT,2026-07-01,8
+2254,Technical Sales Representatives,NT,2026-07-01,1
+2311,Air Transport Professionals,NT,2026-07-01,4.33333
+2312,Marine Transport Professionals,NT,2026-07-01,3.33333
+2321,Architects and Landscape Architects,NT,2026-07-01,1.66667
+2322,Surveyors and Spatial Scientists,NT,2026-07-01,3.66667
+2323,"Fashion, Industrial and Jewellery Designers",NT,2026-07-01,0
+2324,"Graphic and Web Designers, and Illustrators",NT,2026-07-01,1.66667
+2325,Interior Designers,NT,2026-07-01,0.33333
+2326,Urban and Regional Planners,NT,2026-07-01,2
+2331,Chemical and Materials Engineers,NT,2026-07-01,0
+2332,Civil Engineering Professionals,NT,2026-07-01,28.33333
+2333,Electrical Engineers,NT,2026-07-01,5.33333
+2334,Electronics Engineers,NT,2026-07-01,0.33333
+2335,"Industrial, Mechanical and Production Engineers",NT,2026-07-01,7.66667
+2336,Mining Engineers,NT,2026-07-01,12.33333
+2339,Other Engineering Professionals,NT,2026-07-01,5.33333
+2341,Agricultural and Forestry Scientists,NT,2026-07-01,0.33333
+2342,"Chemists, and Food and Wine Scientists",NT,2026-07-01,0.66667
+2343,Environmental Scientists,NT,2026-07-01,10.66667
+2344,Geologists and Geophysicists,NT,2026-07-01,2.33333
+2345,Life Scientists,NT,2026-07-01,5
+2346,Medical Laboratory Scientists,NT,2026-07-01,1.66667
+2347,Veterinarians,NT,2026-07-01,0.33333
+2349,Other Natural and Physical Science Professionals,NT,2026-07-01,0.66667
+2411,Early Childhood (Pre-primary School) Teachers,NT,2026-07-01,9
+2412,Primary School Teachers,NT,2026-07-01,5.66667
+2413,Middle School Teachers (Aus) / Intermediate School Teachers (NZ),NT,2026-07-01,0
+2414,Secondary School Teachers,NT,2026-07-01,10
+2415,Special Education Teachers,NT,2026-07-01,0.33333
+2421,University Lecturers and Tutors,NT,2026-07-01,12
+2422,Vocational Education Teachers (Aus) / Polytechnic Teachers (NZ),NT,2026-07-01,0.66667
+2491,Education Advisers and Reviewers,NT,2026-07-01,2.33333
+2492,Private Tutors and Teachers,NT,2026-07-01,1
+2493,Teachers of English to Speakers of Other Languages,NT,2026-07-01,0
+2511,Nutrition Professionals,NT,2026-07-01,3.66667
+2512,Medical Imaging Professionals,NT,2026-07-01,10.66667
+2513,Occupational and Environmental Health Professionals,NT,2026-07-01,22.33333
+2514,Optometrists and Orthoptists,NT,2026-07-01,1.66667
+2515,Pharmacists,NT,2026-07-01,6.66667
+2519,Other Health Diagnostic and Promotion Professionals,NT,2026-07-01,4
+2521,Chiropractors and Osteopaths,NT,2026-07-01,0
+2522,Complementary Health Therapists,NT,2026-07-01,2
+2523,Dental Practitioners,NT,2026-07-01,6.66667
+2524,Occupational Therapists,NT,2026-07-01,34.33333
+2525,Physiotherapists,NT,2026-07-01,18.66667
+2526,Podiatrists,NT,2026-07-01,3.66667
+2527,Audiologists and Speech Pathologists/Therapists,NT,2026-07-01,20.66667
+2531,General Practitioners and Resident Medical Officers,NT,2026-07-01,65.66667
+2532,Anaesthetists,NT,2026-07-01,0.66667
+2533,Specialist Physicians,NT,2026-07-01,10.33333
+2534,Psychiatrists,NT,2026-07-01,3.33333
+2535,Surgeons,NT,2026-07-01,0.33333
+2539,Other Medical Practitioners,NT,2026-07-01,3.33333
+2541,Midwives,NT,2026-07-01,5
+2542,Nurse Educators and Researchers,NT,2026-07-01,5
+2543,Nurse Managers,NT,2026-07-01,4.66667
+2544,Registered Nurses,NT,2026-07-01,120.66667
+2611,ICT Business and Systems Analysts,NT,2026-07-01,8.66667
+2612,Multimedia Specialists and Web Developers,NT,2026-07-01,0.66667
+2613,Software and Applications Programmers,NT,2026-07-01,13.33333
+2621,"Database and Systems Administrators, and ICT Security Specialists",NT,2026-07-01,3.66667
+2631,Computer Network Professionals,NT,2026-07-01,3.66667
+2632,ICT Support and Test Engineers,NT,2026-07-01,4.66667
+2633,Telecommunications Engineering Professionals,NT,2026-07-01,0
+2711,Barristers,NT,2026-07-01,3.33333
+2713,Solicitors,NT,2026-07-01,13.66667
+2721,Counsellors,NT,2026-07-01,10
+2722,Ministers of Religion,NT,2026-07-01,0.66667
+2723,Psychologists,NT,2026-07-01,12.33333
+2724,Social Professionals,NT,2026-07-01,7
+2725,Social Workers,NT,2026-07-01,43
+2726,"Welfare, Recreation and Community Arts Workers",NT,2026-07-01,47.66667
+3111,Agricultural Technicians,NT,2026-07-01,3.33333
+3112,Medical Technicians,NT,2026-07-01,6
+3113,Primary Products Inspectors,NT,2026-07-01,0
+3114,Science Technicians,NT,2026-07-01,3.66667
+3121,"Architectural, Building and Surveying Technicians",NT,2026-07-01,22
+3122,Civil Engineering Draftspersons and Technicians,NT,2026-07-01,3.33333
+3123,Electrical Engineering Draftspersons and Technicians,NT,2026-07-01,2.33333
+3124,Electronic Engineering Draftspersons and Technicians,NT,2026-07-01,0.33333
+3125,Mechanical Engineering Draftspersons and Technicians,NT,2026-07-01,5.33333
+3126,Safety Inspectors,NT,2026-07-01,3.66667
+3129,Other Building and Engineering Technicians,NT,2026-07-01,11
+3131,ICT Support Technicians,NT,2026-07-01,9
+3132,Telecommunications Technical Specialists,NT,2026-07-01,0.66667
+3211,Automotive Electricians,NT,2026-07-01,5.66667
+3212,Motor Mechanics,NT,2026-07-01,58
+3221,"Metal Casting, Forging and Finishing Trades Workers",NT,2026-07-01,0
+3222,Sheetmetal Trades Workers,NT,2026-07-01,3.66667
+3223,Structural Steel and Welding Trades Workers,NT,2026-07-01,16.33333
+3231,Aircraft Maintenance Engineers,NT,2026-07-01,7.66667
+3232,Metal Fitters and Machinists,NT,2026-07-01,37.33333
+3233,Precision Metal Trades Workers,NT,2026-07-01,1.33333
+3234,Toolmakers and Engineering Patternmakers,NT,2026-07-01,0
+3241,Panelbeaters,NT,2026-07-01,2.66667
+3242,Vehicle Body Builders and Trimmers,NT,2026-07-01,0.33333
+3243,Vehicle Painters,NT,2026-07-01,2.33333
+3311,Bricklayers and Stonemasons,NT,2026-07-01,1.33333
+3312,Carpenters and Joiners,NT,2026-07-01,19
+3321,Floor Finishers,NT,2026-07-01,0.33333
+3322,Painting Trades Workers,NT,2026-07-01,12.66667
+3331,Glaziers,NT,2026-07-01,1.33333
+3332,Plasterers,NT,2026-07-01,2.66667
+3333,Roof Tilers,NT,2026-07-01,0.33333
+3334,Wall and Floor Tilers,NT,2026-07-01,0.33333
+3341,Plumbers,NT,2026-07-01,25.33333
+3411,Electricians,NT,2026-07-01,48.66667
+3421,Airconditioning and Refrigeration Mechanics,NT,2026-07-01,13
+3422,Electrical Distribution Trades Workers,NT,2026-07-01,1.66667
+3423,Electronics Trades Workers,NT,2026-07-01,4.33333
+3424,Telecommunications Trades Workers,NT,2026-07-01,1.33333
+3511,Bakers and Pastrycooks,NT,2026-07-01,2
+3512,Butchers and Smallgoods Makers,NT,2026-07-01,2.66667
+3513,Chefs,NT,2026-07-01,33.33333
+3514,Cooks,NT,2026-07-01,15.66667
+3611,Animal Attendants and Trainers,NT,2026-07-01,0.66667
+3612,Shearers,NT,2026-07-01,0
+3613,Veterinary Nurses,NT,2026-07-01,1
+3621,Florists,NT,2026-07-01,0
+3622,Gardeners,NT,2026-07-01,12.33333
+3623,Greenkeepers,NT,2026-07-01,7.66667
+3624,Nurserypersons,NT,2026-07-01,0.33333
+3911,Hairdressers,NT,2026-07-01,6.66667
+3921,"Binders, Finishers and Screen Printers",NT,2026-07-01,0
+3922,Graphic Pre-press Trades Workers,NT,2026-07-01,0.33333
+3923,Printers,NT,2026-07-01,0.33333
+3931,Canvas and Leather Goods Makers,NT,2026-07-01,0
+3932,Clothing Trades Workers,NT,2026-07-01,0.33333
+3933,Upholsterers,NT,2026-07-01,0
+3941,Cabinetmakers,NT,2026-07-01,2
+3942,Wood Machinists and Other Wood Trades Workers,NT,2026-07-01,0
+3991,Boat Builders and Shipwrights,NT,2026-07-01,0
+3992,"Chemical, Gas, Petroleum and Power Generation Plant Operators",NT,2026-07-01,2.66667
+3993,"Gallery, Library and Museum Technicians",NT,2026-07-01,0
+3994,Jewellers,NT,2026-07-01,0.66667
+3995,Performing Arts Technicians,NT,2026-07-01,0.66667
+3996,Signwriters,NT,2026-07-01,0.33333
+3999,Other Miscellaneous Technicians and Trades Workers,NT,2026-07-01,13
+4111,Ambulance Officers and Paramedics,NT,2026-07-01,2.66667
+4112,"Dental Hygienists, Technicians and Therapists",NT,2026-07-01,3.66667
+4113,Diversional Therapists,NT,2026-07-01,1.66667
+4114,Enrolled and Mothercraft Nurses,NT,2026-07-01,3.33333
+4115,Indigenous Health Workers,NT,2026-07-01,0.33333
+4116,Massage Therapists,NT,2026-07-01,1.66667
+4117,Welfare Support Workers,NT,2026-07-01,43.66667
+4211,Child Carers,NT,2026-07-01,33.33333
+4221,Education Aides,NT,2026-07-01,23.66667
+4231,Aged and Disabled Carers,NT,2026-07-01,34.33333
+4232,Dental Assistants,NT,2026-07-01,5.66667
+4233,Nursing Support and Personal Care Workers,NT,2026-07-01,14
+4234,Special Care Workers,NT,2026-07-01,0
+4311,Bar Attendants and Baristas,NT,2026-07-01,11
+4312,Cafe Workers,NT,2026-07-01,3
+4313,Gaming Workers,NT,2026-07-01,0.33333
+4314,Hotel Service Managers,NT,2026-07-01,1.33333
+4315,Waiters,NT,2026-07-01,17.66667
+4412,Fire and Emergency Workers,NT,2026-07-01,3
+4413,Police,NT,2026-07-01,0.66667
+4421,Prison Officers,NT,2026-07-01,2.33333
+4422,Security Officers and Guards,NT,2026-07-01,19.66667
+4511,Beauty Therapists,NT,2026-07-01,4.33333
+4512,Driving Instructors,NT,2026-07-01,0.33333
+4513,Funeral Workers,NT,2026-07-01,0.66667
+4514,"Gallery, Museum and Tour Guides",NT,2026-07-01,7
+4515,Personal Care Consultants,NT,2026-07-01,0
+4516,Tourism and Travel Advisers,NT,2026-07-01,2.33333
+4517,Travel Attendants,NT,2026-07-01,1.66667
+4521,Fitness Instructors,NT,2026-07-01,1.33333
+4522,Outdoor Adventure Guides,NT,2026-07-01,2.66667
+4523,"Sports Coaches, Instructors and Officials",NT,2026-07-01,9.66667
+4524,Sportspersons,NT,2026-07-01,2
+5111,"Contract, Program and Project Administrators",NT,2026-07-01,30.33333
+5121,Office Managers,NT,2026-07-01,16.33333
+5122,Practice Managers,NT,2026-07-01,4.33333
+5211,Personal Assistants,NT,2026-07-01,5
+5212,Secretaries,NT,2026-07-01,12.66667
+5311,General Clerks,NT,2026-07-01,164
+5321,Keyboard Operators,NT,2026-07-01,1.66667
+5411,Call or Contact Centre Workers,NT,2026-07-01,12
+5412,Information Officers,NT,2026-07-01,6.33333
+5421,Receptionists,NT,2026-07-01,20.66667
+5511,Accounting Clerks,NT,2026-07-01,10.66667
+5512,Bookkeepers,NT,2026-07-01,1.66667
+5513,Payroll Clerks,NT,2026-07-01,8
+5521,Bank Workers,NT,2026-07-01,11.66667
+5522,Credit and Loans Officers,NT,2026-07-01,15
+5523,"Insurance, Money Market and Statistical Clerks",NT,2026-07-01,0
+5611,Betting Clerks,NT,2026-07-01,0
+5612,Couriers and Postal Deliverers,NT,2026-07-01,9.33333
+5613,Filing and Registry Clerks,NT,2026-07-01,2
+5614,Mail Sorters,NT,2026-07-01,0.66667
+5615,Survey Interviewers,NT,2026-07-01,1.66667
+5616,Switchboard Operators,NT,2026-07-01,0
+5619,Other Clerical and Office Support Workers,NT,2026-07-01,1
+5911,Purchasing and Supply Logistics Clerks,NT,2026-07-01,19.66667
+5912,Transport and Despatch Clerks,NT,2026-07-01,13.66667
+5991,Conveyancers and Legal Executives,NT,2026-07-01,1.66667
+5992,Court and Legal Clerks,NT,2026-07-01,1.66667
+5993,Debt Collectors,NT,2026-07-01,0.66667
+5994,Human Resource Clerks,NT,2026-07-01,0.66667
+5995,Inspectors and Regulatory Officers,NT,2026-07-01,14.66667
+5996,"Insurance Investigators, Loss Adjusters and Risk Surveyors",NT,2026-07-01,4
+5997,Library Assistants,NT,2026-07-01,1.33333
+5999,Other Miscellaneous Clerical and Administrative Workers,NT,2026-07-01,3
+6111,"Auctioneers, and Stock and Station Agents",NT,2026-07-01,0
+6112,Insurance Agents,NT,2026-07-01,5
+6113,Sales Representatives,NT,2026-07-01,12.66667
+6121,Real Estate Sales Agents,NT,2026-07-01,11.66667
+6211,Sales Assistants (General),NT,2026-07-01,86.66667
+6212,ICT Sales Assistants,NT,2026-07-01,0
+6213,Motor Vehicle and Vehicle Parts Salespersons,NT,2026-07-01,7.66667
+6214,Pharmacy Sales Assistants,NT,2026-07-01,1.33333
+6215,Retail Supervisors,NT,2026-07-01,8.66667
+6216,Service Station Attendants,NT,2026-07-01,0.66667
+6217,Street Vendors and Related Salespersons,NT,2026-07-01,0
+6219,Other Sales Assistants and Salespersons,NT,2026-07-01,0
+6311,Checkout Operators and Office Cashiers,NT,2026-07-01,0.66667
+6391,Models and Sales Demonstrators,NT,2026-07-01,7
+6392,Retail and Wool Buyers,NT,2026-07-01,0
+6393,Telemarketers,NT,2026-07-01,0.66667
+6394,Ticket Salespersons,NT,2026-07-01,2.33333
+6395,Visual Merchandisers,NT,2026-07-01,0.33333
+6399,Other Sales Support Workers,NT,2026-07-01,5.66667
+7111,"Clay, Concrete, Glass and Stone Processing Machine Operators",NT,2026-07-01,0
+7112,Industrial Spraypainters,NT,2026-07-01,0.33333
+7113,Paper and Wood Processing Machine Operators,NT,2026-07-01,0
+7114,Photographic Developers and Printers,NT,2026-07-01,0
+7115,Plastics and Rubber Production Machine Operators,NT,2026-07-01,0.33333
+7116,Sewing Machinists,NT,2026-07-01,1.33333
+7117,Textile and Footwear Production Machine Operators,NT,2026-07-01,0
+7119,Other Machine Operators,NT,2026-07-01,8.33333
+7121,"Crane, Hoist and Lift Operators",NT,2026-07-01,5.33333
+7122,"Drillers, Miners and Shot Firers",NT,2026-07-01,16.33333
+7123,Engineering Production Workers,NT,2026-07-01,0.66667
+7129,Other Stationary Plant Operators,NT,2026-07-01,7.33333
+7211,"Agricultural, Forestry and Horticultural Plant Operators",NT,2026-07-01,1.33333
+7212,Earthmoving Plant Operators,NT,2026-07-01,27.33333
+7213,Forklift Drivers,NT,2026-07-01,9.66667
+7219,Other Mobile Plant Operators,NT,2026-07-01,7.66667
+7311,Automobile Drivers,NT,2026-07-01,0.66667
+7312,Bus and Coach Drivers,NT,2026-07-01,8.66667
+7313,Train and Tram Drivers,NT,2026-07-01,2.66667
+7321,Delivery Drivers,NT,2026-07-01,13.33333
+7331,Truck Drivers,NT,2026-07-01,46.66667
+7411,Storepersons,NT,2026-07-01,40.66667
+8111,Car Detailers,NT,2026-07-01,1.66667
+8112,Commercial Cleaners,NT,2026-07-01,30
+8113,Domestic Cleaners,NT,2026-07-01,0
+8114,Housekeepers,NT,2026-07-01,11.66667
+8115,Laundry Workers,NT,2026-07-01,1.66667
+8116,Other Cleaners,NT,2026-07-01,0
+8211,Building and Plumbing Labourers,NT,2026-07-01,20
+8212,Concreters,NT,2026-07-01,0.66667
+8213,Fencers,NT,2026-07-01,0.66667
+8214,Insulation and Home Improvement Installers,NT,2026-07-01,1.33333
+8215,Paving and Surfacing Labourers,NT,2026-07-01,0
+8216,Railway Track Workers,NT,2026-07-01,0.33333
+8217,Structural Steel Construction Workers,NT,2026-07-01,7.33333
+8219,Other Construction and Mining Labourers,NT,2026-07-01,1
+8311,Food and Drink Factory Workers,NT,2026-07-01,0.33333
+8312,"Meat Boners and Slicers, and Slaughterers",NT,2026-07-01,0.33333
+8313,"Meat, Poultry and Seafood Process Workers",NT,2026-07-01,1.33333
+8321,Packers,NT,2026-07-01,3
+8322,Product Assemblers,NT,2026-07-01,0
+8391,Metal Engineering Process Workers,NT,2026-07-01,0.33333
+8392,Plastics and Rubber Factory Workers,NT,2026-07-01,0
+8393,Product Quality Controllers,NT,2026-07-01,4.33333
+8394,Timber and Wood Process Workers,NT,2026-07-01,0
+8399,Other Factory Process Workers,NT,2026-07-01,1.66667
+8411,Aquaculture Workers,NT,2026-07-01,0.33333
+8412,Crop Farm Workers,NT,2026-07-01,1.66667
+8413,Forestry and Logging Workers,NT,2026-07-01,0
+8414,Garden and Nursery Labourers,NT,2026-07-01,3
+8415,Livestock Farm Workers,NT,2026-07-01,1.33333
+8416,Mixed Crop and Livestock Farm Workers,NT,2026-07-01,6.33333
+8419,"Other Farm, Forestry and Garden Workers",NT,2026-07-01,2.66667
+8511,Fast Food Cooks,NT,2026-07-01,0
+8512,Food Trades Assistants,NT,2026-07-01,0
+8513,Kitchenhands,NT,2026-07-01,12
+8911,Freight and Furniture Handlers,NT,2026-07-01,6.66667
+8912,Shelf Fillers,NT,2026-07-01,0.33333
+8991,Caretakers,NT,2026-07-01,6.33333
+8992,Deck and Fishing Hands,NT,2026-07-01,1.66667
+8993,Handypersons,NT,2026-07-01,18.33333
+8994,Motor Vehicle Parts and Accessories Fitters,NT,2026-07-01,2
+8995,Printing Assistants and Table Workers,NT,2026-07-01,0.33333
+8996,Recycling and Rubbish Collectors,NT,2026-07-01,0.33333
+8997,Vending Machine Attendants,NT,2026-07-01,0
+8999,Other Miscellaneous Labourers,NT,2026-07-01,45.33333
+0,Australian Capital Territory Total,ACT,2026-07-01,4494
+1111,Chief Executives and Managing Directors,ACT,2026-07-01,14
+1112,General Managers,ACT,2026-07-01,12
+1211,Aquaculture Farmers,ACT,2026-07-01,0
+1212,Crop Farmers,ACT,2026-07-01,0
+1213,Livestock Farmers,ACT,2026-07-01,0
+1214,Mixed Crop and Livestock Farmers,ACT,2026-07-01,0.66667
+1311,Advertising and Sales Managers,ACT,2026-07-01,70.33333
+1321,Corporate Services Managers,ACT,2026-07-01,16.66667
+1322,Finance Managers,ACT,2026-07-01,16.33333
+1323,Human Resource Managers,ACT,2026-07-01,14.33333
+1324,Policy and Planning Managers,ACT,2026-07-01,64.33333
+1325,Research and Development Managers,ACT,2026-07-01,5
+1331,Construction Managers,ACT,2026-07-01,137
+1332,Engineering Managers,ACT,2026-07-01,9.33333
+1333,"Importers, Exporters and Wholesalers",ACT,2026-07-01,0.66667
+1334,Manufacturers,ACT,2026-07-01,0
+1335,Production Managers,ACT,2026-07-01,21
+1336,"Supply, Distribution and Procurement Managers",ACT,2026-07-01,6.66667
+1341,Child Care Centre Managers,ACT,2026-07-01,9.66667
+1342,Health and Welfare Services Managers,ACT,2026-07-01,9.66667
+1343,School Principals,ACT,2026-07-01,2.66667
+1344,Other Education Managers,ACT,2026-07-01,7.66667
+1351,ICT Managers,ACT,2026-07-01,32.66667
+1399,Other Specialist Managers,ACT,2026-07-01,21.33333
+1411,Cafe and Restaurant Managers,ACT,2026-07-01,17.66667
+1412,Caravan Park and Camping Ground Managers,ACT,2026-07-01,0
+1413,Hotel and Motel Managers,ACT,2026-07-01,13.33333
+1414,Licensed Club Managers,ACT,2026-07-01,3
+1419,Other Accommodation and Hospitality Managers,ACT,2026-07-01,2.33333
+1421,Retail Managers,ACT,2026-07-01,71.33333
+1491,"Amusement, Fitness and Sports Centre Managers",ACT,2026-07-01,4.66667
+1492,Call or Contact Centre and Customer Service Managers,ACT,2026-07-01,10
+1493,Conference and Event Organisers,ACT,2026-07-01,11
+1494,Transport Services Managers,ACT,2026-07-01,0.33333
+1499,"Other Hospitality, Retail and Service Managers",ACT,2026-07-01,29.66667
+2111,"Actors, Dancers and Other Entertainers",ACT,2026-07-01,4.66667
+2112,Music Professionals,ACT,2026-07-01,0.33333
+2113,Photographers,ACT,2026-07-01,1
+2114,Visual Arts and Crafts Professionals,ACT,2026-07-01,0.33333
+2121,"Artistic Directors, and Media Producers and Presenters",ACT,2026-07-01,0.33333
+2122,"Authors, and Book and Script Editors",ACT,2026-07-01,4.66667
+2123,"Film, Television, Radio and Stage Directors",ACT,2026-07-01,1.33333
+2124,Journalists and Other Writers,ACT,2026-07-01,65.33333
+2211,Accountants,ACT,2026-07-01,59.66667
+2212,"Auditors, Company Secretaries and Corporate Treasurers",ACT,2026-07-01,20.66667
+2221,Financial Brokers,ACT,2026-07-01,3.33333
+2222,Financial Dealers,ACT,2026-07-01,1
+2223,Financial Investment Advisers and Managers,ACT,2026-07-01,19
+2231,Human Resource Professionals,ACT,2026-07-01,43.66667
+2232,ICT Trainers,ACT,2026-07-01,1.33333
+2233,Training and Development Professionals,ACT,2026-07-01,15.33333
+2241,"Actuaries, Mathematicians and Statisticians",ACT,2026-07-01,0.33333
+2242,"Archivists, Curators and Records Managers",ACT,2026-07-01,9.33333
+2243,Economists,ACT,2026-07-01,1.66667
+2244,Intelligence and Policy Analysts,ACT,2026-07-01,43.33333
+2245,Land Economists and Valuers,ACT,2026-07-01,2.33333
+2246,Librarians,ACT,2026-07-01,2.66667
+2247,Management and Organisation Analysts,ACT,2026-07-01,26
+2249,Other Information and Organisation Professionals,ACT,2026-07-01,8.66667
+2251,Advertising and Marketing Professionals,ACT,2026-07-01,25
+2252,ICT Sales Professionals,ACT,2026-07-01,0.66667
+2253,Public Relations Professionals,ACT,2026-07-01,30.33333
+2254,Technical Sales Representatives,ACT,2026-07-01,3.66667
+2311,Air Transport Professionals,ACT,2026-07-01,5
+2312,Marine Transport Professionals,ACT,2026-07-01,0
+2321,Architects and Landscape Architects,ACT,2026-07-01,39
+2322,Surveyors and Spatial Scientists,ACT,2026-07-01,4
+2323,"Fashion, Industrial and Jewellery Designers",ACT,2026-07-01,0.33333
+2324,"Graphic and Web Designers, and Illustrators",ACT,2026-07-01,11.66667
+2325,Interior Designers,ACT,2026-07-01,3.33333
+2326,Urban and Regional Planners,ACT,2026-07-01,4
+2331,Chemical and Materials Engineers,ACT,2026-07-01,0.33333
+2332,Civil Engineering Professionals,ACT,2026-07-01,42.66667
+2333,Electrical Engineers,ACT,2026-07-01,3.33333
+2334,Electronics Engineers,ACT,2026-07-01,0.33333
+2335,"Industrial, Mechanical and Production Engineers",ACT,2026-07-01,10.66667
+2336,Mining Engineers,ACT,2026-07-01,3.66667
+2339,Other Engineering Professionals,ACT,2026-07-01,5.66667
+2341,Agricultural and Forestry Scientists,ACT,2026-07-01,0
+2342,"Chemists, and Food and Wine Scientists",ACT,2026-07-01,2.33333
+2343,Environmental Scientists,ACT,2026-07-01,6.33333
+2344,Geologists and Geophysicists,ACT,2026-07-01,1.33333
+2345,Life Scientists,ACT,2026-07-01,6.33333
+2346,Medical Laboratory Scientists,ACT,2026-07-01,1.33333
+2347,Veterinarians,ACT,2026-07-01,3
+2349,Other Natural and Physical Science Professionals,ACT,2026-07-01,1.33333
+2411,Early Childhood (Pre-primary School) Teachers,ACT,2026-07-01,11.66667
+2412,Primary School Teachers,ACT,2026-07-01,14
+2413,Middle School Teachers (Aus) / Intermediate School Teachers (NZ),ACT,2026-07-01,0
+2414,Secondary School Teachers,ACT,2026-07-01,15
+2415,Special Education Teachers,ACT,2026-07-01,1
+2421,University Lecturers and Tutors,ACT,2026-07-01,18
+2422,Vocational Education Teachers (Aus) / Polytechnic Teachers (NZ),ACT,2026-07-01,1.33333
+2491,Education Advisers and Reviewers,ACT,2026-07-01,3.33333
+2492,Private Tutors and Teachers,ACT,2026-07-01,2.33333
+2493,Teachers of English to Speakers of Other Languages,ACT,2026-07-01,0
+2511,Nutrition Professionals,ACT,2026-07-01,1
+2512,Medical Imaging Professionals,ACT,2026-07-01,15
+2513,Occupational and Environmental Health Professionals,ACT,2026-07-01,15.66667
+2514,Optometrists and Orthoptists,ACT,2026-07-01,2.66667
+2515,Pharmacists,ACT,2026-07-01,13
+2519,Other Health Diagnostic and Promotion Professionals,ACT,2026-07-01,0.33333
+2521,Chiropractors and Osteopaths,ACT,2026-07-01,0.66667
+2522,Complementary Health Therapists,ACT,2026-07-01,4
+2523,Dental Practitioners,ACT,2026-07-01,13.33333
+2524,Occupational Therapists,ACT,2026-07-01,44
+2525,Physiotherapists,ACT,2026-07-01,23
+2526,Podiatrists,ACT,2026-07-01,3.66667
+2527,Audiologists and Speech Pathologists/Therapists,ACT,2026-07-01,23
+2531,General Practitioners and Resident Medical Officers,ACT,2026-07-01,104
+2532,Anaesthetists,ACT,2026-07-01,0
+2533,Specialist Physicians,ACT,2026-07-01,14
+2534,Psychiatrists,ACT,2026-07-01,0.33333
+2535,Surgeons,ACT,2026-07-01,1
+2539,Other Medical Practitioners,ACT,2026-07-01,5.66667
+2541,Midwives,ACT,2026-07-01,7
+2542,Nurse Educators and Researchers,ACT,2026-07-01,5
+2543,Nurse Managers,ACT,2026-07-01,8.33333
+2544,Registered Nurses,ACT,2026-07-01,128.33333
+2611,ICT Business and Systems Analysts,ACT,2026-07-01,110.66667
+2612,Multimedia Specialists and Web Developers,ACT,2026-07-01,1
+2613,Software and Applications Programmers,ACT,2026-07-01,259.66667
+2621,"Database and Systems Administrators, and ICT Security Specialists",ACT,2026-07-01,50.66667
+2631,Computer Network Professionals,ACT,2026-07-01,43.33333
+2632,ICT Support and Test Engineers,ACT,2026-07-01,23
+2633,Telecommunications Engineering Professionals,ACT,2026-07-01,6.33333
+2711,Barristers,ACT,2026-07-01,2.66667
+2713,Solicitors,ACT,2026-07-01,44
+2721,Counsellors,ACT,2026-07-01,16.33333
+2722,Ministers of Religion,ACT,2026-07-01,0.66667
+2723,Psychologists,ACT,2026-07-01,20
+2724,Social Professionals,ACT,2026-07-01,8.33333
+2725,Social Workers,ACT,2026-07-01,35.66667
+2726,"Welfare, Recreation and Community Arts Workers",ACT,2026-07-01,34.33333
+3111,Agricultural Technicians,ACT,2026-07-01,0
+3112,Medical Technicians,ACT,2026-07-01,7.66667
+3113,Primary Products Inspectors,ACT,2026-07-01,0
+3114,Science Technicians,ACT,2026-07-01,0.33333
+3121,"Architectural, Building and Surveying Technicians",ACT,2026-07-01,35.33333
+3122,Civil Engineering Draftspersons and Technicians,ACT,2026-07-01,2.33333
+3123,Electrical Engineering Draftspersons and Technicians,ACT,2026-07-01,1.33333
+3124,Electronic Engineering Draftspersons and Technicians,ACT,2026-07-01,2
+3125,Mechanical Engineering Draftspersons and Technicians,ACT,2026-07-01,1
+3126,Safety Inspectors,ACT,2026-07-01,4.33333
+3129,Other Building and Engineering Technicians,ACT,2026-07-01,2.33333
+3131,ICT Support Technicians,ACT,2026-07-01,40.66667
+3132,Telecommunications Technical Specialists,ACT,2026-07-01,2.33333
+3211,Automotive Electricians,ACT,2026-07-01,3.66667
+3212,Motor Mechanics,ACT,2026-07-01,41.66667
+3221,"Metal Casting, Forging and Finishing Trades Workers",ACT,2026-07-01,0
+3222,Sheetmetal Trades Workers,ACT,2026-07-01,2.66667
+3223,Structural Steel and Welding Trades Workers,ACT,2026-07-01,6.33333
+3231,Aircraft Maintenance Engineers,ACT,2026-07-01,2.33333
+3232,Metal Fitters and Machinists,ACT,2026-07-01,9.33333
+3233,Precision Metal Trades Workers,ACT,2026-07-01,1.33333
+3234,Toolmakers and Engineering Patternmakers,ACT,2026-07-01,0
+3241,Panelbeaters,ACT,2026-07-01,6.66667
+3242,Vehicle Body Builders and Trimmers,ACT,2026-07-01,0
+3243,Vehicle Painters,ACT,2026-07-01,1
+3311,Bricklayers and Stonemasons,ACT,2026-07-01,0.33333
+3312,Carpenters and Joiners,ACT,2026-07-01,24
+3321,Floor Finishers,ACT,2026-07-01,0.33333
+3322,Painting Trades Workers,ACT,2026-07-01,2
+3331,Glaziers,ACT,2026-07-01,1.66667
+3332,Plasterers,ACT,2026-07-01,1
+3333,Roof Tilers,ACT,2026-07-01,1.66667
+3334,Wall and Floor Tilers,ACT,2026-07-01,1
+3341,Plumbers,ACT,2026-07-01,27.33333
+3411,Electricians,ACT,2026-07-01,27
+3421,Airconditioning and Refrigeration Mechanics,ACT,2026-07-01,11.33333
+3422,Electrical Distribution Trades Workers,ACT,2026-07-01,5
+3423,Electronics Trades Workers,ACT,2026-07-01,6.33333
+3424,Telecommunications Trades Workers,ACT,2026-07-01,1.66667
+3511,Bakers and Pastrycooks,ACT,2026-07-01,4.33333
+3512,Butchers and Smallgoods Makers,ACT,2026-07-01,2.33333
+3513,Chefs,ACT,2026-07-01,48
+3514,Cooks,ACT,2026-07-01,17.33333
+3611,Animal Attendants and Trainers,ACT,2026-07-01,3.66667
+3612,Shearers,ACT,2026-07-01,0
+3613,Veterinary Nurses,ACT,2026-07-01,3
+3621,Florists,ACT,2026-07-01,1
+3622,Gardeners,ACT,2026-07-01,16.66667
+3623,Greenkeepers,ACT,2026-07-01,1.66667
+3624,Nurserypersons,ACT,2026-07-01,1.33333
+3911,Hairdressers,ACT,2026-07-01,14
+3921,"Binders, Finishers and Screen Printers",ACT,2026-07-01,0
+3922,Graphic Pre-press Trades Workers,ACT,2026-07-01,0
+3923,Printers,ACT,2026-07-01,0
+3931,Canvas and Leather Goods Makers,ACT,2026-07-01,0
+3932,Clothing Trades Workers,ACT,2026-07-01,0
+3933,Upholsterers,ACT,2026-07-01,0
+3941,Cabinetmakers,ACT,2026-07-01,5.66667
+3942,Wood Machinists and Other Wood Trades Workers,ACT,2026-07-01,0.66667
+3991,Boat Builders and Shipwrights,ACT,2026-07-01,0
+3992,"Chemical, Gas, Petroleum and Power Generation Plant Operators",ACT,2026-07-01,1.66667
+3993,"Gallery, Library and Museum Technicians",ACT,2026-07-01,0.33333
+3994,Jewellers,ACT,2026-07-01,1
+3995,Performing Arts Technicians,ACT,2026-07-01,0.66667
+3996,Signwriters,ACT,2026-07-01,0.66667
+3999,Other Miscellaneous Technicians and Trades Workers,ACT,2026-07-01,24
+4111,Ambulance Officers and Paramedics,ACT,2026-07-01,1
+4112,"Dental Hygienists, Technicians and Therapists",ACT,2026-07-01,3.33333
+4113,Diversional Therapists,ACT,2026-07-01,1.33333
+4114,Enrolled and Mothercraft Nurses,ACT,2026-07-01,8.33333
+4115,Indigenous Health Workers,ACT,2026-07-01,2.33333
+4116,Massage Therapists,ACT,2026-07-01,3.33333
+4117,Welfare Support Workers,ACT,2026-07-01,22
+4211,Child Carers,ACT,2026-07-01,64
+4221,Education Aides,ACT,2026-07-01,31.33333
+4231,Aged and Disabled Carers,ACT,2026-07-01,45.33333
+4232,Dental Assistants,ACT,2026-07-01,16.66667
+4233,Nursing Support and Personal Care Workers,ACT,2026-07-01,19.66667
+4234,Special Care Workers,ACT,2026-07-01,0
+4311,Bar Attendants and Baristas,ACT,2026-07-01,14.33333
+4312,Cafe Workers,ACT,2026-07-01,10
+4313,Gaming Workers,ACT,2026-07-01,0
+4314,Hotel Service Managers,ACT,2026-07-01,2.33333
+4315,Waiters,ACT,2026-07-01,32
+4412,Fire and Emergency Workers,ACT,2026-07-01,0.33333
+4413,Police,ACT,2026-07-01,1.33333
+4421,Prison Officers,ACT,2026-07-01,0
+4422,Security Officers and Guards,ACT,2026-07-01,75
+4511,Beauty Therapists,ACT,2026-07-01,13
+4512,Driving Instructors,ACT,2026-07-01,1
+4513,Funeral Workers,ACT,2026-07-01,0.66667
+4514,"Gallery, Museum and Tour Guides",ACT,2026-07-01,0.33333
+4515,Personal Care Consultants,ACT,2026-07-01,0
+4516,Tourism and Travel Advisers,ACT,2026-07-01,5.33333
+4517,Travel Attendants,ACT,2026-07-01,0
+4521,Fitness Instructors,ACT,2026-07-01,12.33333
+4522,Outdoor Adventure Guides,ACT,2026-07-01,0.33333
+4523,"Sports Coaches, Instructors and Officials",ACT,2026-07-01,22.66667
+4524,Sportspersons,ACT,2026-07-01,2.66667
+5111,"Contract, Program and Project Administrators",ACT,2026-07-01,72.66667
+5121,Office Managers,ACT,2026-07-01,31
+5122,Practice Managers,ACT,2026-07-01,10
+5211,Personal Assistants,ACT,2026-07-01,10
+5212,Secretaries,ACT,2026-07-01,27
+5311,General Clerks,ACT,2026-07-01,239.33333
+5321,Keyboard Operators,ACT,2026-07-01,5.33333
+5411,Call or Contact Centre Workers,ACT,2026-07-01,13.66667
+5412,Information Officers,ACT,2026-07-01,11.33333
+5421,Receptionists,ACT,2026-07-01,51.33333
+5511,Accounting Clerks,ACT,2026-07-01,16
+5512,Bookkeepers,ACT,2026-07-01,5
+5513,Payroll Clerks,ACT,2026-07-01,14.33333
+5521,Bank Workers,ACT,2026-07-01,9.66667
+5522,Credit and Loans Officers,ACT,2026-07-01,38.66667
+5523,"Insurance, Money Market and Statistical Clerks",ACT,2026-07-01,1
+5611,Betting Clerks,ACT,2026-07-01,0
+5612,Couriers and Postal Deliverers,ACT,2026-07-01,3.33333
+5613,Filing and Registry Clerks,ACT,2026-07-01,3
+5614,Mail Sorters,ACT,2026-07-01,0
+5615,Survey Interviewers,ACT,2026-07-01,4
+5616,Switchboard Operators,ACT,2026-07-01,0
+5619,Other Clerical and Office Support Workers,ACT,2026-07-01,1
+5911,Purchasing and Supply Logistics Clerks,ACT,2026-07-01,38.33333
+5912,Transport and Despatch Clerks,ACT,2026-07-01,8.33333
+5991,Conveyancers and Legal Executives,ACT,2026-07-01,7.66667
+5992,Court and Legal Clerks,ACT,2026-07-01,3
+5993,Debt Collectors,ACT,2026-07-01,3.33333
+5994,Human Resource Clerks,ACT,2026-07-01,1
+5995,Inspectors and Regulatory Officers,ACT,2026-07-01,28
+5996,"Insurance Investigators, Loss Adjusters and Risk Surveyors",ACT,2026-07-01,4.33333
+5997,Library Assistants,ACT,2026-07-01,0
+5999,Other Miscellaneous Clerical and Administrative Workers,ACT,2026-07-01,2.33333
+6111,"Auctioneers, and Stock and Station Agents",ACT,2026-07-01,0
+6112,Insurance Agents,ACT,2026-07-01,8
+6113,Sales Representatives,ACT,2026-07-01,28.33333
+6121,Real Estate Sales Agents,ACT,2026-07-01,42.66667
+6211,Sales Assistants (General),ACT,2026-07-01,159.66667
+6212,ICT Sales Assistants,ACT,2026-07-01,0
+6213,Motor Vehicle and Vehicle Parts Salespersons,ACT,2026-07-01,10.33333
+6214,Pharmacy Sales Assistants,ACT,2026-07-01,3.66667
+6215,Retail Supervisors,ACT,2026-07-01,1.66667
+6216,Service Station Attendants,ACT,2026-07-01,0.33333
+6217,Street Vendors and Related Salespersons,ACT,2026-07-01,0
+6219,Other Sales Assistants and Salespersons,ACT,2026-07-01,1.33333
+6311,Checkout Operators and Office Cashiers,ACT,2026-07-01,1.33333
+6391,Models and Sales Demonstrators,ACT,2026-07-01,22.66667
+6392,Retail and Wool Buyers,ACT,2026-07-01,0
+6393,Telemarketers,ACT,2026-07-01,0
+6394,Ticket Salespersons,ACT,2026-07-01,0.66667
+6395,Visual Merchandisers,ACT,2026-07-01,4
+6399,Other Sales Support Workers,ACT,2026-07-01,2
+7111,"Clay, Concrete, Glass and Stone Processing Machine Operators",ACT,2026-07-01,0
+7112,Industrial Spraypainters,ACT,2026-07-01,1
+7113,Paper and Wood Processing Machine Operators,ACT,2026-07-01,0
+7114,Photographic Developers and Printers,ACT,2026-07-01,0
+7115,Plastics and Rubber Production Machine Operators,ACT,2026-07-01,0
+7116,Sewing Machinists,ACT,2026-07-01,0.33333
+7117,Textile and Footwear Production Machine Operators,ACT,2026-07-01,0
+7119,Other Machine Operators,ACT,2026-07-01,4
+7121,"Crane, Hoist and Lift Operators",ACT,2026-07-01,0.66667
+7122,"Drillers, Miners and Shot Firers",ACT,2026-07-01,2
+7123,Engineering Production Workers,ACT,2026-07-01,1.66667
+7129,Other Stationary Plant Operators,ACT,2026-07-01,2.33333
+7211,"Agricultural, Forestry and Horticultural Plant Operators",ACT,2026-07-01,1
+7212,Earthmoving Plant Operators,ACT,2026-07-01,10.66667
+7213,Forklift Drivers,ACT,2026-07-01,7.33333
+7219,Other Mobile Plant Operators,ACT,2026-07-01,1
+7311,Automobile Drivers,ACT,2026-07-01,0.66667
+7312,Bus and Coach Drivers,ACT,2026-07-01,3.66667
+7313,Train and Tram Drivers,ACT,2026-07-01,0
+7321,Delivery Drivers,ACT,2026-07-01,21.33333
+7331,Truck Drivers,ACT,2026-07-01,38
+7411,Storepersons,ACT,2026-07-01,28
+8111,Car Detailers,ACT,2026-07-01,1.33333
+8112,Commercial Cleaners,ACT,2026-07-01,22
+8113,Domestic Cleaners,ACT,2026-07-01,0.33333
+8114,Housekeepers,ACT,2026-07-01,10.66667
+8115,Laundry Workers,ACT,2026-07-01,1
+8116,Other Cleaners,ACT,2026-07-01,2.33333
+8211,Building and Plumbing Labourers,ACT,2026-07-01,13.66667
+8212,Concreters,ACT,2026-07-01,4
+8213,Fencers,ACT,2026-07-01,1
+8214,Insulation and Home Improvement Installers,ACT,2026-07-01,0.33333
+8215,Paving and Surfacing Labourers,ACT,2026-07-01,0
+8216,Railway Track Workers,ACT,2026-07-01,0.33333
+8217,Structural Steel Construction Workers,ACT,2026-07-01,1
+8219,Other Construction and Mining Labourers,ACT,2026-07-01,0.66667
+8311,Food and Drink Factory Workers,ACT,2026-07-01,0
+8312,"Meat Boners and Slicers, and Slaughterers",ACT,2026-07-01,0
+8313,"Meat, Poultry and Seafood Process Workers",ACT,2026-07-01,0
+8321,Packers,ACT,2026-07-01,2
+8322,Product Assemblers,ACT,2026-07-01,1.66667
+8391,Metal Engineering Process Workers,ACT,2026-07-01,0
+8392,Plastics and Rubber Factory Workers,ACT,2026-07-01,0
+8393,Product Quality Controllers,ACT,2026-07-01,32
+8394,Timber and Wood Process Workers,ACT,2026-07-01,0
+8399,Other Factory Process Workers,ACT,2026-07-01,1
+8411,Aquaculture Workers,ACT,2026-07-01,0
+8412,Crop Farm Workers,ACT,2026-07-01,0
+8413,Forestry and Logging Workers,ACT,2026-07-01,0.33333
+8414,Garden and Nursery Labourers,ACT,2026-07-01,5.66667
+8415,Livestock Farm Workers,ACT,2026-07-01,0.66667
+8416,Mixed Crop and Livestock Farm Workers,ACT,2026-07-01,0
+8419,"Other Farm, Forestry and Garden Workers",ACT,2026-07-01,2
+8511,Fast Food Cooks,ACT,2026-07-01,0
+8512,Food Trades Assistants,ACT,2026-07-01,0
+8513,Kitchenhands,ACT,2026-07-01,11
+8911,Freight and Furniture Handlers,ACT,2026-07-01,1.66667
+8912,Shelf Fillers,ACT,2026-07-01,1.33333
+8991,Caretakers,ACT,2026-07-01,2.66667
+8992,Deck and Fishing Hands,ACT,2026-07-01,0.33333
+8993,Handypersons,ACT,2026-07-01,13.33333
+8994,Motor Vehicle Parts and Accessories Fitters,ACT,2026-07-01,1.66667
+8995,Printing Assistants and Table Workers,ACT,2026-07-01,0.33333
+8996,Recycling and Rubbish Collectors,ACT,2026-07-01,0
+8997,Vending Machine Attendants,ACT,2026-07-01,0
+8999,Other Miscellaneous Labourers,ACT,2026-07-01,47

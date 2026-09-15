@@ -1,0 +1,2110 @@
+﻿level,state,region,anzsco_code,anzsco_title,date,vacancies
+1,NSW,"Blue Mountains, Bathurst & Central West NSW",0,"Blue Mountains, Bathurst & Central West NSW TOTAL",2026-07-01,2247
+2,NSW,"Blue Mountains, Bathurst & Central West NSW",1,MANAGERS,2026-07-01,182.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",11,"Chief Executives, Managing Directors & Legislators",2026-07-01,5
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",12,Farmers and Farm Managers,2026-07-01,3.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",14,"Hospitality, Retail and Service Managers",2026-07-01,78.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",1A,Corporate Managers,2026-07-01,45.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",1B,"Construction, Production and Distribution Managers",2026-07-01,36
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",1C,"Health, Education, ICT and Other Managers",2026-07-01,14.333
+2,NSW,"Blue Mountains, Bathurst & Central West NSW",2,PROFESSIONALS,2026-07-01,780.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",21,Arts and Media Professionals,2026-07-01,9
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",24,Education Professionals,2026-07-01,32.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",26,ICT Professionals,2026-07-01,10.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",27,"Legal, Social and Welfare Professionals",2026-07-01,158
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",2A,"Business, Finance and Human Resource Professionals",2026-07-01,38.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",2B,Information Professionals,2026-07-01,11
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,8.667
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",2D,"Transport and Design Professionals, and Architects",2026-07-01,10.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",2E,Engineers,2026-07-01,42
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",2F,Science Professionals and Veterinarians,2026-07-01,14.667
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",2G,Health Diagnostic and Therapy Professionals,2026-07-01,65
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",2H,Medical Practitioners and Nurses,2026-07-01,380.667
+2,NSW,"Blue Mountains, Bathurst & Central West NSW",3,TECHNICIANS AND TRADES WORKERS,2026-07-01,318
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",31,"Engineering, ICT and Science Technicians",2026-07-01,37.667
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",32,Automotive and Engineering Trades Workers,2026-07-01,110.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",33,Construction Trades Workers,2026-07-01,22.667
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,52.667
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",35,Food Trades Workers,2026-07-01,56
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",36,Skilled Animal and Horticultural Workers,2026-07-01,11.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,7.667
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,19.667
+2,NSW,"Blue Mountains, Bathurst & Central West NSW",4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,261.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",41,Health and Welfare Support Workers,2026-07-01,32.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",42,Carers and Aides,2026-07-01,163.667
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",43,Hospitality Workers,2026-07-01,40.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",44,Protective Service Workers,2026-07-01,7.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",45,"Sports, Travel and Personal Service Workers",2026-07-01,17.667
+2,NSW,"Blue Mountains, Bathurst & Central West NSW",5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,204.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",55,Numerical Clerks,2026-07-01,26.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",56,Clerical and Office Support Workers,2026-07-01,11.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",59,Other Clerical and Administrative Workers,2026-07-01,35.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",5A,"Office Managers, Administrators and Secretaries",2026-07-01,29.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,102
+2,NSW,"Blue Mountains, Bathurst & Central West NSW",6,SALES WORKERS,2026-07-01,149.667
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",61,Sales Representatives and Agents,2026-07-01,23.667
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",62,Sales Assistants and Salespersons,2026-07-01,112.667
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",63,Sales Support Workers,2026-07-01,13.333
+2,NSW,"Blue Mountains, Bathurst & Central West NSW",7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,177.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",71,Machine and Stationary Plant Operators,2026-07-01,49
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",72,Mobile Plant Operators,2026-07-01,50.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",7A,Drivers and Storepersons,2026-07-01,78
+2,NSW,"Blue Mountains, Bathurst & Central West NSW",8,LABOURERS,2026-07-01,173.667
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",81,Cleaners and Laundry Workers,2026-07-01,51.667
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",82,Construction and Mining Labourers,2026-07-01,18.667
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",83,Factory Process Workers,2026-07-01,16
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",84,"Farm, Forestry and Garden Workers",2026-07-01,11
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",85,Food Preparation Assistants,2026-07-01,8.333
+3,NSW,"Blue Mountains, Bathurst & Central West NSW",89,Other Labourers,2026-07-01,68
+1,NSW,Dubbo & Western NSW,0,Dubbo & Western NSW TOTAL,2026-07-01,1344.667
+2,NSW,Dubbo & Western NSW,1,MANAGERS,2026-07-01,101
+3,NSW,Dubbo & Western NSW,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,2.667
+3,NSW,Dubbo & Western NSW,12,Farmers and Farm Managers,2026-07-01,4
+3,NSW,Dubbo & Western NSW,14,"Hospitality, Retail and Service Managers",2026-07-01,43.333
+3,NSW,Dubbo & Western NSW,1A,Corporate Managers,2026-07-01,21.667
+3,NSW,Dubbo & Western NSW,1B,"Construction, Production and Distribution Managers",2026-07-01,20.333
+3,NSW,Dubbo & Western NSW,1C,"Health, Education, ICT and Other Managers",2026-07-01,9
+2,NSW,Dubbo & Western NSW,2,PROFESSIONALS,2026-07-01,471.333
+3,NSW,Dubbo & Western NSW,21,Arts and Media Professionals,2026-07-01,6.667
+3,NSW,Dubbo & Western NSW,24,Education Professionals,2026-07-01,15.333
+3,NSW,Dubbo & Western NSW,26,ICT Professionals,2026-07-01,6
+3,NSW,Dubbo & Western NSW,27,"Legal, Social and Welfare Professionals",2026-07-01,97.667
+3,NSW,Dubbo & Western NSW,2A,"Business, Finance and Human Resource Professionals",2026-07-01,27
+3,NSW,Dubbo & Western NSW,2B,Information Professionals,2026-07-01,8
+3,NSW,Dubbo & Western NSW,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,3.333
+3,NSW,Dubbo & Western NSW,2D,"Transport and Design Professionals, and Architects",2026-07-01,8.667
+3,NSW,Dubbo & Western NSW,2E,Engineers,2026-07-01,44.333
+3,NSW,Dubbo & Western NSW,2F,Science Professionals and Veterinarians,2026-07-01,17.333
+3,NSW,Dubbo & Western NSW,2G,Health Diagnostic and Therapy Professionals,2026-07-01,41.333
+3,NSW,Dubbo & Western NSW,2H,Medical Practitioners and Nurses,2026-07-01,195.667
+2,NSW,Dubbo & Western NSW,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,192.667
+3,NSW,Dubbo & Western NSW,31,"Engineering, ICT and Science Technicians",2026-07-01,24.667
+3,NSW,Dubbo & Western NSW,32,Automotive and Engineering Trades Workers,2026-07-01,84
+3,NSW,Dubbo & Western NSW,33,Construction Trades Workers,2026-07-01,12.667
+3,NSW,Dubbo & Western NSW,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,34.333
+3,NSW,Dubbo & Western NSW,35,Food Trades Workers,2026-07-01,20
+3,NSW,Dubbo & Western NSW,36,Skilled Animal and Horticultural Workers,2026-07-01,6.667
+3,NSW,Dubbo & Western NSW,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,1
+3,NSW,Dubbo & Western NSW,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,9.333
+2,NSW,Dubbo & Western NSW,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,156.667
+3,NSW,Dubbo & Western NSW,41,Health and Welfare Support Workers,2026-07-01,24
+3,NSW,Dubbo & Western NSW,42,Carers and Aides,2026-07-01,100.667
+3,NSW,Dubbo & Western NSW,43,Hospitality Workers,2026-07-01,18.667
+3,NSW,Dubbo & Western NSW,44,Protective Service Workers,2026-07-01,5.667
+3,NSW,Dubbo & Western NSW,45,"Sports, Travel and Personal Service Workers",2026-07-01,7.667
+2,NSW,Dubbo & Western NSW,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,116.333
+3,NSW,Dubbo & Western NSW,55,Numerical Clerks,2026-07-01,13.333
+3,NSW,Dubbo & Western NSW,56,Clerical and Office Support Workers,2026-07-01,9.333
+3,NSW,Dubbo & Western NSW,59,Other Clerical and Administrative Workers,2026-07-01,24
+3,NSW,Dubbo & Western NSW,5A,"Office Managers, Administrators and Secretaries",2026-07-01,13.333
+3,NSW,Dubbo & Western NSW,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,56.333
+2,NSW,Dubbo & Western NSW,6,SALES WORKERS,2026-07-01,83
+3,NSW,Dubbo & Western NSW,61,Sales Representatives and Agents,2026-07-01,10
+3,NSW,Dubbo & Western NSW,62,Sales Assistants and Salespersons,2026-07-01,60.333
+3,NSW,Dubbo & Western NSW,63,Sales Support Workers,2026-07-01,12.667
+2,NSW,Dubbo & Western NSW,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,141.333
+3,NSW,Dubbo & Western NSW,71,Machine and Stationary Plant Operators,2026-07-01,56.667
+3,NSW,Dubbo & Western NSW,72,Mobile Plant Operators,2026-07-01,27.667
+3,NSW,Dubbo & Western NSW,7A,Drivers and Storepersons,2026-07-01,57
+2,NSW,Dubbo & Western NSW,8,LABOURERS,2026-07-01,82.333
+3,NSW,Dubbo & Western NSW,81,Cleaners and Laundry Workers,2026-07-01,19
+3,NSW,Dubbo & Western NSW,82,Construction and Mining Labourers,2026-07-01,10
+3,NSW,Dubbo & Western NSW,83,Factory Process Workers,2026-07-01,3
+3,NSW,Dubbo & Western NSW,84,"Farm, Forestry and Garden Workers",2026-07-01,11.333
+3,NSW,Dubbo & Western NSW,85,Food Preparation Assistants,2026-07-01,2.667
+3,NSW,Dubbo & Western NSW,89,Other Labourers,2026-07-01,36.333
+1,NSW,Gosford & Central Coast,0,Gosford & Central Coast TOTAL,2026-07-01,1474.333
+2,NSW,Gosford & Central Coast,1,MANAGERS,2026-07-01,134.667
+3,NSW,Gosford & Central Coast,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,3.333
+3,NSW,Gosford & Central Coast,12,Farmers and Farm Managers,2026-07-01,1.333
+3,NSW,Gosford & Central Coast,14,"Hospitality, Retail and Service Managers",2026-07-01,61
+3,NSW,Gosford & Central Coast,1A,Corporate Managers,2026-07-01,35.667
+3,NSW,Gosford & Central Coast,1B,"Construction, Production and Distribution Managers",2026-07-01,21.667
+3,NSW,Gosford & Central Coast,1C,"Health, Education, ICT and Other Managers",2026-07-01,11.667
+2,NSW,Gosford & Central Coast,2,PROFESSIONALS,2026-07-01,355
+3,NSW,Gosford & Central Coast,21,Arts and Media Professionals,2026-07-01,1
+3,NSW,Gosford & Central Coast,24,Education Professionals,2026-07-01,23
+3,NSW,Gosford & Central Coast,26,ICT Professionals,2026-07-01,14.667
+3,NSW,Gosford & Central Coast,27,"Legal, Social and Welfare Professionals",2026-07-01,69.333
+3,NSW,Gosford & Central Coast,2A,"Business, Finance and Human Resource Professionals",2026-07-01,36.333
+3,NSW,Gosford & Central Coast,2B,Information Professionals,2026-07-01,4.667
+3,NSW,Gosford & Central Coast,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,8.667
+3,NSW,Gosford & Central Coast,2D,"Transport and Design Professionals, and Architects",2026-07-01,4.667
+3,NSW,Gosford & Central Coast,2E,Engineers,2026-07-01,13
+3,NSW,Gosford & Central Coast,2F,Science Professionals and Veterinarians,2026-07-01,4.667
+3,NSW,Gosford & Central Coast,2G,Health Diagnostic and Therapy Professionals,2026-07-01,53.667
+3,NSW,Gosford & Central Coast,2H,Medical Practitioners and Nurses,2026-07-01,121.333
+2,NSW,Gosford & Central Coast,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,208.333
+3,NSW,Gosford & Central Coast,31,"Engineering, ICT and Science Technicians",2026-07-01,28
+3,NSW,Gosford & Central Coast,32,Automotive and Engineering Trades Workers,2026-07-01,53
+3,NSW,Gosford & Central Coast,33,Construction Trades Workers,2026-07-01,34.667
+3,NSW,Gosford & Central Coast,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,24.667
+3,NSW,Gosford & Central Coast,35,Food Trades Workers,2026-07-01,33.667
+3,NSW,Gosford & Central Coast,36,Skilled Animal and Horticultural Workers,2026-07-01,14.333
+3,NSW,Gosford & Central Coast,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,15
+3,NSW,Gosford & Central Coast,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,5
+2,NSW,Gosford & Central Coast,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,267
+3,NSW,Gosford & Central Coast,41,Health and Welfare Support Workers,2026-07-01,31.333
+3,NSW,Gosford & Central Coast,42,Carers and Aides,2026-07-01,166
+3,NSW,Gosford & Central Coast,43,Hospitality Workers,2026-07-01,45.333
+3,NSW,Gosford & Central Coast,44,Protective Service Workers,2026-07-01,5
+3,NSW,Gosford & Central Coast,45,"Sports, Travel and Personal Service Workers",2026-07-01,19.333
+2,NSW,Gosford & Central Coast,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,150.333
+3,NSW,Gosford & Central Coast,55,Numerical Clerks,2026-07-01,18.667
+3,NSW,Gosford & Central Coast,56,Clerical and Office Support Workers,2026-07-01,3.333
+3,NSW,Gosford & Central Coast,59,Other Clerical and Administrative Workers,2026-07-01,25.333
+3,NSW,Gosford & Central Coast,5A,"Office Managers, Administrators and Secretaries",2026-07-01,17.333
+3,NSW,Gosford & Central Coast,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,85.667
+2,NSW,Gosford & Central Coast,6,SALES WORKERS,2026-07-01,134.333
+3,NSW,Gosford & Central Coast,61,Sales Representatives and Agents,2026-07-01,28
+3,NSW,Gosford & Central Coast,62,Sales Assistants and Salespersons,2026-07-01,102.667
+3,NSW,Gosford & Central Coast,63,Sales Support Workers,2026-07-01,3.667
+2,NSW,Gosford & Central Coast,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,90.667
+3,NSW,Gosford & Central Coast,71,Machine and Stationary Plant Operators,2026-07-01,25.333
+3,NSW,Gosford & Central Coast,72,Mobile Plant Operators,2026-07-01,16.667
+3,NSW,Gosford & Central Coast,7A,Drivers and Storepersons,2026-07-01,48.667
+2,NSW,Gosford & Central Coast,8,LABOURERS,2026-07-01,134
+3,NSW,Gosford & Central Coast,81,Cleaners and Laundry Workers,2026-07-01,32.667
+3,NSW,Gosford & Central Coast,82,Construction and Mining Labourers,2026-07-01,10
+3,NSW,Gosford & Central Coast,83,Factory Process Workers,2026-07-01,18.333
+3,NSW,Gosford & Central Coast,84,"Farm, Forestry and Garden Workers",2026-07-01,9
+3,NSW,Gosford & Central Coast,85,Food Preparation Assistants,2026-07-01,10.667
+3,NSW,Gosford & Central Coast,89,Other Labourers,2026-07-01,53.333
+1,NSW,Illawarra & South Coast,0,Illawarra & South Coast TOTAL,2026-07-01,2208.333
+2,NSW,Illawarra & South Coast,1,MANAGERS,2026-07-01,172.667
+3,NSW,Illawarra & South Coast,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,5
+3,NSW,Illawarra & South Coast,12,Farmers and Farm Managers,2026-07-01,1.333
+3,NSW,Illawarra & South Coast,14,"Hospitality, Retail and Service Managers",2026-07-01,76
+3,NSW,Illawarra & South Coast,1A,Corporate Managers,2026-07-01,39.333
+3,NSW,Illawarra & South Coast,1B,"Construction, Production and Distribution Managers",2026-07-01,35.333
+3,NSW,Illawarra & South Coast,1C,"Health, Education, ICT and Other Managers",2026-07-01,15.667
+2,NSW,Illawarra & South Coast,2,PROFESSIONALS,2026-07-01,716.667
+3,NSW,Illawarra & South Coast,21,Arts and Media Professionals,2026-07-01,6
+3,NSW,Illawarra & South Coast,24,Education Professionals,2026-07-01,39.333
+3,NSW,Illawarra & South Coast,26,ICT Professionals,2026-07-01,16.667
+3,NSW,Illawarra & South Coast,27,"Legal, Social and Welfare Professionals",2026-07-01,195.667
+3,NSW,Illawarra & South Coast,2A,"Business, Finance and Human Resource Professionals",2026-07-01,41
+3,NSW,Illawarra & South Coast,2B,Information Professionals,2026-07-01,10.333
+3,NSW,Illawarra & South Coast,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,9.667
+3,NSW,Illawarra & South Coast,2D,"Transport and Design Professionals, and Architects",2026-07-01,9.667
+3,NSW,Illawarra & South Coast,2E,Engineers,2026-07-01,28
+3,NSW,Illawarra & South Coast,2F,Science Professionals and Veterinarians,2026-07-01,13.667
+3,NSW,Illawarra & South Coast,2G,Health Diagnostic and Therapy Professionals,2026-07-01,124.333
+3,NSW,Illawarra & South Coast,2H,Medical Practitioners and Nurses,2026-07-01,222.333
+2,NSW,Illawarra & South Coast,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,342
+3,NSW,Illawarra & South Coast,31,"Engineering, ICT and Science Technicians",2026-07-01,45
+3,NSW,Illawarra & South Coast,32,Automotive and Engineering Trades Workers,2026-07-01,102.667
+3,NSW,Illawarra & South Coast,33,Construction Trades Workers,2026-07-01,38.333
+3,NSW,Illawarra & South Coast,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,39.667
+3,NSW,Illawarra & South Coast,35,Food Trades Workers,2026-07-01,65
+3,NSW,Illawarra & South Coast,36,Skilled Animal and Horticultural Workers,2026-07-01,25.333
+3,NSW,Illawarra & South Coast,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,8
+3,NSW,Illawarra & South Coast,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,18
+2,NSW,Illawarra & South Coast,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,328.333
+3,NSW,Illawarra & South Coast,41,Health and Welfare Support Workers,2026-07-01,38
+3,NSW,Illawarra & South Coast,42,Carers and Aides,2026-07-01,210.333
+3,NSW,Illawarra & South Coast,43,Hospitality Workers,2026-07-01,45.333
+3,NSW,Illawarra & South Coast,44,Protective Service Workers,2026-07-01,7.333
+3,NSW,Illawarra & South Coast,45,"Sports, Travel and Personal Service Workers",2026-07-01,27.333
+2,NSW,Illawarra & South Coast,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,247.667
+3,NSW,Illawarra & South Coast,55,Numerical Clerks,2026-07-01,33.667
+3,NSW,Illawarra & South Coast,56,Clerical and Office Support Workers,2026-07-01,7
+3,NSW,Illawarra & South Coast,59,Other Clerical and Administrative Workers,2026-07-01,32.333
+3,NSW,Illawarra & South Coast,5A,"Office Managers, Administrators and Secretaries",2026-07-01,30.667
+3,NSW,Illawarra & South Coast,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,144
+2,NSW,Illawarra & South Coast,6,SALES WORKERS,2026-07-01,161.333
+3,NSW,Illawarra & South Coast,61,Sales Representatives and Agents,2026-07-01,39.667
+3,NSW,Illawarra & South Coast,62,Sales Assistants and Salespersons,2026-07-01,108
+3,NSW,Illawarra & South Coast,63,Sales Support Workers,2026-07-01,13.667
+2,NSW,Illawarra & South Coast,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,94
+3,NSW,Illawarra & South Coast,71,Machine and Stationary Plant Operators,2026-07-01,23.333
+3,NSW,Illawarra & South Coast,72,Mobile Plant Operators,2026-07-01,18
+3,NSW,Illawarra & South Coast,7A,Drivers and Storepersons,2026-07-01,52.667
+2,NSW,Illawarra & South Coast,8,LABOURERS,2026-07-01,145.667
+3,NSW,Illawarra & South Coast,81,Cleaners and Laundry Workers,2026-07-01,41
+3,NSW,Illawarra & South Coast,82,Construction and Mining Labourers,2026-07-01,19.333
+3,NSW,Illawarra & South Coast,83,Factory Process Workers,2026-07-01,9.667
+3,NSW,Illawarra & South Coast,84,"Farm, Forestry and Garden Workers",2026-07-01,5
+3,NSW,Illawarra & South Coast,85,Food Preparation Assistants,2026-07-01,9.667
+3,NSW,Illawarra & South Coast,89,Other Labourers,2026-07-01,61
+1,NSW,NSW North Coast,0,NSW North Coast TOTAL,2026-07-01,3565.667
+2,NSW,NSW North Coast,1,MANAGERS,2026-07-01,269.667
+3,NSW,NSW North Coast,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,11.667
+3,NSW,NSW North Coast,12,Farmers and Farm Managers,2026-07-01,3.667
+3,NSW,NSW North Coast,14,"Hospitality, Retail and Service Managers",2026-07-01,115
+3,NSW,NSW North Coast,1A,Corporate Managers,2026-07-01,69.333
+3,NSW,NSW North Coast,1B,"Construction, Production and Distribution Managers",2026-07-01,46
+3,NSW,NSW North Coast,1C,"Health, Education, ICT and Other Managers",2026-07-01,24
+2,NSW,NSW North Coast,2,PROFESSIONALS,2026-07-01,1472.667
+3,NSW,NSW North Coast,21,Arts and Media Professionals,2026-07-01,12
+3,NSW,NSW North Coast,24,Education Professionals,2026-07-01,59.667
+3,NSW,NSW North Coast,26,ICT Professionals,2026-07-01,8.667
+3,NSW,NSW North Coast,27,"Legal, Social and Welfare Professionals",2026-07-01,473.333
+3,NSW,NSW North Coast,2A,"Business, Finance and Human Resource Professionals",2026-07-01,61.333
+3,NSW,NSW North Coast,2B,Information Professionals,2026-07-01,8.333
+3,NSW,NSW North Coast,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,13.333
+3,NSW,NSW North Coast,2D,"Transport and Design Professionals, and Architects",2026-07-01,15
+3,NSW,NSW North Coast,2E,Engineers,2026-07-01,26.333
+3,NSW,NSW North Coast,2F,Science Professionals and Veterinarians,2026-07-01,10.333
+3,NSW,NSW North Coast,2G,Health Diagnostic and Therapy Professionals,2026-07-01,114
+3,NSW,NSW North Coast,2H,Medical Practitioners and Nurses,2026-07-01,670.333
+2,NSW,NSW North Coast,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,339.333
+3,NSW,NSW North Coast,31,"Engineering, ICT and Science Technicians",2026-07-01,47.667
+3,NSW,NSW North Coast,32,Automotive and Engineering Trades Workers,2026-07-01,81.333
+3,NSW,NSW North Coast,33,Construction Trades Workers,2026-07-01,38
+3,NSW,NSW North Coast,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,38.333
+3,NSW,NSW North Coast,35,Food Trades Workers,2026-07-01,83.333
+3,NSW,NSW North Coast,36,Skilled Animal and Horticultural Workers,2026-07-01,26.667
+3,NSW,NSW North Coast,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,9
+3,NSW,NSW North Coast,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,15
+2,NSW,NSW North Coast,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,477.333
+3,NSW,NSW North Coast,41,Health and Welfare Support Workers,2026-07-01,63
+3,NSW,NSW North Coast,42,Carers and Aides,2026-07-01,307
+3,NSW,NSW North Coast,43,Hospitality Workers,2026-07-01,58.667
+3,NSW,NSW North Coast,44,Protective Service Workers,2026-07-01,9
+3,NSW,NSW North Coast,45,"Sports, Travel and Personal Service Workers",2026-07-01,39.667
+2,NSW,NSW North Coast,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,350.333
+3,NSW,NSW North Coast,55,Numerical Clerks,2026-07-01,50.333
+3,NSW,NSW North Coast,56,Clerical and Office Support Workers,2026-07-01,19.667
+3,NSW,NSW North Coast,59,Other Clerical and Administrative Workers,2026-07-01,58.333
+3,NSW,NSW North Coast,5A,"Office Managers, Administrators and Secretaries",2026-07-01,36
+3,NSW,NSW North Coast,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,186
+2,NSW,NSW North Coast,6,SALES WORKERS,2026-07-01,258.333
+3,NSW,NSW North Coast,61,Sales Representatives and Agents,2026-07-01,46
+3,NSW,NSW North Coast,62,Sales Assistants and Salespersons,2026-07-01,193
+3,NSW,NSW North Coast,63,Sales Support Workers,2026-07-01,19.333
+2,NSW,NSW North Coast,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,157.333
+3,NSW,NSW North Coast,71,Machine and Stationary Plant Operators,2026-07-01,25.667
+3,NSW,NSW North Coast,72,Mobile Plant Operators,2026-07-01,34
+3,NSW,NSW North Coast,7A,Drivers and Storepersons,2026-07-01,97.667
+2,NSW,NSW North Coast,8,LABOURERS,2026-07-01,240.667
+3,NSW,NSW North Coast,81,Cleaners and Laundry Workers,2026-07-01,74
+3,NSW,NSW North Coast,82,Construction and Mining Labourers,2026-07-01,17.667
+3,NSW,NSW North Coast,83,Factory Process Workers,2026-07-01,23.333
+3,NSW,NSW North Coast,84,"Farm, Forestry and Garden Workers",2026-07-01,16
+3,NSW,NSW North Coast,85,Food Preparation Assistants,2026-07-01,17
+3,NSW,NSW North Coast,89,Other Labourers,2026-07-01,92.667
+1,NSW,Newcastle & Hunter,0,Newcastle & Hunter TOTAL,2026-07-01,4748
+2,NSW,Newcastle & Hunter,1,MANAGERS,2026-07-01,447.333
+3,NSW,Newcastle & Hunter,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,21
+3,NSW,Newcastle & Hunter,12,Farmers and Farm Managers,2026-07-01,3.333
+3,NSW,Newcastle & Hunter,14,"Hospitality, Retail and Service Managers",2026-07-01,157.333
+3,NSW,Newcastle & Hunter,1A,Corporate Managers,2026-07-01,112.667
+3,NSW,Newcastle & Hunter,1B,"Construction, Production and Distribution Managers",2026-07-01,110.333
+3,NSW,Newcastle & Hunter,1C,"Health, Education, ICT and Other Managers",2026-07-01,42.667
+2,NSW,Newcastle & Hunter,2,PROFESSIONALS,2026-07-01,1388.667
+3,NSW,Newcastle & Hunter,21,Arts and Media Professionals,2026-07-01,19
+3,NSW,Newcastle & Hunter,24,Education Professionals,2026-07-01,98.333
+3,NSW,Newcastle & Hunter,26,ICT Professionals,2026-07-01,48.667
+3,NSW,Newcastle & Hunter,27,"Legal, Social and Welfare Professionals",2026-07-01,224.333
+3,NSW,Newcastle & Hunter,2A,"Business, Finance and Human Resource Professionals",2026-07-01,134
+3,NSW,Newcastle & Hunter,2B,Information Professionals,2026-07-01,20.667
+3,NSW,Newcastle & Hunter,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,30.333
+3,NSW,Newcastle & Hunter,2D,"Transport and Design Professionals, and Architects",2026-07-01,24.333
+3,NSW,Newcastle & Hunter,2E,Engineers,2026-07-01,127
+3,NSW,Newcastle & Hunter,2F,Science Professionals and Veterinarians,2026-07-01,25.667
+3,NSW,Newcastle & Hunter,2G,Health Diagnostic and Therapy Professionals,2026-07-01,166.667
+3,NSW,Newcastle & Hunter,2H,Medical Practitioners and Nurses,2026-07-01,469.667
+2,NSW,Newcastle & Hunter,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,748
+3,NSW,Newcastle & Hunter,31,"Engineering, ICT and Science Technicians",2026-07-01,117.667
+3,NSW,Newcastle & Hunter,32,Automotive and Engineering Trades Workers,2026-07-01,253
+3,NSW,Newcastle & Hunter,33,Construction Trades Workers,2026-07-01,86.333
+3,NSW,Newcastle & Hunter,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,106
+3,NSW,Newcastle & Hunter,35,Food Trades Workers,2026-07-01,100
+3,NSW,Newcastle & Hunter,36,Skilled Animal and Horticultural Workers,2026-07-01,36.333
+3,NSW,Newcastle & Hunter,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,18.667
+3,NSW,Newcastle & Hunter,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,30
+2,NSW,Newcastle & Hunter,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,617.667
+3,NSW,Newcastle & Hunter,41,Health and Welfare Support Workers,2026-07-01,74.667
+3,NSW,Newcastle & Hunter,42,Carers and Aides,2026-07-01,364
+3,NSW,Newcastle & Hunter,43,Hospitality Workers,2026-07-01,99.333
+3,NSW,Newcastle & Hunter,44,Protective Service Workers,2026-07-01,27.333
+3,NSW,Newcastle & Hunter,45,"Sports, Travel and Personal Service Workers",2026-07-01,52.333
+2,NSW,Newcastle & Hunter,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,560.667
+3,NSW,Newcastle & Hunter,55,Numerical Clerks,2026-07-01,72.667
+3,NSW,Newcastle & Hunter,56,Clerical and Office Support Workers,2026-07-01,21.667
+3,NSW,Newcastle & Hunter,59,Other Clerical and Administrative Workers,2026-07-01,93
+3,NSW,Newcastle & Hunter,5A,"Office Managers, Administrators and Secretaries",2026-07-01,75.667
+3,NSW,Newcastle & Hunter,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,297.667
+2,NSW,Newcastle & Hunter,6,SALES WORKERS,2026-07-01,352.333
+3,NSW,Newcastle & Hunter,61,Sales Representatives and Agents,2026-07-01,94.667
+3,NSW,Newcastle & Hunter,62,Sales Assistants and Salespersons,2026-07-01,240.667
+3,NSW,Newcastle & Hunter,63,Sales Support Workers,2026-07-01,17
+2,NSW,Newcastle & Hunter,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,290.667
+3,NSW,Newcastle & Hunter,71,Machine and Stationary Plant Operators,2026-07-01,67.333
+3,NSW,Newcastle & Hunter,72,Mobile Plant Operators,2026-07-01,60.333
+3,NSW,Newcastle & Hunter,7A,Drivers and Storepersons,2026-07-01,163
+2,NSW,Newcastle & Hunter,8,LABOURERS,2026-07-01,342.667
+3,NSW,Newcastle & Hunter,81,Cleaners and Laundry Workers,2026-07-01,87
+3,NSW,Newcastle & Hunter,82,Construction and Mining Labourers,2026-07-01,51.667
+3,NSW,Newcastle & Hunter,83,Factory Process Workers,2026-07-01,29
+3,NSW,Newcastle & Hunter,84,"Farm, Forestry and Garden Workers",2026-07-01,16
+3,NSW,Newcastle & Hunter,85,Food Preparation Assistants,2026-07-01,16
+3,NSW,Newcastle & Hunter,89,Other Labourers,2026-07-01,143
+1,NSW,Riverina & Murray,0,Riverina & Murray TOTAL,2026-07-01,1974
+2,NSW,Riverina & Murray,1,MANAGERS,2026-07-01,191
+3,NSW,Riverina & Murray,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,6
+3,NSW,Riverina & Murray,12,Farmers and Farm Managers,2026-07-01,15.667
+3,NSW,Riverina & Murray,14,"Hospitality, Retail and Service Managers",2026-07-01,67.667
+3,NSW,Riverina & Murray,1A,Corporate Managers,2026-07-01,42.333
+3,NSW,Riverina & Murray,1B,"Construction, Production and Distribution Managers",2026-07-01,38.333
+3,NSW,Riverina & Murray,1C,"Health, Education, ICT and Other Managers",2026-07-01,21
+2,NSW,Riverina & Murray,2,PROFESSIONALS,2026-07-01,626.667
+3,NSW,Riverina & Murray,21,Arts and Media Professionals,2026-07-01,7.667
+3,NSW,Riverina & Murray,24,Education Professionals,2026-07-01,28.333
+3,NSW,Riverina & Murray,26,ICT Professionals,2026-07-01,10.667
+3,NSW,Riverina & Murray,27,"Legal, Social and Welfare Professionals",2026-07-01,127.333
+3,NSW,Riverina & Murray,2A,"Business, Finance and Human Resource Professionals",2026-07-01,56.333
+3,NSW,Riverina & Murray,2B,Information Professionals,2026-07-01,7.667
+3,NSW,Riverina & Murray,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,5.333
+3,NSW,Riverina & Murray,2D,"Transport and Design Professionals, and Architects",2026-07-01,10
+3,NSW,Riverina & Murray,2E,Engineers,2026-07-01,33
+3,NSW,Riverina & Murray,2F,Science Professionals and Veterinarians,2026-07-01,13.667
+3,NSW,Riverina & Murray,2G,Health Diagnostic and Therapy Professionals,2026-07-01,70
+3,NSW,Riverina & Murray,2H,Medical Practitioners and Nurses,2026-07-01,256.667
+2,NSW,Riverina & Murray,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,287.667
+3,NSW,Riverina & Murray,31,"Engineering, ICT and Science Technicians",2026-07-01,45.667
+3,NSW,Riverina & Murray,32,Automotive and Engineering Trades Workers,2026-07-01,111
+3,NSW,Riverina & Murray,33,Construction Trades Workers,2026-07-01,33
+3,NSW,Riverina & Murray,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,30.333
+3,NSW,Riverina & Murray,35,Food Trades Workers,2026-07-01,37.667
+3,NSW,Riverina & Murray,36,Skilled Animal and Horticultural Workers,2026-07-01,7.667
+3,NSW,Riverina & Murray,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,8.667
+3,NSW,Riverina & Murray,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,13.667
+2,NSW,Riverina & Murray,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,228
+3,NSW,Riverina & Murray,41,Health and Welfare Support Workers,2026-07-01,33
+3,NSW,Riverina & Murray,42,Carers and Aides,2026-07-01,145
+3,NSW,Riverina & Murray,43,Hospitality Workers,2026-07-01,30.333
+3,NSW,Riverina & Murray,44,Protective Service Workers,2026-07-01,3.667
+3,NSW,Riverina & Murray,45,"Sports, Travel and Personal Service Workers",2026-07-01,16
+2,NSW,Riverina & Murray,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,207
+3,NSW,Riverina & Murray,55,Numerical Clerks,2026-07-01,32.667
+3,NSW,Riverina & Murray,56,Clerical and Office Support Workers,2026-07-01,13.333
+3,NSW,Riverina & Murray,59,Other Clerical and Administrative Workers,2026-07-01,37.333
+3,NSW,Riverina & Murray,5A,"Office Managers, Administrators and Secretaries",2026-07-01,20.667
+3,NSW,Riverina & Murray,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,103
+2,NSW,Riverina & Murray,6,SALES WORKERS,2026-07-01,142
+3,NSW,Riverina & Murray,61,Sales Representatives and Agents,2026-07-01,26
+3,NSW,Riverina & Murray,62,Sales Assistants and Salespersons,2026-07-01,107.667
+3,NSW,Riverina & Murray,63,Sales Support Workers,2026-07-01,8.333
+2,NSW,Riverina & Murray,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,130.667
+3,NSW,Riverina & Murray,71,Machine and Stationary Plant Operators,2026-07-01,27.333
+3,NSW,Riverina & Murray,72,Mobile Plant Operators,2026-07-01,38.667
+3,NSW,Riverina & Murray,7A,Drivers and Storepersons,2026-07-01,64.667
+2,NSW,Riverina & Murray,8,LABOURERS,2026-07-01,161
+3,NSW,Riverina & Murray,81,Cleaners and Laundry Workers,2026-07-01,31.333
+3,NSW,Riverina & Murray,82,Construction and Mining Labourers,2026-07-01,9.667
+3,NSW,Riverina & Murray,83,Factory Process Workers,2026-07-01,17.667
+3,NSW,Riverina & Murray,84,"Farm, Forestry and Garden Workers",2026-07-01,31.333
+3,NSW,Riverina & Murray,85,Food Preparation Assistants,2026-07-01,11
+3,NSW,Riverina & Murray,89,Other Labourers,2026-07-01,60
+1,NSW,Southern Highlands & Snowy,0,Southern Highlands & Snowy TOTAL,2026-07-01,1185
+2,NSW,Southern Highlands & Snowy,1,MANAGERS,2026-07-01,88.667
+3,NSW,Southern Highlands & Snowy,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,2.667
+3,NSW,Southern Highlands & Snowy,12,Farmers and Farm Managers,2026-07-01,4.667
+3,NSW,Southern Highlands & Snowy,14,"Hospitality, Retail and Service Managers",2026-07-01,36.333
+3,NSW,Southern Highlands & Snowy,1A,Corporate Managers,2026-07-01,21
+3,NSW,Southern Highlands & Snowy,1B,"Construction, Production and Distribution Managers",2026-07-01,16.667
+3,NSW,Southern Highlands & Snowy,1C,"Health, Education, ICT and Other Managers",2026-07-01,7.333
+2,NSW,Southern Highlands & Snowy,2,PROFESSIONALS,2026-07-01,414.333
+3,NSW,Southern Highlands & Snowy,21,Arts and Media Professionals,2026-07-01,2.333
+3,NSW,Southern Highlands & Snowy,24,Education Professionals,2026-07-01,15.667
+3,NSW,Southern Highlands & Snowy,26,ICT Professionals,2026-07-01,3.333
+3,NSW,Southern Highlands & Snowy,27,"Legal, Social and Welfare Professionals",2026-07-01,112.667
+3,NSW,Southern Highlands & Snowy,2A,"Business, Finance and Human Resource Professionals",2026-07-01,20.333
+3,NSW,Southern Highlands & Snowy,2B,Information Professionals,2026-07-01,3.333
+3,NSW,Southern Highlands & Snowy,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,7.333
+3,NSW,Southern Highlands & Snowy,2D,"Transport and Design Professionals, and Architects",2026-07-01,7
+3,NSW,Southern Highlands & Snowy,2E,Engineers,2026-07-01,16.667
+3,NSW,Southern Highlands & Snowy,2F,Science Professionals and Veterinarians,2026-07-01,8.333
+3,NSW,Southern Highlands & Snowy,2G,Health Diagnostic and Therapy Professionals,2026-07-01,30.667
+3,NSW,Southern Highlands & Snowy,2H,Medical Practitioners and Nurses,2026-07-01,186.667
+2,NSW,Southern Highlands & Snowy,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,175.333
+3,NSW,Southern Highlands & Snowy,31,"Engineering, ICT and Science Technicians",2026-07-01,23
+3,NSW,Southern Highlands & Snowy,32,Automotive and Engineering Trades Workers,2026-07-01,54.667
+3,NSW,Southern Highlands & Snowy,33,Construction Trades Workers,2026-07-01,14.667
+3,NSW,Southern Highlands & Snowy,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,22.667
+3,NSW,Southern Highlands & Snowy,35,Food Trades Workers,2026-07-01,34.333
+3,NSW,Southern Highlands & Snowy,36,Skilled Animal and Horticultural Workers,2026-07-01,12
+3,NSW,Southern Highlands & Snowy,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,4.333
+3,NSW,Southern Highlands & Snowy,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,9.667
+2,NSW,Southern Highlands & Snowy,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,144.667
+3,NSW,Southern Highlands & Snowy,41,Health and Welfare Support Workers,2026-07-01,13.667
+3,NSW,Southern Highlands & Snowy,42,Carers and Aides,2026-07-01,95
+3,NSW,Southern Highlands & Snowy,43,Hospitality Workers,2026-07-01,17.667
+3,NSW,Southern Highlands & Snowy,44,Protective Service Workers,2026-07-01,4
+3,NSW,Southern Highlands & Snowy,45,"Sports, Travel and Personal Service Workers",2026-07-01,14.333
+2,NSW,Southern Highlands & Snowy,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,106
+3,NSW,Southern Highlands & Snowy,55,Numerical Clerks,2026-07-01,14
+3,NSW,Southern Highlands & Snowy,56,Clerical and Office Support Workers,2026-07-01,6.333
+3,NSW,Southern Highlands & Snowy,59,Other Clerical and Administrative Workers,2026-07-01,14.333
+3,NSW,Southern Highlands & Snowy,5A,"Office Managers, Administrators and Secretaries",2026-07-01,17.333
+3,NSW,Southern Highlands & Snowy,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,54
+2,NSW,Southern Highlands & Snowy,6,SALES WORKERS,2026-07-01,75
+3,NSW,Southern Highlands & Snowy,61,Sales Representatives and Agents,2026-07-01,11.333
+3,NSW,Southern Highlands & Snowy,62,Sales Assistants and Salespersons,2026-07-01,57
+3,NSW,Southern Highlands & Snowy,63,Sales Support Workers,2026-07-01,6.667
+2,NSW,Southern Highlands & Snowy,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,84.333
+3,NSW,Southern Highlands & Snowy,71,Machine and Stationary Plant Operators,2026-07-01,18.333
+3,NSW,Southern Highlands & Snowy,72,Mobile Plant Operators,2026-07-01,18.333
+3,NSW,Southern Highlands & Snowy,7A,Drivers and Storepersons,2026-07-01,47.667
+2,NSW,Southern Highlands & Snowy,8,LABOURERS,2026-07-01,96.667
+3,NSW,Southern Highlands & Snowy,81,Cleaners and Laundry Workers,2026-07-01,19.667
+3,NSW,Southern Highlands & Snowy,82,Construction and Mining Labourers,2026-07-01,8
+3,NSW,Southern Highlands & Snowy,83,Factory Process Workers,2026-07-01,10.333
+3,NSW,Southern Highlands & Snowy,84,"Farm, Forestry and Garden Workers",2026-07-01,9.333
+3,NSW,Southern Highlands & Snowy,85,Food Preparation Assistants,2026-07-01,4
+3,NSW,Southern Highlands & Snowy,89,Other Labourers,2026-07-01,45.333
+1,NSW,Sydney,0,Sydney TOTAL,2026-07-01,40218
+2,NSW,Sydney,1,MANAGERS,2026-07-01,6359
+3,NSW,Sydney,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,261.333
+3,NSW,Sydney,12,Farmers and Farm Managers,2026-07-01,4.667
+3,NSW,Sydney,14,"Hospitality, Retail and Service Managers",2026-07-01,1611
+3,NSW,Sydney,1A,Corporate Managers,2026-07-01,2558
+3,NSW,Sydney,1B,"Construction, Production and Distribution Managers",2026-07-01,1417.667
+3,NSW,Sydney,1C,"Health, Education, ICT and Other Managers",2026-07-01,506.333
+2,NSW,Sydney,2,PROFESSIONALS,2026-07-01,11913.333
+3,NSW,Sydney,21,Arts and Media Professionals,2026-07-01,302.333
+3,NSW,Sydney,24,Education Professionals,2026-07-01,473.667
+3,NSW,Sydney,26,ICT Professionals,2026-07-01,1975
+3,NSW,Sydney,27,"Legal, Social and Welfare Professionals",2026-07-01,1444.667
+3,NSW,Sydney,2A,"Business, Finance and Human Resource Professionals",2026-07-01,2077.667
+3,NSW,Sydney,2B,Information Professionals,2026-07-01,556
+3,NSW,Sydney,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,874.667
+3,NSW,Sydney,2D,"Transport and Design Professionals, and Architects",2026-07-01,536
+3,NSW,Sydney,2E,Engineers,2026-07-01,866.667
+3,NSW,Sydney,2F,Science Professionals and Veterinarians,2026-07-01,160.333
+3,NSW,Sydney,2G,Health Diagnostic and Therapy Professionals,2026-07-01,1107.333
+3,NSW,Sydney,2H,Medical Practitioners and Nurses,2026-07-01,1539
+2,NSW,Sydney,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,4708.667
+3,NSW,Sydney,31,"Engineering, ICT and Science Technicians",2026-07-01,1015
+3,NSW,Sydney,32,Automotive and Engineering Trades Workers,2026-07-01,1011.667
+3,NSW,Sydney,33,Construction Trades Workers,2026-07-01,503.333
+3,NSW,Sydney,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,661.667
+3,NSW,Sydney,35,Food Trades Workers,2026-07-01,790.667
+3,NSW,Sydney,36,Skilled Animal and Horticultural Workers,2026-07-01,248
+3,NSW,Sydney,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,192.667
+3,NSW,Sydney,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,285.667
+2,NSW,Sydney,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,3354.333
+3,NSW,Sydney,41,Health and Welfare Support Workers,2026-07-01,265.667
+3,NSW,Sydney,42,Carers and Aides,2026-07-01,1693.333
+3,NSW,Sydney,43,Hospitality Workers,2026-07-01,771.667
+3,NSW,Sydney,44,Protective Service Workers,2026-07-01,205
+3,NSW,Sydney,45,"Sports, Travel and Personal Service Workers",2026-07-01,418.667
+2,NSW,Sydney,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,6810.333
+3,NSW,Sydney,55,Numerical Clerks,2026-07-01,1546
+3,NSW,Sydney,56,Clerical and Office Support Workers,2026-07-01,131.667
+3,NSW,Sydney,59,Other Clerical and Administrative Workers,2026-07-01,1584.667
+3,NSW,Sydney,5A,"Office Managers, Administrators and Secretaries",2026-07-01,1103.667
+3,NSW,Sydney,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,2444.333
+2,NSW,Sydney,6,SALES WORKERS,2026-07-01,3237.667
+3,NSW,Sydney,61,Sales Representatives and Agents,2026-07-01,1241.667
+3,NSW,Sydney,62,Sales Assistants and Salespersons,2026-07-01,1767
+3,NSW,Sydney,63,Sales Support Workers,2026-07-01,229
+2,NSW,Sydney,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,1887.667
+3,NSW,Sydney,71,Machine and Stationary Plant Operators,2026-07-01,334.667
+3,NSW,Sydney,72,Mobile Plant Operators,2026-07-01,603
+3,NSW,Sydney,7A,Drivers and Storepersons,2026-07-01,950
+2,NSW,Sydney,8,LABOURERS,2026-07-01,1947
+3,NSW,Sydney,81,Cleaners and Laundry Workers,2026-07-01,411.333
+3,NSW,Sydney,82,Construction and Mining Labourers,2026-07-01,182
+3,NSW,Sydney,83,Factory Process Workers,2026-07-01,373
+3,NSW,Sydney,84,"Farm, Forestry and Garden Workers",2026-07-01,68.333
+3,NSW,Sydney,85,Food Preparation Assistants,2026-07-01,130
+3,NSW,Sydney,89,Other Labourers,2026-07-01,782.333
+1,NSW,Tamworth and North West NSW,0,Tamworth and North West NSW TOTAL,2026-07-01,1581
+2,NSW,Tamworth and North West NSW,1,MANAGERS,2026-07-01,100.333
+3,NSW,Tamworth and North West NSW,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,4.667
+3,NSW,Tamworth and North West NSW,12,Farmers and Farm Managers,2026-07-01,7.667
+3,NSW,Tamworth and North West NSW,14,"Hospitality, Retail and Service Managers",2026-07-01,44.667
+3,NSW,Tamworth and North West NSW,1A,Corporate Managers,2026-07-01,22
+3,NSW,Tamworth and North West NSW,1B,"Construction, Production and Distribution Managers",2026-07-01,14.667
+3,NSW,Tamworth and North West NSW,1C,"Health, Education, ICT and Other Managers",2026-07-01,6.667
+2,NSW,Tamworth and North West NSW,2,PROFESSIONALS,2026-07-01,851
+3,NSW,Tamworth and North West NSW,21,Arts and Media Professionals,2026-07-01,3.333
+3,NSW,Tamworth and North West NSW,24,Education Professionals,2026-07-01,26.333
+3,NSW,Tamworth and North West NSW,26,ICT Professionals,2026-07-01,5
+3,NSW,Tamworth and North West NSW,27,"Legal, Social and Welfare Professionals",2026-07-01,237
+3,NSW,Tamworth and North West NSW,2A,"Business, Finance and Human Resource Professionals",2026-07-01,23.333
+3,NSW,Tamworth and North West NSW,2B,Information Professionals,2026-07-01,4.667
+3,NSW,Tamworth and North West NSW,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,2.333
+3,NSW,Tamworth and North West NSW,2D,"Transport and Design Professionals, and Architects",2026-07-01,6
+3,NSW,Tamworth and North West NSW,2E,Engineers,2026-07-01,14.667
+3,NSW,Tamworth and North West NSW,2F,Science Professionals and Veterinarians,2026-07-01,4.667
+3,NSW,Tamworth and North West NSW,2G,Health Diagnostic and Therapy Professionals,2026-07-01,31.333
+3,NSW,Tamworth and North West NSW,2H,Medical Practitioners and Nurses,2026-07-01,492.333
+2,NSW,Tamworth and North West NSW,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,167.667
+3,NSW,Tamworth and North West NSW,31,"Engineering, ICT and Science Technicians",2026-07-01,23.333
+3,NSW,Tamworth and North West NSW,32,Automotive and Engineering Trades Workers,2026-07-01,65
+3,NSW,Tamworth and North West NSW,33,Construction Trades Workers,2026-07-01,12.667
+3,NSW,Tamworth and North West NSW,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,24
+3,NSW,Tamworth and North West NSW,35,Food Trades Workers,2026-07-01,25
+3,NSW,Tamworth and North West NSW,36,Skilled Animal and Horticultural Workers,2026-07-01,4.333
+3,NSW,Tamworth and North West NSW,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,3.333
+3,NSW,Tamworth and North West NSW,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,10
+2,NSW,Tamworth and North West NSW,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,120
+3,NSW,Tamworth and North West NSW,41,Health and Welfare Support Workers,2026-07-01,15.667
+3,NSW,Tamworth and North West NSW,42,Carers and Aides,2026-07-01,78
+3,NSW,Tamworth and North West NSW,43,Hospitality Workers,2026-07-01,14.333
+3,NSW,Tamworth and North West NSW,44,Protective Service Workers,2026-07-01,3
+3,NSW,Tamworth and North West NSW,45,"Sports, Travel and Personal Service Workers",2026-07-01,9
+2,NSW,Tamworth and North West NSW,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,101.667
+3,NSW,Tamworth and North West NSW,55,Numerical Clerks,2026-07-01,14.667
+3,NSW,Tamworth and North West NSW,56,Clerical and Office Support Workers,2026-07-01,7.333
+3,NSW,Tamworth and North West NSW,59,Other Clerical and Administrative Workers,2026-07-01,14.667
+3,NSW,Tamworth and North West NSW,5A,"Office Managers, Administrators and Secretaries",2026-07-01,11.333
+3,NSW,Tamworth and North West NSW,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,53.667
+2,NSW,Tamworth and North West NSW,6,SALES WORKERS,2026-07-01,78
+3,NSW,Tamworth and North West NSW,61,Sales Representatives and Agents,2026-07-01,12
+3,NSW,Tamworth and North West NSW,62,Sales Assistants and Salespersons,2026-07-01,56.333
+3,NSW,Tamworth and North West NSW,63,Sales Support Workers,2026-07-01,9.667
+2,NSW,Tamworth and North West NSW,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,68.667
+3,NSW,Tamworth and North West NSW,71,Machine and Stationary Plant Operators,2026-07-01,16
+3,NSW,Tamworth and North West NSW,72,Mobile Plant Operators,2026-07-01,11.667
+3,NSW,Tamworth and North West NSW,7A,Drivers and Storepersons,2026-07-01,41
+2,NSW,Tamworth and North West NSW,8,LABOURERS,2026-07-01,93.667
+3,NSW,Tamworth and North West NSW,81,Cleaners and Laundry Workers,2026-07-01,19.333
+3,NSW,Tamworth and North West NSW,82,Construction and Mining Labourers,2026-07-01,6
+3,NSW,Tamworth and North West NSW,83,Factory Process Workers,2026-07-01,10
+3,NSW,Tamworth and North West NSW,84,"Farm, Forestry and Garden Workers",2026-07-01,15
+3,NSW,Tamworth and North West NSW,85,Food Preparation Assistants,2026-07-01,4
+3,NSW,Tamworth and North West NSW,89,Other Labourers,2026-07-01,39.333
+1,VIC,Ballarat & Central Highlands,0,Ballarat & Central Highlands TOTAL,2026-07-01,868.667
+2,VIC,Ballarat & Central Highlands,1,MANAGERS,2026-07-01,77.667
+3,VIC,Ballarat & Central Highlands,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,3
+3,VIC,Ballarat & Central Highlands,12,Farmers and Farm Managers,2026-07-01,1
+3,VIC,Ballarat & Central Highlands,14,"Hospitality, Retail and Service Managers",2026-07-01,29
+3,VIC,Ballarat & Central Highlands,1A,Corporate Managers,2026-07-01,21.333
+3,VIC,Ballarat & Central Highlands,1B,"Construction, Production and Distribution Managers",2026-07-01,12.667
+3,VIC,Ballarat & Central Highlands,1C,"Health, Education, ICT and Other Managers",2026-07-01,10.667
+2,VIC,Ballarat & Central Highlands,2,PROFESSIONALS,2026-07-01,262.333
+3,VIC,Ballarat & Central Highlands,21,Arts and Media Professionals,2026-07-01,6.333
+3,VIC,Ballarat & Central Highlands,24,Education Professionals,2026-07-01,16
+3,VIC,Ballarat & Central Highlands,26,ICT Professionals,2026-07-01,8.333
+3,VIC,Ballarat & Central Highlands,27,"Legal, Social and Welfare Professionals",2026-07-01,56.333
+3,VIC,Ballarat & Central Highlands,2A,"Business, Finance and Human Resource Professionals",2026-07-01,28.333
+3,VIC,Ballarat & Central Highlands,2B,Information Professionals,2026-07-01,7.333
+3,VIC,Ballarat & Central Highlands,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,4.333
+3,VIC,Ballarat & Central Highlands,2D,"Transport and Design Professionals, and Architects",2026-07-01,4
+3,VIC,Ballarat & Central Highlands,2E,Engineers,2026-07-01,10.333
+3,VIC,Ballarat & Central Highlands,2F,Science Professionals and Veterinarians,2026-07-01,2.333
+3,VIC,Ballarat & Central Highlands,2G,Health Diagnostic and Therapy Professionals,2026-07-01,52.333
+3,VIC,Ballarat & Central Highlands,2H,Medical Practitioners and Nurses,2026-07-01,66.333
+2,VIC,Ballarat & Central Highlands,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,116.333
+3,VIC,Ballarat & Central Highlands,31,"Engineering, ICT and Science Technicians",2026-07-01,21
+3,VIC,Ballarat & Central Highlands,32,Automotive and Engineering Trades Workers,2026-07-01,32
+3,VIC,Ballarat & Central Highlands,33,Construction Trades Workers,2026-07-01,14.667
+3,VIC,Ballarat & Central Highlands,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,12
+3,VIC,Ballarat & Central Highlands,35,Food Trades Workers,2026-07-01,24
+3,VIC,Ballarat & Central Highlands,36,Skilled Animal and Horticultural Workers,2026-07-01,7.333
+3,VIC,Ballarat & Central Highlands,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,3
+3,VIC,Ballarat & Central Highlands,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,2.333
+2,VIC,Ballarat & Central Highlands,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,110
+3,VIC,Ballarat & Central Highlands,41,Health and Welfare Support Workers,2026-07-01,20
+3,VIC,Ballarat & Central Highlands,42,Carers and Aides,2026-07-01,65.333
+3,VIC,Ballarat & Central Highlands,43,Hospitality Workers,2026-07-01,16.333
+3,VIC,Ballarat & Central Highlands,44,Protective Service Workers,2026-07-01,2
+3,VIC,Ballarat & Central Highlands,45,"Sports, Travel and Personal Service Workers",2026-07-01,6.333
+2,VIC,Ballarat & Central Highlands,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,131.667
+3,VIC,Ballarat & Central Highlands,55,Numerical Clerks,2026-07-01,18.333
+3,VIC,Ballarat & Central Highlands,56,Clerical and Office Support Workers,2026-07-01,2.667
+3,VIC,Ballarat & Central Highlands,59,Other Clerical and Administrative Workers,2026-07-01,19.333
+3,VIC,Ballarat & Central Highlands,5A,"Office Managers, Administrators and Secretaries",2026-07-01,15.333
+3,VIC,Ballarat & Central Highlands,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,76
+2,VIC,Ballarat & Central Highlands,6,SALES WORKERS,2026-07-01,79.667
+3,VIC,Ballarat & Central Highlands,61,Sales Representatives and Agents,2026-07-01,15.333
+3,VIC,Ballarat & Central Highlands,62,Sales Assistants and Salespersons,2026-07-01,59
+3,VIC,Ballarat & Central Highlands,63,Sales Support Workers,2026-07-01,5.333
+2,VIC,Ballarat & Central Highlands,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,35.333
+3,VIC,Ballarat & Central Highlands,71,Machine and Stationary Plant Operators,2026-07-01,7
+3,VIC,Ballarat & Central Highlands,72,Mobile Plant Operators,2026-07-01,8.667
+3,VIC,Ballarat & Central Highlands,7A,Drivers and Storepersons,2026-07-01,19.667
+2,VIC,Ballarat & Central Highlands,8,LABOURERS,2026-07-01,55.667
+3,VIC,Ballarat & Central Highlands,81,Cleaners and Laundry Workers,2026-07-01,10
+3,VIC,Ballarat & Central Highlands,82,Construction and Mining Labourers,2026-07-01,7.333
+3,VIC,Ballarat & Central Highlands,83,Factory Process Workers,2026-07-01,5.333
+3,VIC,Ballarat & Central Highlands,84,"Farm, Forestry and Garden Workers",2026-07-01,6.667
+3,VIC,Ballarat & Central Highlands,85,Food Preparation Assistants,2026-07-01,2
+3,VIC,Ballarat & Central Highlands,89,Other Labourers,2026-07-01,24.333
+1,VIC,Bendigo & High Country,0,Bendigo & High Country TOTAL,2026-07-01,3574
+2,VIC,Bendigo & High Country,1,MANAGERS,2026-07-01,319.333
+3,VIC,Bendigo & High Country,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,11
+3,VIC,Bendigo & High Country,12,Farmers and Farm Managers,2026-07-01,15
+3,VIC,Bendigo & High Country,14,"Hospitality, Retail and Service Managers",2026-07-01,112.667
+3,VIC,Bendigo & High Country,1A,Corporate Managers,2026-07-01,79.333
+3,VIC,Bendigo & High Country,1B,"Construction, Production and Distribution Managers",2026-07-01,52.667
+3,VIC,Bendigo & High Country,1C,"Health, Education, ICT and Other Managers",2026-07-01,48.667
+2,VIC,Bendigo & High Country,2,PROFESSIONALS,2026-07-01,1067.667
+3,VIC,Bendigo & High Country,21,Arts and Media Professionals,2026-07-01,16.333
+3,VIC,Bendigo & High Country,24,Education Professionals,2026-07-01,74.667
+3,VIC,Bendigo & High Country,26,ICT Professionals,2026-07-01,17.667
+3,VIC,Bendigo & High Country,27,"Legal, Social and Welfare Professionals",2026-07-01,227
+3,VIC,Bendigo & High Country,2A,"Business, Finance and Human Resource Professionals",2026-07-01,67.667
+3,VIC,Bendigo & High Country,2B,Information Professionals,2026-07-01,16.667
+3,VIC,Bendigo & High Country,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,15.333
+3,VIC,Bendigo & High Country,2D,"Transport and Design Professionals, and Architects",2026-07-01,16
+3,VIC,Bendigo & High Country,2E,Engineers,2026-07-01,40
+3,VIC,Bendigo & High Country,2F,Science Professionals and Veterinarians,2026-07-01,26.333
+3,VIC,Bendigo & High Country,2G,Health Diagnostic and Therapy Professionals,2026-07-01,178
+3,VIC,Bendigo & High Country,2H,Medical Practitioners and Nurses,2026-07-01,372
+2,VIC,Bendigo & High Country,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,495.333
+3,VIC,Bendigo & High Country,31,"Engineering, ICT and Science Technicians",2026-07-01,66.333
+3,VIC,Bendigo & High Country,32,Automotive and Engineering Trades Workers,2026-07-01,159.667
+3,VIC,Bendigo & High Country,33,Construction Trades Workers,2026-07-01,54.333
+3,VIC,Bendigo & High Country,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,45.667
+3,VIC,Bendigo & High Country,35,Food Trades Workers,2026-07-01,110.667
+3,VIC,Bendigo & High Country,36,Skilled Animal and Horticultural Workers,2026-07-01,27.667
+3,VIC,Bendigo & High Country,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,12.333
+3,VIC,Bendigo & High Country,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,18.667
+2,VIC,Bendigo & High Country,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,552.333
+3,VIC,Bendigo & High Country,41,Health and Welfare Support Workers,2026-07-01,113.333
+3,VIC,Bendigo & High Country,42,Carers and Aides,2026-07-01,348.333
+3,VIC,Bendigo & High Country,43,Hospitality Workers,2026-07-01,42.333
+3,VIC,Bendigo & High Country,44,Protective Service Workers,2026-07-01,14.667
+3,VIC,Bendigo & High Country,45,"Sports, Travel and Personal Service Workers",2026-07-01,33.667
+2,VIC,Bendigo & High Country,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,432.667
+3,VIC,Bendigo & High Country,55,Numerical Clerks,2026-07-01,52.667
+3,VIC,Bendigo & High Country,56,Clerical and Office Support Workers,2026-07-01,9
+3,VIC,Bendigo & High Country,59,Other Clerical and Administrative Workers,2026-07-01,84.333
+3,VIC,Bendigo & High Country,5A,"Office Managers, Administrators and Secretaries",2026-07-01,40.333
+3,VIC,Bendigo & High Country,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,246.333
+2,VIC,Bendigo & High Country,6,SALES WORKERS,2026-07-01,240
+3,VIC,Bendigo & High Country,61,Sales Representatives and Agents,2026-07-01,45
+3,VIC,Bendigo & High Country,62,Sales Assistants and Salespersons,2026-07-01,179
+3,VIC,Bendigo & High Country,63,Sales Support Workers,2026-07-01,16
+2,VIC,Bendigo & High Country,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,174.667
+3,VIC,Bendigo & High Country,71,Machine and Stationary Plant Operators,2026-07-01,41.333
+3,VIC,Bendigo & High Country,72,Mobile Plant Operators,2026-07-01,40.333
+3,VIC,Bendigo & High Country,7A,Drivers and Storepersons,2026-07-01,93
+2,VIC,Bendigo & High Country,8,LABOURERS,2026-07-01,292
+3,VIC,Bendigo & High Country,81,Cleaners and Laundry Workers,2026-07-01,74
+3,VIC,Bendigo & High Country,82,Construction and Mining Labourers,2026-07-01,18
+3,VIC,Bendigo & High Country,83,Factory Process Workers,2026-07-01,34
+3,VIC,Bendigo & High Country,84,"Farm, Forestry and Garden Workers",2026-07-01,49.667
+3,VIC,Bendigo & High Country,85,Food Preparation Assistants,2026-07-01,24.667
+3,VIC,Bendigo & High Country,89,Other Labourers,2026-07-01,91.667
+1,VIC,Geelong & Surf Coast,0,Geelong & Surf Coast TOTAL,2026-07-01,2102
+2,VIC,Geelong & Surf Coast,1,MANAGERS,2026-07-01,207.667
+3,VIC,Geelong & Surf Coast,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,11.667
+3,VIC,Geelong & Surf Coast,12,Farmers and Farm Managers,2026-07-01,4
+3,VIC,Geelong & Surf Coast,14,"Hospitality, Retail and Service Managers",2026-07-01,77.333
+3,VIC,Geelong & Surf Coast,1A,Corporate Managers,2026-07-01,46.667
+3,VIC,Geelong & Surf Coast,1B,"Construction, Production and Distribution Managers",2026-07-01,45
+3,VIC,Geelong & Surf Coast,1C,"Health, Education, ICT and Other Managers",2026-07-01,23
+2,VIC,Geelong & Surf Coast,2,PROFESSIONALS,2026-07-01,522.333
+3,VIC,Geelong & Surf Coast,21,Arts and Media Professionals,2026-07-01,8
+3,VIC,Geelong & Surf Coast,24,Education Professionals,2026-07-01,26.667
+3,VIC,Geelong & Surf Coast,26,ICT Professionals,2026-07-01,33
+3,VIC,Geelong & Surf Coast,27,"Legal, Social and Welfare Professionals",2026-07-01,100.333
+3,VIC,Geelong & Surf Coast,2A,"Business, Finance and Human Resource Professionals",2026-07-01,50
+3,VIC,Geelong & Surf Coast,2B,Information Professionals,2026-07-01,16
+3,VIC,Geelong & Surf Coast,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,13.333
+3,VIC,Geelong & Surf Coast,2D,"Transport and Design Professionals, and Architects",2026-07-01,14
+3,VIC,Geelong & Surf Coast,2E,Engineers,2026-07-01,23
+3,VIC,Geelong & Surf Coast,2F,Science Professionals and Veterinarians,2026-07-01,11.333
+3,VIC,Geelong & Surf Coast,2G,Health Diagnostic and Therapy Professionals,2026-07-01,77
+3,VIC,Geelong & Surf Coast,2H,Medical Practitioners and Nurses,2026-07-01,149.667
+2,VIC,Geelong & Surf Coast,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,277
+3,VIC,Geelong & Surf Coast,31,"Engineering, ICT and Science Technicians",2026-07-01,38.333
+3,VIC,Geelong & Surf Coast,32,Automotive and Engineering Trades Workers,2026-07-01,66.333
+3,VIC,Geelong & Surf Coast,33,Construction Trades Workers,2026-07-01,39.667
+3,VIC,Geelong & Surf Coast,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,34
+3,VIC,Geelong & Surf Coast,35,Food Trades Workers,2026-07-01,58.333
+3,VIC,Geelong & Surf Coast,36,Skilled Animal and Horticultural Workers,2026-07-01,16.667
+3,VIC,Geelong & Surf Coast,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,11
+3,VIC,Geelong & Surf Coast,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,12.667
+2,VIC,Geelong & Surf Coast,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,284
+3,VIC,Geelong & Surf Coast,41,Health and Welfare Support Workers,2026-07-01,48.667
+3,VIC,Geelong & Surf Coast,42,Carers and Aides,2026-07-01,170
+3,VIC,Geelong & Surf Coast,43,Hospitality Workers,2026-07-01,36
+3,VIC,Geelong & Surf Coast,44,Protective Service Workers,2026-07-01,8.333
+3,VIC,Geelong & Surf Coast,45,"Sports, Travel and Personal Service Workers",2026-07-01,21
+2,VIC,Geelong & Surf Coast,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,307.667
+3,VIC,Geelong & Surf Coast,55,Numerical Clerks,2026-07-01,47.667
+3,VIC,Geelong & Surf Coast,56,Clerical and Office Support Workers,2026-07-01,4
+3,VIC,Geelong & Surf Coast,59,Other Clerical and Administrative Workers,2026-07-01,63.667
+3,VIC,Geelong & Surf Coast,5A,"Office Managers, Administrators and Secretaries",2026-07-01,37
+3,VIC,Geelong & Surf Coast,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,155.333
+2,VIC,Geelong & Surf Coast,6,SALES WORKERS,2026-07-01,213.667
+3,VIC,Geelong & Surf Coast,61,Sales Representatives and Agents,2026-07-01,49.333
+3,VIC,Geelong & Surf Coast,62,Sales Assistants and Salespersons,2026-07-01,152
+3,VIC,Geelong & Surf Coast,63,Sales Support Workers,2026-07-01,12.333
+2,VIC,Geelong & Surf Coast,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,113
+3,VIC,Geelong & Surf Coast,71,Machine and Stationary Plant Operators,2026-07-01,27.333
+3,VIC,Geelong & Surf Coast,72,Mobile Plant Operators,2026-07-01,22
+3,VIC,Geelong & Surf Coast,7A,Drivers and Storepersons,2026-07-01,63.667
+2,VIC,Geelong & Surf Coast,8,LABOURERS,2026-07-01,176.667
+3,VIC,Geelong & Surf Coast,81,Cleaners and Laundry Workers,2026-07-01,49.667
+3,VIC,Geelong & Surf Coast,82,Construction and Mining Labourers,2026-07-01,11
+3,VIC,Geelong & Surf Coast,83,Factory Process Workers,2026-07-01,16.333
+3,VIC,Geelong & Surf Coast,84,"Farm, Forestry and Garden Workers",2026-07-01,25.333
+3,VIC,Geelong & Surf Coast,85,Food Preparation Assistants,2026-07-01,19.333
+3,VIC,Geelong & Surf Coast,89,Other Labourers,2026-07-01,55
+1,VIC,Gippsland,0,Gippsland TOTAL,2026-07-01,1906.333
+2,VIC,Gippsland,1,MANAGERS,2026-07-01,160.333
+3,VIC,Gippsland,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,8
+3,VIC,Gippsland,12,Farmers and Farm Managers,2026-07-01,4.333
+3,VIC,Gippsland,14,"Hospitality, Retail and Service Managers",2026-07-01,69.333
+3,VIC,Gippsland,1A,Corporate Managers,2026-07-01,36
+3,VIC,Gippsland,1B,"Construction, Production and Distribution Managers",2026-07-01,24
+3,VIC,Gippsland,1C,"Health, Education, ICT and Other Managers",2026-07-01,18.667
+2,VIC,Gippsland,2,PROFESSIONALS,2026-07-01,548.333
+3,VIC,Gippsland,21,Arts and Media Professionals,2026-07-01,4.667
+3,VIC,Gippsland,24,Education Professionals,2026-07-01,41.667
+3,VIC,Gippsland,26,ICT Professionals,2026-07-01,7
+3,VIC,Gippsland,27,"Legal, Social and Welfare Professionals",2026-07-01,119
+3,VIC,Gippsland,2A,"Business, Finance and Human Resource Professionals",2026-07-01,44.667
+3,VIC,Gippsland,2B,Information Professionals,2026-07-01,10
+3,VIC,Gippsland,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,13
+3,VIC,Gippsland,2D,"Transport and Design Professionals, and Architects",2026-07-01,8
+3,VIC,Gippsland,2E,Engineers,2026-07-01,13
+3,VIC,Gippsland,2F,Science Professionals and Veterinarians,2026-07-01,12.667
+3,VIC,Gippsland,2G,Health Diagnostic and Therapy Professionals,2026-07-01,78
+3,VIC,Gippsland,2H,Medical Practitioners and Nurses,2026-07-01,196.667
+2,VIC,Gippsland,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,257.333
+3,VIC,Gippsland,31,"Engineering, ICT and Science Technicians",2026-07-01,27.667
+3,VIC,Gippsland,32,Automotive and Engineering Trades Workers,2026-07-01,73.667
+3,VIC,Gippsland,33,Construction Trades Workers,2026-07-01,30
+3,VIC,Gippsland,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,26
+3,VIC,Gippsland,35,Food Trades Workers,2026-07-01,60.667
+3,VIC,Gippsland,36,Skilled Animal and Horticultural Workers,2026-07-01,18.333
+3,VIC,Gippsland,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,12.667
+3,VIC,Gippsland,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,8.333
+2,VIC,Gippsland,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,338
+3,VIC,Gippsland,41,Health and Welfare Support Workers,2026-07-01,62.667
+3,VIC,Gippsland,42,Carers and Aides,2026-07-01,214.667
+3,VIC,Gippsland,43,Hospitality Workers,2026-07-01,19.333
+3,VIC,Gippsland,44,Protective Service Workers,2026-07-01,10.667
+3,VIC,Gippsland,45,"Sports, Travel and Personal Service Workers",2026-07-01,30.667
+2,VIC,Gippsland,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,244.667
+3,VIC,Gippsland,55,Numerical Clerks,2026-07-01,35.333
+3,VIC,Gippsland,56,Clerical and Office Support Workers,2026-07-01,6.333
+3,VIC,Gippsland,59,Other Clerical and Administrative Workers,2026-07-01,49.333
+3,VIC,Gippsland,5A,"Office Managers, Administrators and Secretaries",2026-07-01,33.667
+3,VIC,Gippsland,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,120
+2,VIC,Gippsland,6,SALES WORKERS,2026-07-01,134
+3,VIC,Gippsland,61,Sales Representatives and Agents,2026-07-01,26.333
+3,VIC,Gippsland,62,Sales Assistants and Salespersons,2026-07-01,98
+3,VIC,Gippsland,63,Sales Support Workers,2026-07-01,9.667
+2,VIC,Gippsland,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,78
+3,VIC,Gippsland,71,Machine and Stationary Plant Operators,2026-07-01,13.333
+3,VIC,Gippsland,72,Mobile Plant Operators,2026-07-01,20.667
+3,VIC,Gippsland,7A,Drivers and Storepersons,2026-07-01,44
+2,VIC,Gippsland,8,LABOURERS,2026-07-01,145.667
+3,VIC,Gippsland,81,Cleaners and Laundry Workers,2026-07-01,30.333
+3,VIC,Gippsland,82,Construction and Mining Labourers,2026-07-01,9
+3,VIC,Gippsland,83,Factory Process Workers,2026-07-01,18.667
+3,VIC,Gippsland,84,"Farm, Forestry and Garden Workers",2026-07-01,28.333
+3,VIC,Gippsland,85,Food Preparation Assistants,2026-07-01,12.667
+3,VIC,Gippsland,89,Other Labourers,2026-07-01,46.667
+1,VIC,Melbourne,0,Melbourne TOTAL,2026-07-01,35537.333
+2,VIC,Melbourne,1,MANAGERS,2026-07-01,5094
+3,VIC,Melbourne,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,237.667
+3,VIC,Melbourne,12,Farmers and Farm Managers,2026-07-01,19.667
+3,VIC,Melbourne,14,"Hospitality, Retail and Service Managers",2026-07-01,1329.333
+3,VIC,Melbourne,1A,Corporate Managers,2026-07-01,1933.333
+3,VIC,Melbourne,1B,"Construction, Production and Distribution Managers",2026-07-01,1126
+3,VIC,Melbourne,1C,"Health, Education, ICT and Other Managers",2026-07-01,448
+2,VIC,Melbourne,2,PROFESSIONALS,2026-07-01,11072
+3,VIC,Melbourne,21,Arts and Media Professionals,2026-07-01,261.333
+3,VIC,Melbourne,24,Education Professionals,2026-07-01,538.667
+3,VIC,Melbourne,26,ICT Professionals,2026-07-01,1533.333
+3,VIC,Melbourne,27,"Legal, Social and Welfare Professionals",2026-07-01,1492
+3,VIC,Melbourne,2A,"Business, Finance and Human Resource Professionals",2026-07-01,1668.333
+3,VIC,Melbourne,2B,Information Professionals,2026-07-01,441.667
+3,VIC,Melbourne,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,710.667
+3,VIC,Melbourne,2D,"Transport and Design Professionals, and Architects",2026-07-01,411
+3,VIC,Melbourne,2E,Engineers,2026-07-01,648.333
+3,VIC,Melbourne,2F,Science Professionals and Veterinarians,2026-07-01,167
+3,VIC,Melbourne,2G,Health Diagnostic and Therapy Professionals,2026-07-01,1323
+3,VIC,Melbourne,2H,Medical Practitioners and Nurses,2026-07-01,1876.667
+2,VIC,Melbourne,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,4308.333
+3,VIC,Melbourne,31,"Engineering, ICT and Science Technicians",2026-07-01,812.667
+3,VIC,Melbourne,32,Automotive and Engineering Trades Workers,2026-07-01,1098
+3,VIC,Melbourne,33,Construction Trades Workers,2026-07-01,542.667
+3,VIC,Melbourne,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,556.667
+3,VIC,Melbourne,35,Food Trades Workers,2026-07-01,703
+3,VIC,Melbourne,36,Skilled Animal and Horticultural Workers,2026-07-01,218
+3,VIC,Melbourne,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,164.333
+3,VIC,Melbourne,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,213
+2,VIC,Melbourne,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,3149
+3,VIC,Melbourne,41,Health and Welfare Support Workers,2026-07-01,339
+3,VIC,Melbourne,42,Carers and Aides,2026-07-01,1621.333
+3,VIC,Melbourne,43,Hospitality Workers,2026-07-01,597.667
+3,VIC,Melbourne,44,Protective Service Workers,2026-07-01,184
+3,VIC,Melbourne,45,"Sports, Travel and Personal Service Workers",2026-07-01,407
+2,VIC,Melbourne,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,5887.667
+3,VIC,Melbourne,55,Numerical Clerks,2026-07-01,1261.667
+3,VIC,Melbourne,56,Clerical and Office Support Workers,2026-07-01,119.333
+3,VIC,Melbourne,59,Other Clerical and Administrative Workers,2026-07-01,1268.333
+3,VIC,Melbourne,5A,"Office Managers, Administrators and Secretaries",2026-07-01,899.667
+3,VIC,Melbourne,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,2338.667
+2,VIC,Melbourne,6,SALES WORKERS,2026-07-01,2780
+3,VIC,Melbourne,61,Sales Representatives and Agents,2026-07-01,939.667
+3,VIC,Melbourne,62,Sales Assistants and Salespersons,2026-07-01,1632.333
+3,VIC,Melbourne,63,Sales Support Workers,2026-07-01,208
+2,VIC,Melbourne,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,1538.333
+3,VIC,Melbourne,71,Machine and Stationary Plant Operators,2026-07-01,363.667
+3,VIC,Melbourne,72,Mobile Plant Operators,2026-07-01,438.667
+3,VIC,Melbourne,7A,Drivers and Storepersons,2026-07-01,736
+2,VIC,Melbourne,8,LABOURERS,2026-07-01,1708
+3,VIC,Melbourne,81,Cleaners and Laundry Workers,2026-07-01,394.667
+3,VIC,Melbourne,82,Construction and Mining Labourers,2026-07-01,133.667
+3,VIC,Melbourne,83,Factory Process Workers,2026-07-01,370
+3,VIC,Melbourne,84,"Farm, Forestry and Garden Workers",2026-07-01,58.333
+3,VIC,Melbourne,85,Food Preparation Assistants,2026-07-01,140
+3,VIC,Melbourne,89,Other Labourers,2026-07-01,611.333
+1,VIC,Wimmera & Western,0,Wimmera & Western TOTAL,2026-07-01,965.333
+2,VIC,Wimmera & Western,1,MANAGERS,2026-07-01,95.667
+3,VIC,Wimmera & Western,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,6
+3,VIC,Wimmera & Western,12,Farmers and Farm Managers,2026-07-01,5.667
+3,VIC,Wimmera & Western,14,"Hospitality, Retail and Service Managers",2026-07-01,34
+3,VIC,Wimmera & Western,1A,Corporate Managers,2026-07-01,21
+3,VIC,Wimmera & Western,1B,"Construction, Production and Distribution Managers",2026-07-01,16.667
+3,VIC,Wimmera & Western,1C,"Health, Education, ICT and Other Managers",2026-07-01,12.333
+2,VIC,Wimmera & Western,2,PROFESSIONALS,2026-07-01,311.667
+3,VIC,Wimmera & Western,21,Arts and Media Professionals,2026-07-01,2.333
+3,VIC,Wimmera & Western,24,Education Professionals,2026-07-01,22.667
+3,VIC,Wimmera & Western,26,ICT Professionals,2026-07-01,4.333
+3,VIC,Wimmera & Western,27,"Legal, Social and Welfare Professionals",2026-07-01,58.333
+3,VIC,Wimmera & Western,2A,"Business, Finance and Human Resource Professionals",2026-07-01,23
+3,VIC,Wimmera & Western,2B,Information Professionals,2026-07-01,3.667
+3,VIC,Wimmera & Western,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,7.667
+3,VIC,Wimmera & Western,2D,"Transport and Design Professionals, and Architects",2026-07-01,3
+3,VIC,Wimmera & Western,2E,Engineers,2026-07-01,7.667
+3,VIC,Wimmera & Western,2F,Science Professionals and Veterinarians,2026-07-01,8
+3,VIC,Wimmera & Western,2G,Health Diagnostic and Therapy Professionals,2026-07-01,38.667
+3,VIC,Wimmera & Western,2H,Medical Practitioners and Nurses,2026-07-01,132.333
+2,VIC,Wimmera & Western,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,112.667
+3,VIC,Wimmera & Western,31,"Engineering, ICT and Science Technicians",2026-07-01,17.333
+3,VIC,Wimmera & Western,32,Automotive and Engineering Trades Workers,2026-07-01,38
+3,VIC,Wimmera & Western,33,Construction Trades Workers,2026-07-01,8.667
+3,VIC,Wimmera & Western,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,11
+3,VIC,Wimmera & Western,35,Food Trades Workers,2026-07-01,25.333
+3,VIC,Wimmera & Western,36,Skilled Animal and Horticultural Workers,2026-07-01,3
+3,VIC,Wimmera & Western,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,4.667
+3,VIC,Wimmera & Western,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,4.667
+2,VIC,Wimmera & Western,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,135.667
+3,VIC,Wimmera & Western,41,Health and Welfare Support Workers,2026-07-01,37
+3,VIC,Wimmera & Western,42,Carers and Aides,2026-07-01,84.667
+3,VIC,Wimmera & Western,43,Hospitality Workers,2026-07-01,6.667
+3,VIC,Wimmera & Western,44,Protective Service Workers,2026-07-01,2
+3,VIC,Wimmera & Western,45,"Sports, Travel and Personal Service Workers",2026-07-01,5.333
+2,VIC,Wimmera & Western,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,108
+3,VIC,Wimmera & Western,55,Numerical Clerks,2026-07-01,17.333
+3,VIC,Wimmera & Western,56,Clerical and Office Support Workers,2026-07-01,4.333
+3,VIC,Wimmera & Western,59,Other Clerical and Administrative Workers,2026-07-01,22.333
+3,VIC,Wimmera & Western,5A,"Office Managers, Administrators and Secretaries",2026-07-01,10.333
+3,VIC,Wimmera & Western,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,53.667
+2,VIC,Wimmera & Western,6,SALES WORKERS,2026-07-01,71.667
+3,VIC,Wimmera & Western,61,Sales Representatives and Agents,2026-07-01,9.333
+3,VIC,Wimmera & Western,62,Sales Assistants and Salespersons,2026-07-01,54.333
+3,VIC,Wimmera & Western,63,Sales Support Workers,2026-07-01,8
+2,VIC,Wimmera & Western,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,54.333
+3,VIC,Wimmera & Western,71,Machine and Stationary Plant Operators,2026-07-01,8
+3,VIC,Wimmera & Western,72,Mobile Plant Operators,2026-07-01,19
+3,VIC,Wimmera & Western,7A,Drivers and Storepersons,2026-07-01,27.333
+2,VIC,Wimmera & Western,8,LABOURERS,2026-07-01,75.667
+3,VIC,Wimmera & Western,81,Cleaners and Laundry Workers,2026-07-01,13.333
+3,VIC,Wimmera & Western,82,Construction and Mining Labourers,2026-07-01,3.333
+3,VIC,Wimmera & Western,83,Factory Process Workers,2026-07-01,6.333
+3,VIC,Wimmera & Western,84,"Farm, Forestry and Garden Workers",2026-07-01,21.667
+3,VIC,Wimmera & Western,85,Food Preparation Assistants,2026-07-01,7.667
+3,VIC,Wimmera & Western,89,Other Labourers,2026-07-01,23.333
+1,QLD,Brisbane,0,Brisbane TOTAL,2026-07-01,26899.333
+2,QLD,Brisbane,1,MANAGERS,2026-07-01,3475
+3,QLD,Brisbane,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,159
+3,QLD,Brisbane,12,Farmers and Farm Managers,2026-07-01,7
+3,QLD,Brisbane,14,"Hospitality, Retail and Service Managers",2026-07-01,897.667
+3,QLD,Brisbane,1A,Corporate Managers,2026-07-01,1201.667
+3,QLD,Brisbane,1B,"Construction, Production and Distribution Managers",2026-07-01,919
+3,QLD,Brisbane,1C,"Health, Education, ICT and Other Managers",2026-07-01,290.667
+2,QLD,Brisbane,2,PROFESSIONALS,2026-07-01,7242
+3,QLD,Brisbane,21,Arts and Media Professionals,2026-07-01,149
+3,QLD,Brisbane,24,Education Professionals,2026-07-01,356.667
+3,QLD,Brisbane,26,ICT Professionals,2026-07-01,850.667
+3,QLD,Brisbane,27,"Legal, Social and Welfare Professionals",2026-07-01,920
+3,QLD,Brisbane,2A,"Business, Finance and Human Resource Professionals",2026-07-01,1242.667
+3,QLD,Brisbane,2B,Information Professionals,2026-07-01,281.333
+3,QLD,Brisbane,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,342.333
+3,QLD,Brisbane,2D,"Transport and Design Professionals, and Architects",2026-07-01,291
+3,QLD,Brisbane,2E,Engineers,2026-07-01,828
+3,QLD,Brisbane,2F,Science Professionals and Veterinarians,2026-07-01,126
+3,QLD,Brisbane,2G,Health Diagnostic and Therapy Professionals,2026-07-01,769.333
+3,QLD,Brisbane,2H,Medical Practitioners and Nurses,2026-07-01,1085
+2,QLD,Brisbane,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,3773.667
+3,QLD,Brisbane,31,"Engineering, ICT and Science Technicians",2026-07-01,804.333
+3,QLD,Brisbane,32,Automotive and Engineering Trades Workers,2026-07-01,1080.333
+3,QLD,Brisbane,33,Construction Trades Workers,2026-07-01,453
+3,QLD,Brisbane,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,553
+3,QLD,Brisbane,35,Food Trades Workers,2026-07-01,424.667
+3,QLD,Brisbane,36,Skilled Animal and Horticultural Workers,2026-07-01,152
+3,QLD,Brisbane,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,155.667
+3,QLD,Brisbane,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,150.667
+2,QLD,Brisbane,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,2424
+3,QLD,Brisbane,41,Health and Welfare Support Workers,2026-07-01,241.667
+3,QLD,Brisbane,42,Carers and Aides,2026-07-01,1452.333
+3,QLD,Brisbane,43,Hospitality Workers,2026-07-01,343.667
+3,QLD,Brisbane,44,Protective Service Workers,2026-07-01,120.333
+3,QLD,Brisbane,45,"Sports, Travel and Personal Service Workers",2026-07-01,266
+2,QLD,Brisbane,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,4235.667
+3,QLD,Brisbane,55,Numerical Clerks,2026-07-01,770.667
+3,QLD,Brisbane,56,Clerical and Office Support Workers,2026-07-01,101
+3,QLD,Brisbane,59,Other Clerical and Administrative Workers,2026-07-01,933
+3,QLD,Brisbane,5A,"Office Managers, Administrators and Secretaries",2026-07-01,668
+3,QLD,Brisbane,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,1763
+2,QLD,Brisbane,6,SALES WORKERS,2026-07-01,2108.333
+3,QLD,Brisbane,61,Sales Representatives and Agents,2026-07-01,764.333
+3,QLD,Brisbane,62,Sales Assistants and Salespersons,2026-07-01,1220.667
+3,QLD,Brisbane,63,Sales Support Workers,2026-07-01,123.333
+2,QLD,Brisbane,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,1892.333
+3,QLD,Brisbane,71,Machine and Stationary Plant Operators,2026-07-01,404.667
+3,QLD,Brisbane,72,Mobile Plant Operators,2026-07-01,599.333
+3,QLD,Brisbane,7A,Drivers and Storepersons,2026-07-01,888.333
+2,QLD,Brisbane,8,LABOURERS,2026-07-01,1748.333
+3,QLD,Brisbane,81,Cleaners and Laundry Workers,2026-07-01,335.667
+3,QLD,Brisbane,82,Construction and Mining Labourers,2026-07-01,220.667
+3,QLD,Brisbane,83,Factory Process Workers,2026-07-01,289.667
+3,QLD,Brisbane,84,"Farm, Forestry and Garden Workers",2026-07-01,62.667
+3,QLD,Brisbane,85,Food Preparation Assistants,2026-07-01,88.667
+3,QLD,Brisbane,89,Other Labourers,2026-07-01,751
+1,QLD,Central Queensland,0,Central Queensland TOTAL,2026-07-01,4215
+2,QLD,Central Queensland,1,MANAGERS,2026-07-01,346
+3,QLD,Central Queensland,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,7.333
+3,QLD,Central Queensland,12,Farmers and Farm Managers,2026-07-01,3.333
+3,QLD,Central Queensland,14,"Hospitality, Retail and Service Managers",2026-07-01,128.667
+3,QLD,Central Queensland,1A,Corporate Managers,2026-07-01,81.333
+3,QLD,Central Queensland,1B,"Construction, Production and Distribution Managers",2026-07-01,85.667
+3,QLD,Central Queensland,1C,"Health, Education, ICT and Other Managers",2026-07-01,39.667
+2,QLD,Central Queensland,2,PROFESSIONALS,2026-07-01,1032.333
+3,QLD,Central Queensland,21,Arts and Media Professionals,2026-07-01,18
+3,QLD,Central Queensland,24,Education Professionals,2026-07-01,60
+3,QLD,Central Queensland,26,ICT Professionals,2026-07-01,16
+3,QLD,Central Queensland,27,"Legal, Social and Welfare Professionals",2026-07-01,181.667
+3,QLD,Central Queensland,2A,"Business, Finance and Human Resource Professionals",2026-07-01,82.667
+3,QLD,Central Queensland,2B,Information Professionals,2026-07-01,12.667
+3,QLD,Central Queensland,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,13
+3,QLD,Central Queensland,2D,"Transport and Design Professionals, and Architects",2026-07-01,25.333
+3,QLD,Central Queensland,2E,Engineers,2026-07-01,96.667
+3,QLD,Central Queensland,2F,Science Professionals and Veterinarians,2026-07-01,25.333
+3,QLD,Central Queensland,2G,Health Diagnostic and Therapy Professionals,2026-07-01,153.333
+3,QLD,Central Queensland,2H,Medical Practitioners and Nurses,2026-07-01,347.667
+2,QLD,Central Queensland,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,783.667
+3,QLD,Central Queensland,31,"Engineering, ICT and Science Technicians",2026-07-01,104.667
+3,QLD,Central Queensland,32,Automotive and Engineering Trades Workers,2026-07-01,322.667
+3,QLD,Central Queensland,33,Construction Trades Workers,2026-07-01,98
+3,QLD,Central Queensland,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,105.333
+3,QLD,Central Queensland,35,Food Trades Workers,2026-07-01,74
+3,QLD,Central Queensland,36,Skilled Animal and Horticultural Workers,2026-07-01,25
+3,QLD,Central Queensland,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,21.667
+3,QLD,Central Queensland,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,32.333
+2,QLD,Central Queensland,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,460.333
+3,QLD,Central Queensland,41,Health and Welfare Support Workers,2026-07-01,92.333
+3,QLD,Central Queensland,42,Carers and Aides,2026-07-01,281.667
+3,QLD,Central Queensland,43,Hospitality Workers,2026-07-01,39
+3,QLD,Central Queensland,44,Protective Service Workers,2026-07-01,13
+3,QLD,Central Queensland,45,"Sports, Travel and Personal Service Workers",2026-07-01,34.333
+2,QLD,Central Queensland,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,441.333
+3,QLD,Central Queensland,55,Numerical Clerks,2026-07-01,43
+3,QLD,Central Queensland,56,Clerical and Office Support Workers,2026-07-01,17
+3,QLD,Central Queensland,59,Other Clerical and Administrative Workers,2026-07-01,74.667
+3,QLD,Central Queensland,5A,"Office Managers, Administrators and Secretaries",2026-07-01,48
+3,QLD,Central Queensland,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,258.667
+2,QLD,Central Queensland,6,SALES WORKERS,2026-07-01,324.333
+3,QLD,Central Queensland,61,Sales Representatives and Agents,2026-07-01,65.333
+3,QLD,Central Queensland,62,Sales Assistants and Salespersons,2026-07-01,233
+3,QLD,Central Queensland,63,Sales Support Workers,2026-07-01,26
+2,QLD,Central Queensland,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,468
+3,QLD,Central Queensland,71,Machine and Stationary Plant Operators,2026-07-01,107.667
+3,QLD,Central Queensland,72,Mobile Plant Operators,2026-07-01,127
+3,QLD,Central Queensland,7A,Drivers and Storepersons,2026-07-01,233.333
+2,QLD,Central Queensland,8,LABOURERS,2026-07-01,359
+3,QLD,Central Queensland,81,Cleaners and Laundry Workers,2026-07-01,65.667
+3,QLD,Central Queensland,82,Construction and Mining Labourers,2026-07-01,67.333
+3,QLD,Central Queensland,83,Factory Process Workers,2026-07-01,20.667
+3,QLD,Central Queensland,84,"Farm, Forestry and Garden Workers",2026-07-01,32
+3,QLD,Central Queensland,85,Food Preparation Assistants,2026-07-01,20.667
+3,QLD,Central Queensland,89,Other Labourers,2026-07-01,152.667
+1,QLD,Far North Queensland,0,Far North Queensland TOTAL,2026-07-01,6173
+2,QLD,Far North Queensland,1,MANAGERS,2026-07-01,552.333
+3,QLD,Far North Queensland,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,16
+3,QLD,Far North Queensland,12,Farmers and Farm Managers,2026-07-01,3.667
+3,QLD,Far North Queensland,14,"Hospitality, Retail and Service Managers",2026-07-01,215.333
+3,QLD,Far North Queensland,1A,Corporate Managers,2026-07-01,136.667
+3,QLD,Far North Queensland,1B,"Construction, Production and Distribution Managers",2026-07-01,139.333
+3,QLD,Far North Queensland,1C,"Health, Education, ICT and Other Managers",2026-07-01,41.333
+2,QLD,Far North Queensland,2,PROFESSIONALS,2026-07-01,1411.333
+3,QLD,Far North Queensland,21,Arts and Media Professionals,2026-07-01,20.333
+3,QLD,Far North Queensland,24,Education Professionals,2026-07-01,114.667
+3,QLD,Far North Queensland,26,ICT Professionals,2026-07-01,20
+3,QLD,Far North Queensland,27,"Legal, Social and Welfare Professionals",2026-07-01,229.667
+3,QLD,Far North Queensland,2A,"Business, Finance and Human Resource Professionals",2026-07-01,162
+3,QLD,Far North Queensland,2B,Information Professionals,2026-07-01,29.333
+3,QLD,Far North Queensland,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,22
+3,QLD,Far North Queensland,2D,"Transport and Design Professionals, and Architects",2026-07-01,39.333
+3,QLD,Far North Queensland,2E,Engineers,2026-07-01,161.667
+3,QLD,Far North Queensland,2F,Science Professionals and Veterinarians,2026-07-01,37.333
+3,QLD,Far North Queensland,2G,Health Diagnostic and Therapy Professionals,2026-07-01,213.667
+3,QLD,Far North Queensland,2H,Medical Practitioners and Nurses,2026-07-01,361.333
+2,QLD,Far North Queensland,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,1123
+3,QLD,Far North Queensland,31,"Engineering, ICT and Science Technicians",2026-07-01,141.333
+3,QLD,Far North Queensland,32,Automotive and Engineering Trades Workers,2026-07-01,442.333
+3,QLD,Far North Queensland,33,Construction Trades Workers,2026-07-01,136
+3,QLD,Far North Queensland,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,148.667
+3,QLD,Far North Queensland,35,Food Trades Workers,2026-07-01,149
+3,QLD,Far North Queensland,36,Skilled Animal and Horticultural Workers,2026-07-01,43.667
+3,QLD,Far North Queensland,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,31.667
+3,QLD,Far North Queensland,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,30.333
+2,QLD,Far North Queensland,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,631
+3,QLD,Far North Queensland,41,Health and Welfare Support Workers,2026-07-01,109.333
+3,QLD,Far North Queensland,42,Carers and Aides,2026-07-01,351.333
+3,QLD,Far North Queensland,43,Hospitality Workers,2026-07-01,80.333
+3,QLD,Far North Queensland,44,Protective Service Workers,2026-07-01,31
+3,QLD,Far North Queensland,45,"Sports, Travel and Personal Service Workers",2026-07-01,59
+2,QLD,Far North Queensland,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,791.333
+3,QLD,Far North Queensland,55,Numerical Clerks,2026-07-01,105.667
+3,QLD,Far North Queensland,56,Clerical and Office Support Workers,2026-07-01,26.333
+3,QLD,Far North Queensland,59,Other Clerical and Administrative Workers,2026-07-01,120.333
+3,QLD,Far North Queensland,5A,"Office Managers, Administrators and Secretaries",2026-07-01,91.333
+3,QLD,Far North Queensland,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,447.667
+2,QLD,Far North Queensland,6,SALES WORKERS,2026-07-01,470
+3,QLD,Far North Queensland,61,Sales Representatives and Agents,2026-07-01,103.333
+3,QLD,Far North Queensland,62,Sales Assistants and Salespersons,2026-07-01,335.667
+3,QLD,Far North Queensland,63,Sales Support Workers,2026-07-01,31
+2,QLD,Far North Queensland,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,659.333
+3,QLD,Far North Queensland,71,Machine and Stationary Plant Operators,2026-07-01,158
+3,QLD,Far North Queensland,72,Mobile Plant Operators,2026-07-01,151
+3,QLD,Far North Queensland,7A,Drivers and Storepersons,2026-07-01,350.333
+2,QLD,Far North Queensland,8,LABOURERS,2026-07-01,534.667
+3,QLD,Far North Queensland,81,Cleaners and Laundry Workers,2026-07-01,118.333
+3,QLD,Far North Queensland,82,Construction and Mining Labourers,2026-07-01,88.667
+3,QLD,Far North Queensland,83,Factory Process Workers,2026-07-01,35.333
+3,QLD,Far North Queensland,84,"Farm, Forestry and Garden Workers",2026-07-01,40.667
+3,QLD,Far North Queensland,85,Food Preparation Assistants,2026-07-01,26
+3,QLD,Far North Queensland,89,Other Labourers,2026-07-01,225.667
+1,QLD,Gold Coast,0,Gold Coast TOTAL,2026-07-01,5736
+2,QLD,Gold Coast,1,MANAGERS,2026-07-01,669.333
+3,QLD,Gold Coast,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,17
+3,QLD,Gold Coast,12,Farmers and Farm Managers,2026-07-01,4.333
+3,QLD,Gold Coast,14,"Hospitality, Retail and Service Managers",2026-07-01,261
+3,QLD,Gold Coast,1A,Corporate Managers,2026-07-01,202
+3,QLD,Gold Coast,1B,"Construction, Production and Distribution Managers",2026-07-01,146.333
+3,QLD,Gold Coast,1C,"Health, Education, ICT and Other Managers",2026-07-01,38.667
+2,QLD,Gold Coast,2,PROFESSIONALS,2026-07-01,1210
+3,QLD,Gold Coast,21,Arts and Media Professionals,2026-07-01,23.667
+3,QLD,Gold Coast,24,Education Professionals,2026-07-01,98.333
+3,QLD,Gold Coast,26,ICT Professionals,2026-07-01,59.333
+3,QLD,Gold Coast,27,"Legal, Social and Welfare Professionals",2026-07-01,167.333
+3,QLD,Gold Coast,2A,"Business, Finance and Human Resource Professionals",2026-07-01,168.333
+3,QLD,Gold Coast,2B,Information Professionals,2026-07-01,21.667
+3,QLD,Gold Coast,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,90.667
+3,QLD,Gold Coast,2D,"Transport and Design Professionals, and Architects",2026-07-01,47.333
+3,QLD,Gold Coast,2E,Engineers,2026-07-01,93
+3,QLD,Gold Coast,2F,Science Professionals and Veterinarians,2026-07-01,21.333
+3,QLD,Gold Coast,2G,Health Diagnostic and Therapy Professionals,2026-07-01,183.667
+3,QLD,Gold Coast,2H,Medical Practitioners and Nurses,2026-07-01,235.333
+2,QLD,Gold Coast,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,890
+3,QLD,Gold Coast,31,"Engineering, ICT and Science Technicians",2026-07-01,146.333
+3,QLD,Gold Coast,32,Automotive and Engineering Trades Workers,2026-07-01,224.667
+3,QLD,Gold Coast,33,Construction Trades Workers,2026-07-01,109.333
+3,QLD,Gold Coast,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,97
+3,QLD,Gold Coast,35,Food Trades Workers,2026-07-01,181.333
+3,QLD,Gold Coast,36,Skilled Animal and Horticultural Workers,2026-07-01,47.667
+3,QLD,Gold Coast,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,57.667
+3,QLD,Gold Coast,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,26
+2,QLD,Gold Coast,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,632.667
+3,QLD,Gold Coast,41,Health and Welfare Support Workers,2026-07-01,62.333
+3,QLD,Gold Coast,42,Carers and Aides,2026-07-01,294.333
+3,QLD,Gold Coast,43,Hospitality Workers,2026-07-01,172.333
+3,QLD,Gold Coast,44,Protective Service Workers,2026-07-01,24
+3,QLD,Gold Coast,45,"Sports, Travel and Personal Service Workers",2026-07-01,79.667
+2,QLD,Gold Coast,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,838
+3,QLD,Gold Coast,55,Numerical Clerks,2026-07-01,135
+3,QLD,Gold Coast,56,Clerical and Office Support Workers,2026-07-01,16.333
+3,QLD,Gold Coast,59,Other Clerical and Administrative Workers,2026-07-01,155.667
+3,QLD,Gold Coast,5A,"Office Managers, Administrators and Secretaries",2026-07-01,135
+3,QLD,Gold Coast,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,396
+2,QLD,Gold Coast,6,SALES WORKERS,2026-07-01,575.333
+3,QLD,Gold Coast,61,Sales Representatives and Agents,2026-07-01,150.667
+3,QLD,Gold Coast,62,Sales Assistants and Salespersons,2026-07-01,385.333
+3,QLD,Gold Coast,63,Sales Support Workers,2026-07-01,39.333
+2,QLD,Gold Coast,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,415
+3,QLD,Gold Coast,71,Machine and Stationary Plant Operators,2026-07-01,85
+3,QLD,Gold Coast,72,Mobile Plant Operators,2026-07-01,127.667
+3,QLD,Gold Coast,7A,Drivers and Storepersons,2026-07-01,202.333
+2,QLD,Gold Coast,8,LABOURERS,2026-07-01,505.667
+3,QLD,Gold Coast,81,Cleaners and Laundry Workers,2026-07-01,115.333
+3,QLD,Gold Coast,82,Construction and Mining Labourers,2026-07-01,49.333
+3,QLD,Gold Coast,83,Factory Process Workers,2026-07-01,60
+3,QLD,Gold Coast,84,"Farm, Forestry and Garden Workers",2026-07-01,18.333
+3,QLD,Gold Coast,85,Food Preparation Assistants,2026-07-01,34.667
+3,QLD,Gold Coast,89,Other Labourers,2026-07-01,228
+1,QLD,Outback Queensland,0,Outback Queensland TOTAL,2026-07-01,609
+2,QLD,Outback Queensland,1,MANAGERS,2026-07-01,46.667
+3,QLD,Outback Queensland,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,1.667
+3,QLD,Outback Queensland,12,Farmers and Farm Managers,2026-07-01,1
+3,QLD,Outback Queensland,14,"Hospitality, Retail and Service Managers",2026-07-01,18.667
+3,QLD,Outback Queensland,1A,Corporate Managers,2026-07-01,9
+3,QLD,Outback Queensland,1B,"Construction, Production and Distribution Managers",2026-07-01,10.333
+3,QLD,Outback Queensland,1C,"Health, Education, ICT and Other Managers",2026-07-01,6
+2,QLD,Outback Queensland,2,PROFESSIONALS,2026-07-01,189.667
+3,QLD,Outback Queensland,21,Arts and Media Professionals,2026-07-01,10.333
+3,QLD,Outback Queensland,24,Education Professionals,2026-07-01,8.333
+3,QLD,Outback Queensland,26,ICT Professionals,2026-07-01,2.333
+3,QLD,Outback Queensland,27,"Legal, Social and Welfare Professionals",2026-07-01,33.667
+3,QLD,Outback Queensland,2A,"Business, Finance and Human Resource Professionals",2026-07-01,9
+3,QLD,Outback Queensland,2B,Information Professionals,2026-07-01,2.333
+3,QLD,Outback Queensland,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,1.667
+3,QLD,Outback Queensland,2D,"Transport and Design Professionals, and Architects",2026-07-01,4.667
+3,QLD,Outback Queensland,2E,Engineers,2026-07-01,30.667
+3,QLD,Outback Queensland,2F,Science Professionals and Veterinarians,2026-07-01,7.667
+3,QLD,Outback Queensland,2G,Health Diagnostic and Therapy Professionals,2026-07-01,21.667
+3,QLD,Outback Queensland,2H,Medical Practitioners and Nurses,2026-07-01,57.333
+2,QLD,Outback Queensland,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,117.333
+3,QLD,Outback Queensland,31,"Engineering, ICT and Science Technicians",2026-07-01,17.667
+3,QLD,Outback Queensland,32,Automotive and Engineering Trades Workers,2026-07-01,49
+3,QLD,Outback Queensland,33,Construction Trades Workers,2026-07-01,14.333
+3,QLD,Outback Queensland,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,16
+3,QLD,Outback Queensland,35,Food Trades Workers,2026-07-01,11
+3,QLD,Outback Queensland,36,Skilled Animal and Horticultural Workers,2026-07-01,3.333
+3,QLD,Outback Queensland,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,2
+3,QLD,Outback Queensland,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,4
+2,QLD,Outback Queensland,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,53.333
+3,QLD,Outback Queensland,41,Health and Welfare Support Workers,2026-07-01,16.667
+3,QLD,Outback Queensland,42,Carers and Aides,2026-07-01,26.333
+3,QLD,Outback Queensland,43,Hospitality Workers,2026-07-01,3.333
+3,QLD,Outback Queensland,44,Protective Service Workers,2026-07-01,4.333
+3,QLD,Outback Queensland,45,"Sports, Travel and Personal Service Workers",2026-07-01,2.667
+2,QLD,Outback Queensland,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,70.667
+3,QLD,Outback Queensland,55,Numerical Clerks,2026-07-01,8.333
+3,QLD,Outback Queensland,56,Clerical and Office Support Workers,2026-07-01,1.667
+3,QLD,Outback Queensland,59,Other Clerical and Administrative Workers,2026-07-01,6.333
+3,QLD,Outback Queensland,5A,"Office Managers, Administrators and Secretaries",2026-07-01,5
+3,QLD,Outback Queensland,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,49.333
+2,QLD,Outback Queensland,6,SALES WORKERS,2026-07-01,31
+3,QLD,Outback Queensland,61,Sales Representatives and Agents,2026-07-01,4
+3,QLD,Outback Queensland,62,Sales Assistants and Salespersons,2026-07-01,22.333
+3,QLD,Outback Queensland,63,Sales Support Workers,2026-07-01,4.667
+2,QLD,Outback Queensland,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,65.333
+3,QLD,Outback Queensland,71,Machine and Stationary Plant Operators,2026-07-01,20
+3,QLD,Outback Queensland,72,Mobile Plant Operators,2026-07-01,13.333
+3,QLD,Outback Queensland,7A,Drivers and Storepersons,2026-07-01,32
+2,QLD,Outback Queensland,8,LABOURERS,2026-07-01,35
+3,QLD,Outback Queensland,81,Cleaners and Laundry Workers,2026-07-01,8.667
+3,QLD,Outback Queensland,82,Construction and Mining Labourers,2026-07-01,5
+3,QLD,Outback Queensland,83,Factory Process Workers,2026-07-01,0.333
+3,QLD,Outback Queensland,84,"Farm, Forestry and Garden Workers",2026-07-01,4
+3,QLD,Outback Queensland,85,Food Preparation Assistants,2026-07-01,1.667
+3,QLD,Outback Queensland,89,Other Labourers,2026-07-01,15.333
+1,QLD,Sunshine Coast,0,Sunshine Coast TOTAL,2026-07-01,3187
+2,QLD,Sunshine Coast,1,MANAGERS,2026-07-01,295.667
+3,QLD,Sunshine Coast,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,9.333
+3,QLD,Sunshine Coast,12,Farmers and Farm Managers,2026-07-01,2
+3,QLD,Sunshine Coast,14,"Hospitality, Retail and Service Managers",2026-07-01,135.667
+3,QLD,Sunshine Coast,1A,Corporate Managers,2026-07-01,71
+3,QLD,Sunshine Coast,1B,"Construction, Production and Distribution Managers",2026-07-01,59.333
+3,QLD,Sunshine Coast,1C,"Health, Education, ICT and Other Managers",2026-07-01,18.333
+2,QLD,Sunshine Coast,2,PROFESSIONALS,2026-07-01,722
+3,QLD,Sunshine Coast,21,Arts and Media Professionals,2026-07-01,8
+3,QLD,Sunshine Coast,24,Education Professionals,2026-07-01,50.333
+3,QLD,Sunshine Coast,26,ICT Professionals,2026-07-01,15.333
+3,QLD,Sunshine Coast,27,"Legal, Social and Welfare Professionals",2026-07-01,104.667
+3,QLD,Sunshine Coast,2A,"Business, Finance and Human Resource Professionals",2026-07-01,84.333
+3,QLD,Sunshine Coast,2B,Information Professionals,2026-07-01,10.667
+3,QLD,Sunshine Coast,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,25.667
+3,QLD,Sunshine Coast,2D,"Transport and Design Professionals, and Architects",2026-07-01,24
+3,QLD,Sunshine Coast,2E,Engineers,2026-07-01,40.667
+3,QLD,Sunshine Coast,2F,Science Professionals and Veterinarians,2026-07-01,20.333
+3,QLD,Sunshine Coast,2G,Health Diagnostic and Therapy Professionals,2026-07-01,128
+3,QLD,Sunshine Coast,2H,Medical Practitioners and Nurses,2026-07-01,210
+2,QLD,Sunshine Coast,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,497
+3,QLD,Sunshine Coast,31,"Engineering, ICT and Science Technicians",2026-07-01,77.667
+3,QLD,Sunshine Coast,32,Automotive and Engineering Trades Workers,2026-07-01,101
+3,QLD,Sunshine Coast,33,Construction Trades Workers,2026-07-01,75.333
+3,QLD,Sunshine Coast,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,51.333
+3,QLD,Sunshine Coast,35,Food Trades Workers,2026-07-01,117
+3,QLD,Sunshine Coast,36,Skilled Animal and Horticultural Workers,2026-07-01,34.333
+3,QLD,Sunshine Coast,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,26
+3,QLD,Sunshine Coast,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,14.333
+2,QLD,Sunshine Coast,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,418
+3,QLD,Sunshine Coast,41,Health and Welfare Support Workers,2026-07-01,37.667
+3,QLD,Sunshine Coast,42,Carers and Aides,2026-07-01,274.333
+3,QLD,Sunshine Coast,43,Hospitality Workers,2026-07-01,57
+3,QLD,Sunshine Coast,44,Protective Service Workers,2026-07-01,10.333
+3,QLD,Sunshine Coast,45,"Sports, Travel and Personal Service Workers",2026-07-01,38.667
+2,QLD,Sunshine Coast,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,440.333
+3,QLD,Sunshine Coast,55,Numerical Clerks,2026-07-01,72
+3,QLD,Sunshine Coast,56,Clerical and Office Support Workers,2026-07-01,17
+3,QLD,Sunshine Coast,59,Other Clerical and Administrative Workers,2026-07-01,70.667
+3,QLD,Sunshine Coast,5A,"Office Managers, Administrators and Secretaries",2026-07-01,56.667
+3,QLD,Sunshine Coast,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,224
+2,QLD,Sunshine Coast,6,SALES WORKERS,2026-07-01,332.333
+3,QLD,Sunshine Coast,61,Sales Representatives and Agents,2026-07-01,83
+3,QLD,Sunshine Coast,62,Sales Assistants and Salespersons,2026-07-01,231.333
+3,QLD,Sunshine Coast,63,Sales Support Workers,2026-07-01,18
+2,QLD,Sunshine Coast,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,181.333
+3,QLD,Sunshine Coast,71,Machine and Stationary Plant Operators,2026-07-01,33.667
+3,QLD,Sunshine Coast,72,Mobile Plant Operators,2026-07-01,45.333
+3,QLD,Sunshine Coast,7A,Drivers and Storepersons,2026-07-01,102.333
+2,QLD,Sunshine Coast,8,LABOURERS,2026-07-01,300.333
+3,QLD,Sunshine Coast,81,Cleaners and Laundry Workers,2026-07-01,70.667
+3,QLD,Sunshine Coast,82,Construction and Mining Labourers,2026-07-01,34.333
+3,QLD,Sunshine Coast,83,Factory Process Workers,2026-07-01,34
+3,QLD,Sunshine Coast,84,"Farm, Forestry and Garden Workers",2026-07-01,20.333
+3,QLD,Sunshine Coast,85,Food Preparation Assistants,2026-07-01,29.333
+3,QLD,Sunshine Coast,89,Other Labourers,2026-07-01,111.667
+1,QLD,Toowoomba and South West QLD,0,Toowoomba and South West QLD TOTAL,2026-07-01,2494.667
+2,QLD,Toowoomba and South West QLD,1,MANAGERS,2026-07-01,232.667
+3,QLD,Toowoomba and South West QLD,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,8
+3,QLD,Toowoomba and South West QLD,12,Farmers and Farm Managers,2026-07-01,13
+3,QLD,Toowoomba and South West QLD,14,"Hospitality, Retail and Service Managers",2026-07-01,81
+3,QLD,Toowoomba and South West QLD,1A,Corporate Managers,2026-07-01,57.333
+3,QLD,Toowoomba and South West QLD,1B,"Construction, Production and Distribution Managers",2026-07-01,48.667
+3,QLD,Toowoomba and South West QLD,1C,"Health, Education, ICT and Other Managers",2026-07-01,24.667
+2,QLD,Toowoomba and South West QLD,2,PROFESSIONALS,2026-07-01,529.667
+3,QLD,Toowoomba and South West QLD,21,Arts and Media Professionals,2026-07-01,7.667
+3,QLD,Toowoomba and South West QLD,24,Education Professionals,2026-07-01,53
+3,QLD,Toowoomba and South West QLD,26,ICT Professionals,2026-07-01,9
+3,QLD,Toowoomba and South West QLD,27,"Legal, Social and Welfare Professionals",2026-07-01,66
+3,QLD,Toowoomba and South West QLD,2A,"Business, Finance and Human Resource Professionals",2026-07-01,54.333
+3,QLD,Toowoomba and South West QLD,2B,Information Professionals,2026-07-01,9
+3,QLD,Toowoomba and South West QLD,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,8
+3,QLD,Toowoomba and South West QLD,2D,"Transport and Design Professionals, and Architects",2026-07-01,12.333
+3,QLD,Toowoomba and South West QLD,2E,Engineers,2026-07-01,48.333
+3,QLD,Toowoomba and South West QLD,2F,Science Professionals and Veterinarians,2026-07-01,11.333
+3,QLD,Toowoomba and South West QLD,2G,Health Diagnostic and Therapy Professionals,2026-07-01,89
+3,QLD,Toowoomba and South West QLD,2H,Medical Practitioners and Nurses,2026-07-01,161.667
+2,QLD,Toowoomba and South West QLD,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,421.667
+3,QLD,Toowoomba and South West QLD,31,"Engineering, ICT and Science Technicians",2026-07-01,60.333
+3,QLD,Toowoomba and South West QLD,32,Automotive and Engineering Trades Workers,2026-07-01,149
+3,QLD,Toowoomba and South West QLD,33,Construction Trades Workers,2026-07-01,48.667
+3,QLD,Toowoomba and South West QLD,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,51.333
+3,QLD,Toowoomba and South West QLD,35,Food Trades Workers,2026-07-01,55
+3,QLD,Toowoomba and South West QLD,36,Skilled Animal and Horticultural Workers,2026-07-01,23
+3,QLD,Toowoomba and South West QLD,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,15
+3,QLD,Toowoomba and South West QLD,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,19.333
+2,QLD,Toowoomba and South West QLD,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,306
+3,QLD,Toowoomba and South West QLD,41,Health and Welfare Support Workers,2026-07-01,44.667
+3,QLD,Toowoomba and South West QLD,42,Carers and Aides,2026-07-01,192
+3,QLD,Toowoomba and South West QLD,43,Hospitality Workers,2026-07-01,28
+3,QLD,Toowoomba and South West QLD,44,Protective Service Workers,2026-07-01,9.333
+3,QLD,Toowoomba and South West QLD,45,"Sports, Travel and Personal Service Workers",2026-07-01,32
+2,QLD,Toowoomba and South West QLD,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,318
+3,QLD,Toowoomba and South West QLD,55,Numerical Clerks,2026-07-01,35.333
+3,QLD,Toowoomba and South West QLD,56,Clerical and Office Support Workers,2026-07-01,10
+3,QLD,Toowoomba and South West QLD,59,Other Clerical and Administrative Workers,2026-07-01,67.333
+3,QLD,Toowoomba and South West QLD,5A,"Office Managers, Administrators and Secretaries",2026-07-01,33.667
+3,QLD,Toowoomba and South West QLD,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,171.667
+2,QLD,Toowoomba and South West QLD,6,SALES WORKERS,2026-07-01,195.333
+3,QLD,Toowoomba and South West QLD,61,Sales Representatives and Agents,2026-07-01,30.667
+3,QLD,Toowoomba and South West QLD,62,Sales Assistants and Salespersons,2026-07-01,151.667
+3,QLD,Toowoomba and South West QLD,63,Sales Support Workers,2026-07-01,13
+2,QLD,Toowoomba and South West QLD,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,251.333
+3,QLD,Toowoomba and South West QLD,71,Machine and Stationary Plant Operators,2026-07-01,50
+3,QLD,Toowoomba and South West QLD,72,Mobile Plant Operators,2026-07-01,82.333
+3,QLD,Toowoomba and South West QLD,7A,Drivers and Storepersons,2026-07-01,119
+2,QLD,Toowoomba and South West QLD,8,LABOURERS,2026-07-01,240
+3,QLD,Toowoomba and South West QLD,81,Cleaners and Laundry Workers,2026-07-01,38.333
+3,QLD,Toowoomba and South West QLD,82,Construction and Mining Labourers,2026-07-01,30
+3,QLD,Toowoomba and South West QLD,83,Factory Process Workers,2026-07-01,27.333
+3,QLD,Toowoomba and South West QLD,84,"Farm, Forestry and Garden Workers",2026-07-01,23.333
+3,QLD,Toowoomba and South West QLD,85,Food Preparation Assistants,2026-07-01,9.333
+3,QLD,Toowoomba and South West QLD,89,Other Labourers,2026-07-01,111.667
+1,SA,Adelaide,0,Adelaide TOTAL,2026-07-01,11982
+2,SA,Adelaide,1,MANAGERS,2026-07-01,1431.333
+3,SA,Adelaide,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,65
+3,SA,Adelaide,12,Farmers and Farm Managers,2026-07-01,9.333
+3,SA,Adelaide,14,"Hospitality, Retail and Service Managers",2026-07-01,418.333
+3,SA,Adelaide,1A,Corporate Managers,2026-07-01,429.667
+3,SA,Adelaide,1B,"Construction, Production and Distribution Managers",2026-07-01,373.667
+3,SA,Adelaide,1C,"Health, Education, ICT and Other Managers",2026-07-01,135.333
+2,SA,Adelaide,2,PROFESSIONALS,2026-07-01,3162.333
+3,SA,Adelaide,21,Arts and Media Professionals,2026-07-01,70.667
+3,SA,Adelaide,24,Education Professionals,2026-07-01,84
+3,SA,Adelaide,26,ICT Professionals,2026-07-01,334.667
+3,SA,Adelaide,27,"Legal, Social and Welfare Professionals",2026-07-01,393
+3,SA,Adelaide,2A,"Business, Finance and Human Resource Professionals",2026-07-01,433
+3,SA,Adelaide,2B,Information Professionals,2026-07-01,106.667
+3,SA,Adelaide,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,120.667
+3,SA,Adelaide,2D,"Transport and Design Professionals, and Architects",2026-07-01,90
+3,SA,Adelaide,2E,Engineers,2026-07-01,286
+3,SA,Adelaide,2F,Science Professionals and Veterinarians,2026-07-01,61.333
+3,SA,Adelaide,2G,Health Diagnostic and Therapy Professionals,2026-07-01,435.333
+3,SA,Adelaide,2H,Medical Practitioners and Nurses,2026-07-01,747
+2,SA,Adelaide,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,1753.667
+3,SA,Adelaide,31,"Engineering, ICT and Science Technicians",2026-07-01,288.333
+3,SA,Adelaide,32,Automotive and Engineering Trades Workers,2026-07-01,533.667
+3,SA,Adelaide,33,Construction Trades Workers,2026-07-01,228.333
+3,SA,Adelaide,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,230.667
+3,SA,Adelaide,35,Food Trades Workers,2026-07-01,254.333
+3,SA,Adelaide,36,Skilled Animal and Horticultural Workers,2026-07-01,89.667
+3,SA,Adelaide,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,59
+3,SA,Adelaide,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,69.667
+2,SA,Adelaide,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,1078.333
+3,SA,Adelaide,41,Health and Welfare Support Workers,2026-07-01,166
+3,SA,Adelaide,42,Carers and Aides,2026-07-01,579.333
+3,SA,Adelaide,43,Hospitality Workers,2026-07-01,142.667
+3,SA,Adelaide,44,Protective Service Workers,2026-07-01,59.333
+3,SA,Adelaide,45,"Sports, Travel and Personal Service Workers",2026-07-01,131
+2,SA,Adelaide,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,1880.667
+3,SA,Adelaide,55,Numerical Clerks,2026-07-01,275.333
+3,SA,Adelaide,56,Clerical and Office Support Workers,2026-07-01,66.667
+3,SA,Adelaide,59,Other Clerical and Administrative Workers,2026-07-01,353.333
+3,SA,Adelaide,5A,"Office Managers, Administrators and Secretaries",2026-07-01,272
+3,SA,Adelaide,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,913.333
+2,SA,Adelaide,6,SALES WORKERS,2026-07-01,917.333
+3,SA,Adelaide,61,Sales Representatives and Agents,2026-07-01,244
+3,SA,Adelaide,62,Sales Assistants and Salespersons,2026-07-01,604
+3,SA,Adelaide,63,Sales Support Workers,2026-07-01,69.333
+2,SA,Adelaide,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,865.667
+3,SA,Adelaide,71,Machine and Stationary Plant Operators,2026-07-01,197
+3,SA,Adelaide,72,Mobile Plant Operators,2026-07-01,232.333
+3,SA,Adelaide,7A,Drivers and Storepersons,2026-07-01,436.333
+2,SA,Adelaide,8,LABOURERS,2026-07-01,892.667
+3,SA,Adelaide,81,Cleaners and Laundry Workers,2026-07-01,195.333
+3,SA,Adelaide,82,Construction and Mining Labourers,2026-07-01,125.333
+3,SA,Adelaide,83,Factory Process Workers,2026-07-01,133
+3,SA,Adelaide,84,"Farm, Forestry and Garden Workers",2026-07-01,36
+3,SA,Adelaide,85,Food Preparation Assistants,2026-07-01,63.333
+3,SA,Adelaide,89,Other Labourers,2026-07-01,339.667
+1,SA,Fleurieu Peninsula & Murray Mallee,0,Fleurieu Peninsula & Murray Mallee TOTAL,2026-07-01,967.667
+2,SA,Fleurieu Peninsula & Murray Mallee,1,MANAGERS,2026-07-01,77
+3,SA,Fleurieu Peninsula & Murray Mallee,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,3.333
+3,SA,Fleurieu Peninsula & Murray Mallee,12,Farmers and Farm Managers,2026-07-01,8
+3,SA,Fleurieu Peninsula & Murray Mallee,14,"Hospitality, Retail and Service Managers",2026-07-01,33.667
+3,SA,Fleurieu Peninsula & Murray Mallee,1A,Corporate Managers,2026-07-01,16.667
+3,SA,Fleurieu Peninsula & Murray Mallee,1B,"Construction, Production and Distribution Managers",2026-07-01,11
+3,SA,Fleurieu Peninsula & Murray Mallee,1C,"Health, Education, ICT and Other Managers",2026-07-01,4.333
+2,SA,Fleurieu Peninsula & Murray Mallee,2,PROFESSIONALS,2026-07-01,266.667
+3,SA,Fleurieu Peninsula & Murray Mallee,21,Arts and Media Professionals,2026-07-01,2
+3,SA,Fleurieu Peninsula & Murray Mallee,24,Education Professionals,2026-07-01,8.667
+3,SA,Fleurieu Peninsula & Murray Mallee,26,ICT Professionals,2026-07-01,2.333
+3,SA,Fleurieu Peninsula & Murray Mallee,27,"Legal, Social and Welfare Professionals",2026-07-01,52.333
+3,SA,Fleurieu Peninsula & Murray Mallee,2A,"Business, Finance and Human Resource Professionals",2026-07-01,15.333
+3,SA,Fleurieu Peninsula & Murray Mallee,2B,Information Professionals,2026-07-01,2.667
+3,SA,Fleurieu Peninsula & Murray Mallee,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,2.333
+3,SA,Fleurieu Peninsula & Murray Mallee,2D,"Transport and Design Professionals, and Architects",2026-07-01,0.333
+3,SA,Fleurieu Peninsula & Murray Mallee,2E,Engineers,2026-07-01,6
+3,SA,Fleurieu Peninsula & Murray Mallee,2F,Science Professionals and Veterinarians,2026-07-01,6.333
+3,SA,Fleurieu Peninsula & Murray Mallee,2G,Health Diagnostic and Therapy Professionals,2026-07-01,50.667
+3,SA,Fleurieu Peninsula & Murray Mallee,2H,Medical Practitioners and Nurses,2026-07-01,117.667
+2,SA,Fleurieu Peninsula & Murray Mallee,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,129.667
+3,SA,Fleurieu Peninsula & Murray Mallee,31,"Engineering, ICT and Science Technicians",2026-07-01,22
+3,SA,Fleurieu Peninsula & Murray Mallee,32,Automotive and Engineering Trades Workers,2026-07-01,34
+3,SA,Fleurieu Peninsula & Murray Mallee,33,Construction Trades Workers,2026-07-01,8.333
+3,SA,Fleurieu Peninsula & Murray Mallee,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,16.333
+3,SA,Fleurieu Peninsula & Murray Mallee,35,Food Trades Workers,2026-07-01,35
+3,SA,Fleurieu Peninsula & Murray Mallee,36,Skilled Animal and Horticultural Workers,2026-07-01,7
+3,SA,Fleurieu Peninsula & Murray Mallee,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,4.667
+3,SA,Fleurieu Peninsula & Murray Mallee,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,2.333
+2,SA,Fleurieu Peninsula & Murray Mallee,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,131.667
+3,SA,Fleurieu Peninsula & Murray Mallee,41,Health and Welfare Support Workers,2026-07-01,24
+3,SA,Fleurieu Peninsula & Murray Mallee,42,Carers and Aides,2026-07-01,72
+3,SA,Fleurieu Peninsula & Murray Mallee,43,Hospitality Workers,2026-07-01,21.333
+3,SA,Fleurieu Peninsula & Murray Mallee,44,Protective Service Workers,2026-07-01,3.667
+3,SA,Fleurieu Peninsula & Murray Mallee,45,"Sports, Travel and Personal Service Workers",2026-07-01,10.667
+2,SA,Fleurieu Peninsula & Murray Mallee,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,107.667
+3,SA,Fleurieu Peninsula & Murray Mallee,55,Numerical Clerks,2026-07-01,11.333
+3,SA,Fleurieu Peninsula & Murray Mallee,56,Clerical and Office Support Workers,2026-07-01,8.667
+3,SA,Fleurieu Peninsula & Murray Mallee,59,Other Clerical and Administrative Workers,2026-07-01,15.333
+3,SA,Fleurieu Peninsula & Murray Mallee,5A,"Office Managers, Administrators and Secretaries",2026-07-01,6.333
+3,SA,Fleurieu Peninsula & Murray Mallee,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,66
+2,SA,Fleurieu Peninsula & Murray Mallee,6,SALES WORKERS,2026-07-01,87.667
+3,SA,Fleurieu Peninsula & Murray Mallee,61,Sales Representatives and Agents,2026-07-01,9.333
+3,SA,Fleurieu Peninsula & Murray Mallee,62,Sales Assistants and Salespersons,2026-07-01,57.667
+3,SA,Fleurieu Peninsula & Murray Mallee,63,Sales Support Workers,2026-07-01,20.667
+2,SA,Fleurieu Peninsula & Murray Mallee,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,60
+3,SA,Fleurieu Peninsula & Murray Mallee,71,Machine and Stationary Plant Operators,2026-07-01,9.667
+3,SA,Fleurieu Peninsula & Murray Mallee,72,Mobile Plant Operators,2026-07-01,17
+3,SA,Fleurieu Peninsula & Murray Mallee,7A,Drivers and Storepersons,2026-07-01,33.333
+2,SA,Fleurieu Peninsula & Murray Mallee,8,LABOURERS,2026-07-01,107.333
+3,SA,Fleurieu Peninsula & Murray Mallee,81,Cleaners and Laundry Workers,2026-07-01,22
+3,SA,Fleurieu Peninsula & Murray Mallee,82,Construction and Mining Labourers,2026-07-01,5.667
+3,SA,Fleurieu Peninsula & Murray Mallee,83,Factory Process Workers,2026-07-01,14.333
+3,SA,Fleurieu Peninsula & Murray Mallee,84,"Farm, Forestry and Garden Workers",2026-07-01,22.333
+3,SA,Fleurieu Peninsula & Murray Mallee,85,Food Preparation Assistants,2026-07-01,7.333
+3,SA,Fleurieu Peninsula & Murray Mallee,89,Other Labourers,2026-07-01,35.667
+1,SA,Port Augusta & Eyre Peninsula,0,Port Augusta & Eyre Peninsula TOTAL,2026-07-01,689.333
+2,SA,Port Augusta & Eyre Peninsula,1,MANAGERS,2026-07-01,48.667
+3,SA,Port Augusta & Eyre Peninsula,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,1.333
+3,SA,Port Augusta & Eyre Peninsula,12,Farmers and Farm Managers,2026-07-01,1
+3,SA,Port Augusta & Eyre Peninsula,14,"Hospitality, Retail and Service Managers",2026-07-01,26
+3,SA,Port Augusta & Eyre Peninsula,1A,Corporate Managers,2026-07-01,8.667
+3,SA,Port Augusta & Eyre Peninsula,1B,"Construction, Production and Distribution Managers",2026-07-01,8.333
+3,SA,Port Augusta & Eyre Peninsula,1C,"Health, Education, ICT and Other Managers",2026-07-01,3.333
+2,SA,Port Augusta & Eyre Peninsula,2,PROFESSIONALS,2026-07-01,235
+3,SA,Port Augusta & Eyre Peninsula,21,Arts and Media Professionals,2026-07-01,1.667
+3,SA,Port Augusta & Eyre Peninsula,24,Education Professionals,2026-07-01,3
+3,SA,Port Augusta & Eyre Peninsula,26,ICT Professionals,2026-07-01,0.667
+3,SA,Port Augusta & Eyre Peninsula,27,"Legal, Social and Welfare Professionals",2026-07-01,41.333
+3,SA,Port Augusta & Eyre Peninsula,2A,"Business, Finance and Human Resource Professionals",2026-07-01,8.667
+3,SA,Port Augusta & Eyre Peninsula,2B,Information Professionals,2026-07-01,2.667
+3,SA,Port Augusta & Eyre Peninsula,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,0
+3,SA,Port Augusta & Eyre Peninsula,2D,"Transport and Design Professionals, and Architects",2026-07-01,3.333
+3,SA,Port Augusta & Eyre Peninsula,2E,Engineers,2026-07-01,8.667
+3,SA,Port Augusta & Eyre Peninsula,2F,Science Professionals and Veterinarians,2026-07-01,6.667
+3,SA,Port Augusta & Eyre Peninsula,2G,Health Diagnostic and Therapy Professionals,2026-07-01,39.667
+3,SA,Port Augusta & Eyre Peninsula,2H,Medical Practitioners and Nurses,2026-07-01,118.667
+2,SA,Port Augusta & Eyre Peninsula,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,113
+3,SA,Port Augusta & Eyre Peninsula,31,"Engineering, ICT and Science Technicians",2026-07-01,13.333
+3,SA,Port Augusta & Eyre Peninsula,32,Automotive and Engineering Trades Workers,2026-07-01,46.667
+3,SA,Port Augusta & Eyre Peninsula,33,Construction Trades Workers,2026-07-01,7.333
+3,SA,Port Augusta & Eyre Peninsula,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,22.333
+3,SA,Port Augusta & Eyre Peninsula,35,Food Trades Workers,2026-07-01,16
+3,SA,Port Augusta & Eyre Peninsula,36,Skilled Animal and Horticultural Workers,2026-07-01,3.333
+3,SA,Port Augusta & Eyre Peninsula,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,1.667
+3,SA,Port Augusta & Eyre Peninsula,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,2.333
+2,SA,Port Augusta & Eyre Peninsula,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,94.333
+3,SA,Port Augusta & Eyre Peninsula,41,Health and Welfare Support Workers,2026-07-01,35.333
+3,SA,Port Augusta & Eyre Peninsula,42,Carers and Aides,2026-07-01,43.333
+3,SA,Port Augusta & Eyre Peninsula,43,Hospitality Workers,2026-07-01,6.667
+3,SA,Port Augusta & Eyre Peninsula,44,Protective Service Workers,2026-07-01,4
+3,SA,Port Augusta & Eyre Peninsula,45,"Sports, Travel and Personal Service Workers",2026-07-01,5
+2,SA,Port Augusta & Eyre Peninsula,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,68.667
+3,SA,Port Augusta & Eyre Peninsula,55,Numerical Clerks,2026-07-01,6.333
+3,SA,Port Augusta & Eyre Peninsula,56,Clerical and Office Support Workers,2026-07-01,4
+3,SA,Port Augusta & Eyre Peninsula,59,Other Clerical and Administrative Workers,2026-07-01,5.333
+3,SA,Port Augusta & Eyre Peninsula,5A,"Office Managers, Administrators and Secretaries",2026-07-01,5.667
+3,SA,Port Augusta & Eyre Peninsula,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,47.333
+2,SA,Port Augusta & Eyre Peninsula,6,SALES WORKERS,2026-07-01,39.667
+3,SA,Port Augusta & Eyre Peninsula,61,Sales Representatives and Agents,2026-07-01,5
+3,SA,Port Augusta & Eyre Peninsula,62,Sales Assistants and Salespersons,2026-07-01,28.333
+3,SA,Port Augusta & Eyre Peninsula,63,Sales Support Workers,2026-07-01,6.333
+2,SA,Port Augusta & Eyre Peninsula,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,42
+3,SA,Port Augusta & Eyre Peninsula,71,Machine and Stationary Plant Operators,2026-07-01,15.333
+3,SA,Port Augusta & Eyre Peninsula,72,Mobile Plant Operators,2026-07-01,5
+3,SA,Port Augusta & Eyre Peninsula,7A,Drivers and Storepersons,2026-07-01,21.667
+2,SA,Port Augusta & Eyre Peninsula,8,LABOURERS,2026-07-01,48
+3,SA,Port Augusta & Eyre Peninsula,81,Cleaners and Laundry Workers,2026-07-01,7
+3,SA,Port Augusta & Eyre Peninsula,82,Construction and Mining Labourers,2026-07-01,8.667
+3,SA,Port Augusta & Eyre Peninsula,83,Factory Process Workers,2026-07-01,5.333
+3,SA,Port Augusta & Eyre Peninsula,84,"Farm, Forestry and Garden Workers",2026-07-01,4.667
+3,SA,Port Augusta & Eyre Peninsula,85,Food Preparation Assistants,2026-07-01,5.667
+3,SA,Port Augusta & Eyre Peninsula,89,Other Labourers,2026-07-01,16.667
+1,SA,Yorke Peninsula & Clare Valley,0,Yorke Peninsula & Clare Valley TOTAL,2026-07-01,426.667
+2,SA,Yorke Peninsula & Clare Valley,1,MANAGERS,2026-07-01,28
+3,SA,Yorke Peninsula & Clare Valley,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,1
+3,SA,Yorke Peninsula & Clare Valley,12,Farmers and Farm Managers,2026-07-01,2.667
+3,SA,Yorke Peninsula & Clare Valley,14,"Hospitality, Retail and Service Managers",2026-07-01,12.333
+3,SA,Yorke Peninsula & Clare Valley,1A,Corporate Managers,2026-07-01,6
+3,SA,Yorke Peninsula & Clare Valley,1B,"Construction, Production and Distribution Managers",2026-07-01,4
+3,SA,Yorke Peninsula & Clare Valley,1C,"Health, Education, ICT and Other Managers",2026-07-01,2
+2,SA,Yorke Peninsula & Clare Valley,2,PROFESSIONALS,2026-07-01,157
+3,SA,Yorke Peninsula & Clare Valley,21,Arts and Media Professionals,2026-07-01,1.667
+3,SA,Yorke Peninsula & Clare Valley,24,Education Professionals,2026-07-01,3.333
+3,SA,Yorke Peninsula & Clare Valley,26,ICT Professionals,2026-07-01,2
+3,SA,Yorke Peninsula & Clare Valley,27,"Legal, Social and Welfare Professionals",2026-07-01,16
+3,SA,Yorke Peninsula & Clare Valley,2A,"Business, Finance and Human Resource Professionals",2026-07-01,5
+3,SA,Yorke Peninsula & Clare Valley,2B,Information Professionals,2026-07-01,0.333
+3,SA,Yorke Peninsula & Clare Valley,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,1.333
+3,SA,Yorke Peninsula & Clare Valley,2D,"Transport and Design Professionals, and Architects",2026-07-01,0
+3,SA,Yorke Peninsula & Clare Valley,2E,Engineers,2026-07-01,5.667
+3,SA,Yorke Peninsula & Clare Valley,2F,Science Professionals and Veterinarians,2026-07-01,4
+3,SA,Yorke Peninsula & Clare Valley,2G,Health Diagnostic and Therapy Professionals,2026-07-01,24
+3,SA,Yorke Peninsula & Clare Valley,2H,Medical Practitioners and Nurses,2026-07-01,93.667
+2,SA,Yorke Peninsula & Clare Valley,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,49.333
+3,SA,Yorke Peninsula & Clare Valley,31,"Engineering, ICT and Science Technicians",2026-07-01,7.667
+3,SA,Yorke Peninsula & Clare Valley,32,Automotive and Engineering Trades Workers,2026-07-01,13.333
+3,SA,Yorke Peninsula & Clare Valley,33,Construction Trades Workers,2026-07-01,2
+3,SA,Yorke Peninsula & Clare Valley,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,6.667
+3,SA,Yorke Peninsula & Clare Valley,35,Food Trades Workers,2026-07-01,13.667
+3,SA,Yorke Peninsula & Clare Valley,36,Skilled Animal and Horticultural Workers,2026-07-01,3
+3,SA,Yorke Peninsula & Clare Valley,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,0.333
+3,SA,Yorke Peninsula & Clare Valley,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,2.667
+2,SA,Yorke Peninsula & Clare Valley,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,78.333
+3,SA,Yorke Peninsula & Clare Valley,41,Health and Welfare Support Workers,2026-07-01,42.667
+3,SA,Yorke Peninsula & Clare Valley,42,Carers and Aides,2026-07-01,27
+3,SA,Yorke Peninsula & Clare Valley,43,Hospitality Workers,2026-07-01,3.333
+3,SA,Yorke Peninsula & Clare Valley,44,Protective Service Workers,2026-07-01,1.333
+3,SA,Yorke Peninsula & Clare Valley,45,"Sports, Travel and Personal Service Workers",2026-07-01,4
+2,SA,Yorke Peninsula & Clare Valley,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,35.667
+3,SA,Yorke Peninsula & Clare Valley,55,Numerical Clerks,2026-07-01,3.333
+3,SA,Yorke Peninsula & Clare Valley,56,Clerical and Office Support Workers,2026-07-01,3.333
+3,SA,Yorke Peninsula & Clare Valley,59,Other Clerical and Administrative Workers,2026-07-01,5.333
+3,SA,Yorke Peninsula & Clare Valley,5A,"Office Managers, Administrators and Secretaries",2026-07-01,5
+3,SA,Yorke Peninsula & Clare Valley,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,18.667
+2,SA,Yorke Peninsula & Clare Valley,6,SALES WORKERS,2026-07-01,23
+3,SA,Yorke Peninsula & Clare Valley,61,Sales Representatives and Agents,2026-07-01,3
+3,SA,Yorke Peninsula & Clare Valley,62,Sales Assistants and Salespersons,2026-07-01,13.667
+3,SA,Yorke Peninsula & Clare Valley,63,Sales Support Workers,2026-07-01,6.333
+2,SA,Yorke Peninsula & Clare Valley,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,21.333
+3,SA,Yorke Peninsula & Clare Valley,71,Machine and Stationary Plant Operators,2026-07-01,8
+3,SA,Yorke Peninsula & Clare Valley,72,Mobile Plant Operators,2026-07-01,4.667
+3,SA,Yorke Peninsula & Clare Valley,7A,Drivers and Storepersons,2026-07-01,8.667
+2,SA,Yorke Peninsula & Clare Valley,8,LABOURERS,2026-07-01,34
+3,SA,Yorke Peninsula & Clare Valley,81,Cleaners and Laundry Workers,2026-07-01,8.333
+3,SA,Yorke Peninsula & Clare Valley,82,Construction and Mining Labourers,2026-07-01,3
+3,SA,Yorke Peninsula & Clare Valley,83,Factory Process Workers,2026-07-01,2
+3,SA,Yorke Peninsula & Clare Valley,84,"Farm, Forestry and Garden Workers",2026-07-01,3
+3,SA,Yorke Peninsula & Clare Valley,85,Food Preparation Assistants,2026-07-01,3
+3,SA,Yorke Peninsula & Clare Valley,89,Other Labourers,2026-07-01,14.667
+1,WA,Goldfields & Southern WA,0,Goldfields & Southern WA TOTAL,2026-07-01,1889.333
+2,WA,Goldfields & Southern WA,1,MANAGERS,2026-07-01,160.333
+3,WA,Goldfields & Southern WA,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,6
+3,WA,Goldfields & Southern WA,12,Farmers and Farm Managers,2026-07-01,6.667
+3,WA,Goldfields & Southern WA,14,"Hospitality, Retail and Service Managers",2026-07-01,62
+3,WA,Goldfields & Southern WA,1A,Corporate Managers,2026-07-01,40.333
+3,WA,Goldfields & Southern WA,1B,"Construction, Production and Distribution Managers",2026-07-01,37.667
+3,WA,Goldfields & Southern WA,1C,"Health, Education, ICT and Other Managers",2026-07-01,7.667
+2,WA,Goldfields & Southern WA,2,PROFESSIONALS,2026-07-01,404.667
+3,WA,Goldfields & Southern WA,21,Arts and Media Professionals,2026-07-01,6.667
+3,WA,Goldfields & Southern WA,24,Education Professionals,2026-07-01,14.333
+3,WA,Goldfields & Southern WA,26,ICT Professionals,2026-07-01,4.667
+3,WA,Goldfields & Southern WA,27,"Legal, Social and Welfare Professionals",2026-07-01,79
+3,WA,Goldfields & Southern WA,2A,"Business, Finance and Human Resource Professionals",2026-07-01,31
+3,WA,Goldfields & Southern WA,2B,Information Professionals,2026-07-01,8
+3,WA,Goldfields & Southern WA,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,6.667
+3,WA,Goldfields & Southern WA,2D,"Transport and Design Professionals, and Architects",2026-07-01,10.333
+3,WA,Goldfields & Southern WA,2E,Engineers,2026-07-01,78
+3,WA,Goldfields & Southern WA,2F,Science Professionals and Veterinarians,2026-07-01,51
+3,WA,Goldfields & Southern WA,2G,Health Diagnostic and Therapy Professionals,2026-07-01,40
+3,WA,Goldfields & Southern WA,2H,Medical Practitioners and Nurses,2026-07-01,75
+2,WA,Goldfields & Southern WA,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,456.667
+3,WA,Goldfields & Southern WA,31,"Engineering, ICT and Science Technicians",2026-07-01,58.333
+3,WA,Goldfields & Southern WA,32,Automotive and Engineering Trades Workers,2026-07-01,233.333
+3,WA,Goldfields & Southern WA,33,Construction Trades Workers,2026-07-01,29.333
+3,WA,Goldfields & Southern WA,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,67
+3,WA,Goldfields & Southern WA,35,Food Trades Workers,2026-07-01,35.667
+3,WA,Goldfields & Southern WA,36,Skilled Animal and Horticultural Workers,2026-07-01,11
+3,WA,Goldfields & Southern WA,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,5.333
+3,WA,Goldfields & Southern WA,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,16.667
+2,WA,Goldfields & Southern WA,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,117.667
+3,WA,Goldfields & Southern WA,41,Health and Welfare Support Workers,2026-07-01,31.333
+3,WA,Goldfields & Southern WA,42,Carers and Aides,2026-07-01,49.333
+3,WA,Goldfields & Southern WA,43,Hospitality Workers,2026-07-01,13.333
+3,WA,Goldfields & Southern WA,44,Protective Service Workers,2026-07-01,12.667
+3,WA,Goldfields & Southern WA,45,"Sports, Travel and Personal Service Workers",2026-07-01,11
+2,WA,Goldfields & Southern WA,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,207.667
+3,WA,Goldfields & Southern WA,55,Numerical Clerks,2026-07-01,24
+3,WA,Goldfields & Southern WA,56,Clerical and Office Support Workers,2026-07-01,6.333
+3,WA,Goldfields & Southern WA,59,Other Clerical and Administrative Workers,2026-07-01,37
+3,WA,Goldfields & Southern WA,5A,"Office Managers, Administrators and Secretaries",2026-07-01,19.667
+3,WA,Goldfields & Southern WA,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,120.667
+2,WA,Goldfields & Southern WA,6,SALES WORKERS,2026-07-01,109.333
+3,WA,Goldfields & Southern WA,61,Sales Representatives and Agents,2026-07-01,18.667
+3,WA,Goldfields & Southern WA,62,Sales Assistants and Salespersons,2026-07-01,79
+3,WA,Goldfields & Southern WA,63,Sales Support Workers,2026-07-01,11.667
+2,WA,Goldfields & Southern WA,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,287
+3,WA,Goldfields & Southern WA,71,Machine and Stationary Plant Operators,2026-07-01,101.667
+3,WA,Goldfields & Southern WA,72,Mobile Plant Operators,2026-07-01,70
+3,WA,Goldfields & Southern WA,7A,Drivers and Storepersons,2026-07-01,115.333
+2,WA,Goldfields & Southern WA,8,LABOURERS,2026-07-01,146
+3,WA,Goldfields & Southern WA,81,Cleaners and Laundry Workers,2026-07-01,24.333
+3,WA,Goldfields & Southern WA,82,Construction and Mining Labourers,2026-07-01,26
+3,WA,Goldfields & Southern WA,83,Factory Process Workers,2026-07-01,4
+3,WA,Goldfields & Southern WA,84,"Farm, Forestry and Garden Workers",2026-07-01,17.333
+3,WA,Goldfields & Southern WA,85,Food Preparation Assistants,2026-07-01,5.333
+3,WA,Goldfields & Southern WA,89,Other Labourers,2026-07-01,69
+1,WA,Perth,0,Perth TOTAL,2026-07-01,21834.333
+2,WA,Perth,1,MANAGERS,2026-07-01,2444.667
+3,WA,Perth,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,94.667
+3,WA,Perth,12,Farmers and Farm Managers,2026-07-01,10.333
+3,WA,Perth,14,"Hospitality, Retail and Service Managers",2026-07-01,702.667
+3,WA,Perth,1A,Corporate Managers,2026-07-01,763
+3,WA,Perth,1B,"Construction, Production and Distribution Managers",2026-07-01,692.333
+3,WA,Perth,1C,"Health, Education, ICT and Other Managers",2026-07-01,181.667
+2,WA,Perth,2,PROFESSIONALS,2026-07-01,5519.333
+3,WA,Perth,21,Arts and Media Professionals,2026-07-01,129.667
+3,WA,Perth,24,Education Professionals,2026-07-01,184.333
+3,WA,Perth,26,ICT Professionals,2026-07-01,441
+3,WA,Perth,27,"Legal, Social and Welfare Professionals",2026-07-01,554.333
+3,WA,Perth,2A,"Business, Finance and Human Resource Professionals",2026-07-01,958
+3,WA,Perth,2B,Information Professionals,2026-07-01,201
+3,WA,Perth,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,232.667
+3,WA,Perth,2D,"Transport and Design Professionals, and Architects",2026-07-01,189.333
+3,WA,Perth,2E,Engineers,2026-07-01,1003.667
+3,WA,Perth,2F,Science Professionals and Veterinarians,2026-07-01,249.333
+3,WA,Perth,2G,Health Diagnostic and Therapy Professionals,2026-07-01,699.667
+3,WA,Perth,2H,Medical Practitioners and Nurses,2026-07-01,676.333
+2,WA,Perth,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,4477.333
+3,WA,Perth,31,"Engineering, ICT and Science Technicians",2026-07-01,771.333
+3,WA,Perth,32,Automotive and Engineering Trades Workers,2026-07-01,1648.667
+3,WA,Perth,33,Construction Trades Workers,2026-07-01,506.333
+3,WA,Perth,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,719.333
+3,WA,Perth,35,Food Trades Workers,2026-07-01,384
+3,WA,Perth,36,Skilled Animal and Horticultural Workers,2026-07-01,165.667
+3,WA,Perth,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,130.333
+3,WA,Perth,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,151.667
+2,WA,Perth,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,1329
+3,WA,Perth,41,Health and Welfare Support Workers,2026-07-01,191
+3,WA,Perth,42,Carers and Aides,2026-07-01,584.333
+3,WA,Perth,43,Hospitality Workers,2026-07-01,261
+3,WA,Perth,44,Protective Service Workers,2026-07-01,88.667
+3,WA,Perth,45,"Sports, Travel and Personal Service Workers",2026-07-01,204
+2,WA,Perth,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,3298.667
+3,WA,Perth,55,Numerical Clerks,2026-07-01,547.333
+3,WA,Perth,56,Clerical and Office Support Workers,2026-07-01,119
+3,WA,Perth,59,Other Clerical and Administrative Workers,2026-07-01,614.333
+3,WA,Perth,5A,"Office Managers, Administrators and Secretaries",2026-07-01,556.667
+3,WA,Perth,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,1461.333
+2,WA,Perth,6,SALES WORKERS,2026-07-01,1475.333
+3,WA,Perth,61,Sales Representatives and Agents,2026-07-01,477.667
+3,WA,Perth,62,Sales Assistants and Salespersons,2026-07-01,914
+3,WA,Perth,63,Sales Support Workers,2026-07-01,83.667
+2,WA,Perth,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,1915.333
+3,WA,Perth,71,Machine and Stationary Plant Operators,2026-07-01,644.333
+3,WA,Perth,72,Mobile Plant Operators,2026-07-01,480.333
+3,WA,Perth,7A,Drivers and Storepersons,2026-07-01,790.667
+2,WA,Perth,8,LABOURERS,2026-07-01,1374.667
+3,WA,Perth,81,Cleaners and Laundry Workers,2026-07-01,197
+3,WA,Perth,82,Construction and Mining Labourers,2026-07-01,363.667
+3,WA,Perth,83,Factory Process Workers,2026-07-01,150.333
+3,WA,Perth,84,"Farm, Forestry and Garden Workers",2026-07-01,54.667
+3,WA,Perth,85,Food Preparation Assistants,2026-07-01,61
+3,WA,Perth,89,Other Labourers,2026-07-01,548
+1,WA,Pilbara & Kimberley,0,Pilbara & Kimberley TOTAL,2026-07-01,1815.333
+2,WA,Pilbara & Kimberley,1,MANAGERS,2026-07-01,133
+3,WA,Pilbara & Kimberley,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,4.333
+3,WA,Pilbara & Kimberley,12,Farmers and Farm Managers,2026-07-01,1
+3,WA,Pilbara & Kimberley,14,"Hospitality, Retail and Service Managers",2026-07-01,50.333
+3,WA,Pilbara & Kimberley,1A,Corporate Managers,2026-07-01,30.667
+3,WA,Pilbara & Kimberley,1B,"Construction, Production and Distribution Managers",2026-07-01,35
+3,WA,Pilbara & Kimberley,1C,"Health, Education, ICT and Other Managers",2026-07-01,11.667
+2,WA,Pilbara & Kimberley,2,PROFESSIONALS,2026-07-01,373.667
+3,WA,Pilbara & Kimberley,21,Arts and Media Professionals,2026-07-01,8.667
+3,WA,Pilbara & Kimberley,24,Education Professionals,2026-07-01,21
+3,WA,Pilbara & Kimberley,26,ICT Professionals,2026-07-01,3.667
+3,WA,Pilbara & Kimberley,27,"Legal, Social and Welfare Professionals",2026-07-01,54.667
+3,WA,Pilbara & Kimberley,2A,"Business, Finance and Human Resource Professionals",2026-07-01,22.667
+3,WA,Pilbara & Kimberley,2B,Information Professionals,2026-07-01,7.667
+3,WA,Pilbara & Kimberley,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,4.333
+3,WA,Pilbara & Kimberley,2D,"Transport and Design Professionals, and Architects",2026-07-01,16
+3,WA,Pilbara & Kimberley,2E,Engineers,2026-07-01,71.667
+3,WA,Pilbara & Kimberley,2F,Science Professionals and Veterinarians,2026-07-01,26.667
+3,WA,Pilbara & Kimberley,2G,Health Diagnostic and Therapy Professionals,2026-07-01,44
+3,WA,Pilbara & Kimberley,2H,Medical Practitioners and Nurses,2026-07-01,92.667
+2,WA,Pilbara & Kimberley,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,523.667
+3,WA,Pilbara & Kimberley,31,"Engineering, ICT and Science Technicians",2026-07-01,56
+3,WA,Pilbara & Kimberley,32,Automotive and Engineering Trades Workers,2026-07-01,223.333
+3,WA,Pilbara & Kimberley,33,Construction Trades Workers,2026-07-01,61.333
+3,WA,Pilbara & Kimberley,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,100.667
+3,WA,Pilbara & Kimberley,35,Food Trades Workers,2026-07-01,43
+3,WA,Pilbara & Kimberley,36,Skilled Animal and Horticultural Workers,2026-07-01,13.333
+3,WA,Pilbara & Kimberley,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,7.333
+3,WA,Pilbara & Kimberley,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,18.667
+2,WA,Pilbara & Kimberley,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,133
+3,WA,Pilbara & Kimberley,41,Health and Welfare Support Workers,2026-07-01,40.667
+3,WA,Pilbara & Kimberley,42,Carers and Aides,2026-07-01,44.667
+3,WA,Pilbara & Kimberley,43,Hospitality Workers,2026-07-01,27
+3,WA,Pilbara & Kimberley,44,Protective Service Workers,2026-07-01,8
+3,WA,Pilbara & Kimberley,45,"Sports, Travel and Personal Service Workers",2026-07-01,12.667
+2,WA,Pilbara & Kimberley,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,191
+3,WA,Pilbara & Kimberley,55,Numerical Clerks,2026-07-01,14.333
+3,WA,Pilbara & Kimberley,56,Clerical and Office Support Workers,2026-07-01,7.333
+3,WA,Pilbara & Kimberley,59,Other Clerical and Administrative Workers,2026-07-01,28.333
+3,WA,Pilbara & Kimberley,5A,"Office Managers, Administrators and Secretaries",2026-07-01,25
+3,WA,Pilbara & Kimberley,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,116
+2,WA,Pilbara & Kimberley,6,SALES WORKERS,2026-07-01,101
+3,WA,Pilbara & Kimberley,61,Sales Representatives and Agents,2026-07-01,7
+3,WA,Pilbara & Kimberley,62,Sales Assistants and Salespersons,2026-07-01,80
+3,WA,Pilbara & Kimberley,63,Sales Support Workers,2026-07-01,14
+2,WA,Pilbara & Kimberley,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,193.667
+3,WA,Pilbara & Kimberley,71,Machine and Stationary Plant Operators,2026-07-01,66.333
+3,WA,Pilbara & Kimberley,72,Mobile Plant Operators,2026-07-01,53
+3,WA,Pilbara & Kimberley,7A,Drivers and Storepersons,2026-07-01,74.333
+2,WA,Pilbara & Kimberley,8,LABOURERS,2026-07-01,166.333
+3,WA,Pilbara & Kimberley,81,Cleaners and Laundry Workers,2026-07-01,36.667
+3,WA,Pilbara & Kimberley,82,Construction and Mining Labourers,2026-07-01,47
+3,WA,Pilbara & Kimberley,83,Factory Process Workers,2026-07-01,2.667
+3,WA,Pilbara & Kimberley,84,"Farm, Forestry and Garden Workers",2026-07-01,9
+3,WA,Pilbara & Kimberley,85,Food Preparation Assistants,2026-07-01,6.333
+3,WA,Pilbara & Kimberley,89,Other Labourers,2026-07-01,64.667
+1,WA,South West WA,0,South West WA TOTAL,2026-07-01,1223.333
+2,WA,South West WA,1,MANAGERS,2026-07-01,127
+3,WA,South West WA,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,5.333
+3,WA,South West WA,12,Farmers and Farm Managers,2026-07-01,5
+3,WA,South West WA,14,"Hospitality, Retail and Service Managers",2026-07-01,64.667
+3,WA,South West WA,1A,Corporate Managers,2026-07-01,23
+3,WA,South West WA,1B,"Construction, Production and Distribution Managers",2026-07-01,19
+3,WA,South West WA,1C,"Health, Education, ICT and Other Managers",2026-07-01,10
+2,WA,South West WA,2,PROFESSIONALS,2026-07-01,277.333
+3,WA,South West WA,21,Arts and Media Professionals,2026-07-01,7.667
+3,WA,South West WA,24,Education Professionals,2026-07-01,18.667
+3,WA,South West WA,26,ICT Professionals,2026-07-01,6.667
+3,WA,South West WA,27,"Legal, Social and Welfare Professionals",2026-07-01,47
+3,WA,South West WA,2A,"Business, Finance and Human Resource Professionals",2026-07-01,29.333
+3,WA,South West WA,2B,Information Professionals,2026-07-01,5.333
+3,WA,South West WA,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,5.333
+3,WA,South West WA,2D,"Transport and Design Professionals, and Architects",2026-07-01,6
+3,WA,South West WA,2E,Engineers,2026-07-01,18.667
+3,WA,South West WA,2F,Science Professionals and Veterinarians,2026-07-01,12.667
+3,WA,South West WA,2G,Health Diagnostic and Therapy Professionals,2026-07-01,49.333
+3,WA,South West WA,2H,Medical Practitioners and Nurses,2026-07-01,70.667
+2,WA,South West WA,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,245.667
+3,WA,South West WA,31,"Engineering, ICT and Science Technicians",2026-07-01,23
+3,WA,South West WA,32,Automotive and Engineering Trades Workers,2026-07-01,95.333
+3,WA,South West WA,33,Construction Trades Workers,2026-07-01,34
+3,WA,South West WA,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,31.667
+3,WA,South West WA,35,Food Trades Workers,2026-07-01,37
+3,WA,South West WA,36,Skilled Animal and Horticultural Workers,2026-07-01,13.333
+3,WA,South West WA,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,5.667
+3,WA,South West WA,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,5.667
+2,WA,South West WA,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,109.667
+3,WA,South West WA,41,Health and Welfare Support Workers,2026-07-01,15
+3,WA,South West WA,42,Carers and Aides,2026-07-01,55.333
+3,WA,South West WA,43,Hospitality Workers,2026-07-01,22.333
+3,WA,South West WA,44,Protective Service Workers,2026-07-01,4.667
+3,WA,South West WA,45,"Sports, Travel and Personal Service Workers",2026-07-01,12.333
+2,WA,South West WA,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,130
+3,WA,South West WA,55,Numerical Clerks,2026-07-01,17.333
+3,WA,South West WA,56,Clerical and Office Support Workers,2026-07-01,4.333
+3,WA,South West WA,59,Other Clerical and Administrative Workers,2026-07-01,20
+3,WA,South West WA,5A,"Office Managers, Administrators and Secretaries",2026-07-01,15.667
+3,WA,South West WA,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,72.667
+2,WA,South West WA,6,SALES WORKERS,2026-07-01,126
+3,WA,South West WA,61,Sales Representatives and Agents,2026-07-01,20.667
+3,WA,South West WA,62,Sales Assistants and Salespersons,2026-07-01,94.333
+3,WA,South West WA,63,Sales Support Workers,2026-07-01,11
+2,WA,South West WA,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,93
+3,WA,South West WA,71,Machine and Stationary Plant Operators,2026-07-01,21
+3,WA,South West WA,72,Mobile Plant Operators,2026-07-01,17.333
+3,WA,South West WA,7A,Drivers and Storepersons,2026-07-01,54.667
+2,WA,South West WA,8,LABOURERS,2026-07-01,114.667
+3,WA,South West WA,81,Cleaners and Laundry Workers,2026-07-01,27.667
+3,WA,South West WA,82,Construction and Mining Labourers,2026-07-01,18
+3,WA,South West WA,83,Factory Process Workers,2026-07-01,10
+3,WA,South West WA,84,"Farm, Forestry and Garden Workers",2026-07-01,23.333
+3,WA,South West WA,85,Food Preparation Assistants,2026-07-01,5.333
+3,WA,South West WA,89,Other Labourers,2026-07-01,30.333
+1,TAS,Hobart & Southeast Tasmania,0,Hobart & Southeast Tasmania TOTAL,2026-07-01,1630.333
+2,TAS,Hobart & Southeast Tasmania,1,MANAGERS,2026-07-01,180
+3,TAS,Hobart & Southeast Tasmania,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,14.333
+3,TAS,Hobart & Southeast Tasmania,12,Farmers and Farm Managers,2026-07-01,1.667
+3,TAS,Hobart & Southeast Tasmania,14,"Hospitality, Retail and Service Managers",2026-07-01,58.333
+3,TAS,Hobart & Southeast Tasmania,1A,Corporate Managers,2026-07-01,57.667
+3,TAS,Hobart & Southeast Tasmania,1B,"Construction, Production and Distribution Managers",2026-07-01,33.667
+3,TAS,Hobart & Southeast Tasmania,1C,"Health, Education, ICT and Other Managers",2026-07-01,14.333
+2,TAS,Hobart & Southeast Tasmania,2,PROFESSIONALS,2026-07-01,545
+3,TAS,Hobart & Southeast Tasmania,21,Arts and Media Professionals,2026-07-01,12
+3,TAS,Hobart & Southeast Tasmania,24,Education Professionals,2026-07-01,22.667
+3,TAS,Hobart & Southeast Tasmania,26,ICT Professionals,2026-07-01,45.667
+3,TAS,Hobart & Southeast Tasmania,27,"Legal, Social and Welfare Professionals",2026-07-01,107.333
+3,TAS,Hobart & Southeast Tasmania,2A,"Business, Finance and Human Resource Professionals",2026-07-01,55.667
+3,TAS,Hobart & Southeast Tasmania,2B,Information Professionals,2026-07-01,18.333
+3,TAS,Hobart & Southeast Tasmania,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,14
+3,TAS,Hobart & Southeast Tasmania,2D,"Transport and Design Professionals, and Architects",2026-07-01,8
+3,TAS,Hobart & Southeast Tasmania,2E,Engineers,2026-07-01,19.333
+3,TAS,Hobart & Southeast Tasmania,2F,Science Professionals and Veterinarians,2026-07-01,8.667
+3,TAS,Hobart & Southeast Tasmania,2G,Health Diagnostic and Therapy Professionals,2026-07-01,95
+3,TAS,Hobart & Southeast Tasmania,2H,Medical Practitioners and Nurses,2026-07-01,138.333
+2,TAS,Hobart & Southeast Tasmania,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,216.667
+3,TAS,Hobart & Southeast Tasmania,31,"Engineering, ICT and Science Technicians",2026-07-01,54
+3,TAS,Hobart & Southeast Tasmania,32,Automotive and Engineering Trades Workers,2026-07-01,55.333
+3,TAS,Hobart & Southeast Tasmania,33,Construction Trades Workers,2026-07-01,21.667
+3,TAS,Hobart & Southeast Tasmania,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,19.667
+3,TAS,Hobart & Southeast Tasmania,35,Food Trades Workers,2026-07-01,39.333
+3,TAS,Hobart & Southeast Tasmania,36,Skilled Animal and Horticultural Workers,2026-07-01,9.667
+3,TAS,Hobart & Southeast Tasmania,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,5
+3,TAS,Hobart & Southeast Tasmania,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,12
+2,TAS,Hobart & Southeast Tasmania,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,178.667
+3,TAS,Hobart & Southeast Tasmania,41,Health and Welfare Support Workers,2026-07-01,23.667
+3,TAS,Hobart & Southeast Tasmania,42,Carers and Aides,2026-07-01,73.667
+3,TAS,Hobart & Southeast Tasmania,43,Hospitality Workers,2026-07-01,60
+3,TAS,Hobart & Southeast Tasmania,44,Protective Service Workers,2026-07-01,7
+3,TAS,Hobart & Southeast Tasmania,45,"Sports, Travel and Personal Service Workers",2026-07-01,14.333
+2,TAS,Hobart & Southeast Tasmania,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,242
+3,TAS,Hobart & Southeast Tasmania,55,Numerical Clerks,2026-07-01,41.667
+3,TAS,Hobart & Southeast Tasmania,56,Clerical and Office Support Workers,2026-07-01,6.333
+3,TAS,Hobart & Southeast Tasmania,59,Other Clerical and Administrative Workers,2026-07-01,36.667
+3,TAS,Hobart & Southeast Tasmania,5A,"Office Managers, Administrators and Secretaries",2026-07-01,31
+3,TAS,Hobart & Southeast Tasmania,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,126.333
+2,TAS,Hobart & Southeast Tasmania,6,SALES WORKERS,2026-07-01,124.333
+3,TAS,Hobart & Southeast Tasmania,61,Sales Representatives and Agents,2026-07-01,30.667
+3,TAS,Hobart & Southeast Tasmania,62,Sales Assistants and Salespersons,2026-07-01,84.667
+3,TAS,Hobart & Southeast Tasmania,63,Sales Support Workers,2026-07-01,9
+2,TAS,Hobart & Southeast Tasmania,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,63
+3,TAS,Hobart & Southeast Tasmania,71,Machine and Stationary Plant Operators,2026-07-01,12
+3,TAS,Hobart & Southeast Tasmania,72,Mobile Plant Operators,2026-07-01,12
+3,TAS,Hobart & Southeast Tasmania,7A,Drivers and Storepersons,2026-07-01,39
+2,TAS,Hobart & Southeast Tasmania,8,LABOURERS,2026-07-01,80.667
+3,TAS,Hobart & Southeast Tasmania,81,Cleaners and Laundry Workers,2026-07-01,17.333
+3,TAS,Hobart & Southeast Tasmania,82,Construction and Mining Labourers,2026-07-01,6.667
+3,TAS,Hobart & Southeast Tasmania,83,Factory Process Workers,2026-07-01,8.667
+3,TAS,Hobart & Southeast Tasmania,84,"Farm, Forestry and Garden Workers",2026-07-01,5.667
+3,TAS,Hobart & Southeast Tasmania,85,Food Preparation Assistants,2026-07-01,9.333
+3,TAS,Hobart & Southeast Tasmania,89,Other Labourers,2026-07-01,33
+1,TAS,Launceston and Northeast Tasmania,0,Launceston and Northeast Tasmania TOTAL,2026-07-01,835
+2,TAS,Launceston and Northeast Tasmania,1,MANAGERS,2026-07-01,79.333
+3,TAS,Launceston and Northeast Tasmania,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,2.333
+3,TAS,Launceston and Northeast Tasmania,12,Farmers and Farm Managers,2026-07-01,4
+3,TAS,Launceston and Northeast Tasmania,14,"Hospitality, Retail and Service Managers",2026-07-01,22.333
+3,TAS,Launceston and Northeast Tasmania,1A,Corporate Managers,2026-07-01,23.333
+3,TAS,Launceston and Northeast Tasmania,1B,"Construction, Production and Distribution Managers",2026-07-01,19.333
+3,TAS,Launceston and Northeast Tasmania,1C,"Health, Education, ICT and Other Managers",2026-07-01,8
+2,TAS,Launceston and Northeast Tasmania,2,PROFESSIONALS,2026-07-01,242.667
+3,TAS,Launceston and Northeast Tasmania,21,Arts and Media Professionals,2026-07-01,4
+3,TAS,Launceston and Northeast Tasmania,24,Education Professionals,2026-07-01,7.333
+3,TAS,Launceston and Northeast Tasmania,26,ICT Professionals,2026-07-01,2.667
+3,TAS,Launceston and Northeast Tasmania,27,"Legal, Social and Welfare Professionals",2026-07-01,50.667
+3,TAS,Launceston and Northeast Tasmania,2A,"Business, Finance and Human Resource Professionals",2026-07-01,17.667
+3,TAS,Launceston and Northeast Tasmania,2B,Information Professionals,2026-07-01,5
+3,TAS,Launceston and Northeast Tasmania,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,3
+3,TAS,Launceston and Northeast Tasmania,2D,"Transport and Design Professionals, and Architects",2026-07-01,2.333
+3,TAS,Launceston and Northeast Tasmania,2E,Engineers,2026-07-01,7.333
+3,TAS,Launceston and Northeast Tasmania,2F,Science Professionals and Veterinarians,2026-07-01,9
+3,TAS,Launceston and Northeast Tasmania,2G,Health Diagnostic and Therapy Professionals,2026-07-01,54.333
+3,TAS,Launceston and Northeast Tasmania,2H,Medical Practitioners and Nurses,2026-07-01,79.333
+2,TAS,Launceston and Northeast Tasmania,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,107.333
+3,TAS,Launceston and Northeast Tasmania,31,"Engineering, ICT and Science Technicians",2026-07-01,13
+3,TAS,Launceston and Northeast Tasmania,32,Automotive and Engineering Trades Workers,2026-07-01,32
+3,TAS,Launceston and Northeast Tasmania,33,Construction Trades Workers,2026-07-01,15.667
+3,TAS,Launceston and Northeast Tasmania,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,15.667
+3,TAS,Launceston and Northeast Tasmania,35,Food Trades Workers,2026-07-01,16
+3,TAS,Launceston and Northeast Tasmania,36,Skilled Animal and Horticultural Workers,2026-07-01,4.333
+3,TAS,Launceston and Northeast Tasmania,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,6
+3,TAS,Launceston and Northeast Tasmania,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,4.667
+2,TAS,Launceston and Northeast Tasmania,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,92
+3,TAS,Launceston and Northeast Tasmania,41,Health and Welfare Support Workers,2026-07-01,12.333
+3,TAS,Launceston and Northeast Tasmania,42,Carers and Aides,2026-07-01,56
+3,TAS,Launceston and Northeast Tasmania,43,Hospitality Workers,2026-07-01,14.667
+3,TAS,Launceston and Northeast Tasmania,44,Protective Service Workers,2026-07-01,3.333
+3,TAS,Launceston and Northeast Tasmania,45,"Sports, Travel and Personal Service Workers",2026-07-01,5.667
+2,TAS,Launceston and Northeast Tasmania,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,102
+3,TAS,Launceston and Northeast Tasmania,55,Numerical Clerks,2026-07-01,8
+3,TAS,Launceston and Northeast Tasmania,56,Clerical and Office Support Workers,2026-07-01,5.333
+3,TAS,Launceston and Northeast Tasmania,59,Other Clerical and Administrative Workers,2026-07-01,16.333
+3,TAS,Launceston and Northeast Tasmania,5A,"Office Managers, Administrators and Secretaries",2026-07-01,17.333
+3,TAS,Launceston and Northeast Tasmania,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,55
+2,TAS,Launceston and Northeast Tasmania,6,SALES WORKERS,2026-07-01,73
+3,TAS,Launceston and Northeast Tasmania,61,Sales Representatives and Agents,2026-07-01,12
+3,TAS,Launceston and Northeast Tasmania,62,Sales Assistants and Salespersons,2026-07-01,57.667
+3,TAS,Launceston and Northeast Tasmania,63,Sales Support Workers,2026-07-01,3.333
+2,TAS,Launceston and Northeast Tasmania,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,55.667
+3,TAS,Launceston and Northeast Tasmania,71,Machine and Stationary Plant Operators,2026-07-01,8.333
+3,TAS,Launceston and Northeast Tasmania,72,Mobile Plant Operators,2026-07-01,8.667
+3,TAS,Launceston and Northeast Tasmania,7A,Drivers and Storepersons,2026-07-01,38.667
+2,TAS,Launceston and Northeast Tasmania,8,LABOURERS,2026-07-01,83
+3,TAS,Launceston and Northeast Tasmania,81,Cleaners and Laundry Workers,2026-07-01,16.667
+3,TAS,Launceston and Northeast Tasmania,82,Construction and Mining Labourers,2026-07-01,5.333
+3,TAS,Launceston and Northeast Tasmania,83,Factory Process Workers,2026-07-01,9
+3,TAS,Launceston and Northeast Tasmania,84,"Farm, Forestry and Garden Workers",2026-07-01,15
+3,TAS,Launceston and Northeast Tasmania,85,Food Preparation Assistants,2026-07-01,7.667
+3,TAS,Launceston and Northeast Tasmania,89,Other Labourers,2026-07-01,29.333
+1,TAS,North West Tasmania,0,North West Tasmania TOTAL,2026-07-01,612.667
+2,TAS,North West Tasmania,1,MANAGERS,2026-07-01,52.667
+3,TAS,North West Tasmania,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,3
+3,TAS,North West Tasmania,12,Farmers and Farm Managers,2026-07-01,2.667
+3,TAS,North West Tasmania,14,"Hospitality, Retail and Service Managers",2026-07-01,14.333
+3,TAS,North West Tasmania,1A,Corporate Managers,2026-07-01,10
+3,TAS,North West Tasmania,1B,"Construction, Production and Distribution Managers",2026-07-01,14
+3,TAS,North West Tasmania,1C,"Health, Education, ICT and Other Managers",2026-07-01,8.667
+2,TAS,North West Tasmania,2,PROFESSIONALS,2026-07-01,192.667
+3,TAS,North West Tasmania,21,Arts and Media Professionals,2026-07-01,3.667
+3,TAS,North West Tasmania,24,Education Professionals,2026-07-01,5.667
+3,TAS,North West Tasmania,26,ICT Professionals,2026-07-01,3.333
+3,TAS,North West Tasmania,27,"Legal, Social and Welfare Professionals",2026-07-01,41.667
+3,TAS,North West Tasmania,2A,"Business, Finance and Human Resource Professionals",2026-07-01,16
+3,TAS,North West Tasmania,2B,Information Professionals,2026-07-01,2.333
+3,TAS,North West Tasmania,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,2
+3,TAS,North West Tasmania,2D,"Transport and Design Professionals, and Architects",2026-07-01,3
+3,TAS,North West Tasmania,2E,Engineers,2026-07-01,10
+3,TAS,North West Tasmania,2F,Science Professionals and Veterinarians,2026-07-01,5.333
+3,TAS,North West Tasmania,2G,Health Diagnostic and Therapy Professionals,2026-07-01,19.333
+3,TAS,North West Tasmania,2H,Medical Practitioners and Nurses,2026-07-01,80.333
+2,TAS,North West Tasmania,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,80.667
+3,TAS,North West Tasmania,31,"Engineering, ICT and Science Technicians",2026-07-01,13
+3,TAS,North West Tasmania,32,Automotive and Engineering Trades Workers,2026-07-01,27.667
+3,TAS,North West Tasmania,33,Construction Trades Workers,2026-07-01,8.333
+3,TAS,North West Tasmania,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,12
+3,TAS,North West Tasmania,35,Food Trades Workers,2026-07-01,11.667
+3,TAS,North West Tasmania,36,Skilled Animal and Horticultural Workers,2026-07-01,2.333
+3,TAS,North West Tasmania,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,1.667
+3,TAS,North West Tasmania,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,4
+2,TAS,North West Tasmania,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,76
+3,TAS,North West Tasmania,41,Health and Welfare Support Workers,2026-07-01,13.667
+3,TAS,North West Tasmania,42,Carers and Aides,2026-07-01,49.667
+3,TAS,North West Tasmania,43,Hospitality Workers,2026-07-01,7
+3,TAS,North West Tasmania,44,Protective Service Workers,2026-07-01,3
+3,TAS,North West Tasmania,45,"Sports, Travel and Personal Service Workers",2026-07-01,2.667
+2,TAS,North West Tasmania,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,70.667
+3,TAS,North West Tasmania,55,Numerical Clerks,2026-07-01,7.333
+3,TAS,North West Tasmania,56,Clerical and Office Support Workers,2026-07-01,0.667
+3,TAS,North West Tasmania,59,Other Clerical and Administrative Workers,2026-07-01,12
+3,TAS,North West Tasmania,5A,"Office Managers, Administrators and Secretaries",2026-07-01,10.667
+3,TAS,North West Tasmania,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,40
+2,TAS,North West Tasmania,6,SALES WORKERS,2026-07-01,45
+3,TAS,North West Tasmania,61,Sales Representatives and Agents,2026-07-01,8
+3,TAS,North West Tasmania,62,Sales Assistants and Salespersons,2026-07-01,35.333
+3,TAS,North West Tasmania,63,Sales Support Workers,2026-07-01,1.667
+2,TAS,North West Tasmania,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,49
+3,TAS,North West Tasmania,71,Machine and Stationary Plant Operators,2026-07-01,17.667
+3,TAS,North West Tasmania,72,Mobile Plant Operators,2026-07-01,4
+3,TAS,North West Tasmania,7A,Drivers and Storepersons,2026-07-01,27.333
+2,TAS,North West Tasmania,8,LABOURERS,2026-07-01,46
+3,TAS,North West Tasmania,81,Cleaners and Laundry Workers,2026-07-01,7.333
+3,TAS,North West Tasmania,82,Construction and Mining Labourers,2026-07-01,4.333
+3,TAS,North West Tasmania,83,Factory Process Workers,2026-07-01,8.333
+3,TAS,North West Tasmania,84,"Farm, Forestry and Garden Workers",2026-07-01,5.667
+3,TAS,North West Tasmania,85,Food Preparation Assistants,2026-07-01,2.333
+3,TAS,North West Tasmania,89,Other Labourers,2026-07-01,18
+1,NT,Darwin,0,Darwin TOTAL,2026-07-01,1849
+2,NT,Darwin,1,MANAGERS,2026-07-01,204.333
+3,NT,Darwin,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,16.333
+3,NT,Darwin,12,Farmers and Farm Managers,2026-07-01,0.333
+3,NT,Darwin,14,"Hospitality, Retail and Service Managers",2026-07-01,58.667
+3,NT,Darwin,1A,Corporate Managers,2026-07-01,57
+3,NT,Darwin,1B,"Construction, Production and Distribution Managers",2026-07-01,54.667
+3,NT,Darwin,1C,"Health, Education, ICT and Other Managers",2026-07-01,17.333
+2,NT,Darwin,2,PROFESSIONALS,2026-07-01,507.667
+3,NT,Darwin,21,Arts and Media Professionals,2026-07-01,7.333
+3,NT,Darwin,24,Education Professionals,2026-07-01,29.333
+3,NT,Darwin,26,ICT Professionals,2026-07-01,32.667
+3,NT,Darwin,27,"Legal, Social and Welfare Professionals",2026-07-01,101
+3,NT,Darwin,2A,"Business, Finance and Human Resource Professionals",2026-07-01,55.667
+3,NT,Darwin,2B,Information Professionals,2026-07-01,16
+3,NT,Darwin,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,12.333
+3,NT,Darwin,2D,"Transport and Design Professionals, and Architects",2026-07-01,12.667
+3,NT,Darwin,2E,Engineers,2026-07-01,45
+3,NT,Darwin,2F,Science Professionals and Veterinarians,2026-07-01,14.667
+3,NT,Darwin,2G,Health Diagnostic and Therapy Professionals,2026-07-01,91
+3,NT,Darwin,2H,Medical Practitioners and Nurses,2026-07-01,90
+2,NT,Darwin,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,318
+3,NT,Darwin,31,"Engineering, ICT and Science Technicians",2026-07-01,53
+3,NT,Darwin,32,Automotive and Engineering Trades Workers,2026-07-01,106.667
+3,NT,Darwin,33,Construction Trades Workers,2026-07-01,50.333
+3,NT,Darwin,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,48
+3,NT,Darwin,35,Food Trades Workers,2026-07-01,29.333
+3,NT,Darwin,36,Skilled Animal and Horticultural Workers,2026-07-01,12
+3,NT,Darwin,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,10.333
+3,NT,Darwin,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,8.333
+2,NT,Darwin,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,154.667
+3,NT,Darwin,41,Health and Welfare Support Workers,2026-07-01,26.667
+3,NT,Darwin,42,Carers and Aides,2026-07-01,67.333
+3,NT,Darwin,43,Hospitality Workers,2026-07-01,22
+3,NT,Darwin,44,Protective Service Workers,2026-07-01,15.667
+3,NT,Darwin,45,"Sports, Travel and Personal Service Workers",2026-07-01,23
+2,NT,Darwin,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,268
+3,NT,Darwin,55,Numerical Clerks,2026-07-01,34.667
+3,NT,Darwin,56,Clerical and Office Support Workers,2026-07-01,12.667
+3,NT,Darwin,59,Other Clerical and Administrative Workers,2026-07-01,40
+3,NT,Darwin,5A,"Office Managers, Administrators and Secretaries",2026-07-01,50
+3,NT,Darwin,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,130.667
+2,NT,Darwin,6,SALES WORKERS,2026-07-01,115
+3,NT,Darwin,61,Sales Representatives and Agents,2026-07-01,23.667
+3,NT,Darwin,62,Sales Assistants and Salespersons,2026-07-01,77.667
+3,NT,Darwin,63,Sales Support Workers,2026-07-01,13.667
+2,NT,Darwin,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,165
+3,NT,Darwin,71,Machine and Stationary Plant Operators,2026-07-01,33.667
+3,NT,Darwin,72,Mobile Plant Operators,2026-07-01,39.333
+3,NT,Darwin,7A,Drivers and Storepersons,2026-07-01,92
+2,NT,Darwin,8,LABOURERS,2026-07-01,116.333
+3,NT,Darwin,81,Cleaners and Laundry Workers,2026-07-01,24.667
+3,NT,Darwin,82,Construction and Mining Labourers,2026-07-01,21.333
+3,NT,Darwin,83,Factory Process Workers,2026-07-01,7.333
+3,NT,Darwin,84,"Farm, Forestry and Garden Workers",2026-07-01,4
+3,NT,Darwin,85,Food Preparation Assistants,2026-07-01,6.667
+3,NT,Darwin,89,Other Labourers,2026-07-01,52.333
+1,NT,Regional Northern Territory,0,Regional Northern Territory TOTAL,2026-07-01,908.667
+2,NT,Regional Northern Territory,1,MANAGERS,2026-07-01,92.667
+3,NT,Regional Northern Territory,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,6
+3,NT,Regional Northern Territory,12,Farmers and Farm Managers,2026-07-01,1.667
+3,NT,Regional Northern Territory,14,"Hospitality, Retail and Service Managers",2026-07-01,24.667
+3,NT,Regional Northern Territory,1A,Corporate Managers,2026-07-01,20.333
+3,NT,Regional Northern Territory,1B,"Construction, Production and Distribution Managers",2026-07-01,23
+3,NT,Regional Northern Territory,1C,"Health, Education, ICT and Other Managers",2026-07-01,17
+2,NT,Regional Northern Territory,2,PROFESSIONALS,2026-07-01,305
+3,NT,Regional Northern Territory,21,Arts and Media Professionals,2026-07-01,8
+3,NT,Regional Northern Territory,24,Education Professionals,2026-07-01,11.667
+3,NT,Regional Northern Territory,26,ICT Professionals,2026-07-01,2
+3,NT,Regional Northern Territory,27,"Legal, Social and Welfare Professionals",2026-07-01,59
+3,NT,Regional Northern Territory,2A,"Business, Finance and Human Resource Professionals",2026-07-01,14.667
+3,NT,Regional Northern Territory,2B,Information Professionals,2026-07-01,7.333
+3,NT,Regional Northern Territory,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,3.667
+3,NT,Regional Northern Territory,2D,"Transport and Design Professionals, and Architects",2026-07-01,4.333
+3,NT,Regional Northern Territory,2E,Engineers,2026-07-01,14.333
+3,NT,Regional Northern Territory,2F,Science Professionals and Veterinarians,2026-07-01,7
+3,NT,Regional Northern Territory,2G,Health Diagnostic and Therapy Professionals,2026-07-01,44
+3,NT,Regional Northern Territory,2H,Medical Practitioners and Nurses,2026-07-01,129
+2,NT,Regional Northern Territory,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,123
+3,NT,Regional Northern Territory,31,"Engineering, ICT and Science Technicians",2026-07-01,17.667
+3,NT,Regional Northern Territory,32,Automotive and Engineering Trades Workers,2026-07-01,28.667
+3,NT,Regional Northern Territory,33,Construction Trades Workers,2026-07-01,13
+3,NT,Regional Northern Territory,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,21
+3,NT,Regional Northern Territory,35,Food Trades Workers,2026-07-01,24.333
+3,NT,Regional Northern Territory,36,Skilled Animal and Horticultural Workers,2026-07-01,10
+3,NT,Regional Northern Territory,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,2
+3,NT,Regional Northern Territory,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,6.333
+2,NT,Regional Northern Territory,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,110.333
+3,NT,Regional Northern Territory,41,Health and Welfare Support Workers,2026-07-01,30.333
+3,NT,Regional Northern Territory,42,Carers and Aides,2026-07-01,43.667
+3,NT,Regional Northern Territory,43,Hospitality Workers,2026-07-01,16
+3,NT,Regional Northern Territory,44,Protective Service Workers,2026-07-01,11.333
+3,NT,Regional Northern Territory,45,"Sports, Travel and Personal Service Workers",2026-07-01,9
+2,NT,Regional Northern Territory,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,128
+3,NT,Regional Northern Territory,55,Numerical Clerks,2026-07-01,12.333
+3,NT,Regional Northern Territory,56,Clerical and Office Support Workers,2026-07-01,2
+3,NT,Regional Northern Territory,59,Other Clerical and Administrative Workers,2026-07-01,21
+3,NT,Regional Northern Territory,5A,"Office Managers, Administrators and Secretaries",2026-07-01,18.667
+3,NT,Regional Northern Territory,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,74
+2,NT,Regional Northern Territory,6,SALES WORKERS,2026-07-01,36
+3,NT,Regional Northern Territory,61,Sales Representatives and Agents,2026-07-01,5.667
+3,NT,Regional Northern Territory,62,Sales Assistants and Salespersons,2026-07-01,27.333
+3,NT,Regional Northern Territory,63,Sales Support Workers,2026-07-01,3
+2,NT,Regional Northern Territory,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,33.667
+3,NT,Regional Northern Territory,71,Machine and Stationary Plant Operators,2026-07-01,6.333
+3,NT,Regional Northern Territory,72,Mobile Plant Operators,2026-07-01,6.667
+3,NT,Regional Northern Territory,7A,Drivers and Storepersons,2026-07-01,20.667
+2,NT,Regional Northern Territory,8,LABOURERS,2026-07-01,80
+3,NT,Regional Northern Territory,81,Cleaners and Laundry Workers,2026-07-01,20.333
+3,NT,Regional Northern Territory,82,Construction and Mining Labourers,2026-07-01,10
+3,NT,Regional Northern Territory,83,Factory Process Workers,2026-07-01,4
+3,NT,Regional Northern Territory,84,"Farm, Forestry and Garden Workers",2026-07-01,11.333
+3,NT,Regional Northern Territory,85,Food Preparation Assistants,2026-07-01,5.333
+3,NT,Regional Northern Territory,89,Other Labourers,2026-07-01,29
+1,ACT,Canberra & ACT,0,Canberra & ACT TOTAL,2026-07-01,4501.667
+2,ACT,Canberra & ACT,1,MANAGERS,2026-07-01,635.667
+3,ACT,Canberra & ACT,11,"Chief Executives, Managing Directors & Legislators",2026-07-01,26
+3,ACT,Canberra & ACT,12,Farmers and Farm Managers,2026-07-01,0.667
+3,ACT,Canberra & ACT,14,"Hospitality, Retail and Service Managers",2026-07-01,163.667
+3,ACT,Canberra & ACT,1A,Corporate Managers,2026-07-01,187
+3,ACT,Canberra & ACT,1B,"Construction, Production and Distribution Managers",2026-07-01,174.667
+3,ACT,Canberra & ACT,1C,"Health, Education, ICT and Other Managers",2026-07-01,83.667
+2,ACT,Canberra & ACT,2,PROFESSIONALS,2026-07-01,1751.333
+3,ACT,Canberra & ACT,21,Arts and Media Professionals,2026-07-01,78
+3,ACT,Canberra & ACT,24,Education Professionals,2026-07-01,66.667
+3,ACT,Canberra & ACT,26,ICT Professionals,2026-07-01,494.667
+3,ACT,Canberra & ACT,27,"Legal, Social and Welfare Professionals",2026-07-01,205.333
+3,ACT,Canberra & ACT,2A,"Business, Finance and Human Resource Professionals",2026-07-01,164
+3,ACT,Canberra & ACT,2B,Information Professionals,2026-07-01,94.333
+3,ACT,Canberra & ACT,2C,"Sales, Marketing & Public Relations Professionals",2026-07-01,59.667
+3,ACT,Canberra & ACT,2D,"Transport and Design Professionals, and Architects",2026-07-01,67.333
+3,ACT,Canberra & ACT,2E,Engineers,2026-07-01,66.667
+3,ACT,Canberra & ACT,2F,Science Professionals and Veterinarians,2026-07-01,21.667
+3,ACT,Canberra & ACT,2G,Health Diagnostic and Therapy Professionals,2026-07-01,159.333
+3,ACT,Canberra & ACT,2H,Medical Practitioners and Nurses,2026-07-01,273.667
+2,ACT,Canberra & ACT,3,TECHNICIANS AND TRADES WORKERS,2026-07-01,438.333
+3,ACT,Canberra & ACT,31,"Engineering, ICT and Science Technicians",2026-07-01,99.667
+3,ACT,Canberra & ACT,32,Automotive and Engineering Trades Workers,2026-07-01,77.333
+3,ACT,Canberra & ACT,33,Construction Trades Workers,2026-07-01,60
+3,ACT,Canberra & ACT,34,Electrotechnology and Telecommunications Trades Workers,2026-07-01,51.333
+3,ACT,Canberra & ACT,35,Food Trades Workers,2026-07-01,73.667
+3,ACT,Canberra & ACT,36,Skilled Animal and Horticultural Workers,2026-07-01,27.333
+3,ACT,Canberra & ACT,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",2026-07-01,22.667
+3,ACT,Canberra & ACT,3B,"Jewellers, Arts and Other Trades Workers",2026-07-01,26.333
+2,ACT,Canberra & ACT,4,COMMUNITY AND PERSONAL SERVICE WORKERS,2026-07-01,416.667
+3,ACT,Canberra & ACT,41,Health and Welfare Support Workers,2026-07-01,41.667
+3,ACT,Canberra & ACT,42,Carers and Aides,2026-07-01,177.333
+3,ACT,Canberra & ACT,43,Hospitality Workers,2026-07-01,60.333
+3,ACT,Canberra & ACT,44,Protective Service Workers,2026-07-01,77.333
+3,ACT,Canberra & ACT,45,"Sports, Travel and Personal Service Workers",2026-07-01,60
+2,ACT,Canberra & ACT,5,CLERICAL AND ADMINISTRATIVE WORKERS,2026-07-01,664.667
+3,ACT,Canberra & ACT,55,Numerical Clerks,2026-07-01,84.667
+3,ACT,Canberra & ACT,56,Clerical and Office Support Workers,2026-07-01,12
+3,ACT,Canberra & ACT,59,Other Clerical and Administrative Workers,2026-07-01,96.333
+3,ACT,Canberra & ACT,5A,"Office Managers, Administrators and Secretaries",2026-07-01,150.667
+3,ACT,Canberra & ACT,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",2026-07-01,321
+2,ACT,Canberra & ACT,6,SALES WORKERS,2026-07-01,286.667
+3,ACT,Canberra & ACT,61,Sales Representatives and Agents,2026-07-01,79
+3,ACT,Canberra & ACT,62,Sales Assistants and Salespersons,2026-07-01,177
+3,ACT,Canberra & ACT,63,Sales Support Workers,2026-07-01,30.667
+2,ACT,Canberra & ACT,7,MACHINERY OPERATORS AND DRIVERS,2026-07-01,124.667
+3,ACT,Canberra & ACT,71,Machine and Stationary Plant Operators,2026-07-01,12
+3,ACT,Canberra & ACT,72,Mobile Plant Operators,2026-07-01,20.333
+3,ACT,Canberra & ACT,7A,Drivers and Storepersons,2026-07-01,92.333
+2,ACT,Canberra & ACT,8,LABOURERS,2026-07-01,183.667
+3,ACT,Canberra & ACT,81,Cleaners and Laundry Workers,2026-07-01,37.667
+3,ACT,Canberra & ACT,82,Construction and Mining Labourers,2026-07-01,21
+3,ACT,Canberra & ACT,83,Factory Process Workers,2026-07-01,36.667
+3,ACT,Canberra & ACT,84,"Farm, Forestry and Garden Workers",2026-07-01,8.667
+3,ACT,Canberra & ACT,85,Food Preparation Assistants,2026-07-01,11
+3,ACT,Canberra & ACT,89,Other Labourers,2026-07-01,68.667

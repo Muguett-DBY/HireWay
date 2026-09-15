@@ -1,0 +1,817 @@
+﻿level,anzsco_code,anzsco_title,jsa_remoteness,date,vacancies
+0,0,Total,Regional,2026-07-01,60043
+1,1,MANAGERS,Regional,2026-07-01,5410
+2,11,"Chief Executives, Managing Directors & Legislators",Regional,2026-07-01,211
+2,12,Farmers and Farm Managers,Regional,2026-07-01,130
+2,14,"Hospitality, Retail and Service Managers",Regional,2026-07-01,2068
+2,1A,Corporate Managers,Regional,2026-07-01,1349
+2,1B,"Construction, Production and Distribution Managers",Regional,2026-07-01,1158
+2,1C,"Health, Education, ICT and Other Managers",Regional,2026-07-01,493
+4,1111,Chief Executives and Managing Directors,Regional,2026-07-01,68
+4,1112,General Managers,Regional,2026-07-01,144
+4,1211,Aquaculture Farmers,Regional,2026-07-01,2
+4,1212,Crop Farmers,Regional,2026-07-01,12
+4,1213,Livestock Farmers,Regional,2026-07-01,49
+4,1214,Mixed Crop and Livestock Farmers,Regional,2026-07-01,67
+4,1311,Advertising and Sales Managers,Regional,2026-07-01,612
+4,1321,Corporate Services Managers,Regional,2026-07-01,131
+4,1322,Finance Managers,Regional,2026-07-01,129
+4,1323,Human Resource Managers,Regional,2026-07-01,102
+4,1324,Policy and Planning Managers,Regional,2026-07-01,365
+4,1325,Research and Development Managers,Regional,2026-07-01,11
+4,1331,Construction Managers,Regional,2026-07-01,677
+4,1332,Engineering Managers,Regional,2026-07-01,49
+4,1333,"Importers, Exporters and Wholesalers",Regional,2026-07-01,8
+4,1334,Manufacturers,Regional,2026-07-01,10
+4,1335,Production Managers,Regional,2026-07-01,332
+4,1336,"Supply, Distribution and Procurement Managers",Regional,2026-07-01,81
+4,1341,Child Care Centre Managers,Regional,2026-07-01,113
+4,1342,Health and Welfare Services Managers,Regional,2026-07-01,123
+4,1343,School Principals,Regional,2026-07-01,61
+4,1344,Other Education Managers,Regional,2026-07-01,18
+4,1351,ICT Managers,Regional,2026-07-01,67
+4,1399,Other Specialist Managers,Regional,2026-07-01,111
+4,1411,Cafe and Restaurant Managers,Regional,2026-07-01,159
+4,1412,Caravan Park and Camping Ground Managers,Regional,2026-07-01,5
+4,1413,Hotel and Motel Managers,Regional,2026-07-01,227
+4,1414,Licensed Club Managers,Regional,2026-07-01,41
+4,1419,Other Accommodation and Hospitality Managers,Regional,2026-07-01,43
+4,1421,Retail Managers,Regional,2026-07-01,1027
+4,1491,"Amusement, Fitness and Sports Centre Managers",Regional,2026-07-01,76
+4,1492,Call or Contact Centre and Customer Service Managers,Regional,2026-07-01,134
+4,1493,Conference and Event Organisers,Regional,2026-07-01,85
+4,1494,Transport Services Managers,Regional,2026-07-01,41
+4,1499,"Other Hospitality, Retail and Service Managers",Regional,2026-07-01,231
+1,2,PROFESSIONALS,Regional,2026-07-01,17165
+2,21,Arts and Media Professionals,Regional,2026-07-01,245
+2,24,Education Professionals,Regional,2026-07-01,927
+2,26,ICT Professionals,Regional,2026-07-01,387
+2,27,"Legal, Social and Welfare Professionals",Regional,2026-07-01,3481
+2,2A,"Business, Finance and Human Resource Professionals",Regional,2026-07-01,1385
+2,2B,Information Professionals,Regional,2026-07-01,276
+2,2C,"Sales, Marketing & Public Relations Professionals",Regional,2026-07-01,328
+2,2D,"Transport and Design Professionals, and Architects",Regional,2026-07-01,341
+2,2E,Engineers,Regional,2026-07-01,1139
+2,2F,Science Professionals and Veterinarians,Regional,2026-07-01,423
+2,2G,Health Diagnostic and Therapy Professionals,Regional,2026-07-01,2284
+2,2H,Medical Practitioners and Nurses,Regional,2026-07-01,5951
+4,2111,"Actors, Dancers and Other Entertainers",Regional,2026-07-01,69
+4,2112,Music Professionals,Regional,2026-07-01,4
+4,2113,Photographers,Regional,2026-07-01,3
+4,2114,Visual Arts and Crafts Professionals,Regional,2026-07-01,2
+4,2121,"Artistic Directors, and Media Producers and Presenters",Regional,2026-07-01,4
+4,2122,"Authors, and Book and Script Editors",Regional,2026-07-01,17
+4,2123,"Film, Television, Radio and Stage Directors",Regional,2026-07-01,9
+4,2124,Journalists and Other Writers,Regional,2026-07-01,135
+4,2211,Accountants,Regional,2026-07-01,524
+4,2212,"Auditors, Company Secretaries and Corporate Treasurers",Regional,2026-07-01,81
+4,2221,Financial Brokers,Regional,2026-07-01,38
+4,2222,Financial Dealers,Regional,2026-07-01,7
+4,2223,Financial Investment Advisers and Managers,Regional,2026-07-01,98
+4,2231,Human Resource Professionals,Regional,2026-07-01,429
+4,2232,ICT Trainers,Regional,2026-07-01,1
+4,2233,Training and Development Professionals,Regional,2026-07-01,207
+4,2241,"Actuaries, Mathematicians and Statisticians",Regional,2026-07-01,10
+4,2242,"Archivists, Curators and Records Managers",Regional,2026-07-01,20
+4,2243,Economists,Regional,2026-07-01,2
+4,2244,Intelligence and Policy Analysts,Regional,2026-07-01,72
+4,2245,Land Economists and Valuers,Regional,2026-07-01,18
+4,2246,Librarians,Regional,2026-07-01,22
+4,2247,Management and Organisation Analysts,Regional,2026-07-01,67
+4,2249,Other Information and Organisation Professionals,Regional,2026-07-01,66
+4,2251,Advertising and Marketing Professionals,Regional,2026-07-01,185
+4,2252,ICT Sales Professionals,Regional,2026-07-01,1
+4,2253,Public Relations Professionals,Regional,2026-07-01,109
+4,2254,Technical Sales Representatives,Regional,2026-07-01,32
+4,2311,Air Transport Professionals,Regional,2026-07-01,35
+4,2312,Marine Transport Professionals,Regional,2026-07-01,29
+4,2321,Architects and Landscape Architects,Regional,2026-07-01,25
+4,2322,Surveyors and Spatial Scientists,Regional,2026-07-01,121
+4,2323,"Fashion, Industrial and Jewellery Designers",Regional,2026-07-01,10
+4,2324,"Graphic and Web Designers, and Illustrators",Regional,2026-07-01,48
+4,2325,Interior Designers,Regional,2026-07-01,11
+4,2326,Urban and Regional Planners,Regional,2026-07-01,62
+4,2331,Chemical and Materials Engineers,Regional,2026-07-01,6
+4,2332,Civil Engineering Professionals,Regional,2026-07-01,480
+4,2333,Electrical Engineers,Regional,2026-07-01,85
+4,2334,Electronics Engineers,Regional,2026-07-01,7
+4,2335,"Industrial, Mechanical and Production Engineers",Regional,2026-07-01,156
+4,2336,Mining Engineers,Regional,2026-07-01,350
+4,2339,Other Engineering Professionals,Regional,2026-07-01,55
+4,2341,Agricultural and Forestry Scientists,Regional,2026-07-01,25
+4,2342,"Chemists, and Food and Wine Scientists",Regional,2026-07-01,27
+4,2343,Environmental Scientists,Regional,2026-07-01,177
+4,2344,Geologists and Geophysicists,Regional,2026-07-01,71
+4,2345,Life Scientists,Regional,2026-07-01,53
+4,2346,Medical Laboratory Scientists,Regional,2026-07-01,20
+4,2347,Veterinarians,Regional,2026-07-01,31
+4,2349,Other Natural and Physical Science Professionals,Regional,2026-07-01,19
+4,2411,Early Childhood (Pre-primary School) Teachers,Regional,2026-07-01,438
+4,2412,Primary School Teachers,Regional,2026-07-01,145
+4,2413,Middle School Teachers (Aus) / Intermediate School Teachers (NZ),Regional,2026-07-01,1
+4,2414,Secondary School Teachers,Regional,2026-07-01,192
+4,2415,Special Education Teachers,Regional,2026-07-01,12
+4,2421,University Lecturers and Tutors,Regional,2026-07-01,86
+4,2422,Vocational Education Teachers (Aus) / Polytechnic Teachers (NZ),Regional,2026-07-01,17
+4,2491,Education Advisers and Reviewers,Regional,2026-07-01,14
+4,2492,Private Tutors and Teachers,Regional,2026-07-01,22
+4,2493,Teachers of English to Speakers of Other Languages,Regional,2026-07-01,1
+4,2511,Nutrition Professionals,Regional,2026-07-01,42
+4,2512,Medical Imaging Professionals,Regional,2026-07-01,299
+4,2513,Occupational and Environmental Health Professionals,Regional,2026-07-01,281
+4,2514,Optometrists and Orthoptists,Regional,2026-07-01,47
+4,2515,Pharmacists,Regional,2026-07-01,180
+4,2519,Other Health Diagnostic and Promotion Professionals,Regional,2026-07-01,23
+4,2521,Chiropractors and Osteopaths,Regional,2026-07-01,5
+4,2522,Complementary Health Therapists,Regional,2026-07-01,21
+4,2523,Dental Practitioners,Regional,2026-07-01,157
+4,2524,Occupational Therapists,Regional,2026-07-01,454
+4,2525,Physiotherapists,Regional,2026-07-01,398
+4,2526,Podiatrists,Regional,2026-07-01,65
+4,2527,Audiologists and Speech Pathologists/Therapists,Regional,2026-07-01,313
+4,2531,General Practitioners and Resident Medical Officers,Regional,2026-07-01,2054
+4,2532,Anaesthetists,Regional,2026-07-01,36
+4,2533,Specialist Physicians,Regional,2026-07-01,161
+4,2534,Psychiatrists,Regional,2026-07-01,40
+4,2535,Surgeons,Regional,2026-07-01,41
+4,2539,Other Medical Practitioners,Regional,2026-07-01,178
+4,2541,Midwives,Regional,2026-07-01,75
+4,2542,Nurse Educators and Researchers,Regional,2026-07-01,50
+4,2543,Nurse Managers,Regional,2026-07-01,82
+4,2544,Registered Nurses,Regional,2026-07-01,3234
+4,2611,ICT Business and Systems Analysts,Regional,2026-07-01,128
+4,2612,Multimedia Specialists and Web Developers,Regional,2026-07-01,5
+4,2613,Software and Applications Programmers,Regional,2026-07-01,152
+4,2621,"Database and Systems Administrators, and ICT Security Specialists",Regional,2026-07-01,43
+4,2631,Computer Network Professionals,Regional,2026-07-01,29
+4,2632,ICT Support and Test Engineers,Regional,2026-07-01,25
+4,2633,Telecommunications Engineering Professionals,Regional,2026-07-01,5
+4,2711,Barristers,Regional,2026-07-01,4
+4,2713,Solicitors,Regional,2026-07-01,195
+4,2721,Counsellors,Regional,2026-07-01,173
+4,2722,Ministers of Religion,Regional,2026-07-01,23
+4,2723,Psychologists,Regional,2026-07-01,151
+4,2724,Social Professionals,Regional,2026-07-01,48
+4,2725,Social Workers,Regional,2026-07-01,475
+4,2726,"Welfare, Recreation and Community Arts Workers",Regional,2026-07-01,964
+1,3,TECHNICIANS AND TRADES WORKERS,Regional,2026-07-01,9514
+2,31,"Engineering, ICT and Science Technicians",Regional,2026-07-01,1350
+2,32,Automotive and Engineering Trades Workers,Regional,2026-07-01,3265
+2,33,Construction Trades Workers,Regional,2026-07-01,1080
+2,34,Electrotechnology and Telecommunications Trades Workers,Regional,2026-07-01,1252
+2,35,Food Trades Workers,Regional,2026-07-01,1482
+2,36,Skilled Animal and Horticultural Workers,Regional,2026-07-01,436
+2,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",Regional,2026-07-01,289
+2,3B,"Jewellers, Arts and Other Trades Workers",Regional,2026-07-01,360
+4,3111,Agricultural Technicians,Regional,2026-07-01,62
+4,3112,Medical Technicians,Regional,2026-07-01,169
+4,3113,Primary Products Inspectors,Regional,2026-07-01,9
+4,3114,Science Technicians,Regional,2026-07-01,38
+4,3121,"Architectural, Building and Surveying Technicians",Regional,2026-07-01,496
+4,3122,Civil Engineering Draftspersons and Technicians,Regional,2026-07-01,55
+4,3123,Electrical Engineering Draftspersons and Technicians,Regional,2026-07-01,63
+4,3124,Electronic Engineering Draftspersons and Technicians,Regional,2026-07-01,11
+4,3125,Mechanical Engineering Draftspersons and Technicians,Regional,2026-07-01,69
+4,3126,Safety Inspectors,Regional,2026-07-01,29
+4,3129,Other Building and Engineering Technicians,Regional,2026-07-01,191
+4,3131,ICT Support Technicians,Regional,2026-07-01,147
+4,3132,Telecommunications Technical Specialists,Regional,2026-07-01,11
+4,3211,Automotive Electricians,Regional,2026-07-01,147
+4,3212,Motor Mechanics,Regional,2026-07-01,1155
+4,3221,"Metal Casting, Forging and Finishing Trades Workers",Regional,2026-07-01,3
+4,3222,Sheetmetal Trades Workers,Regional,2026-07-01,114
+4,3223,Structural Steel and Welding Trades Workers,Regional,2026-07-01,564
+4,3231,Aircraft Maintenance Engineers,Regional,2026-07-01,48
+4,3232,Metal Fitters and Machinists,Regional,2026-07-01,1123
+4,3233,Precision Metal Trades Workers,Regional,2026-07-01,14
+4,3234,Toolmakers and Engineering Patternmakers,Regional,2026-07-01,2
+4,3241,Panelbeaters,Regional,2026-07-01,65
+4,3242,Vehicle Body Builders and Trimmers,Regional,2026-07-01,6
+4,3243,Vehicle Painters,Regional,2026-07-01,25
+4,3311,Bricklayers and Stonemasons,Regional,2026-07-01,31
+4,3312,Carpenters and Joiners,Regional,2026-07-01,306
+4,3321,Floor Finishers,Regional,2026-07-01,13
+4,3322,Painting Trades Workers,Regional,2026-07-01,195
+4,3331,Glaziers,Regional,2026-07-01,35
+4,3332,Plasterers,Regional,2026-07-01,28
+4,3333,Roof Tilers,Regional,2026-07-01,33
+4,3334,Wall and Floor Tilers,Regional,2026-07-01,35
+4,3341,Plumbers,Regional,2026-07-01,403
+4,3411,Electricians,Regional,2026-07-01,1009
+4,3421,Airconditioning and Refrigeration Mechanics,Regional,2026-07-01,121
+4,3422,Electrical Distribution Trades Workers,Regional,2026-07-01,63
+4,3423,Electronics Trades Workers,Regional,2026-07-01,35
+4,3424,Telecommunications Trades Workers,Regional,2026-07-01,24
+4,3511,Bakers and Pastrycooks,Regional,2026-07-01,132
+4,3512,Butchers and Smallgoods Makers,Regional,2026-07-01,46
+4,3513,Chefs,Regional,2026-07-01,899
+4,3514,Cooks,Regional,2026-07-01,404
+4,3611,Animal Attendants and Trainers,Regional,2026-07-01,41
+4,3612,Shearers,Regional,2026-07-01,1
+4,3613,Veterinary Nurses,Regional,2026-07-01,49
+4,3621,Florists,Regional,2026-07-01,5
+4,3622,Gardeners,Regional,2026-07-01,237
+4,3623,Greenkeepers,Regional,2026-07-01,86
+4,3624,Nurserypersons,Regional,2026-07-01,17
+4,3911,Hairdressers,Regional,2026-07-01,125
+4,3921,"Binders, Finishers and Screen Printers",Regional,2026-07-01,1
+4,3922,Graphic Pre-press Trades Workers,Regional,2026-07-01,13
+4,3923,Printers,Regional,2026-07-01,3
+4,3931,Canvas and Leather Goods Makers,Regional,2026-07-01,1
+4,3932,Clothing Trades Workers,Regional,2026-07-01,4
+4,3933,Upholsterers,Regional,2026-07-01,2
+4,3941,Cabinetmakers,Regional,2026-07-01,76
+4,3942,Wood Machinists and Other Wood Trades Workers,Regional,2026-07-01,14
+4,3991,Boat Builders and Shipwrights,Regional,2026-07-01,7
+4,3992,"Chemical, Gas, Petroleum and Power Generation Plant Operators",Regional,2026-07-01,31
+4,3993,"Gallery, Library and Museum Technicians",Regional,2026-07-01,13
+4,3994,Jewellers,Regional,2026-07-01,8
+4,3995,Performing Arts Technicians,Regional,2026-07-01,30
+4,3996,Signwriters,Regional,2026-07-01,8
+4,3999,Other Miscellaneous Technicians and Trades Workers,Regional,2026-07-01,314
+1,4,COMMUNITY AND PERSONAL SERVICE WORKERS,Regional,2026-07-01,7044
+2,41,Health and Welfare Support Workers,Regional,2026-07-01,1172
+2,42,Carers and Aides,Regional,2026-07-01,4051
+2,43,Hospitality Workers,Regional,2026-07-01,967
+2,44,Protective Service Workers,Regional,2026-07-01,256
+2,45,"Sports, Travel and Personal Service Workers",Regional,2026-07-01,598
+4,4111,Ambulance Officers and Paramedics,Regional,2026-07-01,18
+4,4112,"Dental Hygienists, Technicians and Therapists",Regional,2026-07-01,64
+4,4113,Diversional Therapists,Regional,2026-07-01,26
+4,4114,Enrolled and Mothercraft Nurses,Regional,2026-07-01,329
+4,4115,Indigenous Health Workers,Regional,2026-07-01,40
+4,4116,Massage Therapists,Regional,2026-07-01,31
+4,4117,Welfare Support Workers,Regional,2026-07-01,663
+4,4211,Child Carers,Regional,2026-07-01,1018
+4,4221,Education Aides,Regional,2026-07-01,476
+4,4231,Aged and Disabled Carers,Regional,2026-07-01,1485
+4,4232,Dental Assistants,Regional,2026-07-01,244
+4,4233,Nursing Support and Personal Care Workers,Regional,2026-07-01,806
+4,4234,Special Care Workers,Regional,2026-07-01,22
+4,4311,Bar Attendants and Baristas,Regional,2026-07-01,317
+4,4312,Cafe Workers,Regional,2026-07-01,129
+4,4313,Gaming Workers,Regional,2026-07-01,32
+4,4314,Hotel Service Managers,Regional,2026-07-01,49
+4,4315,Waiters,Regional,2026-07-01,398
+4,4412,Fire and Emergency Workers,Regional,2026-07-01,45
+4,4413,Police,Regional,2026-07-01,7
+4,4421,Prison Officers,Regional,2026-07-01,17
+4,4422,Security Officers and Guards,Regional,2026-07-01,181
+4,4511,Beauty Therapists,Regional,2026-07-01,85
+4,4512,Driving Instructors,Regional,2026-07-01,11
+4,4513,Funeral Workers,Regional,2026-07-01,16
+4,4514,"Gallery, Museum and Tour Guides",Regional,2026-07-01,39
+4,4515,Personal Care Consultants,Regional,2026-07-01,0
+4,4516,Tourism and Travel Advisers,Regional,2026-07-01,43
+4,4517,Travel Attendants,Regional,2026-07-01,7
+4,4521,Fitness Instructors,Regional,2026-07-01,95
+4,4522,Outdoor Adventure Guides,Regional,2026-07-01,7
+4,4523,"Sports Coaches, Instructors and Officials",Regional,2026-07-01,245
+4,4524,Sportspersons,Regional,2026-07-01,44
+1,5,CLERICAL AND ADMINISTRATIVE WORKERS,Regional,2026-07-01,7187
+2,55,Numerical Clerks,Regional,2026-07-01,957
+2,56,Clerical and Office Support Workers,Regional,2026-07-01,259
+2,59,Other Clerical and Administrative Workers,Regional,2026-07-01,1208
+2,5A,"Office Managers, Administrators and Secretaries",Regional,2026-07-01,895
+2,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",Regional,2026-07-01,3868
+4,5111,"Contract, Program and Project Administrators",Regional,2026-07-01,362
+4,5121,Office Managers,Regional,2026-07-01,241
+4,5122,Practice Managers,Regional,2026-07-01,79
+4,5211,Personal Assistants,Regional,2026-07-01,43
+4,5212,Secretaries,Regional,2026-07-01,171
+4,5311,General Clerks,Regional,2026-07-01,2771
+4,5321,Keyboard Operators,Regional,2026-07-01,21
+4,5411,Call or Contact Centre Workers,Regional,2026-07-01,278
+4,5412,Information Officers,Regional,2026-07-01,138
+4,5421,Receptionists,Regional,2026-07-01,659
+4,5511,Accounting Clerks,Regional,2026-07-01,281
+4,5512,Bookkeepers,Regional,2026-07-01,80
+4,5513,Payroll Clerks,Regional,2026-07-01,140
+4,5521,Bank Workers,Regional,2026-07-01,226
+4,5522,Credit and Loans Officers,Regional,2026-07-01,219
+4,5523,"Insurance, Money Market and Statistical Clerks",Regional,2026-07-01,10
+4,5611,Betting Clerks,Regional,2026-07-01,1
+4,5612,Couriers and Postal Deliverers,Regional,2026-07-01,115
+4,5613,Filing and Registry Clerks,Regional,2026-07-01,21
+4,5614,Mail Sorters,Regional,2026-07-01,8
+4,5615,Survey Interviewers,Regional,2026-07-01,81
+4,5616,Switchboard Operators,Regional,2026-07-01,1
+4,5619,Other Clerical and Office Support Workers,Regional,2026-07-01,32
+4,5911,Purchasing and Supply Logistics Clerks,Regional,2026-07-01,503
+4,5912,Transport and Despatch Clerks,Regional,2026-07-01,202
+4,5991,Conveyancers and Legal Executives,Regional,2026-07-01,64
+4,5992,Court and Legal Clerks,Regional,2026-07-01,43
+4,5993,Debt Collectors,Regional,2026-07-01,21
+4,5994,Human Resource Clerks,Regional,2026-07-01,19
+4,5995,Inspectors and Regulatory Officers,Regional,2026-07-01,209
+4,5996,"Insurance Investigators, Loss Adjusters and Risk Surveyors",Regional,2026-07-01,74
+4,5997,Library Assistants,Regional,2026-07-01,18
+4,5999,Other Miscellaneous Clerical and Administrative Workers,Regional,2026-07-01,57
+1,6,SALES WORKERS,Regional,2026-07-01,4561
+2,61,Sales Representatives and Agents,Regional,2026-07-01,944
+2,62,Sales Assistants and Salespersons,Regional,2026-07-01,3256
+2,63,Sales Support Workers,Regional,2026-07-01,360
+4,6111,"Auctioneers, and Stock and Station Agents",Regional,2026-07-01,3
+4,6112,Insurance Agents,Regional,2026-07-01,63
+4,6113,Sales Representatives,Regional,2026-07-01,545
+4,6121,Real Estate Sales Agents,Regional,2026-07-01,333
+4,6211,Sales Assistants (General),Regional,2026-07-01,2772
+4,6212,ICT Sales Assistants,Regional,2026-07-01,2
+4,6213,Motor Vehicle and Vehicle Parts Salespersons,Regional,2026-07-01,267
+4,6214,Pharmacy Sales Assistants,Regional,2026-07-01,100
+4,6215,Retail Supervisors,Regional,2026-07-01,90
+4,6216,Service Station Attendants,Regional,2026-07-01,11
+4,6217,Street Vendors and Related Salespersons,Regional,2026-07-01,3
+4,6219,Other Sales Assistants and Salespersons,Regional,2026-07-01,12
+4,6311,Checkout Operators and Office Cashiers,Regional,2026-07-01,28
+4,6391,Models and Sales Demonstrators,Regional,2026-07-01,170
+4,6392,Retail and Wool Buyers,Regional,2026-07-01,6
+4,6393,Telemarketers,Regional,2026-07-01,16
+4,6394,Ticket Salespersons,Regional,2026-07-01,17
+4,6395,Visual Merchandisers,Regional,2026-07-01,15
+4,6399,Other Sales Support Workers,Regional,2026-07-01,108
+1,7,MACHINERY OPERATORS AND DRIVERS,Regional,2026-07-01,4438
+2,71,Machine and Stationary Plant Operators,Regional,2026-07-01,1081
+2,72,Mobile Plant Operators,Regional,2026-07-01,1061
+2,7A,Drivers and Storepersons,Regional,2026-07-01,2296
+4,7111,"Clay, Concrete, Glass and Stone Processing Machine Operators",Regional,2026-07-01,0
+4,7112,Industrial Spraypainters,Regional,2026-07-01,59
+4,7113,Paper and Wood Processing Machine Operators,Regional,2026-07-01,4
+4,7114,Photographic Developers and Printers,Regional,2026-07-01,0
+4,7115,Plastics and Rubber Production Machine Operators,Regional,2026-07-01,13
+4,7116,Sewing Machinists,Regional,2026-07-01,41
+4,7117,Textile and Footwear Production Machine Operators,Regional,2026-07-01,6
+4,7119,Other Machine Operators,Regional,2026-07-01,218
+4,7121,"Crane, Hoist and Lift Operators",Regional,2026-07-01,119
+4,7122,"Drillers, Miners and Shot Firers",Regional,2026-07-01,407
+4,7123,Engineering Production Workers,Regional,2026-07-01,39
+4,7129,Other Stationary Plant Operators,Regional,2026-07-01,172
+4,7211,"Agricultural, Forestry and Horticultural Plant Operators",Regional,2026-07-01,37
+4,7212,Earthmoving Plant Operators,Regional,2026-07-01,609
+4,7213,Forklift Drivers,Regional,2026-07-01,300
+4,7219,Other Mobile Plant Operators,Regional,2026-07-01,115
+4,7311,Automobile Drivers,Regional,2026-07-01,21
+4,7312,Bus and Coach Drivers,Regional,2026-07-01,162
+4,7313,Train and Tram Drivers,Regional,2026-07-01,58
+4,7321,Delivery Drivers,Regional,2026-07-01,378
+4,7331,Truck Drivers,Regional,2026-07-01,1100
+4,7411,Storepersons,Regional,2026-07-01,576
+1,8,LABOURERS,Regional,2026-07-01,4726
+2,81,Cleaners and Laundry Workers,Regional,2026-07-01,1066
+2,82,Construction and Mining Labourers,Regional,2026-07-01,585
+2,83,Factory Process Workers,Regional,2026-07-01,405
+2,84,"Farm, Forestry and Garden Workers",Regional,2026-07-01,479
+2,85,Food Preparation Assistants,Regional,2026-07-01,301
+2,89,Other Labourers,Regional,2026-07-01,1889
+4,8111,Car Detailers,Regional,2026-07-01,57
+4,8112,Commercial Cleaners,Regional,2026-07-01,668
+4,8113,Domestic Cleaners,Regional,2026-07-01,9
+4,8114,Housekeepers,Regional,2026-07-01,278
+4,8115,Laundry Workers,Regional,2026-07-01,34
+4,8116,Other Cleaners,Regional,2026-07-01,20
+4,8211,Building and Plumbing Labourers,Regional,2026-07-01,299
+4,8212,Concreters,Regional,2026-07-01,59
+4,8213,Fencers,Regional,2026-07-01,15
+4,8214,Insulation and Home Improvement Installers,Regional,2026-07-01,23
+4,8215,Paving and Surfacing Labourers,Regional,2026-07-01,7
+4,8216,Railway Track Workers,Regional,2026-07-01,14
+4,8217,Structural Steel Construction Workers,Regional,2026-07-01,126
+4,8219,Other Construction and Mining Labourers,Regional,2026-07-01,43
+4,8311,Food and Drink Factory Workers,Regional,2026-07-01,56
+4,8312,"Meat Boners and Slicers, and Slaughterers",Regional,2026-07-01,16
+4,8313,"Meat, Poultry and Seafood Process Workers",Regional,2026-07-01,31
+4,8321,Packers,Regional,2026-07-01,81
+4,8322,Product Assemblers,Regional,2026-07-01,40
+4,8391,Metal Engineering Process Workers,Regional,2026-07-01,11
+4,8392,Plastics and Rubber Factory Workers,Regional,2026-07-01,0
+4,8393,Product Quality Controllers,Regional,2026-07-01,80
+4,8394,Timber and Wood Process Workers,Regional,2026-07-01,4
+4,8399,Other Factory Process Workers,Regional,2026-07-01,86
+4,8411,Aquaculture Workers,Regional,2026-07-01,1
+4,8412,Crop Farm Workers,Regional,2026-07-01,73
+4,8413,Forestry and Logging Workers,Regional,2026-07-01,8
+4,8414,Garden and Nursery Labourers,Regional,2026-07-01,81
+4,8415,Livestock Farm Workers,Regional,2026-07-01,120
+4,8416,Mixed Crop and Livestock Farm Workers,Regional,2026-07-01,146
+4,8419,"Other Farm, Forestry and Garden Workers",Regional,2026-07-01,51
+4,8511,Fast Food Cooks,Regional,2026-07-01,7
+4,8512,Food Trades Assistants,Regional,2026-07-01,9
+4,8513,Kitchenhands,Regional,2026-07-01,285
+4,8911,Freight and Furniture Handlers,Regional,2026-07-01,67
+4,8912,Shelf Fillers,Regional,2026-07-01,25
+4,8991,Caretakers,Regional,2026-07-01,51
+4,8992,Deck and Fishing Hands,Regional,2026-07-01,14
+4,8993,Handypersons,Regional,2026-07-01,261
+4,8994,Motor Vehicle Parts and Accessories Fitters,Regional,2026-07-01,79
+4,8995,Printing Assistants and Table Workers,Regional,2026-07-01,7
+4,8996,Recycling and Rubbish Collectors,Regional,2026-07-01,6
+4,8997,Vending Machine Attendants,Regional,2026-07-01,3
+4,8999,Other Miscellaneous Labourers,Regional,2026-07-01,1377
+0,0,Total,Major City,2026-07-01,145912
+1,1,MANAGERS,Major City,2026-07-01,19903
+2,11,"Chief Executives, Managing Directors & Legislators",Major City,2026-07-01,857
+2,12,Farmers and Farm Managers,Major City,2026-07-01,59
+2,14,"Hospitality, Retail and Service Managers",Major City,2026-07-01,5324
+2,1A,Corporate Managers,Major City,2026-07-01,7188
+2,1B,"Construction, Production and Distribution Managers",Major City,2026-07-01,4785
+2,1C,"Health, Education, ICT and Other Managers",Major City,2026-07-01,1691
+4,1111,Chief Executives and Managing Directors,Major City,2026-07-01,294
+4,1112,General Managers,Major City,2026-07-01,563
+4,1211,Aquaculture Farmers,Major City,2026-07-01,0
+4,1212,Crop Farmers,Major City,2026-07-01,8
+4,1213,Livestock Farmers,Major City,2026-07-01,12
+4,1214,Mixed Crop and Livestock Farmers,Major City,2026-07-01,39
+4,1311,Advertising and Sales Managers,Major City,2026-07-01,3992
+4,1321,Corporate Services Managers,Major City,2026-07-01,537
+4,1322,Finance Managers,Major City,2026-07-01,791
+4,1323,Human Resource Managers,Major City,2026-07-01,479
+4,1324,Policy and Planning Managers,Major City,2026-07-01,1284
+4,1325,Research and Development Managers,Major City,2026-07-01,105
+4,1331,Construction Managers,Major City,2026-07-01,3166
+4,1332,Engineering Managers,Major City,2026-07-01,287
+4,1333,"Importers, Exporters and Wholesalers",Major City,2026-07-01,20
+4,1334,Manufacturers,Major City,2026-07-01,27
+4,1335,Production Managers,Major City,2026-07-01,869
+4,1336,"Supply, Distribution and Procurement Managers",Major City,2026-07-01,415
+4,1341,Child Care Centre Managers,Major City,2026-07-01,192
+4,1342,Health and Welfare Services Managers,Major City,2026-07-01,267
+4,1343,School Principals,Major City,2026-07-01,98
+4,1344,Other Education Managers,Major City,2026-07-01,90
+4,1351,ICT Managers,Major City,2026-07-01,441
+4,1399,Other Specialist Managers,Major City,2026-07-01,601
+4,1411,Cafe and Restaurant Managers,Major City,2026-07-01,442
+4,1412,Caravan Park and Camping Ground Managers,Major City,2026-07-01,1
+4,1413,Hotel and Motel Managers,Major City,2026-07-01,373
+4,1414,Licensed Club Managers,Major City,2026-07-01,105
+4,1419,Other Accommodation and Hospitality Managers,Major City,2026-07-01,57
+4,1421,Retail Managers,Major City,2026-07-01,2490
+4,1491,"Amusement, Fitness and Sports Centre Managers",Major City,2026-07-01,200
+4,1492,Call or Contact Centre and Customer Service Managers,Major City,2026-07-01,440
+4,1493,Conference and Event Organisers,Major City,2026-07-01,347
+4,1494,Transport Services Managers,Major City,2026-07-01,173
+4,1499,"Other Hospitality, Retail and Service Managers",Major City,2026-07-01,695
+1,2,PROFESSIONALS,Major City,2026-07-01,41881
+2,21,Arts and Media Professionals,Major City,2026-07-01,1002
+2,24,Education Professionals,Major City,2026-07-01,1826
+2,26,ICT Professionals,Major City,2026-07-01,5665
+2,27,"Legal, Social and Welfare Professionals",Major City,2026-07-01,5217
+2,2A,"Business, Finance and Human Resource Professionals",Major City,2026-07-01,6642
+2,2B,Information Professionals,Major City,2026-07-01,1699
+2,2C,"Sales, Marketing & Public Relations Professionals",Major City,2026-07-01,2371
+2,2D,"Transport and Design Professionals, and Architects",Major City,2026-07-01,1603
+2,2E,Engineers,Major City,2026-07-01,3755
+2,2F,Science Professionals and Veterinarians,Major City,2026-07-01,811
+2,2G,Health Diagnostic and Therapy Professionals,Major City,2026-07-01,4671
+2,2H,Medical Practitioners and Nurses,Major City,2026-07-01,6616
+4,2111,"Actors, Dancers and Other Entertainers",Major City,2026-07-01,208
+4,2112,Music Professionals,Major City,2026-07-01,6
+4,2113,Photographers,Major City,2026-07-01,25
+4,2114,Visual Arts and Crafts Professionals,Major City,2026-07-01,3
+4,2121,"Artistic Directors, and Media Producers and Presenters",Major City,2026-07-01,9
+4,2122,"Authors, and Book and Script Editors",Major City,2026-07-01,60
+4,2123,"Film, Television, Radio and Stage Directors",Major City,2026-07-01,65
+4,2124,Journalists and Other Writers,Major City,2026-07-01,627
+4,2211,Accountants,Major City,2026-07-01,2761
+4,2212,"Auditors, Company Secretaries and Corporate Treasurers",Major City,2026-07-01,558
+4,2221,Financial Brokers,Major City,2026-07-01,186
+4,2222,Financial Dealers,Major City,2026-07-01,39
+4,2223,Financial Investment Advisers and Managers,Major City,2026-07-01,541
+4,2231,Human Resource Professionals,Major City,2026-07-01,1942
+4,2232,ICT Trainers,Major City,2026-07-01,5
+4,2233,Training and Development Professionals,Major City,2026-07-01,611
+4,2241,"Actuaries, Mathematicians and Statisticians",Major City,2026-07-01,129
+4,2242,"Archivists, Curators and Records Managers",Major City,2026-07-01,76
+4,2243,Economists,Major City,2026-07-01,24
+4,2244,Intelligence and Policy Analysts,Major City,2026-07-01,471
+4,2245,Land Economists and Valuers,Major City,2026-07-01,64
+4,2246,Librarians,Major City,2026-07-01,57
+4,2247,Management and Organisation Analysts,Major City,2026-07-01,672
+4,2249,Other Information and Organisation Professionals,Major City,2026-07-01,206
+4,2251,Advertising and Marketing Professionals,Major City,2026-07-01,1569
+4,2252,ICT Sales Professionals,Major City,2026-07-01,25
+4,2253,Public Relations Professionals,Major City,2026-07-01,539
+4,2254,Technical Sales Representatives,Major City,2026-07-01,239
+4,2311,Air Transport Professionals,Major City,2026-07-01,67
+4,2312,Marine Transport Professionals,Major City,2026-07-01,24
+4,2321,Architects and Landscape Architects,Major City,2026-07-01,418
+4,2322,Surveyors and Spatial Scientists,Major City,2026-07-01,281
+4,2323,"Fashion, Industrial and Jewellery Designers",Major City,2026-07-01,80
+4,2324,"Graphic and Web Designers, and Illustrators",Major City,2026-07-01,360
+4,2325,Interior Designers,Major City,2026-07-01,210
+4,2326,Urban and Regional Planners,Major City,2026-07-01,162
+4,2331,Chemical and Materials Engineers,Major City,2026-07-01,32
+4,2332,Civil Engineering Professionals,Major City,2026-07-01,1743
+4,2333,Electrical Engineers,Major City,2026-07-01,443
+4,2334,Electronics Engineers,Major City,2026-07-01,46
+4,2335,"Industrial, Mechanical and Production Engineers",Major City,2026-07-01,701
+4,2336,Mining Engineers,Major City,2026-07-01,499
+4,2339,Other Engineering Professionals,Major City,2026-07-01,292
+4,2341,Agricultural and Forestry Scientists,Major City,2026-07-01,6
+4,2342,"Chemists, and Food and Wine Scientists",Major City,2026-07-01,90
+4,2343,Environmental Scientists,Major City,2026-07-01,259
+4,2344,Geologists and Geophysicists,Major City,2026-07-01,151
+4,2345,Life Scientists,Major City,2026-07-01,131
+4,2346,Medical Laboratory Scientists,Major City,2026-07-01,73
+4,2347,Veterinarians,Major City,2026-07-01,61
+4,2349,Other Natural and Physical Science Professionals,Major City,2026-07-01,40
+4,2411,Early Childhood (Pre-primary School) Teachers,Major City,2026-07-01,618
+4,2412,Primary School Teachers,Major City,2026-07-01,278
+4,2413,Middle School Teachers (Aus) / Intermediate School Teachers (NZ),Major City,2026-07-01,3
+4,2414,Secondary School Teachers,Major City,2026-07-01,517
+4,2415,Special Education Teachers,Major City,2026-07-01,40
+4,2421,University Lecturers and Tutors,Major City,2026-07-01,226
+4,2422,Vocational Education Teachers (Aus) / Polytechnic Teachers (NZ),Major City,2026-07-01,34
+4,2491,Education Advisers and Reviewers,Major City,2026-07-01,37
+4,2492,Private Tutors and Teachers,Major City,2026-07-01,69
+4,2493,Teachers of English to Speakers of Other Languages,Major City,2026-07-01,5
+4,2511,Nutrition Professionals,Major City,2026-07-01,82
+4,2512,Medical Imaging Professionals,Major City,2026-07-01,512
+4,2513,Occupational and Environmental Health Professionals,Major City,2026-07-01,708
+4,2514,Optometrists and Orthoptists,Major City,2026-07-01,63
+4,2515,Pharmacists,Major City,2026-07-01,310
+4,2519,Other Health Diagnostic and Promotion Professionals,Major City,2026-07-01,24
+4,2521,Chiropractors and Osteopaths,Major City,2026-07-01,11
+4,2522,Complementary Health Therapists,Major City,2026-07-01,51
+4,2523,Dental Practitioners,Major City,2026-07-01,306
+4,2524,Occupational Therapists,Major City,2026-07-01,997
+4,2525,Physiotherapists,Major City,2026-07-01,790
+4,2526,Podiatrists,Major City,2026-07-01,148
+4,2527,Audiologists and Speech Pathologists/Therapists,Major City,2026-07-01,669
+4,2531,General Practitioners and Resident Medical Officers,Major City,2026-07-01,1899
+4,2532,Anaesthetists,Major City,2026-07-01,10
+4,2533,Specialist Physicians,Major City,2026-07-01,262
+4,2534,Psychiatrists,Major City,2026-07-01,99
+4,2535,Surgeons,Major City,2026-07-01,15
+4,2539,Other Medical Practitioners,Major City,2026-07-01,84
+4,2541,Midwives,Major City,2026-07-01,141
+4,2542,Nurse Educators and Researchers,Major City,2026-07-01,121
+4,2543,Nurse Managers,Major City,2026-07-01,165
+4,2544,Registered Nurses,Major City,2026-07-01,3819
+4,2611,ICT Business and Systems Analysts,Major City,2026-07-01,1586
+4,2612,Multimedia Specialists and Web Developers,Major City,2026-07-01,60
+4,2613,Software and Applications Programmers,Major City,2026-07-01,2861
+4,2621,"Database and Systems Administrators, and ICT Security Specialists",Major City,2026-07-01,473
+4,2631,Computer Network Professionals,Major City,2026-07-01,334
+4,2632,ICT Support and Test Engineers,Major City,2026-07-01,294
+4,2633,Telecommunications Engineering Professionals,Major City,2026-07-01,58
+4,2711,Barristers,Major City,2026-07-01,56
+4,2713,Solicitors,Major City,2026-07-01,1564
+4,2721,Counsellors,Major City,2026-07-01,249
+4,2722,Ministers of Religion,Major City,2026-07-01,41
+4,2723,Psychologists,Major City,2026-07-01,448
+4,2724,Social Professionals,Major City,2026-07-01,257
+4,2725,Social Workers,Major City,2026-07-01,743
+4,2726,"Welfare, Recreation and Community Arts Workers",Major City,2026-07-01,1127
+1,3,TECHNICIANS AND TRADES WORKERS,Major City,2026-07-01,20177
+2,31,"Engineering, ICT and Science Technicians",Major City,2026-07-01,3883
+2,32,Automotive and Engineering Trades Workers,Major City,2026-07-01,5653
+2,33,Construction Trades Workers,Major City,2026-07-01,2387
+2,34,Electrotechnology and Telecommunications Trades Workers,Major City,2026-07-01,2853
+2,35,Food Trades Workers,Major City,2026-07-01,2770
+2,36,Skilled Animal and Horticultural Workers,Major City,2026-07-01,948
+2,3A,"Hairdressers, Printing, Clothing and Wood Trades Workers",Major City,2026-07-01,759
+2,3B,"Jewellers, Arts and Other Trades Workers",Major City,2026-07-01,924
+4,3111,Agricultural Technicians,Major City,2026-07-01,21
+4,3112,Medical Technicians,Major City,2026-07-01,276
+4,3113,Primary Products Inspectors,Major City,2026-07-01,5
+4,3114,Science Technicians,Major City,2026-07-01,97
+4,3121,"Architectural, Building and Surveying Technicians",Major City,2026-07-01,1714
+4,3122,Civil Engineering Draftspersons and Technicians,Major City,2026-07-01,163
+4,3123,Electrical Engineering Draftspersons and Technicians,Major City,2026-07-01,140
+4,3124,Electronic Engineering Draftspersons and Technicians,Major City,2026-07-01,58
+4,3125,Mechanical Engineering Draftspersons and Technicians,Major City,2026-07-01,122
+4,3126,Safety Inspectors,Major City,2026-07-01,111
+4,3129,Other Building and Engineering Technicians,Major City,2026-07-01,413
+4,3131,ICT Support Technicians,Major City,2026-07-01,738
+4,3132,Telecommunications Technical Specialists,Major City,2026-07-01,24
+4,3211,Automotive Electricians,Major City,2026-07-01,213
+4,3212,Motor Mechanics,Major City,2026-07-01,2149
+4,3221,"Metal Casting, Forging and Finishing Trades Workers",Major City,2026-07-01,6
+4,3222,Sheetmetal Trades Workers,Major City,2026-07-01,265
+4,3223,Structural Steel and Welding Trades Workers,Major City,2026-07-01,914
+4,3231,Aircraft Maintenance Engineers,Major City,2026-07-01,77
+4,3232,Metal Fitters and Machinists,Major City,2026-07-01,1760
+4,3233,Precision Metal Trades Workers,Major City,2026-07-01,45
+4,3234,Toolmakers and Engineering Patternmakers,Major City,2026-07-01,15
+4,3241,Panelbeaters,Major City,2026-07-01,164
+4,3242,Vehicle Body Builders and Trimmers,Major City,2026-07-01,20
+4,3243,Vehicle Painters,Major City,2026-07-01,26
+4,3311,Bricklayers and Stonemasons,Major City,2026-07-01,56
+4,3312,Carpenters and Joiners,Major City,2026-07-01,690
+4,3321,Floor Finishers,Major City,2026-07-01,24
+4,3322,Painting Trades Workers,Major City,2026-07-01,337
+4,3331,Glaziers,Major City,2026-07-01,62
+4,3332,Plasterers,Major City,2026-07-01,47
+4,3333,Roof Tilers,Major City,2026-07-01,86
+4,3334,Wall and Floor Tilers,Major City,2026-07-01,55
+4,3341,Plumbers,Major City,2026-07-01,1031
+4,3411,Electricians,Major City,2026-07-01,2260
+4,3421,Airconditioning and Refrigeration Mechanics,Major City,2026-07-01,329
+4,3422,Electrical Distribution Trades Workers,Major City,2026-07-01,105
+4,3423,Electronics Trades Workers,Major City,2026-07-01,97
+4,3424,Telecommunications Trades Workers,Major City,2026-07-01,62
+4,3511,Bakers and Pastrycooks,Major City,2026-07-01,269
+4,3512,Butchers and Smallgoods Makers,Major City,2026-07-01,94
+4,3513,Chefs,Major City,2026-07-01,1806
+4,3514,Cooks,Major City,2026-07-01,601
+4,3611,Animal Attendants and Trainers,Major City,2026-07-01,81
+4,3612,Shearers,Major City,2026-07-01,0
+4,3613,Veterinary Nurses,Major City,2026-07-01,86
+4,3621,Florists,Major City,2026-07-01,13
+4,3622,Gardeners,Major City,2026-07-01,627
+4,3623,Greenkeepers,Major City,2026-07-01,108
+4,3624,Nurserypersons,Major City,2026-07-01,34
+4,3911,Hairdressers,Major City,2026-07-01,371
+4,3921,"Binders, Finishers and Screen Printers",Major City,2026-07-01,9
+4,3922,Graphic Pre-press Trades Workers,Major City,2026-07-01,15
+4,3923,Printers,Major City,2026-07-01,23
+4,3931,Canvas and Leather Goods Makers,Major City,2026-07-01,1
+4,3932,Clothing Trades Workers,Major City,2026-07-01,22
+4,3933,Upholsterers,Major City,2026-07-01,10
+4,3941,Cabinetmakers,Major City,2026-07-01,204
+4,3942,Wood Machinists and Other Wood Trades Workers,Major City,2026-07-01,40
+4,3991,Boat Builders and Shipwrights,Major City,2026-07-01,14
+4,3992,"Chemical, Gas, Petroleum and Power Generation Plant Operators",Major City,2026-07-01,30
+4,3993,"Gallery, Library and Museum Technicians",Major City,2026-07-01,22
+4,3994,Jewellers,Major City,2026-07-01,32
+4,3995,Performing Arts Technicians,Major City,2026-07-01,62
+4,3996,Signwriters,Major City,2026-07-01,18
+4,3999,Other Miscellaneous Technicians and Trades Workers,Major City,2026-07-01,812
+1,4,COMMUNITY AND PERSONAL SERVICE WORKERS,Major City,2026-07-01,12499
+2,41,Health and Welfare Support Workers,Major City,2026-07-01,1339
+2,42,Carers and Aides,Major City,2026-07-01,6566
+2,43,Hospitality Workers,Major City,2026-07-01,2294
+2,44,Protective Service Workers,Major City,2026-07-01,755
+2,45,"Sports, Travel and Personal Service Workers",Major City,2026-07-01,1545
+4,4111,Ambulance Officers and Paramedics,Major City,2026-07-01,34
+4,4112,"Dental Hygienists, Technicians and Therapists",Major City,2026-07-01,111
+4,4113,Diversional Therapists,Major City,2026-07-01,31
+4,4114,Enrolled and Mothercraft Nurses,Major City,2026-07-01,377
+4,4115,Indigenous Health Workers,Major City,2026-07-01,31
+4,4116,Massage Therapists,Major City,2026-07-01,104
+4,4117,Welfare Support Workers,Major City,2026-07-01,649
+4,4211,Child Carers,Major City,2026-07-01,2032
+4,4221,Education Aides,Major City,2026-07-01,1171
+4,4231,Aged and Disabled Carers,Major City,2026-07-01,1956
+4,4232,Dental Assistants,Major City,2026-07-01,534
+4,4233,Nursing Support and Personal Care Workers,Major City,2026-07-01,843
+4,4234,Special Care Workers,Major City,2026-07-01,31
+4,4311,Bar Attendants and Baristas,Major City,2026-07-01,667
+4,4312,Cafe Workers,Major City,2026-07-01,243
+4,4313,Gaming Workers,Major City,2026-07-01,60
+4,4314,Hotel Service Managers,Major City,2026-07-01,155
+4,4315,Waiters,Major City,2026-07-01,1083
+4,4412,Fire and Emergency Workers,Major City,2026-07-01,39
+4,4413,Police,Major City,2026-07-01,7
+4,4421,Prison Officers,Major City,2026-07-01,14
+4,4422,Security Officers and Guards,Major City,2026-07-01,671
+4,4511,Beauty Therapists,Major City,2026-07-01,265
+4,4512,Driving Instructors,Major City,2026-07-01,12
+4,4513,Funeral Workers,Major City,2026-07-01,27
+4,4514,"Gallery, Museum and Tour Guides",Major City,2026-07-01,22
+4,4515,Personal Care Consultants,Major City,2026-07-01,0
+4,4516,Tourism and Travel Advisers,Major City,2026-07-01,156
+4,4517,Travel Attendants,Major City,2026-07-01,16
+4,4521,Fitness Instructors,Major City,2026-07-01,253
+4,4522,Outdoor Adventure Guides,Major City,2026-07-01,6
+4,4523,"Sports Coaches, Instructors and Officials",Major City,2026-07-01,692
+4,4524,Sportspersons,Major City,2026-07-01,58
+1,5,CLERICAL AND ADMINISTRATIVE WORKERS,Major City,2026-07-01,23309
+2,55,Numerical Clerks,Major City,2026-07-01,4556
+2,56,Clerical and Office Support Workers,Major City,2026-07-01,566
+2,59,Other Clerical and Administrative Workers,Major City,2026-07-01,4947
+2,5A,"Office Managers, Administrators and Secretaries",Major City,2026-07-01,3718
+2,5B,"General-Inquiry Clerks, Call Centre Workers, and Receptionists",Major City,2026-07-01,9522
+4,5111,"Contract, Program and Project Administrators",Major City,2026-07-01,1704
+4,5121,Office Managers,Major City,2026-07-01,788
+4,5122,Practice Managers,Major City,2026-07-01,260
+4,5211,Personal Assistants,Major City,2026-07-01,248
+4,5212,Secretaries,Major City,2026-07-01,718
+4,5311,General Clerks,Major City,2026-07-01,6373
+4,5321,Keyboard Operators,Major City,2026-07-01,102
+4,5411,Call or Contact Centre Workers,Major City,2026-07-01,1097
+4,5412,Information Officers,Major City,2026-07-01,383
+4,5421,Receptionists,Major City,2026-07-01,1566
+4,5511,Accounting Clerks,Major City,2026-07-01,1463
+4,5512,Bookkeepers,Major City,2026-07-01,346
+4,5513,Payroll Clerks,Major City,2026-07-01,1048
+4,5521,Bank Workers,Major City,2026-07-01,477
+4,5522,Credit and Loans Officers,Major City,2026-07-01,1188
+4,5523,"Insurance, Money Market and Statistical Clerks",Major City,2026-07-01,34
+4,5611,Betting Clerks,Major City,2026-07-01,1
+4,5612,Couriers and Postal Deliverers,Major City,2026-07-01,245
+4,5613,Filing and Registry Clerks,Major City,2026-07-01,116
+4,5614,Mail Sorters,Major City,2026-07-01,12
+4,5615,Survey Interviewers,Major City,2026-07-01,154
+4,5616,Switchboard Operators,Major City,2026-07-01,9
+4,5619,Other Clerical and Office Support Workers,Major City,2026-07-01,29
+4,5911,Purchasing and Supply Logistics Clerks,Major City,2026-07-01,1654
+4,5912,Transport and Despatch Clerks,Major City,2026-07-01,699
+4,5991,Conveyancers and Legal Executives,Major City,2026-07-01,280
+4,5992,Court and Legal Clerks,Major City,2026-07-01,300
+4,5993,Debt Collectors,Major City,2026-07-01,159
+4,5994,Human Resource Clerks,Major City,2026-07-01,40
+4,5995,Inspectors and Regulatory Officers,Major City,2026-07-01,1010
+4,5996,"Insurance Investigators, Loss Adjusters and Risk Surveyors",Major City,2026-07-01,566
+4,5997,Library Assistants,Major City,2026-07-01,22
+4,5999,Other Miscellaneous Clerical and Administrative Workers,Major City,2026-07-01,217
+1,6,SALES WORKERS,Major City,2026-07-01,11226
+2,61,Sales Representatives and Agents,Major City,2026-07-01,3820
+2,62,Sales Assistants and Salespersons,Major City,2026-07-01,6634
+2,63,Sales Support Workers,Major City,2026-07-01,772
+4,6111,"Auctioneers, and Stock and Station Agents",Major City,2026-07-01,2
+4,6112,Insurance Agents,Major City,2026-07-01,483
+4,6113,Sales Representatives,Major City,2026-07-01,1823
+4,6121,Real Estate Sales Agents,Major City,2026-07-01,1511
+4,6211,Sales Assistants (General),Major City,2026-07-01,5687
+4,6212,ICT Sales Assistants,Major City,2026-07-01,6
+4,6213,Motor Vehicle and Vehicle Parts Salespersons,Major City,2026-07-01,572
+4,6214,Pharmacy Sales Assistants,Major City,2026-07-01,200
+4,6215,Retail Supervisors,Major City,2026-07-01,118
+4,6216,Service Station Attendants,Major City,2026-07-01,12
+4,6217,Street Vendors and Related Salespersons,Major City,2026-07-01,12
+4,6219,Other Sales Assistants and Salespersons,Major City,2026-07-01,27
+4,6311,Checkout Operators and Office Cashiers,Major City,2026-07-01,44
+4,6391,Models and Sales Demonstrators,Major City,2026-07-01,460
+4,6392,Retail and Wool Buyers,Major City,2026-07-01,57
+4,6393,Telemarketers,Major City,2026-07-01,42
+4,6394,Ticket Salespersons,Major City,2026-07-01,34
+4,6395,Visual Merchandisers,Major City,2026-07-01,58
+4,6399,Other Sales Support Workers,Major City,2026-07-01,77
+1,7,MACHINERY OPERATORS AND DRIVERS,Major City,2026-07-01,8579
+2,71,Machine and Stationary Plant Operators,Major City,2026-07-01,2036
+2,72,Mobile Plant Operators,Major City,2026-07-01,2483
+2,7A,Drivers and Storepersons,Major City,2026-07-01,4060
+4,7111,"Clay, Concrete, Glass and Stone Processing Machine Operators",Major City,2026-07-01,1
+4,7112,Industrial Spraypainters,Major City,2026-07-01,148
+4,7113,Paper and Wood Processing Machine Operators,Major City,2026-07-01,12
+4,7114,Photographic Developers and Printers,Major City,2026-07-01,2
+4,7115,Plastics and Rubber Production Machine Operators,Major City,2026-07-01,33
+4,7116,Sewing Machinists,Major City,2026-07-01,56
+4,7117,Textile and Footwear Production Machine Operators,Major City,2026-07-01,9
+4,7119,Other Machine Operators,Major City,2026-07-01,599
+4,7121,"Crane, Hoist and Lift Operators",Major City,2026-07-01,260
+4,7122,"Drillers, Miners and Shot Firers",Major City,2026-07-01,544
+4,7123,Engineering Production Workers,Major City,2026-07-01,140
+4,7129,Other Stationary Plant Operators,Major City,2026-07-01,231
+4,7211,"Agricultural, Forestry and Horticultural Plant Operators",Major City,2026-07-01,38
+4,7212,Earthmoving Plant Operators,Major City,2026-07-01,694
+4,7213,Forklift Drivers,Major City,2026-07-01,1528
+4,7219,Other Mobile Plant Operators,Major City,2026-07-01,223
+4,7311,Automobile Drivers,Major City,2026-07-01,27
+4,7312,Bus and Coach Drivers,Major City,2026-07-01,209
+4,7313,Train and Tram Drivers,Major City,2026-07-01,21
+4,7321,Delivery Drivers,Major City,2026-07-01,577
+4,7331,Truck Drivers,Major City,2026-07-01,1633
+4,7411,Storepersons,Major City,2026-07-01,1592
+1,8,LABOURERS,Major City,2026-07-01,8339
+2,81,Cleaners and Laundry Workers,Major City,2026-07-01,1687
+2,82,Construction and Mining Labourers,Major City,2026-07-01,1091
+2,83,Factory Process Workers,Major City,2026-07-01,1419
+2,84,"Farm, Forestry and Garden Workers",Major City,2026-07-01,324
+2,85,Food Preparation Assistants,Major City,2026-07-01,528
+2,89,Other Labourers,Major City,2026-07-01,3289
+4,8111,Car Detailers,Major City,2026-07-01,93
+4,8112,Commercial Cleaners,Major City,2026-07-01,1055
+4,8113,Domestic Cleaners,Major City,2026-07-01,27
+4,8114,Housekeepers,Major City,2026-07-01,402
+4,8115,Laundry Workers,Major City,2026-07-01,57
+4,8116,Other Cleaners,Major City,2026-07-01,53
+4,8211,Building and Plumbing Labourers,Major City,2026-07-01,601
+4,8212,Concreters,Major City,2026-07-01,102
+4,8213,Fencers,Major City,2026-07-01,27
+4,8214,Insulation and Home Improvement Installers,Major City,2026-07-01,53
+4,8215,Paving and Surfacing Labourers,Major City,2026-07-01,9
+4,8216,Railway Track Workers,Major City,2026-07-01,12
+4,8217,Structural Steel Construction Workers,Major City,2026-07-01,228
+4,8219,Other Construction and Mining Labourers,Major City,2026-07-01,60
+4,8311,Food and Drink Factory Workers,Major City,2026-07-01,59
+4,8312,"Meat Boners and Slicers, and Slaughterers",Major City,2026-07-01,25
+4,8313,"Meat, Poultry and Seafood Process Workers",Major City,2026-07-01,32
+4,8321,Packers,Major City,2026-07-01,449
+4,8322,Product Assemblers,Major City,2026-07-01,166
+4,8391,Metal Engineering Process Workers,Major City,2026-07-01,4
+4,8392,Plastics and Rubber Factory Workers,Major City,2026-07-01,0
+4,8393,Product Quality Controllers,Major City,2026-07-01,436
+4,8394,Timber and Wood Process Workers,Major City,2026-07-01,11
+4,8399,Other Factory Process Workers,Major City,2026-07-01,237
+4,8411,Aquaculture Workers,Major City,2026-07-01,0
+4,8412,Crop Farm Workers,Major City,2026-07-01,12
+4,8413,Forestry and Logging Workers,Major City,2026-07-01,15
+4,8414,Garden and Nursery Labourers,Major City,2026-07-01,178
+4,8415,Livestock Farm Workers,Major City,2026-07-01,31
+4,8416,Mixed Crop and Livestock Farm Workers,Major City,2026-07-01,24
+4,8419,"Other Farm, Forestry and Garden Workers",Major City,2026-07-01,63
+4,8511,Fast Food Cooks,Major City,2026-07-01,20
+4,8512,Food Trades Assistants,Major City,2026-07-01,15
+4,8513,Kitchenhands,Major City,2026-07-01,493
+4,8911,Freight and Furniture Handlers,Major City,2026-07-01,115
+4,8912,Shelf Fillers,Major City,2026-07-01,30
+4,8991,Caretakers,Major City,2026-07-01,69
+4,8992,Deck and Fishing Hands,Major City,2026-07-01,11
+4,8993,Handypersons,Major City,2026-07-01,459
+4,8994,Motor Vehicle Parts and Accessories Fitters,Major City,2026-07-01,136
+4,8995,Printing Assistants and Table Workers,Major City,2026-07-01,70
+4,8996,Recycling and Rubbish Collectors,Major City,2026-07-01,17
+4,8997,Vending Machine Attendants,Major City,2026-07-01,3
+4,8999,Other Miscellaneous Labourers,Major City,2026-07-01,2380
