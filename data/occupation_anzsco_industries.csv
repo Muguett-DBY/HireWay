@@ -1,0 +1,2744 @@
+﻿anzsco_code,occupation,industry_rank,industry
+1111,Chief Executives and Managing Directors,1,"Professional, Scientific and Technical Services"
+1111,Chief Executives and Managing Directors,2,Health Care and Social Assistance
+1111,Chief Executives and Managing Directors,3,Construction
+1112,General Managers,1,Health Care and Social Assistance
+1112,General Managers,2,"Professional, Scientific and Technical Services"
+1112,General Managers,3,Manufacturing
+1113,Legislators,1,Public Administration and Safety
+1113,Legislators,2,Health Care and Social Assistance
+1113,Legislators,3,Education and Training
+1211,Aquaculture Farmers,1,"Agriculture, Forestry and Fishing"
+1211,Aquaculture Farmers,2,Construction
+1212,Crop Farmers,1,"Agriculture, Forestry and Fishing"
+1213,Livestock Farmers,1,"Agriculture, Forestry and Fishing"
+1214,Mixed Crop and Livestock Farmers,1,"Agriculture, Forestry and Fishing"
+1311,"Advertising, Public Relations and Sales Manager",1,"Professional, Scientific and Technical Services"
+1311,"Advertising, Public Relations and Sales Manager",2,Manufacturing
+1311,"Advertising, Public Relations and Sales Manager",3,Wholesale Trade
+1321,Corporate Services Managers,1,Public Administration and Safety
+1321,Corporate Services Managers,2,"Professional, Scientific and Technical Services"
+1321,Corporate Services Managers,3,Construction
+1322,Finance Managers,1,Financial and Insurance Services
+1322,Finance Managers,2,"Professional, Scientific and Technical Services"
+1322,Finance Managers,3,Manufacturing
+1323,Human Resource Managers,1,Health Care and Social Assistance
+1323,Human Resource Managers,2,Public Administration and Safety
+1323,Human Resource Managers,3,"Professional, Scientific and Technical Services"
+1324,Policy and Planning Managers,1,Public Administration and Safety
+1324,Policy and Planning Managers,2,Financial and Insurance Services
+1324,Policy and Planning Managers,3,Health Care and Social Assistance
+1325,Research and Development Managers,1,"Professional, Scientific and Technical Services"
+1325,Research and Development Managers,2,Public Administration and Safety
+1325,Research and Development Managers,3,Manufacturing
+1331,Construction Managers,1,Construction
+1331,Construction Managers,2,"Professional, Scientific and Technical Services"
+1332,Engineering Managers,1,"Professional, Scientific and Technical Services"
+1332,Engineering Managers,2,Manufacturing
+1332,Engineering Managers,3,Construction
+1333,"Importers, Exporters and Wholesalers",1,Wholesale Trade
+1333,"Importers, Exporters and Wholesalers",2,Retail Trade
+1333,"Importers, Exporters and Wholesalers",3,"Transport, Postal and Warehousing"
+1334,Manufacturers,1,Manufacturing
+1334,Manufacturers,2,Wholesale Trade
+1335,Production Managers,1,Manufacturing
+1335,Production Managers,2,Mining
+1335,Production Managers,3,Construction
+1336,"Supply, Distribution and Procurement Managers",1,"Transport, Postal and Warehousing"
+1336,"Supply, Distribution and Procurement Managers",2,Manufacturing
+1336,"Supply, Distribution and Procurement Managers",3,Wholesale Trade
+1341,Child Care Centre Managers,1,Health Care and Social Assistance
+1341,Child Care Centre Managers,2,Education and Training
+1342,Health and Welfare Services Managers,1,Health Care and Social Assistance
+1342,Health and Welfare Services Managers,2,Public Administration and Safety
+1343,School Principals,1,Education and Training
+1344,Other Education Managers,1,Education and Training
+1344,Other Education Managers,2,Public Administration and Safety
+1351,ICT Managers,1,"Professional, Scientific and Technical Services"
+1351,ICT Managers,2,Financial and Insurance Services
+1351,ICT Managers,3,Public Administration and Safety
+1391,Commissioned Officers (Management),1,Public Administration and Safety
+1392,Senior Non-Commissioned Defence Force Officers,1,Public Administration and Safety
+1399,Other Specialist Managers,1,Public Administration and Safety
+1399,Other Specialist Managers,2,Manufacturing
+1399,Other Specialist Managers,3,"Professional, Scientific and Technical Services"
+1411,Cafe and Restaurant Managers,1,Accommodation and Food Services
+1412,Caravan Park and Camping Ground Managers,1,Accommodation and Food Services
+1412,Caravan Park and Camping Ground Managers,2,"Agriculture, Forestry and Fishing"
+1412,Caravan Park and Camping Ground Managers,3,Arts and Recreation Services
+1413,Hotel and Motel Managers,1,Accommodation and Food Services
+1414,Licensed Club Managers,1,Accommodation and Food Services
+1414,Licensed Club Managers,2,Arts and Recreation Services
+1414,Licensed Club Managers,3,Other Services
+1419,Other Accommodation and Hospitality Managers,1,Accommodation and Food Services
+1419,Other Accommodation and Hospitality Managers,2,Health Care and Social Assistance
+1419,Other Accommodation and Hospitality Managers,3,"Rental, Hiring and Real Estate Services"
+1421,Retail Managers,1,Retail Trade
+1421,Retail Managers,2,Accommodation and Food Services
+1491,"Amusement, Fitness and Sports Centre Managers",1,Arts and Recreation Services
+1491,"Amusement, Fitness and Sports Centre Managers",2,Accommodation and Food Services
+1491,"Amusement, Fitness and Sports Centre Managers",3,Education and Training
+1492,"Call, Contact Centre and Customer Service Managers",1,Other Services
+1492,"Call, Contact Centre and Customer Service Managers",2,Retail Trade
+1492,"Call, Contact Centre and Customer Service Managers",3,"Professional, Scientific and Technical Services"
+1493,Conference and Event Organisers,1,Administrative and Support Services
+1493,Conference and Event Organisers,2,Education and Training
+1493,Conference and Event Organisers,3,Arts and Recreation Services
+1494,Transport Services Managers,1,"Transport, Postal and Warehousing"
+1494,Transport Services Managers,2,"Rental, Hiring and Real Estate Services"
+1494,Transport Services Managers,3,Public Administration and Safety
+1499,"Other Hospitality, Retail and Service Managers",1,Financial and Insurance Services
+1499,"Other Hospitality, Retail and Service Managers",2,"Rental, Hiring and Real Estate Services"
+1499,"Other Hospitality, Retail and Service Managers",3,Public Administration and Safety
+2111,"Actors, Dancers and Other Entertainers",1,Arts and Recreation Services
+2111,"Actors, Dancers and Other Entertainers",2,Education and Training
+2111,"Actors, Dancers and Other Entertainers",3,Information Media and Telecommunications
+2112,Music Professionals,1,Arts and Recreation Services
+2112,Music Professionals,2,Education and Training
+2113,Photographers,1,"Professional, Scientific and Technical Services"
+2113,Photographers,2,Retail Trade
+2114,Visual Arts and Crafts Professionals,1,Arts and Recreation Services
+2114,Visual Arts and Crafts Professionals,2,Manufacturing
+2114,Visual Arts and Crafts Professionals,3,Information Media and Telecommunications
+2121,"Artistic Directors, Media Producers and Presenters",1,Information Media and Telecommunications
+2121,"Artistic Directors, Media Producers and Presenters",2,"Professional, Scientific and Technical Services"
+2121,"Artistic Directors, Media Producers and Presenters",3,Arts and Recreation Services
+2122,"Authors, and Book and Script Editors",1,Arts and Recreation Services
+2122,"Authors, and Book and Script Editors",2,Information Media and Telecommunications
+2122,"Authors, and Book and Script Editors",3,Education and Training
+2123,"Film, Television, Radio and Stage Directors",1,Information Media and Telecommunications
+2123,"Film, Television, Radio and Stage Directors",2,"Professional, Scientific and Technical Services"
+2123,"Film, Television, Radio and Stage Directors",3,Arts and Recreation Services
+2124,Journalists and Other Writers,1,Information Media and Telecommunications
+2124,Journalists and Other Writers,2,"Professional, Scientific and Technical Services"
+2124,Journalists and Other Writers,3,Arts and Recreation Services
+2211,Accountants,1,"Professional, Scientific and Technical Services"
+2211,Accountants,2,Financial and Insurance Services
+2211,Accountants,3,Public Administration and Safety
+2212,"Auditors, Company Secretaries and Corporate Treasurers",1,Financial and Insurance Services
+2212,"Auditors, Company Secretaries and Corporate Treasurers",2,"Professional, Scientific and Technical Services"
+2212,"Auditors, Company Secretaries and Corporate Treasurers",3,Public Administration and Safety
+2221,Financial Brokers,1,Financial and Insurance Services
+2222,Financial Dealers,1,Financial and Insurance Services
+2223,Financial Investment Advisers and Managers,1,Financial and Insurance Services
+2223,Financial Investment Advisers and Managers,2,"Professional, Scientific and Technical Services"
+2231,Human Resource Professionals,1,Administrative and Support Services
+2231,Human Resource Professionals,2,Public Administration and Safety
+2231,Human Resource Professionals,3,Health Care and Social Assistance
+2232,ICT Trainers,1,Education and Training
+2232,ICT Trainers,2,"Professional, Scientific and Technical Services"
+2232,ICT Trainers,3,Information Media and Telecommunications
+2233,Training and Development Professionals,1,Education and Training
+2233,Training and Development Professionals,2,Public Administration and Safety
+2233,Training and Development Professionals,3,Financial and Insurance Services
+2241,"Actuaries, Mathematicians and Statisticians",1,Financial and Insurance Services
+2241,"Actuaries, Mathematicians and Statisticians",2,"Professional, Scientific and Technical Services"
+2241,"Actuaries, Mathematicians and Statisticians",3,Education and Training
+2242,"Archivists, Curators and Records Managers",1,Arts and Recreation Services
+2242,"Archivists, Curators and Records Managers",2,Public Administration and Safety
+2242,"Archivists, Curators and Records Managers",3,Health Care and Social Assistance
+2243,Economists,1,Public Administration and Safety
+2243,Economists,2,"Professional, Scientific and Technical Services"
+2243,Economists,3,Education and Training
+2244,Intelligence and Policy Analysts,1,Public Administration and Safety
+2244,Intelligence and Policy Analysts,2,"Professional, Scientific and Technical Services"
+2245,Land Economists and Valuers,1,"Rental, Hiring and Real Estate Services"
+2245,Land Economists and Valuers,2,Construction
+2245,Land Economists and Valuers,3,Public Administration and Safety
+2246,Librarians,1,Information Media and Telecommunications
+2246,Librarians,2,Education and Training
+2247,Management and Organisation Analysts,1,"Professional, Scientific and Technical Services"
+2247,Management and Organisation Analysts,2,Financial and Insurance Services
+2247,Management and Organisation Analysts,3,Public Administration and Safety
+2249,Other Information and Organisation Professionals,1,Public Administration and Safety
+2249,Other Information and Organisation Professionals,2,"Professional, Scientific and Technical Services"
+2249,Other Information and Organisation Professionals,3,Financial and Insurance Services
+2251,Advertising and Marketing Professionals,1,"Professional, Scientific and Technical Services"
+2251,Advertising and Marketing Professionals,2,Retail Trade
+2251,Advertising and Marketing Professionals,3,Manufacturing
+2252,ICT Sales Professionals,1,"Professional, Scientific and Technical Services"
+2252,ICT Sales Professionals,2,Information Media and Telecommunications
+2252,ICT Sales Professionals,3,Retail Trade
+2253,Public Relations Professionals,1,Public Administration and Safety
+2253,Public Relations Professionals,2,"Professional, Scientific and Technical Services"
+2253,Public Relations Professionals,3,Health Care and Social Assistance
+2254,Technical Sales Representatives,1,Wholesale Trade
+2254,Technical Sales Representatives,2,Retail Trade
+2254,Technical Sales Representatives,3,Manufacturing
+2311,Air Transport Professionals,1,"Transport, Postal and Warehousing"
+2311,Air Transport Professionals,2,Public Administration and Safety
+2312,Marine Transport Professionals,1,"Transport, Postal and Warehousing"
+2312,Marine Transport Professionals,2,Public Administration and Safety
+2312,Marine Transport Professionals,3,Manufacturing
+2321,Architects and Landscape Architects,1,"Professional, Scientific and Technical Services"
+2321,Architects and Landscape Architects,2,Construction
+2322,Surveyors and Spatial Scientists,1,"Professional, Scientific and Technical Services"
+2322,Surveyors and Spatial Scientists,2,Public Administration and Safety
+2322,Surveyors and Spatial Scientists,3,Mining
+2323,"Fashion, Industrial and Jewellery Designers",1,"Professional, Scientific and Technical Services"
+2323,"Fashion, Industrial and Jewellery Designers",2,Manufacturing
+2323,"Fashion, Industrial and Jewellery Designers",3,Retail Trade
+2324,"Graphic and Web Designers, and Illustrators",1,"Professional, Scientific and Technical Services"
+2324,"Graphic and Web Designers, and Illustrators",2,Information Media and Telecommunications
+2324,"Graphic and Web Designers, and Illustrators",3,Manufacturing
+2325,Interior Designers,1,"Professional, Scientific and Technical Services"
+2325,Interior Designers,2,Construction
+2325,Interior Designers,3,Retail Trade
+2326,Urban and Regional Planners,1,Public Administration and Safety
+2326,Urban and Regional Planners,2,"Professional, Scientific and Technical Services"
+2331,Chemical and Materials Engineers,1,Manufacturing
+2331,Chemical and Materials Engineers,2,"Professional, Scientific and Technical Services"
+2331,Chemical and Materials Engineers,3,"Electricity, Gas, Water and Waste Services"
+2332,Civil Engineering Professionals,1,"Professional, Scientific and Technical Services"
+2332,Civil Engineering Professionals,2,Construction
+2332,Civil Engineering Professionals,3,Public Administration and Safety
+2333,Electrical Engineers,1,"Professional, Scientific and Technical Services"
+2333,Electrical Engineers,2,"Electricity, Gas, Water and Waste Services"
+2333,Electrical Engineers,3,Manufacturing
+2334,Electronics Engineers,1,Manufacturing
+2334,Electronics Engineers,2,"Professional, Scientific and Technical Services"
+2334,Electronics Engineers,3,Information Media and Telecommunications
+2335,"Industrial, Mechanical and Production Engineers",1,"Professional, Scientific and Technical Services"
+2335,"Industrial, Mechanical and Production Engineers",2,Manufacturing
+2335,"Industrial, Mechanical and Production Engineers",3,Mining
+2336,Mining Engineers,1,Mining
+2336,Mining Engineers,2,"Professional, Scientific and Technical Services"
+2336,Mining Engineers,3,Wholesale Trade
+2339,Other Engineering Professionals,1,"Professional, Scientific and Technical Services"
+2339,Other Engineering Professionals,2,Manufacturing
+2339,Other Engineering Professionals,3,Public Administration and Safety
+2341,Agricultural and Forestry Scientists,1,"Agriculture, Forestry and Fishing"
+2341,Agricultural and Forestry Scientists,2,"Professional, Scientific and Technical Services"
+2341,Agricultural and Forestry Scientists,3,Public Administration and Safety
+2342,"Chemists, and Food and Wine Scientists",1,Manufacturing
+2342,"Chemists, and Food and Wine Scientists",2,"Professional, Scientific and Technical Services"
+2342,"Chemists, and Food and Wine Scientists",3,Education and Training
+2343,Environmental Scientists,1,"Professional, Scientific and Technical Services"
+2343,Environmental Scientists,2,Public Administration and Safety
+2343,Environmental Scientists,3,Arts and Recreation Services
+2344,"Geologists, Geophysicists and Hydrogeologists",1,Mining
+2344,"Geologists, Geophysicists and Hydrogeologists",2,"Professional, Scientific and Technical Services"
+2345,Life Scientists,1,"Professional, Scientific and Technical Services"
+2345,Life Scientists,2,Health Care and Social Assistance
+2345,Life Scientists,3,Education and Training
+2346,Medical Laboratory Scientists,1,Health Care and Social Assistance
+2346,Medical Laboratory Scientists,2,"Professional, Scientific and Technical Services"
+2346,Medical Laboratory Scientists,3,Education and Training
+2347,Veterinarians,1,"Professional, Scientific and Technical Services"
+2347,Veterinarians,2,Public Administration and Safety
+2349,Other Natural and Physical Science Professionals,1,Health Care and Social Assistance
+2349,Other Natural and Physical Science Professionals,2,"Professional, Scientific and Technical Services"
+2349,Other Natural and Physical Science Professionals,3,Public Administration and Safety
+2411,Early Childhood (Pre-primary School) Teachers,1,Education and Training
+2411,Early Childhood (Pre-primary School) Teachers,2,Health Care and Social Assistance
+2412,Primary School Teachers,1,Education and Training
+2413,Middle School Teachers,1,Education and Training
+2414,Secondary School Teachers,1,Education and Training
+2415,Special Education Teachers,1,Education and Training
+2421,University Lecturers and Tutors,1,Education and Training
+2422,Vocational Education Teachers,1,Education and Training
+2422,Vocational Education Teachers,2,Public Administration and Safety
+2491,Education Advisers and Reviewers,1,Education and Training
+2491,Education Advisers and Reviewers,2,Public Administration and Safety
+2491,Education Advisers and Reviewers,3,"Professional, Scientific and Technical Services"
+2492,Private Tutors and Teachers,1,Education and Training
+2493,Teachers of English to Speakers of Other Languages,1,Education and Training
+2493,Teachers of English to Speakers of Other Languages,2,Health Care and Social Assistance
+2511,Nutrition Professionals,1,Health Care and Social Assistance
+2511,Nutrition Professionals,2,Retail Trade
+2512,Medical Imaging Professionals,1,Health Care and Social Assistance
+2513,Occupational and Environmental Health Professionals,1,Public Administration and Safety
+2513,Occupational and Environmental Health Professionals,2,Construction
+2513,Occupational and Environmental Health Professionals,3,"Professional, Scientific and Technical Services"
+2514,Optometrists and Orthoptists,1,Health Care and Social Assistance
+2514,Optometrists and Orthoptists,2,Education and Training
+2515,Pharmacists,1,Retail Trade
+2515,Pharmacists,2,Health Care and Social Assistance
+2519,Other Health Diagnostic and Promotion Professionals,1,Health Care and Social Assistance
+2519,Other Health Diagnostic and Promotion Professionals,2,Public Administration and Safety
+2519,Other Health Diagnostic and Promotion Professionals,3,Education and Training
+2521,Chiropractors and Osteopaths,1,Health Care and Social Assistance
+2522,Complementary Health Therapists,1,Health Care and Social Assistance
+2523,Dental Practitioners,1,Health Care and Social Assistance
+2524,Occupational Therapists,1,Health Care and Social Assistance
+2525,Physiotherapists,1,Health Care and Social Assistance
+2526,Podiatrists,1,Health Care and Social Assistance
+2527,Audiologists and Speech Pathologists \ Therapists,1,Health Care and Social Assistance
+2527,Audiologists and Speech Pathologists \ Therapists,2,Public Administration and Safety
+2531,General Practitioners and Resident Medical Officers,1,Health Care and Social Assistance
+2532,Anaesthetists,1,Health Care and Social Assistance
+2533,Specialist Physicians,1,Health Care and Social Assistance
+2534,Psychiatrists,1,Health Care and Social Assistance
+2535,Surgeons,1,Health Care and Social Assistance
+2539,Other Medical Practitioners,1,Health Care and Social Assistance
+2541,Midwives,1,Health Care and Social Assistance
+2542,Nurse Educators and Researchers,1,Health Care and Social Assistance
+2542,Nurse Educators and Researchers,2,Education and Training
+2543,Nurse Managers,1,Health Care and Social Assistance
+2544,Registered Nurses,1,Health Care and Social Assistance
+2611,ICT Business and Systems Analysts,1,"Professional, Scientific and Technical Services"
+2611,ICT Business and Systems Analysts,2,Financial and Insurance Services
+2611,ICT Business and Systems Analysts,3,Public Administration and Safety
+2612,Multimedia Specialists and Web Developers,1,"Professional, Scientific and Technical Services"
+2612,Multimedia Specialists and Web Developers,2,Information Media and Telecommunications
+2612,Multimedia Specialists and Web Developers,3,Arts and Recreation Services
+2613,Software and Applications Programmers,1,"Professional, Scientific and Technical Services"
+2613,Software and Applications Programmers,2,Financial and Insurance Services
+2613,Software and Applications Programmers,3,Public Administration and Safety
+2621,"Database and Systems Administrators, and ICT Security Specialists",1,"Professional, Scientific and Technical Services"
+2621,"Database and Systems Administrators, and ICT Security Specialists",2,Public Administration and Safety
+2621,"Database and Systems Administrators, and ICT Security Specialists",3,Health Care and Social Assistance
+2631,Computer Network Professionals,1,"Professional, Scientific and Technical Services"
+2631,Computer Network Professionals,2,Public Administration and Safety
+2631,Computer Network Professionals,3,Financial and Insurance Services
+2632,ICT Support and Test Engineers,1,"Professional, Scientific and Technical Services"
+2632,ICT Support and Test Engineers,2,Financial and Insurance Services
+2632,ICT Support and Test Engineers,3,Public Administration and Safety
+2633,Telecommunications Engineering Professionals,1,Information Media and Telecommunications
+2633,Telecommunications Engineering Professionals,2,"Professional, Scientific and Technical Services"
+2633,Telecommunications Engineering Professionals,3,Manufacturing
+2711,Barristers,1,"Professional, Scientific and Technical Services"
+2711,Barristers,2,Public Administration and Safety
+2712,Judicial and Other Legal Professionals,1,Public Administration and Safety
+2712,Judicial and Other Legal Professionals,2,"Professional, Scientific and Technical Services"
+2712,Judicial and Other Legal Professionals,3,Financial and Insurance Services
+2713,Solicitors,1,"Professional, Scientific and Technical Services"
+2713,Solicitors,2,Public Administration and Safety
+2721,Counsellors,1,Health Care and Social Assistance
+2721,Counsellors,2,Education and Training
+2721,Counsellors,3,Public Administration and Safety
+2722,Ministers of Religion,1,Other Services
+2722,Ministers of Religion,2,Education and Training
+2722,Ministers of Religion,3,Health Care and Social Assistance
+2723,Psychologists and Psychotherapists,1,Health Care and Social Assistance
+2723,Psychologists and Psychotherapists,2,Education and Training
+2723,Psychologists and Psychotherapists,3,Public Administration and Safety
+2724,Social Professionals,1,"Professional, Scientific and Technical Services"
+2724,Social Professionals,2,Education and Training
+2724,Social Professionals,3,Public Administration and Safety
+2725,Social Workers,1,Health Care and Social Assistance
+2725,Social Workers,2,Public Administration and Safety
+2726,"Welfare, Recreation and Community Arts Workers",1,Health Care and Social Assistance
+2726,"Welfare, Recreation and Community Arts Workers",2,Public Administration and Safety
+3111,Agricultural Technicians,1,"Agriculture, Forestry and Fishing"
+3111,Agricultural Technicians,2,"Professional, Scientific and Technical Services"
+3111,Agricultural Technicians,3,Education and Training
+3112,Medical Technicians,1,Health Care and Social Assistance
+3112,Medical Technicians,2,Retail Trade
+3112,Medical Technicians,3,"Professional, Scientific and Technical Services"
+3113,Primary Products Inspectors,1,Public Administration and Safety
+3113,Primary Products Inspectors,2,"Professional, Scientific and Technical Services"
+3113,Primary Products Inspectors,3,"Electricity, Gas, Water and Waste Services"
+3114,Science Technicians,1,Education and Training
+3114,Science Technicians,2,"Professional, Scientific and Technical Services"
+3114,Science Technicians,3,Public Administration and Safety
+3121,"Architectural, Building and Surveying Technicians",1,Construction
+3121,"Architectural, Building and Surveying Technicians",2,"Professional, Scientific and Technical Services"
+3121,"Architectural, Building and Surveying Technicians",3,Manufacturing
+3122,Civil Engineering Draftspersons and Technicians,1,"Professional, Scientific and Technical Services"
+3122,Civil Engineering Draftspersons and Technicians,2,Construction
+3122,Civil Engineering Draftspersons and Technicians,3,Manufacturing
+3123,"Electrical Engineering Draftspersons, Technicians",1,Manufacturing
+3123,"Electrical Engineering Draftspersons, Technicians",2,"Electricity, Gas, Water and Waste Services"
+3123,"Electrical Engineering Draftspersons, Technicians",3,Construction
+3124,"Electronic Engineering Draftspersons, Technicians",1,Manufacturing
+3124,"Electronic Engineering Draftspersons, Technicians",2,Information Media and Telecommunications
+3124,"Electronic Engineering Draftspersons, Technicians",3,"Professional, Scientific and Technical Services"
+3125,"Mechanical Engineering Draftspersons, Technicians",1,"Professional, Scientific and Technical Services"
+3125,"Mechanical Engineering Draftspersons, Technicians",2,Mining
+3125,"Mechanical Engineering Draftspersons, Technicians",3,Manufacturing
+3126,Safety Inspectors,1,Public Administration and Safety
+3126,Safety Inspectors,2,"Professional, Scientific and Technical Services"
+3126,Safety Inspectors,3,Construction
+3129,Other Building and Engineering Technicians,1,Mining
+3129,Other Building and Engineering Technicians,2,Manufacturing
+3129,Other Building and Engineering Technicians,3,"Electricity, Gas, Water and Waste Services"
+3131,ICT Support Technicians,1,"Professional, Scientific and Technical Services"
+3131,ICT Support Technicians,2,Public Administration and Safety
+3131,ICT Support Technicians,3,Education and Training
+3132,Telecommunications Technical Specialists,1,Information Media and Telecommunications
+3132,Telecommunications Technical Specialists,2,Public Administration and Safety
+3132,Telecommunications Technical Specialists,3,"Transport, Postal and Warehousing"
+3211,Automotive Electricians,1,Other Services
+3211,Automotive Electricians,2,Mining
+3211,Automotive Electricians,3,Manufacturing
+3212,Motor Mechanics,1,Other Services
+3212,Motor Mechanics,2,Retail Trade
+3221,"Metal Casting, Forging and Finishing Trades",1,"Agriculture, Forestry and Fishing"
+3221,"Metal Casting, Forging and Finishing Trades",2,Manufacturing
+3222,Sheetmetal Trades Workers,1,Manufacturing
+3222,Sheetmetal Trades Workers,2,Construction
+3222,Sheetmetal Trades Workers,3,"Transport, Postal and Warehousing"
+3223,Structural Steel and Welding Trades Workers,1,Manufacturing
+3223,Structural Steel and Welding Trades Workers,2,Construction
+3223,Structural Steel and Welding Trades Workers,3,Mining
+3231,Aircraft Maintenance Engineers,1,"Transport, Postal and Warehousing"
+3231,Aircraft Maintenance Engineers,2,Manufacturing
+3231,Aircraft Maintenance Engineers,3,Public Administration and Safety
+3232,Metal Fitters and Machinists,1,Manufacturing
+3232,Metal Fitters and Machinists,2,Mining
+3232,Metal Fitters and Machinists,3,Other Services
+3233,Precision Metal Trades Workers,1,Public Administration and Safety
+3233,Precision Metal Trades Workers,2,Other Services
+3233,Precision Metal Trades Workers,3,Manufacturing
+3234,Toolmakers and Engineering Patternmakers,1,Manufacturing
+3234,Toolmakers and Engineering Patternmakers,2,Retail Trade
+3241,Panelbeaters,1,Other Services
+3242,Vehicle Body Builders and Trimmers,1,Other Services
+3242,Vehicle Body Builders and Trimmers,2,Manufacturing
+3243,Vehicle Painters,1,Other Services
+3243,Vehicle Painters,2,Manufacturing
+3311,Bricklayers and Stonemasons,1,Construction
+3311,Bricklayers and Stonemasons,2,Manufacturing
+3312,Carpenters and Joiners,1,Construction
+3312,Carpenters and Joiners,2,Manufacturing
+3321,Floor Finishers,1,Construction
+3322,Painting Trades Workers,1,Construction
+3331,Glaziers,1,Construction
+3331,Glaziers,2,Manufacturing
+3332,Plasterers,1,Construction
+3333,Roof Tilers,1,Construction
+3334,Wall and Floor Tilers,1,Construction
+3341,Plumbers,1,Construction
+3411,Electricians,1,Construction
+3411,Electricians,2,Mining
+3411,Electricians,3,"Electricity, Gas, Water and Waste Services"
+3421,Airconditioning and Refrigeration Mechanics,1,Construction
+3421,Airconditioning and Refrigeration Mechanics,2,Other Services
+3422,Electrical Distribution Trades Workers,1,"Electricity, Gas, Water and Waste Services"
+3422,Electrical Distribution Trades Workers,2,Construction
+3423,Electronics Trades Workers,1,Construction
+3423,Electronics Trades Workers,2,Other Services
+3423,Electronics Trades Workers,3,"Professional, Scientific and Technical Services"
+3424,Telecommunications Trades Workers,1,Information Media and Telecommunications
+3424,Telecommunications Trades Workers,2,Construction
+3424,Telecommunications Trades Workers,3,Other Services
+3511,Bakers and Pastrycooks,1,Manufacturing
+3511,Bakers and Pastrycooks,2,Retail Trade
+3511,Bakers and Pastrycooks,3,Accommodation and Food Services
+3512,Butchers and Smallgoods Makers,1,Retail Trade
+3512,Butchers and Smallgoods Makers,2,Manufacturing
+3513,Chefs,1,Accommodation and Food Services
+3514,Cooks,1,Accommodation and Food Services
+3514,Cooks,2,Health Care and Social Assistance
+3514,Cooks,3,Retail Trade
+3611,Animal Attendants and Trainers,1,Other Services
+3611,Animal Attendants and Trainers,2,Arts and Recreation Services
+3611,Animal Attendants and Trainers,3,Education and Training
+3612,Shearers,1,"Agriculture, Forestry and Fishing"
+3613,Veterinary Nurses,1,"Professional, Scientific and Technical Services"
+3621,Florists,1,Retail Trade
+3621,Florists,2,"Agriculture, Forestry and Fishing"
+3622,Gardeners,1,Construction
+3622,Gardeners,2,Administrative and Support Services
+3622,Gardeners,3,Arts and Recreation Services
+3623,Greenkeepers,1,Arts and Recreation Services
+3623,Greenkeepers,2,Education and Training
+3623,Greenkeepers,3,Administrative and Support Services
+3624,Nurserypersons,1,"Agriculture, Forestry and Fishing"
+3624,Nurserypersons,2,Wholesale Trade
+3624,Nurserypersons,3,Retail Trade
+3911,Hairdressers,1,Other Services
+3921,Print Finishers and Screen Printers,1,Manufacturing
+3921,Print Finishers and Screen Printers,2,Education and Training
+3922,Graphic Pre-press Trades Workers,1,"Professional, Scientific and Technical Services"
+3922,Graphic Pre-press Trades Workers,2,Mining
+3922,Graphic Pre-press Trades Workers,3,Arts and Recreation Services
+3923,Printers,1,Manufacturing
+3923,Printers,2,Information Media and Telecommunications
+3923,Printers,3,Financial and Insurance Services
+3931,Canvas and Leather Goods Makers,1,Manufacturing
+3931,Canvas and Leather Goods Makers,2,Other Services
+3931,Canvas and Leather Goods Makers,3,Retail Trade
+3932,Clothing Trades Workers,1,Manufacturing
+3932,Clothing Trades Workers,2,Other Services
+3932,Clothing Trades Workers,3,Retail Trade
+3933,Upholsterers,1,Manufacturing
+3941,Cabinetmakers,1,Manufacturing
+3941,Cabinetmakers,2,Construction
+3942,Wood Machinists and Other Wood Trades Workers,1,Retail Trade
+3942,Wood Machinists and Other Wood Trades Workers,2,Wholesale Trade
+3942,Wood Machinists and Other Wood Trades Workers,3,Manufacturing
+3991,Boat Builders and Shipwrights,1,Manufacturing
+3991,Boat Builders and Shipwrights,2,"Transport, Postal and Warehousing"
+3991,Boat Builders and Shipwrights,3,Arts and Recreation Services
+3992,"Chemical, Gas, Petroleum and Power Plant Operators",1,"Electricity, Gas, Water and Waste Services"
+3992,"Chemical, Gas, Petroleum and Power Plant Operators",2,Manufacturing
+3992,"Chemical, Gas, Petroleum and Power Plant Operators",3,Mining
+3993,"Gallery, Library and Museum Technicians",1,Information Media and Telecommunications
+3993,"Gallery, Library and Museum Technicians",2,Education and Training
+3994,Jewellers,1,Manufacturing
+3994,Jewellers,2,Retail Trade
+3994,Jewellers,3,"Professional, Scientific and Technical Services"
+3995,Performing Arts Technicians,1,Information Media and Telecommunications
+3995,Performing Arts Technicians,2,"Professional, Scientific and Technical Services"
+3995,Performing Arts Technicians,3,Other Services
+3996,Signwriters,1,"Professional, Scientific and Technical Services"
+3996,Signwriters,2,Manufacturing
+3996,Signwriters,3,Construction
+3999,Other Miscellaneous Technicians and Trades Workers,1,Health Care and Social Assistance
+3999,Other Miscellaneous Technicians and Trades Workers,2,Construction
+3999,Other Miscellaneous Technicians and Trades Workers,3,Public Administration and Safety
+4111,Ambulance Officers and Paramedics,1,Health Care and Social Assistance
+4112,"Dental Hygienists, Technicians and Therapists",1,Health Care and Social Assistance
+4112,"Dental Hygienists, Technicians and Therapists",2,Manufacturing
+4113,Diversional Therapists,1,Health Care and Social Assistance
+4114,Enrolled and Mothercraft Nurses,1,Health Care and Social Assistance
+4115,Indigenous Health Workers,1,Health Care and Social Assistance
+4115,Indigenous Health Workers,2,Other Services
+4115,Indigenous Health Workers,3,Public Administration and Safety
+4116,Massage Therapists,1,Health Care and Social Assistance
+4117,Welfare Support Workers,1,Health Care and Social Assistance
+4117,Welfare Support Workers,2,Public Administration and Safety
+4211,Child Carers,1,Health Care and Social Assistance
+4211,Child Carers,2,Education and Training
+4221,Education Aides,1,Education and Training
+4231,Aged and Disabled Carers,1,Health Care and Social Assistance
+4232,Dental Assistants,1,Health Care and Social Assistance
+4233,Nursing Support and Personal Care Workers,1,Health Care and Social Assistance
+4234,Special Care Workers,1,Health Care and Social Assistance
+4234,Special Care Workers,2,Education and Training
+4234,Special Care Workers,3,Accommodation and Food Services
+4311,Bar Attendants and Baristas,1,Accommodation and Food Services
+4312,Cafe Workers,1,Accommodation and Food Services
+4313,Gaming Workers,1,Arts and Recreation Services
+4313,Gaming Workers,2,Accommodation and Food Services
+4314,Hotel Service Managers,1,Accommodation and Food Services
+4314,Hotel Service Managers,2,Administrative and Support Services
+4315,Waiters,1,Accommodation and Food Services
+4319,Other Hospitality Workers,1,Accommodation and Food Services
+4319,Other Hospitality Workers,2,Arts and Recreation Services
+4411,Defence Force Members - Other Ranks,1,Public Administration and Safety
+4412,Fire and Emergency Workers,1,Public Administration and Safety
+4412,Fire and Emergency Workers,2,Mining
+4413,Police,1,Public Administration and Safety
+4421,Prison Officers,1,Public Administration and Safety
+4422,Security Officers and Guards,1,Public Administration and Safety
+4422,Security Officers and Guards,2,"Transport, Postal and Warehousing"
+4511,Beauty Therapists,1,Other Services
+4512,Driving Instructors,1,Education and Training
+4512,Driving Instructors,2,"Transport, Postal and Warehousing"
+4513,Funeral Workers,1,Other Services
+4514,"Gallery, Museum and Tour Guides",1,Administrative and Support Services
+4514,"Gallery, Museum and Tour Guides",2,Arts and Recreation Services
+4514,"Gallery, Museum and Tour Guides",3,"Transport, Postal and Warehousing"
+4515,Personal Care Consultants,1,Health Care and Social Assistance
+4516,Tourism and Travel Advisers,1,Administrative and Support Services
+4517,Travel Attendants,1,"Transport, Postal and Warehousing"
+4518,Other Personal Service Workers,1,Other Services
+4518,Other Personal Service Workers,2,Health Care and Social Assistance
+4518,Other Personal Service Workers,3,Education and Training
+4521,Fitness Instructors,1,Other Services
+4521,Fitness Instructors,2,Arts and Recreation Services
+4521,Fitness Instructors,3,Education and Training
+4522,Outdoor Adventure Guides,1,Education and Training
+4522,Outdoor Adventure Guides,2,Arts and Recreation Services
+4522,Outdoor Adventure Guides,3,"Transport, Postal and Warehousing"
+4523,"Sports Coaches, Instructors and Officials",1,Education and Training
+4523,"Sports Coaches, Instructors and Officials",2,Arts and Recreation Services
+4524,Sportspersons,1,Arts and Recreation Services
+4524,Sportspersons,2,Education and Training
+5111,"Contract, Program and Project Administrators",1,Public Administration and Safety
+5111,"Contract, Program and Project Administrators",2,"Professional, Scientific and Technical Services"
+5111,"Contract, Program and Project Administrators",3,Construction
+5121,Office Managers,1,"Professional, Scientific and Technical Services"
+5121,Office Managers,2,Health Care and Social Assistance
+5121,Office Managers,3,Construction
+5122,Practice Managers,1,Health Care and Social Assistance
+5122,Practice Managers,2,"Professional, Scientific and Technical Services"
+5211,Personal Assistants,1,"Professional, Scientific and Technical Services"
+5211,Personal Assistants,2,Public Administration and Safety
+5211,Personal Assistants,3,Health Care and Social Assistance
+5212,Secretaries,1,"Professional, Scientific and Technical Services"
+5212,Secretaries,2,Health Care and Social Assistance
+5212,Secretaries,3,Construction
+5311,General Clerks,1,Public Administration and Safety
+5311,General Clerks,2,Health Care and Social Assistance
+5311,General Clerks,3,Education and Training
+5321,Keyboard Operators,1,Public Administration and Safety
+5321,Keyboard Operators,2,Health Care and Social Assistance
+5321,Keyboard Operators,3,"Professional, Scientific and Technical Services"
+5411,Call or Contact Centre Workers,1,Administrative and Support Services
+5411,Call or Contact Centre Workers,2,Financial and Insurance Services
+5411,Call or Contact Centre Workers,3,Public Administration and Safety
+5412,Information Officers,1,Public Administration and Safety
+5412,Information Officers,2,Retail Trade
+5412,Information Officers,3,Financial and Insurance Services
+5421,Receptionists,1,Health Care and Social Assistance
+5421,Receptionists,2,Accommodation and Food Services
+5421,Receptionists,3,Arts and Recreation Services
+5511,Accounting Clerks,1,Construction
+5511,Accounting Clerks,2,"Professional, Scientific and Technical Services"
+5511,Accounting Clerks,3,Public Administration and Safety
+5512,Bookkeepers,1,"Professional, Scientific and Technical Services"
+5512,Bookkeepers,2,Construction
+5512,Bookkeepers,3,Education and Training
+5513,Payroll Clerks,1,Health Care and Social Assistance
+5513,Payroll Clerks,2,Public Administration and Safety
+5513,Payroll Clerks,3,Construction
+5521,Bank Workers,1,Financial and Insurance Services
+5522,Credit and Loans Officers,1,Financial and Insurance Services
+5522,Credit and Loans Officers,2,Retail Trade
+5523,"Insurance, Money Market and Statistical Clerks",1,Financial and Insurance Services
+5523,"Insurance, Money Market and Statistical Clerks",2,Public Administration and Safety
+5611,Betting Clerks,1,Arts and Recreation Services
+5611,Betting Clerks,2,Accommodation and Food Services
+5612,Couriers and Postal Deliverers,1,"Transport, Postal and Warehousing"
+5612,Couriers and Postal Deliverers,2,Health Care and Social Assistance
+5613,Filing and Registry Clerks,1,Health Care and Social Assistance
+5613,Filing and Registry Clerks,2,Public Administration and Safety
+5613,Filing and Registry Clerks,3,"Professional, Scientific and Technical Services"
+5614,Mail Sorters,1,"Transport, Postal and Warehousing"
+5615,Survey Interviewers,1,"Professional, Scientific and Technical Services"
+5616,Switchboard Operators,1,Health Care and Social Assistance
+5616,Switchboard Operators,2,Public Administration and Safety
+5616,Switchboard Operators,3,Retail Trade
+5619,Other Clerical and Office Support Workers,1,Public Administration and Safety
+5619,Other Clerical and Office Support Workers,2,Arts and Recreation Services
+5619,Other Clerical and Office Support Workers,3,Administrative and Support Services
+5911,Purchasing and Supply Logistics Clerks,1,Retail Trade
+5911,Purchasing and Supply Logistics Clerks,2,Wholesale Trade
+5911,Purchasing and Supply Logistics Clerks,3,Manufacturing
+5912,Transport and Despatch Clerks,1,"Transport, Postal and Warehousing"
+5912,Transport and Despatch Clerks,2,Manufacturing
+5912,Transport and Despatch Clerks,3,Wholesale Trade
+5991,Conveyancers and Legal Executives,1,"Professional, Scientific and Technical Services"
+5991,Conveyancers and Legal Executives,2,Public Administration and Safety
+5991,Conveyancers and Legal Executives,3,"Rental, Hiring and Real Estate Services"
+5992,Court and Legal Clerks,1,"Professional, Scientific and Technical Services"
+5992,Court and Legal Clerks,2,Public Administration and Safety
+5993,Debt Collectors,1,Administrative and Support Services
+5993,Debt Collectors,2,Public Administration and Safety
+5993,Debt Collectors,3,Financial and Insurance Services
+5994,Human Resource Clerks,1,Health Care and Social Assistance
+5994,Human Resource Clerks,2,Public Administration and Safety
+5994,Human Resource Clerks,3,Construction
+5995,Inspectors and Regulatory Officers,1,Public Administration and Safety
+5995,Inspectors and Regulatory Officers,2,"Transport, Postal and Warehousing"
+5995,Inspectors and Regulatory Officers,3,Health Care and Social Assistance
+5996,"Insurance Investigators, Loss Adjusters and Risk Surveyors",1,Financial and Insurance Services
+5996,"Insurance Investigators, Loss Adjusters and Risk Surveyors",2,Public Administration and Safety
+5997,Library Assistants,1,Information Media and Telecommunications
+5997,Library Assistants,2,Education and Training
+5999,Other Miscellaneous Clerical and Administrative Workers,1,Public Administration and Safety
+5999,Other Miscellaneous Clerical and Administrative Workers,2,Education and Training
+5999,Other Miscellaneous Clerical and Administrative Workers,3,Health Care and Social Assistance
+6111,"Auctioneers, and Stock and Station Agents",1,Wholesale Trade
+6111,"Auctioneers, and Stock and Station Agents",2,Retail Trade
+6111,"Auctioneers, and Stock and Station Agents",3,Manufacturing
+6112,Insurance Agents,1,Financial and Insurance Services
+6113,Sales Representatives,1,Wholesale Trade
+6113,Sales Representatives,2,Retail Trade
+6113,Sales Representatives,3,Manufacturing
+6121,Real Estate Sales Agents,1,"Rental, Hiring and Real Estate Services"
+6211,Sales Assistants (General),1,Retail Trade
+6211,Sales Assistants (General),2,Accommodation and Food Services
+6212,ICT Sales Assistants,1,"Professional, Scientific and Technical Services"
+6212,ICT Sales Assistants,2,Retail Trade
+6212,ICT Sales Assistants,3,Information Media and Telecommunications
+6213,Motor Vehicle and Vehicle Parts Salespersons,1,Retail Trade
+6213,Motor Vehicle and Vehicle Parts Salespersons,2,Wholesale Trade
+6213,Motor Vehicle and Vehicle Parts Salespersons,3,Other Services
+6214,Pharmacy Sales Assistants,1,Retail Trade
+6215,Retail Supervisors,1,Retail Trade
+6215,Retail Supervisors,2,Accommodation and Food Services
+6216,Service Station Attendants,1,Retail Trade
+6217,Street Vendors and Related Salespersons,1,Retail Trade
+6217,Street Vendors and Related Salespersons,2,Other Services
+6217,Street Vendors and Related Salespersons,3,"Professional, Scientific and Technical Services"
+6219,Other Sales Assistants and Salespersons,1,Retail Trade
+6219,Other Sales Assistants and Salespersons,2,"Rental, Hiring and Real Estate Services"
+6219,Other Sales Assistants and Salespersons,3,Wholesale Trade
+6311,Checkout Operators and Office Cashiers,1,Retail Trade
+6311,Checkout Operators and Office Cashiers,2,Accommodation and Food Services
+6391,Models and Sales Demonstrators,1,Retail Trade
+6391,Models and Sales Demonstrators,2,Manufacturing
+6391,Models and Sales Demonstrators,3,"Professional, Scientific and Technical Services"
+6392,Retail and Wool Buyers,1,Retail Trade
+6392,Retail and Wool Buyers,2,Wholesale Trade
+6392,Retail and Wool Buyers,3,Manufacturing
+6393,Telemarketers,1,"Professional, Scientific and Technical Services"
+6393,Telemarketers,2,Administrative and Support Services
+6393,Telemarketers,3,"Electricity, Gas, Water and Waste Services"
+6394,Ticket Salespersons,1,"Transport, Postal and Warehousing"
+6394,Ticket Salespersons,2,Information Media and Telecommunications
+6394,Ticket Salespersons,3,Accommodation and Food Services
+6395,Visual Merchandisers,1,Retail Trade
+6395,Visual Merchandisers,2,"Professional, Scientific and Technical Services"
+6395,Visual Merchandisers,3,Manufacturing
+6399,Other Sales Support Workers,1,Retail Trade
+6399,Other Sales Support Workers,2,"Professional, Scientific and Technical Services"
+7111,"Clay, Concrete, Glass and Stone Processing Machine Operators",1,Manufacturing
+7111,"Clay, Concrete, Glass and Stone Processing Machine Operators",2,Construction
+7111,"Clay, Concrete, Glass and Stone Processing Machine Operators",3,Wholesale Trade
+7112,Industrial Spraypainters,1,Construction
+7112,Industrial Spraypainters,2,Manufacturing
+7113,Paper and Wood Processing Machine Operators,1,Manufacturing
+7113,Paper and Wood Processing Machine Operators,2,Wholesale Trade
+7114,Photographic Developers and Printers,1,Other Services
+7114,Photographic Developers and Printers,2,"Professional, Scientific and Technical Services"
+7114,Photographic Developers and Printers,3,Retail Trade
+7115,Plastics and Rubber Production Machine Operators,1,Manufacturing
+7115,Plastics and Rubber Production Machine Operators,2,Other Services
+7115,Plastics and Rubber Production Machine Operators,3,Wholesale Trade
+7116,Sewing Machinists,1,Manufacturing
+7116,Sewing Machinists,2,Retail Trade
+7117,Textile and Footwear Production Machine Operators,1,Manufacturing
+7117,Textile and Footwear Production Machine Operators,2,Construction
+7117,Textile and Footwear Production Machine Operators,3,Wholesale Trade
+7119,Other Machine Operators,1,Health Care and Social Assistance
+7119,Other Machine Operators,2,Manufacturing
+7119,Other Machine Operators,3,Construction
+7121,"Crane, Hoist and Lift Operators",1,Construction
+7121,"Crane, Hoist and Lift Operators",2,"Transport, Postal and Warehousing"
+7121,"Crane, Hoist and Lift Operators",3,Mining
+7122,"Drillers, Miners and Shot Firers",1,Mining
+7122,"Drillers, Miners and Shot Firers",2,Construction
+7123,Engineering Production Workers,1,Manufacturing
+7123,Engineering Production Workers,2,Construction
+7123,Engineering Production Workers,3,Other Services
+7129,Other Stationary Plant Operators,1,"Electricity, Gas, Water and Waste Services"
+7129,Other Stationary Plant Operators,2,Manufacturing
+7129,Other Stationary Plant Operators,3,Mining
+7211,"Agricultural, Forestry and Horticultural Plant Operators",1,"Agriculture, Forestry and Fishing"
+7211,"Agricultural, Forestry and Horticultural Plant Operators",2,Public Administration and Safety
+7211,"Agricultural, Forestry and Horticultural Plant Operators",3,Manufacturing
+7212,Earthmoving Plant Operators,1,Construction
+7212,Earthmoving Plant Operators,2,Mining
+7213,Forklift Drivers,1,"Transport, Postal and Warehousing"
+7213,Forklift Drivers,2,Manufacturing
+7213,Forklift Drivers,3,Wholesale Trade
+7219,Other Mobile Plant Operators,1,"Transport, Postal and Warehousing"
+7219,Other Mobile Plant Operators,2,Construction
+7219,Other Mobile Plant Operators,3,Public Administration and Safety
+7311,Automobile Drivers,1,"Transport, Postal and Warehousing"
+7312,Bus and Coach Drivers,1,"Transport, Postal and Warehousing"
+7313,Train and Tram Drivers,1,"Transport, Postal and Warehousing"
+7313,Train and Tram Drivers,2,Mining
+7321,Delivery Drivers,1,"Transport, Postal and Warehousing"
+7321,Delivery Drivers,2,Accommodation and Food Services
+7321,Delivery Drivers,3,Retail Trade
+7331,Truck Drivers,1,"Transport, Postal and Warehousing"
+7331,Truck Drivers,2,Construction
+7331,Truck Drivers,3,"Electricity, Gas, Water and Waste Services"
+7411,Storepersons,1,"Transport, Postal and Warehousing"
+7411,Storepersons,2,Retail Trade
+7411,Storepersons,3,Wholesale Trade
+8111,Car Detailers,1,Other Services
+8111,Car Detailers,2,Retail Trade
+8111,Car Detailers,3,"Rental, Hiring and Real Estate Services"
+8112,Commercial Cleaners,1,Administrative and Support Services
+8112,Commercial Cleaners,2,Health Care and Social Assistance
+8112,Commercial Cleaners,3,Accommodation and Food Services
+8113,Domestic Cleaners,1,Administrative and Support Services
+8113,Domestic Cleaners,2,Health Care and Social Assistance
+8114,Housekeepers,1,Accommodation and Food Services
+8114,Housekeepers,2,Administrative and Support Services
+8114,Housekeepers,3,Health Care and Social Assistance
+8115,Laundry Workers,1,Other Services
+8115,Laundry Workers,2,Health Care and Social Assistance
+8116,Other Cleaners,1,Administrative and Support Services
+8116,Other Cleaners,2,Other Services
+8116,Other Cleaners,3,Construction
+8211,Building and Plumbing Labourers,1,Construction
+8212,Concreters,1,Construction
+8213,Fencers,1,Construction
+8214,Insulation and Home Improvement Installers,1,Construction
+8214,Insulation and Home Improvement Installers,2,Manufacturing
+8215,Paving and Surfacing Labourers,1,Construction
+8215,Paving and Surfacing Labourers,2,Public Administration and Safety
+8216,Railway Track Workers,1,Construction
+8216,Railway Track Workers,2,"Transport, Postal and Warehousing"
+8216,Railway Track Workers,3,Mining
+8217,Structural Steel Construction Workers,1,Construction
+8217,Structural Steel Construction Workers,2,Mining
+8217,Structural Steel Construction Workers,3,Manufacturing
+8219,Other Construction and Mining Labourers,1,Mining
+8219,Other Construction and Mining Labourers,2,Construction
+8219,Other Construction and Mining Labourers,3,"Professional, Scientific and Technical Services"
+8311,Food and Drink Factory Workers,1,Manufacturing
+8312,"Meat Boners and Slicers, and Slaughterers",1,Manufacturing
+8312,"Meat Boners and Slicers, and Slaughterers",2,Wholesale Trade
+8313,"Meat, Poultry and Seafood Process Workers",1,Manufacturing
+8313,"Meat, Poultry and Seafood Process Workers",2,Retail Trade
+8321,Packers,1,Manufacturing
+8321,Packers,2,Retail Trade
+8321,Packers,3,Wholesale Trade
+8322,Product Assemblers,1,Manufacturing
+8322,Product Assemblers,2,Other Services
+8391,Metal Engineering Process Workers,1,Manufacturing
+8391,Metal Engineering Process Workers,2,Construction
+8392,Plastics and Rubber Factory Workers,1,Manufacturing
+8392,Plastics and Rubber Factory Workers,2,Wholesale Trade
+8393,Product Quality Controllers,1,Manufacturing
+8393,Product Quality Controllers,2,"Professional, Scientific and Technical Services"
+8393,Product Quality Controllers,3,Wholesale Trade
+8394,Timber and Wood Process Workers,1,Manufacturing
+8394,Timber and Wood Process Workers,2,Wholesale Trade
+8394,Timber and Wood Process Workers,3,Retail Trade
+8399,Other Factory Process Workers,1,"Electricity, Gas, Water and Waste Services"
+8399,Other Factory Process Workers,2,Manufacturing
+8399,Other Factory Process Workers,3,Wholesale Trade
+8411,Aquaculture Workers,1,"Agriculture, Forestry and Fishing"
+8411,Aquaculture Workers,2,Public Administration and Safety
+8411,Aquaculture Workers,3,Wholesale Trade
+8412,Crop Farm Workers,1,"Agriculture, Forestry and Fishing"
+8413,Forestry and Logging Workers,1,"Agriculture, Forestry and Fishing"
+8413,Forestry and Logging Workers,2,"Professional, Scientific and Technical Services"
+8414,Garden and Nursery Labourers,1,Administrative and Support Services
+8414,Garden and Nursery Labourers,2,Construction
+8414,Garden and Nursery Labourers,3,"Agriculture, Forestry and Fishing"
+8415,Livestock Farm Workers,1,"Agriculture, Forestry and Fishing"
+8415,Livestock Farm Workers,2,Arts and Recreation Services
+8416,Mixed Crop and Livestock Farm Workers,1,"Agriculture, Forestry and Fishing"
+8419,"Other Farm, Forestry and Garden Workers",1,Administrative and Support Services
+8419,"Other Farm, Forestry and Garden Workers",2,"Agriculture, Forestry and Fishing"
+8419,"Other Farm, Forestry and Garden Workers",3,Public Administration and Safety
+8511,Fast Food Cooks,1,Accommodation and Food Services
+8512,Food Trades Assistants,1,Manufacturing
+8512,Food Trades Assistants,2,Retail Trade
+8512,Food Trades Assistants,3,Accommodation and Food Services
+8513,Kitchenhands,1,Accommodation and Food Services
+8513,Kitchenhands,2,Health Care and Social Assistance
+8911,Freight and Furniture Handlers,1,"Transport, Postal and Warehousing"
+8911,Freight and Furniture Handlers,2,Construction
+8911,Freight and Furniture Handlers,3,"Electricity, Gas, Water and Waste Services"
+8912,Shelf Fillers,1,Retail Trade
+8991,Caretakers,1,Education and Training
+8991,Caretakers,2,Accommodation and Food Services
+8991,Caretakers,3,Health Care and Social Assistance
+8992,Deck and Fishing Hands,1,"Transport, Postal and Warehousing"
+8992,Deck and Fishing Hands,2,"Agriculture, Forestry and Fishing"
+8993,Handypersons,1,Construction
+8993,Handypersons,2,Accommodation and Food Services
+8993,Handypersons,3,Administrative and Support Services
+8994,Motor Vehicle Parts and Accessories Fitters,1,Other Services
+8994,Motor Vehicle Parts and Accessories Fitters,2,Retail Trade
+8994,Motor Vehicle Parts and Accessories Fitters,3,Manufacturing
+8995,Printing Assistants and Table Workers,1,Manufacturing
+8995,Printing Assistants and Table Workers,2,Information Media and Telecommunications
+8995,Printing Assistants and Table Workers,3,Arts and Recreation Services
+8996,Recycling and Rubbish Collectors,1,"Electricity, Gas, Water and Waste Services"
+8996,Recycling and Rubbish Collectors,2,Public Administration and Safety
+8996,Recycling and Rubbish Collectors,3,Wholesale Trade
+8997,Vending Machine Attendants,1,Accommodation and Food Services
+8997,Vending Machine Attendants,2,Arts and Recreation Services
+8999,Other Miscellaneous Labourers,1,Public Administration and Safety
+8999,Other Miscellaneous Labourers,2,Construction
+8999,Other Miscellaneous Labourers,3,"Transport, Postal and Warehousing"
+111211,,1,Health Care and Social Assistance
+111211,,2,"Professional, Scientific and Technical Services"
+111211,,3,Manufacturing
+111212,,1,Public Administration and Safety
+111311,,1,Public Administration and Safety
+111311,,2,Health Care and Social Assistance
+111312,,1,Public Administration and Safety
+111399,,1,Public Administration and Safety
+111399,,2,Other Services
+111399,,3,Health Care and Social Assistance
+121211,,1,"Agriculture, Forestry and Fishing"
+121212,,1,"Agriculture, Forestry and Fishing"
+121213,,1,"Agriculture, Forestry and Fishing"
+121214,,1,"Agriculture, Forestry and Fishing"
+121215,,1,"Agriculture, Forestry and Fishing"
+121215,,2,Manufacturing
+121216,,1,"Agriculture, Forestry and Fishing"
+121217,,1,"Agriculture, Forestry and Fishing"
+121218,,1,"Agriculture, Forestry and Fishing"
+121221,,1,"Agriculture, Forestry and Fishing"
+121299,,1,"Agriculture, Forestry and Fishing"
+121299,,2,Wholesale Trade
+121311,,1,"Agriculture, Forestry and Fishing"
+121312,,1,"Agriculture, Forestry and Fishing"
+121313,,1,"Agriculture, Forestry and Fishing"
+121315,,1,"Agriculture, Forestry and Fishing"
+121316,,1,"Agriculture, Forestry and Fishing"
+121316,,2,Arts and Recreation Services
+121317,,1,"Agriculture, Forestry and Fishing"
+121318,,1,"Agriculture, Forestry and Fishing"
+121318,,2,Manufacturing
+121321,,1,"Agriculture, Forestry and Fishing"
+121321,,2,Manufacturing
+121322,,1,"Agriculture, Forestry and Fishing"
+121399,,1,"Agriculture, Forestry and Fishing"
+121399,,2,Other Services
+131112,,1,"Professional, Scientific and Technical Services"
+131112,,2,Wholesale Trade
+131112,,3,Retail Trade
+131113,,1,"Professional, Scientific and Technical Services"
+131113,,2,Information Media and Telecommunications
+131114,,1,Public Administration and Safety
+131114,,2,"Professional, Scientific and Technical Services"
+131114,,3,Financial and Insurance Services
+133111,,1,Construction
+133111,,2,"Professional, Scientific and Technical Services"
+133111,,3,Public Administration and Safety
+133112,,1,Construction
+133311,,1,Wholesale Trade
+133311,,2,"Transport, Postal and Warehousing"
+133311,,3,Retail Trade
+133312,,1,Wholesale Trade
+133312,,2,Retail Trade
+133511,,1,"Agriculture, Forestry and Fishing"
+133511,,2,Public Administration and Safety
+133511,,3,Manufacturing
+133512,,1,Manufacturing
+133512,,2,Construction
+133513,,1,Mining
+133513,,2,"Professional, Scientific and Technical Services"
+133513,,3,Manufacturing
+133611,,1,"Transport, Postal and Warehousing"
+133611,,2,Manufacturing
+133611,,3,Wholesale Trade
+133612,,1,Manufacturing
+133612,,2,Public Administration and Safety
+133612,,3,Wholesale Trade
+134211,,1,Health Care and Social Assistance
+134212,,1,Health Care and Social Assistance
+134213,,1,Health Care and Social Assistance
+134213,,2,Public Administration and Safety
+134214,,1,Health Care and Social Assistance
+134214,,2,Public Administration and Safety
+134299,,1,Health Care and Social Assistance
+134299,,2,Public Administration and Safety
+134411,,1,Education and Training
+134412,,1,Education and Training
+134412,,2,Public Administration and Safety
+134499,,1,Education and Training
+135111,,1,"Professional, Scientific and Technical Services"
+135111,,2,Financial and Insurance Services
+135111,,3,Information Media and Telecommunications
+135112,,1,"Professional, Scientific and Technical Services"
+135112,,2,Public Administration and Safety
+135112,,3,Financial and Insurance Services
+135199,,1,"Professional, Scientific and Technical Services"
+135199,,2,Financial and Insurance Services
+135199,,3,Information Media and Telecommunications
+139111,,1,Public Administration and Safety
+139112,,1,Public Administration and Safety
+139113,,1,Public Administration and Safety
+139911,,1,Arts and Recreation Services
+139911,,2,Public Administration and Safety
+139911,,3,Education and Training
+139912,,1,Public Administration and Safety
+139912,,2,"Professional, Scientific and Technical Services"
+139912,,3,Construction
+139913,,1,"Professional, Scientific and Technical Services"
+139913,,2,Education and Training
+139913,,3,Health Care and Social Assistance
+139914,,1,Manufacturing
+139914,,2,Health Care and Social Assistance
+139914,,3,Financial and Insurance Services
+139915,,1,Arts and Recreation Services
+139915,,2,Education and Training
+139915,,3,Public Administration and Safety
+139999,,1,Public Administration and Safety
+139999,,2,Financial and Insurance Services
+139999,,3,"Electricity, Gas, Water and Waste Services"
+141911,,1,Accommodation and Food Services
+141911,,2,Administrative and Support Services
+141912,,1,Health Care and Social Assistance
+141912,,2,"Rental, Hiring and Real Estate Services"
+141999,,1,Accommodation and Food Services
+141999,,2,Education and Training
+141999,,3,Health Care and Social Assistance
+142111,,1,Retail Trade
+142111,,2,Accommodation and Food Services
+142112,,1,Retail Trade
+142113,,1,Arts and Recreation Services
+142113,,2,Accommodation and Food Services
+142114,,1,Other Services
+142115,,1,"Transport, Postal and Warehousing"
+142116,,1,Administrative and Support Services
+142116,,2,"Transport, Postal and Warehousing"
+149111,,1,Arts and Recreation Services
+149111,,2,Accommodation and Food Services
+149112,,1,Arts and Recreation Services
+149112,,2,Other Services
+149113,,1,Arts and Recreation Services
+149113,,2,Education and Training
+149113,,3,Public Administration and Safety
+149211,,1,Construction
+149211,,2,Financial and Insurance Services
+149211,,3,Administrative and Support Services
+149212,,1,Retail Trade
+149212,,2,Financial and Insurance Services
+149212,,3,"Professional, Scientific and Technical Services"
+149411,,1,"Transport, Postal and Warehousing"
+149411,,2,Public Administration and Safety
+149411,,3,"Rental, Hiring and Real Estate Services"
+149412,,1,"Transport, Postal and Warehousing"
+149413,,1,"Transport, Postal and Warehousing"
+149413,,2,"Rental, Hiring and Real Estate Services"
+149911,,1,Other Services
+149911,,2,"Agriculture, Forestry and Fishing"
+149912,,1,Information Media and Telecommunications
+149912,,2,Arts and Recreation Services
+149913,,1,"Rental, Hiring and Real Estate Services"
+149913,,2,Health Care and Social Assistance
+149913,,3,Construction
+149914,,1,Financial and Insurance Services
+149915,,1,"Rental, Hiring and Real Estate Services"
+149915,,2,Construction
+149999,,1,"Professional, Scientific and Technical Services"
+149999,,2,Construction
+149999,,3,Administrative and Support Services
+211111,,1,Arts and Recreation Services
+211111,,2,Information Media and Telecommunications
+211111,,3,Education and Training
+211112,,1,Arts and Recreation Services
+211112,,2,Education and Training
+211112,,3,Accommodation and Food Services
+211113,,1,Arts and Recreation Services
+211113,,2,Accommodation and Food Services
+211199,,1,Arts and Recreation Services
+211199,,2,Information Media and Telecommunications
+211199,,3,Education and Training
+211211,,1,Arts and Recreation Services
+211211,,2,Information Media and Telecommunications
+211211,,3,Education and Training
+211212,,1,Education and Training
+211212,,2,Arts and Recreation Services
+211212,,3,Other Services
+211213,,1,Arts and Recreation Services
+211213,,2,Education and Training
+211213,,3,Public Administration and Safety
+211214,,1,Arts and Recreation Services
+211214,,2,Other Services
+211299,,1,Education and Training
+211299,,2,Arts and Recreation Services
+211299,,3,Other Services
+211411,,1,Arts and Recreation Services
+211412,,1,Manufacturing
+211412,,2,Arts and Recreation Services
+211412,,3,Education and Training
+211413,,1,Arts and Recreation Services
+211413,,2,Manufacturing
+211499,,1,Arts and Recreation Services
+211499,,2,Manufacturing
+211499,,3,Information Media and Telecommunications
+212111,,1,Arts and Recreation Services
+212111,,2,Education and Training
+212112,,1,Information Media and Telecommunications
+212112,,2,"Professional, Scientific and Technical Services"
+212112,,3,Arts and Recreation Services
+212113,,1,Information Media and Telecommunications
+212113,,2,Arts and Recreation Services
+212114,,1,Information Media and Telecommunications
+212114,,2,Arts and Recreation Services
+212211,,1,Arts and Recreation Services
+212211,,2,Information Media and Telecommunications
+212211,,3,"Professional, Scientific and Technical Services"
+212212,,1,Information Media and Telecommunications
+212212,,2,Education and Training
+212212,,3,Arts and Recreation Services
+212311,,1,Information Media and Telecommunications
+212311,,2,Arts and Recreation Services
+212311,,3,"Professional, Scientific and Technical Services"
+212312,,1,Information Media and Telecommunications
+212312,,2,Arts and Recreation Services
+212312,,3,"Professional, Scientific and Technical Services"
+212313,,1,Information Media and Telecommunications
+212313,,2,"Professional, Scientific and Technical Services"
+212314,,1,Information Media and Telecommunications
+212314,,2,"Professional, Scientific and Technical Services"
+212315,,1,Information Media and Telecommunications
+212316,,1,Arts and Recreation Services
+212316,,2,Information Media and Telecommunications
+212316,,3,Education and Training
+212317,,1,Information Media and Telecommunications
+212318,,1,Information Media and Telecommunications
+212318,,2,Arts and Recreation Services
+212318,,3,"Professional, Scientific and Technical Services"
+212399,,1,Information Media and Telecommunications
+212399,,2,Arts and Recreation Services
+212411,,1,"Professional, Scientific and Technical Services"
+212411,,2,Arts and Recreation Services
+212411,,3,Retail Trade
+212412,,1,Information Media and Telecommunications
+212412,,2,"Professional, Scientific and Technical Services"
+212412,,3,Public Administration and Safety
+212413,,1,Information Media and Telecommunications
+212413,,2,Arts and Recreation Services
+212414,,1,Information Media and Telecommunications
+212415,,1,"Professional, Scientific and Technical Services"
+212415,,2,Education and Training
+212415,,3,Public Administration and Safety
+212416,,1,Information Media and Telecommunications
+212499,,1,Information Media and Telecommunications
+212499,,2,Arts and Recreation Services
+212499,,3,"Professional, Scientific and Technical Services"
+221111,,1,"Professional, Scientific and Technical Services"
+221111,,2,Financial and Insurance Services
+221112,,1,Public Administration and Safety
+221112,,2,"Professional, Scientific and Technical Services"
+221112,,3,Financial and Insurance Services
+221113,,1,"Professional, Scientific and Technical Services"
+221211,,1,Financial and Insurance Services
+221211,,2,"Professional, Scientific and Technical Services"
+221211,,3,Mining
+221212,,1,Financial and Insurance Services
+221212,,2,"Professional, Scientific and Technical Services"
+221213,,1,"Professional, Scientific and Technical Services"
+221213,,2,Public Administration and Safety
+221213,,3,Financial and Insurance Services
+221214,,1,Financial and Insurance Services
+221214,,2,"Professional, Scientific and Technical Services"
+221214,,3,Public Administration and Safety
+222111,,1,Wholesale Trade
+222111,,2,"Professional, Scientific and Technical Services"
+222111,,3,"Agriculture, Forestry and Fishing"
+222112,,1,Financial and Insurance Services
+222113,,1,Financial and Insurance Services
+222199,,1,"Rental, Hiring and Real Estate Services"
+222199,,2,Financial and Insurance Services
+222211,,1,Financial and Insurance Services
+222212,,1,Financial and Insurance Services
+222212,,2,"Professional, Scientific and Technical Services"
+222213,,1,Financial and Insurance Services
+222299,,1,Financial and Insurance Services
+222311,,1,Financial and Insurance Services
+222311,,2,"Professional, Scientific and Technical Services"
+222312,,1,Financial and Insurance Services
+222312,,2,"Rental, Hiring and Real Estate Services"
+222312,,3,Public Administration and Safety
+223111,,1,Public Administration and Safety
+223111,,2,Health Care and Social Assistance
+223111,,3,"Professional, Scientific and Technical Services"
+223112,,1,Administrative and Support Services
+223112,,2,"Professional, Scientific and Technical Services"
+223112,,3,Health Care and Social Assistance
+223113,,1,Other Services
+223113,,2,Public Administration and Safety
+223113,,3,"Professional, Scientific and Technical Services"
+224111,,1,Financial and Insurance Services
+224111,,2,"Professional, Scientific and Technical Services"
+224112,,1,Financial and Insurance Services
+224112,,2,Education and Training
+224112,,3,"Professional, Scientific and Technical Services"
+224113,,1,"Professional, Scientific and Technical Services"
+224113,,2,Education and Training
+224113,,3,Public Administration and Safety
+224211,,1,Education and Training
+224211,,2,Information Media and Telecommunications
+224211,,3,Public Administration and Safety
+224212,,1,Arts and Recreation Services
+224212,,2,Public Administration and Safety
+224212,,3,Education and Training
+224213,,1,Health Care and Social Assistance
+224213,,2,"Professional, Scientific and Technical Services"
+224213,,3,Public Administration and Safety
+224214,,1,Public Administration and Safety
+224214,,2,"Professional, Scientific and Technical Services"
+224214,,3,Health Care and Social Assistance
+224411,,1,Public Administration and Safety
+224411,,2,"Professional, Scientific and Technical Services"
+224412,,1,Public Administration and Safety
+224412,,2,Health Care and Social Assistance
+224412,,3,"Professional, Scientific and Technical Services"
+224511,,1,"Rental, Hiring and Real Estate Services"
+224511,,2,Construction
+224511,,3,Public Administration and Safety
+224512,,1,"Rental, Hiring and Real Estate Services"
+224512,,2,Public Administration and Safety
+224512,,3,"Professional, Scientific and Technical Services"
+224711,,1,"Professional, Scientific and Technical Services"
+224711,,2,Financial and Insurance Services
+224711,,3,Public Administration and Safety
+224712,,1,Financial and Insurance Services
+224712,,2,"Professional, Scientific and Technical Services"
+224712,,3,Public Administration and Safety
+224911,,1,Public Administration and Safety
+224912,,1,Public Administration and Safety
+224912,,2,Health Care and Social Assistance
+224912,,3,Education and Training
+224913,,1,"Professional, Scientific and Technical Services"
+224913,,2,Other Services
+224914,,1,Public Administration and Safety
+224914,,2,"Professional, Scientific and Technical Services"
+224999,,1,Public Administration and Safety
+224999,,2,"Professional, Scientific and Technical Services"
+224999,,3,Financial and Insurance Services
+225111,,1,"Professional, Scientific and Technical Services"
+225111,,2,Information Media and Telecommunications
+225112,,1,"Professional, Scientific and Technical Services"
+225112,,2,Financial and Insurance Services
+225112,,3,Retail Trade
+225113,,1,"Professional, Scientific and Technical Services"
+225113,,2,Financial and Insurance Services
+225113,,3,Retail Trade
+225211,,1,"Professional, Scientific and Technical Services"
+225211,,2,Information Media and Telecommunications
+225211,,3,Wholesale Trade
+225212,,1,"Professional, Scientific and Technical Services"
+225212,,2,Information Media and Telecommunications
+225212,,3,Wholesale Trade
+225213,,1,"Professional, Scientific and Technical Services"
+225213,,2,Information Media and Telecommunications
+225213,,3,Retail Trade
+225411,,1,Wholesale Trade
+225411,,2,Manufacturing
+225411,,3,Retail Trade
+225412,,1,Wholesale Trade
+225412,,2,Health Care and Social Assistance
+225412,,3,Manufacturing
+225499,,1,Wholesale Trade
+225499,,2,Education and Training
+225499,,3,Retail Trade
+231111,,1,"Transport, Postal and Warehousing"
+231111,,2,Public Administration and Safety
+231112,,1,"Transport, Postal and Warehousing"
+231112,,2,Public Administration and Safety
+231113,,1,Education and Training
+231113,,2,"Transport, Postal and Warehousing"
+231113,,3,Public Administration and Safety
+231114,,1,"Transport, Postal and Warehousing"
+231114,,2,Public Administration and Safety
+231114,,3,"Agriculture, Forestry and Fishing"
+231199,,1,"Transport, Postal and Warehousing"
+231199,,2,Public Administration and Safety
+231211,,1,"Agriculture, Forestry and Fishing"
+231211,,2,"Transport, Postal and Warehousing"
+231212,,1,"Transport, Postal and Warehousing"
+231212,,2,Public Administration and Safety
+231212,,3,Manufacturing
+231213,,1,"Transport, Postal and Warehousing"
+231214,,1,"Transport, Postal and Warehousing"
+231214,,2,Public Administration and Safety
+231215,,1,"Professional, Scientific and Technical Services"
+231215,,2,"Transport, Postal and Warehousing"
+231215,,3,Public Administration and Safety
+231299,,1,"Transport, Postal and Warehousing"
+231299,,2,Public Administration and Safety
+232111,,1,"Professional, Scientific and Technical Services"
+232111,,2,Construction
+232112,,1,"Professional, Scientific and Technical Services"
+232112,,2,Construction
+232112,,3,Public Administration and Safety
+232212,,1,"Professional, Scientific and Technical Services"
+232212,,2,Construction
+232212,,3,Mining
+232213,,1,Public Administration and Safety
+232213,,2,"Professional, Scientific and Technical Services"
+232213,,3,Mining
+232214,,1,Public Administration and Safety
+232214,,2,"Professional, Scientific and Technical Services"
+232214,,3,"Electricity, Gas, Water and Waste Services"
+232311,,1,Retail Trade
+232311,,2,"Professional, Scientific and Technical Services"
+232311,,3,Manufacturing
+232312,,1,"Professional, Scientific and Technical Services"
+232312,,2,Manufacturing
+232312,,3,Retail Trade
+232313,,1,"Professional, Scientific and Technical Services"
+232313,,2,Retail Trade
+232313,,3,Manufacturing
+232411,,1,"Professional, Scientific and Technical Services"
+232411,,2,Manufacturing
+232411,,3,Information Media and Telecommunications
+232412,,1,Information Media and Telecommunications
+232412,,2,Arts and Recreation Services
+232412,,3,"Professional, Scientific and Technical Services"
+232413,,1,"Professional, Scientific and Technical Services"
+232413,,2,Education and Training
+232413,,3,Information Media and Telecommunications
+232414,,1,"Professional, Scientific and Technical Services"
+232414,,2,Retail Trade
+232414,,3,Education and Training
+233111,,1,Manufacturing
+233111,,2,"Professional, Scientific and Technical Services"
+233111,,3,Mining
+233112,,1,"Professional, Scientific and Technical Services"
+233112,,2,Manufacturing
+233112,,3,Mining
+233211,,1,Construction
+233211,,2,"Professional, Scientific and Technical Services"
+233211,,3,Public Administration and Safety
+233212,,1,"Professional, Scientific and Technical Services"
+233212,,2,Mining
+233213,,1,"Professional, Scientific and Technical Services"
+233213,,2,Construction
+233214,,1,"Professional, Scientific and Technical Services"
+233214,,2,Construction
+233215,,1,"Professional, Scientific and Technical Services"
+233215,,2,Public Administration and Safety
+233215,,3,"Transport, Postal and Warehousing"
+233511,,1,Manufacturing
+233511,,2,"Professional, Scientific and Technical Services"
+233511,,3,Construction
+233512,,1,"Professional, Scientific and Technical Services"
+233512,,2,Manufacturing
+233512,,3,Mining
+233513,,1,Manufacturing
+233513,,2,"Professional, Scientific and Technical Services"
+233513,,3,Mining
+233611,,1,Mining
+233611,,2,"Professional, Scientific and Technical Services"
+233612,,1,Mining
+233612,,2,"Professional, Scientific and Technical Services"
+233612,,3,Construction
+233911,,1,Public Administration and Safety
+233911,,2,Manufacturing
+233911,,3,"Professional, Scientific and Technical Services"
+233912,,1,"Agriculture, Forestry and Fishing"
+233912,,2,Manufacturing
+233912,,3,"Professional, Scientific and Technical Services"
+233913,,1,Health Care and Social Assistance
+233913,,2,Wholesale Trade
+233913,,3,Manufacturing
+233914,,1,Manufacturing
+233914,,2,"Professional, Scientific and Technical Services"
+233914,,3,Construction
+233915,,1,"Professional, Scientific and Technical Services"
+233915,,2,"Electricity, Gas, Water and Waste Services"
+233915,,3,Public Administration and Safety
+233916,,1,"Professional, Scientific and Technical Services"
+233916,,2,Manufacturing
+233916,,3,Public Administration and Safety
+233999,,1,"Professional, Scientific and Technical Services"
+233999,,2,Manufacturing
+233999,,3,Public Administration and Safety
+234111,,1,"Agriculture, Forestry and Fishing"
+234111,,2,Public Administration and Safety
+234111,,3,"Professional, Scientific and Technical Services"
+234112,,1,"Agriculture, Forestry and Fishing"
+234112,,2,"Professional, Scientific and Technical Services"
+234112,,3,Wholesale Trade
+234113,,1,"Agriculture, Forestry and Fishing"
+234113,,2,Public Administration and Safety
+234113,,3,"Professional, Scientific and Technical Services"
+234211,,1,Manufacturing
+234211,,2,"Professional, Scientific and Technical Services"
+234211,,3,Education and Training
+234212,,1,Manufacturing
+234212,,2,"Professional, Scientific and Technical Services"
+234212,,3,Wholesale Trade
+234213,,1,Manufacturing
+234311,,1,Public Administration and Safety
+234311,,2,"Professional, Scientific and Technical Services"
+234312,,1,"Professional, Scientific and Technical Services"
+234312,,2,Mining
+234312,,3,Public Administration and Safety
+234313,,1,"Professional, Scientific and Technical Services"
+234313,,2,Public Administration and Safety
+234313,,3,"Electricity, Gas, Water and Waste Services"
+234314,,1,Arts and Recreation Services
+234314,,2,Public Administration and Safety
+234314,,3,"Agriculture, Forestry and Fishing"
+234399,,1,Public Administration and Safety
+234399,,2,"Professional, Scientific and Technical Services"
+234399,,3,"Electricity, Gas, Water and Waste Services"
+234411,,1,Mining
+234411,,2,"Professional, Scientific and Technical Services"
+234412,,1,Mining
+234412,,2,"Professional, Scientific and Technical Services"
+234412,,3,Public Administration and Safety
+234413,,1,"Professional, Scientific and Technical Services"
+234413,,2,Public Administration and Safety
+234413,,3,Mining
+234511,,1,Education and Training
+234511,,2,"Professional, Scientific and Technical Services"
+234511,,3,Public Administration and Safety
+234513,,1,Education and Training
+234513,,2,Health Care and Social Assistance
+234513,,3,"Professional, Scientific and Technical Services"
+234514,,1,"Professional, Scientific and Technical Services"
+234514,,2,Education and Training
+234514,,3,Health Care and Social Assistance
+234515,,1,"Professional, Scientific and Technical Services"
+234515,,2,Public Administration and Safety
+234515,,3,Education and Training
+234516,,1,"Professional, Scientific and Technical Services"
+234516,,2,Public Administration and Safety
+234516,,3,Education and Training
+234517,,1,"Professional, Scientific and Technical Services"
+234517,,2,Manufacturing
+234517,,3,Health Care and Social Assistance
+234518,,1,"Professional, Scientific and Technical Services"
+234518,,2,Public Administration and Safety
+234518,,3,Education and Training
+234599,,1,Health Care and Social Assistance
+234599,,2,"Professional, Scientific and Technical Services"
+234599,,3,Education and Training
+234911,,1,Arts and Recreation Services
+234911,,2,Information Media and Telecommunications
+234911,,3,Public Administration and Safety
+234912,,1,Mining
+234912,,2,"Professional, Scientific and Technical Services"
+234912,,3,Manufacturing
+234913,,1,"Professional, Scientific and Technical Services"
+234913,,2,Education and Training
+234913,,3,Public Administration and Safety
+234914,,1,Health Care and Social Assistance
+234914,,2,Education and Training
+234914,,3,Public Administration and Safety
+234915,,1,Health Care and Social Assistance
+234915,,2,Arts and Recreation Services
+234999,,1,Health Care and Social Assistance
+234999,,2,Public Administration and Safety
+234999,,3,"Professional, Scientific and Technical Services"
+241511,,1,Education and Training
+241512,,1,Education and Training
+241512,,2,Health Care and Social Assistance
+241513,,1,Education and Training
+241599,,1,Education and Training
+242111,,1,Education and Training
+242112,,1,Education and Training
+249111,,1,Education and Training
+249111,,2,Public Administration and Safety
+249111,,3,Health Care and Social Assistance
+249112,,1,Education and Training
+249112,,2,Public Administration and Safety
+249112,,3,"Professional, Scientific and Technical Services"
+249211,,1,Education and Training
+249211,,2,Arts and Recreation Services
+249211,,3,Health Care and Social Assistance
+249212,,1,Education and Training
+249213,,1,Education and Training
+249213,,2,Arts and Recreation Services
+249214,,1,Education and Training
+249299,,1,Education and Training
+251111,,1,Health Care and Social Assistance
+251112,,1,Health Care and Social Assistance
+251112,,2,Other Services
+251112,,3,Education and Training
+251211,,1,Health Care and Social Assistance
+251212,,1,Health Care and Social Assistance
+251213,,1,Health Care and Social Assistance
+251214,,1,Health Care and Social Assistance
+251311,,1,Public Administration and Safety
+251311,,2,Health Care and Social Assistance
+251311,,3,Manufacturing
+251312,,1,Public Administration and Safety
+251312,,2,Construction
+251312,,3,Health Care and Social Assistance
+251411,,1,Health Care and Social Assistance
+251412,,1,Health Care and Social Assistance
+251511,,1,Health Care and Social Assistance
+251511,,2,Retail Trade
+251512,,1,Manufacturing
+251512,,2,"Professional, Scientific and Technical Services"
+251512,,3,Wholesale Trade
+251513,,1,Retail Trade
+251513,,2,Health Care and Social Assistance
+251911,,1,Health Care and Social Assistance
+251911,,2,Education and Training
+251911,,3,Public Administration and Safety
+251912,,1,Health Care and Social Assistance
+251912,,2,Manufacturing
+251999,,1,Health Care and Social Assistance
+251999,,2,Public Administration and Safety
+252111,,1,Health Care and Social Assistance
+252112,,1,Health Care and Social Assistance
+252211,,1,Health Care and Social Assistance
+252212,,1,Health Care and Social Assistance
+252213,,1,Health Care and Social Assistance
+252213,,2,Retail Trade
+252214,,1,Health Care and Social Assistance
+252299,,1,Health Care and Social Assistance
+252299,,2,Education and Training
+252311,,1,Health Care and Social Assistance
+252312,,1,Health Care and Social Assistance
+252711,,1,Health Care and Social Assistance
+252711,,2,Manufacturing
+252712,,1,Health Care and Social Assistance
+252712,,2,Education and Training
+253111,,1,Health Care and Social Assistance
+253112,,1,Health Care and Social Assistance
+253311,,1,Health Care and Social Assistance
+253312,,1,Health Care and Social Assistance
+253313,,1,Health Care and Social Assistance
+253314,,1,Health Care and Social Assistance
+253315,,1,Health Care and Social Assistance
+253316,,1,Health Care and Social Assistance
+253317,,1,Health Care and Social Assistance
+253318,,1,Health Care and Social Assistance
+253321,,1,Health Care and Social Assistance
+253322,,1,Health Care and Social Assistance
+253323,,1,Health Care and Social Assistance
+253324,,1,Health Care and Social Assistance
+253399,,1,Health Care and Social Assistance
+253511,,1,Health Care and Social Assistance
+253512,,1,Health Care and Social Assistance
+253513,,1,Health Care and Social Assistance
+253514,,1,Health Care and Social Assistance
+253515,,1,Health Care and Social Assistance
+253516,,1,Health Care and Social Assistance
+253517,,1,Health Care and Social Assistance
+253518,,1,Health Care and Social Assistance
+253521,,1,Health Care and Social Assistance
+253911,,1,Health Care and Social Assistance
+253912,,1,Health Care and Social Assistance
+253913,,1,Health Care and Social Assistance
+253914,,1,Health Care and Social Assistance
+253915,,1,Health Care and Social Assistance
+253917,,1,Health Care and Social Assistance
+253918,,1,Health Care and Social Assistance
+253999,,1,Health Care and Social Assistance
+254211,,1,Health Care and Social Assistance
+254211,,2,Education and Training
+254212,,1,Health Care and Social Assistance
+254212,,2,"Professional, Scientific and Technical Services"
+254212,,3,Education and Training
+254411,,1,Health Care and Social Assistance
+254412,,1,Health Care and Social Assistance
+254413,,1,Health Care and Social Assistance
+254413,,2,Public Administration and Safety
+254414,,1,Health Care and Social Assistance
+254414,,2,Education and Training
+254415,,1,Health Care and Social Assistance
+254417,,1,Health Care and Social Assistance
+254418,,1,Health Care and Social Assistance
+254421,,1,Health Care and Social Assistance
+254422,,1,Health Care and Social Assistance
+254423,,1,Health Care and Social Assistance
+254424,,1,Health Care and Social Assistance
+254425,,1,Health Care and Social Assistance
+254499,,1,Health Care and Social Assistance
+261111,,1,"Professional, Scientific and Technical Services"
+261111,,2,Financial and Insurance Services
+261111,,3,Public Administration and Safety
+261112,,1,"Professional, Scientific and Technical Services"
+261112,,2,Financial and Insurance Services
+261112,,3,Public Administration and Safety
+261211,,1,"Professional, Scientific and Technical Services"
+261211,,2,Information Media and Telecommunications
+261211,,3,Arts and Recreation Services
+261212,,1,"Professional, Scientific and Technical Services"
+261212,,2,Information Media and Telecommunications
+261212,,3,Financial and Insurance Services
+261311,,1,"Professional, Scientific and Technical Services"
+261311,,2,Financial and Insurance Services
+261311,,3,Public Administration and Safety
+261312,,1,"Professional, Scientific and Technical Services"
+261312,,2,Financial and Insurance Services
+261312,,3,Public Administration and Safety
+261313,,1,"Professional, Scientific and Technical Services"
+261313,,2,Financial and Insurance Services
+261313,,3,Information Media and Telecommunications
+261314,,1,"Professional, Scientific and Technical Services"
+261314,,2,Financial and Insurance Services
+261314,,3,Public Administration and Safety
+261399,,1,"Professional, Scientific and Technical Services"
+261399,,2,Financial and Insurance Services
+261399,,3,Information Media and Telecommunications
+262111,,1,"Professional, Scientific and Technical Services"
+262111,,2,Public Administration and Safety
+262111,,3,Financial and Insurance Services
+262112,,1,"Professional, Scientific and Technical Services"
+262112,,2,Public Administration and Safety
+262112,,3,Financial and Insurance Services
+262113,,1,"Professional, Scientific and Technical Services"
+262113,,2,Public Administration and Safety
+262113,,3,Education and Training
+263111,,1,"Professional, Scientific and Technical Services"
+263111,,2,Financial and Insurance Services
+263111,,3,Information Media and Telecommunications
+263112,,1,"Professional, Scientific and Technical Services"
+263112,,2,Education and Training
+263112,,3,Information Media and Telecommunications
+263113,,1,"Professional, Scientific and Technical Services"
+263113,,2,Information Media and Telecommunications
+263113,,3,Financial and Insurance Services
+263211,,1,"Professional, Scientific and Technical Services"
+263211,,2,Financial and Insurance Services
+263211,,3,Public Administration and Safety
+263212,,1,"Professional, Scientific and Technical Services"
+263212,,2,Financial and Insurance Services
+263212,,3,Information Media and Telecommunications
+263213,,1,"Professional, Scientific and Technical Services"
+263213,,2,Financial and Insurance Services
+263213,,3,Public Administration and Safety
+263299,,1,"Professional, Scientific and Technical Services"
+263299,,2,Financial and Insurance Services
+263299,,3,Information Media and Telecommunications
+263311,,1,Information Media and Telecommunications
+263311,,2,"Professional, Scientific and Technical Services"
+263311,,3,Public Administration and Safety
+263312,,1,Information Media and Telecommunications
+263312,,2,"Professional, Scientific and Technical Services"
+263312,,3,Wholesale Trade
+271211,,1,Public Administration and Safety
+271212,,1,Public Administration and Safety
+271213,,1,Public Administration and Safety
+271214,,1,"Professional, Scientific and Technical Services"
+271299,,1,Public Administration and Safety
+271299,,2,"Professional, Scientific and Technical Services"
+271299,,3,Financial and Insurance Services
+272111,,1,Education and Training
+272111,,2,Administrative and Support Services
+272111,,3,Health Care and Social Assistance
+272112,,1,Health Care and Social Assistance
+272112,,2,Other Services
+272113,,1,Health Care and Social Assistance
+272114,,1,Health Care and Social Assistance
+272114,,2,Financial and Insurance Services
+272114,,3,Public Administration and Safety
+272115,,1,Education and Training
+272115,,2,Health Care and Social Assistance
+272199,,1,Education and Training
+272199,,2,Health Care and Social Assistance
+272199,,3,Other Services
+272311,,1,Health Care and Social Assistance
+272311,,2,Public Administration and Safety
+272312,,1,Education and Training
+272312,,2,Health Care and Social Assistance
+272313,,1,Health Care and Social Assistance
+272313,,2,"Professional, Scientific and Technical Services"
+272313,,3,Public Administration and Safety
+272314,,1,Health Care and Social Assistance
+272314,,2,Education and Training
+272399,,1,Health Care and Social Assistance
+272399,,2,Education and Training
+272399,,3,Public Administration and Safety
+272411,,1,"Professional, Scientific and Technical Services"
+272411,,2,Education and Training
+272411,,3,Arts and Recreation Services
+272412,,1,"Professional, Scientific and Technical Services"
+272412,,2,Health Care and Social Assistance
+272412,,3,Public Administration and Safety
+272413,,1,"Professional, Scientific and Technical Services"
+272413,,2,Health Care and Social Assistance
+272413,,3,Public Administration and Safety
+272414,,1,"Professional, Scientific and Technical Services"
+272414,,2,Public Administration and Safety
+272499,,1,"Professional, Scientific and Technical Services"
+272499,,2,Education and Training
+272499,,3,Public Administration and Safety
+272611,,1,Public Administration and Safety
+272611,,2,Arts and Recreation Services
+272611,,3,Health Care and Social Assistance
+272612,,1,Public Administration and Safety
+272612,,2,Health Care and Social Assistance
+272612,,3,Arts and Recreation Services
+272613,,1,Health Care and Social Assistance
+272613,,2,Public Administration and Safety
+311211,,1,Health Care and Social Assistance
+311212,,1,Health Care and Social Assistance
+311212,,2,Wholesale Trade
+311213,,1,Health Care and Social Assistance
+311214,,1,Health Care and Social Assistance
+311215,,1,Retail Trade
+311215,,2,Health Care and Social Assistance
+311216,,1,Health Care and Social Assistance
+311299,,1,Health Care and Social Assistance
+311299,,2,Manufacturing
+311311,,1,Public Administration and Safety
+311312,,1,Manufacturing
+311312,,2,Administrative and Support Services
+311312,,3,Public Administration and Safety
+311313,,1,Public Administration and Safety
+311313,,2,"Agriculture, Forestry and Fishing"
+311399,,1,Public Administration and Safety
+311399,,2,"Agriculture, Forestry and Fishing"
+311399,,3,Manufacturing
+311411,,1,Manufacturing
+311411,,2,"Professional, Scientific and Technical Services"
+311411,,3,Education and Training
+311412,,1,"Professional, Scientific and Technical Services"
+311412,,2,Mining
+311412,,3,Construction
+311413,,1,"Professional, Scientific and Technical Services"
+311413,,2,Education and Training
+311413,,3,Health Care and Social Assistance
+311414,,1,Education and Training
+311415,,1,"Electricity, Gas, Water and Waste Services"
+311415,,2,Public Administration and Safety
+311415,,3,"Professional, Scientific and Technical Services"
+311499,,1,"Professional, Scientific and Technical Services"
+311499,,2,Public Administration and Safety
+311499,,3,Manufacturing
+312111,,1,"Professional, Scientific and Technical Services"
+312111,,2,Construction
+312112,,1,Construction
+312113,,1,"Professional, Scientific and Technical Services"
+312113,,2,Public Administration and Safety
+312113,,3,Construction
+312114,,1,Construction
+312114,,2,Manufacturing
+312115,,1,Public Administration and Safety
+312115,,2,Construction
+312115,,3,"Electricity, Gas, Water and Waste Services"
+312116,,1,"Professional, Scientific and Technical Services"
+312116,,2,Public Administration and Safety
+312116,,3,Construction
+312199,,1,"Professional, Scientific and Technical Services"
+312199,,2,Construction
+312199,,3,Manufacturing
+312211,,1,"Professional, Scientific and Technical Services"
+312211,,2,Construction
+312211,,3,Public Administration and Safety
+312212,,1,"Professional, Scientific and Technical Services"
+312212,,2,Public Administration and Safety
+312212,,3,Construction
+312311,,1,"Professional, Scientific and Technical Services"
+312311,,2,"Electricity, Gas, Water and Waste Services"
+312311,,3,Construction
+312312,,1,Construction
+312312,,2,"Electricity, Gas, Water and Waste Services"
+312312,,3,Manufacturing
+312411,,1,Manufacturing
+312411,,2,"Professional, Scientific and Technical Services"
+312411,,3,Public Administration and Safety
+312412,,1,Public Administration and Safety
+312412,,2,Manufacturing
+312412,,3,Information Media and Telecommunications
+312511,,1,"Professional, Scientific and Technical Services"
+312511,,2,Manufacturing
+312511,,3,Construction
+312512,,1,Manufacturing
+312512,,2,Other Services
+312512,,3,"Professional, Scientific and Technical Services"
+312911,,1,Mining
+312911,,2,Manufacturing
+312911,,3,Construction
+312912,,1,"Professional, Scientific and Technical Services"
+312912,,2,Mining
+312912,,3,Manufacturing
+312913,,1,Mining
+312913,,2,Manufacturing
+312999,,1,Manufacturing
+312999,,2,Mining
+312999,,3,Health Care and Social Assistance
+313111,,1,"Professional, Scientific and Technical Services"
+313111,,2,Other Services
+313111,,3,Retail Trade
+313112,,1,"Professional, Scientific and Technical Services"
+313112,,2,Education and Training
+313112,,3,Public Administration and Safety
+313113,,1,Retail Trade
+313113,,2,"Professional, Scientific and Technical Services"
+313113,,3,Public Administration and Safety
+313199,,1,Public Administration and Safety
+313199,,2,"Professional, Scientific and Technical Services"
+313199,,3,Information Media and Telecommunications
+313211,,1,Information Media and Telecommunications
+313211,,2,Public Administration and Safety
+313211,,3,"Professional, Scientific and Technical Services"
+313212,,1,Information Media and Telecommunications
+313212,,2,Construction
+313213,,1,Information Media and Telecommunications
+313213,,2,Construction
+313213,,3,"Professional, Scientific and Technical Services"
+313214,,1,Information Media and Telecommunications
+313214,,2,Public Administration and Safety
+313214,,3,"Professional, Scientific and Technical Services"
+321211,,1,Other Services
+321211,,2,Retail Trade
+321212,,1,Other Services
+321212,,2,"Transport, Postal and Warehousing"
+321212,,3,Wholesale Trade
+321213,,1,Other Services
+321213,,2,Retail Trade
+321214,,1,Other Services
+321214,,2,Retail Trade
+321214,,3,Manufacturing
+322111,,1,Manufacturing
+322112,,1,Manufacturing
+322113,,1,"Agriculture, Forestry and Fishing"
+322113,,2,Arts and Recreation Services
+322114,,1,Manufacturing
+322114,,2,Mining
+322115,,1,Manufacturing
+322115,,2,Other Services
+322311,,1,Manufacturing
+322311,,2,Construction
+322311,,3,Mining
+322312,,1,Manufacturing
+322312,,2,Construction
+322312,,3,"Electricity, Gas, Water and Waste Services"
+322313,,1,Manufacturing
+322313,,2,Construction
+323111,,1,Public Administration and Safety
+323111,,2,Manufacturing
+323111,,3,"Transport, Postal and Warehousing"
+323112,,1,Public Administration and Safety
+323112,,2,Manufacturing
+323112,,3,"Transport, Postal and Warehousing"
+323113,,1,Manufacturing
+323113,,2,"Transport, Postal and Warehousing"
+323113,,3,Public Administration and Safety
+323211,,1,Mining
+323211,,2,Manufacturing
+323211,,3,Other Services
+323212,,1,Manufacturing
+323212,,2,Other Services
+323212,,3,Mining
+323213,,1,Manufacturing
+323213,,2,Construction
+323213,,3,Other Services
+323214,,1,Manufacturing
+323214,,2,Other Services
+323214,,3,"Professional, Scientific and Technical Services"
+323215,,1,Other Services
+323215,,2,Manufacturing
+323215,,3,Retail Trade
+323299,,1,Other Services
+323299,,2,"Agriculture, Forestry and Fishing"
+323299,,3,Wholesale Trade
+323311,,1,Manufacturing
+323311,,2,Retail Trade
+323311,,3,Other Services
+323312,,1,Public Administration and Safety
+323312,,2,Manufacturing
+323312,,3,Construction
+323313,,1,Other Services
+323313,,2,Public Administration and Safety
+323314,,1,Other Services
+323314,,2,Wholesale Trade
+323314,,3,Health Care and Social Assistance
+323315,,1,Manufacturing
+323315,,2,Other Services
+323315,,3,"Agriculture, Forestry and Fishing"
+323316,,1,Other Services
+323316,,2,Retail Trade
+323316,,3,Manufacturing
+323411,,1,Manufacturing
+323412,,1,Manufacturing
+323412,,2,Other Services
+323412,,3,Wholesale Trade
+324211,,1,Manufacturing
+324211,,2,Other Services
+324211,,3,"Transport, Postal and Warehousing"
+324212,,1,Other Services
+324212,,2,Manufacturing
+331111,,1,Construction
+331112,,1,Manufacturing
+331112,,2,Construction
+331212,,1,Construction
+331213,,1,Construction
+331213,,2,Manufacturing
+333211,,1,Construction
+333212,,1,Construction
+334111,,1,Construction
+334112,,1,Construction
+334113,,1,Construction
+334114,,1,Construction
+334114,,2,"Electricity, Gas, Water and Waste Services"
+334115,,1,Construction
+341111,,1,Construction
+341111,,2,Manufacturing
+341111,,3,Mining
+341112,,1,Construction
+341112,,2,Manufacturing
+341112,,3,Mining
+341113,,1,Construction
+341113,,2,Other Services
+341113,,3,Manufacturing
+342211,,1,"Electricity, Gas, Water and Waste Services"
+342211,,2,Construction
+342212,,1,"Electricity, Gas, Water and Waste Services"
+342212,,2,Construction
+342311,,1,Wholesale Trade
+342311,,2,Other Services
+342311,,3,Manufacturing
+342312,,1,Public Administration and Safety
+342313,,1,Construction
+342313,,2,Other Services
+342313,,3,"Professional, Scientific and Technical Services"
+342314,,1,Public Administration and Safety
+342314,,2,Manufacturing
+342314,,3,Mining
+342315,,1,"Transport, Postal and Warehousing"
+342315,,2,Manufacturing
+342315,,3,Wholesale Trade
+342411,,1,Construction
+342411,,2,Information Media and Telecommunications
+342412,,1,Information Media and Telecommunications
+342412,,2,Construction
+342413,,1,Information Media and Telecommunications
+342413,,2,Construction
+342414,,1,Information Media and Telecommunications
+342414,,2,Construction
+342414,,3,Other Services
+351111,,1,Manufacturing
+351111,,2,Retail Trade
+351111,,3,Accommodation and Food Services
+351112,,1,Manufacturing
+351112,,2,Accommodation and Food Services
+351112,,3,Retail Trade
+361111,,1,Other Services
+361111,,2,Public Administration and Safety
+361111,,3,Arts and Recreation Services
+361112,,1,Arts and Recreation Services
+361112,,2,Education and Training
+361112,,3,"Agriculture, Forestry and Fishing"
+361113,,1,Other Services
+361113,,2,Retail Trade
+361114,,1,Arts and Recreation Services
+361115,,1,Other Services
+361115,,2,"Professional, Scientific and Technical Services"
+361115,,3,Arts and Recreation Services
+361199,,1,Other Services
+361199,,2,"Agriculture, Forestry and Fishing"
+361199,,3,"Professional, Scientific and Technical Services"
+362211,,1,Administrative and Support Services
+362211,,2,Public Administration and Safety
+362211,,3,Construction
+362212,,1,Administrative and Support Services
+362212,,2,"Agriculture, Forestry and Fishing"
+362212,,3,Public Administration and Safety
+362213,,1,Construction
+362213,,2,Administrative and Support Services
+392111,,1,Manufacturing
+392111,,2,Information Media and Telecommunications
+392112,,1,Manufacturing
+392311,,1,Manufacturing
+392311,,2,Information Media and Telecommunications
+392312,,1,Manufacturing
+392312,,2,Education and Training
+393111,,1,Manufacturing
+393111,,2,Other Services
+393112,,1,Manufacturing
+393112,,2,Other Services
+393112,,3,Retail Trade
+393113,,1,Manufacturing
+393114,,1,Other Services
+393114,,2,Manufacturing
+393114,,3,Retail Trade
+393211,,1,Manufacturing
+393211,,2,Retail Trade
+393211,,3,Arts and Recreation Services
+393212,,1,Manufacturing
+393212,,2,Retail Trade
+393212,,3,"Professional, Scientific and Technical Services"
+393213,,1,Manufacturing
+393213,,2,Other Services
+393213,,3,Retail Trade
+393299,,1,Manufacturing
+393299,,2,Retail Trade
+394211,,1,Manufacturing
+394211,,2,Construction
+394211,,3,Other Services
+394212,,1,Retail Trade
+394212,,2,Manufacturing
+394212,,3,Arts and Recreation Services
+394213,,1,Manufacturing
+394213,,2,Construction
+394213,,3,Wholesale Trade
+394214,,1,Manufacturing
+394214,,2,Wholesale Trade
+394214,,3,"Agriculture, Forestry and Fishing"
+394299,,1,Manufacturing
+394299,,2,Retail Trade
+394299,,3,Arts and Recreation Services
+399111,,1,Manufacturing
+399112,,1,Manufacturing
+399112,,2,"Transport, Postal and Warehousing"
+399211,,1,Manufacturing
+399211,,2,Mining
+399212,,1,Mining
+399212,,2,Manufacturing
+399212,,3,Retail Trade
+399213,,1,"Electricity, Gas, Water and Waste Services"
+399213,,2,Manufacturing
+399311,,1,Arts and Recreation Services
+399311,,2,Manufacturing
+399311,,3,Public Administration and Safety
+399312,,1,Education and Training
+399312,,2,Public Administration and Safety
+399312,,3,Information Media and Telecommunications
+399511,,1,Information Media and Telecommunications
+399511,,2,Arts and Recreation Services
+399512,,1,Information Media and Telecommunications
+399512,,2,"Professional, Scientific and Technical Services"
+399512,,3,Arts and Recreation Services
+399513,,1,Arts and Recreation Services
+399513,,2,Information Media and Telecommunications
+399513,,3,Public Administration and Safety
+399514,,1,Other Services
+399514,,2,Retail Trade
+399514,,3,Information Media and Telecommunications
+399515,,1,Other Services
+399515,,2,Manufacturing
+399515,,3,Retail Trade
+399516,,1,Information Media and Telecommunications
+399516,,2,Arts and Recreation Services
+399516,,3,Administrative and Support Services
+399517,,1,Information Media and Telecommunications
+399517,,2,Arts and Recreation Services
+399517,,3,"Professional, Scientific and Technical Services"
+399599,,1,Information Media and Telecommunications
+399599,,2,Arts and Recreation Services
+399599,,3,Education and Training
+399911,,1,"Agriculture, Forestry and Fishing"
+399911,,2,"Transport, Postal and Warehousing"
+399911,,3,Public Administration and Safety
+399912,,1,"Professional, Scientific and Technical Services"
+399912,,2,Construction
+399912,,3,"Rental, Hiring and Real Estate Services"
+399913,,1,Health Care and Social Assistance
+399914,,1,Health Care and Social Assistance
+399914,,2,Manufacturing
+399914,,3,Wholesale Trade
+399915,,1,"Professional, Scientific and Technical Services"
+399915,,2,Information Media and Telecommunications
+399915,,3,Other Services
+399916,,1,Manufacturing
+399916,,2,Construction
+399916,,3,Other Services
+399917,,1,"Agriculture, Forestry and Fishing"
+399917,,2,Wholesale Trade
+399918,,1,Public Administration and Safety
+399918,,2,Construction
+399918,,3,Other Services
+399999,,1,Manufacturing
+399999,,2,"Electricity, Gas, Water and Waste Services"
+399999,,3,"Professional, Scientific and Technical Services"
+411111,,1,Health Care and Social Assistance
+411112,,1,Health Care and Social Assistance
+411211,,1,Health Care and Social Assistance
+411212,,1,Health Care and Social Assistance
+411212,,2,Manufacturing
+411213,,1,Manufacturing
+411213,,2,Health Care and Social Assistance
+411214,,1,Health Care and Social Assistance
+411411,,1,Health Care and Social Assistance
+411412,,1,Health Care and Social Assistance
+411412,,2,Public Administration and Safety
+411412,,3,Education and Training
+411711,,1,Health Care and Social Assistance
+411711,,2,Public Administration and Safety
+411711,,3,Other Services
+411712,,1,Health Care and Social Assistance
+411712,,2,Administrative and Support Services
+411713,,1,Health Care and Social Assistance
+411713,,2,Public Administration and Safety
+411713,,3,Other Services
+411714,,1,Public Administration and Safety
+411715,,1,Health Care and Social Assistance
+411715,,2,Public Administration and Safety
+411716,,1,Health Care and Social Assistance
+411716,,2,Public Administration and Safety
+411716,,3,Education and Training
+421111,,1,Health Care and Social Assistance
+421111,,2,Education and Training
+421112,,1,Health Care and Social Assistance
+421113,,1,Other Services
+421113,,2,Health Care and Social Assistance
+421113,,3,Education and Training
+421114,,1,Health Care and Social Assistance
+421114,,2,Education and Training
+422111,,1,Education and Training
+422112,,1,Education and Training
+422115,,1,Education and Training
+422115,,2,Health Care and Social Assistance
+422116,,1,Education and Training
+423311,,1,Health Care and Social Assistance
+423312,,1,Health Care and Social Assistance
+423313,,1,Health Care and Social Assistance
+423314,,1,Health Care and Social Assistance
+423411,,1,Health Care and Social Assistance
+423411,,2,Public Administration and Safety
+423412,,1,Education and Training
+423413,,1,Health Care and Social Assistance
+423413,,2,Other Services
+423413,,3,Public Administration and Safety
+431111,,1,Accommodation and Food Services
+431112,,1,Accommodation and Food Services
+431112,,2,Retail Trade
+431911,,1,Accommodation and Food Services
+431911,,2,Arts and Recreation Services
+431912,,1,Accommodation and Food Services
+431912,,2,Arts and Recreation Services
+431912,,3,Manufacturing
+431999,,1,Arts and Recreation Services
+431999,,2,Accommodation and Food Services
+441211,,1,Mining
+441211,,2,Public Administration and Safety
+441211,,3,Health Care and Social Assistance
+441212,,1,Public Administration and Safety
+441311,,1,Public Administration and Safety
+441312,,1,Public Administration and Safety
+442211,,1,Public Administration and Safety
+442212,,1,Public Administration and Safety
+442213,,1,Public Administration and Safety
+442213,,2,Accommodation and Food Services
+442213,,3,Arts and Recreation Services
+442214,,1,Public Administration and Safety
+442214,,2,Financial and Insurance Services
+442214,,3,"Professional, Scientific and Technical Services"
+442215,,1,Retail Trade
+442215,,2,Public Administration and Safety
+442216,,1,Public Administration and Safety
+442216,,2,"Professional, Scientific and Technical Services"
+442216,,3,Financial and Insurance Services
+442217,,1,Public Administration and Safety
+442217,,2,Health Care and Social Assistance
+442299,,1,Public Administration and Safety
+442299,,2,Accommodation and Food Services
+442299,,3,Arts and Recreation Services
+451311,,1,Other Services
+451399,,1,Other Services
+451411,,1,Arts and Recreation Services
+451411,,2,Public Administration and Safety
+451412,,1,Administrative and Support Services
+451412,,2,Arts and Recreation Services
+451412,,3,"Transport, Postal and Warehousing"
+451511,,1,Health Care and Social Assistance
+451511,,2,Other Services
+451512,,1,Accommodation and Food Services
+451512,,2,Other Services
+451513,,1,Health Care and Social Assistance
+451513,,2,Retail Trade
+451611,,1,Public Administration and Safety
+451611,,2,Administrative and Support Services
+451611,,3,Arts and Recreation Services
+451612,,1,Administrative and Support Services
+451612,,2,"Transport, Postal and Warehousing"
+451711,,1,"Transport, Postal and Warehousing"
+451799,,1,"Transport, Postal and Warehousing"
+451799,,2,Public Administration and Safety
+451799,,3,Accommodation and Food Services
+451811,,1,Other Services
+451812,,1,Other Services
+451814,,1,Other Services
+451815,,1,Education and Training
+451815,,2,Health Care and Social Assistance
+451816,,1,Other Services
+451816,,2,Health Care and Social Assistance
+451816,,3,Education and Training
+451899,,1,Other Services
+451899,,2,Health Care and Social Assistance
+451899,,3,Education and Training
+452212,,1,"Transport, Postal and Warehousing"
+452212,,2,"Agriculture, Forestry and Fishing"
+452212,,3,Administrative and Support Services
+452215,,1,Education and Training
+452215,,2,Arts and Recreation Services
+452216,,1,Administrative and Support Services
+452216,,2,Arts and Recreation Services
+452216,,3,"Transport, Postal and Warehousing"
+452299,,1,Arts and Recreation Services
+452299,,2,Administrative and Support Services
+452299,,3,Education and Training
+452311,,1,"Transport, Postal and Warehousing"
+452311,,2,Education and Training
+452311,,3,Arts and Recreation Services
+452312,,1,Arts and Recreation Services
+452312,,2,Education and Training
+452313,,1,Education and Training
+452313,,2,Arts and Recreation Services
+452314,,1,Education and Training
+452314,,2,Arts and Recreation Services
+452314,,3,"Transport, Postal and Warehousing"
+452315,,1,Education and Training
+452315,,2,Arts and Recreation Services
+452315,,3,Public Administration and Safety
+452316,,1,Education and Training
+452316,,2,Arts and Recreation Services
+452317,,1,Education and Training
+452317,,2,Arts and Recreation Services
+452318,,1,Arts and Recreation Services
+452321,,1,Arts and Recreation Services
+452321,,2,Education and Training
+452321,,3,Public Administration and Safety
+452322,,1,Arts and Recreation Services
+452323,,1,Arts and Recreation Services
+452323,,2,Accommodation and Food Services
+452323,,3,Education and Training
+452411,,1,Arts and Recreation Services
+452412,,1,Arts and Recreation Services
+452412,,2,Education and Training
+452412,,3,Accommodation and Food Services
+452413,,1,Arts and Recreation Services
+452414,,1,Arts and Recreation Services
+452414,,2,Public Administration and Safety
+452414,,3,Education and Training
+452499,,1,Arts and Recreation Services
+452499,,2,Education and Training
+511111,,1,Construction
+511111,,2,Public Administration and Safety
+511111,,3,"Professional, Scientific and Technical Services"
+511112,,1,Public Administration and Safety
+511112,,2,Health Care and Social Assistance
+511112,,3,"Professional, Scientific and Technical Services"
+512211,,1,Health Care and Social Assistance
+512299,,1,"Professional, Scientific and Technical Services"
+512299,,2,Health Care and Social Assistance
+512299,,3,Financial and Insurance Services
+521211,,1,Construction
+521211,,2,"Professional, Scientific and Technical Services"
+521211,,3,Other Services
+521212,,1,"Professional, Scientific and Technical Services"
+532111,,1,Health Care and Social Assistance
+532111,,2,Public Administration and Safety
+532111,,3,"Professional, Scientific and Technical Services"
+532112,,1,Administrative and Support Services
+532112,,2,Public Administration and Safety
+532112,,3,Information Media and Telecommunications
+532113,,1,Health Care and Social Assistance
+532113,,2,Administrative and Support Services
+532113,,3,"Professional, Scientific and Technical Services"
+541111,,1,Financial and Insurance Services
+541111,,2,Public Administration and Safety
+541111,,3,Administrative and Support Services
+541112,,1,Public Administration and Safety
+541112,,2,Administrative and Support Services
+541112,,3,Financial and Insurance Services
+542111,,1,Health Care and Social Assistance
+542111,,2,"Professional, Scientific and Technical Services"
+542111,,3,Education and Training
+542112,,1,Health Care and Social Assistance
+542113,,1,Accommodation and Food Services
+542114,,1,Health Care and Social Assistance
+551111,,1,Construction
+551111,,2,Health Care and Social Assistance
+551111,,3,Manufacturing
+551112,,1,Construction
+551112,,2,Manufacturing
+551112,,3,Other Services
+552311,,1,Arts and Recreation Services
+552312,,1,Financial and Insurance Services
+552313,,1,Financial and Insurance Services
+552314,,1,"Professional, Scientific and Technical Services"
+552314,,2,Public Administration and Safety
+552314,,3,Financial and Insurance Services
+561111,,1,Arts and Recreation Services
+561111,,2,Accommodation and Food Services
+561113,,1,Arts and Recreation Services
+561199,,1,Accommodation and Food Services
+561199,,2,Arts and Recreation Services
+561211,,1,"Transport, Postal and Warehousing"
+561211,,2,Health Care and Social Assistance
+561212,,1,"Transport, Postal and Warehousing"
+561411,,1,"Transport, Postal and Warehousing"
+561411,,2,Public Administration and Safety
+561411,,3,"Professional, Scientific and Technical Services"
+561412,,1,"Transport, Postal and Warehousing"
+561911,,1,Information Media and Telecommunications
+561911,,2,"Professional, Scientific and Technical Services"
+561911,,3,Public Administration and Safety
+561912,,1,Administrative and Support Services
+561912,,2,"Electricity, Gas, Water and Waste Services"
+561912,,3,Construction
+561913,,1,Public Administration and Safety
+561913,,2,Other Services
+561999,,1,"Professional, Scientific and Technical Services"
+561999,,2,Public Administration and Safety
+561999,,3,Retail Trade
+591112,,1,Manufacturing
+591112,,2,"Transport, Postal and Warehousing"
+591112,,3,Public Administration and Safety
+591113,,1,Manufacturing
+591113,,2,Public Administration and Safety
+591113,,3,Wholesale Trade
+591115,,1,Retail Trade
+591115,,2,Manufacturing
+591115,,3,Wholesale Trade
+591116,,1,Wholesale Trade
+591116,,2,"Transport, Postal and Warehousing"
+591116,,3,Retail Trade
+591117,,1,Wholesale Trade
+591117,,2,Retail Trade
+591117,,3,Manufacturing
+591211,,1,"Transport, Postal and Warehousing"
+591211,,2,Manufacturing
+591211,,3,Retail Trade
+591212,,1,"Transport, Postal and Warehousing"
+591212,,2,Wholesale Trade
+591212,,3,Manufacturing
+599111,,1,"Professional, Scientific and Technical Services"
+599111,,2,"Rental, Hiring and Real Estate Services"
+599112,,1,"Professional, Scientific and Technical Services"
+599112,,2,Public Administration and Safety
+599211,,1,Public Administration and Safety
+599212,,1,Public Administration and Safety
+599212,,2,"Professional, Scientific and Technical Services"
+599213,,1,Public Administration and Safety
+599213,,2,Administrative and Support Services
+599214,,1,"Professional, Scientific and Technical Services"
+599214,,2,Public Administration and Safety
+599215,,1,Financial and Insurance Services
+599215,,2,"Rental, Hiring and Real Estate Services"
+599215,,3,"Professional, Scientific and Technical Services"
+599511,,1,Public Administration and Safety
+599511,,2,"Transport, Postal and Warehousing"
+599512,,1,Public Administration and Safety
+599513,,1,Public Administration and Safety
+599513,,2,"Transport, Postal and Warehousing"
+599513,,3,Retail Trade
+599514,,1,Public Administration and Safety
+599514,,2,Administrative and Support Services
+599514,,3,"Agriculture, Forestry and Fishing"
+599515,,1,Public Administration and Safety
+599516,,1,Public Administration and Safety
+599516,,2,"Professional, Scientific and Technical Services"
+599517,,1,"Transport, Postal and Warehousing"
+599517,,2,Mining
+599517,,3,Manufacturing
+599518,,1,"Transport, Postal and Warehousing"
+599518,,2,Public Administration and Safety
+599521,,1,"Electricity, Gas, Water and Waste Services"
+599521,,2,Public Administration and Safety
+599599,,1,Public Administration and Safety
+599599,,2,Financial and Insurance Services
+599611,,1,Financial and Insurance Services
+599611,,2,Public Administration and Safety
+599612,,1,Financial and Insurance Services
+599613,,1,Financial and Insurance Services
+599912,,1,Information Media and Telecommunications
+599912,,2,Arts and Recreation Services
+599913,,1,"Professional, Scientific and Technical Services"
+599913,,2,Information Media and Telecommunications
+599913,,3,Education and Training
+599914,,1,Health Care and Social Assistance
+599914,,2,Public Administration and Safety
+599914,,3,Information Media and Telecommunications
+599915,,1,Health Care and Social Assistance
+599916,,1,Public Administration and Safety
+599916,,2,Education and Training
+599916,,3,Health Care and Social Assistance
+599999,,1,Education and Training
+599999,,2,"Professional, Scientific and Technical Services"
+599999,,3,Public Administration and Safety
+611111,,1,Wholesale Trade
+611111,,2,"Rental, Hiring and Real Estate Services"
+611111,,3,Retail Trade
+611112,,1,Wholesale Trade
+611112,,2,"Agriculture, Forestry and Fishing"
+611112,,3,Retail Trade
+611311,,1,Manufacturing
+611311,,2,Wholesale Trade
+611311,,3,Construction
+611312,,1,"Professional, Scientific and Technical Services"
+611312,,2,Information Media and Telecommunications
+611312,,3,"Transport, Postal and Warehousing"
+611313,,1,Retail Trade
+611313,,2,Wholesale Trade
+611313,,3,Manufacturing
+611314,,1,Retail Trade
+611314,,2,Wholesale Trade
+611314,,3,Manufacturing
+611399,,1,Construction
+611399,,2,Wholesale Trade
+611399,,3,Retail Trade
+612111,,1,"Rental, Hiring and Real Estate Services"
+612111,,2,Wholesale Trade
+612111,,3,"Professional, Scientific and Technical Services"
+612112,,1,"Rental, Hiring and Real Estate Services"
+612113,,1,"Rental, Hiring and Real Estate Services"
+612114,,1,"Rental, Hiring and Real Estate Services"
+612115,,1,"Rental, Hiring and Real Estate Services"
+612115,,2,Construction
+621311,,1,Retail Trade
+621311,,2,Wholesale Trade
+621312,,1,Retail Trade
+621312,,2,Wholesale Trade
+621312,,3,Other Services
+621711,,1,Accommodation and Food Services
+621711,,2,Wholesale Trade
+621711,,3,Retail Trade
+621712,,1,Retail Trade
+621712,,2,Health Care and Social Assistance
+621712,,3,Other Services
+621713,,1,Retail Trade
+621713,,2,Accommodation and Food Services
+621713,,3,Manufacturing
+621911,,1,Wholesale Trade
+621911,,2,"Electricity, Gas, Water and Waste Services"
+621912,,1,"Rental, Hiring and Real Estate Services"
+621999,,1,Retail Trade
+621999,,2,Wholesale Trade
+621999,,3,"Agriculture, Forestry and Fishing"
+631111,,1,Retail Trade
+631111,,2,Accommodation and Food Services
+631112,,1,Accommodation and Food Services
+631112,,2,Retail Trade
+631112,,3,Arts and Recreation Services
+639111,,1,Arts and Recreation Services
+639111,,2,Administrative and Support Services
+639111,,3,"Professional, Scientific and Technical Services"
+639112,,1,Retail Trade
+639112,,2,Wholesale Trade
+639112,,3,Manufacturing
+639211,,1,Retail Trade
+639211,,2,Wholesale Trade
+639212,,1,Wholesale Trade
+639212,,2,"Agriculture, Forestry and Fishing"
+639411,,1,"Transport, Postal and Warehousing"
+639411,,2,Information Media and Telecommunications
+639411,,3,Accommodation and Food Services
+639412,,1,"Transport, Postal and Warehousing"
+711111,,1,Manufacturing
+711111,,2,Construction
+711112,,1,Construction
+711112,,2,Manufacturing
+711113,,1,Manufacturing
+711113,,2,Construction
+711114,,1,Manufacturing
+711114,,2,Construction
+711114,,3,Mining
+711199,,1,Manufacturing
+711199,,2,Construction
+711311,,1,Manufacturing
+711313,,1,Manufacturing
+711313,,2,"Agriculture, Forestry and Fishing"
+711314,,1,Manufacturing
+711314,,2,Wholesale Trade
+711314,,3,Construction
+711511,,1,Manufacturing
+711511,,2,Construction
+711511,,3,"Electricity, Gas, Water and Waste Services"
+711512,,1,Manufacturing
+711512,,2,Wholesale Trade
+711512,,3,"Electricity, Gas, Water and Waste Services"
+711513,,1,Manufacturing
+711513,,2,Construction
+711513,,3,Mining
+711514,,1,Manufacturing
+711515,,1,Manufacturing
+711515,,2,Construction
+711516,,1,Manufacturing
+711516,,2,Mining
+711516,,3,Wholesale Trade
+711599,,1,Manufacturing
+711599,,2,Construction
+711711,,1,Manufacturing
+711712,,1,Manufacturing
+711712,,2,Other Services
+711713,,1,Manufacturing
+711714,,1,Manufacturing
+711715,,1,Manufacturing
+711716,,1,"Agriculture, Forestry and Fishing"
+711716,,2,Manufacturing
+711799,,1,Manufacturing
+711799,,2,"Agriculture, Forestry and Fishing"
+711911,,1,Manufacturing
+711911,,2,Wholesale Trade
+711911,,3,Retail Trade
+711912,,1,Information Media and Telecommunications
+711912,,2,Arts and Recreation Services
+711913,,1,Construction
+711913,,2,Manufacturing
+711914,,1,Health Care and Social Assistance
+711999,,1,"Electricity, Gas, Water and Waste Services"
+711999,,2,Construction
+711999,,3,Manufacturing
+712211,,1,Mining
+712211,,2,Construction
+712212,,1,Mining
+712213,,1,Mining
+712213,,2,Manufacturing
+712911,,1,Manufacturing
+712911,,2,Mining
+712911,,3,"Agriculture, Forestry and Fishing"
+712912,,1,"Transport, Postal and Warehousing"
+712912,,2,Mining
+712912,,3,Wholesale Trade
+712913,,1,Manufacturing
+712913,,2,Construction
+712914,,1,Manufacturing
+712914,,2,Construction
+712915,,1,Construction
+712916,,1,Manufacturing
+712917,,1,"Transport, Postal and Warehousing"
+712917,,2,Construction
+712917,,3,Manufacturing
+712918,,1,"Transport, Postal and Warehousing"
+712918,,2,Mining
+712921,,1,"Electricity, Gas, Water and Waste Services"
+712921,,2,Public Administration and Safety
+712921,,3,Mining
+712922,,1,"Electricity, Gas, Water and Waste Services"
+712922,,2,Manufacturing
+712922,,3,Mining
+712999,,1,Mining
+712999,,2,Manufacturing
+712999,,3,Construction
+721111,,1,"Agriculture, Forestry and Fishing"
+721111,,2,Public Administration and Safety
+721112,,1,"Agriculture, Forestry and Fishing"
+721112,,2,Manufacturing
+721211,,1,Construction
+721211,,2,Public Administration and Safety
+721212,,1,Construction
+721212,,2,Public Administration and Safety
+721212,,3,"Electricity, Gas, Water and Waste Services"
+721213,,1,Mining
+721213,,2,Construction
+721213,,3,"Agriculture, Forestry and Fishing"
+721214,,1,Construction
+721215,,1,Construction
+721215,,2,Public Administration and Safety
+721215,,3,Mining
+721216,,1,Construction
+721216,,2,Mining
+721216,,3,Manufacturing
+721911,,1,"Transport, Postal and Warehousing"
+721912,,1,Construction
+721912,,2,Public Administration and Safety
+721913,,1,Construction
+721913,,2,Public Administration and Safety
+721914,,1,Construction
+721914,,2,"Transport, Postal and Warehousing"
+721914,,3,Manufacturing
+721915,,1,Construction
+721915,,2,Public Administration and Safety
+721916,,1,Public Administration and Safety
+721916,,2,Administrative and Support Services
+721916,,3,Construction
+721999,,1,Construction
+721999,,2,"Transport, Postal and Warehousing"
+721999,,3,Public Administration and Safety
+731111,,1,"Transport, Postal and Warehousing"
+731111,,2,Public Administration and Safety
+731112,,1,"Transport, Postal and Warehousing"
+731199,,1,"Transport, Postal and Warehousing"
+731211,,1,"Transport, Postal and Warehousing"
+731212,,1,"Transport, Postal and Warehousing"
+731212,,2,Administrative and Support Services
+731213,,1,"Transport, Postal and Warehousing"
+731311,,1,"Transport, Postal and Warehousing"
+731311,,2,Mining
+731312,,1,"Transport, Postal and Warehousing"
+733111,,1,"Transport, Postal and Warehousing"
+733111,,2,Construction
+733111,,3,"Electricity, Gas, Water and Waste Services"
+733112,,1,"Transport, Postal and Warehousing"
+733112,,2,Wholesale Trade
+733112,,3,Public Administration and Safety
+733113,,1,"Transport, Postal and Warehousing"
+733114,,1,"Transport, Postal and Warehousing"
+733114,,2,Construction
+733114,,3,"Electricity, Gas, Water and Waste Services"
+733115,,1,"Transport, Postal and Warehousing"
+733115,,2,"Electricity, Gas, Water and Waste Services"
+733115,,3,Public Administration and Safety
+811411,,1,Accommodation and Food Services
+811411,,2,Administrative and Support Services
+811411,,3,Health Care and Social Assistance
+811412,,1,Administrative and Support Services
+811412,,2,Health Care and Social Assistance
+811412,,3,Accommodation and Food Services
+811511,,1,Other Services
+811511,,2,Health Care and Social Assistance
+811512,,1,Other Services
+811513,,1,Other Services
+811513,,2,Manufacturing
+811513,,3,Administrative and Support Services
+811611,,1,Other Services
+811611,,2,Administrative and Support Services
+811612,,1,Administrative and Support Services
+811699,,1,Administrative and Support Services
+811699,,2,Public Administration and Safety
+811699,,3,"Electricity, Gas, Water and Waste Services"
+821111,,1,Construction
+821112,,1,"Electricity, Gas, Water and Waste Services"
+821112,,2,Public Administration and Safety
+821112,,3,Construction
+821113,,1,Construction
+821113,,2,Other Services
+821114,,1,Construction
+821411,,1,Construction
+821412,,1,Construction
+821412,,2,Manufacturing
+821711,,1,Construction
+821711,,2,Mining
+821712,,1,Construction
+821712,,2,Mining
+821713,,1,Construction
+821714,,1,Construction
+821714,,2,Manufacturing
+821714,,3,"Transport, Postal and Warehousing"
+821911,,1,Construction
+821912,,1,Mining
+821912,,2,Construction
+821913,,1,Construction
+821913,,2,Manufacturing
+821914,,1,Mining
+821914,,2,"Professional, Scientific and Technical Services"
+821914,,3,Manufacturing
+821915,,1,"Professional, Scientific and Technical Services"
+821915,,2,Mining
+821915,,3,Construction
+831111,,1,Manufacturing
+831111,,2,Retail Trade
+831112,,1,Manufacturing
+831112,,2,Accommodation and Food Services
+831113,,1,Manufacturing
+831113,,2,Retail Trade
+831114,,1,Manufacturing
+831114,,2,"Agriculture, Forestry and Fishing"
+831115,,1,Manufacturing
+831115,,2,"Agriculture, Forestry and Fishing"
+831115,,3,Accommodation and Food Services
+831116,,1,Manufacturing
+831116,,2,"Agriculture, Forestry and Fishing"
+831117,,1,Manufacturing
+831118,,1,Manufacturing
+831199,,1,Manufacturing
+831199,,2,Accommodation and Food Services
+831199,,3,Wholesale Trade
+831211,,1,Manufacturing
+831212,,1,Manufacturing
+831311,,1,Manufacturing
+831312,,1,Manufacturing
+831312,,2,"Agriculture, Forestry and Fishing"
+831313,,1,Manufacturing
+831313,,2,"Agriculture, Forestry and Fishing"
+831313,,3,Wholesale Trade
+832111,,1,Manufacturing
+832111,,2,Retail Trade
+832111,,3,Administrative and Support Services
+832112,,1,Manufacturing
+832112,,2,Administrative and Support Services
+832113,,1,"Agriculture, Forestry and Fishing"
+832113,,2,Administrative and Support Services
+832113,,3,Retail Trade
+832114,,1,Manufacturing
+832114,,2,Retail Trade
+832115,,1,Manufacturing
+832115,,2,Wholesale Trade
+832115,,3,"Agriculture, Forestry and Fishing"
+832199,,1,Manufacturing
+832199,,2,Retail Trade
+832199,,3,Administrative and Support Services
+839211,,1,Manufacturing
+839212,,1,Manufacturing
+839212,,2,Wholesale Trade
+839311,,1,Manufacturing
+839311,,2,Retail Trade
+839311,,3,Wholesale Trade
+839312,,1,"Agriculture, Forestry and Fishing"
+839312,,2,Manufacturing
+839312,,3,Wholesale Trade
+839313,,1,Manufacturing
+839313,,2,"Professional, Scientific and Technical Services"
+839313,,3,Construction
+839411,,1,Manufacturing
+839412,,1,Manufacturing
+839412,,2,Wholesale Trade
+839413,,1,Manufacturing
+839413,,2,Construction
+839413,,3,"Rental, Hiring and Real Estate Services"
+839911,,1,Manufacturing
+839911,,2,Construction
+839912,,1,Manufacturing
+839912,,2,Wholesale Trade
+839913,,1,Manufacturing
+839913,,2,Construction
+839914,,1,Manufacturing
+839914,,2,Retail Trade
+839914,,3,Other Services
+839915,,1,Manufacturing
+839916,,1,Manufacturing
+839916,,2,Construction
+839917,,1,Manufacturing
+839917,,2,Wholesale Trade
+839918,,1,"Electricity, Gas, Water and Waste Services"
+839918,,2,Wholesale Trade
+839918,,3,Health Care and Social Assistance
+839999,,1,Manufacturing
+839999,,2,Health Care and Social Assistance
+839999,,3,Administrative and Support Services
+841211,,1,"Agriculture, Forestry and Fishing"
+841212,,1,"Agriculture, Forestry and Fishing"
+841212,,2,Administrative and Support Services
+841213,,1,"Agriculture, Forestry and Fishing"
+841214,,1,"Agriculture, Forestry and Fishing"
+841215,,1,"Agriculture, Forestry and Fishing"
+841215,,2,Wholesale Trade
+841215,,3,Administrative and Support Services
+841216,,1,"Agriculture, Forestry and Fishing"
+841216,,2,Manufacturing
+841217,,1,"Agriculture, Forestry and Fishing"
+841299,,1,"Agriculture, Forestry and Fishing"
+841311,,1,"Agriculture, Forestry and Fishing"
+841311,,2,Administrative and Support Services
+841311,,3,Public Administration and Safety
+841312,,1,"Agriculture, Forestry and Fishing"
+841312,,2,Manufacturing
+841312,,3,Administrative and Support Services
+841313,,1,"Agriculture, Forestry and Fishing"
+841313,,2,Administrative and Support Services
+841313,,3,Manufacturing
+841411,,1,Administrative and Support Services
+841411,,2,Construction
+841411,,3,Public Administration and Safety
+841412,,1,"Agriculture, Forestry and Fishing"
+841412,,2,Wholesale Trade
+841412,,3,Retail Trade
+841511,,1,"Agriculture, Forestry and Fishing"
+841512,,1,"Agriculture, Forestry and Fishing"
+841513,,1,"Agriculture, Forestry and Fishing"
+841514,,1,"Agriculture, Forestry and Fishing"
+841514,,2,Manufacturing
+841515,,1,"Agriculture, Forestry and Fishing"
+841516,,1,Arts and Recreation Services
+841516,,2,"Agriculture, Forestry and Fishing"
+841516,,3,Education and Training
+841517,,1,"Agriculture, Forestry and Fishing"
+841599,,1,"Agriculture, Forestry and Fishing"
+841599,,2,Manufacturing
+841911,,1,"Agriculture, Forestry and Fishing"
+841911,,2,Manufacturing
+841911,,3,Administrative and Support Services
+841913,,1,Administrative and Support Services
+841999,,1,"Agriculture, Forestry and Fishing"
+841999,,2,Construction
+841999,,3,Public Administration and Safety
+851211,,1,Retail Trade
+851211,,2,Manufacturing
+851299,,1,Accommodation and Food Services
+851299,,2,Retail Trade
+851299,,3,Health Care and Social Assistance
+891111,,1,"Transport, Postal and Warehousing"
+891111,,2,Retail Trade
+891111,,3,Manufacturing
+891112,,1,"Transport, Postal and Warehousing"
+891112,,2,Manufacturing
+891112,,3,Retail Trade
+891113,,1,"Transport, Postal and Warehousing"
+899211,,1,"Transport, Postal and Warehousing"
+899212,,1,"Agriculture, Forestry and Fishing"
+899411,,1,Retail Trade
+899411,,2,Other Services
+899411,,3,Manufacturing
+899412,,1,Other Services
+899412,,2,Construction
+899413,,1,Other Services
+899413,,2,Manufacturing
+899413,,3,Administrative and Support Services
+899414,,1,Other Services
+899414,,2,Retail Trade
+899414,,3,Manufacturing
+899415,,1,Other Services
+899415,,2,Retail Trade
+899415,,3,Manufacturing
+899511,,1,Manufacturing
+899511,,2,Information Media and Telecommunications
+899512,,1,Manufacturing
+899512,,2,Information Media and Telecommunications
+899911,,1,Retail Trade
+899911,,2,Other Services
+899912,,1,Other Services
+899912,,2,"Rental, Hiring and Real Estate Services"
+899912,,3,Public Administration and Safety
+899913,,1,Public Administration and Safety
+899913,,2,"Transport, Postal and Warehousing"
+899913,,3,Education and Training
+899914,,1,Construction
+899914,,2,"Electricity, Gas, Water and Waste Services"
+899914,,3,Manufacturing
+899915,,1,"Transport, Postal and Warehousing"
+899915,,2,"Professional, Scientific and Technical Services"
+899915,,3,Manufacturing
+899916,,1,Other Services
+899916,,2,Retail Trade
+899916,,3,Manufacturing
+899917,,1,"Transport, Postal and Warehousing"
+899918,,1,Construction
+899918,,2,"Professional, Scientific and Technical Services"
+899918,,3,Manufacturing
+899921,,1,Arts and Recreation Services
+899921,,2,Information Media and Telecommunications
+899921,,3,Public Administration and Safety
+899922,,1,Retail Trade
+899922,,2,Administrative and Support Services
+899923,,1,Public Administration and Safety
+899923,,2,Construction
+899923,,3,"Professional, Scientific and Technical Services"
+899999,,1,Construction
+899999,,2,Manufacturing
+899999,,3,Administrative and Support Services
