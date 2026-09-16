@@ -163,6 +163,8 @@ WHERE NOT EXISTS(SELECT 1 FROM study_program_map p WHERE p.major_code=m.code);
 """)
     # Shared aggregation block: links majors' programs to O*NET ratings and
     # ranks each skill above the all-occupations baseline for its category.
+    # The baseline is global, so splitting the work into chunks cannot change
+    # the result; chunks keep every statement inside remote D1 time limits.
     aggregate_sql = """
 INSERT INTO study_skill_map
 WITH ratings AS (
@@ -172,8 +174,10 @@ WITH ratings AS (
  SELECT skill_code,AVG(score) mean_score FROM ratings GROUP BY skill_code
 ), linked AS (
  SELECT DISTINCT p.major_code,r.onet_code,r.skill_code,r.score
- FROM {program_source}
+ FROM study_program_map p
+ JOIN education_onet_map e ON e.education_code=p.education_code
  JOIN ratings r ON r.onet_code=e.onet_code
+ WHERE substr(p.major_code,1,2)='{chunk}'
 ), ranked AS (
  SELECT l.major_code,l.skill_code,AVG(l.score) average_score,
         COUNT(*) occupation_count, b.mean_score
@@ -182,17 +186,17 @@ WITH ratings AS (
 )
 SELECT major_code,skill_code,
  average_score + MAX(0,average_score-mean_score) + MIN(10,occupation_count),
- '{source_label}'
+ 'ASCED/CIP subject link -> CIP/O*NET occupations -> O*NET ratings'
 FROM ranked WHERE average_score >= 50;
 """
-    statements.append(aggregate_sql.format(
-        program_source=('study_program_map p '
-                        'JOIN education_onet_map e ON e.education_code=p.education_code'),
-        source_label='ASCED/CIP subject link -> CIP/O*NET occupations -> O*NET ratings',
-    ))
+    # One chunk per ASCED broad field (first two digits of the major code).
+    for broad_field in ['01', '02', '03', '04', '05', '06',
+                        '07', '08', '09', '10', '11', '12']:
+        statements.append(aggregate_sql.format(chunk=broad_field))
     # Coverage fallback: majors whose family links produced no qualifying rows
     # (typically the fine sub-families above) retry with their broad CIP
-    # two-digit family, so every field of study keeps recommendations.
+    # two-digit family, so every field of study keeps recommendations. One
+    # statement per narrow field keeps the remote work per query small.
     broad_pairs = ',\n  '.join(
         '(' + quote(narrow) + ',' + quote(sorted({family.split('.')[0] for family in families})[0]) + ')'
         for narrow, families in sorted(NARROW_FIELD_FAMILIES.items())
