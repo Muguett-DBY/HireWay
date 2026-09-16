@@ -19,8 +19,14 @@ these local commands. Do not deploy the API before creating and populating its t
 
 - `study_program_map`: ASCED subject to CIP program. Exact subject title matches
   (ignoring only the CIP suffix `, General`) plus three explicit subject equivalences
-  for Law, General Nursing and Computer Science. These are inspectable project
-  mappings, not an official ASCED/CIP crosswalk. No fuzzy or broad-keyword match.
+  for Law, General Nursing and Computer Science. Majors the exact rules miss fall
+  back to a curated ASCED narrow-field to CIP family table in
+  `scripts/data/build_study_skills.py` (one reviewed line per field, with
+  sub-family precision such as Meteorology for Earth Sciences where it helps).
+  Majors still producing nothing retry with their broad two-digit family. All
+  rules are inspectable project mappings, not an official ASCED/CIP crosswalk.
+  No fuzzy or broad-keyword match. Every field of study ends up with
+  recommendations; the source column records which rule produced each link.
 - `study_occupation_knowledge`: O*NET importance ratings normalised from 0–5 to 0–100;
   irrelevant entries and occupations absent from the catalogue are excluded.
 - `study_skill_map`: aggregates distinct linked occupations' skill/tool/knowledge
