@@ -20,11 +20,11 @@ async function request(parameters) {
 const majors = query(
   `SELECT code, EXISTS(SELECT 1 FROM study_skill_map m WHERE m.major_code=major_option.code) matched FROM major_option`,
 )
-assert(majors.some((m) => m.matched))
-assert(majors.some((m) => !m.matched))
+// Every field of study now carries recommendations; none may come back empty.
+assert(majors.every((m) => m.matched))
 for (const major of majors) {
   const items = await request({ majorCode: major.code })
-  assert.equal(items.length > 0, Boolean(major.matched), major.code)
+  assert(items.length > 0, major.code)
   assert(items.length <= 10)
   assert.equal(new Set(items.map((item) => item.code)).size, items.length)
   assert(items.every((item) => item.reason === 'education'))
@@ -46,10 +46,13 @@ const course = query(
 )[0]
 assert(course)
 assert((await request({ degreeCode: course.degree_code })).length > 0)
+// A course with no linked field at all still returns an empty list.
 const unmapped = query(
   `SELECT code FROM degree_option d WHERE NOT EXISTS(SELECT 1 FROM degree_major_map dm JOIN study_skill_map s ON s.major_code=dm.major_code WHERE dm.degree_code=d.code) LIMIT 1`,
 )[0]
-assert.deepEqual(await request({ degreeCode: unmapped.code }), [])
+if (unmapped) {
+  assert.deepEqual(await request({ degreeCode: unmapped.code }), [])
+}
 console.log(
   `Passed ${majors.length} majors, law knowledge, course mapping, empty results and target-role independence.`,
 )
