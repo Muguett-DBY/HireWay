@@ -34,10 +34,12 @@ Australia (CC BY 4.0).
 
 Every catalogued occupation is modelled. Roles without their own O*NET
 bridge inherit the mean skill vector and interest profile of their ANZSCO
-four-digit group (inferred rows make up about two thirds of the set), so
-suggestions and role details never come back empty. The UI labels the
-skill guidance as coming from US O*NET data, not Australian employer
-requirements.
+four-digit group (inferred rows make up about two thirds of the set), and
+a handful with no group coverage carry growth data only. The match engine
+weights direct O*NET vectors above group inference and ignores knowledge
+categories when counting overlaps, so unrelated roles cannot ride in on
+generic skills. The UI labels the skill guidance as coming from US O*NET
+data, not Australian employer requirements.
 
 ## Apply an import
 

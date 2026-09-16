@@ -898,8 +898,8 @@ h3 {
 /* Match cards power both the overview strip and the matches page. */
 .match-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 18px;
   margin-top: 16px;
 }
 

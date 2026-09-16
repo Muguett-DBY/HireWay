@@ -6,6 +6,8 @@ type CandidateRow = {
   skillLevel: number | null
   change5yPercent: number | null
   medianWeeklyEarnings: number | null
+  vectorSource: string
+  overlap: number
 }
 
 type SavedSkillRow = {
@@ -151,20 +153,27 @@ export async function handleRoleSuggestions(
        VALUES ${placeholders}
      )
      SELECT v.occupation_code AS code, o.title,
-            SUM(v.score * user_skills.weight) / m.skill_norm AS skillMatch,
+            SUM(v.score * user_skills.weight) / m.skill_norm
+              * CASE m.vector_source WHEN 'onet' THEN 1.0 ELSE 0.6 END
+              AS skillMatch,
             m.growth_percentile AS growthPercentile,
             o.skill_level AS skillLevel,
             mk.change_5y_percent AS change5yPercent,
-            mk.median_weekly_earnings AS medianWeeklyEarnings
+            mk.median_weekly_earnings AS medianWeeklyEarnings,
+            m.vector_source AS vectorSource,
+            COUNT(DISTINCT v.skill_code) AS overlap
      FROM user_skills
      JOIN occupation_skill_vector v
        ON v.skill_code = user_skills.skill_code
+     JOIN skill s ON s.code = v.skill_code
      JOIN occupation_match m ON m.occupation_code = v.occupation_code
      JOIN occupation o ON o.code = v.occupation_code
      LEFT JOIN occupation_anzsco_map om
        ON om.occupation_code = v.occupation_code AND om.is_primary = 1
      LEFT JOIN anzsco4_market mk ON mk.anzsco4_code = om.anzsco_code
+     WHERE s.kind != 'knowledge'
      GROUP BY v.occupation_code
+     HAVING COUNT(DISTINCT v.skill_code) >= 1
      ORDER BY skillMatch DESC
      LIMIT 40`,
   )
@@ -177,14 +186,17 @@ export async function handleRoleSuggestions(
             m.growth_percentile AS growthPercentile,
             o.skill_level AS skillLevel,
             mk.change_5y_percent AS change5yPercent,
-            mk.median_weekly_earnings AS medianWeeklyEarnings
+            mk.median_weekly_earnings AS medianWeeklyEarnings,
+            m.vector_source AS vectorSource,
+            0 AS overlap
      FROM occupation_match m
      JOIN occupation o ON o.code = m.occupation_code
      LEFT JOIN occupation_anzsco_map om
        ON om.occupation_code = m.occupation_code AND om.is_primary = 1
      LEFT JOIN anzsco4_market mk ON mk.anzsco4_code = om.anzsco_code
+     WHERE m.vector_source != 'global'
      ORDER BY m.growth_percentile DESC
-     LIMIT 25`,
+     LIMIT 12`,
   ).all<CandidateRow>()
 
   const candidates = new Map<string, CandidateRow>()
@@ -288,7 +300,7 @@ export async function handleRoleSuggestions(
   )
 
   return Response.json({
-    suggestions: suggestions.slice(0, 12),
+    suggestions: suggestions.slice(0, 9),
     modelledOccupations: candidates.size,
   })
 }
