@@ -898,7 +898,7 @@ h3 {
 /* Match cards power both the overview strip and the matches page. */
 .match-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
   margin-top: 16px;
 }
@@ -1611,6 +1611,12 @@ h3 {
   background: var(--green-soft);
 }
 
+@media (max-width: 1000px) {
+  .match-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 900px) {
   .analysis-grid {
     grid-template-columns: 1fr;
@@ -1618,6 +1624,12 @@ h3 {
 
   .header-nav {
     gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .match-grid {
+    grid-template-columns: 1fr;
   }
 }
 
