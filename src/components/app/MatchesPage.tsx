@@ -6,6 +6,7 @@ type MatchesPageProps = {
   suggestions: RoleSuggestion[]
   targetRole: TargetRole | null
   hint: string | null
+  skillsCount: number
   busy: boolean
   onPlan: (suggestion: RoleSuggestion) => void
   onReact: (
@@ -21,10 +22,17 @@ export function MatchesPage({
   suggestions,
   targetRole,
   hint,
+  skillsCount,
   busy,
   onPlan,
   onReact,
 }: MatchesPageProps) {
+  // With a thin profile the ranking leans on market data, so say so instead
+  // of letting lookalike cards imply a precision the engine cannot have.
+  const thinHint =
+    skillsCount < 3
+      ? 'Only a few skills saved so far - every skill you add sharpens these matches.'
+      : null
   return (
     <>
       <section className="app-hero">
@@ -62,7 +70,7 @@ export function MatchesPage({
         </>
       ) : (
         <p className="empty-note">
-          {hint ?? 'No suggestions are available yet.'}
+          {hint ?? thinHint ?? 'No suggestions are available yet.'}
         </p>
       )}
     </>

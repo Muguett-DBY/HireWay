@@ -267,13 +267,18 @@ def main() -> None:
             for skill_code, votes in type_votes.items()
         }
 
-    def infer_vector(occupation_code: str) -> tuple[dict[str, float], dict[str, str]]:
+    def infer_vector(
+        occupation_code: str,
+    ) -> tuple[dict[str, float], dict[str, str], str]:
         anzsco4 = osca_to_anzsco.get(occupation_code)
         if anzsco4 in group_vectors:
-            return group_vectors[anzsco4], group_types.get(anzsco4, {})
+            return group_vectors[anzsco4], group_types.get(anzsco4, {}), 'group'
         if global_vector:
-            return global_vector, global_types
-        return {}, {}
+            # The global mean carries no subject signal, so it is stored as a
+            # vector-less row: the role keeps its growth data but never shows
+            # up in skill matches.
+            return {}, {}, 'global'
+        return {}, {}, 'global'
 
     def infer_riasec(occupation_code: str) -> dict[str, float]:
         anzsco4 = osca_to_anzsco.get(occupation_code)
@@ -302,7 +307,7 @@ def main() -> None:
     }
 
     vector_rows: list[tuple[str, str, float, str]] = []
-    match_rows: list[tuple[str, float, float, str]] = []
+    match_rows: list[tuple[str, float, float, str, str]] = []
     with_profile = 0
     inferred_count = 0
 
@@ -320,8 +325,9 @@ def main() -> None:
         if direct:
             scores = vectors[occupation_code]
             skill_types = vector_types.get(occupation_code, {})
+            source = 'onet'
         else:
-            scores, skill_types = infer_vector(occupation_code)
+            scores, skill_types, source = infer_vector(occupation_code)
             inferred_count += 1
             # Keep only each inferred role's strongest skills so the import
             # stays small and the matching keeps a clear signal.
@@ -334,7 +340,26 @@ def main() -> None:
                 if score >= INFERRED_MIN_SCORE
             }
         if not scores:
-            continue
+            # Global-fallback roles get no skill vectors at all: they keep
+            # their growth figures but stay out of skill-based matching
+            # instead of producing lookalike recommendations.
+            if source == 'global':
+                match_rows.append(
+                    (
+                        occupation_code,
+                        0.0,
+                        round(growth_percentiles.get(occupation_code, 0.5), 4),
+                        json.dumps(
+                            interest_profiles.get(occupation_code) or {},
+                            separators=(",", ":"),
+                        ),
+                        source,
+                    )
+                )
+                skill_level = skill_level_by_code.get(occupation_code)
+                if skill_level:
+                    skill_level_rows.append((occupation_code, skill_level))
+                continue
 
         norm = math.sqrt(sum(value * value for value in scores.values()))
         if norm == 0:
@@ -360,6 +385,7 @@ def main() -> None:
                 round(norm, 3),
                 round(growth_percentiles.get(occupation_code, 0.5), 4),
                 json.dumps(riasec, separators=(",", ":")),
+                source,
             )
         )
         skill_level = skill_level_by_code.get(occupation_code)
@@ -419,14 +445,20 @@ def main() -> None:
         )
     statements += insert_with_release(
         "occupation_match",
-        ("occupation_code", "skill_norm", "growth_percentile", "riasec"),
+        (
+            "occupation_code",
+            "skill_norm",
+            "growth_percentile",
+            "riasec",
+            "vector_source",
+        ),
         match_rows,
         SOURCE_NAME,
         RELEASE_LABEL,
         "onet_occupation_skill.csv",
         "(occupation_code) DO UPDATE SET skill_norm = excluded.skill_norm, "
         "growth_percentile = excluded.growth_percentile, "
-        "riasec = excluded.riasec, "
+        "riasec = excluded.riasec, vector_source = excluded.vector_source, "
         "dataset_release_id = excluded.dataset_release_id",
     )
 
