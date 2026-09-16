@@ -5,6 +5,8 @@ export type RoleSuggestion = {
   reasons: string[]
   // Each factor's weighted share of the score, so the card can chart it.
   factors: { skill: number; growth: number; education: number }
+  change5yPercent: number | null
+  medianWeeklyEarnings: number | null
   growthPercentile: number
   reaction: 'not_for_me' | 'curious' | 'interested' | null
 }

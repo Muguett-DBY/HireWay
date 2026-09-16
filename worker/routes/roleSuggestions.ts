@@ -4,6 +4,8 @@ type CandidateRow = {
   skillMatch: number
   growthPercentile: number
   skillLevel: number | null
+  change5yPercent: number | null
+  medianWeeklyEarnings: number | null
 }
 
 type SavedSkillRow = {
@@ -28,6 +30,8 @@ type Suggestion = {
   matchScore: number
   reasons: string[]
   factors: { skill: number; growth: number; education: number }
+  change5yPercent: number | null
+  medianWeeklyEarnings: number | null
   reaction: string | null
 }
 
@@ -149,12 +153,17 @@ export async function handleRoleSuggestions(
      SELECT v.occupation_code AS code, o.title,
             SUM(v.score * user_skills.weight) / m.skill_norm AS skillMatch,
             m.growth_percentile AS growthPercentile,
-            o.skill_level AS skillLevel
+            o.skill_level AS skillLevel,
+            mk.change_5y_percent AS change5yPercent,
+            mk.median_weekly_earnings AS medianWeeklyEarnings
      FROM user_skills
      JOIN occupation_skill_vector v
        ON v.skill_code = user_skills.skill_code
      JOIN occupation_match m ON m.occupation_code = v.occupation_code
      JOIN occupation o ON o.code = v.occupation_code
+     LEFT JOIN occupation_anzsco_map om
+       ON om.occupation_code = v.occupation_code AND om.is_primary = 1
+     LEFT JOIN anzsco4_market mk ON mk.anzsco4_code = om.anzsco_code
      GROUP BY v.occupation_code
      ORDER BY skillMatch DESC
      LIMIT 40`,
@@ -166,9 +175,14 @@ export async function handleRoleSuggestions(
     `SELECT m.occupation_code AS code, o.title,
             0 AS skillMatch,
             m.growth_percentile AS growthPercentile,
-            o.skill_level AS skillLevel
+            o.skill_level AS skillLevel,
+            mk.change_5y_percent AS change5yPercent,
+            mk.median_weekly_earnings AS medianWeeklyEarnings
      FROM occupation_match m
      JOIN occupation o ON o.code = m.occupation_code
+     LEFT JOIN occupation_anzsco_map om
+       ON om.occupation_code = m.occupation_code AND om.is_primary = 1
+     LEFT JOIN anzsco4_market mk ON mk.anzsco4_code = om.anzsco_code
      ORDER BY m.growth_percentile DESC
      LIMIT 25`,
   ).all<CandidateRow>()
@@ -256,6 +270,8 @@ export async function handleRoleSuggestions(
       title: candidate.title,
       matchScore: Math.max(0, Math.min(99, Math.round(score))),
       reasons,
+      change5yPercent: candidate.change5yPercent,
+      medianWeeklyEarnings: candidate.medianWeeklyEarnings,
       factors: {
         skill: Math.round(WEIGHTS.skill * skillFactor * 100),
         growth: Math.round(WEIGHTS.growth * candidate.growthPercentile * 100),
