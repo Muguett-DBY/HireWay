@@ -11,8 +11,10 @@ import {
   addSkill,
   loadSkills,
   removeSkill,
+  updateSkillStatus,
   type SaveSkillResult,
   type Skill,
+  type SkillStatus,
 } from '../lib/skillsApi'
 import { requestTargetRole, type TargetRole } from '../lib/targetRoleApi'
 import { Stepper } from '../components/Stepper'
@@ -585,10 +587,12 @@ export function ProfilePage() {
     }
   }
 
-  // Both suggested and searched skills use the same API request.
+  // Both suggested and searched skills use the same API request. Skills
+  // planned from the gap analysis start as upcoming, not current strengths.
   async function saveSkill(
     name: string,
     selectedCode: string,
+    status: 'current' | 'upcoming' = 'current',
   ): Promise<SaveSkillResult> {
     if (!profile) {
       const error = 'Save your profile before adding skills.'
@@ -599,7 +603,7 @@ export function ProfilePage() {
     setSkillError('')
     setSkillsBusy(true)
     try {
-      const result = await addSkill(profile.code, name, selectedCode)
+      const result = await addSkill(profile.code, name, selectedCode, status)
       if (!result.ok) {
         const error = result.data.error ?? 'Could not add this skill.'
         setSkillError(error)
@@ -658,6 +662,28 @@ export function ProfilePage() {
       bumpRefresh()
     } catch {
       setSkillError('Could not connect. Please try again.')
+    } finally {
+      setSkillsBusy(false)
+    }
+  }
+
+  // Move one saved skill between upcoming, current and completed.
+  async function cycleSkillStatus(skill: Skill, status: SkillStatus) {
+    if (!profile) return
+
+    setSkillsBusy(true)
+    try {
+      const result = await updateSkillStatus(profile.code, skill.id, status)
+      if (result.ok) {
+        setSkills((current) =>
+          current.map((item) =>
+            item.id === skill.id ? { ...item, status } : item,
+          ),
+        )
+        bumpRefresh()
+      }
+    } catch {
+      // The control stays interactive so the change can be retried.
     } finally {
       setSkillsBusy(false)
     }
@@ -1404,14 +1430,16 @@ export function ProfilePage() {
 
             {appPage === 'analysis' && (
               <AnalysisPage
-                profile={profile}
                 skills={skills}
                 targetRole={targetRole}
                 suggestions={suggestions}
                 requirements={requirements}
                 busy={skillsBusy}
-                onAddSkill={(skill: RoleSkill) => {
-                  void saveSkill(skill.name, skill.code)
+                onAddUpcomingSkill={(skill: RoleSkill) => {
+                  void saveSkill(skill.name, skill.code, 'upcoming')
+                }}
+                onSkillStatus={(skill: Skill, status: SkillStatus) => {
+                  void cycleSkillStatus(skill, status)
                 }}
                 onGoMatches={() => setAppPage('matches')}
                 onEditTargetRole={() => {
@@ -1436,22 +1464,7 @@ export function ProfilePage() {
               <PathwaysPage
                 targetRole={targetRole}
                 requirements={requirements}
-                missingSkills={
-                  requirements
-                    ? requirements.skills
-                        .filter(
-                          (skill) =>
-                            !skills.some(
-                              (saved) =>
-                                saved.skillCode === skill.code ||
-                                saved.name.toLowerCase() ===
-                                  skill.name.toLowerCase(),
-                            ),
-                        )
-                        .slice(0, 3)
-                        .map((skill) => skill.name)
-                    : []
-                }
+                skills={skills}
                 onGoRole={() => setAppPage('role')}
               />
             )}

@@ -2,40 +2,56 @@ import type {
   RoleRequirements as RequirementsData,
   RoleSkill,
 } from '../../lib/roleRequirementsApi'
-import type { Profile } from '../../lib/profileApi'
+import type { Skill, SkillStatus } from '../../lib/skillsApi'
 import type { RoleSuggestion } from '../../lib/suggestionApi'
-import type { Skill } from '.././../lib/skillsApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
 
 type AnalysisPageProps = {
-  profile: Profile
   skills: Skill[]
   targetRole: TargetRole | null
   suggestions: RoleSuggestion[]
   requirements: RequirementsData | null
   busy: boolean
-  onAddSkill: (skill: RoleSkill) => void
+  onAddUpcomingSkill: (skill: RoleSkill) => void
+  onSkillStatus: (skill: Skill, status: SkillStatus) => void
   onGoMatches: () => void
   onEditTargetRole: () => void
 }
 
-// Readiness per O*NET category: how many of the role's listed skills the
-// profile already claims. Essentials count triple, tools count once - a
-// simple coverage measure, not a hiring prediction.
+const statusOrder: SkillStatus[] = ['upcoming', 'current', 'completed']
+const statusLabels: Record<SkillStatus, string> = {
+  upcoming: 'Upcoming',
+  current: 'Current',
+  completed: 'Completed',
+}
+
+// Requirement categories mirror the O*NET groups the role page already uses.
+const groups = [
+  { key: 'essential', title: 'Core skills', weight: 3 },
+  { key: 'recommended', title: 'Transferable skills', weight: 2 },
+  { key: 'bonus', title: 'Common tools', weight: 1 },
+] as const
+
+// Knowledge entries share an O*NET family prefix (2.C.1.a -> 2.C.1), so a
+// saved sibling counts as "improve" rather than a full match. Tools carry
+// opaque codes and only ever match exactly.
+function sameFamily(requiredCode: string, savedCode: string): boolean {
+  const family = (code: string) => code.split('.').slice(0, 3).join('.')
+  return family(requiredCode) === family(savedCode)
+}
+
+// Readiness per category with every requirement sorted into matched,
+// improve or missing. Only current and completed skills count as owned -
+// upcoming items are plans, not strengths yet.
 function readiness(skills: Skill[], requirements: RequirementsData) {
-  const savedCodes = new Set(
-    skills.flatMap((skill) =>
-      skill.skillCode ? [skill.skillCode] : [skill.name.toLowerCase()],
+  const owned = skills.filter((skill) => skill.status !== 'upcoming')
+  const byCode = new Map(
+    owned.flatMap((skill) =>
+      skill.skillCode
+        ? [[skill.skillCode, skill] as const]
+        : [[skill.name.toLowerCase(), skill] as const],
     ),
   )
-  const has = (skill: RoleSkill) =>
-    savedCodes.has(skill.code) || savedCodes.has(skill.name.toLowerCase())
-
-  const groups = [
-    { key: 'essential', title: 'Core skills', weight: 3 },
-    { key: 'recommended', title: 'Transferable skills', weight: 2 },
-    { key: 'bonus', title: 'Common tools', weight: 1 },
-  ] as const
 
   let weightedHas = 0
   let weightedTotal = 0
@@ -43,34 +59,52 @@ function readiness(skills: Skill[], requirements: RequirementsData) {
     const items = requirements.skills.filter(
       (skill) => skill.priority === group.key,
     )
-    const owned = items.filter((skill) => has(skill)).length
-    weightedHas += owned * group.weight
+    let matched = 0
+    let improve = 0
+    const missing: RoleSkill[] = []
+    for (const item of items) {
+      if (byCode.has(item.code) || byCode.has(item.name.toLowerCase())) {
+        matched += 1
+      } else if (
+        [...byCode.keys()].some((saved) => sameFamily(item.code, saved))
+      ) {
+        improve += 1
+      } else {
+        missing.push(item)
+      }
+    }
+    weightedHas += (matched + improve * 0.5) * group.weight
     weightedTotal += items.length * group.weight
     return {
       key: group.key,
       title: group.title,
-      owned,
       total: items.length,
-      percent: items.length ? Math.round((owned / items.length) * 100) : 100,
-      missing: items.filter((skill) => !has(skill)),
+      matched,
+      improve,
+      missing,
+      percent: items.length
+        ? Math.round(((matched + improve * 0.5) / items.length) * 100)
+        : 100,
     }
   })
+
   const overall = weightedTotal
     ? Math.round((weightedHas / weightedTotal) * 100)
     : 0
   return { rows, overall }
 }
 
-// The analysis page turns the saved profile against the target role's
-// requirements into one honest readiness picture: an overall coverage score,
-// per-category bars, and the missing skills worth adding next.
+// The analysis page compares the profile with the target role's catalogue
+// requirements: an overall readiness ring, per-category coverage, the skill
+// gaps worth learning next, and progress controls for the saved skills.
 export function AnalysisPage({
   skills,
   targetRole,
   suggestions,
   requirements,
   busy,
-  onAddSkill,
+  onAddUpcomingSkill,
+  onSkillStatus,
   onGoMatches,
   onEditTargetRole,
 }: AnalysisPageProps) {
@@ -97,6 +131,7 @@ export function AnalysisPage({
   )
   const analysis = requirements ? readiness(skills, requirements) : null
   const ring = analysis ? Math.round(analysis.overall * 2.51) : 0
+  const hasNoSkills = skills.length === 0
 
   return (
     <>
@@ -105,9 +140,18 @@ export function AnalysisPage({
         <h1>How ready you are for {targetRole.title}</h1>
         <p className="app-hero-sub">
           Coverage of the skills and tools commonly listed for this role,
-          weighted towards core skills.
+          weighted towards core skills. A related skill counts half towards
+          coverage.
         </p>
       </section>
+
+      {/* Remind the user when the profile is too thin to analyse. */}
+      {hasNoSkills && (
+        <p className="prompt-banner" role="status">
+          Your profile has no skills yet - add a few below or from the matches
+          page so the readiness score has something to measure.
+        </p>
+      )}
 
       {!analysis ? (
         <p className="empty-note">
@@ -155,13 +199,13 @@ export function AnalysisPage({
                     <span style={{ width: `${row.percent}%` }} />
                   </span>
                   <small>
-                    {row.owned}/{row.total}
+                    {row.matched + row.improve}/{row.total}
                   </small>
                 </div>
               ))}
               <p className="panel-caption">
-                Green means the profile already lists the skill. Add the missing
-                ones below as you pick them up.
+                Matched skills count fully; a saved skill from the same O*NET
+                family counts half towards coverage.
               </p>
             </article>
           </div>
@@ -185,30 +229,50 @@ export function AnalysisPage({
             </div>
           )}
 
+          {/* Skill gaps sorted into matched, improve and missing buckets. */}
           <section className="page-section">
             <div className="section-row">
               <h2>Skill gaps to close</h2>
               <span className="section-tag">
-                {analysis.rows.reduce(
-                  (total, row) => total + row.missing.length,
-                  0,
-                )}{' '}
-                missing
+                Evidence: US O*NET 31.0 ratings via the ABS OSCA bridge
               </span>
             </div>
-            {analysis.rows.map((row) =>
-              row.missing.length > 0 ? (
+            {analysis.rows.map((row) => {
+              const totalGaps =
+                row.missing.length +
+                (row.improve > 0 ? 1 : 0) +
+                (row.matched > 0 ? 1 : 0)
+              if (totalGaps === 0) return null
+
+              return (
                 <div className="gap-group" key={row.key}>
-                  <p className="gap-title">{row.title}</p>
+                  <p className="gap-title">
+                    {row.title}
+                    <span className="gap-count">
+                      {row.matched} matched · {row.improve} to improve ·{' '}
+                      {row.missing.length} missing
+                    </span>
+                  </p>
                   <div className="chip-row">
+                    {row.matched > 0 && (
+                      <span className="gap-chip static done">
+                        Matched in your profile
+                      </span>
+                    )}
+                    {row.improve > 0 && (
+                      <span className="gap-chip static improve">
+                        Related skills to improve
+                      </span>
+                    )}
                     {row.missing.map((skill) => (
                       <button
                         type="button"
                         className="gap-chip"
                         key={skill.code}
                         disabled={busy}
-                        onClick={() => onAddSkill(skill)}
-                        aria-label={`Add ${skill.name} to your profile`}
+                        onClick={() => onAddUpcomingSkill(skill)}
+                        title="From US O*NET 31.0 importance ratings via the ABS OSCA bridge"
+                        aria-label={`Plan ${skill.name} as an upcoming skill`}
                       >
                         + {skill.name}
                         <small>{skill.score}</small>
@@ -216,12 +280,59 @@ export function AnalysisPage({
                     ))}
                   </div>
                 </div>
-              ) : null,
-            )}
-            {analysis.rows.every((row) => row.missing.length === 0) && (
+              )
+            })}
+            {analysis.rows.every(
+              (row) => row.missing.length === 0 && row.improve === 0,
+            ) && (
               <p className="empty-note">
-                Your profile lists every skill in this role's catalogue entry.
+                Your profile covers every skill in this role's catalogue entry.
               </p>
+            )}
+          </section>
+
+          {/* Saved skills with their progress state, ready to adjust. */}
+          <section className="page-section">
+            <div className="section-row">
+              <h2>My skills</h2>
+              <span className="section-tag">
+                Tap a status to move a skill along
+              </span>
+            </div>
+            {skills.length === 0 ? (
+              <p className="empty-note">
+                Nothing tracked yet. Planned skills land here as Upcoming.
+              </p>
+            ) : (
+              <div className="progress-list">
+                {skills.map((skill) => (
+                  <article className="progress-row" key={skill.id}>
+                    <span className="progress-name">{skill.name}</span>
+                    <div
+                      className="status-cycle"
+                      role="group"
+                      aria-label={`${skill.name} progress status`}
+                    >
+                      {statusOrder.map((status) => (
+                        <button
+                          type="button"
+                          key={status}
+                          className={
+                            skill.status === status
+                              ? 'status-pill active'
+                              : 'status-pill'
+                          }
+                          disabled={busy}
+                          onClick={() => onSkillStatus(skill, status)}
+                          aria-pressed={skill.status === status}
+                        >
+                          {statusLabels[status]}
+                        </button>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
             )}
           </section>
         </>

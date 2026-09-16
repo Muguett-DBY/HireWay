@@ -1,9 +1,13 @@
-// Send the row ID and display name back to the page.
+// Send the row ID, display name and progress status back to the page.
 type Skill = {
   id: number
   name: string
   skillCode: string | null
+  status: string
 }
+
+// The three progress states a saved skill can sit in.
+const skillStatuses = new Set(['upcoming', 'current', 'completed'])
 
 // Check the JSON shape before reading its fields.
 function isObject(value: unknown): value is Record<string, unknown> {
@@ -15,10 +19,10 @@ export async function handleSkills(
   request: Request,
   env: Env,
 ): Promise<Response> {
-  if (!['GET', 'POST', 'DELETE'].includes(request.method)) {
+  if (!['GET', 'POST', 'DELETE', 'PATCH'].includes(request.method)) {
     return Response.json(
       { error: 'Method not allowed.' },
-      { status: 405, headers: { Allow: 'GET, POST, DELETE' } },
+      { status: 405, headers: { Allow: 'GET, POST, DELETE, PATCH' } },
     )
   }
 
@@ -49,13 +53,41 @@ export async function handleSkills(
   // Return this profile's skills in the order they were added.
   if (request.method === 'GET') {
     const result = await env.DB.prepare(
-      `SELECT id, name, skill_code AS skillCode
+      `SELECT id, name, skill_code AS skillCode, status
        FROM profile_skill WHERE profile_code = ? ORDER BY id`,
     )
       .bind(code)
       .all<Skill>()
 
     return Response.json({ skills: result.results })
+  }
+
+  // Progress tracking: move one owned skill between the status buckets.
+  if (request.method === 'PATCH') {
+    const input = await request.json<unknown>().catch(() => null)
+    const body = (input ?? {}) as Record<string, unknown>
+    const id = Number(body.id)
+    const status = typeof body.status === 'string' ? body.status : ''
+
+    if (!Number.isSafeInteger(id) || id <= 0 || !skillStatuses.has(status)) {
+      return Response.json(
+        { error: 'Send a valid skill ID and status.' },
+        { status: 400 },
+      )
+    }
+
+    const result = await env.DB.prepare(
+      `UPDATE profile_skill SET status = ?
+       WHERE id = ? AND profile_code = ?`,
+    )
+      .bind(status, id, code)
+      .run()
+
+    if (result.meta.changes === 0) {
+      return Response.json({ error: 'Skill not found.' }, { status: 404 })
+    }
+
+    return Response.json({ id, status })
   }
 
   // Both the skill ID and profile code must match before deleting a row.
@@ -119,13 +151,16 @@ export async function handleSkills(
     )
   }
 
+  // Planned skills start as upcoming; regular adds are current strengths.
+  const status = input.status === 'upcoming' ? 'upcoming' : 'current'
+
   // Let the database reject duplicates, even if two requests arrive together.
   const result = await env.DB.prepare(
-    `INSERT INTO profile_skill (profile_code, name, skill_code)
-     VALUES (?, ?, ?)
+    `INSERT INTO profile_skill (profile_code, name, skill_code, status)
+     VALUES (?, ?, ?, ?)
      ON CONFLICT (profile_code, name) DO NOTHING`,
   )
-    .bind(code, name, skillCode)
+    .bind(code, name, skillCode, status)
     .run()
 
   if (result.meta.changes === 0) {
@@ -136,7 +171,7 @@ export async function handleSkills(
   }
 
   return Response.json(
-    { id: result.meta.last_row_id, name, skillCode },
+    { id: result.meta.last_row_id, name, skillCode, status },
     { status: 201 },
   )
 }
