@@ -3,7 +3,10 @@ export type Skill = {
   id: number
   name: string
   skillCode: string | null
+  status: 'upcoming' | 'current' | 'completed'
 }
+
+export type SkillStatus = Skill['status']
 
 export type SaveSkillResult = { ok: true } | { ok: false; error: string }
 
@@ -13,11 +16,10 @@ type ApiResult<T> =
 
 // Share the recovery-code header and response handling between skill actions.
 async function requestSkillApi<T>(
-  method: 'GET' | 'POST' | 'DELETE',
+  method: 'GET' | 'POST' | 'DELETE' | 'PATCH',
   url: string,
   code: string,
-  name?: string,
-  skillCode?: string | null,
+  body?: Record<string, unknown>,
 ): Promise<ApiResult<T>> {
   const response = await fetch(url, {
     method,
@@ -25,7 +27,7 @@ async function requestSkillApi<T>(
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + code,
     },
-    body: name === undefined ? undefined : JSON.stringify({ name, skillCode }),
+    body: body === undefined ? undefined : JSON.stringify(body),
     cache: 'no-store',
   })
 
@@ -39,9 +41,33 @@ export function loadSkills(code: string) {
   return requestSkillApi<{ skills: Skill[] }>('GET', '/api/skills', code)
 }
 
-// Save one skill and return its database ID.
-export function addSkill(code: string, name: string, skillCode: string) {
-  return requestSkillApi<Skill>('POST', '/api/skills', code, name, skillCode)
+// Save one catalogue skill and return its database ID. Skills added from a
+// gap list start as upcoming; everything else is a current strength.
+export function addSkill(
+  code: string,
+  name: string,
+  skillCode: string,
+  status: 'current' | 'upcoming' = 'current',
+) {
+  return requestSkillApi<Skill>('POST', '/api/skills', code, {
+    name,
+    skillCode,
+    status,
+  })
+}
+
+// Move one saved skill between the progress buckets.
+export function updateSkillStatus(
+  code: string,
+  id: number,
+  status: SkillStatus,
+) {
+  return requestSkillApi<{ id: number; status: SkillStatus }>(
+    'PATCH',
+    '/api/skills',
+    code,
+    { id, status },
+  )
 }
 
 // Remove one owned skill without changing the rest of the list.

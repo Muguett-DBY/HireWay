@@ -11,15 +11,31 @@ import {
   addSkill,
   loadSkills,
   removeSkill,
+  updateSkillStatus,
   type SaveSkillResult,
   type Skill,
+  type SkillStatus,
 } from '../lib/skillsApi'
 import { requestTargetRole, type TargetRole } from '../lib/targetRoleApi'
-import { CareerDashboard } from '../components/CareerDashboard'
-import { SpecularButton } from '../components/SpecularButton'
 import { Stepper } from '../components/Stepper'
-import type { RoleSuggestion } from '../lib/suggestionApi'
 import { EducationLevelSelect } from '../components/EducationLevelSelect'
+import { LandingScreen } from '../components/landing/LandingScreen'
+import { AppNav, type AppPage } from '../components/app/AppNav'
+import { OverviewPage } from '../components/app/OverviewPage'
+import { MatchesPage } from '../components/app/MatchesPage'
+import { AnalysisPage } from '../components/app/AnalysisPage'
+import { RoleDetailsPage } from '../components/app/RoleDetailsPage'
+import { PathwaysPage } from '../components/app/PathwaysPage'
+import {
+  loadRoleRequirements,
+  type RoleRequirements as RequirementsData,
+  type RoleSkill,
+} from '../lib/roleRequirementsApi'
+import {
+  loadRoleSuggestions,
+  sendRoleFeedback,
+  type RoleSuggestion,
+} from '../lib/suggestionApi'
 import {
   loadSkillRecommendations,
   searchOptions,
@@ -28,6 +44,7 @@ import {
   type SkillRecommendation,
   type StudyOption,
 } from '../lib/optionsApi'
+
 // A new form starts with no background details.
 const emptyDetails: ProfileDetails = {
   qualification: '',
@@ -67,9 +84,9 @@ function forgetSavedLogin() {
 }
 
 export function ProfilePage() {
-  // Keep the saved record separate from the fields being edited.
-  const [screen, setScreen] = useState<'home' | 'wizard' | 'dashboard'>('home')
-  // The wizard walks through background, skills and direction in order.
+  const [screen, setScreen] = useState<'home' | 'wizard' | 'app'>('home')
+  const [appPage, setAppPage] = useState<AppPage>('overview')
+  // The wizard walks through background, skills and a target role in order.
   const [step, setStep] = useState<1 | 2 | 3>(1)
   const [profile, setProfile] = useState<Profile | null>(null)
   // An abandoned background draft gives its owner a head start on return.
@@ -103,9 +120,15 @@ export function ProfilePage() {
     [],
   )
   const [recommendationsBusy, setRecommendationsBusy] = useState(false)
-  const [recommendationsError, setRecommendationsError] = useState('')
-  // Suggestion cards reload whenever quiz answers or the target role change.
-  const [suggestionsRefresh, setSuggestionsRefresh] = useState(0)
+  // Workspace data for the app pages, reloaded whenever something changes.
+  const [suggestions, setSuggestions] = useState<RoleSuggestion[]>([])
+  const [suggestionHint, setSuggestionHint] = useState<string | null>(null)
+  const [requirements, setRequirements] = useState<RequirementsData | null>(
+    null,
+  )
+  const [refreshKey, setRefreshKey] = useState(0)
+
+  const bumpRefresh = () => setRefreshKey((current) => current + 1)
 
   // Do not suggest a skill the profile has already saved.
   const suggestedSkills = recommendations.filter(
@@ -188,37 +211,87 @@ export function ProfilePage() {
     }
   }, [skillCode, skillName])
 
-  // This form step only uses the selected course or field, never the target role.
+  // Refresh suggestions whenever a saved study choice or target role changes.
   useEffect(() => {
+    if (
+      !details.qualificationCode &&
+      !details.degreeCode &&
+      !details.majorCode &&
+      !targetRole
+    ) {
+      return
+    }
+
     const controller = new AbortController()
     const timer = window.setTimeout(() => {
       setRecommendationsBusy(true)
-      setRecommendationsError('')
-      setRecommendations([])
       void loadSkillRecommendations(
         details.degreeCode,
         details.majorCode,
         controller.signal,
       )
-        .then((items) => {
-          if (!controller.signal.aborted) setRecommendations(items)
-        })
+        .then(setRecommendations)
         .catch(() => {
-          if (!controller.signal.aborted) {
-            setRecommendationsError(
-              'Could not load suggestions. Please refresh to try again.',
-            )
-          }
+          if (!controller.signal.aborted) setRecommendations([])
         })
         .finally(() => {
           if (!controller.signal.aborted) setRecommendationsBusy(false)
         })
     }, 0)
+
     return () => {
       window.clearTimeout(timer)
       controller.abort()
     }
-  }, [details.degreeCode, details.majorCode])
+  }, [
+    details.degreeCode,
+    details.majorCode,
+    details.qualificationCode,
+    targetRole,
+  ])
+
+  // The workspace pages read from one shared load: suggestions always, role
+  // requirements once a target role exists. Refreshes re-run the same pair.
+  useEffect(() => {
+    if (screen !== 'app' || !profile) return
+
+    const controller = new AbortController()
+    void loadRoleSuggestions(profile.code, controller.signal)
+      .then((result) => {
+        if (result.ok) {
+          setSuggestions(result.data.suggestions)
+          setSuggestionHint(result.data.hint ?? null)
+        } else {
+          setSuggestions([])
+          setSuggestionHint(null)
+        }
+      })
+      .catch(() => {
+        if (!controller.signal.aborted) setSuggestions([])
+      })
+
+    // With a target role the requirements load too; without one they clear.
+    const requirementsTask = targetRole
+      ? loadRoleRequirements(profile.code, controller.signal).then((result) =>
+          result.ok ? result.data : null,
+        )
+      : Promise.resolve(null)
+
+    void requirementsTask
+      .then((data) => {
+        if (!controller.signal.aborted) setRequirements(data)
+      })
+      .catch(() => {
+        if (!controller.signal.aborted) setRequirements(null)
+      })
+
+    return () => controller.abort()
+  }, [screen, profile, targetRole, refreshKey])
+
+  // Each page swap starts from the top, like a real page change should.
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [screen, appPage, step])
 
   // Fill the form with the values that actually came back from D1.
   function showProfile(saved: Profile) {
@@ -255,7 +328,8 @@ export function ProfilePage() {
             return
           }
           applyLoadedProfile(bundle)
-          setScreen(bundle.targetRole ? 'dashboard' : 'wizard')
+          setScreen(bundle.targetRole ? 'app' : 'wizard')
+          setAppPage('overview')
           setStep(3)
         })
         .catch(() => {
@@ -421,9 +495,10 @@ export function ProfilePage() {
 
       applyLoadedProfile(bundle)
       rememberCode(bundle.profile.code)
-      setMessage('Profile loaded.')
+      setMessage('')
       if (bundle.targetRole) {
-        setScreen('dashboard')
+        setScreen('app')
+        setAppPage('overview')
       } else {
         setStep(3)
         setScreen('wizard')
@@ -504,8 +579,6 @@ export function ProfilePage() {
         setTargetRoleError('')
         setTargetRoleMessage('')
       }
-
-      setMessage('Profile saved.')
     } catch {
       setMessage('Could not save. Please try again.')
       setFailed(true)
@@ -513,56 +586,13 @@ export function ProfilePage() {
       setBusy(false)
     }
   }
-  // Save a catalogue occupation as the profile's current target role.
-  async function submitTargetRole(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setTargetRoleError('')
-    setTargetRoleMessage('')
 
-    if (!profile) {
-      setTargetRoleError('Save your profile before choosing a target role.')
-      return
-    }
-
-    if (!targetRoleCode) {
-      setTargetRoleError('Choose a target role from the suggestions.')
-      return
-    }
-
-    setTargetRoleBusy(true)
-    try {
-      const result = await requestTargetRole(
-        'PUT',
-        profile.code,
-        targetRoleCode,
-      )
-
-      if (!result.ok || !result.data.targetRole) {
-        setTargetRoleError(
-          result.ok
-            ? 'Could not save your target role.'
-            : (result.data.error ?? 'Could not save your target role.'),
-        )
-        return
-      }
-
-      // The official title returned by D1 replaces the search draft.
-      setTargetRole(result.data.targetRole)
-      setTargetRoleQuery(result.data.targetRole.title)
-      setTargetRoleCode(result.data.targetRole.code)
-      setTargetRoleOptions([])
-      setTargetRoleMessage('Target role saved.')
-      setScreen('dashboard')
-    } catch {
-      setTargetRoleError('Could not connect. Please try again.')
-    } finally {
-      setTargetRoleBusy(false)
-    }
-  }
-  // Both suggested and searched skills use the same API request.
+  // Both suggested and searched skills use the same API request. Skills
+  // planned from the gap analysis start as upcoming, not current strengths.
   async function saveSkill(
     name: string,
     selectedCode: string,
+    status: 'current' | 'upcoming' = 'current',
   ): Promise<SaveSkillResult> {
     if (!profile) {
       const error = 'Save your profile before adding skills.'
@@ -573,7 +603,7 @@ export function ProfilePage() {
     setSkillError('')
     setSkillsBusy(true)
     try {
-      const result = await addSkill(profile.code, name, selectedCode)
+      const result = await addSkill(profile.code, name, selectedCode, status)
       if (!result.ok) {
         const error = result.data.error ?? 'Could not add this skill.'
         setSkillError(error)
@@ -584,6 +614,7 @@ export function ProfilePage() {
       setSkillName('')
       setSkillCode(null)
       setSkillOptions([])
+      bumpRefresh()
       return { ok: true }
     } catch {
       const error = 'Could not connect. Please try again.'
@@ -628,10 +659,82 @@ export function ProfilePage() {
       }
 
       setSkills((current) => current.filter((skill) => skill.id !== id))
+      bumpRefresh()
     } catch {
       setSkillError('Could not connect. Please try again.')
     } finally {
       setSkillsBusy(false)
+    }
+  }
+
+  // Move one saved skill between upcoming, current and completed.
+  async function cycleSkillStatus(skill: Skill, status: SkillStatus) {
+    if (!profile) return
+
+    setSkillsBusy(true)
+    try {
+      const result = await updateSkillStatus(profile.code, skill.id, status)
+      if (result.ok) {
+        setSkills((current) =>
+          current.map((item) =>
+            item.id === skill.id ? { ...item, status } : item,
+          ),
+        )
+        bumpRefresh()
+      }
+    } catch {
+      // The control stays interactive so the change can be retried.
+    } finally {
+      setSkillsBusy(false)
+    }
+  }
+
+  // Save a catalogue occupation as the profile's current target role.
+  async function submitTargetRole(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setTargetRoleError('')
+    setTargetRoleMessage('')
+
+    if (!profile) {
+      setTargetRoleError('Save your profile before choosing a target role.')
+      return
+    }
+
+    if (!targetRoleCode) {
+      setTargetRoleError('Choose a target role from the suggestions.')
+      return
+    }
+
+    setTargetRoleBusy(true)
+    try {
+      const result = await requestTargetRole(
+        'PUT',
+        profile.code,
+        targetRoleCode,
+      )
+
+      if (!result.ok || !result.data.targetRole) {
+        setTargetRoleError(
+          result.ok
+            ? 'Could not save your target role.'
+            : (result.data.error ?? 'Could not save your target role.'),
+        )
+        return
+      }
+
+      // The official title returned by D1 replaces the search draft.
+      setTargetRole(result.data.targetRole)
+      setTargetRoleQuery(result.data.targetRole.title)
+      setTargetRoleCode(result.data.targetRole.code)
+      setTargetRoleOptions([])
+      setTargetRoleMessage('Target role saved.')
+      setScreen('app')
+      setAppPage('overview')
+      bumpRefresh()
+    } catch {
+      setTargetRoleError('Could not connect. Please try again.')
+    } finally {
+      setTargetRoleBusy(false)
     }
   }
 
@@ -650,15 +753,36 @@ export function ProfilePage() {
       setTargetRole(result.data.targetRole)
       setTargetRoleQuery(result.data.targetRole.title)
       setTargetRoleCode(result.data.targetRole.code)
-      setSuggestionsRefresh((current) => current + 1)
+      bumpRefresh()
     } catch {
       // The card stays interactive so the user can retry the choice.
     }
   }
 
+  // Deck reactions are stored server-side, then the ranking reloads.
+  async function reactToSuggestion(
+    suggestion: RoleSuggestion,
+    reaction: 'not_for_me' | 'curious' | 'interested',
+  ) {
+    if (!profile) return
+
+    const result = await sendRoleFeedback(
+      profile.code,
+      suggestion.code,
+      reaction,
+    )
+    if (!result.ok) return
+
+    const refreshed = await loadRoleSuggestions(profile.code)
+    if (refreshed.ok) {
+      setSuggestions(refreshed.data.suggestions)
+      setSuggestionHint(refreshed.data.hint ?? null)
+    }
+  }
+
   return (
     <>
-      {/* Keep navigation available without leaving the app. */}
+      {/* The header swaps navigation depending on which space the user is in. */}
       <header className="site-header" id="top">
         <button
           type="button"
@@ -673,53 +797,33 @@ export function ProfilePage() {
           <span className="brand-mark" aria-hidden="true">
             H
           </span>
-          HireWay
+          <span className="brand-word">
+            Hire<strong>Way</strong>
+          </span>
         </button>
 
-        {screen === 'home' ? (
-          <nav className="site-nav" aria-label="Main navigation">
-            <a href="#how-it-works">How it works</a>
-            <a href="#continue-profile">Continue profile</a>
-            <button type="button" onClick={startProfile} disabled={busy}>
-              Get started
-            </button>
-          </nav>
-        ) : (
-          <nav className="workspace-nav" aria-label="Profile navigation">
-            {profile && targetRole && screen !== 'dashboard' && (
-              <button type="button" onClick={() => setScreen('dashboard')}>
-                Dashboard
-              </button>
-            )}
-            {profile && screen !== 'wizard' && (
-              <button
-                type="button"
-                className="secondary"
-                onClick={() => {
-                  setStep(3)
-                  setScreen('wizard')
-                }}
-              >
-                Edit pathway
-              </button>
-            )}
+        {screen === 'home' && (
+          <nav className="header-nav" aria-label="Main navigation">
+            <span className="header-link active">Home</span>
             <button
               type="button"
-              className="secondary"
-              disabled={busy || skillsBusy || targetRoleBusy}
+              className="header-link"
               onClick={() => {
-                setScreen('home')
-                setMessage('')
-                setErrors({})
-                setSkillName('')
-                setSkillError('')
-                setTargetRoleError('')
-                setTargetRoleMessage('')
+                if (profile) {
+                  setScreen('app')
+                  setAppPage('overview')
+                } else {
+                  startProfile()
+                }
               }}
             >
-              Home
+              Profile
             </button>
           </nav>
+        )}
+
+        {screen === 'app' && profile && (
+          <AppNav page={appPage} onSelect={(page) => setAppPage(page)} />
         )}
       </header>
 
@@ -727,272 +831,67 @@ export function ProfilePage() {
         className={
           screen === 'home'
             ? 'landing-page'
-            : screen === 'dashboard'
-              ? 'dashboard-page'
-              : 'profile-page'
+            : screen === 'wizard'
+              ? 'wizard-page'
+              : 'app-page'
         }
       >
-        {' '}
-        {screen === 'home' ? (
-          <>
-            {/* The first screen explains the product before asking for details. */}
-            <section className="hero" aria-labelledby="hero-title">
-              <div className="hero-copy">
-                <p className="eyebrow">Career planning, made clearer</p>
-                <h1 id="hero-title">
-                  Turn what you know into a career path you can act on.
-                </h1>
-                <p className="hero-summary">
-                  HireWay brings your education and current skills together,
-                  then shows the Australian outlook behind the careers that suit
-                  you.
-                </p>
-
-                <div className="hero-actions">
-                  <SpecularButton
-                    size="lg"
-                    radius={9}
-                    tint="#ffffff"
-                    tintOpacity={0}
-                    textColor="#ffffff"
-                    lineColor="#ffffff"
-                    baseColor="#167451"
-                    intensity={1.4}
-                    shineSize={16}
-                    shineFade={26}
-                    thickness={2.2}
-                    speed={0.3}
-                    proximity={280}
-                    onClick={startProfile}
-                    disabled={busy}
-                  >
-                    Build my profile
-                  </SpecularButton>
-                  <a className="text-link" href="#how-it-works">
-                    See how it works
-                  </a>
-                </div>
-
-                <ul className="hero-points" aria-label="HireWay benefits">
-                  <li>No account required</li>
-                  <li>Private recovery code</li>
-                  <li>Data-informed direction</li>
-                </ul>
-              </div>
-
-              {/* This preview makes the pathway idea clear without fake results. */}
-              <div
-                className="pathway-preview"
-                aria-label="Career pathway preview"
-              >
-                <div className="preview-heading">
-                  <div>
-                    <span className="preview-kicker">Your pathway</span>
-                    <strong>Data Analyst</strong>
-                  </div>
-                  <span className="preview-status">Building</span>
-                </div>
-
-                <div className="preview-progress" aria-hidden="true">
-                  <span />
-                </div>
-
-                <div className="preview-grid">
-                  <article>
-                    <span>Background</span>
-                    <strong>Data Science</strong>
-                    <small>Profile saved</small>
-                  </article>
-                  <article>
-                    <span>Current skills</span>
-                    <strong>4 added</strong>
-                    <small>Ready to compare</small>
-                  </article>
-                </div>
-
-                <div className="preview-skills">
-                  <span>Python</span>
-                  <span>SQL</span>
-                  <span>Statistics</span>
-                  <span className="skill-gap">+ Skill gaps</span>
-                </div>
-              </div>
-            </section>
-
-            {/* Three short steps show what the user will do in HireWay. */}
-            <section
-              className="how-it-works"
-              id="how-it-works"
-              aria-labelledby="steps-title"
-            >
-              <div className="section-heading">
-                <p className="eyebrow">How it works</p>
-                <h2 id="steps-title">A clearer direction in three steps</h2>
-                <p>
-                  Start with what you already know. HireWay keeps the process
-                  simple and gives each detail a purpose.
-                </p>
-              </div>
-
-              <div className="steps-grid">
-                <article className="step-card">
-                  <span>01</span>
-                  <h3>Share your background</h3>
-                  <p>
-                    Add your education and current role to set a starting point.
-                  </p>
-                </article>
-                <article className="step-card">
-                  <span>02</span>
-                  <h3>Map your skills</h3>
-                  <p>
-                    Record the tools and strengths you can already bring to
-                    work.
-                  </p>
-                </article>
-                <article className="step-card">
-                  <span>03</span>
-                  <h3>Choose a direction</h3>
-                  <p>Pick a target role and see the demand behind it.</p>
-                </article>
-              </div>
-            </section>
-
-            {/* New and returning visitors can act from the same section. */}
-            <section
-              className="profile-entry"
-              id="continue-profile"
-              aria-labelledby="entry-title"
-            >
-              <div className="entry-copy">
-                <p className="eyebrow">Ready when you are</p>
-                <h2 id="entry-title">
-                  Start fresh or pick up where you left off.
-                </h2>
-                <p>
-                  Your recovery code is all you need to return. Keep it private,
-                  because it gives access to your saved profile.
-                </p>
-                <button type="button" onClick={startProfile} disabled={busy}>
-                  Create a new profile
-                </button>
-              </div>
-
-              <form className="recovery-card" onSubmit={loadProfile} noValidate>
-                <h3>Continue your profile</h3>
-                <p>Enter the recovery code you saved earlier.</p>
-
-                {/* Announce a loading error beside the field that needs attention. */}
-                {message && (
-                  <p
-                    className={failed ? 'notice error' : 'notice success'}
-                    role={failed ? 'alert' : 'status'}
-                  >
-                    {message}
-                  </p>
-                )}
-
-                <label htmlFor="recovery-code">Recovery code</label>
-                <input
-                  id="recovery-code"
-                  value={recoveryCode}
-                  onChange={(event) => {
-                    setRecoveryCode(event.target.value)
-                    setMessage('')
-                    setFailed(false)
-                  }}
-                  autoComplete="off"
-                  spellCheck={false}
-                  disabled={busy}
-                />
-                <button type="submit" disabled={busy}>
-                  {busy ? 'Loading...' : 'Load profile'}
-                </button>
-              </form>
-            </section>
-
-            {/* Keep the data promise broad while the recommendation model grows. */}
-            <section className="data-callout">
-              <span aria-hidden="true">HW</span>
-              <div>
-                <p className="eyebrow">Built for better career decisions</p>
-                <h2>One profile, shaped into a practical pathway.</h2>
-                <p>
-                  HireWay is designed to connect personal experience with
-                  occupation, skills and labour market data in one clear view.
-                </p>
-              </div>
-            </section>
-
-            <footer className="landing-footer">
-              <strong>HireWay</strong>
-              <span>Find your direction. Build your next step.</span>
-            </footer>
-          </>
-        ) : screen === 'dashboard' && profile ? (
-          <CareerDashboard
-            profile={profile}
-            skills={skills}
-            targetRole={targetRole}
-            suggestionsRefresh={suggestionsRefresh}
-            onEditProfile={() => {
-              setStep(3)
-              setScreen('wizard')
+        {screen === 'home' && (
+          <LandingScreen
+            recoveryCode={recoveryCode}
+            busy={busy}
+            message={message}
+            failed={failed}
+            hasProfile={Boolean(profile)}
+            onCodeChange={(value) => {
+              setRecoveryCode(value)
+              setMessage('')
+              setFailed(false)
             }}
-            onAddSkill={saveSkill}
-            onChooseRole={chooseSuggestedRole}
+            onContinue={loadProfile}
+            onStart={startProfile}
+            onOpenProfile={() => {
+              setScreen('app')
+              setAppPage('overview')
+            }}
           />
-        ) : (
+        )}
+
+        {screen === 'wizard' && (
           <>
-            {/* The stepper doubles as a progress bar and a way to go back. */}
+            {/* The numbered dots mirror the mock: three plain steps. */}
             <Stepper
               items={[
                 { id: 1, label: 'Background', unlocked: true },
                 { id: 2, label: 'Skills', unlocked: Boolean(profile) },
-                { id: 3, label: 'Direction', unlocked: Boolean(profile) },
-                // The dashboard greets unfinished profiles with next steps.
-                { id: 4, label: 'Dashboard', unlocked: Boolean(profile) },
+                { id: 3, label: 'Target role', unlocked: Boolean(profile) },
               ]}
               currentId={step}
               onSelect={(id) => {
-                if (id === 4) {
-                  setScreen('dashboard')
-                } else {
-                  setStep(id as 1 | 2 | 3)
-                  setScreen('wizard')
-                }
+                if (id === 1 || (profile && id <= 3)) setStep(id as 1 | 2 | 3)
               }}
             />
 
             {/* A profile is required from step 2 on; anything else falls back. */}
             {(step === 1 || !profile) && (
-              <>
-                <h1>Your background</h1>
-                <p className="intro">
-                  Tell us about your education and current role.
+              <div className="wizard-shell">
+                <h1>Tell us about your background</h1>
+                <p className="wizard-sub">
+                  This helps us personalize your roadmap.
                 </p>
 
-                {/* Announce the result without replacing the user's input. */}
-                {message && (
-                  <p
-                    className={failed ? 'notice error' : 'notice success'}
-                    role={failed ? 'alert' : 'status'}
-                  >
-                    {message}
-                  </p>
-                )}
+                <div className="wizard-card">
+                  {message && (
+                    <p
+                      className={failed ? 'notice error' : 'notice success'}
+                      role={failed ? 'alert' : 'status'}
+                    >
+                      {message}
+                    </p>
+                  )}
 
-                <div className="profile-stack">
-                  <form
-                    className="card profile-card"
-                    onSubmit={saveProfile}
-                    noValidate
-                  >
-                    {/* Disable the fields while a save is running. */}
-                    <fieldset disabled={busy}>
-                      <legend>Background details</legend>
-                      <p>Fields marked * are required.</p>
-
+                  <form onSubmit={saveProfile} noValidate>
+                    <fieldset disabled={busy} className="plain-fieldset">
                       <label htmlFor="qualification">
                         What did you study? *
                       </label>
@@ -1047,7 +946,6 @@ export function ProfilePage() {
                       <p className="field-help" id="qualification-help">
                         Pick your exact course if it appears - otherwise pick
                         the closest field, like Accounting or Data Science.
-                        Courses come from the Australian CRICOS register.
                       </p>
                       {errors.qualification && (
                         <p
@@ -1112,428 +1010,475 @@ export function ProfilePage() {
                           errors.currentRole ? 'role-error' : undefined
                         }
                       />
-                      {errors.currentRole && (
-                        <p id="role-error" className="field-error" role="alert">
-                          {errors.currentRole}
-                        </p>
-                      )}
 
-                      <button type="submit">
-                        {busy ? 'Saving...' : 'Save and continue'}
+                      <button type="submit" className="btn block">
+                        {busy ? 'Saving...' : 'Continue'}
                       </button>
                     </fieldset>
+                  </form>
 
-                    {/* Keep the code visible so the user can copy it. */}
-                    {profile && (
-                      <section className="recovery-note">
-                        <label htmlFor="saved-code">Your recovery code</label>
-                        <div className="recovery-code-row">
-                          <input
-                            id="saved-code"
-                            value={profile.code}
-                            readOnly
-                            onFocus={(event) => event.currentTarget.select()}
-                            aria-describedby="code-help"
-                          />
+                  {/* Keep the code visible so the user can copy it. */}
+                  {profile && (
+                    <section className="recovery-note">
+                      <label htmlFor="saved-code">Your recovery code</label>
+                      <div className="recovery-code-row">
+                        <input
+                          id="saved-code"
+                          value={profile.code}
+                          readOnly
+                          onFocus={(event) => event.currentTarget.select()}
+                          aria-describedby="code-help"
+                        />
 
-                          <button
-                            type="button"
-                            className={`copy-code-button ${copied ? 'copied' : ''}`}
-                            onClick={copyRecoveryCode}
-                            aria-label={
-                              copied
-                                ? 'Recovery code copied'
-                                : 'Copy recovery code'
-                            }
-                          >
-                            <MorphIcon
-                              icon={copied ? Check : Copy}
-                              size={19}
-                              strokeWidth={2}
-                              spring="snappy"
-                              reducedMotion="user"
-                            />
-                          </button>
-                        </div>
-                        <p id="code-help">
-                          Keep this code private. Anyone with it can view and
-                          edit your profile. Use it to return after closing or
-                          refreshing the page. This browser remembers it for
-                          you.
-                        </p>
                         <button
                           type="button"
-                          className="secondary forget-login-button"
-                          onClick={() => {
-                            forgetSavedLogin()
-                            setRecoveryCode('')
-                            setMessage('This browser forgot your saved code.')
-                          }}
+                          className={`copy-code-button ${copied ? 'copied' : ''}`}
+                          onClick={copyRecoveryCode}
+                          aria-label={
+                            copied
+                              ? 'Recovery code copied'
+                              : 'Copy recovery code'
+                          }
                         >
-                          Forget the code on this device
+                          <MorphIcon
+                            icon={copied ? Check : Copy}
+                            size={19}
+                            strokeWidth={2}
+                            spring="snappy"
+                            reducedMotion="user"
+                          />
                         </button>
-                      </section>
-                    )}
-                  </form>
+                      </div>
+                      <p id="code-help">
+                        Keep this code private. Anyone with it can view and edit
+                        your profile. This browser remembers it for you.
+                      </p>
+                      <button
+                        type="button"
+                        className="forget-login-button"
+                        onClick={() => {
+                          forgetSavedLogin()
+                          setRecoveryCode('')
+                          setMessage('This browser forgot your saved code.')
+                        }}
+                      >
+                        Forget the code on this device
+                      </button>
+                    </section>
+                  )}
                 </div>
-              </>
+              </div>
             )}
 
             {/* Step 2 collects the skills the catalogue can match against. */}
             {step === 2 && profile && (
-              <>
-                <h1>Your skills</h1>
-                <p className="intro">
+              <div className="wizard-shell">
+                <h1>Map your skills</h1>
+                <p className="wizard-sub">
                   Add what you can already do so roles can be matched to you.
                 </p>
 
-                <div className="profile-stack">
-                  {/* Skills are linked to the profile created by the first form. */}
-                  {profile && (
-                    <section className="card profile-card skills-card">
-                      <h2>Current skills</h2>
-                      <p>Add the skills and tools you already use.</p>
+                <div className="wizard-card">
+                  {(details.qualificationCode ||
+                    details.degreeCode ||
+                    details.majorCode ||
+                    targetRole) && (
+                    <div className="skill-recommendations">
+                      <div>
+                        <strong>
+                          Suggested from{' '}
+                          {(details.qualificationCode ||
+                            details.degreeCode ||
+                            details.majorCode) &&
+                          targetRole
+                            ? 'your study and target role'
+                            : details.qualificationCode ||
+                                details.degreeCode ||
+                                details.majorCode
+                              ? 'your study'
+                              : 'your target role'}
+                        </strong>
+                        <span>
+                          Add only the skills you already have. Suggestions use
+                          existing O*NET knowledge and tool names.
+                        </span>
+                      </div>
 
-                      {/* Only the saved study selection supplies these suggestions. */}
-                      {(details.degreeCode || details.majorCode) && (
-                        <div className="skill-recommendations">
-                          <div>
-                            <strong>Suggested from your study</strong>
-                            <span>
-                              Optional knowledge, skills and tools linked
-                              through related occupations. These use US O*NET
-                              data and project-maintained subject mappings; add
-                              only what you already know or use.
-                            </span>
-                          </div>
-
-                          {recommendationsBusy ? (
-                            <p>Loading suggestions...</p>
-                          ) : recommendationsError ? (
-                            <p role="alert">{recommendationsError}</p>
-                          ) : suggestedSkills.length > 0 ? (
-                            <div className="suggestion-chips">
-                              {suggestedSkills.map((suggestion) => (
-                                <button
-                                  type="button"
-                                  className="skill-suggestion"
-                                  key={suggestion.code}
-                                  disabled={skillsBusy}
-                                  onClick={() => addSuggestedSkill(suggestion)}
-                                  title={
-                                    suggestion.kind === 'tool'
-                                      ? 'Tool or technology'
-                                      : suggestion.kind === 'knowledge'
-                                        ? 'Subject knowledge'
-                                        : 'Transferable skill'
-                                  }
-                                >
-                                  + {suggestion.label}
-                                </button>
-                              ))}
-                            </div>
-                          ) : (
-                            <p>
-                              {recommendations.length > 0
-                                ? 'You have added all the suggested skills. You can search for more below.'
-                                : 'No recommended skills are available for your study yet. You can search and add skills below.'}
-                            </p>
-                          )}
-                        </div>
-                      )}
-
-                      <form onSubmit={submitSkill} noValidate>
-                        <label htmlFor="skill-name">Skill or tool</label>
-                        <div className="skill-entry">
-                          <div className="autocomplete">
-                            <input
-                              id="skill-name"
-                              value={skillName}
-                              onChange={(event) => {
-                                setSkillName(event.target.value)
-                                setSkillCode(null)
-                                setSkillOptions([])
-                                setSkillError('')
-                              }}
-                              placeholder="Start typing, for example Python"
-                              autoComplete="off"
-                              maxLength={80}
+                      {recommendationsBusy ? (
+                        <p>Loading suggestions...</p>
+                      ) : suggestedSkills.length > 0 ? (
+                        <div className="suggestion-chips">
+                          {suggestedSkills.map((suggestion) => (
+                            <button
+                              type="button"
+                              className="skill-suggestion"
+                              key={suggestion.code}
                               disabled={skillsBusy}
-                              aria-invalid={Boolean(skillError)}
-                              aria-describedby={
-                                skillError ? 'skill-error' : 'skill-help'
-                              }
-                              aria-expanded={skillOptions.length > 0}
-                              aria-controls="skill-suggestions"
-                            />
-
-                            {/* A selected option keeps its standard code when saved. */}
-                            {skillOptions.length > 0 && (
-                              <ul
-                                className="autocomplete-menu"
-                                id="skill-suggestions"
-                              >
-                                {skillOptions.map((option) => (
-                                  <li key={option.code}>
-                                    <button
-                                      type="button"
-                                      onClick={() => {
-                                        setSkillName(option.label)
-                                        setSkillCode(option.code)
-                                        setSkillOptions([])
-                                        setSkillError('')
-                                      }}
-                                    >
-                                      <strong>{option.label}</strong>
-                                      <small>
-                                        {option.kind === 'tool'
-                                          ? 'Tool or technology'
-                                          : option.kind === 'knowledge'
-                                            ? 'Subject knowledge'
-                                            : 'Transferable skill'}
-                                      </small>
-                                    </button>
-                                  </li>
-                                ))}
-                              </ul>
-                            )}
-                          </div>
-                          <button
-                            type="submit"
-                            disabled={skillsBusy || !skillCode}
-                          >
-                            {skillsBusy ? 'Working...' : 'Add skill'}
-                          </button>
+                              onClick={() => addSuggestedSkill(suggestion)}
+                            >
+                              + {suggestion.label}
+                            </button>
+                          ))}
                         </div>
-
-                        <p id="skill-help">
-                          Pick a suggestion so every skill can be compared with
-                          real occupation data.
-                        </p>
-
-                        {skillError && (
-                          <p
-                            id="skill-error"
-                            className="field-error"
-                            role="alert"
-                          >
-                            {skillError}
-                          </p>
-                        )}
-                      </form>
-
-                      {/* Keep an empty message until the first skill is added. */}
-                      {skills.length === 0 ? (
-                        <p className="empty-skills">No skills added yet.</p>
                       ) : (
-                        <ul className="skills-list">
-                          {skills.map((skill) => (
-                            <li key={skill.id}>
-                              <span>{skill.name}</span>
+                        <p>
+                          No new suggestions are available for this selection.
+                        </p>
+                      )}
+                    </div>
+                  )}
+
+                  <form onSubmit={submitSkill} noValidate>
+                    <label htmlFor="skill-name">Skill or tool</label>
+                    <div className="autocomplete">
+                      <input
+                        id="skill-name"
+                        value={skillName}
+                        onChange={(event) => {
+                          setSkillName(event.target.value)
+                          setSkillCode(null)
+                          setSkillOptions([])
+                          setSkillError('')
+                        }}
+                        placeholder="Start typing, for example Python"
+                        autoComplete="off"
+                        maxLength={80}
+                        disabled={skillsBusy}
+                        aria-invalid={Boolean(skillError)}
+                        aria-describedby={
+                          skillError ? 'skill-error' : 'skill-help'
+                        }
+                        aria-expanded={skillOptions.length > 0}
+                        aria-controls="skill-suggestions"
+                      />
+
+                      {/* A selected option keeps its standard code when saved. */}
+                      {skillOptions.length > 0 && (
+                        <ul
+                          className="autocomplete-menu"
+                          id="skill-suggestions"
+                        >
+                          {skillOptions.map((option) => (
+                            <li key={option.code}>
                               <button
                                 type="button"
-                                className="secondary"
-                                disabled={skillsBusy}
-                                onClick={() => deleteSkill(skill.id)}
-                                aria-label={`Remove ${skill.name}`}
+                                onClick={() => {
+                                  setSkillName(option.label)
+                                  setSkillCode(option.code)
+                                  setSkillOptions([])
+                                  setSkillError('')
+                                }}
                               >
-                                Remove
+                                <strong>{option.label}</strong>
+                                <small>
+                                  {option.kind === 'tool'
+                                    ? 'Tool or technology'
+                                    : option.kind === 'knowledge'
+                                      ? 'Knowledge area'
+                                      : 'Transferable skill'}
+                                </small>
                               </button>
                             </li>
                           ))}
                         </ul>
                       )}
-                    </section>
+                    </div>
+                    <div className="skill-entry">
+                      <button
+                        type="submit"
+                        className="btn block"
+                        disabled={skillsBusy || !skillCode}
+                      >
+                        {skillsBusy ? 'Working...' : 'Add skill'}
+                      </button>
+                    </div>
+
+                    <p id="skill-help">
+                      Pick a suggestion so every skill can be compared with real
+                      occupation data.
+                    </p>
+                    {skillError && (
+                      <p id="skill-error" className="field-error" role="alert">
+                        {skillError}
+                      </p>
+                    )}
+                  </form>
+
+                  {skills.length === 0 ? (
+                    <p className="empty-note">
+                      No skills added yet. You can move ahead and add them
+                      later.
+                    </p>
+                  ) : (
+                    <div className="chips-list">
+                      {skills.map((skill) => (
+                        <span className="chip" key={skill.id}>
+                          {skill.name}
+                          <button
+                            type="button"
+                            disabled={skillsBusy}
+                            onClick={() => deleteSkill(skill.id)}
+                            aria-label={`Remove ${skill.name}`}
+                          >
+                            ×
+                          </button>
+                        </span>
+                      ))}
+                    </div>
                   )}
 
-                  {/* Step navigation keeps progress obvious between cards. */}
                   <div className="wizard-nav">
                     <button
                       type="button"
-                      className="secondary"
+                      className="btn ghost"
                       onClick={() => setStep(1)}
                     >
                       Back
                     </button>
-                    <button type="button" onClick={() => setStep(3)}>
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={() => setStep(3)}
+                    >
                       Continue
                     </button>
                   </div>
                 </div>
-              </>
+              </div>
             )}
 
             {/* Step 3 turns the profile into a concrete target role. */}
             {step === 3 && profile && (
-              <>
-                <h1>Your target role</h1>
-                <p className="intro">
+              <div className="wizard-shell">
+                <h1>Choose your target role</h1>
+                <p className="wizard-sub">
                   Search Australian occupations and pick one direction to plan
                   towards.
                 </p>
 
-                <div className="profile-stack">
-                  {/* A target role is a specific occupation from the OSCA catalogue. */}
-                  {profile && (
-                    <form
-                      className="card profile-card target-role-card"
-                      onSubmit={submitTargetRole}
-                      noValidate
+                <div className="wizard-card">
+                  <form onSubmit={submitTargetRole} noValidate>
+                    <fieldset
+                      disabled={busy || targetRoleBusy}
+                      className="plain-fieldset"
                     >
-                      <fieldset disabled={busy || targetRoleBusy}>
-                        <legend>Target role</legend>
-                        <p>
-                          Search Australian occupations and choose one
-                          direction.
-                        </p>
+                      <label htmlFor="target-role">Occupation *</label>
+                      <div className="autocomplete">
+                        <input
+                          id="target-role"
+                          value={targetRoleQuery}
+                          onChange={(event) => {
+                            setTargetRoleQuery(event.target.value)
+                            setTargetRoleCode(null)
+                            setTargetRoleOptions([])
+                            setTargetRoleError('')
+                            setTargetRoleMessage('')
+                          }}
+                          placeholder="Start typing, for example Data Analyst"
+                          autoComplete="off"
+                          maxLength={120}
+                          required
+                          aria-invalid={Boolean(targetRoleError)}
+                          aria-describedby={
+                            targetRoleError
+                              ? 'target-role-help target-role-error'
+                              : 'target-role-help'
+                          }
+                          aria-expanded={targetRoleOptions.length > 0}
+                          aria-controls="target-role-suggestions"
+                        />
 
-                        <label htmlFor="target-role">Occupation *</label>
-                        <div className="autocomplete">
-                          <input
-                            id="target-role"
-                            value={targetRoleQuery}
-                            onChange={(event) => {
-                              setTargetRoleQuery(event.target.value)
-                              setTargetRoleCode(null)
-                              setTargetRoleOptions([])
-                              setTargetRoleError('')
-                              setTargetRoleMessage('')
-                            }}
-                            placeholder="Start typing, for example Data Analyst"
-                            autoComplete="off"
-                            maxLength={120}
-                            required
-                            aria-invalid={Boolean(targetRoleError)}
-                            aria-describedby={
-                              targetRoleError
-                                ? 'target-role-help target-role-error'
-                                : 'target-role-help'
-                            }
-                            aria-expanded={targetRoleOptions.length > 0}
-                            aria-controls="target-role-suggestions"
-                          />
-
-                          {/* Alias matches still save the official OSCA occupation. */}
-                          {targetRoleOptions.length > 0 && (
-                            <ul
-                              className="autocomplete-menu"
-                              id="target-role-suggestions"
-                            >
-                              {targetRoleOptions.map((option) => (
-                                <li key={option.code}>
-                                  <button
-                                    type="button"
-                                    onClick={() => {
-                                      setTargetRoleQuery(option.label)
-                                      setTargetRoleCode(option.code)
-                                      setTargetRoleOptions([])
-                                      setTargetRoleError('')
-                                      setTargetRoleMessage('')
-                                    }}
-                                  >
-                                    <span className="occupation-option-heading">
-                                      <strong>{option.label}</strong>
-                                      {/* Projections make the search data driven. */}
-                                      {option.growth5yPercent != null && (
-                                        <span
-                                          className={`growth-badge ${
-                                            option.growth5yPercent >= 2
-                                              ? 'positive'
-                                              : ''
-                                          }`}
-                                        >
-                                          {option.growth5yPercent > 0
-                                            ? '▲'
-                                            : '▼'}{' '}
-                                          {Math.abs(
-                                            Math.round(
-                                              option.growth5yPercent * 10,
-                                            ) / 10,
-                                          )}
-                                          % in 5 yrs
-                                        </span>
-                                      )}
-                                    </span>
-                                    {option.description && (
-                                      <small>{option.description}</small>
-                                    )}
-                                  </button>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </div>
-
-                        <p id="target-role-help">
-                          Choose a suggestion before saving. A new choice
-                          replaces the current target role.
-                        </p>
-
-                        {targetRoleError && (
-                          <p
-                            id="target-role-error"
-                            className="field-error"
-                            role="alert"
+                        {/* Alias matches still save the official OSCA occupation. */}
+                        {targetRoleOptions.length > 0 && (
+                          <ul
+                            className="autocomplete-menu"
+                            id="target-role-suggestions"
                           >
-                            {targetRoleError}
-                          </p>
+                            {targetRoleOptions.map((option) => (
+                              <li key={option.code}>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setTargetRoleQuery(option.label)
+                                    setTargetRoleCode(option.code)
+                                    setTargetRoleOptions([])
+                                    setTargetRoleError('')
+                                    setTargetRoleMessage('')
+                                  }}
+                                >
+                                  <span className="study-option-heading">
+                                    <strong>{option.label}</strong>
+                                    {option.growth5yPercent != null && (
+                                      <span
+                                        className={`growth-badge ${
+                                          option.growth5yPercent >= 2
+                                            ? 'positive'
+                                            : ''
+                                        }`}
+                                      >
+                                        {option.growth5yPercent > 0 ? '▲' : '▼'}{' '}
+                                        {Math.abs(
+                                          Math.round(
+                                            option.growth5yPercent * 10,
+                                          ) / 10,
+                                        )}
+                                        % in 5 yrs
+                                      </span>
+                                    )}
+                                  </span>
+                                  {option.description && (
+                                    <small>{option.description}</small>
+                                  )}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
                         )}
+                      </div>
 
-                        <button type="submit">
-                          {targetRoleBusy ? 'Saving...' : 'Save target role'}
-                        </button>
-                      </fieldset>
-
-                      {targetRole && (
-                        <p className="selected-target-role">
-                          Current target: <strong>{targetRole.title}</strong>
-                        </p>
-                      )}
-
-                      {targetRoleMessage && (
-                        <p className="notice success" role="status">
-                          {targetRoleMessage}
-                        </p>
-                      )}
-                    </form>
-                  )}
-
-                  {/* Keep the open-data sources visible beside the suggestions. */}
-                  {profile && (
-                    <aside className="data-source-note">
-                      <strong>Suggestion data</strong>
-                      <p>
-                        Courses use Australian Government CRICOS data. Fields of
-                        study use ABS ASCED 2001. Target roles use ABS OSCA
-                        2024. Skills and tools use the O*NET 31.0 Database by
-                        USDOL/ETA under CC BY 4.0. O*NET® is a trademark of
-                        USDOL/ETA.
+                      <p id="target-role-help">
+                        Choose a suggestion before saving. A new choice replaces
+                        the current target role.
                       </p>
-                    </aside>
+
+                      {targetRoleError && (
+                        <p
+                          id="target-role-error"
+                          className="field-error"
+                          role="alert"
+                        >
+                          {targetRoleError}
+                        </p>
+                      )}
+
+                      <button type="submit" className="btn block">
+                        {targetRoleBusy ? 'Saving...' : 'Save target role'}
+                      </button>
+                    </fieldset>
+                  </form>
+
+                  {targetRole && (
+                    <p className="selected-target-role">
+                      Current target: <strong>{targetRole.title}</strong>
+                    </p>
                   )}
 
-                  {/* The dashboard works with or without a saved target role. */}
+                  {targetRoleMessage && (
+                    <p className="notice success" role="status">
+                      {targetRoleMessage}
+                    </p>
+                  )}
+
                   <div className="wizard-nav">
                     <button
                       type="button"
-                      className="secondary"
+                      className="btn ghost"
                       onClick={() => setStep(2)}
                     >
                       Back
                     </button>
                     <button
                       type="button"
-                      onClick={() => setScreen('dashboard')}
+                      className="btn"
+                      onClick={() => {
+                        setScreen('app')
+                        setAppPage('overview')
+                      }}
                     >
-                      Go to dashboard
+                      Go to overview
                     </button>
                   </div>
                 </div>
-              </>
+              </div>
+            )}
+          </>
+        )}
+
+        {screen === 'app' && profile && (
+          <>
+            {appPage === 'overview' && (
+              <OverviewPage
+                profile={profile}
+                skills={skills}
+                targetRole={targetRole}
+                suggestions={suggestions}
+                requirements={requirements}
+                busy={skillsBusy || targetRoleBusy}
+                onEditTargetRole={() => {
+                  setStep(3)
+                  setScreen('wizard')
+                }}
+                onPlan={chooseSuggestedRole}
+                onGoMatches={() => setAppPage('matches')}
+                onGoWizard={() => {
+                  setStep(1)
+                  setScreen('wizard')
+                }}
+              />
+            )}
+
+            {appPage === 'matches' && (
+              <MatchesPage
+                suggestions={suggestions}
+                targetRole={targetRole}
+                hint={suggestionHint}
+                busy={skillsBusy || targetRoleBusy}
+                onPlan={chooseSuggestedRole}
+                onReact={reactToSuggestion}
+              />
+            )}
+
+            {appPage === 'analysis' && (
+              <AnalysisPage
+                skills={skills}
+                targetRole={targetRole}
+                suggestions={suggestions}
+                requirements={requirements}
+                busy={skillsBusy}
+                onAddUpcomingSkill={(skill: RoleSkill) => {
+                  void saveSkill(skill.name, skill.code, 'upcoming')
+                }}
+                onSkillStatus={(skill: Skill, status: SkillStatus) => {
+                  void cycleSkillStatus(skill, status)
+                }}
+                onGoMatches={() => setAppPage('matches')}
+                onEditTargetRole={() => {
+                  setStep(3)
+                  setScreen('wizard')
+                }}
+              />
+            )}
+
+            {appPage === 'role' && (
+              <RoleDetailsPage
+                targetRole={targetRole}
+                skills={skills}
+                requirements={requirements}
+                busy={skillsBusy}
+                onAddSkill={saveSkill}
+                onGoPathways={() => setAppPage('pathways')}
+              />
+            )}
+
+            {appPage === 'pathways' && (
+              <PathwaysPage
+                targetRole={targetRole}
+                requirements={requirements}
+                skills={skills}
+                onGoRole={() => setAppPage('role')}
+              />
             )}
           </>
         )}
       </main>
+
+      <footer className="app-footer">
+        <span className="footer-brand">
+          Hire<strong>Way</strong>
+        </span>
+        <span>Your career journey, our priority.</span>
+        <span className="footer-note">Your data is secure and private.</span>
+      </footer>
     </>
   )
 }
