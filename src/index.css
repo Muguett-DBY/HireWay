@@ -108,6 +108,9 @@ h3 {
 }
 
 .header-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 40px;
   padding: 0 2px;
   border: 0;
@@ -115,6 +118,7 @@ h3 {
   background: transparent;
   color: var(--ink);
   font-weight: 650;
+  line-height: 1;
   cursor: pointer;
 }
 
@@ -1578,6 +1582,7 @@ h3 {
 .education-select-trigger > svg {
   width: 16px;
   height: 16px;
+  flex: 0 0 16px;
 }
 
 .education-select-menu {
@@ -1588,6 +1593,8 @@ h3 {
   right: 0;
   margin: 0;
   padding: 6px;
+  max-height: min(336px, 50vh);
+  overflow-y: auto;
   list-style: none;
   border: 1px solid var(--line);
   border-radius: 12px;
@@ -1596,6 +1603,10 @@ h3 {
 }
 
 .education-select-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
   width: 100%;
   min-height: 42px;
   padding: 8px 12px;
@@ -1607,8 +1618,20 @@ h3 {
   cursor: pointer;
 }
 
-.education-select-option:hover {
+.education-select-option:hover,
+.education-select-option.active {
   background: var(--green-soft);
+}
+
+.education-select-option.selected {
+  color: var(--green-dark);
+  font-weight: 700;
+}
+
+.education-select-option svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
 }
 
 @media (max-width: 900px) {

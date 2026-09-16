@@ -804,7 +804,18 @@ export function ProfilePage() {
 
         {screen === 'home' && (
           <nav className="header-nav" aria-label="Main navigation">
-            <span className="header-link active">Home</span>
+            <button
+              type="button"
+              className="header-link active"
+              aria-current="page"
+              onClick={() => {
+                setScreen('home')
+                setMessage('')
+                setFailed(false)
+              }}
+            >
+              Home
+            </button>
             <button
               type="button"
               className="header-link"
