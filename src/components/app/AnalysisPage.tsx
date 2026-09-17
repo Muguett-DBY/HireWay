@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import gsap from 'gsap'
 import { Trash2 } from 'lucide'
 import { MorphIcon } from 'morphicons/react'
 import type {
@@ -118,6 +119,7 @@ export function AnalysisPage({
   const [removingSkillId, setRemovingSkillId] = useState<number | null>(null)
   const [removeError, setRemoveError] = useState('')
   const removeDialogRef = useRef<HTMLDialogElement>(null)
+  const skillListRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const dialog = removeDialogRef.current
@@ -129,6 +131,29 @@ export function AnalysisPage({
       dialog.close()
     }
   }, [pendingRemoval])
+
+  useEffect(() => {
+    const list = skillListRef.current
+    if (!list) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const context = gsap.context(() => {
+      gsap.fromTo(
+        list.querySelectorAll('.progress-row'),
+        { autoAlpha: 0, y: 6 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.24,
+          stagger: 0.025,
+          ease: 'power2.out',
+          clearProps: 'transform,opacity,visibility',
+        },
+      )
+    }, list)
+
+    return () => context.revert()
+  }, [skills.length])
 
   async function confirmRemoval() {
     if (!pendingRemoval) return
@@ -203,7 +228,7 @@ export function AnalysisPage({
         </p>
       ) : (
         <>
-          <div className="analysis-grid">
+          <div className="page-section analysis-grid">
             <article className="panel donut-panel">
               <p className="panel-title">Overall readiness</p>
               <svg
@@ -235,44 +260,50 @@ export function AnalysisPage({
               </p>
             </article>
 
-            <article className="panel">
+            <article className="panel category-panel">
               <p className="panel-title">Readiness by category</p>
-              {analysis.rows.map((row) => (
-                <div className="cat-row" key={row.key}>
-                  <span className="cat-name">{row.title}</span>
-                  <span className="cat-bar">
-                    <span style={{ width: `${row.percent}%` }} />
-                  </span>
-                  <small>
-                    {row.matched + row.improve}/{row.total}
-                  </small>
-                </div>
-              ))}
+              <div className="category-rows">
+                {analysis.rows.map((row) => (
+                  <div className="cat-row" key={row.key}>
+                    <span className="cat-name">{row.title}</span>
+                    <span className="cat-bar">
+                      <span style={{ width: `${row.percent}%` }} />
+                    </span>
+                    <small>
+                      {row.matched + row.improve}/{row.total}
+                    </small>
+                  </div>
+                ))}
+              </div>
               <p className="panel-caption">
                 A skill counts as covered when your profile lists it, or a skill
                 from the same O*NET family.
               </p>
             </article>
-          </div>
 
-          {targetSuggestion && (
-            <div className="factor-panel">
-              <p className="panel-title">Why the engine ranks this role</p>
-              <div className="factor-legend wide">
-                <span>Skills {targetSuggestion.factors.skill}</span>
-                <span>Growth {targetSuggestion.factors.growth}</span>
-                <span>Education {targetSuggestion.factors.education}</span>
-              </div>
-              <ul className="why-list">
-                {targetSuggestion.reasons.map((reason) => (
-                  <li key={reason}>{reason}</li>
-                ))}
-              </ul>
-              <button type="button" className="link-btn" onClick={onGoMatches}>
-                Compare with other matches →
-              </button>
-            </div>
-          )}
+            {targetSuggestion && (
+              <article className="factor-panel">
+                <p className="panel-title">Why the engine ranks this role</p>
+                <div className="factor-legend wide">
+                  <span>Skills {targetSuggestion.factors.skill}</span>
+                  <span>Growth {targetSuggestion.factors.growth}</span>
+                  <span>Education {targetSuggestion.factors.education}</span>
+                </div>
+                <ul className="why-list">
+                  {targetSuggestion.reasons.map((reason) => (
+                    <li key={reason}>{reason}</li>
+                  ))}
+                </ul>
+                <button
+                  type="button"
+                  className="link-btn"
+                  onClick={onGoMatches}
+                >
+                  Compare with other matches →
+                </button>
+              </article>
+            )}
+          </div>
 
           {/* Skill gaps sorted into matched, improve and missing buckets. */}
           <section className="page-section">
@@ -330,7 +361,9 @@ export function AnalysisPage({
             <div className="section-row">
               <h2>My skills</h2>
               <span className="section-tag">
-                Tap a status to move a skill along
+                {skills.length > 4
+                  ? `Showing 4 of ${skills.length} · scroll for ${skills.length - 4} more`
+                  : 'Tap a status to move a skill along'}
               </span>
             </div>
             {skills.length === 0 ? (
@@ -338,63 +371,79 @@ export function AnalysisPage({
                 Nothing tracked yet. Planned skills land here as Upcoming.
               </p>
             ) : (
-              <div className="progress-list">
-                {skills.map((skill) => {
-                  const removing = removingSkillId === skill.id
+              <div
+                className={`skill-scroll-shell${
+                  skills.length > 4 ? ' scrollable' : ''
+                }`}
+              >
+                <div
+                  ref={skillListRef}
+                  className="progress-list"
+                  role={skills.length > 4 ? 'region' : undefined}
+                  aria-label={
+                    skills.length > 4
+                      ? `My skills, ${skills.length} items. Scroll to see more.`
+                      : undefined
+                  }
+                  tabIndex={skills.length > 4 ? 0 : undefined}
+                >
+                  {skills.map((skill) => {
+                    const removing = removingSkillId === skill.id
 
-                  return (
-                    <article
-                      className={`progress-row${removing ? ' removing' : ''}`}
-                      key={skill.id}
-                      aria-busy={removing || undefined}
-                    >
-                      <span className="progress-name">{skill.name}</span>
-                      <div className="progress-actions">
-                        <div
-                          className="status-cycle"
-                          role="group"
-                          aria-label={`${skill.name} progress status`}
-                        >
-                          {statusOrder.map((status) => (
-                            <button
-                              type="button"
-                              key={status}
-                              className={
-                                skill.status === status
-                                  ? 'status-pill active'
-                                  : 'status-pill'
-                              }
-                              disabled={busy || removing}
-                              onClick={() => onSkillStatus(skill, status)}
-                              aria-pressed={skill.status === status}
-                            >
-                              {statusLabels[status]}
-                            </button>
-                          ))}
+                    return (
+                      <article
+                        className={`progress-row${removing ? ' removing' : ''}`}
+                        key={skill.id}
+                        aria-busy={removing || undefined}
+                      >
+                        <span className="progress-name">{skill.name}</span>
+                        <div className="progress-actions">
+                          <div
+                            className="status-cycle"
+                            role="group"
+                            aria-label={`${skill.name} progress status`}
+                          >
+                            {statusOrder.map((status) => (
+                              <button
+                                type="button"
+                                key={status}
+                                className={
+                                  skill.status === status
+                                    ? 'status-pill active'
+                                    : 'status-pill'
+                                }
+                                disabled={busy || removing}
+                                onClick={() => onSkillStatus(skill, status)}
+                                aria-pressed={skill.status === status}
+                              >
+                                {statusLabels[status]}
+                              </button>
+                            ))}
+                          </div>
+                          <button
+                            type="button"
+                            className="remove-skill-button"
+                            disabled={busy || removing}
+                            aria-label={`Remove ${skill.name}`}
+                            title={`Remove ${skill.name}`}
+                            onClick={() => {
+                              setRemoveError('')
+                              setPendingRemoval(skill)
+                            }}
+                          >
+                            <MorphIcon
+                              icon={Trash2}
+                              size={18}
+                              strokeWidth={2}
+                              spring="snappy"
+                              reducedMotion="user"
+                            />
+                          </button>
                         </div>
-                        <button
-                          type="button"
-                          className="remove-skill-button"
-                          disabled={busy || removing}
-                          aria-label={`Remove ${skill.name}`}
-                          title={`Remove ${skill.name}`}
-                          onClick={() => {
-                            setRemoveError('')
-                            setPendingRemoval(skill)
-                          }}
-                        >
-                          <MorphIcon
-                            icon={Trash2}
-                            size={18}
-                            strokeWidth={2}
-                            spring="snappy"
-                            reducedMotion="user"
-                          />
-                        </button>
-                      </div>
-                    </article>
-                  )
-                })}
+                      </article>
+                    )
+                  })}
+                </div>
               </div>
             )}
           </section>

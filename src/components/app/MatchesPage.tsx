@@ -50,7 +50,7 @@ export function MatchesPage({
       </section>
 
       {suggestions.length > 0 ? (
-        <>
+        <div className="matches-results">
           <p className="section-sub match-count">
             {suggestions.length} careers matched, based on your current profile
           </p>
@@ -67,7 +67,7 @@ export function MatchesPage({
               />
             ))}
           </div>
-        </>
+        </div>
       ) : (
         <p className="empty-note">
           {hint ?? thinHint ?? 'No suggestions are available yet.'}
