@@ -314,6 +314,10 @@ h3 {
   text-align: left;
 }
 
+.entry-card .btn + .btn {
+  margin-top: 12px;
+}
+
 .code-input {
   width: 100%;
   min-height: 48px;
