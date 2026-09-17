@@ -131,30 +131,97 @@ h3 {
 .app-tabs {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
+  padding: 4px;
+  border: 1px solid rgb(226 232 228 / 88%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 72%);
   overflow-x: auto;
 }
 
 .tab-link {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   min-height: 40px;
-  padding: 0 14px;
+  padding: 0 16px;
   border: 0;
-  border-bottom: 2px solid transparent;
+  border-radius: 999px;
   background: transparent;
   color: var(--muted);
   font-size: 14px;
   font-weight: 650;
+  line-height: 1;
   white-space: nowrap;
   cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
 }
 
-.tab-link:hover {
-  color: var(--ink);
+.tab-hover-circle {
+  position: absolute;
+  left: 50%;
+  z-index: 1;
+  display: block;
+  border-radius: 50%;
+  background: var(--green-dark);
+  pointer-events: none;
+  transform: translateX(-50%) scale(0);
+  will-change: transform;
+}
+
+.tab-label-stack {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  line-height: 1;
+}
+
+.tab-label,
+.tab-label-hover {
+  display: inline-block;
+  line-height: 1;
+  will-change: transform, opacity;
+}
+
+.tab-label-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  opacity: 0;
 }
 
 .tab-link.active {
-  border-bottom-color: var(--green);
+  background: var(--green-soft);
   color: var(--green-dark);
+  box-shadow: inset 0 0 0 1px rgb(22 162 73 / 20%);
+}
+
+.tab-link:focus-visible {
+  outline: 3px solid #79c99a;
+  outline-offset: -3px;
+}
+
+.tab-link:active {
+  box-shadow: inset 0 0 0 1px rgb(22 162 73 / 30%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-link {
+    transition: none;
+  }
+
+  .tab-hover-circle,
+  .tab-label-hover {
+    display: none;
+  }
+
+  .tab-label {
+    transform: none !important;
+  }
 }
 
 /* One button style covers every primary action; ghost is its outline twin. */
