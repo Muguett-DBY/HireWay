@@ -899,7 +899,7 @@ h3 {
   border-color: #bcd9c9;
 }
 
-/* Four-across stat strip straight under the hero. */
+/* Four-across stat strip with clear separation from the hero. */
 .stat-strip {
   position: relative;
   z-index: 1;
@@ -907,7 +907,7 @@ h3 {
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 14px;
   max-width: 1180px;
-  margin: -22px auto 0;
+  margin: 24px auto 0;
   padding: 0 max(22px, calc((100vw - 1180px) / 2));
 }
 
@@ -1393,6 +1393,13 @@ h3 {
   height: 100%;
   border-radius: 999px;
   background: linear-gradient(90deg, #21b45c, var(--green));
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.state-chart.is-visible .state-bar span {
+  animation: state-demand-in 760ms cubic-bezier(0.22, 1, 0.36, 1)
+    var(--state-delay, 120ms) both;
 }
 
 .state-chart small {
@@ -1404,6 +1411,8 @@ h3 {
   display: block;
   width: 100%;
   max-width: 340px;
+  height: auto;
+  overflow: visible;
 }
 
 .trajectory-line {
@@ -1411,14 +1420,37 @@ h3 {
   stroke: var(--green);
   stroke-width: 2.5;
   stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.trajectory-visual.is-visible .trajectory-line {
+  animation: trajectory-draw 900ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both;
 }
 
 .trajectory-area {
   fill: rgb(22 162 73 / 12%);
+  opacity: 0;
+}
+
+.trajectory-visual.is-visible .trajectory-area {
+  animation: trajectory-area-in 650ms ease-out 220ms both;
 }
 
 .trajectory-dot {
   fill: var(--green-dark);
+}
+
+.trajectory-point {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.trajectory-visual.is-visible .trajectory-point {
+  animation: trajectory-point-in 400ms cubic-bezier(0.22, 1, 0.36, 1)
+    var(--trajectory-delay, 360ms) both;
 }
 
 .trajectory-year {
@@ -1431,6 +1463,64 @@ h3 {
   fill: var(--ink);
   font-size: 11px;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes trajectory-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes trajectory-area-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes trajectory-point-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes state-demand-in {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trajectory-line,
+  .trajectory-area,
+  .trajectory-point,
+  .state-chart .state-bar span {
+    animation: none;
+  }
+
+  .trajectory-line {
+    stroke-dashoffset: 0;
+  }
+
+  .trajectory-area,
+  .trajectory-point {
+    opacity: 1;
+    transform: none;
+  }
+
+  .state-chart .state-bar span {
+    transform: scaleX(1);
+  }
 }
 
 .task-grid {
