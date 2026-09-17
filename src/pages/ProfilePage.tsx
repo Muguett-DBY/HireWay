@@ -1492,6 +1492,7 @@ export function ProfilePage() {
                 suggestions={suggestions}
                 targetRole={targetRole}
                 hint={suggestionHint}
+                skillsCount={skills.length}
                 busy={skillsBusy || targetRoleBusy}
                 onPlan={chooseSuggestedRole}
                 onReact={reactToSuggestion}
