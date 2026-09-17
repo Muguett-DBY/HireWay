@@ -174,7 +174,6 @@ export function AnalysisPage({
     (item) => item.code === targetRole.code,
   )
   const analysis = requirements ? readiness(skills, requirements) : null
-  const ring = analysis ? Math.round(analysis.overall * 2.51) : 0
   const hasNoSkills = skills.length === 0
 
   return (
@@ -218,7 +217,8 @@ export function AnalysisPage({
                   cx="60"
                   cy="60"
                   r="50"
-                  strokeDasharray={`${ring} 251`}
+                  pathLength="100"
+                  strokeDasharray={`${analysis.overall} 100`}
                 />
                 <text x="60" y="58" textAnchor="middle">
                   {analysis.overall}
