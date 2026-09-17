@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import type {
   RoleRequirements as RequirementsData,
   RoleSkill,
@@ -140,23 +141,10 @@ export function RoleDetailsPage({
               </div>
               <div>
                 <p className="panel-title">Hiring demand by state</p>
-                <ul className="state-chart">
-                  {market.vacancies.map((entry) => (
-                    <li key={entry.state}>
-                      <span className="state-name">{entry.state}</span>
-                      <span className="state-bar">
-                        <span
-                          style={{
-                            width: `${Math.max(2, Math.round((entry.vacancies / maxVacancy) * 100))}%`,
-                          }}
-                        />
-                      </span>
-                      <small>
-                        {numberFormat.format(Math.round(entry.vacancies))}
-                      </small>
-                    </li>
-                  ))}
-                </ul>
+                <StateDemandChart
+                  vacancies={market.vacancies}
+                  maxVacancy={maxVacancy}
+                />
               </div>
             </div>
           </div>
@@ -288,6 +276,68 @@ export function RoleDetailsPage({
   )
 }
 
+// Market visuals reveal once when scrolled into view. Browsers without
+// IntersectionObserver render the final state immediately.
+function useRevealOnView<T extends HTMLElement>(threshold = 0.35) {
+  const elementRef = useRef<T>(null)
+  const [isVisible, setIsVisible] = useState(
+    () => typeof IntersectionObserver === 'undefined',
+  )
+
+  useEffect(() => {
+    const element = elementRef.current
+    if (!element || typeof IntersectionObserver === 'undefined') return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return
+        setIsVisible(true)
+        observer.disconnect()
+      },
+      { threshold },
+    )
+    observer.observe(element)
+
+    return () => observer.disconnect()
+  }, [threshold])
+
+  return { elementRef, isVisible }
+}
+
+function StateDemandChart({
+  vacancies,
+  maxVacancy,
+}: {
+  vacancies: NonNullable<RequirementsData['market']>['vacancies']
+  maxVacancy: number
+}) {
+  const { elementRef, isVisible } = useRevealOnView<HTMLUListElement>()
+
+  return (
+    <ul
+      ref={elementRef}
+      className={`state-chart${isVisible ? ' is-visible' : ''}`}
+    >
+      {vacancies.map((entry, index) => (
+        <li key={entry.state}>
+          <span className="state-name">{entry.state}</span>
+          <span className="state-bar">
+            <span
+              style={
+                {
+                  width: `${Math.max(2, Math.round((entry.vacancies / maxVacancy) * 100))}%`,
+                  '--state-delay': `${120 + index * 45}ms`,
+                } as CSSProperties
+              }
+            />
+          </span>
+          <small>{numberFormat.format(Math.round(entry.vacancies))}</small>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 // Three JSA projection points draw one small line chart - honest scale,
 // real values, no extrapolation beyond the published years.
 function TrajectoryChart({
@@ -295,6 +345,7 @@ function TrajectoryChart({
 }: {
   market: NonNullable<RequirementsData['market']>
 }) {
+  const { elementRef, isVisible } = useRevealOnView<HTMLDivElement>()
   const points = [
     { year: '2025', value: market.employedMay2025 },
     { year: '2030', value: market.employedMay2030 },
@@ -307,52 +358,68 @@ function TrajectoryChart({
     return <p className="panel-caption">No projection data available.</p>
   }
 
-  const width = 300
-  const height = 120
-  const padX = 14
-  const padY = 24
+  const width = 320
+  const height = 132
+  // Value labels are wider than their points. Keep the first and last points
+  // inside the plot so five-digit values cannot be clipped by the SVG edge.
+  const padX = 34
+  const padTop = 30
+  const baselineY = 106
   const values = points.map((point) => point.value)
   const min = Math.min(...values)
   const max = Math.max(...values)
   const span = max - min || max || 1
   const coords = points.map((point, index) => ({
     x: padX + (index / (points.length - 1)) * (width - padX * 2),
-    y: padY + (1 - (point.value - min) / span) * (height - padY * 2),
+    y: padTop + (1 - (point.value - min) / span) * (baselineY - padTop),
     ...point,
   }))
   const line = coords.map((c) => `${c.x},${c.y}`).join(' ')
-  const area = `${padX},${height - 16} ${line} ${width - padX},${height - 16}`
+  const area = `${padX},${baselineY} ${line} ${width - padX},${baselineY}`
 
   return (
-    <svg
-      className="trajectory-chart"
-      viewBox={`0 0 ${width} ${height}`}
-      role="img"
-      aria-label={`Employment from ${numberFormat.format(points[0].value)} in ${points[0].year} to ${numberFormat.format(points[points.length - 1].value)} in ${points[points.length - 1].year}`}
+    <div
+      ref={elementRef}
+      className={`trajectory-visual${isVisible ? ' is-visible' : ''}`}
     >
-      <polygon className="trajectory-area" points={area} />
-      <polyline className="trajectory-line" points={line} />
-      {coords.map((c) => (
-        <g key={c.year}>
-          <circle className="trajectory-dot" cx={c.x} cy={c.y} r="3.5" />
-          <text
-            className="trajectory-year"
-            x={c.x}
-            y={height - 2}
-            textAnchor="middle"
+      <svg
+        className="trajectory-chart"
+        viewBox={`0 0 ${width} ${height}`}
+        role="img"
+        aria-label={`Employment from ${numberFormat.format(points[0].value)} in ${points[0].year} to ${numberFormat.format(points[points.length - 1].value)} in ${points[points.length - 1].year}`}
+      >
+        <polygon className="trajectory-area" points={area} />
+        <polyline className="trajectory-line" points={line} pathLength="1" />
+        {coords.map((c, index) => (
+          <g
+            className="trajectory-point"
+            key={c.year}
+            style={
+              {
+                '--trajectory-delay': `${360 + index * 120}ms`,
+              } as CSSProperties
+            }
           >
-            {c.year}
-          </text>
-          <text
-            className="trajectory-value"
-            x={c.x}
-            y={c.y - 8}
-            textAnchor="middle"
-          >
-            {numberFormat.format(Math.round(c.value))}
-          </text>
-        </g>
-      ))}
-    </svg>
+            <circle className="trajectory-dot" cx={c.x} cy={c.y} r="3.5" />
+            <text
+              className="trajectory-year"
+              x={c.x}
+              y={height - 4}
+              textAnchor="middle"
+            >
+              {c.year}
+            </text>
+            <text
+              className="trajectory-value"
+              x={c.x}
+              y={c.y - 9}
+              textAnchor="middle"
+            >
+              {numberFormat.format(Math.round(c.value))}
+            </text>
+          </g>
+        ))}
+      </svg>
+    </div>
   )
 }
