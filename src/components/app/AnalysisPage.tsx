@@ -1,8 +1,11 @@
+import { useEffect, useRef, useState } from 'react'
+import { Trash2 } from 'lucide'
+import { MorphIcon } from 'morphicons/react'
 import type {
   RoleRequirements as RequirementsData,
   RoleSkill,
 } from '../../lib/roleRequirementsApi'
-import type { Skill, SkillStatus } from '../../lib/skillsApi'
+import type { SaveSkillResult, Skill, SkillStatus } from '../../lib/skillsApi'
 import type { RoleSuggestion } from '../../lib/suggestionApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
 
@@ -14,6 +17,7 @@ type AnalysisPageProps = {
   busy: boolean
   onAddUpcomingSkill: (skill: RoleSkill) => void
   onSkillStatus: (skill: Skill, status: SkillStatus) => void
+  onRemoveSkill: (skill: Skill) => Promise<SaveSkillResult>
   onGoMatches: () => void
   onEditTargetRole: () => void
 }
@@ -105,9 +109,49 @@ export function AnalysisPage({
   busy,
   onAddUpcomingSkill,
   onSkillStatus,
+  onRemoveSkill,
   onGoMatches,
   onEditTargetRole,
 }: AnalysisPageProps) {
+  const [pendingRemoval, setPendingRemoval] = useState<Skill | null>(null)
+  const [removingSkillId, setRemovingSkillId] = useState<number | null>(null)
+  const [removeError, setRemoveError] = useState('')
+  const removeDialogRef = useRef<HTMLDialogElement>(null)
+
+  useEffect(() => {
+    const dialog = removeDialogRef.current
+    if (!dialog) return
+
+    if (pendingRemoval && !dialog.open) {
+      dialog.showModal()
+    } else if (!pendingRemoval && dialog.open) {
+      dialog.close()
+    }
+  }, [pendingRemoval])
+
+  async function confirmRemoval() {
+    if (!pendingRemoval) return
+
+    const skill = pendingRemoval
+    setRemoveError('')
+    setPendingRemoval(null)
+    setRemovingSkillId(skill.id)
+
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches
+    if (!reduceMotion) {
+      await new Promise((resolve) => window.setTimeout(resolve, 420))
+    }
+
+    const result = await onRemoveSkill(skill)
+    setRemovingSkillId(null)
+    if (!result.ok) {
+      setRemoveError(result.error)
+      setPendingRemoval(skill)
+    }
+  }
+
   if (!targetRole) {
     return (
       <section className="app-hero">
@@ -130,7 +174,6 @@ export function AnalysisPage({
     (item) => item.code === targetRole.code,
   )
   const analysis = requirements ? readiness(skills, requirements) : null
-  const ring = analysis ? Math.round(analysis.overall * 2.51) : 0
   const hasNoSkills = skills.length === 0
 
   return (
@@ -174,7 +217,8 @@ export function AnalysisPage({
                   cx="60"
                   cy="60"
                   r="50"
-                  strokeDasharray={`${ring} 251`}
+                  pathLength="100"
+                  strokeDasharray={`${analysis.overall} 100`}
                 />
                 <text x="60" y="58" textAnchor="middle">
                   {analysis.overall}
@@ -305,38 +349,128 @@ export function AnalysisPage({
               </p>
             ) : (
               <div className="progress-list">
-                {skills.map((skill) => (
-                  <article className="progress-row" key={skill.id}>
-                    <span className="progress-name">{skill.name}</span>
-                    <div
-                      className="status-cycle"
-                      role="group"
-                      aria-label={`${skill.name} progress status`}
+                {skills.map((skill) => {
+                  const removing = removingSkillId === skill.id
+
+                  return (
+                    <article
+                      className={`progress-row${removing ? ' removing' : ''}`}
+                      key={skill.id}
+                      aria-busy={removing || undefined}
                     >
-                      {statusOrder.map((status) => (
+                      <span className="progress-name">{skill.name}</span>
+                      <div className="progress-actions">
+                        <div
+                          className="status-cycle"
+                          role="group"
+                          aria-label={`${skill.name} progress status`}
+                        >
+                          {statusOrder.map((status) => (
+                            <button
+                              type="button"
+                              key={status}
+                              className={
+                                skill.status === status
+                                  ? 'status-pill active'
+                                  : 'status-pill'
+                              }
+                              disabled={busy || removing}
+                              onClick={() => onSkillStatus(skill, status)}
+                              aria-pressed={skill.status === status}
+                            >
+                              {statusLabels[status]}
+                            </button>
+                          ))}
+                        </div>
                         <button
                           type="button"
-                          key={status}
-                          className={
-                            skill.status === status
-                              ? 'status-pill active'
-                              : 'status-pill'
-                          }
-                          disabled={busy}
-                          onClick={() => onSkillStatus(skill, status)}
-                          aria-pressed={skill.status === status}
+                          className="remove-skill-button"
+                          disabled={busy || removing}
+                          aria-label={`Remove ${skill.name}`}
+                          title={`Remove ${skill.name}`}
+                          onClick={() => {
+                            setRemoveError('')
+                            setPendingRemoval(skill)
+                          }}
                         >
-                          {statusLabels[status]}
+                          <MorphIcon
+                            icon={Trash2}
+                            size={18}
+                            strokeWidth={2}
+                            spring="snappy"
+                            reducedMotion="user"
+                          />
                         </button>
-                      ))}
-                    </div>
-                  </article>
-                ))}
+                      </div>
+                    </article>
+                  )
+                })}
               </div>
             )}
           </section>
         </>
       )}
+
+      <dialog
+        ref={removeDialogRef}
+        className="confirm-dialog"
+        aria-labelledby="remove-skill-confirm-title"
+        aria-describedby="remove-skill-confirm-description"
+        onCancel={(event) => {
+          event.preventDefault()
+          if (!busy) setPendingRemoval(null)
+        }}
+        onClose={() => {
+          setPendingRemoval(null)
+          setRemoveError('')
+        }}
+        onClick={(event) => {
+          if (event.target === event.currentTarget && !busy) {
+            setPendingRemoval(null)
+          }
+        }}
+      >
+        {pendingRemoval && (
+          <div className="confirm-dialog-card">
+            <p className="eyebrow">My skills</p>
+            <h2 id="remove-skill-confirm-title">Remove this skill?</h2>
+            <p id="remove-skill-confirm-description">
+              It will be removed from your profile and career calculations.
+            </p>
+
+            <div className="remove-skill-summary">
+              <small>Skill to remove</small>
+              <strong>{pendingRemoval.name}</strong>
+            </div>
+
+            {removeError && (
+              <p className="field-error" role="alert">
+                {removeError}
+              </p>
+            )}
+
+            <div className="confirm-dialog-actions">
+              <button
+                type="button"
+                className="btn ghost"
+                disabled={busy}
+                autoFocus
+                onClick={() => setPendingRemoval(null)}
+              >
+                Keep skill
+              </button>
+              <button
+                type="button"
+                className="btn danger"
+                disabled={busy}
+                onClick={() => void confirmRemoval()}
+              >
+                {busy ? 'Removing...' : 'Remove skill'}
+              </button>
+            </div>
+          </div>
+        )}
+      </dialog>
     </>
   )
 }

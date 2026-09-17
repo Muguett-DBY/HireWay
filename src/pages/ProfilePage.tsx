@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { Check, Copy } from 'lucide'
 import { MorphIcon } from 'morphicons/react'
 import {
@@ -36,6 +36,7 @@ import {
   sendRoleFeedback,
   type RoleSuggestion,
 } from '../lib/suggestionApi'
+
 import {
   loadSkillRecommendations,
   searchOptions,
@@ -44,6 +45,10 @@ import {
   type SkillRecommendation,
   type StudyOption,
 } from '../lib/optionsApi'
+
+type PendingTargetRoleChange = Pick<TargetRole, 'code' | 'title'> & {
+  returnToOverview: boolean
+}
 
 // A new form starts with no background details.
 const emptyDetails: ProfileDetails = {
@@ -116,6 +121,9 @@ export function ProfilePage() {
   const [targetRoleError, setTargetRoleError] = useState('')
   const [targetRoleMessage, setTargetRoleMessage] = useState('')
   const [targetRoleBusy, setTargetRoleBusy] = useState(false)
+  const [pendingTargetRole, setPendingTargetRole] =
+    useState<PendingTargetRoleChange | null>(null)
+  const targetRoleDialogRef = useRef<HTMLDialogElement>(null)
   const [recommendations, setRecommendations] = useState<SkillRecommendation[]>(
     [],
   )
@@ -129,6 +137,18 @@ export function ProfilePage() {
   const [refreshKey, setRefreshKey] = useState(0)
 
   const bumpRefresh = () => setRefreshKey((current) => current + 1)
+
+  // The native modal traps focus and returns it to the triggering control.
+  useEffect(() => {
+    const dialog = targetRoleDialogRef.current
+    if (!dialog) return
+
+    if (pendingTargetRole && !dialog.open) {
+      dialog.showModal()
+    } else if (!pendingTargetRole && dialog.open) {
+      dialog.close()
+    }
+  }, [pendingTargetRole])
 
   // Do not suggest a skill the profile has already saved.
   const suggestedSkills = recommendations.filter(
@@ -645,8 +665,10 @@ export function ProfilePage() {
   }
 
   // Remove only the selected skill from this profile.
-  async function deleteSkill(id: number) {
-    if (!profile) return
+  async function deleteSkill(id: number): Promise<SaveSkillResult> {
+    if (!profile) {
+      return { ok: false, error: 'Open a profile before removing a skill.' }
+    }
 
     setSkillError('')
     setSkillsBusy(true)
@@ -654,14 +676,18 @@ export function ProfilePage() {
     try {
       const result = await removeSkill(profile.code, id)
       if (!result.ok) {
-        setSkillError(result.data.error ?? 'Could not remove this skill.')
-        return
+        const error = result.data.error ?? 'Could not remove this skill.'
+        setSkillError(error)
+        return { ok: false, error }
       }
 
       setSkills((current) => current.filter((skill) => skill.id !== id))
       bumpRefresh()
+      return { ok: true }
     } catch {
-      setSkillError('Could not connect. Please try again.')
+      const error = 'Could not connect. Please try again.'
+      setSkillError(error)
+      return { ok: false, error }
     } finally {
       setSkillsBusy(false)
     }
@@ -689,29 +715,22 @@ export function ProfilePage() {
     }
   }
 
-  // Save a catalogue occupation as the profile's current target role.
-  async function submitTargetRole(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
+  // Save one confirmed catalogue occupation as the profile's target role.
+  async function saveTargetRoleSelection(
+    roleCode: string,
+    returnToOverview: boolean,
+  ): Promise<boolean> {
     setTargetRoleError('')
     setTargetRoleMessage('')
 
     if (!profile) {
       setTargetRoleError('Save your profile before choosing a target role.')
-      return
-    }
-
-    if (!targetRoleCode) {
-      setTargetRoleError('Choose a target role from the suggestions.')
-      return
+      return false
     }
 
     setTargetRoleBusy(true)
     try {
-      const result = await requestTargetRole(
-        'PUT',
-        profile.code,
-        targetRoleCode,
-      )
+      const result = await requestTargetRole('PUT', profile.code, roleCode)
 
       if (!result.ok || !result.data.targetRole) {
         setTargetRoleError(
@@ -719,7 +738,7 @@ export function ProfilePage() {
             ? 'Could not save your target role.'
             : (result.data.error ?? 'Could not save your target role.'),
         )
-        return
+        return false
       }
 
       // The official title returned by D1 replaces the search draft.
@@ -728,35 +747,68 @@ export function ProfilePage() {
       setTargetRoleCode(result.data.targetRole.code)
       setTargetRoleOptions([])
       setTargetRoleMessage('Target role saved.')
-      setScreen('app')
-      setAppPage('overview')
+      if (returnToOverview) {
+        setScreen('app')
+        setAppPage('overview')
+      }
       bumpRefresh()
+      return true
     } catch {
       setTargetRoleError('Could not connect. Please try again.')
+      return false
     } finally {
       setTargetRoleBusy(false)
     }
   }
 
-  // Picking a suggested role saves it with the same call as the search box.
+  // A replacement pauses for confirmation; the first target saves directly.
+  async function submitTargetRole(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setTargetRoleError('')
+    setTargetRoleMessage('')
+
+    if (!targetRoleCode) {
+      setTargetRoleError('Choose a target role from the suggestions.')
+      return
+    }
+
+    if (targetRole && targetRole.code !== targetRoleCode) {
+      setPendingTargetRole({
+        code: targetRoleCode,
+        title: targetRoleQuery,
+        returnToOverview: true,
+      })
+      return
+    }
+
+    await saveTargetRoleSelection(targetRoleCode, true)
+  }
+
+  // Match cards use the same confirmation before replacing a saved target.
   async function chooseSuggestedRole(suggestion: RoleSuggestion) {
     if (!profile) return
 
-    try {
-      const result = await requestTargetRole(
-        'PUT',
-        profile.code,
-        suggestion.code,
-      )
-      if (!result.ok || !result.data.targetRole) return
-
-      setTargetRole(result.data.targetRole)
-      setTargetRoleQuery(result.data.targetRole.title)
-      setTargetRoleCode(result.data.targetRole.code)
-      bumpRefresh()
-    } catch {
-      // The card stays interactive so the user can retry the choice.
+    if (targetRole && targetRole.code !== suggestion.code) {
+      setTargetRoleError('')
+      setPendingTargetRole({
+        code: suggestion.code,
+        title: suggestion.title,
+        returnToOverview: false,
+      })
+      return
     }
+
+    await saveTargetRoleSelection(suggestion.code, false)
+  }
+
+  async function confirmTargetRoleChange() {
+    if (!pendingTargetRole) return
+
+    const saved = await saveTargetRoleSelection(
+      pendingTargetRole.code,
+      pendingTargetRole.returnToOverview,
+    )
+    if (saved) setPendingTargetRole(null)
   }
 
   // Deck reactions are stored server-side, then the ranking reloads.
@@ -804,7 +856,18 @@ export function ProfilePage() {
 
         {screen === 'home' && (
           <nav className="header-nav" aria-label="Main navigation">
-            <span className="header-link active">Home</span>
+            <button
+              type="button"
+              className="header-link active"
+              aria-current="page"
+              onClick={() => {
+                setScreen('home')
+                setMessage('')
+                setFailed(false)
+              }}
+            >
+              Home
+            </button>
             <button
               type="button"
               className="header-link"
@@ -1377,16 +1440,23 @@ export function ProfilePage() {
                     >
                       Back
                     </button>
-                    <button
-                      type="button"
-                      className="btn"
-                      onClick={() => {
-                        setScreen('app')
-                        setAppPage('overview')
-                      }}
-                    >
-                      Go to overview
-                    </button>
+                    {targetRole && (
+                      <button
+                        type="button"
+                        className="btn"
+                        onClick={() => {
+                          setTargetRoleError('')
+                          setTargetRoleMessage('')
+                          setTargetRoleQuery(targetRole.title)
+                          setTargetRoleCode(targetRole.code)
+                          setTargetRoleOptions([])
+                          setScreen('app')
+                          setAppPage('overview')
+                        }}
+                      >
+                        Return to overview
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -1442,6 +1512,7 @@ export function ProfilePage() {
                 onSkillStatus={(skill: Skill, status: SkillStatus) => {
                   void cycleSkillStatus(skill, status)
                 }}
+                onRemoveSkill={(skill: Skill) => deleteSkill(skill.id)}
                 onGoMatches={() => setAppPage('matches')}
                 onEditTargetRole={() => {
                   setStep(3)
@@ -1472,6 +1543,74 @@ export function ProfilePage() {
           </>
         )}
       </main>
+
+      <dialog
+        ref={targetRoleDialogRef}
+        className="confirm-dialog"
+        aria-labelledby="target-role-confirm-title"
+        aria-describedby="target-role-confirm-description"
+        onCancel={(event) => {
+          event.preventDefault()
+          if (!targetRoleBusy) setPendingTargetRole(null)
+        }}
+        onClose={() => setPendingTargetRole(null)}
+        onClick={(event) => {
+          if (event.target === event.currentTarget && !targetRoleBusy) {
+            setPendingTargetRole(null)
+          }
+        }}
+      >
+        {pendingTargetRole && targetRole && (
+          <div className="confirm-dialog-card">
+            <p className="eyebrow">Target role</p>
+            <h2 id="target-role-confirm-title">Change your target role?</h2>
+            <p id="target-role-confirm-description">
+              Your matches, analysis, role details and pathway will refresh for
+              the new target.
+            </p>
+
+            <div className="role-change-summary" aria-label="Role change">
+              <span>
+                <small>Current target</small>
+                <strong>{targetRole.title}</strong>
+              </span>
+              <span className="role-change-arrow" aria-hidden="true">
+                →
+              </span>
+              <span>
+                <small>New target</small>
+                <strong>{pendingTargetRole.title}</strong>
+              </span>
+            </div>
+
+            {targetRoleError && (
+              <p className="field-error" role="alert">
+                {targetRoleError}
+              </p>
+            )}
+
+            <div className="confirm-dialog-actions">
+              <button
+                type="button"
+                className="btn ghost"
+                disabled={targetRoleBusy}
+                autoFocus
+                onClick={() => setPendingTargetRole(null)}
+              >
+                Keep current role
+              </button>
+              <button
+                type="button"
+                className="btn"
+                disabled={targetRoleBusy}
+                onClick={() => void confirmTargetRoleChange()}
+              >
+                {targetRoleBusy ? 'Changing...' : 'Confirm change'}
+              </button>
+            </div>
+          </div>
+        )}
+      </dialog>
 
       <footer className="app-footer">
         <span className="footer-brand">
