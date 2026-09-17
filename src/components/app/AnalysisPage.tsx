@@ -282,55 +282,44 @@ export function AnalysisPage({
               </span>
             </div>
             {analysis.rows.map((row) => {
-              const totalGaps =
-                row.missing.length +
-                (row.improve > 0 ? 1 : 0) +
-                (row.matched > 0 ? 1 : 0)
-              if (totalGaps === 0) return null
+              if (row.total === 0) return null
 
               return (
                 <div className="gap-group" key={row.key}>
                   <p className="gap-title">
                     {row.title}
                     <span className="gap-count">
-                      {row.matched} matched · {row.improve} to improve ·{' '}
-                      {row.missing.length} missing
+                      {row.covered}/{row.total} covered
+                      {row.missing.length > 0
+                        ? ` · ${row.missing.length} missing`
+                        : ''}
                     </span>
                   </p>
-                  <div className="chip-row">
-                    {row.matched > 0 && (
-                      <span className="gap-chip static done">
-                        Matched in your profile
-                      </span>
-                    )}
-                    {row.improve > 0 && (
-                      <span className="gap-chip static improve">
-                        Related skills to improve
-                      </span>
-                    )}
-                    {row.missing.map((skill) => (
-                      <button
-                        type="button"
-                        className="gap-chip"
-                        key={skill.code}
-                        disabled={busy}
-                        onClick={() => onAddUpcomingSkill(skill)}
-                        title="From US O*NET 31.0 importance ratings via the ABS OSCA bridge"
-                        aria-label={`Plan ${skill.name} as an upcoming skill`}
-                      >
-                        + {skill.name}
-                        <small>{skill.score}</small>
-                      </button>
-                    ))}
-                  </div>
+                  {row.missing.length > 0 && (
+                    <div className="chip-row">
+                      {row.missing.map((skill) => (
+                        <button
+                          type="button"
+                          className="gap-chip"
+                          key={skill.code}
+                          disabled={busy}
+                          onClick={() => onAddUpcomingSkill(skill)}
+                          title="From US O*NET 31.0 importance ratings via the ABS OSCA bridge"
+                          aria-label={`Plan ${skill.name} as an upcoming skill`}
+                        >
+                          + {skill.name}
+                          <small>{skill.score}</small>
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )
             })}
-            {analysis.rows.every(
-              (row) => row.missing.length === 0 && row.improve === 0,
-            ) && (
+            {analysis.rows.every((row) => row.missing.length === 0) && (
               <p className="empty-note">
-                Your profile covers every skill in this role's catalogue entry.
+                Nothing missing - your profile covers this role's whole
+                catalogue entry.
               </p>
             )}
           </section>
