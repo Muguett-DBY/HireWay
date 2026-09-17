@@ -1388,16 +1388,23 @@ export function ProfilePage() {
                     >
                       Back
                     </button>
-                    <button
-                      type="button"
-                      className="btn"
-                      onClick={() => {
-                        setScreen('app')
-                        setAppPage('overview')
-                      }}
-                    >
-                      Go to overview
-                    </button>
+                    {targetRole && (
+                      <button
+                        type="button"
+                        className="btn"
+                        onClick={() => {
+                          setTargetRoleError('')
+                          setTargetRoleMessage('')
+                          setTargetRoleQuery(targetRole.title)
+                          setTargetRoleCode(targetRole.code)
+                          setTargetRoleOptions([])
+                          setScreen('app')
+                          setAppPage('overview')
+                        }}
+                      >
+                        Return to overview
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
