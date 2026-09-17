@@ -77,7 +77,7 @@ function readiness(skills: Skill[], requirements: RequirementsData) {
         missing.push(item)
       }
     }
-    weightedHas += (matched + improve * 0.5) * group.weight
+    weightedHas += (matched + improve) * group.weight
     weightedTotal += items.length * group.weight
     return {
       key: group.key,
@@ -86,8 +86,9 @@ function readiness(skills: Skill[], requirements: RequirementsData) {
       matched,
       improve,
       missing,
+      covered: matched + improve,
       percent: items.length
-        ? Math.round(((matched + improve * 0.5) / items.length) * 100)
+        ? Math.round(((matched + improve) / items.length) * 100)
         : 100,
     }
   })
@@ -248,8 +249,8 @@ export function AnalysisPage({
                 </div>
               ))}
               <p className="panel-caption">
-                Matched skills count fully; a saved skill from the same O*NET
-                family counts half towards coverage.
+                A skill counts as covered when your profile lists it, or a skill
+                from the same O*NET family.
               </p>
             </article>
           </div>
