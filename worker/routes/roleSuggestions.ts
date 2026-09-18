@@ -49,18 +49,29 @@ const EDUCATION_RANKS: Record<string, number> = {
   Bachelor: 3,
   Master: 4,
   Doctorate: 5,
-  Other: 3,
 }
 
-// How close the role's typical skill level sits to the user's education.
+// OSCA 1 is bachelor-or-higher; OSCA 5 is secondary education.
+// Levels 2-4 share our coarse Diploma / Certificate profile category.
+const OSCA_EDUCATION_RANKS: Record<number, number> = {
+  1: 3,
+  2: 2,
+  3: 2,
+  4: 2,
+  5: 1,
+}
+
+// Compare education levels on the same scale, without penalising higher awards.
 function educationFactor(
   educationLevel: string | null,
   skillLevel: number | null,
 ): number {
   if (!educationLevel || !skillLevel) return 0.5
   const userRank = EDUCATION_RANKS[educationLevel] ?? null
-  if (!userRank) return 0.5
-  return Math.max(0, 1 - Math.abs(userRank - skillLevel) / 3)
+  const requiredRank = OSCA_EDUCATION_RANKS[skillLevel] ?? null
+  if (!userRank || !requiredRank) return 0.5
+  const shortfall = Math.max(0, requiredRank - userRank)
+  return Math.max(0, 1 - shortfall / 3)
 }
 
 // Suggest occupations by ranking them against one user's saved skills.
