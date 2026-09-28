@@ -129,19 +129,56 @@ export async function handleRoleSuggestions(
     feedbackResult.results.map((row) => [row.occupationCode, row.reaction]),
   )
 
-  if (savedSkills.length === 0) {
+  // Knowledge areas describe what someone knows about, not what they can
+  // do, so they never enter the match. A profile holding only knowledge
+  // items gets the honest hint rather than a wall of unrelated cards.
+  const matchable = savedSkills.filter((skill) => skill.kind !== 'knowledge')
+  if (matchable.length === 0) {
     return Response.json({
       suggestions: [],
-      hint: 'Add a few skills to unlock career suggestions built from real occupation data.',
+      hint: savedSkills.length
+        ? 'Knowledge areas alone do not drive matching - add a few tools or skills you can use.'
+        : 'Add a few skills to unlock career suggestions built from real occupation data.',
     })
   }
 
-  // The user vector is small, so the whole ranking runs in one query.
-  const userVector: Record<string, number> = {}
-  for (const skill of savedSkills) {
-    userVector[skill.skillCode] =
+  const userVectorRaw: Record<string, number> = {}
+  for (const skill of matchable) {
+    userVectorRaw[skill.skillCode] =
       USER_WEIGHTS[skill.kind as keyof typeof USER_WEIGHTS] ??
       USER_WEIGHTS.skill
+  }
+
+  // Document frequency across every modelled occupation: common office
+  // tools appear in most vectors, so matching on them proves little.
+  const freqResult = await env.DB.prepare(
+    `SELECT skill_code AS code,
+            COUNT(DISTINCT occupation_code) AS freq
+     FROM occupation_skill_vector
+     WHERE skill_code IN (${Object.keys(userVectorRaw)
+       .map(() => '?')
+       .join(', ')})
+     GROUP BY skill_code`,
+  )
+    .bind(...Object.keys(userVectorRaw))
+    .all<{ code: string; freq: number }>()
+  const totalModelled = await env.DB.prepare(
+    'SELECT COUNT(DISTINCT occupation_code) AS n FROM occupation_skill_vector',
+  ).first<{ n: number }>()
+  const total = totalModelled?.n || 1
+  const frequency = new Map(
+    freqResult.results.map((row) => [row.code, row.freq / total]),
+  )
+
+  // The user vector is small, so the whole ranking runs in one query.
+  const userVector: Record<string, number> = {}
+  for (const skill of matchable) {
+    const base =
+      USER_WEIGHTS[skill.kind as keyof typeof USER_WEIGHTS] ??
+      USER_WEIGHTS.skill
+    const rarity = 1 - (frequency.get(skill.skillCode) ?? 0)
+    // Keep a floor so no saved skill ever counts for nothing.
+    userVector[skill.skillCode] = base * Math.max(0.15, rarity)
   }
   const userNorm = Math.sqrt(
     Object.values(userVector).reduce(
