@@ -4,3 +4,6 @@ node_modules/
 worker-configuration.d.ts
 data/generated/
 data/processed/
+
+# Frozen build snapshots served at /iteration1/ and /iteration2/
+public/iteration*/
