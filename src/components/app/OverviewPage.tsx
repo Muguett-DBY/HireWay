@@ -3,6 +3,7 @@ import type { Profile } from '../../lib/profileApi'
 import type { RoleSuggestion } from '../../lib/suggestionApi'
 import type { Skill } from '../../lib/skillsApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
+import { occupationTitle } from '../../lib/occupationTitle'
 import { SuggestionCard } from './SuggestionCard'
 
 const numberFormat = new Intl.NumberFormat('en-AU', {
@@ -78,7 +79,11 @@ export function OverviewPage({
     <>
       <section className="app-hero">
         <p className="eyebrow">Your target role</p>
-        <h1>{targetRole?.title ?? 'Choose your target role'}</h1>
+        <h1>
+          {targetRole
+            ? occupationTitle(targetRole.title)
+            : 'Choose your target role'}
+        </h1>
         <p className="app-hero-sub">
           {targetRole?.description ||
             'Search the Australian occupation catalogue to pick a direction.'}

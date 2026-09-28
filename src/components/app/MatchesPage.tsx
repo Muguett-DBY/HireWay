@@ -1,5 +1,6 @@
 import type { RoleSuggestion } from '../../lib/suggestionApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
+import { occupationTitle } from '../../lib/occupationTitle'
 import { SuggestionCard } from './SuggestionCard'
 
 type MatchesPageProps = {
@@ -44,7 +45,7 @@ export function MatchesPage({
         </p>
         {targetRole && (
           <p className="target-line">
-            Current target: <strong>{targetRole.title}</strong>
+            Current target: <strong>{occupationTitle(targetRole.title)}</strong>
           </p>
         )}
       </section>
@@ -52,7 +53,7 @@ export function MatchesPage({
       {suggestions.length > 0 ? (
         <div className="matches-results">
           <p className="section-sub match-count">
-            {suggestions.length} careers matched, based on your current profile
+            {suggestions.length} careers matched
           </p>
           <div className="match-grid">
             {suggestions.map((suggestion, index) => (

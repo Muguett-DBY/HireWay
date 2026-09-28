@@ -1,12 +1,31 @@
+import { type FormEvent } from 'react'
 import { SpecularButton } from '../SpecularButton'
 
 type MarketingLandingProps = {
-  onEnterProfile: () => void
+  recoveryCode: string
+  busy: boolean
+  message: string
+  failed: boolean
+  hasProfile: boolean
+  onCodeChange: (value: string) => void
+  onContinue: (event: FormEvent<HTMLFormElement>) => void
+  onStart: () => void
+  onOpenProfile: () => void
 }
 
-// The public landing page explains HireWay; profile access remains on the
-// separate entry screen so first-time visitors are not presented with forms.
-export function MarketingLanding({ onEnterProfile }: MarketingLandingProps) {
+// The single landing page: it sells the idea and carries the entry form, so
+// new and returning users both start from one screen.
+export function MarketingLanding({
+  recoveryCode,
+  busy,
+  message,
+  failed,
+  hasProfile,
+  onCodeChange,
+  onContinue,
+  onStart,
+  onOpenProfile,
+}: MarketingLandingProps) {
   return (
     <div className="marketing-landing">
       <section className="marketing-hero" aria-labelledby="hero-title">
@@ -35,7 +54,7 @@ export function MarketingLanding({ onEnterProfile }: MarketingLandingProps) {
               thickness={2.2}
               speed={0.3}
               proximity={280}
-              onClick={onEnterProfile}
+              onClick={onStart}
             >
               Build my profile
             </SpecularButton>
@@ -49,6 +68,46 @@ export function MarketingLanding({ onEnterProfile }: MarketingLandingProps) {
             <li>Private recovery code</li>
             <li>Data-informed direction</li>
           </ul>
+
+          <form className="marketing-return" onSubmit={onContinue} noValidate>
+            <span className="marketing-return-label" id="return-label">
+              Coming back?
+            </span>
+            <input
+              className="code-input"
+              value={recoveryCode}
+              onChange={(event) => onCodeChange(event.target.value)}
+              placeholder="Enter your recovery code"
+              aria-labelledby="return-label"
+              autoComplete="off"
+              spellCheck={false}
+              disabled={busy}
+            />
+            <button className="btn ghost" disabled={busy}>
+              {busy ? 'Loading...' : 'Continue'}
+            </button>
+            {hasProfile && (
+              <button
+                type="button"
+                className="marketing-return-link"
+                onClick={onOpenProfile}
+              >
+                Open my dashboard
+              </button>
+            )}
+          </form>
+          {message && (
+            <p
+              className={
+                failed
+                  ? 'notice error marketing-return-message'
+                  : 'notice success marketing-return-message'
+              }
+              role={failed ? 'alert' : 'status'}
+            >
+              {message}
+            </p>
+          )}
         </div>
 
         <div

@@ -263,105 +263,30 @@ h3 {
   text-decoration: underline;
 }
 
-/* Landing: one viewport, two entry cards, nothing to scroll. */
-.landing-page {
-  /* Header and footer share the viewport with the landing screen. */
-  min-height: calc(100vh - 130px);
+/* Returning users resume from the hero instead of a second landing page. */
+.marketing-return {
   display: flex;
-  flex-direction: column;
-}
-
-.landing {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 980px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 14px 22px 8px;
-}
-
-.landing-hero {
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-.landing-hero h1 {
-  margin: 0 0 12px;
-  font-size: clamp(34px, 5vw, 52px);
-}
-
-.landing-hero p {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
   max-width: 560px;
-  margin: 0 auto;
-  color: var(--muted);
-  font-size: 17px;
-  line-height: 1.5;
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
 }
 
-.entry-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 22px;
-  max-width: 900px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.entry-card {
-  display: flex;
-  flex-direction: column;
-  padding: 22px 26px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: var(--paper);
-  box-shadow: 0 10px 30px rgb(28 58 84 / 6%);
-  text-align: center;
-}
-
-.entry-icon {
-  display: grid;
-  width: 58px;
-  height: 58px;
-  place-items: center;
-  margin: 0 auto 16px;
-  border-radius: 999px;
-  background: var(--green-soft);
-}
-
-.entry-icon svg {
-  width: 26px;
-  height: 26px;
-  stroke: var(--green);
-}
-
-.entry-card h2 {
-  margin: 0 0 8px;
-  font-size: 21px;
-}
-
-.entry-text {
-  margin: 0 0 18px;
+.marketing-return-label {
   color: var(--muted);
   font-size: 14px;
-  line-height: 1.5;
-}
-
-.entry-card .notice {
-  margin: 0 0 14px;
-  text-align: left;
-}
-
-.entry-card .btn + .btn {
-  margin-top: 12px;
+  font-weight: 650;
 }
 
 .code-input {
-  width: 100%;
-  min-height: 48px;
-  margin-bottom: 14px;
-  padding: 10px 14px;
+  flex: 1;
+  min-width: 170px;
+  max-width: 260px;
+  min-height: 44px;
+  padding: 8px 14px;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: #fbfdfc;
@@ -373,14 +298,28 @@ h3 {
   border-color: var(--green);
 }
 
-.landing-note {
-  margin: 20px auto 0;
-  color: var(--muted);
-  font-size: 13px;
-  text-align: center;
+.marketing-return .btn {
+  min-height: 44px;
 }
 
-/* Public landing: explain the product, then hand off to the profile gateway. */
+.marketing-return-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--green-dark);
+  font-size: 14px;
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.marketing-return-message {
+  max-width: 560px;
+  margin: 12px 0 0;
+}
+
+/* Public landing: explain the product and carry the profile entry form. */
 .marketing-page {
   min-height: calc(100vh - 130px);
 }
@@ -1186,7 +1125,7 @@ h3 {
 }
 
 .app-hero h1 {
-  max-width: 940px;
+  max-width: 680px;
   margin: 0 0 10px;
   font-size: clamp(28px, 4vw, 40px);
 }
@@ -1391,7 +1330,6 @@ h3 {
 }
 
 .why-list {
-  flex: 1;
   margin: 0 0 12px;
   padding-left: 16px;
   color: var(--muted);
@@ -1464,7 +1402,9 @@ h3 {
   color: var(--ink);
 }
 
-.match-card .btn {
+/* Everything from the breakdown down pins to the card floor so a row of
+   cards keeps one baseline no matter how many reasons a card lists. */
+.breakdown {
   margin-top: auto;
 }
 
@@ -1500,6 +1440,11 @@ h3 {
 
 .match-count {
   margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .matches-results {

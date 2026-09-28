@@ -1,6 +1,7 @@
 import type { RoleRequirements as RequirementsData } from '../../lib/roleRequirementsApi'
 import type { Skill } from '../../lib/skillsApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
+import { occupationTitle } from '../../lib/occupationTitle'
 
 type PathwaysPageProps = {
   targetRole: TargetRole | null
@@ -44,7 +45,7 @@ export function PathwaysPage({
         <p className="eyebrow">Pathways &amp; progress</p>
         <h1>
           {targetRole
-            ? `Learning roadmap towards ${targetRole.title}`
+            ? `Learning roadmap towards ${occupationTitle(targetRole.title)}`
             : 'Learning roadmap'}
         </h1>
         <p className="app-hero-sub">

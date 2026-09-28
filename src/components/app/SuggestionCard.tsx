@@ -1,7 +1,16 @@
 import type { RoleSuggestion } from '../../lib/suggestionApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
+import { occupationTitle } from '../../lib/occupationTitle'
 
 const money = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 })
+
+// Each factor is capped by its own weight (skill 60, growth 25, education 15),
+// so bars and labels both show the percent of that ceiling for a fair compare.
+const FACTOR_CEILINGS = { skill: 60, growth: 25, education: 15 } as const
+
+function asPercent(value: number, ceiling: number): number {
+  return Math.round((value / ceiling) * 100)
+}
 
 type SuggestionCardProps = {
   suggestion: RoleSuggestion
@@ -46,22 +55,23 @@ export function SuggestionCard({
   return (
     <article
       className={isTarget ? 'match-card current' : 'match-card'}
-      aria-label={`${suggestion.title} match`}
+      aria-label={`${occupationTitle(suggestion.title)} match`}
     >
       <div className="match-card-top">
         <span className="match-pill">{suggestion.matchScore}% match</span>
         {badge && <span className="flag-pill">{badge}</span>}
       </div>
 
-      <h3>{suggestion.title}</h3>
+      <h3>{occupationTitle(suggestion.title)}</h3>
 
       <p className="why-title">Why this matches</p>
       <ul className="why-list">
-        {(compact ? suggestion.reasons.slice(0, 2) : suggestion.reasons).map(
-          (reason) => (
-            <li key={reason}>{reason}</li>
-          ),
-        )}
+        {(compact
+          ? suggestion.reasons.slice(0, 2)
+          : suggestion.reasons.slice(0, 3)
+        ).map((reason) => (
+          <li key={reason}>{reason}</li>
+        ))}
       </ul>
 
       <div className="breakdown">
@@ -70,33 +80,42 @@ export function SuggestionCard({
           <span className="breakdown-bar">
             <span
               style={{
-                width: `${Math.min(100, suggestion.factors.skill * 2)}%`,
+                width: `${asPercent(suggestion.factors.skill, FACTOR_CEILINGS.skill)}%`,
               }}
             />
           </span>
-          <small>Skills {suggestion.factors.skill}</small>
+          <small>
+            Skills {asPercent(suggestion.factors.skill, FACTOR_CEILINGS.skill)}%
+          </small>
         </div>
         <div className="breakdown-row">
           <span className="breakdown-bar">
             <span
               className="mid"
               style={{
-                width: `${Math.min(100, suggestion.factors.growth * 5)}%`,
+                width: `${asPercent(suggestion.factors.growth, FACTOR_CEILINGS.growth)}%`,
               }}
             />
           </span>
-          <small>Growth {suggestion.factors.growth}</small>
+          <small>
+            Growth{' '}
+            {asPercent(suggestion.factors.growth, FACTOR_CEILINGS.growth)}%
+          </small>
         </div>
         <div className="breakdown-row">
           <span className="breakdown-bar">
             <span
               className="mid"
               style={{
-                width: `${Math.min(100, suggestion.factors.education * 5)}%`,
+                width: `${asPercent(suggestion.factors.education, FACTOR_CEILINGS.education)}%`,
               }}
             />
           </span>
-          <small>Education {suggestion.factors.education}</small>
+          <small>
+            Education{' '}
+            {asPercent(suggestion.factors.education, FACTOR_CEILINGS.education)}
+            %
+          </small>
         </div>
       </div>
 

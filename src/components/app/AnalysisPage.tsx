@@ -6,6 +6,7 @@ import type {
   RoleRequirements as RequirementsData,
   RoleSkill,
 } from '../../lib/roleRequirementsApi'
+import { occupationTitle } from '../../lib/occupationTitle'
 import type { SaveSkillResult, Skill, SkillStatus } from '../../lib/skillsApi'
 import type { RoleSuggestion } from '../../lib/suggestionApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
@@ -206,7 +207,7 @@ export function AnalysisPage({
     <>
       <section className="app-hero">
         <p className="eyebrow">Career analysis</p>
-        <h1>How ready you are for {targetRole.title}</h1>
+        <h1>How ready you are for {occupationTitle(targetRole.title)}</h1>
         <p className="app-hero-sub">
           Coverage of the skills and tools commonly listed for this role,
           weighted towards core skills. A related skill counts half towards

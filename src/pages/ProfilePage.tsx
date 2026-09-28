@@ -17,11 +17,10 @@ import {
   type SkillStatus,
 } from '../lib/skillsApi'
 import { requestTargetRole, type TargetRole } from '../lib/targetRoleApi'
+import { occupationTitle } from '../lib/occupationTitle'
 import { Stepper } from '../components/Stepper'
 import { EducationLevelSelect } from '../components/EducationLevelSelect'
-import { LandingScreen } from '../components/landing/LandingScreen'
 import { MarketingLanding } from '../components/landing/MarketingLanding'
-import { PillNav, type PillNavItem } from '../components/navigation/PillNav'
 import { AppNav, type AppPage } from '../components/app/AppNav'
 import { OverviewPage } from '../components/app/OverviewPage'
 import { MatchesPage } from '../components/app/MatchesPage'
@@ -51,13 +50,6 @@ import {
 type PendingTargetRoleChange = Pick<TargetRole, 'code' | 'title'> & {
   returnToOverview: boolean
 }
-
-type PublicPage = 'home' | 'profile-entry'
-
-const publicTabs: PillNavItem<PublicPage>[] = [
-  { id: 'home', label: 'Home' },
-  { id: 'profile-entry', label: 'Profile' },
-]
 
 // A new form starts with no background details.
 const emptyDetails: ProfileDetails = {
@@ -98,9 +90,7 @@ function forgetSavedLogin() {
 }
 
 export function ProfilePage() {
-  const [screen, setScreen] = useState<
-    'home' | 'profile-entry' | 'wizard' | 'app'
-  >('home')
+  const [screen, setScreen] = useState<'home' | 'wizard' | 'app'>('home')
   const [appPage, setAppPage] = useState<AppPage>('overview')
   // The wizard walks through background, skills and a target role in order.
   const [step, setStep] = useState<1 | 2 | 3>(1)
@@ -865,19 +855,6 @@ export function ProfilePage() {
           </span>
         </button>
 
-        {(screen === 'home' || screen === 'profile-entry') && (
-          <PillNav
-            items={publicTabs}
-            activeId={screen}
-            ariaLabel="Main navigation"
-            onSelect={(page) => {
-              setScreen(page)
-              setMessage('')
-              setFailed(false)
-            }}
-          />
-        )}
-
         {screen === 'app' && profile && (
           <AppNav page={appPage} onSelect={(page) => setAppPage(page)} />
         )}
@@ -887,19 +864,13 @@ export function ProfilePage() {
         className={
           screen === 'home'
             ? 'marketing-page'
-            : screen === 'profile-entry'
-              ? 'landing-page'
-              : screen === 'wizard'
-                ? 'wizard-page'
-                : 'app-page'
+            : screen === 'wizard'
+              ? 'wizard-page'
+              : 'app-page'
         }
       >
         {screen === 'home' && (
-          <MarketingLanding onEnterProfile={() => setScreen('profile-entry')} />
-        )}
-
-        {screen === 'profile-entry' && (
-          <LandingScreen
+          <MarketingLanding
             recoveryCode={recoveryCode}
             busy={busy}
             message={message}
@@ -1361,7 +1332,9 @@ export function ProfilePage() {
                                 <button
                                   type="button"
                                   onClick={() => {
-                                    setTargetRoleQuery(option.label)
+                                    setTargetRoleQuery(
+                                      occupationTitle(option.label),
+                                    )
                                     setTargetRoleCode(option.code)
                                     setTargetRoleOptions([])
                                     setTargetRoleError('')
@@ -1369,7 +1342,9 @@ export function ProfilePage() {
                                   }}
                                 >
                                   <span className="study-option-heading">
-                                    <strong>{option.label}</strong>
+                                    <strong>
+                                      {occupationTitle(option.label)}
+                                    </strong>
                                     {option.growth5yPercent != null && (
                                       <span
                                         className={`growth-badge ${

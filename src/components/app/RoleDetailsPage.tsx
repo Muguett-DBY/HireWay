@@ -5,6 +5,7 @@ import type {
 } from '../../lib/roleRequirementsApi'
 import type { SaveSkillResult, Skill } from '../../lib/skillsApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
+import { occupationTitle } from '../../lib/occupationTitle'
 
 const numberFormat = new Intl.NumberFormat('en-AU', {
   maximumFractionDigits: 0,
@@ -80,7 +81,7 @@ export function RoleDetailsPage({
     <>
       <section className="app-hero">
         <p className="eyebrow">Role details</p>
-        <h1>{targetRole.title}</h1>
+        <h1>{occupationTitle(targetRole.title)}</h1>
         <p className="app-hero-sub">{targetRole.description}</p>
       </section>
 
