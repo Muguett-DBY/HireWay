@@ -169,7 +169,7 @@ def read_majors(path: Path) -> dict[str, tuple[str, str, str, str, str]]:
 
 def read_degrees(
     path: Path,
-    major_codes: set[str],
+    majors: dict[str, tuple[str, str, str, str, str]],
 ) -> tuple[dict[str, tuple], set[tuple], dict[str, object]]:
     """Group active CRICOS rows into concise course autocomplete options."""
 
@@ -181,6 +181,25 @@ def read_degrees(
         "primary_detailed_field_code",
         "secondary_detailed_field_code",
     }
+    # CRICOS often stores a narrow (020100) or broad (090000) ASCED code where
+    # a detailed one belongs. Expand those to every detailed field beneath
+    # them so those courses still carry study majors; a broad expansion is a
+    # last resort kept back until detailed and narrow codes yield nothing.
+    majors_by_narrow: dict[str, list[str]] = defaultdict(list)
+    majors_by_broad: dict[str, list[str]] = defaultdict(list)
+    for code, values in majors.items():
+        majors_by_narrow[values[1]].append(code)
+        majors_by_broad[values[3]].append(code)
+
+    def expand_field_code(field_code: str) -> tuple[list[str], list[str]]:
+        if field_code in majors:
+            return [field_code], []
+        if field_code.endswith("0000"):
+            return [], majors_by_broad.get(field_code[:2], [])
+        if field_code.endswith("00"):
+            return majors_by_narrow.get(field_code[:4], []), []
+        return [], []
+
     groups: dict[tuple[str, str], DegreeGroup] = {}
     level_courses: dict[str, set[tuple[str, str]]] = defaultdict(set)
     level_titles: dict[str, set[str]] = defaultdict(set)
@@ -210,18 +229,26 @@ def read_degrees(
             group.providers.add(provider)
             level_providers[key[1]].add(provider)
 
+        broad_fallback: dict[str, int] = {}
         for field_rank, column in (
             (1, "primary_detailed_field_code"),
             (2, "secondary_detailed_field_code"),
         ):
-            major_code = row[column]
-            if not major_code:
+            field_code = row[column]
+            if not field_code:
                 continue
-            if major_code not in major_codes:
+            expanded, broad = expand_field_code(field_code)
+            if not expanded and not broad:
                 unknown_major_links += 1
                 continue
-            previous_rank = group.majors.get(major_code, field_rank)
-            group.majors[major_code] = min(previous_rank, field_rank)
+            for major_code in expanded:
+                previous_rank = group.majors.get(major_code, field_rank)
+                group.majors[major_code] = min(previous_rank, field_rank)
+            for major_code in broad:
+                previous_rank = broad_fallback.get(major_code, field_rank)
+                broad_fallback[major_code] = min(previous_rank, field_rank)
+        if not group.majors and broad_fallback:
+            group.majors.update(broad_fallback)
 
     degrees: dict[str, tuple] = {}
     degree_major_links: set[tuple] = set()
@@ -512,7 +539,7 @@ def build_import(source_dir: Path) -> dict[str, object]:
     )
     majors = read_majors(paths["majors"])
     degrees, degree_major_links, degree_metrics = read_degrees(
-        paths["active_courses"], set(majors)
+        paths["active_courses"], majors
     )
     occupations, aliases, tasks, ignored_occupation_rows = read_occupations(
         paths["occupations"]
