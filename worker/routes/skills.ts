@@ -120,10 +120,21 @@ export async function handleSkills(
     return Response.json({ error: 'Send a JSON object.' }, { status: 400 })
   }
 
-  // Free text is gone: every saved skill must come from the catalogue search.
+  // Every saved skill resolves to a catalogue entry. The iteration 1
+  // snapshot sends plain names without codes, so a typed name that matches
+  // the catalogue exactly is linked to its code on the way in.
   const name = typeof input.name === 'string' ? input.name.trim() : ''
-  const skillCode =
+  let skillCode =
     typeof input.skillCode === 'string' ? input.skillCode.trim() : ''
+
+  if (!skillCode && name) {
+    const typed = await env.DB.prepare(
+      'SELECT code FROM skill WHERE name = ? COLLATE NOCASE LIMIT 1',
+    )
+      .bind(name)
+      .first<{ code: string }>()
+    if (typed) skillCode = typed.code
+  }
 
   if (!skillCode || !name) {
     return Response.json(

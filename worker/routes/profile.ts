@@ -70,18 +70,13 @@ export async function handleProfile(
   }
 
   // The selected codes decide which official study title is saved.
+  // Missing keys read as null: the legacy snapshot simply omits them.
   const degreeCode =
-    input.degreeCode === null
-      ? null
-      : typeof input.degreeCode === 'string'
-        ? input.degreeCode.trim() || null
-        : undefined
+    typeof input.degreeCode === 'string'
+      ? input.degreeCode.trim() || null
+      : null
   const majorCode =
-    input.majorCode === null
-      ? null
-      : typeof input.majorCode === 'string'
-        ? input.majorCode.trim() || null
-        : undefined
+    typeof input.majorCode === 'string' ? input.majorCode.trim() || null : null
   let qualification = ''
   let educationLevel =
     typeof input.educationLevel === 'string' ? input.educationLevel.trim() : ''
@@ -89,11 +84,11 @@ export async function handleProfile(
     typeof input.currentRole === 'string' ? input.currentRole.trim() : ''
   const errors: Record<string, string> = {}
 
-  if (
-    degreeCode === undefined ||
-    majorCode === undefined ||
-    (!degreeCode && !majorCode)
-  ) {
+  // The iteration 1 snapshot sends a plain qualification string with no
+  // catalogue codes; accept it so the archived version keeps working.
+  const qualificationText =
+    typeof input.qualification === 'string' ? input.qualification.trim() : ''
+  if (!degreeCode && !majorCode && !qualificationText) {
     errors.qualification =
       'Choose a course or field of study from the suggestions.'
   }
@@ -131,6 +126,9 @@ export async function handleProfile(
 
   // A named course does not need one arbitrary ASCED field attached to it.
   const savedMajorCode = degreeCode ? null : majorCode
+  if (!qualification && !degreeCode && !majorCode && qualificationText) {
+    qualification = qualificationText
+  }
 
   const educationLevels = new Set([
     'High School',
