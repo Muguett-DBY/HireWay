@@ -17,7 +17,7 @@ type AnalysisPageProps = {
   suggestions: RoleSuggestion[]
   requirements: RequirementsData | null
   busy: boolean
-  onAddUpcomingSkill: (skill: RoleSkill) => void
+  onAddSkill: (skill: RoleSkill) => void
   onSkillStatus: (skill: Skill, status: SkillStatus) => void
   onRemoveSkill: (skill: Skill) => Promise<SaveSkillResult>
   onGoMatches: () => void
@@ -110,7 +110,7 @@ export function AnalysisPage({
   suggestions,
   requirements,
   busy,
-  onAddUpcomingSkill,
+  onAddSkill,
   onSkillStatus,
   onRemoveSkill,
   onGoMatches,
@@ -336,9 +336,9 @@ export function AnalysisPage({
                           className="gap-chip"
                           key={skill.code}
                           disabled={busy}
-                          onClick={() => onAddUpcomingSkill(skill)}
+                          onClick={() => onAddSkill(skill)}
                           title="From US O*NET 31.0 importance ratings via the ABS OSCA bridge"
-                          aria-label={`Plan ${skill.name} as an upcoming skill`}
+                          aria-label={`Add ${skill.name} to your skills`}
                         >
                           + {skill.name}
                           <small>{skill.score}</small>
@@ -369,7 +369,7 @@ export function AnalysisPage({
             </div>
             {skills.length === 0 ? (
               <p className="empty-note">
-                Nothing tracked yet. Planned skills land here as Upcoming.
+                Nothing tracked yet. Skills added above land here as current.
               </p>
             ) : (
               <div

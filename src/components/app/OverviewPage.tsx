@@ -21,6 +21,7 @@ type OverviewPageProps = {
   onPlan: (suggestion: RoleSuggestion) => void
   onGoMatches: () => void
   onGoWizard: () => void
+  onGoPage: (page: 'analysis' | 'role' | 'pathways') => void
 }
 
 // The overview is the landing spot after login: one target-role hero, one
@@ -37,6 +38,7 @@ export function OverviewPage({
   onPlan,
   onGoMatches,
   onGoWizard,
+  onGoPage,
 }: OverviewPageProps) {
   const targetSuggestion = suggestions.find(
     (item) => item.code === targetRole?.code,
@@ -97,6 +99,52 @@ export function OverviewPage({
           </button>
         </div>
       </section>
+
+      {/* The tabs read in this order once a direction is chosen, so point
+          first-time users at the workspace instead of leaving them here. */}
+      {targetRole && (
+        <section className="guide-strip" aria-label="Suggested next steps">
+          <button
+            type="button"
+            className="guide-card"
+            onClick={() => onGoPage('analysis')}
+          >
+            <span className="guide-number" aria-hidden="true">
+              1
+            </span>
+            <span>
+              <strong>Check your readiness</strong>
+              <small>Compare your skills with the role's requirements.</small>
+            </span>
+          </button>
+          <button
+            type="button"
+            className="guide-card"
+            onClick={() => onGoPage('role')}
+          >
+            <span className="guide-number" aria-hidden="true">
+              2
+            </span>
+            <span>
+              <strong>See the role in detail</strong>
+              <small>Tasks, skill groups and the study routes in.</small>
+            </span>
+          </button>
+          <button
+            type="button"
+            className="guide-card"
+            onClick={() => onGoPage('pathways')}
+          >
+            <span className="guide-number" aria-hidden="true">
+              3
+            </span>
+            <span>
+              <strong>Plan your pathway</strong>
+              <small>A learning roadmap built from your gaps.</small>
+            </span>
+          </button>
+        </section>
+      )}
 
       <div className="stat-strip">
         {stats.map((stat) => (

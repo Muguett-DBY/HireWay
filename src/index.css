@@ -1159,6 +1159,57 @@ h3 {
   border-color: #bcd9c9;
 }
 
+/* Ordered pointers to the workspace tabs, shown once a target is set. */
+.guide-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+  max-width: 1180px;
+  margin: 20px auto 0;
+  padding: 0 max(22px, calc((100vw - 1180px) / 2));
+}
+
+.guide-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: var(--paper);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 150ms ease;
+}
+
+.guide-card:hover {
+  border-color: var(--green);
+}
+
+.guide-number {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  flex: none;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green-dark);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.guide-card strong {
+  display: block;
+  font-size: 14px;
+}
+
+.guide-card small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 /* Four-across stat strip with clear separation from the hero. */
 .stat-strip {
   position: relative;

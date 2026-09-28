@@ -365,7 +365,7 @@ export function ProfilePage() {
   }, [])
 
   // Typing changes the draft, not the database.
-  function updateField(field: 'educationLevel' | 'currentRole', value: string) {
+  function updateField(field: 'educationLevel', value: string) {
     setDetails((current) => {
       const next = { ...current, [field]: value }
       saveDraft(next)
@@ -608,8 +608,8 @@ export function ProfilePage() {
     }
   }
 
-  // Both suggested and searched skills use the same API request. Skills
-  // planned from the gap analysis start as upcoming, not current strengths.
+  // Both suggested and searched skills use the same API request and land as
+  // current strengths; the progress pills on the analysis page adjust later.
   async function saveSkill(
     name: string,
     selectedCode: string,
@@ -1028,22 +1028,6 @@ export function ProfilePage() {
                         </>
                       )}
 
-                      <label htmlFor="current-role">
-                        Current role (optional)
-                      </label>
-                      <input
-                        id="current-role"
-                        value={details.currentRole}
-                        onChange={(event) =>
-                          updateField('currentRole', event.target.value)
-                        }
-                        maxLength={120}
-                        aria-invalid={Boolean(errors.currentRole)}
-                        aria-describedby={
-                          errors.currentRole ? 'role-error' : undefined
-                        }
-                      />
-
                       <button type="submit" className="btn block">
                         {busy ? 'Saving...' : 'Continue'}
                       </button>
@@ -1185,7 +1169,8 @@ export function ProfilePage() {
                         aria-controls="skill-suggestions"
                       />
 
-                      {/* A selected option keeps its standard code when saved. */}
+                      {/* Picking a suggestion saves it straight away, so the
+                          search behaves like the suggestion chips above. */}
                       {skillOptions.length > 0 && (
                         <ul
                           className="autocomplete-menu"
@@ -1200,6 +1185,7 @@ export function ProfilePage() {
                                   setSkillCode(option.code)
                                   setSkillOptions([])
                                   setSkillError('')
+                                  void saveSkill(option.label, option.code)
                                 }}
                               >
                                 <strong>{option.label}</strong>
@@ -1215,15 +1201,6 @@ export function ProfilePage() {
                           ))}
                         </ul>
                       )}
-                    </div>
-                    <div className="skill-entry">
-                      <button
-                        type="submit"
-                        className="btn block"
-                        disabled={skillsBusy || !skillCode}
-                      >
-                        {skillsBusy ? 'Working...' : 'Add skill'}
-                      </button>
                     </div>
 
                     <p id="skill-help">
@@ -1458,6 +1435,7 @@ export function ProfilePage() {
                   setStep(1)
                   setScreen('wizard')
                 }}
+                onGoPage={(page) => setAppPage(page)}
               />
             )}
 
@@ -1480,8 +1458,8 @@ export function ProfilePage() {
                 suggestions={suggestions}
                 requirements={requirements}
                 busy={skillsBusy}
-                onAddUpcomingSkill={(skill: RoleSkill) => {
-                  void saveSkill(skill.name, skill.code, 'upcoming')
+                onAddSkill={(skill: RoleSkill) => {
+                  void saveSkill(skill.name, skill.code)
                 }}
                 onSkillStatus={(skill: Skill, status: SkillStatus) => {
                   void cycleSkillStatus(skill, status)

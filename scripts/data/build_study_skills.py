@@ -163,7 +163,11 @@ WHERE NOT EXISTS(SELECT 1 FROM study_program_map p WHERE p.major_code=m.code);
 """)
     # Shared aggregation block: links majors' programs to O*NET ratings and
     # ranks each skill above the all-occupations baseline for its category.
-    # The baseline is global, so splitting the work into chunks cannot change
+    # A skill must be asked for by at least two linked occupations, so a single
+    # software title rated by one profession cannot dominate a field. The lift
+    # over baseline counts twice because generic knowledge such as English
+    # language scores highly everywhere and carries no field signal. The
+    # baseline is global, so splitting the work into chunks cannot change
     # the result; chunks keep every statement inside remote D1 time limits.
     aggregate_sql = """
 INSERT INTO study_skill_map
@@ -185,9 +189,9 @@ WITH ratings AS (
  GROUP BY l.major_code,l.skill_code
 )
 SELECT major_code,skill_code,
- average_score + MAX(0,average_score-mean_score) + MIN(10,occupation_count),
+ average_score + 2*MAX(0,average_score-mean_score) + MIN(10,occupation_count),
  'ASCED/CIP subject link -> CIP/O*NET occupations -> O*NET ratings'
-FROM ranked WHERE average_score >= 50;
+FROM ranked WHERE average_score >= 50 AND occupation_count >= 2;
 """
     # One chunk per ASCED broad field (first two digits of the major code).
     for broad_field in ['01', '02', '03', '04', '05', '06',
@@ -226,9 +230,9 @@ WITH ratings AS (
  GROUP BY l.major_code,l.skill_code
 )
 SELECT major_code,skill_code,
- average_score + MAX(0,average_score-mean_score) + MIN(10,occupation_count),
+ average_score + 2*MAX(0,average_score-mean_score) + MIN(10,occupation_count),
  'ASCED narrow-field broad family -> CIP/O*NET occupations -> O*NET ratings'
-FROM ranked WHERE average_score >= 50;
+FROM ranked WHERE average_score >= 50 AND occupation_count >= 2;
 """)
     destination = ROOT / 'data/generated/study_skills.sql'
     destination.parent.mkdir(exist_ok=True)

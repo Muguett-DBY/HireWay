@@ -166,7 +166,7 @@ export function MarketingLanding({
           <article className="marketing-step-card">
             <span>01</span>
             <h3>Share your background</h3>
-            <p>Add your education and current role to set a starting point.</p>
+            <p>Add your study course to set a starting point.</p>
           </article>
           <article className="marketing-step-card">
             <span>02</span>
