@@ -23,7 +23,7 @@ NARROW_FIELD_FAMILIES = {
     '0109': ['26'],          # Biological Sciences -> Biological Sciences
     '0199': ['40', '26'],    # Other Natural and Physical Sciences
     '0201': ['11'],          # Computer Science -> Computer and Information Sciences
-    '0203': ['11', '52'],    # Information Systems -> Computer Science, Business
+    '0203': ['11'],          # Information Systems -> Computer Science
     '0299': ['11'],          # Other Information Technology
     '0301': ['14', '15'],    # Manufacturing Engineering and Technology
     '0303': ['14'],          # Process and Resources Engineering
@@ -78,9 +78,11 @@ NARROW_FIELD_FAMILIES = {
     '0919': ['45'],          # Economics and Econometrics -> Social Sciences
     '0921': ['31'],          # Sport and Recreation -> Parks, Recreation and Fitness
     '0999': ['45', '42'],    # Other Society and Culture
-    '1001': ['50'],          # Performing Arts -> Visual and Performing Arts
-    '1003': ['50'],          # Visual Arts and Crafts
-    '1005': ['50'],          # Graphic and Design Studies
+    # The CIP 50 tree mixes performers with designers; map each arts narrow
+    # field to its own sub-family so Figma stays with design, not with drama.
+    '1001': ['50.03', '50.05', '50.09'],  # Performing Arts -> dance, drama, music
+    '1003': ['50.02', '50.0701', '50.0702', '50.0703', '50.0714'],  # crafts and studio arts only
+    '1005': ['50.04'],                    # Graphic and Design Studies -> design
     '1007': ['09'],          # Communication and Media Studies
     '1099': ['50'],          # Other Creative Arts
     '1101': ['12', '52'],    # Food and Hospitality -> Personal and Culinary Services, Business
@@ -137,7 +139,10 @@ THEN substr(e.title,1,length(e.title)-9) ELSE e.title END));
     # Explicit subject equivalences; narrowly scoped, inspectable and versioned.
     aliases = [('090999', 'CIP:22.0101', 'Law, n.e.c. / Law'),
                ('060301', 'CIP:51.3801', 'General Nursing / Registered Nursing'),
-               ('020199', 'CIP:11.0701', 'Computer Science, n.e.c. / Computer Science')]
+               ('020199', 'CIP:11.0701', 'Computer Science, n.e.c. / Computer Science'),
+               ('031101', 'CIP:15.1102', 'Surveying / Surveying Technology'),
+               ('031103', 'CIP:15.1102', 'Mapping Science / Surveying Technology'),
+               ('031305', 'CIP:14.0902', 'Computer Engineering / Computer Hardware Engineering')]
     for major, cip, note in aliases:
         statements.append(
             'INSERT OR IGNORE INTO study_program_map '
