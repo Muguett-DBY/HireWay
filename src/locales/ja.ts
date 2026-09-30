@@ -5,6 +5,22 @@ export const ja = {
   'nav.analysis': '分析',
   'nav.roleDetails': '職種詳細',
   'nav.pathways': 'キャリアパス',
+  'nav.myProfile': 'マイプロフィール',
+  'profile.eyebrow': 'マイプロフィール',
+  'profile.h1': 'プロフィールを管理',
+  'profile.sub':
+    'リカバリーコード、学歴、目標職、追跡中のすべてのスキルをここで管理できます。',
+  'profile.recovery': 'リカバリーコード',
+  'profile.background': '学歴',
+  'profile.editBackground': 'ウィザードで編集',
+  'profile.targetRole': '目標職',
+  'profile.changeRole': '目標職を変更',
+  'profile.skills': 'スキル',
+  'profile.skillsTag': '{n} 件を追跡中',
+  'profile.noSkills':
+    'まだスキルがありません。上で検索して最初の 1 つを追加しましょう。',
+  'profile.removeError': 'このスキルを削除できませんでした。',
+
   'footer.tagline': 'あなたのキャリアの旅を、私たちが支えます。',
   'footer.privacy': 'あなたのデータは安全に保護されます。',
   'landing.eyebrow': 'もっと明確なキャリア設計',

@@ -6,6 +6,21 @@ export const en = {
   'nav.analysis': 'Analysis',
   'nav.roleDetails': 'Role Details',
   'nav.pathways': 'Pathways',
+  'nav.myProfile': 'My Profile',
+  'profile.eyebrow': 'My profile',
+  'profile.h1': 'Manage your profile',
+  'profile.sub':
+    'Your recovery code, study background, target role and every skill you track - all in one place.',
+  'profile.recovery': 'Recovery code',
+  'profile.background': 'Study background',
+  'profile.editBackground': 'Edit in wizard',
+  'profile.targetRole': 'Target role',
+  'profile.changeRole': 'Change target role',
+  'profile.skills': 'Skills',
+  'profile.skillsTag': '{n} tracked',
+  'profile.noSkills': 'No skills yet - search above to add the first one.',
+  'profile.removeError': 'Could not remove this skill.',
+
   'footer.tagline': 'Your career journey, our priority.',
   'footer.privacy': 'Your data is secure and private.',
 

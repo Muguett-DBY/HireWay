@@ -18,44 +18,134 @@
   --green-deep: #0b5330;
   --green-soft: #e9f6ee;
   --line: #e2e8e4;
-
-  .header-end {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    min-width: 0;
-  }
-
-  .lang-switcher {
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
-    padding: 3px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    background: rgb(255 255 255 / 72%);
-  }
-
-  .lang-option {
-    padding: 4px 10px;
-    border: 0;
-    border-radius: 999px;
-    background: transparent;
-    color: var(--muted);
-    font-size: 12px;
-    font-weight: 650;
-    cursor: pointer;
-  }
-
-  .lang-option.active {
-    background: var(--green-soft);
-    color: var(--green-dark);
-  }
   --paper: #ffffff;
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* Profile page skill search: card shell matching the snapshot cards. */
+.profile-skill-form {
+  position: relative;
+  margin-top: 16px;
+}
+
+.profile-skill-form input {
+  width: min(420px, 100%);
+  min-height: 46px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 14px;
+  box-shadow: 0 4px 14px rgb(28 58 84 / 5%);
+}
+
+.profile-skill-form input:focus {
+  outline: 2px solid rgb(22 162 73 / 35%);
+  border-color: var(--green);
+}
+
+.profile-skill-form .autocomplete-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgb(28 58 84 / 14%);
+}
+
+.profile-skill-form .autocomplete-menu button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.profile-skill-form .autocomplete-menu button:hover {
+  background: var(--green-soft);
+}
+
+.profile-skill-form .autocomplete-menu button small {
+  color: var(--muted);
+}
+
+/* Header language dropdown and the flex slot that hosts nav + switcher. */
+.header-end {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.lang-switcher {
+  position: relative;
+}
+
+.lang-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 72%);
+  color: var(--ink);
+  font-size: 12.5px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 30;
+  min-width: 140px;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgb(28 58 84 / 14%);
+}
+
+.lang-option {
+  display: flex;
+  width: 100%;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.lang-option:hover {
+  background: var(--green-soft);
+}
+
+.lang-option.active {
+  color: var(--green-dark);
 }
 
 html {

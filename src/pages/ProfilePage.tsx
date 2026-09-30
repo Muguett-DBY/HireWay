@@ -23,6 +23,7 @@ import { EducationLevelSelect } from '../components/EducationLevelSelect'
 import { MarketingLanding } from '../components/landing/MarketingLanding'
 import { AppNav, type AppPage } from '../components/app/AppNav'
 import { SkillPromptCard } from '../components/app/SkillPromptCard'
+import { MyProfilePage } from '../components/app/MyProfilePage'
 import { LanguageSwitcher } from '../components/LanguageSwitcher'
 import { useI18n } from '../lib/useI18n'
 import { OverviewPage } from '../components/app/OverviewPage'
@@ -1588,6 +1589,38 @@ export function ProfilePage() {
                 requirements={requirements}
                 skills={skills}
                 onGoRole={() => setAppPage('role')}
+              />
+            )}
+
+            {appPage === 'profile' && (
+              <MyProfilePage
+                profile={profile}
+                recoveryCode={recoveryCode || profile.code}
+                skills={skills}
+                targetRole={targetRole}
+                busy={skillsBusy || targetRoleBusy}
+                onAddSkill={(name, code) => {
+                  void saveSkill(name, code)
+                }}
+                onRemoveSkill={(skill) => deleteSkill(skill.id)}
+                onSkillStatus={(skill, status) => {
+                  void cycleSkillStatus(skill, status)
+                }}
+                onEditBackground={() => {
+                  setStep(1)
+                  setScreen('wizard')
+                }}
+                onEditTargetRole={() => {
+                  setStep(3)
+                  setScreen('wizard')
+                }}
+                promptSkill={elicitation}
+                onDeclineSkill={(code) => {
+                  const history = readPromptHistory()
+                  history.notYet.push({ code: profile.code, skill: code })
+                  writePromptHistory(history)
+                  setPromptEpoch((current) => current + 1)
+                }}
               />
             )}
           </>

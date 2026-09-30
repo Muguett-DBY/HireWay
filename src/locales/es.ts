@@ -5,6 +5,22 @@ export const es = {
   'nav.analysis': 'Análisis',
   'nav.roleDetails': 'Detalles del puesto',
   'nav.pathways': 'Rutas',
+  'nav.myProfile': 'Mi perfil',
+  'profile.eyebrow': 'Mi perfil',
+  'profile.h1': 'Gestiona tu perfil',
+  'profile.sub':
+    'Tu código de recuperación, formación, puesto objetivo y todas las habilidades que registras, en un solo lugar.',
+  'profile.recovery': 'Código de recuperación',
+  'profile.background': 'Formación',
+  'profile.editBackground': 'Editar en el asistente',
+  'profile.targetRole': 'Puesto objetivo',
+  'profile.changeRole': 'Cambiar puesto objetivo',
+  'profile.skills': 'Habilidades',
+  'profile.skillsTag': '{n} registradas',
+  'profile.noSkills':
+    'Aún no hay habilidades: busca arriba para añadir la primera.',
+  'profile.removeError': 'No se pudo quitar esta habilidad.',
+
   'footer.tagline': 'Tu camino profesional, nuestra prioridad.',
   'footer.privacy': 'Tus datos están seguros y son privados.',
   'landing.eyebrow': 'Planificación profesional, más clara',

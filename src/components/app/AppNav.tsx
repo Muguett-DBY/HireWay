@@ -1,7 +1,8 @@
 import { useI18n } from '../../lib/useI18n'
 import { PillNav } from '../navigation/PillNav'
 
-export type AppPage = 'overview' | 'matches' | 'analysis' | 'role' | 'pathways'
+export type AppPage =
+  'overview' | 'matches' | 'analysis' | 'role' | 'pathways' | 'profile'
 
 // The workspace tabs swap whole pages instead of one long scrolling dashboard.
 export function AppNav({
@@ -18,6 +19,7 @@ export function AppNav({
     { id: 'analysis' as const, label: t('nav.analysis') },
     { id: 'role' as const, label: t('nav.roleDetails') },
     { id: 'pathways' as const, label: t('nav.pathways') },
+    { id: 'profile' as const, label: t('nav.myProfile') },
   ]
   return (
     <PillNav
