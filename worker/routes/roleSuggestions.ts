@@ -21,11 +21,6 @@ type OverlapRow = {
   contribution: number
 }
 
-type FeedbackRow = {
-  occupationCode: string
-  reaction: string
-}
-
 type Suggestion = {
   code: string
   title: string
@@ -34,11 +29,16 @@ type Suggestion = {
   factors: { skill: number; growth: number; education: number }
   change5yPercent: number | null
   medianWeeklyEarnings: number | null
-  reaction: string | null
 }
 
 // The factor weights sum to one so the score stays on a 0-100 scale.
-const WEIGHTS = { skill: 0.6, growth: 0.25, education: 0.15 }
+// Education carries real weight because it now measures field alignment,
+// not just the award level.
+const WEIGHTS = { skill: 0.6, growth: 0.15, education: 0.25 }
+
+// Bridge codes shared by many OSCA occupations (Managers, All Other and
+// friends) carry no field signal, so affinity ignores them on both sides.
+const GENERIC_BRIDGE_MAX = 15
 
 // Claimed tools weigh slightly more than broad skills.
 const USER_WEIGHTS = { tool: 1.0, skill: 0.8 }
@@ -98,12 +98,13 @@ export async function handleRoleSuggestions(
     )
   }
 
-  const [profile, skillResult, feedbackResult] = await Promise.all([
+  const [profile, skillResult, spreadResult] = await Promise.all([
     env.DB.prepare(
-      'SELECT education_level AS educationLevel FROM profile WHERE code = ?',
+      'SELECT education_level AS educationLevel, degree_code AS degreeCode ' +
+        'FROM profile WHERE code = ?',
     )
       .bind(code)
-      .first<{ educationLevel: string }>(),
+      .first<{ educationLevel: string; degreeCode: string | null }>(),
     env.DB.prepare(
       `SELECT ps.skill_code AS skillCode, s.kind
        FROM profile_skill ps
@@ -112,22 +113,24 @@ export async function handleRoleSuggestions(
     )
       .bind(code)
       .all<SavedSkillRow>(),
+    // How many OSCA occupations share each O*NET bridge code.
     env.DB.prepare(
-      `SELECT occupation_code AS occupationCode, reaction
-       FROM profile_role_feedback WHERE profile_code = ?`,
-    )
-      .bind(code)
-      .all<FeedbackRow>(),
+      'SELECT onet_code AS onet, COUNT(DISTINCT occupation_code) AS n ' +
+        'FROM occupation_onet_map GROUP BY onet_code',
+    ).all<{ onet: string; n: number }>(),
   ])
 
   if (!profile) {
     return Response.json({ error: 'Profile not found.' }, { status: 404 })
   }
 
-  const savedSkills = skillResult.results
-  const feedback = new Map(
-    feedbackResult.results.map((row) => [row.occupationCode, row.reaction]),
+  const specificBridgeCodes = new Set(
+    spreadResult.results
+      .filter((row) => row.n <= GENERIC_BRIDGE_MAX)
+      .map((row) => row.onet),
   )
+
+  const savedSkills = skillResult.results
 
   // Knowledge areas describe what someone knows about, not what they can
   // do, so they never enter the match. A profile holding only knowledge
@@ -195,7 +198,10 @@ export async function handleRoleSuggestions(
     weight,
   ])
 
-  // Skills drive the shortlist; high-growth roles keep discovery open.
+  // Every occupation sharing at least one skill enters the ranking; the
+  // weighted score, not a skill-only pre-cut, decides who surfaces. Cutting
+  // candidates by raw skill similarity first used to lock out professions
+  // with rich vectors (law, nursing, accounting) behind thin ones.
   const skillCandidates = await env.DB.prepare(
     `WITH user_skills (skill_code, weight) AS (
        VALUES ${placeholders}
@@ -221,86 +227,143 @@ export async function handleRoleSuggestions(
      LEFT JOIN anzsco4_market mk ON mk.anzsco4_code = om.anzsco_code
      WHERE s.kind != 'knowledge'
      GROUP BY v.occupation_code
-     HAVING COUNT(DISTINCT v.skill_code) >= 1
-     ORDER BY skillMatch DESC
-     LIMIT 40`,
+     HAVING COUNT(DISTINCT v.skill_code) >= 1`,
   )
     .bind(...bindings)
     .all<CandidateRow>()
-
-  const growthCandidates = await env.DB.prepare(
-    `SELECT m.occupation_code AS code, o.title,
-            0 AS skillMatch,
-            m.growth_percentile AS growthPercentile,
-            o.skill_level AS skillLevel,
-            mk.change_5y_percent AS change5yPercent,
-            mk.median_weekly_earnings AS medianWeeklyEarnings,
-            m.vector_source AS vectorSource,
-            0 AS overlap
-     FROM occupation_match m
-     JOIN occupation o ON o.code = m.occupation_code
-     LEFT JOIN occupation_anzsco_map om
-       ON om.occupation_code = m.occupation_code AND om.is_primary = 1
-     LEFT JOIN anzsco4_market mk ON mk.anzsco4_code = om.anzsco_code
-     WHERE m.vector_source != 'global'
-     ORDER BY m.growth_percentile DESC
-     LIMIT 12`,
-  ).all<CandidateRow>()
 
   const candidates = new Map<string, CandidateRow>()
   for (const row of skillCandidates.results) {
     candidates.set(row.code, row)
   }
-  for (const row of growthCandidates.results) {
-    if (!candidates.has(row.code)) candidates.set(row.code, row)
+
+  // Field affinity: does the user's degree pathway reach this occupation?
+  // The feeder set walks degree -> ASCED majors -> CIP programs -> O*NET;
+  // each occupation's basis is its own bridge codes, inherited from its
+  // ANZSCO group when it has none of its own. Without either side the
+  // factor falls back to the plain education-level comparison.
+  const feeder = new Set<string>()
+  if (profile.degreeCode) {
+    const feederResult = await env.DB.prepare(
+      `SELECT DISTINCT e.onet_code AS onet
+       FROM degree_major_map d
+       JOIN study_program_map p ON p.major_code = d.major_code
+       JOIN education_onet_map e ON e.education_code = p.education_code
+       WHERE d.degree_code = ?`,
+    )
+      .bind(profile.degreeCode)
+      .all<{ onet: string }>()
+    for (const row of feederResult.results) {
+      if (specificBridgeCodes.has(row.onet)) feeder.add(row.onet)
+    }
   }
 
-  // Skill overlaps are fetched once and reused for every explanation.
-  const overlaps = new Map<string, { name: string; contribution: number }[]>()
-  const overlapResult = await env.DB.prepare(
-    `WITH user_skills (skill_code, weight) AS (
-       VALUES ${placeholders}
-     )
-     SELECT v.occupation_code AS code, s.name AS name,
-            v.score * user_skills.weight AS contribution
-     FROM user_skills
-     JOIN occupation_skill_vector v
-       ON v.skill_code = user_skills.skill_code
-     JOIN skill s ON s.code = v.skill_code
-     WHERE v.occupation_code IN (${[...candidates.keys()]
-       .map(() => '?')
-       .join(', ')})`,
-  )
-    .bind(...bindings, ...candidates.keys())
-    .all<OverlapRow>()
+  function chunk<T>(items: T[], size: number): T[][] {
+    const parts: T[][] = []
+    for (let i = 0; i < items.length; i += size) {
+      parts.push(items.slice(i, i + size))
+    }
+    return parts
+  }
 
-  for (const row of overlapResult.results) {
-    const list = overlaps.get(row.code) ?? []
-    list.push({ name: row.name, contribution: row.contribution })
-    overlaps.set(row.code, list)
+  const basisByOccupation = new Map<string, Set<string>>()
+  for (const codes of chunk([...candidates.keys()], 50)) {
+    const direct = await env.DB.prepare(
+      `SELECT occupation_code AS code, onet_code AS onet
+       FROM occupation_onet_map WHERE occupation_code IN (${codes.map(() => '?').join(', ')})`,
+    )
+      .bind(...codes)
+      .all<{ code: string; onet: string }>()
+    for (const row of direct.results) {
+      if (!specificBridgeCodes.has(row.onet)) continue
+      const set = basisByOccupation.get(row.code) ?? new Set<string>()
+      set.add(row.onet)
+      basisByOccupation.set(row.code, set)
+    }
+  }
+  const inheritedCodes = [...candidates.keys()].filter(
+    (code) => !basisByOccupation.has(code),
+  )
+  for (const codes of chunk(inheritedCodes, 50)) {
+    const sibling = await env.DB.prepare(
+      `SELECT m1.occupation_code AS code, om.onet_code AS onet
+       FROM occupation_anzsco_map m1
+       JOIN occupation_anzsco_map m2
+         ON m2.anzsco_code = m1.anzsco_code AND m2.is_primary = 1
+       JOIN occupation_onet_map om ON om.occupation_code = m2.occupation_code
+       WHERE m1.is_primary = 1
+         AND m1.occupation_code IN (${codes.map(() => '?').join(', ')})`,
+    )
+      .bind(...codes)
+      .all<{ code: string; onet: string }>()
+    for (const row of sibling.results) {
+      if (!specificBridgeCodes.has(row.onet)) continue
+      const set = basisByOccupation.get(row.code) ?? new Set<string>()
+      set.add(row.onet)
+      basisByOccupation.set(row.code, set)
+    }
+  }
+
+  function fieldAffinity(occupationCode: string): number | null {
+    if (feeder.size === 0) return null
+    const basis = basisByOccupation.get(occupationCode)
+    if (!basis || basis.size === 0) return null
+    let shared = 0
+    for (const onet of feeder) {
+      if (basis.has(onet)) shared += 1
+    }
+    if (shared === 0) return 0
+    return Math.min(1, 0.3 + (0.7 * shared) / basis.size)
+  }
+
+  // Skill overlaps are fetched once and reused for every explanation. The
+  // candidate pool is unbounded now, so the IN list is sent in chunks to stay
+  // inside the D1 bound-parameter limit.
+  const overlaps = new Map<string, { name: string; contribution: number }[]>()
+  for (const codes of chunk([...candidates.keys()], 50)) {
+    const overlapResult = await env.DB.prepare(
+      `WITH user_skills (skill_code, weight) AS (
+         VALUES ${placeholders}
+       )
+       SELECT v.occupation_code AS code, s.name AS name,
+              v.score * user_skills.weight AS contribution
+       FROM user_skills
+       JOIN occupation_skill_vector v
+         ON v.skill_code = user_skills.skill_code
+       JOIN skill s ON s.code = v.skill_code
+       WHERE v.occupation_code IN (${codes.map(() => '?').join(', ')})`,
+    )
+      .bind(...bindings, ...codes)
+      .all<OverlapRow>()
+
+    for (const row of overlapResult.results) {
+      const list = overlaps.get(row.code) ?? []
+      list.push({ name: row.name, contribution: row.contribution })
+      overlaps.set(row.code, list)
+    }
   }
 
   const userNormValue = userNorm || 1
   const suggestions: Suggestion[] = []
 
   for (const candidate of candidates.values()) {
-    // Dismissed roles leave the list; reactions elsewhere nudge the score.
-    const reaction = feedback.get(candidate.code) ?? null
-    if (reaction === 'not_for_me') continue
-
     const skillFactor = (candidate.skillMatch || 0) / userNormValue
-    const educationMatch = educationFactor(
+    // Award-level fit alone gave every degree holder a flat score, so it is
+    // multiplied by field affinity when the profile carries a degree whose
+    // pathway we can trace; unrelated fields then score honestly lower.
+    const levelMatch = educationFactor(
       profile.educationLevel,
       candidate.skillLevel,
     )
+    const affinity = fieldAffinity(candidate.code)
+    const educationMatch =
+      affinity === null ? levelMatch : levelMatch * affinity
 
-    let score =
+    const score =
       100 *
       (WEIGHTS.skill * skillFactor +
         WEIGHTS.growth * candidate.growthPercentile +
         WEIGHTS.education * educationMatch)
-    if (reaction === 'curious') score += 3
-    if (reaction === 'interested') score += 6
 
     const reasons: string[] = []
     const topSkills = (overlaps.get(candidate.code) ?? [])
@@ -321,9 +384,6 @@ export async function handleRoleSuggestions(
     } else if (educationMatch < 0.5) {
       reasons.push(`Usually asks for a different study level`)
     }
-    if (reaction === 'interested' || reaction === 'curious') {
-      reasons.push(`You marked this role as ${reaction.replace('_', ' ')}`)
-    }
 
     suggestions.push({
       code: candidate.code,
@@ -337,7 +397,6 @@ export async function handleRoleSuggestions(
         growth: Math.round(WEIGHTS.growth * candidate.growthPercentile * 100),
         education: Math.round(WEIGHTS.education * educationMatch * 100),
       },
-      reaction,
     })
   }
 

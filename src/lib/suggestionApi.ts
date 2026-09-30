@@ -8,7 +8,6 @@ export type RoleSuggestion = {
   change5yPercent: number | null
   medianWeeklyEarnings: number | null
   growthPercentile: number
-  reaction: 'not_for_me' | 'curious' | 'interested' | null
 }
 
 export type RoleSuggestions = {
@@ -32,25 +31,4 @@ export async function loadRoleSuggestions(
   })
   const data = await response.json()
   return response.ok ? { ok: true, data } : { ok: false, data }
-}
-
-// Deck reactions feed straight back into the next ranking run.
-export async function sendRoleFeedback(
-  profileCode: string,
-  occupationCode: string,
-  reaction: 'not_for_me' | 'curious' | 'interested',
-): Promise<{ ok: boolean; error?: string }> {
-  const response = await fetch('/api/role-feedback', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + profileCode,
-    },
-    body: JSON.stringify({ occupationCode, reaction }),
-    cache: 'no-store',
-  })
-  const data = await response.json().catch(() => ({}))
-  return response.ok
-    ? { ok: true }
-    : { ok: false, error: data.error ?? 'Could not save your reaction.' }
 }

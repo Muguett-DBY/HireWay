@@ -77,20 +77,29 @@ def build_vectors(
     types: dict[str, dict[str, str]] = {}
     for link in map_rows:
         occupation_code = link["occupation_code"]
+        bridges = link["onet_code"].split(", ")
         scores: dict[str, list[float]] = defaultdict(list)
         seen_types: dict[str, list[str]] = defaultdict(list)
-        for onet_code in link["onet_code"].split(", "):
+        for onet_code in bridges:
             for skill_code, entries in onet_by_skill.get(onet_code, {}).items():
                 for score, requirement_type in entries:
                     scores[skill_code].append(score)
                     seen_types[skill_code].append(requirement_type)
+        # One bridged occupation listing a tool does not make it part of the
+        # whole role's toolkit, so multi-bridge roles keep a skill only when
+        # at least half of their bridges rate it. Single-bridge roles keep
+        # everything, and the O*NET quirk that lists Python for motor
+        # repairers stops bleeding into the general electrician's tools.
+        support_floor = max(1, math.ceil(len(bridges) / 2))
         vectors[occupation_code] = {
             skill_code: sum(values) / len(values)
             for skill_code, values in scores.items()
+            if len(values) >= support_floor
         }
         types[occupation_code] = {
             skill_code: majority_type(kinds)
             for skill_code, kinds in seen_types.items()
+            if len(kinds) >= support_floor
         }
     return vectors, {
         link["occupation_code"]: link["onet_code"].split(", ")

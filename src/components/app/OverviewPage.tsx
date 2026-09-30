@@ -215,7 +215,6 @@ export function OverviewPage({
                 busy={busy}
                 compact
                 onPlan={onPlan}
-                onReact={() => undefined}
               />
             ))}
           </div>

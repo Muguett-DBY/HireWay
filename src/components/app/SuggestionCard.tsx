@@ -4,9 +4,9 @@ import { occupationTitle } from '../../lib/occupationTitle'
 
 const money = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 })
 
-// Each factor is capped by its own weight (skill 60, growth 25, education 15),
+// Each factor is capped by its own weight (skill 60, growth 15, education 25),
 // so bars and labels both show the percent of that ceiling for a fair compare.
-const FACTOR_CEILINGS = { skill: 60, growth: 25, education: 15 } as const
+const FACTOR_CEILINGS = { skill: 60, growth: 15, education: 25 } as const
 
 function asPercent(value: number, ceiling: number): number {
   return Math.round((value / ceiling) * 100)
@@ -19,10 +19,6 @@ type SuggestionCardProps = {
   busy: boolean
   compact?: boolean
   onPlan: (suggestion: RoleSuggestion) => void
-  onReact: (
-    suggestion: RoleSuggestion,
-    reaction: 'not_for_me' | 'curious' | 'interested',
-  ) => void
 }
 
 // One match card, shared by the overview strip and the matches page. The
@@ -35,7 +31,6 @@ export function SuggestionCard({
   busy,
   compact = false,
   onPlan,
-  onReact,
 }: SuggestionCardProps) {
   const isTarget = targetRole?.code === suggestion.code
   const badge = isTarget
@@ -45,12 +40,6 @@ export function SuggestionCard({
       : suggestion.change5yPercent !== null && suggestion.change5yPercent >= 8
         ? 'High growth'
         : null
-
-  const reactions = [
-    { id: 'not_for_me', label: 'Not for me' },
-    { id: 'curious', label: 'Curious' },
-    { id: 'interested', label: 'Interested' },
-  ] as const
 
   return (
     <article
@@ -145,26 +134,6 @@ export function SuggestionCard({
       >
         {busy ? 'Working...' : isTarget ? 'Current target' : 'Plan this role'}
       </button>
-
-      {!compact && (
-        <div className="deck-buttons" aria-label="Rate this suggestion">
-          {reactions.map((action) => (
-            <button
-              type="button"
-              key={action.id}
-              className={
-                suggestion.reaction === action.id
-                  ? 'deck-btn active'
-                  : 'deck-btn'
-              }
-              disabled={busy}
-              onClick={() => onReact(suggestion, action.id)}
-            >
-              {action.label}
-            </button>
-          ))}
-        </div>
-      )}
     </article>
   )
 }

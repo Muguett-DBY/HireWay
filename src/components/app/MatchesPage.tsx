@@ -10,15 +10,11 @@ type MatchesPageProps = {
   skillsCount: number
   busy: boolean
   onPlan: (suggestion: RoleSuggestion) => void
-  onReact: (
-    suggestion: RoleSuggestion,
-    reaction: 'not_for_me' | 'curious' | 'interested',
-  ) => void
 }
 
-// The matches page is the full discovery list. Cards rank by the engine and
-// every reaction reshuffles the next load, so the page never filters or
-// sorts locally - it simply renders what the ranking produced.
+// The matches page is the full discovery list. Cards rank by the engine, so
+// the page never filters or sorts locally - it simply renders what the
+// ranking produced.
 export function MatchesPage({
   suggestions,
   targetRole,
@@ -26,7 +22,6 @@ export function MatchesPage({
   skillsCount,
   busy,
   onPlan,
-  onReact,
 }: MatchesPageProps) {
   // With a thin profile the ranking leans on market data, so say so instead
   // of letting lookalike cards imply a precision the engine cannot have.
@@ -64,7 +59,6 @@ export function MatchesPage({
                 targetRole={targetRole}
                 busy={busy}
                 onPlan={onPlan}
-                onReact={onReact}
               />
             ))}
           </div>

@@ -60,12 +60,15 @@ NARROW_FIELD_FAMILIES = {
     '0701': ['13'],          # Teacher Education -> Education
     '0703': ['13'],          # Curriculum and Education Studies
     '0799': ['13'],          # Other Education
-    '0803': ['52'],          # Business and Management
-    '0805': ['52'],          # Sales and Marketing
-    '0807': ['52'],          # Tourism -> Business (hospitality and tourism management)
-    '0809': ['52'],          # Office Studies
-    '0811': ['52'],          # Banking, Finance and Related Fields
-    '0899': ['52'],          # Other Management and Commerce
+    # Management and commerce narrows to CIP sub-families: the whole 52 tree
+    # made actuarial science a "management" outcome and let a hospitality
+    # degree reach every business job. '0899' stays broad as the catch-all.
+    '0803': ['52.01', '52.02', '52.10', '52.11'],  # Business and Management
+    '0805': ['52.14', '52.18'],           # Sales and Marketing
+    '0807': ['52.09'],                    # Tourism -> Hospitality and Tourism
+    '0809': ['52.04'],                    # Office Studies
+    '0811': ['52.03', '52.08', '52.13'],  # Banking, Finance incl Actuarial Science
+    '0899': ['52'],                       # Other Management and Commerce
     '0901': ['45'],          # Political Science and Policy Studies -> Social Sciences
     '0903': ['45'],          # Studies in Human Society
     '0905': ['44', '19'],    # Human Welfare Studies and Services -> Public Administration, Human Sciences
@@ -142,7 +145,11 @@ THEN substr(e.title,1,length(e.title)-9) ELSE e.title END));
                ('020199', 'CIP:11.0701', 'Computer Science, n.e.c. / Computer Science'),
                ('031101', 'CIP:15.1102', 'Surveying / Surveying Technology'),
                ('031103', 'CIP:15.1102', 'Mapping Science / Surveying Technology'),
-               ('031305', 'CIP:14.0902', 'Computer Engineering / Computer Hardware Engineering')]
+               ('031305', 'CIP:14.0902', 'Computer Engineering / Computer Hardware Engineering'),
+               ('080319', 'CIP:52.0901', 'Hospitality Management / Hospitality Administration'),
+               ('080101', 'CIP:52.0201', 'Accounting also draws on Business Administration'),
+               ('080323', 'CIP:52.0903', 'Tourism Management / Tourism and Travel Services'),
+               ('080321', 'CIP:01.0101', 'Farm Management and Agribusiness / Agricultural Business')]
     for major, cip, note in aliases:
         statements.append(
             'INSERT OR IGNORE INTO study_program_map '

@@ -5,7 +5,6 @@ import { handleGoal } from './routes/goal'
 import { handleOptions } from './routes/options'
 import { handleTargetRole } from './routes/targetRole'
 import { handleRoleRequirements } from './routes/roleRequirements'
-import { handleRoleFeedback } from './routes/roleFeedback'
 import { handleRoleSuggestions } from './routes/roleSuggestions'
 
 // Send API requests to their handler and page requests to React.
@@ -30,8 +29,6 @@ export default {
         response = await handleTargetRole(request, env)
       } else if (path === '/api/role-requirements') {
         response = await handleRoleRequirements(request, env)
-      } else if (path === '/api/role-feedback') {
-        response = await handleRoleFeedback(request, env)
       } else if (path === '/api/recommendations/roles') {
         response = await handleRoleSuggestions(request, env)
       } else if (

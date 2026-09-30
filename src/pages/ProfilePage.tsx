@@ -32,11 +32,7 @@ import {
   type RoleRequirements as RequirementsData,
   type RoleSkill,
 } from '../lib/roleRequirementsApi'
-import {
-  loadRoleSuggestions,
-  sendRoleFeedback,
-  type RoleSuggestion,
-} from '../lib/suggestionApi'
+import { loadRoleSuggestions, type RoleSuggestion } from '../lib/suggestionApi'
 
 import {
   loadSkillRecommendations,
@@ -812,27 +808,6 @@ export function ProfilePage() {
     if (saved) setPendingTargetRole(null)
   }
 
-  // Deck reactions are stored server-side, then the ranking reloads.
-  async function reactToSuggestion(
-    suggestion: RoleSuggestion,
-    reaction: 'not_for_me' | 'curious' | 'interested',
-  ) {
-    if (!profile) return
-
-    const result = await sendRoleFeedback(
-      profile.code,
-      suggestion.code,
-      reaction,
-    )
-    if (!result.ok) return
-
-    const refreshed = await loadRoleSuggestions(profile.code)
-    if (refreshed.ok) {
-      setSuggestions(refreshed.data.suggestions)
-      setSuggestionHint(refreshed.data.hint ?? null)
-    }
-  }
-
   return (
     <>
       {/* The header swaps navigation depending on which space the user is in. */}
@@ -1447,7 +1422,6 @@ export function ProfilePage() {
                 skillsCount={skills.length}
                 busy={skillsBusy || targetRoleBusy}
                 onPlan={chooseSuggestedRole}
-                onReact={reactToSuggestion}
               />
             )}
 
