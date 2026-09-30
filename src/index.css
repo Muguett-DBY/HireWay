@@ -18,6 +18,39 @@
   --green-deep: #0b5330;
   --green-soft: #e9f6ee;
   --line: #e2e8e4;
+
+  .header-end {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .lang-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 3px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgb(255 255 255 / 72%);
+  }
+
+  .lang-option {
+    padding: 4px 10px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 650;
+    cursor: pointer;
+  }
+
+  .lang-option.active {
+    background: var(--green-soft);
+    color: var(--green-dark);
+  }
   --paper: #ffffff;
 }
 
@@ -1157,6 +1190,45 @@ h3 {
 
 .app-hero .btn.ghost {
   border-color: #bcd9c9;
+}
+
+/* Elicitation card for thin profiles: one study-pathway tool at a time. */
+.skill-prompt {
+  width: min(1180px, calc(100% - 44px));
+  margin: 20px auto 0;
+  padding: 18px 22px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: var(--green-soft);
+  box-shadow: 0 8px 22px rgb(28 58 84 / 6%);
+}
+
+.skill-prompt-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--green);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.skill-prompt-text {
+  margin: 10px 0 14px;
+  font-size: 15px;
+}
+
+.skill-prompt-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-prompt-actions .btn {
+  min-height: 40px;
+  padding: 8px 18px;
 }
 
 /* Ordered pointers to the workspace tabs, shown once a target is set. */

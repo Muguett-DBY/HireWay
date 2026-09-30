@@ -6,6 +6,7 @@ import type {
 import type { SaveSkillResult, Skill } from '../../lib/skillsApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
 import { occupationTitle } from '../../lib/occupationTitle'
+import { useI18n } from '../../lib/useI18n'
 
 const numberFormat = new Intl.NumberFormat('en-AU', {
   maximumFractionDigits: 0,
@@ -23,17 +24,17 @@ type RoleDetailsPageProps = {
 const groups = [
   {
     key: 'essential',
-    title: 'Core skills',
+    title: 'role.group.core',
     note: 'Broad O*NET abilities commonly associated with this role.',
   },
   {
     key: 'recommended',
-    title: 'Transferable skills',
+    title: 'role.group.recommended',
     note: 'Abilities that can carry across jobs and industries.',
   },
   {
     key: 'bonus',
-    title: 'Common tools',
+    title: 'role.group.bonus',
     note: 'Named software and technologies found in the source data.',
   },
 ] as const
@@ -49,10 +50,11 @@ export function RoleDetailsPage({
   onAddSkill,
   onGoPathways,
 }: RoleDetailsPageProps) {
+  const { t } = useI18n()
   if (!targetRole) {
     return (
       <section className="app-hero">
-        <p className="eyebrow">Role details</p>
+        <p className="eyebrow">{t('role.eyebrow')}</p>
         <h1>Choose a target role first</h1>
         <p className="app-hero-sub">
           Role details describe one occupation - pick a direction and this page
@@ -80,19 +82,17 @@ export function RoleDetailsPage({
   return (
     <>
       <section className="app-hero">
-        <p className="eyebrow">Role details</p>
+        <p className="eyebrow">{t('role.eyebrow')}</p>
         <h1>{occupationTitle(targetRole.title)}</h1>
         <p className="app-hero-sub">{targetRole.description}</p>
       </section>
 
       <section className="page-section">
         <div className="section-row">
-          <h2>Australian outlook</h2>
+          <h2>{t('role.outlook')}</h2>
         </div>
         {!market ? (
-          <p className="empty-note">
-            No market data is available for this role yet.
-          </p>
+          <p className="empty-note">{t('role.noMarket')}</p>
         ) : (
           <div className="outlook-panel">
             <div className="stat-strip tight">
@@ -107,7 +107,7 @@ export function RoleDetailsPage({
                 >
                   {market.outlook}
                 </strong>
-                <span>Demand for this role</span>
+                <span>{t('role.demand')}</span>
               </article>
               <article className="stat-card">
                 <strong>
@@ -115,7 +115,7 @@ export function RoleDetailsPage({
                     ? `${market.change5yPercent > 0 ? '+' : ''}${Math.round(market.change5yPercent * 10) / 10}%`
                     : '—'}
                 </strong>
-                <span>Five-year employment change</span>
+                <span>{t('role.change5y')}</span>
               </article>
               <article className="stat-card">
                 <strong>
@@ -123,7 +123,7 @@ export function RoleDetailsPage({
                     ? `$${numberFormat.format(market.medianWeeklyEarnings)}`
                     : '—'}
                 </strong>
-                <span>Median weekly earnings</span>
+                <span>{t('role.earnings')}</span>
               </article>
               <article className="stat-card">
                 <strong>
@@ -131,17 +131,17 @@ export function RoleDetailsPage({
                     ? numberFormat.format(Math.round(vacancyTotal))
                     : '—'}
                 </strong>
-                <span>Current vacancies</span>
+                <span>{t('role.vacancies')}</span>
               </article>
             </div>
 
             <div className="outlook-charts">
               <div>
-                <p className="panel-title">Employment trajectory</p>
+                <p className="panel-title">{t('role.trajectory')}</p>
                 <TrajectoryChart market={market} />
               </div>
               <div>
-                <p className="panel-title">Hiring demand by state</p>
+                <p className="panel-title">{t('role.stateDemand')}</p>
                 <StateDemandChart
                   vacancies={market.vacancies}
                   maxVacancy={maxVacancy}
@@ -154,7 +154,7 @@ export function RoleDetailsPage({
 
       <section className="page-section">
         <div className="section-row">
-          <h2>Day to day</h2>
+          <h2>{t('role.dayToDay')}</h2>
         </div>
         {requirements && requirements.tasks.length > 0 ? (
           <ol className="task-grid">
@@ -168,18 +168,14 @@ export function RoleDetailsPage({
             ))}
           </ol>
         ) : (
-          <p className="empty-note">
-            No task statements are catalogued for this role yet.
-          </p>
+          <p className="empty-note">{t('role.noTasks')}</p>
         )}
       </section>
 
       <section className="page-section">
         <div className="section-row">
-          <h2>Skills &amp; tools</h2>
-          <span className="section-tag">
-            Guidance from US O*NET data, not employer requirements
-          </span>
+          <h2>{t('role.skillsTools')}</h2>
+          <span className="section-tag">{t('role.skillsNote')}</span>
         </div>
         {requirements && requirements.skills.length > 0 ? (
           <div className="skill-panels">
@@ -189,11 +185,11 @@ export function RoleDetailsPage({
               )
               return (
                 <article className="skill-panel" key={group.key}>
-                  <p className="panel-title">{group.title}</p>
+                  <p className="panel-title">{t(group.title)}</p>
                   <p className="panel-note">{group.note}</p>
                   {items.length === 0 && (
                     <p className="panel-caption">
-                      Nothing listed in this category yet.
+                      {t('role.nothingInCategory')}
                     </p>
                   )}
                   {items.map((skill) => (
@@ -226,17 +222,15 @@ export function RoleDetailsPage({
             })}
           </div>
         ) : (
-          <p className="empty-note">
-            No skill data is available for this role yet.
-          </p>
+          <p className="empty-note">{t('role.noSkillData')}</p>
         )}
       </section>
 
       <section className="page-section">
         <div className="section-row">
-          <h2>Education &amp; pathways</h2>
+          <h2>{t('role.education')}</h2>
           <button type="button" className="link-btn" onClick={onGoPathways}>
-            Open pathways →
+            {t('role.openPathways')}
           </button>
         </div>
         {requirements && requirements.qualifications.length > 0 ? (
@@ -250,15 +244,13 @@ export function RoleDetailsPage({
             ))}
           </div>
         ) : (
-          <p className="empty-note">
-            No training pathways are linked to this role yet.
-          </p>
+          <p className="empty-note">{t('role.noQualifications')}</p>
         )}
       </section>
 
       <section className="page-section">
         <div className="section-row">
-          <h2>Data sources</h2>
+          <h2>{t('role.sources')}</h2>
         </div>
         <ul className="source-list">
           {(requirements?.sources ?? []).map((source) => (
@@ -346,6 +338,7 @@ function TrajectoryChart({
 }: {
   market: NonNullable<RequirementsData['market']>
 }) {
+  const { t } = useI18n()
   const { elementRef, isVisible } = useRevealOnView<HTMLDivElement>()
   const points = [
     { year: '2025', value: market.employedMay2025 },
@@ -356,7 +349,7 @@ function TrajectoryChart({
   )
 
   if (points.length < 2) {
-    return <p className="panel-caption">No projection data available.</p>
+    return <p className="panel-caption">{t('role.noProjection')}</p>
   }
 
   const width = 320

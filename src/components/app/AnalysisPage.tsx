@@ -8,6 +8,7 @@ import type {
 } from '../../lib/roleRequirementsApi'
 import { occupationTitle } from '../../lib/occupationTitle'
 import { factorPercents } from '../../lib/factorDisplay'
+import { useI18n } from '../../lib/useI18n'
 import type { SaveSkillResult, Skill, SkillStatus } from '../../lib/skillsApi'
 import type { RoleSuggestion } from '../../lib/suggestionApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
@@ -26,10 +27,10 @@ type AnalysisPageProps = {
 }
 
 const statusOrder: SkillStatus[] = ['upcoming', 'current', 'completed']
-const statusLabels: Record<SkillStatus, string> = {
-  upcoming: 'Upcoming',
-  current: 'Current',
-  completed: 'Completed',
+const statusKeys: Record<SkillStatus, string> = {
+  upcoming: 'analysis.status.upcoming',
+  current: 'analysis.status.current',
+  completed: 'analysis.status.completed',
 }
 
 // Requirement categories mirror the O*NET groups the role page already uses.
@@ -105,6 +106,12 @@ function readiness(skills: Skill[], requirements: RequirementsData) {
 // The analysis page compares the profile with the target role's catalogue
 // requirements: an overall readiness ring, per-category coverage, the skill
 // gaps worth learning next, and progress controls for the saved skills.
+const GROUP_TITLES = {
+  essential: 'analysis.group.core',
+  recommended: 'analysis.group.transferable',
+  bonus: 'analysis.group.tools',
+} as const
+
 export function AnalysisPage({
   skills,
   targetRole,
@@ -117,6 +124,7 @@ export function AnalysisPage({
   onGoMatches,
   onEditTargetRole,
 }: AnalysisPageProps) {
+  const { t } = useI18n()
   const [pendingRemoval, setPendingRemoval] = useState<Skill | null>(null)
   const [removingSkillId, setRemovingSkillId] = useState<number | null>(null)
   const [removeError, setRemoveError] = useState('')
@@ -183,15 +191,12 @@ export function AnalysisPage({
   if (!targetRole) {
     return (
       <section className="app-hero">
-        <p className="eyebrow">Career analysis</p>
-        <h1>Choose a target role first</h1>
-        <p className="app-hero-sub">
-          The analysis compares your profile against one occupation's
-          requirements, so pick a direction to measure against.
-        </p>
+        <p className="eyebrow">{t('analysis.eyebrow')}</p>
+        <h1>{t('analysis.chooseFirst')}</h1>
+        <p className="app-hero-sub">{t('analysis.chooseFirst.sub')}</p>
         <div className="hero-actions">
           <button type="button" className="btn" onClick={onEditTargetRole}>
-            Choose target role
+            {t('overview.chooseCta')}
           </button>
         </div>
       </section>
@@ -207,37 +212,32 @@ export function AnalysisPage({
   return (
     <>
       <section className="app-hero">
-        <p className="eyebrow">Career analysis</p>
-        <h1>How ready you are for {occupationTitle(targetRole.title)}</h1>
-        <p className="app-hero-sub">
-          Coverage of the skills and tools commonly listed for this role,
-          weighted towards core skills. A related skill counts half towards
-          coverage.
-        </p>
+        <p className="eyebrow">{t('analysis.eyebrow')}</p>
+        <h1>{t('analysis.h1', { role: occupationTitle(targetRole.title) })}</h1>
+        <p className="app-hero-sub">{t('analysis.sub')}</p>
       </section>
 
       {/* Remind the user when the profile is too thin to analyse. */}
       {hasNoSkills && (
         <p className="prompt-banner" role="status">
-          Your profile has no skills yet - add a few below or from the matches
-          page so the readiness score has something to measure.
+          {t('analysis.noSkills')}
         </p>
       )}
 
       {!analysis ? (
-        <p className="empty-note">
-          No requirement data is available for this role yet.
-        </p>
+        <p className="empty-note">{t('analysis.noRequirements')}</p>
       ) : (
         <>
           <div className="page-section analysis-grid">
             <article className="panel donut-panel">
-              <p className="panel-title">Overall readiness</p>
+              <p className="panel-title">{t('analysis.readiness')}</p>
               <svg
                 className="donut"
                 viewBox="0 0 120 120"
                 role="img"
-                aria-label={`Overall readiness ${analysis.overall} out of 100`}
+                aria-label={t('analysis.readinessAria', {
+                  n: analysis.overall,
+                })}
               >
                 <circle className="donut-track" cx="60" cy="60" r="50" />
                 <circle
@@ -257,17 +257,21 @@ export function AnalysisPage({
               </svg>
               <p className="panel-caption">
                 {targetSuggestion
-                  ? `Engine match score ${targetSuggestion.matchScore}%`
-                  : 'Weighted skill coverage'}
+                  ? t('analysis.engineScore', {
+                      n: targetSuggestion.matchScore,
+                    })
+                  : t('analysis.weightedCoverage')}
               </p>
             </article>
 
             <article className="panel category-panel">
-              <p className="panel-title">Readiness by category</p>
+              <p className="panel-title">{t('analysis.byCategory')}</p>
               <div className="category-rows">
                 {analysis.rows.map((row) => (
                   <div className="cat-row" key={row.key}>
-                    <span className="cat-name">{row.title}</span>
+                    <span className="cat-name">
+                      {t(GROUP_TITLES[row.key as keyof typeof GROUP_TITLES])}
+                    </span>
                     <span className="cat-bar">
                       <span style={{ width: `${row.percent}%` }} />
                     </span>
@@ -277,15 +281,12 @@ export function AnalysisPage({
                   </div>
                 ))}
               </div>
-              <p className="panel-caption">
-                A skill counts as covered when your profile lists it, or a skill
-                from the same O*NET family.
-              </p>
+              <p className="panel-caption">{t('analysis.categoryCaption')}</p>
             </article>
 
             {targetSuggestion && (
               <article className="factor-panel">
-                <p className="panel-title">Why the engine ranks this role</p>
+                <p className="panel-title">{t('analysis.whyRank')}</p>
                 <div className="factor-legend wide">
                   <span>
                     Skills {factorPercents(targetSuggestion.factors).skill}%
@@ -317,10 +318,8 @@ export function AnalysisPage({
           {/* Skill gaps sorted into matched, improve and missing buckets. */}
           <section className="page-section">
             <div className="section-row">
-              <h2>Skill gaps to close</h2>
-              <span className="section-tag">
-                Evidence: US O*NET 31.0 ratings via the ABS OSCA bridge
-              </span>
+              <h2>{t('analysis.gaps')}</h2>
+              <span className="section-tag">{t('analysis.gaps.evidence')}</span>
             </div>
             {analysis.rows.map((row) => {
               if (row.total === 0) return null
@@ -328,11 +327,14 @@ export function AnalysisPage({
               return (
                 <div className="gap-group" key={row.key}>
                   <p className="gap-title">
-                    {row.title}
+                    {t(GROUP_TITLES[row.key as keyof typeof GROUP_TITLES])}
                     <span className="gap-count">
-                      {row.covered}/{row.total} covered
+                      {t('analysis.covered', {
+                        covered: row.covered,
+                        total: row.total,
+                      })}
                       {row.missing.length > 0
-                        ? ` · ${row.missing.length} missing`
+                        ? ` · ${t('analysis.missing', { n: row.missing.length })}`
                         : ''}
                     </span>
                   </p>
@@ -346,7 +348,9 @@ export function AnalysisPage({
                           disabled={busy}
                           onClick={() => onAddSkill(skill)}
                           title="From US O*NET 31.0 importance ratings via the ABS OSCA bridge"
-                          aria-label={`Add ${skill.name} to your skills`}
+                          aria-label={t('analysis.addSkill', {
+                            name: skill.name,
+                          })}
                         >
                           + {skill.name}
                           <small>{skill.score}</small>
@@ -358,27 +362,25 @@ export function AnalysisPage({
               )
             })}
             {analysis.rows.every((row) => row.missing.length === 0) && (
-              <p className="empty-note">
-                Nothing missing - your profile covers this role's whole
-                catalogue entry.
-              </p>
+              <p className="empty-note">{t('analysis.allCovered')}</p>
             )}
           </section>
 
           {/* Saved skills with their progress state, ready to adjust. */}
           <section className="page-section">
             <div className="section-row">
-              <h2>My skills</h2>
+              <h2>{t('analysis.mySkills')}</h2>
               <span className="section-tag">
                 {skills.length > 4
-                  ? `Showing 4 of ${skills.length} · scroll for ${skills.length - 4} more`
-                  : 'Tap a status to move a skill along'}
+                  ? t('analysis.mySkills.showing', {
+                      n: skills.length,
+                      m: skills.length - 4,
+                    })
+                  : t('analysis.mySkills.tap')}
               </span>
             </div>
             {skills.length === 0 ? (
-              <p className="empty-note">
-                Nothing tracked yet. Skills added above land here as current.
-              </p>
+              <p className="empty-note">{t('analysis.mySkills.empty')}</p>
             ) : (
               <div
                 className={`skill-scroll-shell${
@@ -391,7 +393,7 @@ export function AnalysisPage({
                   role={skills.length > 4 ? 'region' : undefined}
                   aria-label={
                     skills.length > 4
-                      ? `My skills, ${skills.length} items. Scroll to see more.`
+                      ? t('analysis.listAria', { n: skills.length })
                       : undefined
                   }
                   tabIndex={skills.length > 4 ? 0 : undefined}
@@ -425,7 +427,7 @@ export function AnalysisPage({
                                 onClick={() => onSkillStatus(skill, status)}
                                 aria-pressed={skill.status === status}
                               >
-                                {statusLabels[status]}
+                                {t(statusKeys[status])}
                               </button>
                             ))}
                           </div>
@@ -433,7 +435,9 @@ export function AnalysisPage({
                             type="button"
                             className="remove-skill-button"
                             disabled={busy || removing}
-                            aria-label={`Remove ${skill.name}`}
+                            aria-label={t('analysis.removeAria', {
+                              name: skill.name,
+                            })}
                             title={`Remove ${skill.name}`}
                             onClick={() => {
                               setRemoveError('')
@@ -480,14 +484,16 @@ export function AnalysisPage({
       >
         {pendingRemoval && (
           <div className="confirm-dialog-card">
-            <p className="eyebrow">My skills</p>
-            <h2 id="remove-skill-confirm-title">Remove this skill?</h2>
+            <p className="eyebrow">{t('analysis.mySkills')}</p>
+            <h2 id="remove-skill-confirm-title">
+              {t('analysis.remove.title')}
+            </h2>
             <p id="remove-skill-confirm-description">
-              It will be removed from your profile and career calculations.
+              {t('analysis.remove.sub')}
             </p>
 
             <div className="remove-skill-summary">
-              <small>Skill to remove</small>
+              <small>{t('analysis.remove.skill')}</small>
               <strong>{pendingRemoval.name}</strong>
             </div>
 
@@ -505,7 +511,7 @@ export function AnalysisPage({
                 autoFocus
                 onClick={() => setPendingRemoval(null)}
               >
-                Keep skill
+                {t('analysis.remove.cancel')}
               </button>
               <button
                 type="button"
@@ -513,7 +519,7 @@ export function AnalysisPage({
                 disabled={busy}
                 onClick={() => void confirmRemoval()}
               >
-                {busy ? 'Removing...' : 'Remove skill'}
+                {busy ? t('analysis.removing') : t('analysis.remove.confirm')}
               </button>
             </div>
           </div>

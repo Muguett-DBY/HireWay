@@ -2,6 +2,7 @@ import type { RoleSuggestion } from '../../lib/suggestionApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
 import { occupationTitle } from '../../lib/occupationTitle'
 import { factorPercents } from '../../lib/factorDisplay'
+import { useI18n } from '../../lib/useI18n'
 
 const money = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 })
 
@@ -25,14 +26,15 @@ export function SuggestionCard({
   compact = false,
   onPlan,
 }: SuggestionCardProps) {
+  const { t } = useI18n()
   const percents = factorPercents(suggestion.factors)
   const isTarget = targetRole?.code === suggestion.code
   const badge = isTarget
-    ? 'Current target'
+    ? t('card.currentTarget')
     : index === 0
-      ? 'Best match'
+      ? t('card.badge.best')
       : suggestion.change5yPercent !== null && suggestion.change5yPercent >= 8
-        ? 'High growth'
+        ? t('card.badge.highGrowth')
         : null
 
   return (
@@ -47,7 +49,7 @@ export function SuggestionCard({
 
       <h3>{occupationTitle(suggestion.title)}</h3>
 
-      <p className="why-title">Why this matches</p>
+      <p className="why-title">{t('card.why')}</p>
       <ul className="why-list">
         {(compact
           ? suggestion.reasons.slice(0, 2)
@@ -58,24 +60,30 @@ export function SuggestionCard({
       </ul>
 
       <div className="breakdown">
-        <p>Match breakdown</p>
+        <p>{t('card.breakdown')}</p>
         <div className="breakdown-row">
           <span className="breakdown-bar">
             <span style={{ width: `${percents.skill}%` }} />
           </span>
-          <small>Skills {percents.skill}%</small>
+          <small>
+            {t('card.skills')} {percents.skill}%
+          </small>
         </div>
         <div className="breakdown-row">
           <span className="breakdown-bar">
             <span className="mid" style={{ width: `${percents.growth}%` }} />
           </span>
-          <small>Growth {percents.growth}%</small>
+          <small>
+            {t('card.growth')} {percents.growth}%
+          </small>
         </div>
         <div className="breakdown-row">
           <span className="breakdown-bar">
             <span className="mid" style={{ width: `${percents.education}%` }} />
           </span>
-          <small>Education {percents.education}%</small>
+          <small>
+            {t('card.education')} {percents.education}%
+          </small>
         </div>
       </div>
 
@@ -103,7 +111,11 @@ export function SuggestionCard({
         disabled={busy || isTarget}
         onClick={() => onPlan(suggestion)}
       >
-        {busy ? 'Working...' : isTarget ? 'Current target' : 'Plan this role'}
+        {busy
+          ? t('card.working')
+          : isTarget
+            ? t('card.currentTarget')
+            : t('card.plan')}
       </button>
     </article>
   )

@@ -1,3 +1,5 @@
+import { useI18n } from '../lib/useI18n'
+
 type StepperItem = {
   id: number
   label: string
@@ -14,8 +16,9 @@ type StepperProps = {
 // revisit any step they have already unlocked. Locked steps stay visible so
 // the path ahead is clear, but they cannot be clicked yet.
 export function Stepper({ items, currentId, onSelect }: StepperProps) {
+  const { t } = useI18n()
   return (
-    <nav className="stepper" aria-label="Profile progress">
+    <nav className="stepper" aria-label={t('wizard.s1.h1')}>
       <ol>
         {items.map((item) => {
           const state =

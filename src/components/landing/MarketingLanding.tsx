@@ -1,5 +1,6 @@
 import { type FormEvent } from 'react'
 import { SpecularButton } from '../SpecularButton'
+import { useI18n } from '../../lib/useI18n'
 
 type MarketingLandingProps = {
   recoveryCode: string
@@ -26,18 +27,14 @@ export function MarketingLanding({
   onStart,
   onOpenProfile,
 }: MarketingLandingProps) {
+  const { t } = useI18n()
   return (
     <div className="marketing-landing">
       <section className="marketing-hero" aria-labelledby="hero-title">
         <div className="marketing-hero-copy">
-          <p className="marketing-eyebrow">Career planning, made clearer</p>
-          <h1 id="hero-title">
-            Turn what you know into a career path you can act on.
-          </h1>
-          <p className="marketing-hero-summary">
-            HireWay brings your education and current skills together, then
-            shows the Australian outlook behind the careers that suit you.
-          </p>
+          <p className="marketing-eyebrow">{t('landing.eyebrow')}</p>
+          <h1 id="hero-title">{t('landing.title')}</h1>
+          <p className="marketing-hero-summary">{t('landing.summary')}</p>
 
           <div className="marketing-hero-actions">
             <SpecularButton
@@ -56,17 +53,17 @@ export function MarketingLanding({
               proximity={280}
               onClick={onStart}
             >
-              Build my profile
+              {t('landing.cta')}
             </SpecularButton>
             <a className="marketing-text-link" href="#how-it-works">
-              See how it works
+              {t('landing.how')}
             </a>
           </div>
 
           <ul className="marketing-hero-points" aria-label="HireWay benefits">
-            <li>No account required</li>
-            <li>Private recovery code</li>
-            <li>Data-informed direction</li>
+            <li>{t('landing.benefits.1')}</li>
+            <li>{t('landing.benefits.2')}</li>
+            <li>{t('landing.benefits.3')}</li>
           </ul>
 
           <form className="marketing-return" onSubmit={onContinue} noValidate>
@@ -116,10 +113,14 @@ export function MarketingLanding({
         >
           <div className="marketing-preview-heading">
             <div>
-              <span className="marketing-preview-kicker">Your pathway</span>
-              <strong>Data Analyst</strong>
+              <span className="marketing-preview-kicker">
+                {t('landing.preview.kicker')}
+              </span>
+              <strong>{t('landing.preview.role')}</strong>
             </div>
-            <span className="marketing-preview-status">Building</span>
+            <span className="marketing-preview-status">
+              {t('landing.preview.status')}
+            </span>
           </div>
 
           <div className="marketing-preview-progress" aria-hidden="true">
@@ -128,14 +129,14 @@ export function MarketingLanding({
 
           <div className="marketing-preview-grid">
             <article>
-              <span>Background</span>
-              <strong>Data Science</strong>
-              <small>Profile saved</small>
+              <span>{t('landing.preview.background')}</span>
+              <strong>{t('landing.preview.backgroundValue')}</strong>
+              <small>{t('landing.preview.saved')}</small>
             </article>
             <article>
-              <span>Current skills</span>
-              <strong>4 added</strong>
-              <small>Ready to compare</small>
+              <span>{t('landing.preview.skills')}</span>
+              <strong>{t('landing.preview.skillsValue')}</strong>
+              <small>{t('landing.preview.ready')}</small>
             </article>
           </div>
 
@@ -143,7 +144,7 @@ export function MarketingLanding({
             <span>Python</span>
             <span>SQL</span>
             <span>Statistics</span>
-            <span className="skill-gap">+ Skill gaps</span>
+            <span className="skill-gap">{t('landing.preview.gaps')}</span>
           </div>
         </div>
       </section>
@@ -154,29 +155,26 @@ export function MarketingLanding({
         aria-labelledby="steps-title"
       >
         <div className="marketing-section-heading">
-          <p className="marketing-eyebrow">How it works</p>
-          <h2 id="steps-title">A clearer direction in three steps</h2>
-          <p>
-            Start with what you already know. HireWay keeps the process simple
-            and gives each detail a purpose.
-          </p>
+          <p className="marketing-eyebrow">{t('landing.how.eyebrow')}</p>
+          <h2 id="steps-title">{t('landing.how.title')}</h2>
+          <p>{t('landing.how.sub')}</p>
         </div>
 
         <div className="marketing-steps-grid">
           <article className="marketing-step-card">
             <span>01</span>
-            <h3>Share your background</h3>
-            <p>Add your study course to set a starting point.</p>
+            <h3>{t('landing.how.s1.title')}</h3>
+            <p>{t('landing.how.s1.text')}</p>
           </article>
           <article className="marketing-step-card">
             <span>02</span>
-            <h3>Map your skills</h3>
-            <p>Record the tools and strengths you can already bring to work.</p>
+            <h3>{t('landing.how.s2.title')}</h3>
+            <p>{t('landing.how.s2.text')}</p>
           </article>
           <article className="marketing-step-card">
             <span>03</span>
-            <h3>Choose a direction</h3>
-            <p>Pick a target role and see the demand behind it.</p>
+            <h3>{t('landing.how.s3.title')}</h3>
+            <p>{t('landing.how.s3.text')}</p>
           </article>
         </div>
       </section>

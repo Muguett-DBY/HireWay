@@ -5,6 +5,7 @@ import type { Skill } from '../../lib/skillsApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
 import { occupationTitle } from '../../lib/occupationTitle'
 import { SuggestionCard } from './SuggestionCard'
+import { useI18n } from '../../lib/useI18n'
 
 const numberFormat = new Intl.NumberFormat('en-AU', {
   maximumFractionDigits: 0,
@@ -40,6 +41,7 @@ export function OverviewPage({
   onGoWizard,
   onGoPage,
 }: OverviewPageProps) {
+  const { t } = useI18n()
   const targetSuggestion = suggestions.find(
     (item) => item.code === targetRole?.code,
   )
@@ -50,11 +52,11 @@ export function OverviewPage({
 
   const stats = [
     {
-      label: 'Match score',
+      label: t('overview.stat.match'),
       value: targetSuggestion ? `${targetSuggestion.matchScore}%` : null,
     },
     {
-      label: 'Projected growth (5 years)',
+      label: t('overview.stat.growth'),
       value:
         market?.change5yPercent !== null &&
         market?.change5yPercent !== undefined
@@ -62,14 +64,14 @@ export function OverviewPage({
           : null,
     },
     {
-      label: 'Median weekly earnings',
+      label: t('overview.stat.earnings'),
       value:
         market?.medianWeeklyEarnings != null
           ? `$${numberFormat.format(market.medianWeeklyEarnings)}`
           : null,
     },
     {
-      label: 'Current vacancies',
+      label: t('overview.stat.vacancies'),
       value:
         vacancyTotal !== null && !Number.isNaN(vacancyTotal)
           ? numberFormat.format(Math.round(vacancyTotal))
@@ -80,22 +82,21 @@ export function OverviewPage({
   return (
     <>
       <section className="app-hero">
-        <p className="eyebrow">Your target role</p>
+        <p className="eyebrow">{t('overview.eyebrow')}</p>
         <h1>
           {targetRole
             ? occupationTitle(targetRole.title)
-            : 'Choose your target role'}
+            : t('overview.chooseTitle')}
         </h1>
         <p className="app-hero-sub">
-          {targetRole?.description ||
-            'Search the Australian occupation catalogue to pick a direction.'}
+          {targetRole?.description || t('overview.chooseTitle.sub')}
         </p>
         <div className="hero-actions">
           <button type="button" className="btn" onClick={onEditTargetRole}>
-            {targetRole ? 'Edit target role' : 'Choose target role'}
+            {targetRole ? t('overview.editCta') : t('overview.chooseCta')}
           </button>
           <button type="button" className="btn ghost" onClick={onGoMatches}>
-            Explore matches →
+            {t('overview.explore')}
           </button>
         </div>
       </section>
@@ -103,7 +104,7 @@ export function OverviewPage({
       {/* The tabs read in this order once a direction is chosen, so point
           first-time users at the workspace instead of leaving them here. */}
       {targetRole && (
-        <section className="guide-strip" aria-label="Suggested next steps">
+        <section className="guide-strip" aria-label={t('overview.guide.aria')}>
           <button
             type="button"
             className="guide-card"
@@ -113,8 +114,8 @@ export function OverviewPage({
               1
             </span>
             <span>
-              <strong>Check your readiness</strong>
-              <small>Compare your skills with the role's requirements.</small>
+              <strong>{t('overview.guide1.title')}</strong>
+              <small>{t('overview.guide1.sub')}</small>
             </span>
           </button>
           <button
@@ -126,8 +127,8 @@ export function OverviewPage({
               2
             </span>
             <span>
-              <strong>See the role in detail</strong>
-              <small>Tasks, skill groups and the study routes in.</small>
+              <strong>{t('overview.guide2.title')}</strong>
+              <small>{t('overview.guide2.sub')}</small>
             </span>
           </button>
           <button
@@ -139,8 +140,8 @@ export function OverviewPage({
               3
             </span>
             <span>
-              <strong>Plan your pathway</strong>
-              <small>A learning roadmap built from your gaps.</small>
+              <strong>{t('overview.guide3.title')}</strong>
+              <small>{t('overview.guide3.sub')}</small>
             </span>
           </button>
         </section>
@@ -157,14 +158,14 @@ export function OverviewPage({
 
       <section className="page-section">
         <div className="section-row">
-          <h2>Your profile snapshot</h2>
+          <h2>{t('overview.snapshot')}</h2>
           <button type="button" className="link-btn" onClick={onGoWizard}>
-            Edit profile
+            {t('overview.editProfile')}
           </button>
         </div>
         <div className="snapshot-grid">
           <article className="snapshot-card">
-            <span>Background</span>
+            <span>{t('overview.background')}</span>
             <strong>{profile.qualification}</strong>
             <small>{profile.educationLevel}</small>
             {profile.currentRole && (
@@ -172,7 +173,7 @@ export function OverviewPage({
             )}
           </article>
           <article className="snapshot-card">
-            <span>Current skills</span>
+            <span>{t('overview.skills')}</span>
             <strong>
               {skills.length} saved{skills.length === 1 ? '' : ' skills'}
             </strong>
@@ -188,7 +189,7 @@ export function OverviewPage({
                 )}
               </div>
             ) : (
-              <small>Add the skills and tools you already use.</small>
+              <small>{t('overview.addPrompt')}</small>
             )}
           </article>
         </div>
@@ -196,14 +197,12 @@ export function OverviewPage({
 
       <section className="page-section">
         <div className="section-row">
-          <h2>Recommended careers</h2>
+          <h2>{t('overview.rec.heading')}</h2>
           <button type="button" className="link-btn" onClick={onGoMatches}>
-            View all matches →
+            {t('overview.rec.viewAll')}
           </button>
         </div>
-        <p className="section-sub">
-          Based on your skills and Australian labour market data.
-        </p>
+        <p className="section-sub">{t('overview.rec.sub')}</p>
         {suggestions.length > 0 ? (
           <div className="match-grid four">
             {suggestions.slice(0, 4).map((suggestion, index) => (
@@ -219,10 +218,7 @@ export function OverviewPage({
             ))}
           </div>
         ) : (
-          <p className="empty-note">
-            Add a few skills to unlock career suggestions built from real
-            occupation data.
-          </p>
+          <p className="empty-note">{t('overview.rec.empty')}</p>
         )}
       </section>
     </>

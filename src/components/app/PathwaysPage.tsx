@@ -2,6 +2,7 @@ import type { RoleRequirements as RequirementsData } from '../../lib/roleRequire
 import type { Skill } from '../../lib/skillsApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
 import { occupationTitle } from '../../lib/occupationTitle'
+import { useI18n } from '../../lib/useI18n'
 
 type PathwaysPageProps = {
   targetRole: TargetRole | null
@@ -19,6 +20,7 @@ export function PathwaysPage({
   skills,
   onGoRole,
 }: PathwaysPageProps) {
+  const { t } = useI18n()
   // Learning priorities: the role's missing skills, most important first.
   const savedCodes = new Set(
     skills.flatMap((skill) =>
@@ -42,11 +44,11 @@ export function PathwaysPage({
   return (
     <>
       <section className="app-hero">
-        <p className="eyebrow">Pathways &amp; progress</p>
+        <p className="eyebrow">{t('pathways.eyebrow')}</p>
         <h1>
           {targetRole
-            ? `Learning roadmap towards ${occupationTitle(targetRole.title)}`
-            : 'Learning roadmap'}
+            ? t('pathways.h1', { role: occupationTitle(targetRole.title) })
+            : t('pathways.h1Plain')}
         </h1>
         <p className="app-hero-sub">
           Priorities from the gap analysis, training routes linked in official
@@ -57,14 +59,14 @@ export function PathwaysPage({
 
       <section className="page-section">
         <div className="section-row">
-          <h2>Skill progress</h2>
+          <h2>{t('pathways.progress')}</h2>
           <span className="section-tag">
-            {readiness}% of your tracked skills are in place
+            {t('pathways.progress.tag', { n: readiness })}
           </span>
         </div>
         <div className="tracker-grid">
           <article className="tracker-card">
-            <p className="panel-title">Completed</p>
+            <p className="panel-title">{t('pathways.completed')}</p>
             <span className="tracker-count">{completed.length}</span>
             {completed.length === 0 ? (
               <p className="tracker-empty">
@@ -80,7 +82,7 @@ export function PathwaysPage({
             )}
           </article>
           <article className="tracker-card">
-            <p className="panel-title">Current</p>
+            <p className="panel-title">{t('pathways.current')}</p>
             <span className="tracker-count">{current.length}</span>
             {current.length === 0 ? (
               <p className="tracker-empty">
@@ -95,7 +97,7 @@ export function PathwaysPage({
             )}
           </article>
           <article className="tracker-card">
-            <p className="panel-title">Upcoming</p>
+            <p className="panel-title">{t('pathways.upcoming')}</p>
             <span className="tracker-count">{upcoming.length}</span>
             {upcoming.length === 0 ? (
               <p className="tracker-empty">
@@ -115,8 +117,8 @@ export function PathwaysPage({
 
       <section className="page-section">
         <div className="section-row">
-          <h2>Learning priorities</h2>
-          <span className="section-tag">Ordered by importance score</span>
+          <h2>{t('pathways.priorities')}</h2>
+          <span className="section-tag">{t('pathways.priorities.tag')}</span>
         </div>
         {priorities.length > 0 ? (
           <ol className="priority-list">
@@ -126,12 +128,12 @@ export function PathwaysPage({
                 <strong>{skill.name}</strong>
                 <span className="priority-kind">
                   {skill.priority === 'essential'
-                    ? 'Core skill'
+                    ? t('pathways.kind.core')
                     : skill.priority === 'recommended'
-                      ? 'Transferable skill'
-                      : 'Common tool'}
+                      ? t('pathways.kind.recommended')
+                      : t('pathways.kind.bonus')}
                 </span>
-                <small>Importance {skill.score}</small>
+                <small>{t('pathways.importance', { n: skill.score })}</small>
               </li>
             ))}
           </ol>
@@ -146,7 +148,7 @@ export function PathwaysPage({
 
       <section className="page-section">
         <div className="section-row">
-          <h2>Training options</h2>
+          <h2>{t('pathways.training')}</h2>
         </div>
         {requirements && requirements.qualifications.length > 0 ? (
           <div className="qual-grid wide">
@@ -172,7 +174,7 @@ export function PathwaysPage({
         )}
         {targetRole && (
           <button type="button" className="link-btn" onClick={onGoRole}>
-            Review role requirements →
+            {t('pathways.reviewRole')}
           </button>
         )}
       </section>

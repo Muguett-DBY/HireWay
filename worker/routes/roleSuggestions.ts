@@ -201,13 +201,17 @@ export async function handleRoleSuggestions(
   // Every occupation sharing at least one skill enters the ranking; the
   // weighted score, not a skill-only pre-cut, decides who surfaces. Cutting
   // candidates by raw skill similarity first used to lock out professions
-  // with rich vectors (law, nursing, accounting) behind thin ones.
+  // with rich vectors (law, nursing, accounting) behind thin ones. The norm
+  // divisor carries a shrinkage constant (found by grid search) so thin
+  // vectors stop inflating a single matching skill into a top ranking -
+  // without it, "Mathematics" alone ranked bricklayers above statisticians.
+  const SHRINKAGE = 500
   const skillCandidates = await env.DB.prepare(
     `WITH user_skills (skill_code, weight) AS (
        VALUES ${placeholders}
      )
      SELECT v.occupation_code AS code, o.title,
-            SUM(v.score * user_skills.weight) / m.skill_norm
+            SUM(v.score * user_skills.weight) / (m.skill_norm + ${SHRINKAGE})
               * CASE m.vector_source WHEN 'onet' THEN 1.0 ELSE 0.6 END
               AS skillMatch,
             m.growth_percentile AS growthPercentile,

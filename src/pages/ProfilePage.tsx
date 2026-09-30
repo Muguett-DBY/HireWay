@@ -22,6 +22,9 @@ import { Stepper } from '../components/Stepper'
 import { EducationLevelSelect } from '../components/EducationLevelSelect'
 import { MarketingLanding } from '../components/landing/MarketingLanding'
 import { AppNav, type AppPage } from '../components/app/AppNav'
+import { SkillPromptCard } from '../components/app/SkillPromptCard'
+import { LanguageSwitcher } from '../components/LanguageSwitcher'
+import { useI18n } from '../lib/useI18n'
 import { OverviewPage } from '../components/app/OverviewPage'
 import { MatchesPage } from '../components/app/MatchesPage'
 import { AnalysisPage } from '../components/app/AnalysisPage'
@@ -86,6 +89,7 @@ function forgetSavedLogin() {
 }
 
 export function ProfilePage() {
+  const { t } = useI18n()
   const [screen, setScreen] = useState<'home' | 'wizard' | 'app'>('home')
   const [appPage, setAppPage] = useState<AppPage>('overview')
   // The wizard walks through background, skills and a target role in order.
@@ -156,6 +160,120 @@ export function ProfilePage() {
           skill.name.toLowerCase() === suggestion.label.toLowerCase(),
       ),
   )
+
+  // Elicitation: the overview asks about at most three study-pathway tools,
+  // one at a time, and only while the profile lacks a strong skill match.
+  // The stop line was re-derived after the shrinkage change compressed the
+  // cosine scale: weak profiles peak near 6 raw skill points and strong ones
+  // near 10, so 8 of the 60 raw points separates "keep asking" from "the
+  // matches are already there". A generic soft-skill profile clears the line
+  // on its own, and one high-weight tool such as Epic Systems crosses it in
+  // a single answer.
+  const SKILL_PROMPT_KEY = 'hireway.skillPrompt'
+  const SKILL_PROMPT_LIMIT = 3
+  const SKILL_PROMPT_QUALITY = 8
+  const [skillPromptBusy, setSkillPromptBusy] = useState(false)
+  // Re-render trigger when an answer is recorded; the prompt itself is
+  // recomputed from localStorage on every render.
+  const [promptEpoch, setPromptEpoch] = useState(0)
+
+  function readPromptHistory(): {
+    asked: { code: string; skill: string }[]
+    notYet: { code: string; skill: string }[]
+  } {
+    try {
+      const raw = window.localStorage.getItem(SKILL_PROMPT_KEY)
+      if (raw) return { asked: [], notYet: [], ...JSON.parse(raw) }
+    } catch {
+      // fall through to a fresh history
+    }
+    return { asked: [], notYet: [] }
+  }
+
+  function writePromptHistory(history: {
+    asked: { code: string; skill: string }[]
+    notYet: { code: string; skill: string }[]
+  }) {
+    window.localStorage.setItem(SKILL_PROMPT_KEY, JSON.stringify(history))
+  }
+
+  // Elicitation candidate shared by the wizard skills step and the overview
+  // card: the first study-pathway tool the profile has neither answered nor
+  // declined yet. The cap counts answers per profile across both surfaces.
+  let elicitation: { code: string; label: string } | null = null
+  if (profile) {
+    void promptEpoch
+    const history = readPromptHistory()
+    const askedCount = history.asked.filter(
+      (entry) => entry.code === profile.code,
+    ).length
+    const candidate = suggestedSkills.find(
+      (suggestion) =>
+        suggestion.kind === 'tool' &&
+        !history.notYet.some(
+          (entry) =>
+            entry.code === profile.code && entry.skill === suggestion.code,
+        ) &&
+        !history.asked.some(
+          (entry) =>
+            entry.code === profile.code && entry.skill === suggestion.code,
+        ),
+    )
+    if (askedCount < SKILL_PROMPT_LIMIT && candidate) {
+      elicitation = { code: candidate.code, label: candidate.label }
+    }
+  }
+
+  let skillPrompt: { code: string; label: string } | null = null
+  if (screen === 'app' && profile) {
+    // Stop once any visible match already carries a strong skill factor:
+    // quality-based, so a profile with one high-value tool can finish in
+    // zero questions while a generic one keeps getting useful asks. A
+    // knowledge-only profile has no matches at all - exactly the case that
+    // needs the ask - so an empty suggestion list never blocks the prompt.
+    const bestSkillFactor = suggestions.length
+      ? Math.max(...suggestions.map((suggestion) => suggestion.factors.skill))
+      : 0
+    if (bestSkillFactor < SKILL_PROMPT_QUALITY && elicitation) {
+      skillPrompt = elicitation
+    }
+  }
+
+  // The wizard skills step runs the same loop while the profile holds fewer
+  // than three tools, so users leave the wizard with enough signal for real
+  // matches and the overview card takes over from there.
+  const wizardElicitation =
+    screen === 'wizard' && step === 2 && skills.length < 3 && elicitation
+      ? elicitation
+      : null
+
+  function rememberAsked(skillCode: string) {
+    if (!profile) return
+    const history = readPromptHistory()
+    history.asked.push({ code: profile.code, skill: skillCode })
+    writePromptHistory(history)
+  }
+
+  async function answerPromptYes(
+    target: { code: string; label: string } | null,
+  ) {
+    if (!profile || !target) return
+    setSkillPromptBusy(true)
+    const result = await saveSkill(target.label, target.code)
+    setSkillPromptBusy(false)
+    if (result.ok) {
+      rememberAsked(target.code)
+      setPromptEpoch((current) => current + 1)
+    }
+  }
+
+  function answerPromptNotYet(target: { code: string; label: string } | null) {
+    if (!profile || !target) return
+    const history = readPromptHistory()
+    history.notYet.push({ code: profile.code, skill: target.code })
+    writePromptHistory(history)
+    setPromptEpoch((current) => current + 1)
+  }
 
   // Wait briefly before searching so quick typing does not send every keystroke.
   useEffect(() => {
@@ -554,11 +672,10 @@ export function ProfilePage() {
     const nextErrors: ProfileErrors = {}
 
     if (!details.degreeCode && !details.majorCode) {
-      nextErrors.qualification =
-        'Choose a course or field of study from the suggestions.'
+      nextErrors.qualification = '{t("wizard.errors.chooseStudy")}'
     }
     if (!details.educationLevel) {
-      nextErrors.educationLevel = 'Select your education level.'
+      nextErrors.educationLevel = '{t("wizard.errors.chooseLevel")}'
     }
     setErrors(nextErrors)
     if (Object.keys(nextErrors).length > 0) return
@@ -765,7 +882,7 @@ export function ProfilePage() {
     setTargetRoleMessage('')
 
     if (!targetRoleCode) {
-      setTargetRoleError('Choose a target role from the suggestions.')
+      setTargetRoleError('{t("wizard.errors.chooseRole")}')
       return
     }
 
@@ -830,9 +947,12 @@ export function ProfilePage() {
           </span>
         </button>
 
-        {screen === 'app' && profile && (
-          <AppNav page={appPage} onSelect={(page) => setAppPage(page)} />
-        )}
+        <div className="header-end">
+          {screen === 'app' && profile && (
+            <AppNav page={appPage} onSelect={(page) => setAppPage(page)} />
+          )}
+          <LanguageSwitcher />
+        </div>
       </header>
 
       <main
@@ -870,9 +990,9 @@ export function ProfilePage() {
             {/* The numbered dots mirror the mock: three plain steps. */}
             <Stepper
               items={[
-                { id: 1, label: 'Background', unlocked: true },
-                { id: 2, label: 'Skills', unlocked: Boolean(profile) },
-                { id: 3, label: 'Target role', unlocked: Boolean(profile) },
+                { id: 1, label: t('wizard.step1'), unlocked: true },
+                { id: 2, label: t('wizard.step2'), unlocked: Boolean(profile) },
+                { id: 3, label: t('wizard.step3'), unlocked: Boolean(profile) },
               ]}
               currentId={step}
               onSelect={(id) => {
@@ -883,10 +1003,8 @@ export function ProfilePage() {
             {/* A profile is required from step 2 on; anything else falls back. */}
             {(step === 1 || !profile) && (
               <div className="wizard-shell">
-                <h1>Tell us about your background</h1>
-                <p className="wizard-sub">
-                  This helps us personalize your roadmap.
-                </p>
+                <h1>{t('wizard.s1.h1')}</h1>
+                <p className="wizard-sub">{t('wizard.s1.sub')}</p>
 
                 <div className="wizard-card">
                   {message && (
@@ -901,7 +1019,7 @@ export function ProfilePage() {
                   <form onSubmit={saveProfile} noValidate>
                     <fieldset disabled={busy} className="plain-fieldset">
                       <label htmlFor="qualification">
-                        What did you study? *
+                        {t('wizard.s1.study')}
                       </label>
                       <div className="autocomplete">
                         <input
@@ -952,8 +1070,7 @@ export function ProfilePage() {
                         )}
                       </div>
                       <p className="field-help" id="qualification-help">
-                        Pick your exact course if it appears - otherwise pick
-                        the closest field, like Accounting or Data Science.
+                        {t('wizard.s1.studyHelp')}
                       </p>
                       {errors.qualification && (
                         <p
@@ -970,14 +1087,15 @@ export function ProfilePage() {
                         <>
                           <label>Education level</label>
                           <p className="derived-level">
-                            {details.educationLevel || 'Set automatically'}{' '}
-                            <small>from your course</small>
+                            {details.educationLevel ||
+                              '{t("wizard.s1.derivedAuto")}'}{' '}
+                            <small>{t('wizard.s1.derived')}</small>
                           </p>
                         </>
                       ) : (
                         <>
                           <label htmlFor="education-level">
-                            Education level *
+                            {t('wizard.s1.level')}
                           </label>
                           <EducationLevelSelect
                             value={details.educationLevel}
@@ -1004,7 +1122,7 @@ export function ProfilePage() {
                       )}
 
                       <button type="submit" className="btn block">
-                        {busy ? 'Saving...' : 'Continue'}
+                        {busy ? t('entry.loading') : t('wizard.continue')}
                       </button>
                     </fieldset>
                   </form>
@@ -1012,7 +1130,9 @@ export function ProfilePage() {
                   {/* Keep the code visible so the user can copy it. */}
                   {profile && (
                     <section className="recovery-note">
-                      <label htmlFor="saved-code">Your recovery code</label>
+                      <label htmlFor="saved-code">
+                        {t('wizard.recovery.label')}
+                      </label>
                       <div className="recovery-code-row">
                         <input
                           id="saved-code"
@@ -1029,7 +1149,7 @@ export function ProfilePage() {
                           aria-label={
                             copied
                               ? 'Recovery code copied'
-                              : 'Copy recovery code'
+                              : t('wizard.recovery.copy')
                           }
                         >
                           <MorphIcon
@@ -1065,7 +1185,7 @@ export function ProfilePage() {
             {/* Step 2 collects the skills the catalogue can match against. */}
             {step === 2 && profile && (
               <div className="wizard-shell">
-                <h1>Map your skills</h1>
+                <h1>{t('wizard.s2.h1')}</h1>
                 <p className="wizard-sub">
                   Add what you can already do so roles can be matched to you.
                 </p>
@@ -1077,23 +1197,8 @@ export function ProfilePage() {
                     targetRole) && (
                     <div className="skill-recommendations">
                       <div>
-                        <strong>
-                          Suggested from{' '}
-                          {(details.qualificationCode ||
-                            details.degreeCode ||
-                            details.majorCode) &&
-                          targetRole
-                            ? 'your study and target role'
-                            : details.qualificationCode ||
-                                details.degreeCode ||
-                                details.majorCode
-                              ? 'your study'
-                              : 'your target role'}
-                        </strong>
-                        <span>
-                          Add only the skills you already have. Suggestions use
-                          existing O*NET knowledge and tool names.
-                        </span>
+                        <strong>{t('wizard.s2.studyTitle')}</strong>
+                        <span>{t('wizard.s2.studyNote')}</span>
                       </div>
 
                       {recommendationsBusy ? (
@@ -1121,7 +1226,7 @@ export function ProfilePage() {
                   )}
 
                   <form onSubmit={submitSkill} noValidate>
-                    <label htmlFor="skill-name">Skill or tool</label>
+                    <label htmlFor="skill-name">{t('wizard.s2.skill')}</label>
                     <div className="autocomplete">
                       <input
                         id="skill-name"
@@ -1132,7 +1237,7 @@ export function ProfilePage() {
                           setSkillOptions([])
                           setSkillError('')
                         }}
-                        placeholder="Start typing, for example Python"
+                        placeholder={t('wizard.s2.placeholder')}
                         autoComplete="off"
                         maxLength={80}
                         disabled={skillsBusy}
@@ -1166,10 +1271,10 @@ export function ProfilePage() {
                                 <strong>{option.label}</strong>
                                 <small>
                                   {option.kind === 'tool'
-                                    ? 'Tool or technology'
+                                    ? t('wizard.s2.kind.tool')
                                     : option.kind === 'knowledge'
-                                      ? 'Knowledge area'
-                                      : 'Transferable skill'}
+                                      ? t('wizard.s2.kind.knowledge')
+                                      : t('wizard.s2.kind.skill')}
                                 </small>
                               </button>
                             </li>
@@ -1178,10 +1283,7 @@ export function ProfilePage() {
                       )}
                     </div>
 
-                    <p id="skill-help">
-                      Pick a suggestion so every skill can be compared with real
-                      occupation data.
-                    </p>
+                    <p id="skill-help">{t('wizard.s2.help')}</p>
                     {skillError && (
                       <p id="skill-error" className="field-error" role="alert">
                         {skillError}
@@ -1190,10 +1292,7 @@ export function ProfilePage() {
                   </form>
 
                   {skills.length === 0 ? (
-                    <p className="empty-note">
-                      No skills added yet. You can move ahead and add them
-                      later.
-                    </p>
+                    <p className="empty-note">{t('wizard.s2.empty')}</p>
                   ) : (
                     <div className="chips-list">
                       {skills.map((skill) => (
@@ -1203,13 +1302,25 @@ export function ProfilePage() {
                             type="button"
                             disabled={skillsBusy}
                             onClick={() => deleteSkill(skill.id)}
-                            aria-label={`Remove ${skill.name}`}
+                            aria-label={t('wizard.s2.remove', {
+                              name: skill.name,
+                            })}
                           >
                             ×
                           </button>
                         </span>
                       ))}
                     </div>
+                  )}
+
+                  {wizardElicitation && (
+                    <SkillPromptCard
+                      courseTitle={profile?.qualification ?? ''}
+                      skillLabel={wizardElicitation.label}
+                      busy={skillsBusy}
+                      onYes={() => void answerPromptYes(wizardElicitation)}
+                      onNotYet={() => answerPromptNotYet(wizardElicitation)}
+                    />
                   )}
 
                   <div className="wizard-nav">
@@ -1235,7 +1346,7 @@ export function ProfilePage() {
             {/* Step 3 turns the profile into a concrete target role. */}
             {step === 3 && profile && (
               <div className="wizard-shell">
-                <h1>Choose your target role</h1>
+                <h1>{t('wizard.s3.h1')}</h1>
                 <p className="wizard-sub">
                   Search Australian occupations and pick one direction to plan
                   towards.
@@ -1247,7 +1358,9 @@ export function ProfilePage() {
                       disabled={busy || targetRoleBusy}
                       className="plain-fieldset"
                     >
-                      <label htmlFor="target-role">Occupation *</label>
+                      <label htmlFor="target-role">
+                        {t('wizard.s3.occupation')}
+                      </label>
                       <div className="autocomplete">
                         <input
                           id="target-role"
@@ -1259,7 +1372,7 @@ export function ProfilePage() {
                             setTargetRoleError('')
                             setTargetRoleMessage('')
                           }}
-                          placeholder="Start typing, for example Data Analyst"
+                          placeholder={t('wizard.s3.placeholder')}
                           autoComplete="off"
                           maxLength={120}
                           required
@@ -1325,10 +1438,7 @@ export function ProfilePage() {
                         )}
                       </div>
 
-                      <p id="target-role-help">
-                        Choose a suggestion before saving. A new choice replaces
-                        the current target role.
-                      </p>
+                      <p id="target-role-help">{t('wizard.s3.help')}</p>
 
                       {targetRoleError && (
                         <p
@@ -1341,14 +1451,17 @@ export function ProfilePage() {
                       )}
 
                       <button type="submit" className="btn block">
-                        {targetRoleBusy ? 'Saving...' : 'Save target role'}
+                        {targetRoleBusy
+                          ? t('wizard.s3.saving')
+                          : t('wizard.s3.save')}
                       </button>
                     </fieldset>
                   </form>
 
                   {targetRole && (
                     <p className="selected-target-role">
-                      Current target: <strong>{targetRole.title}</strong>
+                      {t('wizard.s3.current')}{' '}
+                      <strong>{targetRole.title}</strong>
                     </p>
                   )}
 
@@ -1380,7 +1493,7 @@ export function ProfilePage() {
                           setAppPage('overview')
                         }}
                       >
-                        Return to overview
+                        {t('wizard.s3.return')}
                       </button>
                     )}
                   </div>
@@ -1393,25 +1506,36 @@ export function ProfilePage() {
         {screen === 'app' && profile && (
           <>
             {appPage === 'overview' && (
-              <OverviewPage
-                profile={profile}
-                skills={skills}
-                targetRole={targetRole}
-                suggestions={suggestions}
-                requirements={requirements}
-                busy={skillsBusy || targetRoleBusy}
-                onEditTargetRole={() => {
-                  setStep(3)
-                  setScreen('wizard')
-                }}
-                onPlan={chooseSuggestedRole}
-                onGoMatches={() => setAppPage('matches')}
-                onGoWizard={() => {
-                  setStep(1)
-                  setScreen('wizard')
-                }}
-                onGoPage={(page) => setAppPage(page)}
-              />
+              <>
+                {skillPrompt && (
+                  <SkillPromptCard
+                    courseTitle={profile.qualification}
+                    skillLabel={skillPrompt.label}
+                    busy={skillPromptBusy}
+                    onYes={() => void answerPromptYes(skillPrompt)}
+                    onNotYet={() => answerPromptNotYet(skillPrompt)}
+                  />
+                )}
+                <OverviewPage
+                  profile={profile}
+                  skills={skills}
+                  targetRole={targetRole}
+                  suggestions={suggestions}
+                  requirements={requirements}
+                  busy={skillsBusy || targetRoleBusy}
+                  onEditTargetRole={() => {
+                    setStep(3)
+                    setScreen('wizard')
+                  }}
+                  onPlan={chooseSuggestedRole}
+                  onGoMatches={() => setAppPage('matches')}
+                  onGoWizard={() => {
+                    setStep(1)
+                    setScreen('wizard')
+                  }}
+                  onGoPage={(page) => setAppPage(page)}
+                />
+              </>
             )}
 
             {appPage === 'matches' && (
@@ -1542,8 +1666,8 @@ export function ProfilePage() {
         <span className="footer-brand">
           Hire<strong>Way</strong>
         </span>
-        <span>Your career journey, our priority.</span>
-        <span className="footer-note">Your data is secure and private.</span>
+        <span>{t('footer.tagline')}</span>
+        <span className="footer-note">{t('footer.privacy')}</span>
       </footer>
     </>
   )

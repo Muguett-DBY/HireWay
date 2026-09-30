@@ -1,6 +1,7 @@
 import type { RoleSuggestion } from '../../lib/suggestionApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
 import { occupationTitle } from '../../lib/occupationTitle'
+import { useI18n } from '../../lib/useI18n'
 import { SuggestionCard } from './SuggestionCard'
 
 type MatchesPageProps = {
@@ -23,24 +24,20 @@ export function MatchesPage({
   busy,
   onPlan,
 }: MatchesPageProps) {
+  const { t } = useI18n()
   // With a thin profile the ranking leans on market data, so say so instead
   // of letting lookalike cards imply a precision the engine cannot have.
-  const thinHint =
-    skillsCount < 3
-      ? 'Only a few skills saved so far - every skill you add sharpens these matches.'
-      : null
+  const thinHint = skillsCount < 3 ? t('matches.hint.thin') : null
   return (
     <>
       <section className="app-hero">
-        <p className="eyebrow">Career discovery</p>
-        <h1>Career matches for you</h1>
-        <p className="app-hero-sub">
-          Roles ranked by your skills and Australian labour market data. Every
-          score shows why the role may fit you.
-        </p>
+        <p className="eyebrow">{t('matches.eyebrow')}</p>
+        <h1>{t('matches.h1')}</h1>
+        <p className="app-hero-sub">{t('matches.sub')}</p>
         {targetRole && (
           <p className="target-line">
-            Current target: <strong>{occupationTitle(targetRole.title)}</strong>
+            {t('matches.target')}{' '}
+            <strong>{occupationTitle(targetRole.title)}</strong>
           </p>
         )}
       </section>
@@ -48,7 +45,7 @@ export function MatchesPage({
       {suggestions.length > 0 ? (
         <div className="matches-results">
           <p className="section-sub match-count">
-            {suggestions.length} careers matched
+            {t('matches.count', { n: suggestions.length })}
           </p>
           <div className="match-grid">
             {suggestions.map((suggestion, index) => (
@@ -64,9 +61,7 @@ export function MatchesPage({
           </div>
         </div>
       ) : (
-        <p className="empty-note">
-          {hint ?? thinHint ?? 'No suggestions are available yet.'}
-        </p>
+        <p className="empty-note">{hint ?? thinHint ?? t('matches.empty')}</p>
       )}
     </>
   )
