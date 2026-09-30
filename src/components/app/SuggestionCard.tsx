@@ -1,16 +1,9 @@
 import type { RoleSuggestion } from '../../lib/suggestionApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
 import { occupationTitle } from '../../lib/occupationTitle'
+import { factorPercents } from '../../lib/factorDisplay'
 
 const money = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 })
-
-// Each factor is capped by its own weight (skill 60, growth 15, education 25),
-// so bars and labels both show the percent of that ceiling for a fair compare.
-const FACTOR_CEILINGS = { skill: 60, growth: 15, education: 25 } as const
-
-function asPercent(value: number, ceiling: number): number {
-  return Math.round((value / ceiling) * 100)
-}
 
 type SuggestionCardProps = {
   suggestion: RoleSuggestion
@@ -32,6 +25,7 @@ export function SuggestionCard({
   compact = false,
   onPlan,
 }: SuggestionCardProps) {
+  const percents = factorPercents(suggestion.factors)
   const isTarget = targetRole?.code === suggestion.code
   const badge = isTarget
     ? 'Current target'
@@ -67,44 +61,21 @@ export function SuggestionCard({
         <p>Match breakdown</p>
         <div className="breakdown-row">
           <span className="breakdown-bar">
-            <span
-              style={{
-                width: `${asPercent(suggestion.factors.skill, FACTOR_CEILINGS.skill)}%`,
-              }}
-            />
+            <span style={{ width: `${percents.skill}%` }} />
           </span>
-          <small>
-            Skills {asPercent(suggestion.factors.skill, FACTOR_CEILINGS.skill)}%
-          </small>
+          <small>Skills {percents.skill}%</small>
         </div>
         <div className="breakdown-row">
           <span className="breakdown-bar">
-            <span
-              className="mid"
-              style={{
-                width: `${asPercent(suggestion.factors.growth, FACTOR_CEILINGS.growth)}%`,
-              }}
-            />
+            <span className="mid" style={{ width: `${percents.growth}%` }} />
           </span>
-          <small>
-            Growth{' '}
-            {asPercent(suggestion.factors.growth, FACTOR_CEILINGS.growth)}%
-          </small>
+          <small>Growth {percents.growth}%</small>
         </div>
         <div className="breakdown-row">
           <span className="breakdown-bar">
-            <span
-              className="mid"
-              style={{
-                width: `${asPercent(suggestion.factors.education, FACTOR_CEILINGS.education)}%`,
-              }}
-            />
+            <span className="mid" style={{ width: `${percents.education}%` }} />
           </span>
-          <small>
-            Education{' '}
-            {asPercent(suggestion.factors.education, FACTOR_CEILINGS.education)}
-            %
-          </small>
+          <small>Education {percents.education}%</small>
         </div>
       </div>
 

@@ -7,6 +7,7 @@ import type {
   RoleSkill,
 } from '../../lib/roleRequirementsApi'
 import { occupationTitle } from '../../lib/occupationTitle'
+import { factorPercents } from '../../lib/factorDisplay'
 import type { SaveSkillResult, Skill, SkillStatus } from '../../lib/skillsApi'
 import type { RoleSuggestion } from '../../lib/suggestionApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
@@ -286,9 +287,16 @@ export function AnalysisPage({
               <article className="factor-panel">
                 <p className="panel-title">Why the engine ranks this role</p>
                 <div className="factor-legend wide">
-                  <span>Skills {targetSuggestion.factors.skill}</span>
-                  <span>Growth {targetSuggestion.factors.growth}</span>
-                  <span>Education {targetSuggestion.factors.education}</span>
+                  <span>
+                    Skills {factorPercents(targetSuggestion.factors).skill}%
+                  </span>
+                  <span>
+                    Growth {factorPercents(targetSuggestion.factors).growth}%
+                  </span>
+                  <span>
+                    Education{' '}
+                    {factorPercents(targetSuggestion.factors).education}%
+                  </span>
                 </div>
                 <ul className="why-list">
                   {targetSuggestion.reasons.map((reason) => (
