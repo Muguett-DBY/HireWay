@@ -3,8 +3,8 @@ import type { TargetRole } from '../../lib/targetRoleApi'
 import { occupationTitle } from '../../lib/occupationTitle'
 import { factorPercents } from '../../lib/factorDisplay'
 import { useI18n } from '../../lib/useI18n'
-
-const money = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 })
+import { useLocalizedText } from '../../lib/useLocalizedText'
+import { RecommendationReasons } from './RecommendationReasons'
 
 type SuggestionCardProps = {
   suggestion: RoleSuggestion
@@ -26,7 +26,8 @@ export function SuggestionCard({
   compact = false,
   onPlan,
 }: SuggestionCardProps) {
-  const { t } = useI18n()
+  const { t, number } = useI18n()
+  const title = useLocalizedText(occupationTitle(suggestion.title))
   const percents = factorPercents(suggestion.factors)
   const isTarget = targetRole?.code === suggestion.code
   const badge = isTarget
@@ -40,24 +41,19 @@ export function SuggestionCard({
   return (
     <article
       className={isTarget ? 'match-card current' : 'match-card'}
-      aria-label={`${occupationTitle(suggestion.title)} match`}
+      aria-label={t('workspace.matchAria', { role: title })}
     >
       <div className="match-card-top">
-        <span className="match-pill">{suggestion.matchScore}% match</span>
+        <span className="match-pill">
+          {t('workspace.match', { n: suggestion.matchScore })}
+        </span>
         {badge && <span className="flag-pill">{badge}</span>}
       </div>
 
-      <h3>{occupationTitle(suggestion.title)}</h3>
+      <h3>{title}</h3>
 
       <p className="why-title">{t('card.why')}</p>
-      <ul className="why-list">
-        {(compact
-          ? suggestion.reasons.slice(0, 2)
-          : suggestion.reasons.slice(0, 3)
-        ).map((reason) => (
-          <li key={reason}>{reason}</li>
-        ))}
-      </ul>
+      <RecommendationReasons suggestion={suggestion} limit={compact ? 2 : 3} />
 
       <div className="breakdown">
         <p>{t('card.breakdown')}</p>
@@ -94,13 +90,16 @@ export function SuggestionCard({
               suggestion.change5yPercent >= 2 ? 'growth-pos' : 'growth-flat'
             }
           >
-            {suggestion.change5yPercent > 0 ? '+' : ''}
-            {Math.round(suggestion.change5yPercent * 10) / 10}% growth
+            {t('workspace.growth', {
+              n: `${suggestion.change5yPercent > 0 ? '+' : ''}${number(suggestion.change5yPercent, 1)}`,
+            })}
           </span>
         )}
         {suggestion.medianWeeklyEarnings !== null && (
           <span className="match-earn">
-            ${money.format(suggestion.medianWeeklyEarnings)}/wk
+            {t('workspace.weeklyPay', {
+              n: number(suggestion.medianWeeklyEarnings),
+            })}
           </span>
         )}
       </div>

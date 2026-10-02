@@ -1,4 +1,5 @@
 import { useI18n } from '../../lib/useI18n'
+import { useLocalizedText } from '../../lib/useLocalizedText'
 
 type SkillPromptCardProps = {
   courseTitle: string
@@ -19,11 +20,13 @@ export function SkillPromptCard({
   onNotYet,
 }: SkillPromptCardProps) {
   const { t } = useI18n()
+  const course = useLocalizedText(courseTitle)
+  const skill = useLocalizedText(skillLabel)
   return (
-    <section className="skill-prompt" aria-label="Quick skill question">
+    <section className="skill-prompt" aria-label={t('workspace.promptAria')}>
       <span className="skill-prompt-tag">{t('prompt.tag')}</span>
       <p className="skill-prompt-text">
-        {t('prompt.question', { course: courseTitle, skill: skillLabel })}
+        {t('prompt.question', { course, skill })}
       </p>
       <div className="skill-prompt-actions">
         <button type="button" className="btn" disabled={busy} onClick={onYes}>

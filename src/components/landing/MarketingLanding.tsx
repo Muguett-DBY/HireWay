@@ -1,6 +1,7 @@
 import { type FormEvent } from 'react'
 import { SpecularButton } from '../SpecularButton'
 import { useI18n } from '../../lib/useI18n'
+import { localizeMessage } from '../../lib/localizedErrors'
 
 type MarketingLandingProps = {
   recoveryCode: string
@@ -60,7 +61,10 @@ export function MarketingLanding({
             </a>
           </div>
 
-          <ul className="marketing-hero-points" aria-label="HireWay benefits">
+          <ul
+            className="marketing-hero-points"
+            aria-label={t('profileUi.benefitsAria')}
+          >
             <li>{t('landing.benefits.1')}</li>
             <li>{t('landing.benefits.2')}</li>
             <li>{t('landing.benefits.3')}</li>
@@ -68,20 +72,20 @@ export function MarketingLanding({
 
           <form className="marketing-return" onSubmit={onContinue} noValidate>
             <span className="marketing-return-label" id="return-label">
-              Coming back?
+              {t('entry.comingBack')}
             </span>
             <input
               className="code-input"
               value={recoveryCode}
               onChange={(event) => onCodeChange(event.target.value)}
-              placeholder="Enter your recovery code"
+              placeholder={t('entry.codePlaceholder')}
               aria-labelledby="return-label"
               autoComplete="off"
               spellCheck={false}
               disabled={busy}
             />
             <button className="btn ghost" disabled={busy}>
-              {busy ? 'Loading...' : 'Continue'}
+              {busy ? t('entry.loading') : t('entry.continue')}
             </button>
             {hasProfile && (
               <button
@@ -89,7 +93,7 @@ export function MarketingLanding({
                 className="marketing-return-link"
                 onClick={onOpenProfile}
               >
-                Open my dashboard
+                {t('profileUi.openDashboard')}
               </button>
             )}
           </form>
@@ -102,14 +106,14 @@ export function MarketingLanding({
               }
               role={failed ? 'alert' : 'status'}
             >
-              {message}
+              {localizeMessage(message, t)}
             </p>
           )}
         </div>
 
         <div
           className="marketing-pathway-preview"
-          aria-label="Career pathway preview"
+          aria-label={t('profileUi.previewAria')}
         >
           <div className="marketing-preview-heading">
             <div>
@@ -143,7 +147,7 @@ export function MarketingLanding({
           <div className="marketing-preview-skills">
             <span>Python</span>
             <span>SQL</span>
-            <span>Statistics</span>
+            <span>{t('profileUi.statistics')}</span>
             <span className="skill-gap">{t('landing.preview.gaps')}</span>
           </div>
         </div>

@@ -3,6 +3,8 @@ import type { Skill } from '../../lib/skillsApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
 import { occupationTitle } from '../../lib/occupationTitle'
 import { useI18n } from '../../lib/useI18n'
+import { useLocalizedText } from '../../lib/useLocalizedText'
+import { LocalizedText } from '../LocalizedText'
 
 type PathwaysPageProps = {
   targetRole: TargetRole | null
@@ -21,6 +23,7 @@ export function PathwaysPage({
   onGoRole,
 }: PathwaysPageProps) {
   const { t } = useI18n()
+  const roleTitle = useLocalizedText(occupationTitle(targetRole?.title ?? ''))
   // Learning priorities: the role's missing skills, most important first.
   const savedCodes = new Set(
     skills.flatMap((skill) =>
@@ -47,14 +50,10 @@ export function PathwaysPage({
         <p className="eyebrow">{t('pathways.eyebrow')}</p>
         <h1>
           {targetRole
-            ? t('pathways.h1', { role: occupationTitle(targetRole.title) })
+            ? t('pathways.h1', { role: roleTitle })
             : t('pathways.h1Plain')}
         </h1>
-        <p className="app-hero-sub">
-          Priorities from the gap analysis, training routes linked in official
-          data, and your progress in one view. Everything here refreshes as your
-          profile changes.
-        </p>
+        <p className="app-hero-sub">{t('workspace.pathwaysIntro')}</p>
       </section>
 
       <section className="page-section">
@@ -69,14 +68,17 @@ export function PathwaysPage({
             <p className="panel-title">{t('pathways.completed')}</p>
             <span className="tracker-count">{completed.length}</span>
             {completed.length === 0 ? (
-              <p className="tracker-empty">
-                Nothing completed yet - mark a skill as completed when you have
-                it nailed.
-              </p>
+              <p className="tracker-empty">{t('workspace.noCompleted')}</p>
             ) : (
               <ul>
                 {completed.map((skill) => (
-                  <li key={skill.id}>{skill.name}</li>
+                  <li key={skill.id}>
+                    {skill.skillCode ? (
+                      <LocalizedText text={skill.name} />
+                    ) : (
+                      skill.name
+                    )}
+                  </li>
                 ))}
               </ul>
             )}
@@ -85,13 +87,17 @@ export function PathwaysPage({
             <p className="panel-title">{t('pathways.current')}</p>
             <span className="tracker-count">{current.length}</span>
             {current.length === 0 ? (
-              <p className="tracker-empty">
-                No current skills tracked. Add the strengths you already use.
-              </p>
+              <p className="tracker-empty">{t('workspace.noCurrent')}</p>
             ) : (
               <ul>
                 {current.map((skill) => (
-                  <li key={skill.id}>{skill.name}</li>
+                  <li key={skill.id}>
+                    {skill.skillCode ? (
+                      <LocalizedText text={skill.name} />
+                    ) : (
+                      skill.name
+                    )}
+                  </li>
                 ))}
               </ul>
             )}
@@ -100,14 +106,17 @@ export function PathwaysPage({
             <p className="panel-title">{t('pathways.upcoming')}</p>
             <span className="tracker-count">{upcoming.length}</span>
             {upcoming.length === 0 ? (
-              <p className="tracker-empty">
-                Nothing planned yet. Add a missing skill from the analysis page
-                to start a plan.
-              </p>
+              <p className="tracker-empty">{t('workspace.noUpcoming')}</p>
             ) : (
               <ul>
                 {upcoming.map((skill) => (
-                  <li key={skill.id}>{skill.name}</li>
+                  <li key={skill.id}>
+                    {skill.skillCode ? (
+                      <LocalizedText text={skill.name} />
+                    ) : (
+                      skill.name
+                    )}
+                  </li>
                 ))}
               </ul>
             )}
@@ -125,7 +134,9 @@ export function PathwaysPage({
             {priorities.map((skill, index) => (
               <li className="priority-row" key={skill.code}>
                 <span className="priority-rank">{index + 1}</span>
-                <strong>{skill.name}</strong>
+                <strong>
+                  <LocalizedText text={skill.name} />
+                </strong>
                 <span className="priority-kind">
                   {skill.priority === 'essential'
                     ? t('pathways.kind.core')
@@ -140,8 +151,8 @@ export function PathwaysPage({
         ) : (
           <p className="empty-note">
             {targetRole
-              ? 'No outstanding priorities - your profile covers the listed skills.'
-              : 'Choose a target role to see your learning priorities.'}
+              ? t('workspace.noPriorities')
+              : t('workspace.choosePriorities')}
           </p>
         )}
       </section>
@@ -154,22 +165,26 @@ export function PathwaysPage({
           <div className="qual-grid wide">
             {requirements.qualifications.map((qualification) => (
               <article className="qual-card" key={qualification.code}>
-                <strong>{qualification.title}</strong>
+                <strong>
+                  <LocalizedText text={qualification.title} />
+                </strong>
                 <small>
-                  Learning type: {qualification.qualificationLevel} · Topic:{' '}
-                  {qualification.relationship}
+                  {t('workspace.learningType')}{' '}
+                  <LocalizedText text={qualification.qualificationLevel} /> ·{' '}
+                  {t('workspace.topic')}{' '}
+                  <LocalizedText text={qualification.relationship} />
                 </small>
                 {qualification.specialConditions && (
-                  <p className="qual-note">{qualification.specialConditions}</p>
+                  <p className="qual-note">
+                    <LocalizedText text={qualification.specialConditions} />
+                  </p>
                 )}
               </article>
             ))}
           </div>
         ) : (
           <p className="empty-note">
-            {targetRole
-              ? 'No training pathways are linked to this role yet - only routes published in the official data appear here.'
-              : 'Choose a target role to see its linked training routes.'}
+            {targetRole ? t('workspace.noTraining') : t('pathways.noTraining')}
           </p>
         )}
         {targetRole && (

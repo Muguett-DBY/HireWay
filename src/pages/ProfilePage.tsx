@@ -18,14 +18,20 @@ import {
 } from '../lib/skillsApi'
 import { requestTargetRole, type TargetRole } from '../lib/targetRoleApi'
 import { occupationTitle } from '../lib/occupationTitle'
+import { localizeMessage } from '../lib/localizedErrors'
+import { LocalizedText } from '../components/LocalizedText'
 import { Stepper } from '../components/Stepper'
-import { EducationLevelSelect } from '../components/EducationLevelSelect'
+import {
+  EducationLevelSelect,
+  EducationLevelText,
+} from '../components/EducationLevelSelect'
 import { MarketingLanding } from '../components/landing/MarketingLanding'
 import { AppNav, type AppPage } from '../components/app/AppNav'
 import { SkillPromptCard } from '../components/app/SkillPromptCard'
 import { MyProfilePage } from '../components/app/MyProfilePage'
 import { LanguageSwitcher } from '../components/LanguageSwitcher'
 import { useI18n } from '../lib/useI18n'
+import { useLocalizedText } from '../lib/useLocalizedText'
 import { OverviewPage } from '../components/app/OverviewPage'
 import { MatchesPage } from '../components/app/MatchesPage'
 import { AnalysisPage } from '../components/app/AnalysisPage'
@@ -90,7 +96,7 @@ function forgetSavedLogin() {
 }
 
 export function ProfilePage() {
-  const { t } = useI18n()
+  const { t, name } = useI18n()
   const [screen, setScreen] = useState<'home' | 'wizard' | 'app'>('home')
   const [appPage, setAppPage] = useState<AppPage>('overview')
   // The wizard walks through background, skills and a target role in order.
@@ -137,6 +143,12 @@ export function ProfilePage() {
     null,
   )
   const [refreshKey, setRefreshKey] = useState(0)
+  const selectedStudyLabel = useLocalizedText(
+    details.degreeCode || details.majorCode ? details.qualification : '',
+  )
+  const selectedTargetTitle = useLocalizedText(
+    targetRoleCode ? targetRoleQuery : '',
+  )
 
   const bumpRefresh = () => setRefreshKey((current) => current + 1)
 
@@ -396,7 +408,7 @@ export function ProfilePage() {
       .then((result) => {
         if (result.ok) {
           setSuggestions(result.data.suggestions)
-          setSuggestionHint(result.data.hint ?? null)
+          setSuggestionHint(result.data.hintCode ?? result.data.hint ?? null)
         } else {
           setSuggestions([])
           setSuggestionHint(null)
@@ -615,7 +627,7 @@ export function ProfilePage() {
     setFailed(false)
 
     if (!recoveryCode.trim()) {
-      setMessage('Enter your recovery code.')
+      setMessage('profileUi.error.recoveryRequired')
       setFailed(true)
       return
     }
@@ -624,7 +636,7 @@ export function ProfilePage() {
     try {
       const bundle = await fetchProfileBundle(recoveryCode.trim())
       if (!bundle) {
-        setMessage('Could not load a profile with that code.')
+        setMessage('profileUi.error.profileNotFound')
         setFailed(true)
         return
       }
@@ -640,7 +652,7 @@ export function ProfilePage() {
         setScreen('wizard')
       }
     } catch {
-      setMessage('Could not connect. Please try again.')
+      setMessage('profileUi.error.connection')
       setFailed(true)
     } finally {
       setBusy(false)
@@ -658,9 +670,7 @@ export function ProfilePage() {
         setCopied(false)
       }, 1800)
     } catch {
-      setMessage(
-        'Could not copy the recovery code. Please select and copy it manually.',
-      )
+      setMessage('profileUi.error.copy')
       setFailed(true)
     }
   }
@@ -673,10 +683,10 @@ export function ProfilePage() {
     const nextErrors: ProfileErrors = {}
 
     if (!details.degreeCode && !details.majorCode) {
-      nextErrors.qualification = '{t("wizard.errors.chooseStudy")}'
+      nextErrors.qualification = 'wizard.errors.chooseStudy'
     }
     if (!details.educationLevel) {
-      nextErrors.educationLevel = '{t("wizard.errors.chooseLevel")}'
+      nextErrors.educationLevel = 'wizard.errors.chooseLevel'
     }
     setErrors(nextErrors)
     if (Object.keys(nextErrors).length > 0) return
@@ -692,7 +702,7 @@ export function ProfilePage() {
       )
       if (!result.ok) {
         setErrors(result.data.errors ?? {})
-        setMessage(result.data.error ?? 'Check the highlighted fields.')
+        setMessage(result.data.error ?? 'profileUi.error.checkFields')
         setFailed(true)
         return
       }
@@ -715,7 +725,7 @@ export function ProfilePage() {
         setTargetRoleMessage('')
       }
     } catch {
-      setMessage('Could not save. Please try again.')
+      setMessage('profileUi.error.save')
       setFailed(true)
     } finally {
       setBusy(false)
@@ -730,7 +740,7 @@ export function ProfilePage() {
     status: 'current' | 'upcoming' = 'current',
   ): Promise<SaveSkillResult> {
     if (!profile) {
-      const error = 'Save your profile before adding skills.'
+      const error = 'profileUi.error.saveBeforeSkills'
       setSkillError(error)
       return { ok: false, error }
     }
@@ -740,7 +750,7 @@ export function ProfilePage() {
     try {
       const result = await addSkill(profile.code, name, selectedCode, status)
       if (!result.ok) {
-        const error = result.data.error ?? 'Could not add this skill.'
+        const error = result.data.error ?? 'profileUi.error.addSkill'
         setSkillError(error)
         return { ok: false, error }
       }
@@ -752,7 +762,7 @@ export function ProfilePage() {
       bumpRefresh()
       return { ok: true }
     } catch {
-      const error = 'Could not connect. Please try again.'
+      const error = 'profileUi.error.connection'
       setSkillError(error)
       return { ok: false, error }
     } finally {
@@ -766,7 +776,7 @@ export function ProfilePage() {
     setSkillError('')
 
     if (!skillCode) {
-      setSkillError('Choose a skill or tool from the suggestions.')
+      setSkillError('profileUi.error.chooseSkill')
       return
     }
 
@@ -782,7 +792,7 @@ export function ProfilePage() {
   // Remove only the selected skill from this profile.
   async function deleteSkill(id: number): Promise<SaveSkillResult> {
     if (!profile) {
-      return { ok: false, error: 'Open a profile before removing a skill.' }
+      return { ok: false, error: 'profileUi.error.openBeforeRemove' }
     }
 
     setSkillError('')
@@ -791,7 +801,7 @@ export function ProfilePage() {
     try {
       const result = await removeSkill(profile.code, id)
       if (!result.ok) {
-        const error = result.data.error ?? 'Could not remove this skill.'
+        const error = result.data.error ?? 'profile.removeError'
         setSkillError(error)
         return { ok: false, error }
       }
@@ -800,7 +810,7 @@ export function ProfilePage() {
       bumpRefresh()
       return { ok: true }
     } catch {
-      const error = 'Could not connect. Please try again.'
+      const error = 'profileUi.error.connection'
       setSkillError(error)
       return { ok: false, error }
     } finally {
@@ -839,7 +849,7 @@ export function ProfilePage() {
     setTargetRoleMessage('')
 
     if (!profile) {
-      setTargetRoleError('Save your profile before choosing a target role.')
+      setTargetRoleError('profileUi.error.saveBeforeRole')
       return false
     }
 
@@ -850,8 +860,8 @@ export function ProfilePage() {
       if (!result.ok || !result.data.targetRole) {
         setTargetRoleError(
           result.ok
-            ? 'Could not save your target role.'
-            : (result.data.error ?? 'Could not save your target role.'),
+            ? 'profileUi.error.saveRole'
+            : (result.data.error ?? 'profileUi.error.saveRole'),
         )
         return false
       }
@@ -861,7 +871,7 @@ export function ProfilePage() {
       setTargetRoleQuery(result.data.targetRole.title)
       setTargetRoleCode(result.data.targetRole.code)
       setTargetRoleOptions([])
-      setTargetRoleMessage('Target role saved.')
+      setTargetRoleMessage('profileUi.targetSaved')
       if (returnToOverview) {
         setScreen('app')
         setAppPage('overview')
@@ -869,7 +879,7 @@ export function ProfilePage() {
       bumpRefresh()
       return true
     } catch {
-      setTargetRoleError('Could not connect. Please try again.')
+      setTargetRoleError('profileUi.error.connection')
       return false
     } finally {
       setTargetRoleBusy(false)
@@ -883,7 +893,7 @@ export function ProfilePage() {
     setTargetRoleMessage('')
 
     if (!targetRoleCode) {
-      setTargetRoleError('{t("wizard.errors.chooseRole")}')
+      setTargetRoleError('wizard.errors.chooseRole')
       return
     }
 
@@ -938,7 +948,7 @@ export function ProfilePage() {
             setMessage('')
             setFailed(false)
           }}
-          aria-label="HireWay home"
+          aria-label={t('profileUi.homeAria')}
         >
           <span className="brand-mark" aria-hidden="true">
             H
@@ -1013,7 +1023,7 @@ export function ProfilePage() {
                       className={failed ? 'notice error' : 'notice success'}
                       role={failed ? 'alert' : 'status'}
                     >
-                      {message}
+                      {localizeMessage(message, t)}
                     </p>
                   )}
 
@@ -1025,11 +1035,15 @@ export function ProfilePage() {
                       <div className="autocomplete">
                         <input
                           id="qualification"
-                          value={details.qualification}
+                          value={
+                            details.degreeCode || details.majorCode
+                              ? selectedStudyLabel
+                              : details.qualification
+                          }
                           onChange={(event) =>
                             updateQualification(event.target.value)
                           }
-                          placeholder="Search your course, e.g. Master of Data Science"
+                          placeholder={t('profileUi.studyPlaceholder')}
                           autoComplete="off"
                           maxLength={240}
                           required
@@ -1056,14 +1070,18 @@ export function ProfilePage() {
                                   onClick={() => selectStudy(option)}
                                 >
                                   <span className="study-option-heading">
-                                    <strong>{option.label}</strong>
+                                    <strong>
+                                      <LocalizedText text={option.label} />
+                                    </strong>
                                     <span>
                                       {option.kind === 'course'
-                                        ? 'Exact course'
-                                        : 'Field of study'}
+                                        ? t('profileUi.exactCourse')
+                                        : t('profileUi.fieldOfStudy')}
                                     </span>
                                   </span>
-                                  <small>{option.description}</small>
+                                  <small>
+                                    <LocalizedText text={option.description} />
+                                  </small>
                                 </button>
                               </li>
                             ))}
@@ -1079,17 +1097,22 @@ export function ProfilePage() {
                           className="field-error"
                           role="alert"
                         >
-                          {errors.qualification}
+                          {localizeMessage(errors.qualification, t)}
                         </p>
                       )}
 
                       {/* A picked course already fixes the education level. */}
                       {details.degreeCode ? (
                         <>
-                          <label>Education level</label>
+                          <label>{t('profileUi.educationLevel')}</label>
                           <p className="derived-level">
-                            {details.educationLevel ||
-                              '{t("wizard.s1.derivedAuto")}'}{' '}
+                            {details.educationLevel ? (
+                              <EducationLevelText
+                                value={details.educationLevel}
+                              />
+                            ) : (
+                              t('wizard.s1.derivedAuto')
+                            )}{' '}
                             <small>{t('wizard.s1.derived')}</small>
                           </p>
                         </>
@@ -1116,7 +1139,7 @@ export function ProfilePage() {
                               className="field-error"
                               role="alert"
                             >
-                              {errors.educationLevel}
+                              {localizeMessage(errors.educationLevel, t)}
                             </p>
                           )}
                         </>
@@ -1149,7 +1172,7 @@ export function ProfilePage() {
                           onClick={copyRecoveryCode}
                           aria-label={
                             copied
-                              ? 'Recovery code copied'
+                              ? t('profileUi.recoveryCopied')
                               : t('wizard.recovery.copy')
                           }
                         >
@@ -1162,20 +1185,17 @@ export function ProfilePage() {
                           />
                         </button>
                       </div>
-                      <p id="code-help">
-                        Keep this code private. Anyone with it can view and edit
-                        your profile. This browser remembers it for you.
-                      </p>
+                      <p id="code-help">{t('profileUi.recoveryPrivacy')}</p>
                       <button
                         type="button"
                         className="forget-login-button"
                         onClick={() => {
                           forgetSavedLogin()
                           setRecoveryCode('')
-                          setMessage('This browser forgot your saved code.')
+                          setMessage('profileUi.forgotCode')
                         }}
                       >
-                        Forget the code on this device
+                        {t('profileUi.forgetDevice')}
                       </button>
                     </section>
                   )}
@@ -1187,9 +1207,7 @@ export function ProfilePage() {
             {step === 2 && profile && (
               <div className="wizard-shell">
                 <h1>{t('wizard.s2.h1')}</h1>
-                <p className="wizard-sub">
-                  Add what you can already do so roles can be matched to you.
-                </p>
+                <p className="wizard-sub">{t('profileUi.skillsSub')}</p>
 
                 <div className="wizard-card">
                   {(details.qualificationCode ||
@@ -1203,7 +1221,7 @@ export function ProfilePage() {
                       </div>
 
                       {recommendationsBusy ? (
-                        <p>Loading suggestions...</p>
+                        <p>{t('profileUi.loadingSuggestions')}</p>
                       ) : suggestedSkills.length > 0 ? (
                         <div className="suggestion-chips">
                           {suggestedSkills.map((suggestion) => (
@@ -1214,14 +1232,12 @@ export function ProfilePage() {
                               disabled={skillsBusy}
                               onClick={() => addSuggestedSkill(suggestion)}
                             >
-                              + {suggestion.label}
+                              + <LocalizedText text={suggestion.label} />
                             </button>
                           ))}
                         </div>
                       ) : (
-                        <p>
-                          No new suggestions are available for this selection.
-                        </p>
+                        <p>{t('profileUi.noSuggestions')}</p>
                       )}
                     </div>
                   )}
@@ -1269,7 +1285,9 @@ export function ProfilePage() {
                                   void saveSkill(option.label, option.code)
                                 }}
                               >
-                                <strong>{option.label}</strong>
+                                <strong>
+                                  <LocalizedText text={option.label} />
+                                </strong>
                                 <small>
                                   {option.kind === 'tool'
                                     ? t('wizard.s2.kind.tool')
@@ -1287,7 +1305,7 @@ export function ProfilePage() {
                     <p id="skill-help">{t('wizard.s2.help')}</p>
                     {skillError && (
                       <p id="skill-error" className="field-error" role="alert">
-                        {skillError}
+                        {localizeMessage(skillError, t)}
                       </p>
                     )}
                   </form>
@@ -1298,13 +1316,13 @@ export function ProfilePage() {
                     <div className="chips-list">
                       {skills.map((skill) => (
                         <span className="chip" key={skill.id}>
-                          {skill.name}
+                          <LocalizedText text={skill.name} />
                           <button
                             type="button"
                             disabled={skillsBusy}
                             onClick={() => deleteSkill(skill.id)}
                             aria-label={t('wizard.s2.remove', {
-                              name: skill.name,
+                              name: name(skill.name),
                             })}
                           >
                             ×
@@ -1330,14 +1348,14 @@ export function ProfilePage() {
                       className="btn ghost"
                       onClick={() => setStep(1)}
                     >
-                      Back
+                      {t('wizard.back')}
                     </button>
                     <button
                       type="button"
                       className="btn"
                       onClick={() => setStep(3)}
                     >
-                      Continue
+                      {t('wizard.continue')}
                     </button>
                   </div>
                 </div>
@@ -1348,10 +1366,7 @@ export function ProfilePage() {
             {step === 3 && profile && (
               <div className="wizard-shell">
                 <h1>{t('wizard.s3.h1')}</h1>
-                <p className="wizard-sub">
-                  Search Australian occupations and pick one direction to plan
-                  towards.
-                </p>
+                <p className="wizard-sub">{t('wizard.s3.sub')}</p>
 
                 <div className="wizard-card">
                   <form onSubmit={submitTargetRole} noValidate>
@@ -1365,7 +1380,11 @@ export function ProfilePage() {
                       <div className="autocomplete">
                         <input
                           id="target-role"
-                          value={targetRoleQuery}
+                          value={
+                            targetRoleCode
+                              ? selectedTargetTitle
+                              : targetRoleQuery
+                          }
                           onChange={(event) => {
                             setTargetRoleQuery(event.target.value)
                             setTargetRoleCode(null)
@@ -1409,7 +1428,9 @@ export function ProfilePage() {
                                 >
                                   <span className="study-option-heading">
                                     <strong>
-                                      {occupationTitle(option.label)}
+                                      <LocalizedText
+                                        text={occupationTitle(option.label)}
+                                      />
                                     </strong>
                                     {option.growth5yPercent != null && (
                                       <span
@@ -1420,17 +1441,22 @@ export function ProfilePage() {
                                         }`}
                                       >
                                         {option.growth5yPercent > 0 ? '▲' : '▼'}{' '}
-                                        {Math.abs(
-                                          Math.round(
-                                            option.growth5yPercent * 10,
-                                          ) / 10,
-                                        )}
-                                        % in 5 yrs
+                                        {t('profileUi.growthFiveYears', {
+                                          n: Math.abs(
+                                            Math.round(
+                                              option.growth5yPercent * 10,
+                                            ) / 10,
+                                          ),
+                                        })}
                                       </span>
                                     )}
                                   </span>
                                   {option.description && (
-                                    <small>{option.description}</small>
+                                    <small>
+                                      <LocalizedText
+                                        text={option.description}
+                                      />
+                                    </small>
                                   )}
                                 </button>
                               </li>
@@ -1447,7 +1473,7 @@ export function ProfilePage() {
                           className="field-error"
                           role="alert"
                         >
-                          {targetRoleError}
+                          {localizeMessage(targetRoleError, t)}
                         </p>
                       )}
 
@@ -1462,13 +1488,15 @@ export function ProfilePage() {
                   {targetRole && (
                     <p className="selected-target-role">
                       {t('wizard.s3.current')}{' '}
-                      <strong>{targetRole.title}</strong>
+                      <strong>
+                        <LocalizedText text={targetRole.title} />
+                      </strong>
                     </p>
                   )}
 
                   {targetRoleMessage && (
                     <p className="notice success" role="status">
-                      {targetRoleMessage}
+                      {localizeMessage(targetRoleMessage, t)}
                     </p>
                   )}
 
@@ -1478,7 +1506,7 @@ export function ProfilePage() {
                       className="btn ghost"
                       onClick={() => setStep(2)}
                     >
-                      Back
+                      {t('wizard.back')}
                     </button>
                     {targetRole && (
                       <button
@@ -1645,30 +1673,34 @@ export function ProfilePage() {
       >
         {pendingTargetRole && targetRole && (
           <div className="confirm-dialog-card">
-            <p className="eyebrow">Target role</p>
-            <h2 id="target-role-confirm-title">Change your target role?</h2>
-            <p id="target-role-confirm-description">
-              Your matches, analysis, role details and pathway will refresh for
-              the new target.
-            </p>
+            <p className="eyebrow">{t('wizard.step3')}</p>
+            <h2 id="target-role-confirm-title">{t('wizard.dialog.title')}</h2>
+            <p id="target-role-confirm-description">{t('wizard.dialog.sub')}</p>
 
-            <div className="role-change-summary" aria-label="Role change">
+            <div
+              className="role-change-summary"
+              aria-label={t('profileUi.roleChangeAria')}
+            >
               <span>
-                <small>Current target</small>
-                <strong>{targetRole.title}</strong>
+                <small>{t('wizard.dialog.current')}</small>
+                <strong>
+                  <LocalizedText text={targetRole.title} />
+                </strong>
               </span>
               <span className="role-change-arrow" aria-hidden="true">
                 →
               </span>
               <span>
-                <small>New target</small>
-                <strong>{pendingTargetRole.title}</strong>
+                <small>{t('wizard.dialog.new')}</small>
+                <strong>
+                  <LocalizedText text={pendingTargetRole.title} />
+                </strong>
               </span>
             </div>
 
             {targetRoleError && (
               <p className="field-error" role="alert">
-                {targetRoleError}
+                {localizeMessage(targetRoleError, t)}
               </p>
             )}
 
@@ -1680,7 +1712,7 @@ export function ProfilePage() {
                 autoFocus
                 onClick={() => setPendingTargetRole(null)}
               >
-                Keep current role
+                {t('wizard.dialog.keep')}
               </button>
               <button
                 type="button"
@@ -1688,7 +1720,9 @@ export function ProfilePage() {
                 disabled={targetRoleBusy}
                 onClick={() => void confirmTargetRoleChange()}
               >
-                {targetRoleBusy ? 'Changing...' : 'Confirm change'}
+                {targetRoleBusy
+                  ? t('wizard.dialog.changing')
+                  : t('wizard.dialog.confirm')}
               </button>
             </div>
           </div>

@@ -1,8 +1,12 @@
+import type { RecommendationReason } from '../../shared/recommendation'
+export type { RecommendationReason } from '../../shared/recommendation'
+
 export type RoleSuggestion = {
   code: string
   title: string
   matchScore: number
   reasons: string[]
+  reasonDetails?: RecommendationReason[]
   // Each factor's weighted share of the score, so the card can chart it.
   factors: { skill: number; growth: number; education: number }
   change5yPercent: number | null
@@ -13,6 +17,7 @@ export type RoleSuggestion = {
 export type RoleSuggestions = {
   suggestions: RoleSuggestion[]
   hint?: string
+  hintCode?: 'knowledgeOnly' | 'noSkills'
   modelledOccupations?: number
 }
 

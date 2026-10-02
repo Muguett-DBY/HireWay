@@ -1,3 +1,5 @@
+import type { RecommendationReason } from '../../shared/recommendation'
+
 type CandidateRow = {
   code: string
   title: string
@@ -26,6 +28,7 @@ type Suggestion = {
   title: string
   matchScore: number
   reasons: string[]
+  reasonDetails: RecommendationReason[]
   factors: { skill: number; growth: number; education: number }
   change5yPercent: number | null
   medianWeeklyEarnings: number | null
@@ -139,6 +142,7 @@ export async function handleRoleSuggestions(
   if (matchable.length === 0) {
     return Response.json({
       suggestions: [],
+      hintCode: savedSkills.length ? 'knowledgeOnly' : 'noSkills',
       hint: savedSkills.length
         ? 'Knowledge areas alone do not drive matching - add a few tools or skills you can use.'
         : 'Add a few skills to unlock career suggestions built from real occupation data.',
@@ -370,22 +374,27 @@ export async function handleRoleSuggestions(
         WEIGHTS.education * educationMatch)
 
     const reasons: string[] = []
+    const reasonDetails: RecommendationReason[] = []
     const topSkills = (overlaps.get(candidate.code) ?? [])
       .sort((left, right) => right.contribution - left.contribution)
       .slice(0, 2)
       .map((overlap) => overlap.name)
     if (topSkills.length > 0) {
+      reasonDetails.push({ code: 'skills', skills: topSkills })
       reasons.push(
         `${topSkills.join(' and ')} ${topSkills.length > 1 ? 'are' : 'is'} part of this role's usual toolkit`,
       )
     }
     const growthShare = Math.round(candidate.growthPercentile * 100)
+    reasonDetails.push({ code: 'growth', percentile: growthShare })
     reasons.push(
       `Projected growth beats ${growthShare}% of Australian occupations`,
     )
     if (educationMatch >= 0.8) {
+      reasonDetails.push({ code: 'educationAligned' })
       reasons.push(`The typical skill level lines up with your education`)
     } else if (educationMatch < 0.5) {
+      reasonDetails.push({ code: 'educationDifferent' })
       reasons.push(`Usually asks for a different study level`)
     }
 
@@ -394,6 +403,7 @@ export async function handleRoleSuggestions(
       title: candidate.title,
       matchScore: Math.max(0, Math.min(99, Math.round(score))),
       reasons,
+      reasonDetails,
       change5yPercent: candidate.change5yPercent,
       medianWeeklyEarnings: candidate.medianWeeklyEarnings,
       factors: {

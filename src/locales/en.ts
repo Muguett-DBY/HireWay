@@ -1,5 +1,4 @@
-// English source strings. Every key falls back to English when a
-// translation is missing in another language.
+// English source strings define the required keys for every language.
 export const en = {
   'nav.overview': 'Overview',
   'nav.matches': 'Matches',
@@ -192,6 +191,8 @@ export const en = {
   'analysis.gaps': 'Skill gaps to close',
   'analysis.gaps.evidence':
     'Evidence: US O*NET 31.0 ratings via the ABS OSCA bridge',
+  'analysis.covered': '{covered} of {total} covered',
+  'analysis.missing': '{n} missing',
   'analysis.allCovered':
     "Nothing missing - your profile covers this role's whole catalogue entry.",
   'analysis.addSkill': 'Add {name} to your skills',
@@ -208,6 +209,7 @@ export const en = {
     'It will be removed from your profile and career calculations.',
   'analysis.remove.skill': 'Skill to remove',
   'analysis.remove.confirm': 'Remove skill',
+  'analysis.removing': 'Removing...',
   'analysis.remove.cancel': 'Keep skill',
   'analysis.removeAria': 'Remove {name}',
   'analysis.listAria': 'My skills, {n} items. Scroll to see more.',
@@ -245,14 +247,17 @@ export const en = {
   'pathways.h1': 'Learning roadmap towards {role}',
   'pathways.h1Plain': 'Learning roadmap',
   'pathways.progress': 'Skill progress',
+  'pathways.progress.tag': 'Current or completed: {n}%',
   'pathways.completed': 'Completed',
   'pathways.current': 'Current',
   'pathways.upcoming': 'Upcoming',
   'pathways.priorities': 'Learning priorities',
+  'pathways.priorities.tag': 'Top skills to learn next',
   'pathways.importance': 'Importance {n}',
   'pathways.kind.core': 'Core skill',
   'pathways.kind.recommended': 'Transferable skill',
   'pathways.kind.bonus': 'Common tool',
+  'pathways.training': 'Training routes',
   'pathways.noTraining':
     'Choose a target role to see its linked training routes.',
   'pathways.reviewRole': 'Review role requirements →',

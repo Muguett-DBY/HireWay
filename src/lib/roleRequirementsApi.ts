@@ -30,6 +30,7 @@ export type RoleMarket = {
   change10yPercent: number | null
   medianWeeklyEarnings: number | null
   outlook: string
+  outlookCode?: 'unknown' | 'strong' | 'growing' | 'stable' | 'declining'
   vacancies: { state: string; vacancies: number }[]
 }
 

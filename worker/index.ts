@@ -6,6 +6,7 @@ import { handleOptions } from './routes/options'
 import { handleTargetRole } from './routes/targetRole'
 import { handleRoleRequirements } from './routes/roleRequirements'
 import { handleRoleSuggestions } from './routes/roleSuggestions'
+import { handleTranslations } from './routes/translations'
 
 // Send API requests to their handler and page requests to React.
 export default {
@@ -19,7 +20,9 @@ export default {
     let response: Response
 
     try {
-      if (path === '/api/profile') {
+      if (path === '/api/translations') {
+        response = await handleTranslations(request)
+      } else if (path === '/api/profile') {
         response = await handleProfile(request, env)
       } else if (path === '/api/skills') {
         response = await handleSkills(request, env)

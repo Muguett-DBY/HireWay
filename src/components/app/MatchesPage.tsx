@@ -3,6 +3,7 @@ import type { TargetRole } from '../../lib/targetRoleApi'
 import { occupationTitle } from '../../lib/occupationTitle'
 import { useI18n } from '../../lib/useI18n'
 import { SuggestionCard } from './SuggestionCard'
+import { LocalizedText } from '../LocalizedText'
 
 type MatchesPageProps = {
   suggestions: RoleSuggestion[]
@@ -37,7 +38,9 @@ export function MatchesPage({
         {targetRole && (
           <p className="target-line">
             {t('matches.target')}{' '}
-            <strong>{occupationTitle(targetRole.title)}</strong>
+            <strong>
+              <LocalizedText text={occupationTitle(targetRole.title)} />
+            </strong>
           </p>
         )}
       </section>
@@ -61,7 +64,17 @@ export function MatchesPage({
           </div>
         </div>
       ) : (
-        <p className="empty-note">{hint ?? thinHint ?? t('matches.empty')}</p>
+        <p className="empty-note">
+          {hint === 'knowledgeOnly' ||
+          hint ===
+            'Knowledge areas alone do not drive matching - add a few tools or skills you can use.'
+            ? t('workspace.hint.knowledgeOnly')
+            : hint === 'noSkills' ||
+                hint ===
+                  'Add a few skills to unlock career suggestions built from real occupation data.'
+              ? t('overview.rec.empty')
+              : (hint ?? thinHint ?? t('matches.empty'))}
+        </p>
       )}
     </>
   )

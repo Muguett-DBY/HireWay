@@ -1,16 +1,24 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide'
 import { MorphIcon } from 'morphicons/react'
+import { useI18n } from '../lib/useI18n'
 
 const educationLevels = [
-  { value: '', label: 'Select your education level' },
-  { value: 'High School', label: 'High School' },
-  { value: 'Diploma / Certificate', label: 'Diploma / Certificate' },
-  { value: 'Bachelor', label: "Bachelor's degree" },
-  { value: 'Master', label: "Master's degree" },
-  { value: 'Doctorate', label: 'Doctorate (PhD)' },
-  { value: 'Other', label: 'Other' },
-]
+  { value: '', label: 'wizard.s1.levelPlaceholder' },
+  { value: 'High School', label: 'profileUi.education.highSchool' },
+  { value: 'Diploma / Certificate', label: 'profileUi.education.diploma' },
+  { value: 'Bachelor', label: 'profileUi.education.bachelor' },
+  { value: 'Master', label: 'profileUi.education.master' },
+  { value: 'Doctorate', label: 'profileUi.education.doctorate' },
+  { value: 'Other', label: 'profileUi.education.other' },
+] as const
+
+// Stored education values are API enums; only their presentation changes.
+export function EducationLevelText({ value }: { value: string }) {
+  const { t } = useI18n()
+  const option = educationLevels.find((item) => item.value === value)
+  return <>{option ? t(option.label) : value}</>
+}
 
 type EducationLevelSelectProps = {
   value: string
@@ -25,6 +33,7 @@ export function EducationLevelSelect({
   invalid,
   describedBy,
 }: EducationLevelSelectProps) {
+  const { t } = useI18n()
   const [open, setOpen] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
   const wrapperRef = useRef<HTMLDivElement>(null)
@@ -141,7 +150,7 @@ export function EducationLevelSelect({
         onKeyDown={handleKeyDown}
       >
         <span className={value ? undefined : 'placeholder'}>
-          {selectedOption.label}
+          {t(selectedOption.label)}
         </span>
         <MorphIcon
           icon={open ? ChevronUp : ChevronDown}
@@ -169,7 +178,7 @@ export function EducationLevelSelect({
                 onMouseDown={(event) => event.preventDefault()}
                 onClick={() => selectOption(index)}
               >
-                <span>{option.label}</span>
+                <span>{t(option.label)}</span>
                 {option.value === value && (
                   <svg
                     viewBox="0 0 20 20"

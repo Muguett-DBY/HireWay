@@ -2814,3 +2814,22 @@ h3 {
     opacity: 0;
   }
 }
+/* Translation progress/errors are announced without blocking page controls. */
+.translation-notice {
+  position: fixed;
+  z-index: 90;
+  left: 1rem;
+  bottom: 1rem;
+  max-width: min(32rem, calc(100vw - 2rem));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #c9dfd5;
+  border-radius: 12px;
+  background: #fff;
+  color: #193a50;
+  box-shadow: 0 4px 20px #193a5014;
+  font-size: 0.875rem;
+}

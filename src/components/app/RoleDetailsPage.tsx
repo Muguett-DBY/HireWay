@@ -7,10 +7,7 @@ import type { SaveSkillResult, Skill } from '../../lib/skillsApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
 import { occupationTitle } from '../../lib/occupationTitle'
 import { useI18n } from '../../lib/useI18n'
-
-const numberFormat = new Intl.NumberFormat('en-AU', {
-  maximumFractionDigits: 0,
-})
+import { LocalizedText } from '../LocalizedText'
 
 type RoleDetailsPageProps = {
   targetRole: TargetRole | null
@@ -25,19 +22,36 @@ const groups = [
   {
     key: 'essential',
     title: 'role.group.core',
-    note: 'Broad O*NET abilities commonly associated with this role.',
+    note: 'workspace.coreNote',
   },
   {
     key: 'recommended',
     title: 'role.group.recommended',
-    note: 'Abilities that can carry across jobs and industries.',
+    note: 'workspace.transferableNote',
   },
   {
     key: 'bonus',
     title: 'role.group.bonus',
-    note: 'Named software and technologies found in the source data.',
+    note: 'workspace.toolsNote',
   },
 ] as const
+
+const outlookKeys = {
+  unknown: 'workspace.outlook.unknown',
+  strong: 'workspace.outlook.strong',
+  growing: 'workspace.outlook.growing',
+  stable: 'workspace.outlook.stable',
+  declining: 'workspace.outlook.declining',
+} as const
+
+// Keep older API responses readable while new responses carry outlookCode.
+const legacyOutlookCodes: Record<string, keyof typeof outlookKeys> = {
+  'Outlook unknown': 'unknown',
+  'Growing strongly': 'strong',
+  Growing: 'growing',
+  Stable: 'stable',
+  Declining: 'declining',
+}
 
 // The role details page holds everything about the chosen occupation:
 // what the work involves, the Australian outlook, the day-to-day tasks and
@@ -50,16 +64,13 @@ export function RoleDetailsPage({
   onAddSkill,
   onGoPathways,
 }: RoleDetailsPageProps) {
-  const { t } = useI18n()
+  const { t, number, name } = useI18n()
   if (!targetRole) {
     return (
       <section className="app-hero">
         <p className="eyebrow">{t('role.eyebrow')}</p>
-        <h1>Choose a target role first</h1>
-        <p className="app-hero-sub">
-          Role details describe one occupation - pick a direction and this page
-          fills in.
-        </p>
+        <h1>{t('analysis.chooseFirst')}</h1>
+        <p className="app-hero-sub">{t('workspace.chooseRoleDetails')}</p>
       </section>
     )
   }
@@ -72,6 +83,10 @@ export function RoleDetailsPage({
   const has = (skill: RoleSkill) =>
     savedCodes.has(skill.code) || savedCodes.has(skill.name.toLowerCase())
   const market = requirements?.market ?? null
+  const outlookCode =
+    market?.outlookCode ??
+    legacyOutlookCodes[market?.outlook ?? ''] ??
+    'unknown'
   const vacancyTotal = market
     ? market.vacancies.reduce((total, entry) => total + entry.vacancies, 0)
     : null
@@ -83,8 +98,12 @@ export function RoleDetailsPage({
     <>
       <section className="app-hero">
         <p className="eyebrow">{t('role.eyebrow')}</p>
-        <h1>{occupationTitle(targetRole.title)}</h1>
-        <p className="app-hero-sub">{targetRole.description}</p>
+        <h1>
+          <LocalizedText text={occupationTitle(targetRole.title)} />
+        </h1>
+        <p className="app-hero-sub">
+          <LocalizedText text={targetRole.description} />
+        </p>
       </section>
 
       <section className="page-section">
@@ -105,14 +124,14 @@ export function RoleDetailsPage({
                       : undefined
                   }
                 >
-                  {market.outlook}
+                  {t(outlookKeys[outlookCode])}
                 </strong>
                 <span>{t('role.demand')}</span>
               </article>
               <article className="stat-card">
                 <strong>
                   {market.change5yPercent !== null
-                    ? `${market.change5yPercent > 0 ? '+' : ''}${Math.round(market.change5yPercent * 10) / 10}%`
+                    ? `${market.change5yPercent > 0 ? '+' : ''}${number(market.change5yPercent, 1)}%`
                     : '—'}
                 </strong>
                 <span>{t('role.change5y')}</span>
@@ -120,7 +139,7 @@ export function RoleDetailsPage({
               <article className="stat-card">
                 <strong>
                   {market.medianWeeklyEarnings != null
-                    ? `$${numberFormat.format(market.medianWeeklyEarnings)}`
+                    ? `A$${number(market.medianWeeklyEarnings)}`
                     : '—'}
                 </strong>
                 <span>{t('role.earnings')}</span>
@@ -128,7 +147,7 @@ export function RoleDetailsPage({
               <article className="stat-card">
                 <strong>
                   {vacancyTotal !== null && !Number.isNaN(vacancyTotal)
-                    ? numberFormat.format(Math.round(vacancyTotal))
+                    ? number(Math.round(vacancyTotal))
                     : '—'}
                 </strong>
                 <span>{t('role.vacancies')}</span>
@@ -163,7 +182,9 @@ export function RoleDetailsPage({
                 <span className="task-num">
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <p>{task}</p>
+                <p>
+                  <LocalizedText text={task} />
+                </p>
               </li>
             ))}
           </ol>
@@ -186,7 +207,7 @@ export function RoleDetailsPage({
               return (
                 <article className="skill-panel" key={group.key}>
                   <p className="panel-title">{t(group.title)}</p>
-                  <p className="panel-note">{group.note}</p>
+                  <p className="panel-note">{t(group.note)}</p>
                   {items.length === 0 && (
                     <p className="panel-caption">
                       {t('role.nothingInCategory')}
@@ -201,14 +222,14 @@ export function RoleDetailsPage({
                       onClick={() => onAddSkill(skill.name, skill.code)}
                       aria-label={
                         has(skill)
-                          ? `${skill.name} is already saved`
-                          : `Add ${skill.name} to your profile`
+                          ? t('role.savedAria', { name: name(skill.name) })
+                          : t('role.addAria', { name: name(skill.name) })
                       }
                     >
                       <span className="skill-row-head">
                         <span>
                           {has(skill) ? '✓ ' : '+ '}
-                          {skill.name}
+                          <LocalizedText text={skill.name} />
                         </span>
                         <small>{skill.score}</small>
                       </span>
@@ -237,9 +258,15 @@ export function RoleDetailsPage({
           <div className="qual-grid">
             {requirements.qualifications.slice(0, 3).map((qualification) => (
               <article className="qual-card" key={qualification.code}>
-                <strong>{qualification.title}</strong>
-                <small>{qualification.qualificationLevel}</small>
-                <span>{qualification.relationship}</span>
+                <strong>
+                  <LocalizedText text={qualification.title} />
+                </strong>
+                <small>
+                  <LocalizedText text={qualification.qualificationLevel} />
+                </small>
+                <span>
+                  <LocalizedText text={qualification.relationship} />
+                </span>
               </article>
             ))}
           </div>
@@ -256,10 +283,10 @@ export function RoleDetailsPage({
           {(requirements?.sources ?? []).map((source) => (
             <li key={source.name}>
               <a href={source.url} target="_blank" rel="noreferrer">
-                {source.name}
+                <LocalizedText text={source.name} />
               </a>
               <span>
-                {source.publisher} · {source.licence}
+                <LocalizedText text={source.publisher} /> · {source.licence}
               </span>
             </li>
           ))}
@@ -304,6 +331,7 @@ function StateDemandChart({
   vacancies: NonNullable<RequirementsData['market']>['vacancies']
   maxVacancy: number
 }) {
+  const { number } = useI18n()
   const { elementRef, isVisible } = useRevealOnView<HTMLUListElement>()
 
   return (
@@ -324,7 +352,7 @@ function StateDemandChart({
               }
             />
           </span>
-          <small>{numberFormat.format(Math.round(entry.vacancies))}</small>
+          <small>{number(Math.round(entry.vacancies))}</small>
         </li>
       ))}
     </ul>
@@ -338,7 +366,7 @@ function TrajectoryChart({
 }: {
   market: NonNullable<RequirementsData['market']>
 }) {
-  const { t } = useI18n()
+  const { t, number } = useI18n()
   const { elementRef, isVisible } = useRevealOnView<HTMLDivElement>()
   const points = [
     { year: '2025', value: market.employedMay2025 },
@@ -380,7 +408,12 @@ function TrajectoryChart({
         className="trajectory-chart"
         viewBox={`0 0 ${width} ${height}`}
         role="img"
-        aria-label={`Employment from ${numberFormat.format(points[0].value)} in ${points[0].year} to ${numberFormat.format(points[points.length - 1].value)} in ${points[points.length - 1].year}`}
+        aria-label={t('workspace.trajectoryAria', {
+          start: number(points[0].value),
+          startYear: points[0].year,
+          end: number(points[points.length - 1].value),
+          endYear: points[points.length - 1].year,
+        })}
       >
         <polygon className="trajectory-area" points={area} />
         <polyline className="trajectory-line" points={line} pathLength="1" />
@@ -409,7 +442,7 @@ function TrajectoryChart({
               y={c.y - 9}
               textAnchor="middle"
             >
-              {numberFormat.format(Math.round(c.value))}
+              {number(Math.round(c.value))}
             </text>
           </g>
         ))}

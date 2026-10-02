@@ -26,7 +26,7 @@ export function AppNav({
       items={tabs}
       activeId={page}
       onSelect={onSelect}
-      ariaLabel="Workspace pages"
+      ariaLabel={t('workspace.nav')}
     />
   )
 }

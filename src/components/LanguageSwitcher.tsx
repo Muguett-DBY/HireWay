@@ -7,7 +7,7 @@ import { useI18n } from '../lib/useI18n'
 // Compact dropdown in the site header. Labels stay in their own language
 // (English / Español / 中文 / 日本語) so speakers can always find theirs.
 export function LanguageSwitcher() {
-  const { lang, setLang } = useI18n()
+  const { lang, setLang, t } = useI18n()
   const [open, setOpen] = useState(false)
   const wrapRef = useRef<HTMLDivElement>(null)
 
@@ -31,7 +31,7 @@ export function LanguageSwitcher() {
         aria-expanded={open}
         onClick={() => setOpen((open) => !open)}
       >
-        {current?.label ?? 'Language'}
+        {current?.label ?? t('profileUi.language')}
         <MorphIcon
           icon={ChevronDown}
           size={14}
@@ -45,7 +45,11 @@ export function LanguageSwitcher() {
         />
       </button>
       {open && (
-        <ul className="lang-menu" role="listbox" aria-label="Language">
+        <ul
+          className="lang-menu"
+          role="listbox"
+          aria-label={t('profileUi.language')}
+        >
           {LANGUAGES.map((entry) => (
             <li key={entry.code} role="presentation">
               <button

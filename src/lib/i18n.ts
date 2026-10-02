@@ -4,6 +4,9 @@ import { en } from '../locales/en'
 import { es } from '../locales/es'
 import { zh } from '../locales/zh'
 import { ja } from '../locales/ja'
+import { profileMessages } from '../locales/profileMessages'
+import { workspaceMessages } from '../locales/workspaceMessages'
+import { catalogueMessages } from '../locales/catalogueMessages'
 
 export type Lang = 'en' | 'es' | 'zh' | 'ja'
 
@@ -28,16 +31,62 @@ function savedLanguage(): Lang {
 
 // Flat dot keys ("nav.overview") feed i18next's resource format as-is.
 export const resources = {
-  en: { translation: en },
-  es: { translation: es },
-  zh: { translation: zh },
-  ja: { translation: ja },
+  en: {
+    translation: {
+      ...en,
+      ...profileMessages.en,
+      ...workspaceMessages.en,
+      ...catalogueMessages.en,
+    },
+  },
+  es: {
+    translation: {
+      ...es,
+      ...profileMessages.es,
+      ...workspaceMessages.es,
+      ...catalogueMessages.es,
+    },
+  },
+  zh: {
+    translation: {
+      ...zh,
+      ...profileMessages.zh,
+      ...workspaceMessages.zh,
+      ...catalogueMessages.zh,
+    },
+  },
+  ja: {
+    translation: {
+      ...ja,
+      ...profileMessages.ja,
+      ...workspaceMessages.ja,
+      ...catalogueMessages.ja,
+    },
+  },
 }
+
+export type TranslationKey = keyof typeof resources.en.translation
+export function isTranslationKey(value: string): value is TranslationKey {
+  return Object.hasOwn(resources.en.translation, value)
+}
+export const localeByLanguage = {
+  en: 'en-AU',
+  zh: 'zh-CN',
+  es: 'es-ES',
+  ja: 'ja-JP',
+} as const
+
+function updateDocumentLanguage(language: string) {
+  if (typeof document === 'undefined') return
+  document.documentElement.lang = language === 'zh' ? 'zh-Hans' : language
+}
+i18next.on('languageChanged', updateDocumentLanguage)
 
 void i18next.use(initReactI18next).init({
   resources,
   lng: savedLanguage(),
   fallbackLng: 'en',
+  keySeparator: false,
   // React already escapes text; interpolation stays raw. Suspension stays
   // off: the tree has no Suspense boundary, and resources are bundled, so
   // there is nothing to wait for anyway.

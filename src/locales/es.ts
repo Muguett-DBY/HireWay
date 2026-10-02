@@ -1,4 +1,6 @@
-// Spanish translations. Missing keys fall back to English.
+import type { en } from './en'
+
+// Keep the complete Spanish dictionary aligned with English.
 export const es = {
   'nav.overview': 'Resumen',
   'nav.matches': 'Coincidencias',
@@ -33,6 +35,17 @@ export const es = {
   'landing.benefits.1': 'Sin necesidad de cuenta',
   'landing.benefits.2': 'Código de recuperación privado',
   'landing.benefits.3': 'Orientación basada en datos',
+  'landing.preview.kicker': 'Tu ruta profesional',
+  'landing.preview.role': 'Analista de datos',
+  'landing.preview.status': 'En preparación',
+  'landing.preview.background': 'Formación',
+  'landing.preview.backgroundValue': 'Ciencia de datos',
+  'landing.preview.saved': 'Perfil guardado',
+  'landing.preview.skills': 'Habilidades actuales',
+  'landing.preview.skillsValue': '4 añadidas',
+  'landing.preview.ready': 'Listo para comparar',
+  'landing.preview.gaps': '+ Habilidades pendientes',
+  'landing.how.eyebrow': 'Cómo funciona',
   'landing.how.title': 'Una dirección más clara en tres pasos',
   'landing.how.sub':
     'Empieza con lo que ya sabes. HireWay mantiene el proceso simple y le da un propósito a cada detalle.',
@@ -48,6 +61,9 @@ export const es = {
   'entry.codePlaceholder': 'Introduce tu código de recuperación',
   'entry.continue': 'Continuar',
   'entry.loading': 'Cargando...',
+  'wizard.step1': 'Formación',
+  'wizard.step2': 'Habilidades',
+  'wizard.step3': 'Puesto objetivo',
   'wizard.s1.h1': 'Cuéntanos tu formación',
   'wizard.s1.sub': 'Esto nos ayuda a personalizar tu hoja de ruta.',
   'wizard.s1.study': '¿Qué estudiaste? *',
@@ -109,6 +125,7 @@ export const es = {
   'overview.chooseCta': 'Elegir puesto objetivo',
   'overview.editCta': 'Editar puesto objetivo',
   'overview.explore': 'Ver coincidencias →',
+  'overview.guide.aria': 'Próximos pasos sugeridos',
   'overview.guide1.title': 'Comprueba tu preparación',
   'overview.guide1.sub':
     'Compara tus habilidades con los requisitos del puesto.',
@@ -150,4 +167,100 @@ export const es = {
   'matches.hint.thin':
     'Pocas habilidades guardadas: cada una que añadas mejora estas coincidencias.',
   'matches.empty': 'Aún no hay sugerencias disponibles.',
-}
+
+  'analysis.eyebrow': 'Análisis profesional',
+  'analysis.h1': 'Tu preparación para trabajar como {role}',
+  'analysis.sub':
+    'Cobertura de las habilidades y herramientas habituales del puesto, con mayor peso para las habilidades esenciales. Una habilidad relacionada cuenta como media habilidad cubierta.',
+  'analysis.chooseFirst': 'Elige primero un puesto objetivo',
+  'analysis.chooseFirst.sub':
+    'El análisis compara tu perfil con los requisitos de una ocupación. Elige una dirección para evaluar tu preparación.',
+  'analysis.noSkills':
+    'Tu perfil aún no tiene habilidades. Añade algunas abajo o desde la página de coincidencias para poder evaluar tu preparación.',
+  'analysis.noRequirements': 'Aún no hay datos de requisitos para este puesto.',
+  'analysis.readiness': 'Preparación general',
+  'analysis.readinessAria': 'Preparación general: {n} de 100',
+  'analysis.engineScore': 'Puntuación de coincidencia del modelo: {n}%',
+  'analysis.weightedCoverage': 'Cobertura ponderada de habilidades',
+  'analysis.byCategory': 'Preparación por categoría',
+  'analysis.categoryCaption':
+    'Una habilidad se considera cubierta si figura en tu perfil o si tienes otra de la misma familia O*NET.',
+  'analysis.whyRank': 'Por qué se recomienda este puesto',
+  'analysis.gaps': 'Habilidades por desarrollar',
+  'analysis.gaps.evidence':
+    'Fuente: valoraciones de O*NET 31.0 de EE. UU., vinculadas mediante la correspondencia OSCA del ABS',
+  'analysis.covered': '{covered} de {total} cubiertas',
+  'analysis.missing': '{n} pendientes',
+  'analysis.allCovered':
+    'No falta ninguna: tu perfil cubre todas las habilidades del catálogo para este puesto.',
+  'analysis.addSkill': 'Añadir {name} a tus habilidades',
+  'analysis.mySkills': 'Mis habilidades',
+  'analysis.mySkills.showing':
+    'Se muestran 4 de {n} · desplázate para ver {m} más',
+  'analysis.mySkills.tap': 'Selecciona un estado para actualizar el progreso',
+  'analysis.mySkills.empty':
+    'Aún no registras habilidades. Las que añadas arriba aparecerán aquí como actuales.',
+  'analysis.status.upcoming': 'Planificadas',
+  'analysis.status.current': 'Actuales',
+  'analysis.status.completed': 'Completadas',
+  'analysis.remove.title': '¿Quitar esta habilidad?',
+  'analysis.remove.sub':
+    'Se quitará de tu perfil y dejará de incluirse en los cálculos profesionales.',
+  'analysis.remove.skill': 'Habilidad que se quitará',
+  'analysis.remove.confirm': 'Quitar habilidad',
+  'analysis.removing': 'Quitando...',
+  'analysis.remove.cancel': 'Conservar habilidad',
+  'analysis.removeAria': 'Quitar {name}',
+  'analysis.listAria':
+    'Mis habilidades: {n} elementos. Desplázate para ver más.',
+  'analysis.group.core': 'Habilidades esenciales',
+  'analysis.group.transferable': 'Habilidades transferibles',
+  'analysis.group.tools': 'Herramientas habituales',
+
+  'role.eyebrow': 'Detalles del puesto',
+  'role.outlook': 'Perspectivas en Australia',
+  'role.noMarket': 'Aún no hay datos del mercado laboral para este puesto.',
+  'role.demand': 'Demanda de este puesto',
+  'role.change5y': 'Variación del empleo en cinco años',
+  'role.earnings': 'Salario semanal mediano',
+  'role.vacancies': 'Vacantes actuales',
+  'role.trajectory': 'Evolución del empleo',
+  'role.stateDemand': 'Demanda de contratación por estado',
+  'role.dayToDay': 'Trabajo diario',
+  'role.noTasks': 'Aún no hay tareas registradas para este puesto.',
+  'role.skillsTools': 'Habilidades y herramientas',
+  'role.skillsNote':
+    'Orientación basada en O*NET de EE. UU., no en requisitos de empleadores',
+  'role.group.core': 'Habilidades esenciales',
+  'role.group.recommended': 'Habilidades transferibles',
+  'role.group.bonus': 'Herramientas habituales',
+  'role.nothingInCategory': 'Aún no hay elementos en esta categoría.',
+  'role.noSkillData': 'Aún no hay datos de habilidades para este puesto.',
+  'role.addAria': 'Añadir {name} a tu perfil',
+  'role.savedAria': '{name} ya está guardada',
+  'role.education': 'Formación y rutas',
+  'role.openPathways': 'Ver rutas →',
+  'role.noQualifications':
+    'Aún no hay rutas de formación vinculadas a este puesto.',
+  'role.sources': 'Fuentes de datos',
+  'role.noProjection': 'No hay datos de proyección disponibles.',
+
+  'pathways.eyebrow': 'Rutas y progreso',
+  'pathways.h1': 'Plan de aprendizaje para trabajar como {role}',
+  'pathways.h1Plain': 'Plan de aprendizaje',
+  'pathways.progress': 'Progreso de habilidades',
+  'pathways.progress.tag': 'Actuales o completadas: {n}%',
+  'pathways.completed': 'Completadas',
+  'pathways.current': 'Actuales',
+  'pathways.upcoming': 'Planificadas',
+  'pathways.priorities': 'Prioridades de aprendizaje',
+  'pathways.priorities.tag': 'Habilidades prioritarias para aprender',
+  'pathways.importance': 'Importancia: {n}',
+  'pathways.kind.core': 'Habilidad esencial',
+  'pathways.kind.recommended': 'Habilidad transferible',
+  'pathways.kind.bonus': 'Herramienta habitual',
+  'pathways.training': 'Rutas de formación',
+  'pathways.noTraining':
+    'Elige un puesto objetivo para ver sus rutas de formación.',
+  'pathways.reviewRole': 'Revisar los requisitos del puesto →',
+} satisfies Record<keyof typeof en, string>

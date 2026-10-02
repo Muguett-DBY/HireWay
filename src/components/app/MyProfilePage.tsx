@@ -3,6 +3,9 @@ import { Check, Copy, Trash2 } from 'lucide'
 import { MorphIcon } from 'morphicons/react'
 import { occupationTitle } from '../../lib/occupationTitle'
 import { useI18n } from '../../lib/useI18n'
+import { localizeMessage } from '../../lib/localizedErrors'
+import { LocalizedText } from '../LocalizedText'
+import { EducationLevelText } from '../EducationLevelSelect'
 import { searchOptions } from '../../lib/optionsApi'
 import { SkillPromptCard } from './SkillPromptCard'
 import type { SaveSkillResult, Skill, SkillStatus } from '../../lib/skillsApi'
@@ -10,11 +13,11 @@ import type { Profile } from '../../lib/profileApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
 
 const statusOrder: SkillStatus[] = ['upcoming', 'current', 'completed']
-const statusKeys: Record<SkillStatus, string> = {
+const statusKeys = {
   upcoming: 'analysis.status.upcoming',
   current: 'analysis.status.current',
   completed: 'analysis.status.completed',
-}
+} as const satisfies Record<SkillStatus, string>
 
 type MyProfilePageProps = {
   profile: Profile
@@ -49,7 +52,7 @@ export function MyProfilePage({
   promptSkill,
   onDeclineSkill,
 }: MyProfilePageProps) {
-  const { t } = useI18n()
+  const { t, name } = useI18n()
   const [query, setQuery] = useState('')
   const [options, setOptions] = useState<
     { code: string; label: string; kind: string }[]
@@ -99,7 +102,7 @@ export function MyProfilePage({
     setConfirmingId(null)
     if (!skill) return
     const result = await onRemoveSkill(skill)
-    if (!result.ok) setError(result.error ?? t('profile.removeError'))
+    if (!result.ok) setError(result.error || 'profile.removeError')
   }
 
   return (
@@ -143,14 +146,26 @@ export function MyProfilePage({
         <div className="snapshot-grid">
           <article className="snapshot-card">
             <span>{t('overview.background')}</span>
-            <strong>{profile.qualification}</strong>
-            <small>{profile.educationLevel}</small>
+            <strong>
+              {profile.degreeCode ||
+              profile.majorCode ||
+              profile.qualificationCode ? (
+                <LocalizedText text={profile.qualification} />
+              ) : (
+                profile.qualification
+              )}
+            </strong>
+            <small>
+              <EducationLevelText value={profile.educationLevel} />
+            </small>
           </article>
           <article className="snapshot-card">
             <span>{t('profile.targetRole')}</span>
             {targetRole ? (
               <>
-                <strong>{occupationTitle(targetRole.title)}</strong>
+                <strong>
+                  <LocalizedText text={occupationTitle(targetRole.title)} />
+                </strong>
                 <button
                   type="button"
                   className="link-btn"
@@ -214,7 +229,9 @@ export function MyProfilePage({
                     type="button"
                     onClick={() => addFromOption(option.code, option.label)}
                   >
-                    <strong>{option.label}</strong>
+                    <strong>
+                      <LocalizedText text={option.label} />
+                    </strong>
                     <small>
                       {option.kind === 'tool'
                         ? t('wizard.s2.kind.tool')
@@ -230,7 +247,7 @@ export function MyProfilePage({
         </form>
         {error && (
           <p className="field-error" role="alert">
-            {error}
+            {localizeMessage(error, t)}
           </p>
         )}
 
@@ -240,12 +257,20 @@ export function MyProfilePage({
           <div className="progress-list">
             {skills.map((skill) => (
               <article className="progress-row" key={skill.id}>
-                <span className="progress-name">{skill.name}</span>
+                <span className="progress-name">
+                  {skill.skillCode ? (
+                    <LocalizedText text={skill.name} />
+                  ) : (
+                    skill.name
+                  )}
+                </span>
                 <div className="progress-actions">
                   <div
                     className="status-cycle"
                     role="group"
-                    aria-label={`${skill.name} progress status`}
+                    aria-label={t('workspace.progressStatus', {
+                      name: name(skill.name),
+                    })}
                   >
                     {statusOrder.map((status) => (
                       <button
@@ -269,7 +294,7 @@ export function MyProfilePage({
                     className="remove-skill-button"
                     disabled={busy}
                     aria-label={t('analysis.removeAria', {
-                      name: skill.name,
+                      name: name(skill.name),
                     })}
                     onClick={() => askRemove(skill)}
                   >

@@ -56,6 +56,14 @@ function outlookLabel(change5yPercent: number | null): string {
   return 'Declining'
 }
 
+function outlookCode(change: number | null) {
+  if (change === null) return 'unknown'
+  if (change >= 10) return 'strong'
+  if (change >= 2) return 'growing'
+  if (change >= 0) return 'stable'
+  return 'declining'
+}
+
 // Load the common skills and training pathways for one saved target role.
 export async function handleRoleRequirements(
   request: Request,
@@ -245,6 +253,7 @@ export async function handleRoleRequirements(
         change10yPercent: marketResult.change10yPercent,
         medianWeeklyEarnings: marketResult.medianWeeklyEarnings,
         outlook: outlookLabel(marketResult.change5yPercent),
+        outlookCode: outlookCode(marketResult.change5yPercent),
         vacancies,
       }
     : null

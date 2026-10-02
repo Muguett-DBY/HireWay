@@ -6,10 +6,8 @@ import type { TargetRole } from '../../lib/targetRoleApi'
 import { occupationTitle } from '../../lib/occupationTitle'
 import { SuggestionCard } from './SuggestionCard'
 import { useI18n } from '../../lib/useI18n'
-
-const numberFormat = new Intl.NumberFormat('en-AU', {
-  maximumFractionDigits: 0,
-})
+import { LocalizedText } from '../LocalizedText'
+import { EducationLevelText } from '../EducationLevelSelect'
 
 type OverviewPageProps = {
   profile: Profile
@@ -41,7 +39,7 @@ export function OverviewPage({
   onGoWizard,
   onGoPage,
 }: OverviewPageProps) {
-  const { t } = useI18n()
+  const { t, number } = useI18n()
   const targetSuggestion = suggestions.find(
     (item) => item.code === targetRole?.code,
   )
@@ -67,14 +65,14 @@ export function OverviewPage({
       label: t('overview.stat.earnings'),
       value:
         market?.medianWeeklyEarnings != null
-          ? `$${numberFormat.format(market.medianWeeklyEarnings)}`
+          ? `A$${number(market.medianWeeklyEarnings)}`
           : null,
     },
     {
       label: t('overview.stat.vacancies'),
       value:
         vacancyTotal !== null && !Number.isNaN(vacancyTotal)
-          ? numberFormat.format(Math.round(vacancyTotal))
+          ? number(Math.round(vacancyTotal))
           : null,
     },
   ]
@@ -84,12 +82,18 @@ export function OverviewPage({
       <section className="app-hero">
         <p className="eyebrow">{t('overview.eyebrow')}</p>
         <h1>
-          {targetRole
-            ? occupationTitle(targetRole.title)
-            : t('overview.chooseTitle')}
+          {targetRole ? (
+            <LocalizedText text={occupationTitle(targetRole.title)} />
+          ) : (
+            t('overview.chooseTitle')
+          )}
         </h1>
         <p className="app-hero-sub">
-          {targetRole?.description || t('overview.chooseTitle.sub')}
+          {targetRole?.description ? (
+            <LocalizedText text={targetRole.description} />
+          ) : (
+            t('overview.chooseTitle.sub')
+          )}
         </p>
         <div className="hero-actions">
           <button type="button" className="btn" onClick={onEditTargetRole}>
@@ -166,26 +170,40 @@ export function OverviewPage({
         <div className="snapshot-grid">
           <article className="snapshot-card">
             <span>{t('overview.background')}</span>
-            <strong>{profile.qualification}</strong>
-            <small>{profile.educationLevel}</small>
+            <strong>
+              {profile.degreeCode || profile.majorCode ? (
+                <LocalizedText text={profile.qualification} />
+              ) : (
+                profile.qualification
+              )}
+            </strong>
+            <small>
+              <EducationLevelText value={profile.educationLevel} />
+            </small>
             {profile.currentRole && (
-              <small>Current role: {profile.currentRole}</small>
+              <small>
+                {t('workspace.currentRole', { role: profile.currentRole })}
+              </small>
             )}
           </article>
           <article className="snapshot-card">
             <span>{t('overview.skills')}</span>
-            <strong>
-              {skills.length} saved{skills.length === 1 ? '' : ' skills'}
-            </strong>
+            <strong>{t('workspace.savedSkills', { n: skills.length })}</strong>
             {skills.length > 0 ? (
               <div className="chip-row">
                 {skills.slice(0, 5).map((skill) => (
                   <span className="chip" key={skill.id}>
-                    {skill.name}
+                    {skill.skillCode ? (
+                      <LocalizedText text={skill.name} />
+                    ) : (
+                      skill.name
+                    )}
                   </span>
                 ))}
                 {skills.length > 5 && (
-                  <span className="chip more">+{skills.length - 5} more</span>
+                  <span className="chip more">
+                    {t('workspace.moreSkills', { n: skills.length - 5 })}
+                  </span>
                 )}
               </div>
             ) : (

@@ -9,6 +9,10 @@ import type {
 import { occupationTitle } from '../../lib/occupationTitle'
 import { factorPercents } from '../../lib/factorDisplay'
 import { useI18n } from '../../lib/useI18n'
+import { useLocalizedText } from '../../lib/useLocalizedText'
+import { localizeMessage } from '../../lib/localizedErrors'
+import { LocalizedText } from '../LocalizedText'
+import { RecommendationReasons } from './RecommendationReasons'
 import type { SaveSkillResult, Skill, SkillStatus } from '../../lib/skillsApi'
 import type { RoleSuggestion } from '../../lib/suggestionApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
@@ -27,11 +31,11 @@ type AnalysisPageProps = {
 }
 
 const statusOrder: SkillStatus[] = ['upcoming', 'current', 'completed']
-const statusKeys: Record<SkillStatus, string> = {
+const statusKeys = {
   upcoming: 'analysis.status.upcoming',
   current: 'analysis.status.current',
   completed: 'analysis.status.completed',
-}
+} as const satisfies Record<SkillStatus, string>
 
 // Requirement categories mirror the O*NET groups the role page already uses.
 const groups = [
@@ -124,7 +128,8 @@ export function AnalysisPage({
   onGoMatches,
   onEditTargetRole,
 }: AnalysisPageProps) {
-  const { t } = useI18n()
+  const { t, name } = useI18n()
+  const roleTitle = useLocalizedText(occupationTitle(targetRole?.title ?? ''))
   const [pendingRemoval, setPendingRemoval] = useState<Skill | null>(null)
   const [removingSkillId, setRemovingSkillId] = useState<number | null>(null)
   const [removeError, setRemoveError] = useState('')
@@ -213,7 +218,7 @@ export function AnalysisPage({
     <>
       <section className="app-hero">
         <p className="eyebrow">{t('analysis.eyebrow')}</p>
-        <h1>{t('analysis.h1', { role: occupationTitle(targetRole.title) })}</h1>
+        <h1>{t('analysis.h1', { role: roleTitle })}</h1>
         <p className="app-hero-sub">{t('analysis.sub')}</p>
       </section>
 
@@ -289,27 +294,25 @@ export function AnalysisPage({
                 <p className="panel-title">{t('analysis.whyRank')}</p>
                 <div className="factor-legend wide">
                   <span>
-                    Skills {factorPercents(targetSuggestion.factors).skill}%
+                    {t('card.skills')}{' '}
+                    {factorPercents(targetSuggestion.factors).skill}%
                   </span>
                   <span>
-                    Growth {factorPercents(targetSuggestion.factors).growth}%
+                    {t('card.growth')}{' '}
+                    {factorPercents(targetSuggestion.factors).growth}%
                   </span>
                   <span>
-                    Education{' '}
+                    {t('card.education')}{' '}
                     {factorPercents(targetSuggestion.factors).education}%
                   </span>
                 </div>
-                <ul className="why-list">
-                  {targetSuggestion.reasons.map((reason) => (
-                    <li key={reason}>{reason}</li>
-                  ))}
-                </ul>
+                <RecommendationReasons suggestion={targetSuggestion} />
                 <button
                   type="button"
                   className="link-btn"
                   onClick={onGoMatches}
                 >
-                  Compare with other matches →
+                  {t('workspace.compare')}
                 </button>
               </article>
             )}
@@ -347,12 +350,12 @@ export function AnalysisPage({
                           key={skill.code}
                           disabled={busy}
                           onClick={() => onAddSkill(skill)}
-                          title="From US O*NET 31.0 importance ratings via the ABS OSCA bridge"
+                          title={t('workspace.skillEvidence')}
                           aria-label={t('analysis.addSkill', {
-                            name: skill.name,
+                            name: name(skill.name),
                           })}
                         >
-                          + {skill.name}
+                          + <LocalizedText text={skill.name} />
                           <small>{skill.score}</small>
                         </button>
                       ))}
@@ -407,12 +410,20 @@ export function AnalysisPage({
                         key={skill.id}
                         aria-busy={removing || undefined}
                       >
-                        <span className="progress-name">{skill.name}</span>
+                        <span className="progress-name">
+                          {skill.skillCode ? (
+                            <LocalizedText text={skill.name} />
+                          ) : (
+                            skill.name
+                          )}
+                        </span>
                         <div className="progress-actions">
                           <div
                             className="status-cycle"
                             role="group"
-                            aria-label={`${skill.name} progress status`}
+                            aria-label={t('workspace.progressStatus', {
+                              name: name(skill.name),
+                            })}
                           >
                             {statusOrder.map((status) => (
                               <button
@@ -436,9 +447,11 @@ export function AnalysisPage({
                             className="remove-skill-button"
                             disabled={busy || removing}
                             aria-label={t('analysis.removeAria', {
-                              name: skill.name,
+                              name: name(skill.name),
                             })}
-                            title={`Remove ${skill.name}`}
+                            title={t('analysis.removeAria', {
+                              name: name(skill.name),
+                            })}
                             onClick={() => {
                               setRemoveError('')
                               setPendingRemoval(skill)
@@ -494,12 +507,18 @@ export function AnalysisPage({
 
             <div className="remove-skill-summary">
               <small>{t('analysis.remove.skill')}</small>
-              <strong>{pendingRemoval.name}</strong>
+              <strong>
+                {pendingRemoval.skillCode ? (
+                  <LocalizedText text={pendingRemoval.name} />
+                ) : (
+                  pendingRemoval.name
+                )}
+              </strong>
             </div>
 
             {removeError && (
               <p className="field-error" role="alert">
-                {removeError}
+                {localizeMessage(removeError, t)}
               </p>
             )}
 
