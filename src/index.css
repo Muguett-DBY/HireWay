@@ -442,6 +442,114 @@ h3 {
   margin: 12px 0 0;
 }
 
+/* Entry screen: one viewport, two cards, nothing to scroll. */
+.landing-page {
+  min-height: calc(100vh - 130px);
+  display: flex;
+  flex-direction: column;
+}
+
+.landing {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 980px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 14px 22px 8px;
+}
+
+.landing-hero {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.landing-hero h1 {
+  margin: 0 0 12px;
+  font-size: clamp(30px, 4.5vw, 46px);
+}
+
+.landing-hero p {
+  max-width: 560px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.entry-card {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 26px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper);
+  box-shadow: 0 10px 30px rgb(28 58 84 / 6%);
+  text-align: center;
+}
+
+.entry-icon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  margin: 0 auto 16px;
+  border-radius: 999px;
+  background: var(--green-soft);
+}
+
+.entry-icon svg {
+  width: 26px;
+  height: 26px;
+  stroke: var(--green);
+}
+
+.entry-card h2 {
+  margin: 0 0 8px;
+  font-size: 21px;
+}
+
+.entry-text {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.entry-card .notice {
+  margin: 0 0 14px;
+  text-align: left;
+}
+
+.entry-card .code-input {
+  flex: none;
+  width: 100%;
+  max-width: none;
+  min-height: 48px;
+  margin-bottom: 14px;
+}
+
+.entry-card .btn + .btn {
+  margin-top: 12px;
+}
+
+.landing-note {
+  margin: 20px auto 0;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
 /* Public landing: explain the product and carry the profile entry form. */
 .marketing-page {
   min-height: calc(100vh - 130px);
@@ -724,14 +832,53 @@ h3 {
   line-height: 1.65;
 }
 
-/* Wizard: numbered dots, one centered card per step. */
+/* Wizard: one screen, dots centered on top, card centered in the viewport. */
 .wizard-page {
-  padding-bottom: 46px;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 68px);
+  padding-bottom: 40px;
+}
+
+/* Back arrow sits at the far left of the same row as the step dots. */
+.wizard-top {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40px;
+  margin-top: 18px;
+  padding: 0 max(22px, calc((100vw - 1180px) / 2));
+}
+
+.wizard-back {
+  position: absolute;
+  left: max(22px, calc((100vw - 1180px) / 2));
+  top: 0;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    color 150ms ease;
+}
+
+.wizard-back:hover {
+  border-color: var(--green);
+  color: var(--green-dark);
 }
 
 .wizard-shell {
   max-width: 620px;
-  margin: 0 auto;
+  width: 100%;
+  /* margin auto centers the card in the space under the top bar. */
+  margin: auto;
   padding: 10px 22px 30px;
   text-align: center;
 }
@@ -907,7 +1054,7 @@ h3 {
 
 /* The numbered step dots: green current, pale upcoming. */
 .stepper {
-  padding-top: 26px;
+  padding-top: 0;
 }
 
 .stepper ol {
@@ -986,6 +1133,11 @@ h3 {
   justify-content: space-between;
   gap: 12px;
   margin-top: 24px;
+}
+
+/* With the in-card Back gone, the lone action sits on the right. */
+.wizard-nav.single {
+  justify-content: flex-end;
 }
 
 /* Replacing a saved target changes every workspace page, so confirm it. */
@@ -1233,9 +1385,31 @@ h3 {
 
 .app-hero {
   position: relative;
+  overflow: hidden;
   padding: 40px max(22px, calc((100vw - 1180px) / 2)) 34px;
   background: linear-gradient(120deg, #eaf7ef 0%, #ffffff 62%);
   border-bottom: 1px solid rgb(226 232 228 / 70%);
+}
+
+/* Keep hero copy above the decorative scenery. */
+.app-hero > :not(.hero-scenery) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mountain-and-flag illustration pinned to the hero's right edge. */
+.hero-scenery {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(46vw, 620px);
+  height: 100%;
+  pointer-events: none;
+}
+
+.hero-scenery svg {
+  width: 100%;
+  height: 100%;
 }
 
 .app-hero .eyebrow {
@@ -1406,6 +1580,63 @@ h3 {
 .stat-strip.tight {
   margin: 0;
   padding: 0;
+}
+
+/* Overview stat bar: one panel, icon circles, hairline dividers. */
+.stat-panel-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 24px auto 0;
+  padding: 0 max(22px, calc((100vw - 1180px) / 2));
+}
+
+.stat-panel {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper);
+  box-shadow: 0 8px 22px rgb(28 58 84 / 6%);
+  overflow: hidden;
+}
+
+.stat-panel-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 18px 22px;
+}
+
+.stat-panel-cell + .stat-panel-cell {
+  border-left: 1px solid var(--line);
+}
+
+.stat-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: none;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green-dark);
+}
+
+.stat-copy {
+  min-width: 0;
+}
+
+.stat-copy strong {
+  display: block;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+
+.stat-copy span {
+  color: var(--muted);
+  font-size: 12.5px;
 }
 
 /* Shared section scaffolding for every workspace page. */
@@ -2343,6 +2574,19 @@ h3 {
     padding: 70px 0 84px;
   }
 
+  /* Stat bar wraps to two rows of two cells. */
+  .stat-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stat-panel-cell:nth-child(3) {
+    border-left: 0;
+  }
+
+  .stat-panel-cell:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
+
   .marketing-hero-copy {
     max-width: 720px;
   }
@@ -2434,6 +2678,21 @@ h3 {
   .match-grid {
     grid-template-columns: 1fr;
   }
+
+  /* One column of stats; dividers move to the top edge. */
+  .stat-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-panel-cell + .stat-panel-cell {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .hero-scenery {
+    width: 74vw;
+    opacity: 0.55;
+  }
 }
 
 @media (max-width: 640px) {
@@ -2444,6 +2703,11 @@ h3 {
   .app-tabs {
     order: 3;
     width: 100%;
+  }
+
+  /* Keep the dots clear of the back arrow on narrow screens. */
+  .stepper-item:not(:last-child)::after {
+    width: 34px;
   }
 
   .wizard-card {
@@ -2777,6 +3041,314 @@ h3 {
 
 .priority-row small {
   color: var(--muted);
+}
+
+/* Tracker rows with the video learning trigger and percent watched. */
+.tracker-card ul:has(.learning-row) {
+  padding-left: 0;
+  list-style: none;
+}
+
+.learning-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+}
+
+.learning-row + .learning-row {
+  border-top: 1px solid var(--line);
+}
+
+.learning-row strong {
+  flex: 1;
+  min-width: 0;
+}
+
+.learning-row-progress {
+  flex-shrink: 0;
+  color: var(--green-dark);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.learning-row-btn {
+  flex-shrink: 0;
+  padding: 5px 11px;
+  border: 1px solid var(--green);
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green-dark);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.learning-row-btn:hover:not(:disabled) {
+  background: var(--green);
+  color: #ffffff;
+}
+
+.learning-row-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.learning-row-btn:focus-visible {
+  outline: 3px solid #79c99a;
+  outline-offset: 2px;
+}
+
+/* Video learning dialog. */
+.learning-dialog {
+  width: min(760px, calc(100vw - 32px));
+  max-height: calc(100vh - 48px);
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.learning-dialog::backdrop {
+  background: rgb(12 30 22 / 62%);
+}
+
+.learning-dialog-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: calc(100vh - 48px);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.learning-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.learning-head h2 {
+  margin: 2px 0 0;
+  font-size: 18px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.learning-close {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.learning-close:hover {
+  border-color: var(--green);
+  color: var(--green-dark);
+}
+
+.learning-video-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.learning-video-picker button {
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.learning-video-picker button.active {
+  border-color: var(--green);
+  background: var(--green-soft);
+  color: var(--green-dark);
+}
+
+/* 16:9 stage: the thumbnail fills it, and so does the embed once playing. */
+.learning-stage {
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0c1f16;
+}
+
+.learning-stage iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.learning-thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.learning-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.learning-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 62px;
+  height: 62px;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 92%);
+  color: var(--green-dark);
+  font-size: 20px;
+  padding-left: 5px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 35%);
+  transition: transform 120ms ease;
+}
+
+.learning-thumb:hover .learning-play {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.learning-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.learning-channel {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.learning-timer {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green-dark);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.learning-progress-row {
+  display: grid;
+  gap: 6px;
+}
+
+.learning-progress-track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.learning-progress-track span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--green);
+  transition: width 240ms ease;
+}
+
+.learning-progress-row small {
+  color: var(--muted);
+}
+
+.learning-tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #f4f8f5;
+  align-self: flex-start;
+}
+
+.learning-tabs button {
+  padding: 6px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.learning-tabs button.active {
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 2px 8px rgb(28 58 84 / 10%);
+}
+
+.learning-tab-panel {
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.learning-tab-panel p {
+  margin: 0 0 8px;
+}
+
+.learning-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+
+.learning-facts dt {
+  color: var(--muted);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.learning-facts dd {
+  margin: 2px 0 0;
+  color: var(--ink);
+  font-weight: 650;
+  font-size: 13px;
+}
+
+.learning-takeaways {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.learning-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 4px;
 }
 
 @media (max-width: 640px) {

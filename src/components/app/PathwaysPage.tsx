@@ -1,14 +1,25 @@
+import { useEffect, useState } from 'react'
 import type { RoleRequirements as RequirementsData } from '../../lib/roleRequirementsApi'
-import type { Skill } from '../../lib/skillsApi'
+import type { Skill, SkillStatus } from '../../lib/skillsApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
 import { occupationTitle } from '../../lib/occupationTitle'
 import { useI18n } from '../../lib/useI18n'
+import { videosForSkill } from '../../lib/learningVideos'
+import {
+  loadProgress,
+  saveProgress,
+  type SkillWithProgress,
+} from '../../lib/progressApi'
+import { LearningPlayer } from './LearningPlayer'
 
 type PathwaysPageProps = {
   targetRole: TargetRole | null
   requirements: RequirementsData | null
   skills: Skill[]
+  profileCode: string
+  busy: boolean
   onGoRole: () => void
+  onSkillStatus: (skill: Skill, status: SkillStatus) => void
 }
 
 // The roadmap page gathers the iteration 2 learning story in one place:
@@ -18,9 +29,38 @@ export function PathwaysPage({
   targetRole,
   requirements,
   skills,
+  profileCode,
+  busy,
   onGoRole,
+  onSkillStatus,
 }: PathwaysPageProps) {
   const { t } = useI18n()
+  // Learning progress per skill code, loaded once and patched per session.
+  const [progress, setProgress] = useState<Map<string, SkillWithProgress>>(
+    () => new Map(),
+  )
+  const [activeSkill, setActiveSkill] = useState<Skill | null>(null)
+  const [sessionBusy, setSessionBusy] = useState(false)
+
+  useEffect(() => {
+    const controller = new AbortController()
+    void loadProgress(profileCode)
+      .then((result) => {
+        if (controller.signal.aborted) return
+        const next = new Map<string, SkillWithProgress>()
+        if (result.ok) {
+          for (const row of result.data.skills) {
+            if (row.skillCode) next.set(row.skillCode, row)
+          }
+        }
+        setProgress(next)
+      })
+      .catch(() => {
+        // The page still works without progress figures.
+      })
+    return () => controller.abort()
+  }, [profileCode])
+
   // Learning priorities: the role's missing skills, most important first.
   const savedCodes = new Set(
     skills.flatMap((skill) =>
@@ -40,6 +80,84 @@ export function PathwaysPage({
     tracked > 0
       ? Math.round(((completed.length + current.length) / tracked) * 100)
       : 0
+
+  function progressFor(skill: Skill): SkillWithProgress | null {
+    return skill.skillCode ? (progress.get(skill.skillCode) ?? null) : null
+  }
+
+  // One watched session: send the seconds, then fold the saved record in.
+  async function recordSession(
+    skillCode: string,
+    seconds: number,
+    candidatePct: number,
+  ) {
+    setSessionBusy(true)
+    try {
+      const result = await saveProgress(
+        profileCode,
+        skillCode,
+        seconds,
+        candidatePct,
+      )
+      if (result.ok) {
+        setProgress((map) => {
+          const existing = map.get(skillCode)
+          const next = new Map(map)
+          next.set(skillCode, {
+            id: existing?.id ?? 0,
+            name: existing?.name ?? '',
+            skillCode,
+            status: existing?.status ?? 'current',
+            learningMinutes: existing?.learningMinutes ?? 0,
+            progressPct: result.data.progressPct,
+            secondsTotal: result.data.secondsTotal,
+            sessions: result.data.sessions,
+            lastSessionAt: result.data.lastSessionAt,
+          })
+          return next
+        })
+      }
+    } catch {
+      // The session keeps playing; the next report retries the save.
+    } finally {
+      setSessionBusy(false)
+    }
+  }
+
+  // One tracker row: name, percent watched and the player trigger.
+  function trackerRow(skill: Skill) {
+    const record = progressFor(skill)
+    const pct = record?.progressPct ?? 0
+    const hasVideos = videosForSkill(skill.name).length > 0
+
+    return (
+      <li className="learning-row" key={skill.id}>
+        <strong>{skill.name}</strong>
+        {pct > 0 && (
+          <span className="learning-row-progress">
+            {t('learning.progress', { n: pct })}
+          </span>
+        )}
+        {hasVideos && skill.skillCode && (
+          <button
+            type="button"
+            className="learning-row-btn"
+            disabled={busy}
+            aria-label={
+              pct > 0
+                ? t('learning.viewAria', { name: skill.name })
+                : t('learning.startAria', { name: skill.name })
+            }
+            onClick={() => setActiveSkill(skill)}
+          >
+            {pct > 0 ? t('learning.view') : t('learning.start')}
+          </button>
+        )}
+      </li>
+    )
+  }
+
+  const activeRecord = activeSkill ? progressFor(activeSkill) : null
 
   return (
     <>
@@ -74,11 +192,7 @@ export function PathwaysPage({
                 it nailed.
               </p>
             ) : (
-              <ul>
-                {completed.map((skill) => (
-                  <li key={skill.id}>{skill.name}</li>
-                ))}
-              </ul>
+              <ul>{completed.map((skill) => trackerRow(skill))}</ul>
             )}
           </article>
           <article className="tracker-card">
@@ -89,11 +203,7 @@ export function PathwaysPage({
                 No current skills tracked. Add the strengths you already use.
               </p>
             ) : (
-              <ul>
-                {current.map((skill) => (
-                  <li key={skill.id}>{skill.name}</li>
-                ))}
-              </ul>
+              <ul>{current.map((skill) => trackerRow(skill))}</ul>
             )}
           </article>
           <article className="tracker-card">
@@ -105,11 +215,7 @@ export function PathwaysPage({
                 to start a plan.
               </p>
             ) : (
-              <ul>
-                {upcoming.map((skill) => (
-                  <li key={skill.id}>{skill.name}</li>
-                ))}
-              </ul>
+              <ul>{upcoming.map((skill) => trackerRow(skill))}</ul>
             )}
           </article>
         </div>
@@ -168,8 +274,8 @@ export function PathwaysPage({
         ) : (
           <p className="empty-note">
             {targetRole
-              ? 'No training pathways are linked to this role yet - only routes published in the official data appear here.'
-              : 'Choose a target role to see its linked training routes.'}
+              ? t('pathways.noTrainingRole')
+              : t('pathways.noTraining')}
           </p>
         )}
         {targetRole && (
@@ -178,6 +284,20 @@ export function PathwaysPage({
           </button>
         )}
       </section>
+
+      <LearningPlayer
+        skill={activeSkill}
+        videos={activeSkill ? videosForSkill(activeSkill.name) : []}
+        progressPct={activeRecord?.progressPct ?? 0}
+        secondsTotal={activeRecord?.secondsTotal ?? 0}
+        sessions={activeRecord?.sessions ?? 0}
+        busy={sessionBusy}
+        onMarkCompleted={(skill) => onSkillStatus(skill, 'completed')}
+        onSession={(skillCode, seconds, candidatePct) => {
+          void recordSession(skillCode, seconds, candidatePct)
+        }}
+        onClose={() => setActiveSkill(null)}
+      />
     </>
   )
 }

@@ -1,0 +1,181 @@
+{
+  "meta": {
+    "generated": "2026-10-04",
+    "source": "freeCodeCamp.org official channel uploads. Video IDs for the Kotlin, PostgreSQL (TimescaleDB) and Excel courses were taken from the channel's key-free RSS feed; older catalogue courses were confirmed against the same channel. Each entry's title, channel and duration were re-verified entry by entry with the command below on the generated date.",
+    "channels": {
+      "freeCodeCamp.org": {
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=UC8butISFwT-Wl7EV0hUK0BQ"
+      }
+    },
+    "verifyCommand": "curl -s \"https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v={id}&format=json\" && curl -s \"https://www.youtube.com/watch?v={id}\" -H \"User-Agent: Mozilla/5.0\"  | grep -o '\"lengthSeconds\":\"[0-9]*\"'"
+  },
+  "skills": {
+    "Python": [
+      {
+        "id": "rfscVS0vtbw",
+        "title": "Learn Python - Full Course for Beginners [Tutorial]",
+        "channel": "freeCodeCamp.org",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "durationSeconds": 16012,
+        "duration": "4:26:52",
+        "verifiedAt": "2026-10-04"
+      },
+      {
+        "id": "kLZgQWjnUz0",
+        "title": "Learn Python – Interactive Course 2026",
+        "channel": "freeCodeCamp.org",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "durationSeconds": 14915,
+        "duration": "4:08:35",
+        "verifiedAt": "2026-10-04"
+      }
+    ],
+    "SQL": [
+      {
+        "id": "HXV3zeQKqGY",
+        "title": "SQL Tutorial - Full Database Course for Beginners",
+        "channel": "freeCodeCamp.org",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "durationSeconds": 15639,
+        "duration": "4:20:39",
+        "verifiedAt": "2026-10-04"
+      }
+    ],
+    "JavaScript": [
+      {
+        "id": "PkZNo7MFNFg",
+        "title": "Learn JavaScript - Full Course for Beginners",
+        "channel": "freeCodeCamp.org",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "durationSeconds": 12403,
+        "duration": "3:26:43",
+        "verifiedAt": "2026-10-04"
+      }
+    ],
+    "Kotlin": [
+      {
+        "id": "nqK3oJ682mQ",
+        "title": "Kotlin Course For Beginners – Full Tutorial",
+        "channel": "freeCodeCamp.org",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "durationSeconds": 37693,
+        "duration": "10:28:13",
+        "verifiedAt": "2026-10-04"
+      },
+      {
+        "id": "AeC4G-H-MQA",
+        "title": "Kotlin Programming Fundamentals Tutorial - Full Course",
+        "channel": "freeCodeCamp.org",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "durationSeconds": 14997,
+        "duration": "4:09:57",
+        "verifiedAt": "2026-10-04"
+      },
+      {
+        "id": "EExSSotojVI",
+        "title": "Learn Kotlin Programming – Full Course for Beginners",
+        "channel": "freeCodeCamp.org",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "durationSeconds": 47935,
+        "duration": "13:18:55",
+        "verifiedAt": "2026-10-04"
+      }
+    ],
+    "PostgreSQL": [
+      {
+        "id": "qw--VYLpxG4",
+        "title": "Learn PostgreSQL Tutorial - Full Course for Beginners",
+        "channel": "freeCodeCamp.org",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "durationSeconds": 15574,
+        "duration": "4:19:34",
+        "verifiedAt": "2026-10-04"
+      },
+      {
+        "id": "gYTA8nQN030",
+        "title": "TimescaleDB Course – PostgreSQL for Time-Series Data",
+        "channel": "freeCodeCamp.org",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "durationSeconds": 15601,
+        "duration": "4:20:01",
+        "verifiedAt": "2026-10-04"
+      }
+    ],
+    "Microsoft Excel": [
+      {
+        "id": "Vl0H-qTclOg",
+        "title": "Microsoft Excel Tutorial for Beginners - Full Course",
+        "channel": "freeCodeCamp.org",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "durationSeconds": 8769,
+        "duration": "2:26:09",
+        "verifiedAt": "2026-10-04"
+      },
+      {
+        "id": "gvhsKtjAmgc",
+        "title": "Excel Formulas & Functions – Full Course",
+        "channel": "freeCodeCamp.org",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "durationSeconds": 6075,
+        "duration": "1:41:15",
+        "verifiedAt": "2026-10-04"
+      }
+    ],
+    "Tableau": [
+      {
+        "id": "TPMlZxRRaBQ",
+        "title": "Tableau for Data Science and Data Visualization - Crash Course Tutorial",
+        "channel": "freeCodeCamp.org",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "durationSeconds": 1722,
+        "duration": "0:28:42",
+        "verifiedAt": "2026-10-04"
+      }
+    ],
+    "Power BI": [
+      {
+        "id": "PSNXoAs2FtQ",
+        "title": "Data Analyst Bootcamp for Beginners (SQL, Tableau, Power BI, Python, Excel, Pandas, Projects, more)",
+        "channel": "freeCodeCamp.org",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "durationSeconds": 69826,
+        "duration": "19:23:46",
+        "verifiedAt": "2026-10-04"
+      }
+    ],
+    "R": [
+      {
+        "id": "_V8eKsto3Ug",
+        "title": "R Programming Tutorial - Learn the Basics of Statistical Computing",
+        "channel": "freeCodeCamp.org",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "durationSeconds": 7839,
+        "duration": "2:10:39",
+        "verifiedAt": "2026-10-04"
+      }
+    ],
+    "C++": [
+      {
+        "id": "vLnPwxZdW4Y",
+        "title": "C++ Tutorial for Beginners - Full Course",
+        "channel": "freeCodeCamp.org",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "durationSeconds": 14478,
+        "duration": "4:01:18",
+        "verifiedAt": "2026-10-04"
+      }
+    ],
+    "Swift": [
+      {
+        "id": "comQ1-x2a1Q",
+        "title": "Swift Tutorial - Full Course for Beginners",
+        "channel": "freeCodeCamp.org",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "durationSeconds": 11398,
+        "duration": "3:09:58",
+        "verifiedAt": "2026-10-04"
+      }
+    ]
+  }
+}

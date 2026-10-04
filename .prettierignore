@@ -7,3 +7,5 @@ data/processed/
 
 # Frozen build snapshots served at /iteration1/ and /iteration2/
 public/iteration*/
+
+.zcode/

@@ -55,21 +55,39 @@ export const en = {
   'landing.how.s3.title': 'Choose a direction',
   'landing.how.s3.text': 'Pick a target role and see the demand behind it.',
 
-  'entry.comingBack': 'Coming back?',
   'entry.codePlaceholder': 'Enter your recovery code',
   'entry.continue': 'Continue',
   'entry.loading': 'Loading...',
+  'entry.title': 'Start Your Career Journey',
+  'entry.sub':
+    'HireWay helps you continue your journey or create a new profile to explore opportunities and grow your career.',
+  'entry.codeTitle': 'Enter Previous Code',
+  'entry.codeText':
+    'Continue from where you left off using your previous code.',
+  'entry.codeLabel': 'Recovery code',
+  'entry.createTitle': 'Create Personal Profile',
+  'entry.createText':
+    'Create a new profile to get personalized insights and grow your career.',
+  'entry.start': 'Get Started',
+  'entry.dashboard': 'Open my dashboard',
+  'entry.note':
+    "Your data is secure and private. We're here to support your growth.",
 
   'wizard.step1': 'Background',
   'wizard.step2': 'Skills',
   'wizard.step3': 'Target role',
   'wizard.s1.h1': 'Tell us about your background',
   'wizard.s1.sub': 'This helps us personalize your roadmap.',
-  'wizard.s1.study': 'What did you study? *',
+  'wizard.s1.degreeMajor': 'Degree / Major',
+  'wizard.s1.degreeMajorPlaceholder':
+    'Search your degree or major, e.g. Master of Data Science',
+  'wizard.s1.currentRole': 'Current role (optional)',
+  'wizard.s1.currentRolePlaceholder': 'Start typing, for example Data Analyst',
+  'wizard.s1.currentRoleHelp':
+    'Optional - leave this empty if you are not working right now.',
   'wizard.s1.studyHelp':
     'Pick your exact course if it appears - otherwise pick the closest field, like Accounting.',
   'wizard.s1.level': 'Education level *',
-  'wizard.s1.levelPlaceholder': 'Select your education level',
   'wizard.s1.derived': 'from your course',
   'wizard.s1.derivedAuto': 'Set automatically',
   'wizard.continue': 'Continue',
@@ -114,6 +132,7 @@ export const en = {
   'wizard.dialog.keep': 'Keep current role',
   'wizard.dialog.confirm': 'Confirm change',
   'wizard.dialog.changing': 'Changing...',
+  'wizard.dialog.changeAria': 'Role change',
 
   'prompt.tag': 'Quick question',
   'prompt.question': 'You studied {course}. Do you also use {skill}?',
@@ -192,6 +211,8 @@ export const en = {
   'analysis.gaps': 'Skill gaps to close',
   'analysis.gaps.evidence':
     'Evidence: US O*NET 31.0 ratings via the ABS OSCA bridge',
+  'analysis.covered': '{covered} of {total} covered',
+  'analysis.missing': '{n} missing',
   'analysis.allCovered':
     "Nothing missing - your profile covers this role's whole catalogue entry.",
   'analysis.addSkill': 'Add {name} to your skills',
@@ -209,6 +230,7 @@ export const en = {
   'analysis.remove.skill': 'Skill to remove',
   'analysis.remove.confirm': 'Remove skill',
   'analysis.remove.cancel': 'Keep skill',
+  'analysis.removing': 'Removing...',
   'analysis.removeAria': 'Remove {name}',
   'analysis.listAria': 'My skills, {n} items. Scroll to see more.',
   'analysis.group.core': 'Core skills',
@@ -233,8 +255,6 @@ export const en = {
   'role.group.bonus': 'Common tools',
   'role.nothingInCategory': 'Nothing listed in this category yet.',
   'role.noSkillData': 'No skill data is available for this role yet.',
-  'role.addAria': 'Add {name} to your profile',
-  'role.savedAria': '{name} is already saved',
   'role.education': 'Education & pathways',
   'role.openPathways': 'Open pathways →',
   'role.noQualifications': 'No training pathways are linked to this role yet.',
@@ -245,15 +265,47 @@ export const en = {
   'pathways.h1': 'Learning roadmap towards {role}',
   'pathways.h1Plain': 'Learning roadmap',
   'pathways.progress': 'Skill progress',
+  'pathways.progress.tag': '{n}% ready',
   'pathways.completed': 'Completed',
   'pathways.current': 'Current',
   'pathways.upcoming': 'Upcoming',
   'pathways.priorities': 'Learning priorities',
+  'pathways.priorities.tag': 'Most important first',
   'pathways.importance': 'Importance {n}',
   'pathways.kind.core': 'Core skill',
   'pathways.kind.recommended': 'Transferable skill',
   'pathways.kind.bonus': 'Common tool',
+  'pathways.training': 'Training routes',
+  'pathways.noTrainingRole':
+    'No training pathways are linked to this role yet - only routes published in the official data appear here.',
   'pathways.noTraining':
     'Choose a target role to see its linked training routes.',
   'pathways.reviewRole': 'Review role requirements →',
+
+  'learning.start': 'Start learning',
+  'learning.view': 'View learning',
+  'learning.startAria': 'Start learning {name}',
+  'learning.viewAria': 'View learning for {name}',
+  'learning.play': 'Play the video',
+  'learning.close': 'Close',
+  'learning.courseVideos': 'Course videos',
+  'learning.focus': 'Focus time',
+  'learning.progress': '{n}% watched',
+  'learning.sessions': '{n} sessions',
+  'learning.tabs': 'Video details',
+  'learning.overview': 'Overview',
+  'learning.takeaways': 'Key takeaways',
+  'learning.overviewNote':
+    'Videos come from official channel uploads, and their titles and durations are verified against YouTube. Watch time counts towards this skill, and you can mark the skill completed once you finish the course.',
+  'learning.factChannel': 'Channel',
+  'learning.factDuration': 'Duration',
+  'learning.factVerified': 'Metadata verified',
+  'learning.tip1':
+    'Code along with the instructor instead of watching passively.',
+  'learning.tip2': 'Pause and repeat any section that moves too fast.',
+  'learning.tip3':
+    'After the course, build one small project with {name} to lock the skill in.',
+  'learning.watchOnYouTube': 'Watch on YouTube',
+  'learning.markCompleted': 'Mark as completed',
+  'learning.marked': 'Completed',
 }

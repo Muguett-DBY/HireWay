@@ -1,32 +1,13 @@
-import { type FormEvent } from 'react'
 import { SpecularButton } from '../SpecularButton'
 import { useI18n } from '../../lib/useI18n'
 
 type MarketingLandingProps = {
-  recoveryCode: string
-  busy: boolean
-  message: string
-  failed: boolean
-  hasProfile: boolean
-  onCodeChange: (value: string) => void
-  onContinue: (event: FormEvent<HTMLFormElement>) => void
-  onStart: () => void
-  onOpenProfile: () => void
+  onEnterProfile: () => void
 }
 
-// The single landing page: it sells the idea and carries the entry form, so
-// new and returning users both start from one screen.
-export function MarketingLanding({
-  recoveryCode,
-  busy,
-  message,
-  failed,
-  hasProfile,
-  onCodeChange,
-  onContinue,
-  onStart,
-  onOpenProfile,
-}: MarketingLandingProps) {
+// The public landing page explains HireWay; profile access stays on the
+// separate entry screen so first-time visitors are not shown forms.
+export function MarketingLanding({ onEnterProfile }: MarketingLandingProps) {
   const { t } = useI18n()
   return (
     <div className="marketing-landing">
@@ -51,7 +32,7 @@ export function MarketingLanding({
               thickness={2.2}
               speed={0.3}
               proximity={280}
-              onClick={onStart}
+              onClick={onEnterProfile}
             >
               {t('landing.cta')}
             </SpecularButton>
@@ -65,46 +46,6 @@ export function MarketingLanding({
             <li>{t('landing.benefits.2')}</li>
             <li>{t('landing.benefits.3')}</li>
           </ul>
-
-          <form className="marketing-return" onSubmit={onContinue} noValidate>
-            <span className="marketing-return-label" id="return-label">
-              Coming back?
-            </span>
-            <input
-              className="code-input"
-              value={recoveryCode}
-              onChange={(event) => onCodeChange(event.target.value)}
-              placeholder="Enter your recovery code"
-              aria-labelledby="return-label"
-              autoComplete="off"
-              spellCheck={false}
-              disabled={busy}
-            />
-            <button className="btn ghost" disabled={busy}>
-              {busy ? 'Loading...' : 'Continue'}
-            </button>
-            {hasProfile && (
-              <button
-                type="button"
-                className="marketing-return-link"
-                onClick={onOpenProfile}
-              >
-                Open my dashboard
-              </button>
-            )}
-          </form>
-          {message && (
-            <p
-              className={
-                failed
-                  ? 'notice error marketing-return-message'
-                  : 'notice success marketing-return-message'
-              }
-              role={failed ? 'alert' : 'status'}
-            >
-              {message}
-            </p>
-          )}
         </div>
 
         <div

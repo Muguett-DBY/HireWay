@@ -1,6 +1,7 @@
 // Keep each feature's API logic in its own file.
 import { handleProfile } from './routes/profile'
 import { handleSkills } from './routes/skills'
+import { handleProgress } from './routes/progress'
 import { handleGoal } from './routes/goal'
 import { handleOptions } from './routes/options'
 import { handleTargetRole } from './routes/targetRole'
@@ -21,6 +22,8 @@ export default {
     try {
       if (path === '/api/profile') {
         response = await handleProfile(request, env)
+      } else if (path === '/api/profile/progress') {
+        response = await handleProgress(request, env)
       } else if (path === '/api/skills') {
         response = await handleSkills(request, env)
       } else if (path === '/api/goal') {

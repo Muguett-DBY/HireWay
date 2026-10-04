@@ -38,4 +38,4 @@ Thumbs.db
 *.sw?
 # Generated TypeScript files
 *.tsbuildinfo
-worker-configuration.d.ts
+worker-configuration.d.ts.zcode/

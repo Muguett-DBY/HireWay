@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
-import { Check, Copy } from 'lucide'
+import { ArrowLeft, Check, Copy } from 'lucide'
 import { MorphIcon } from 'morphicons/react'
 import {
   requestProfile,
@@ -21,6 +21,7 @@ import { occupationTitle } from '../lib/occupationTitle'
 import { Stepper } from '../components/Stepper'
 import { EducationLevelSelect } from '../components/EducationLevelSelect'
 import { MarketingLanding } from '../components/landing/MarketingLanding'
+import { LandingScreen } from '../components/landing/LandingScreen'
 import { AppNav, type AppPage } from '../components/app/AppNav'
 import { SkillPromptCard } from '../components/app/SkillPromptCard'
 import { MyProfilePage } from '../components/app/MyProfilePage'
@@ -91,7 +92,9 @@ function forgetSavedLogin() {
 
 export function ProfilePage() {
   const { t } = useI18n()
-  const [screen, setScreen] = useState<'home' | 'wizard' | 'app'>('home')
+  const [screen, setScreen] = useState<'home' | 'entry' | 'wizard' | 'app'>(
+    'home',
+  )
   const [appPage, setAppPage] = useState<AppPage>('overview')
   // The wizard walks through background, skills and a target role in order.
   const [step, setStep] = useState<1 | 2 | 3>(1)
@@ -113,6 +116,13 @@ export function ProfilePage() {
   const [studyOptions, setStudyOptions] = useState<StudyOption[]>([])
   const [skillOptions, setSkillOptions] = useState<CatalogueOption[]>([])
   const [skillCode, setSkillCode] = useState<string | null>(null)
+  // Current role is optional; suggestions come from the occupation catalogue.
+  const [currentRoleOptions, setCurrentRoleOptions] = useState<
+    CatalogueOption[]
+  >([])
+  // True while the field holds a saved or just-picked title, so the value
+  // alone never reopens the suggestion menu.
+  const [currentRolePicked, setCurrentRolePicked] = useState(true)
   // Keep a typed occupation separate from the role already saved in D1.
   const [targetRole, setTargetRole] = useState<TargetRole | null>(null)
   const [targetRoleQuery, setTargetRoleQuery] = useState('')
@@ -326,6 +336,33 @@ export function ProfilePage() {
     }
   }, [targetRoleCode, targetRoleQuery])
 
+  // Current role suggestions use the same occupation search, but the field
+  // saves typed text and never blocks the form. Stale options are cleared by
+  // the change handler, not here, so no state flips inside the effect.
+  useEffect(() => {
+    if (currentRolePicked || details.currentRole.trim().length < 2) {
+      return
+    }
+
+    const controller = new AbortController()
+    const timer = window.setTimeout(() => {
+      void searchOptions(
+        'occupations',
+        details.currentRole.trim(),
+        controller.signal,
+      )
+        .then(setCurrentRoleOptions)
+        .catch(() => {
+          if (!controller.signal.aborted) setCurrentRoleOptions([])
+        })
+    }, 180)
+
+    return () => {
+      window.clearTimeout(timer)
+      controller.abort()
+    }
+  }, [currentRolePicked, details.currentRole])
+
   // Skills and named tools use the same O*NET-backed search box.
   useEffect(() => {
     if (skillCode || skillName.trim().length < 2) {
@@ -443,6 +480,7 @@ export function ProfilePage() {
     setRecoveryCode(saved.code)
     setErrors({})
     setStudyOptions([])
+    setCurrentRoleOptions([])
   }
 
   // On the first render, resume the login this browser remembers. The work
@@ -535,6 +573,25 @@ export function ProfilePage() {
     setMessage('')
   }
 
+  // The current role field saves typed text; the field itself stays optional.
+  function updateCurrentRole(value: string) {
+    setCurrentRolePicked(false)
+    setCurrentRoleOptions([])
+    setDetails((current) => {
+      const next = { ...current, currentRole: value }
+      saveDraft(next)
+      return next
+    })
+    setMessage('')
+  }
+
+  // A suggestion replaces the typed text with the official occupation title.
+  function selectCurrentRole(option: CatalogueOption) {
+    updateCurrentRole(occupationTitle(option.label))
+    setCurrentRolePicked(true)
+    setCurrentRoleOptions([])
+  }
+
   // Starting again clears the form without deleting a saved profile.
   function startProfile() {
     setProfile(null)
@@ -549,6 +606,7 @@ export function ProfilePage() {
     setSkillCode(null)
     setSkillOptions([])
     setSkillError('')
+    setCurrentRoleOptions([])
     setTargetRole(null)
     setTargetRoleQuery('')
     setTargetRoleCode(null)
@@ -598,6 +656,7 @@ export function ProfilePage() {
     setSkillCode(null)
     setSkillOptions([])
     setSkillError('')
+    setCurrentRoleOptions([])
     setTargetRole(bundle.targetRole)
     setTargetRoleQuery(bundle.targetRole?.title ?? '')
     setTargetRoleCode(bundle.targetRole?.code ?? null)
@@ -673,10 +732,10 @@ export function ProfilePage() {
     const nextErrors: ProfileErrors = {}
 
     if (!details.degreeCode && !details.majorCode) {
-      nextErrors.qualification = '{t("wizard.errors.chooseStudy")}'
+      nextErrors.qualification = t('wizard.errors.chooseStudy')
     }
     if (!details.educationLevel) {
-      nextErrors.educationLevel = '{t("wizard.errors.chooseLevel")}'
+      nextErrors.educationLevel = t('wizard.errors.chooseLevel')
     }
     setErrors(nextErrors)
     if (Object.keys(nextErrors).length > 0) return
@@ -883,7 +942,7 @@ export function ProfilePage() {
     setTargetRoleMessage('')
 
     if (!targetRoleCode) {
-      setTargetRoleError('{t("wizard.errors.chooseRole")}')
+      setTargetRoleError(t('wizard.errors.chooseRole'))
       return
     }
 
@@ -960,13 +1019,25 @@ export function ProfilePage() {
         className={
           screen === 'home'
             ? 'marketing-page'
-            : screen === 'wizard'
-              ? 'wizard-page'
-              : 'app-page'
+            : screen === 'entry'
+              ? 'landing-page'
+              : screen === 'wizard'
+                ? 'wizard-page'
+                : 'app-page'
         }
       >
         {screen === 'home' && (
           <MarketingLanding
+            onEnterProfile={() => {
+              setScreen('entry')
+              setMessage('')
+              setFailed(false)
+            }}
+          />
+        )}
+
+        {screen === 'entry' && (
+          <LandingScreen
             recoveryCode={recoveryCode}
             busy={busy}
             message={message}
@@ -988,18 +1059,53 @@ export function ProfilePage() {
 
         {screen === 'wizard' && (
           <>
-            {/* The numbered dots mirror the mock: three plain steps. */}
-            <Stepper
-              items={[
-                { id: 1, label: t('wizard.step1'), unlocked: true },
-                { id: 2, label: t('wizard.step2'), unlocked: Boolean(profile) },
-                { id: 3, label: t('wizard.step3'), unlocked: Boolean(profile) },
-              ]}
-              currentId={step}
-              onSelect={(id) => {
-                if (id === 1 || (profile && id <= 3)) setStep(id as 1 | 2 | 3)
-              }}
-            />
+            {/* One top bar: back arrow on the left, step dots centered. */}
+            <div className="wizard-top">
+              <button
+                type="button"
+                className="wizard-back"
+                aria-label={t('wizard.back')}
+                onClick={() => {
+                  if (step > 1) setStep((step - 1) as 1 | 2 | 3)
+                  else {
+                    // Step one has no earlier step; the entry screen is the
+                    // funnel parent of the wizard.
+                    setScreen('entry')
+                    setMessage('')
+                    setFailed(false)
+                  }
+                }}
+              >
+                <MorphIcon
+                  icon={ArrowLeft}
+                  size={20}
+                  strokeWidth={2}
+                  spring="snappy"
+                  reducedMotion="user"
+                />
+              </button>
+
+              {/* The numbered dots mirror the mock: three plain steps. */}
+              <Stepper
+                items={[
+                  { id: 1, label: t('wizard.step1'), unlocked: true },
+                  {
+                    id: 2,
+                    label: t('wizard.step2'),
+                    unlocked: Boolean(profile),
+                  },
+                  {
+                    id: 3,
+                    label: t('wizard.step3'),
+                    unlocked: Boolean(profile),
+                  },
+                ]}
+                currentId={step}
+                onSelect={(id) => {
+                  if (id === 1 || (profile && id <= 3)) setStep(id as 1 | 2 | 3)
+                }}
+              />
+            </div>
 
             {/* A profile is required from step 2 on; anything else falls back. */}
             {(step === 1 || !profile) && (
@@ -1020,7 +1126,7 @@ export function ProfilePage() {
                   <form onSubmit={saveProfile} noValidate>
                     <fieldset disabled={busy} className="plain-fieldset">
                       <label htmlFor="qualification">
-                        {t('wizard.s1.study')}
+                        {t('wizard.s1.degreeMajor')}
                       </label>
                       <div className="autocomplete">
                         <input
@@ -1029,7 +1135,7 @@ export function ProfilePage() {
                           onChange={(event) =>
                             updateQualification(event.target.value)
                           }
-                          placeholder="Search your course, e.g. Master of Data Science"
+                          placeholder={t('wizard.s1.degreeMajorPlaceholder')}
                           autoComplete="off"
                           maxLength={240}
                           required
@@ -1086,10 +1192,10 @@ export function ProfilePage() {
                       {/* A picked course already fixes the education level. */}
                       {details.degreeCode ? (
                         <>
-                          <label>Education level</label>
+                          <label>{t('wizard.s1.level')}</label>
                           <p className="derived-level">
                             {details.educationLevel ||
-                              '{t("wizard.s1.derivedAuto")}'}{' '}
+                              t('wizard.s1.derivedAuto')}{' '}
                             <small>{t('wizard.s1.derived')}</small>
                           </p>
                         </>
@@ -1122,6 +1228,53 @@ export function ProfilePage() {
                         </>
                       )}
 
+                      {/* Optional: typing suggests occupations, but the
+                          field can stay empty. */}
+                      <label htmlFor="current-role">
+                        {t('wizard.s1.currentRole')}
+                      </label>
+                      <div className="autocomplete">
+                        <input
+                          id="current-role"
+                          value={details.currentRole}
+                          onChange={(event) =>
+                            updateCurrentRole(event.target.value)
+                          }
+                          placeholder={t('wizard.s1.currentRolePlaceholder')}
+                          autoComplete="off"
+                          maxLength={120}
+                          aria-expanded={currentRoleOptions.length > 0}
+                          aria-controls="current-role-suggestions"
+                          aria-describedby="current-role-help"
+                        />
+
+                        {currentRoleOptions.length > 0 && (
+                          <ul
+                            className="autocomplete-menu"
+                            id="current-role-suggestions"
+                          >
+                            {currentRoleOptions.map((option) => (
+                              <li key={option.code}>
+                                <button
+                                  type="button"
+                                  onClick={() => selectCurrentRole(option)}
+                                >
+                                  <strong>
+                                    {occupationTitle(option.label)}
+                                  </strong>
+                                  {option.description && (
+                                    <small>{option.description}</small>
+                                  )}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                      <p className="field-help" id="current-role-help">
+                        {t('wizard.s1.currentRoleHelp')}
+                      </p>
+
                       <button type="submit" className="btn block">
                         {busy ? t('entry.loading') : t('wizard.continue')}
                       </button>
@@ -1149,7 +1302,7 @@ export function ProfilePage() {
                           onClick={copyRecoveryCode}
                           aria-label={
                             copied
-                              ? 'Recovery code copied'
+                              ? t('wizard.recovery.copied')
                               : t('wizard.recovery.copy')
                           }
                         >
@@ -1324,20 +1477,13 @@ export function ProfilePage() {
                     />
                   )}
 
-                  <div className="wizard-nav">
-                    <button
-                      type="button"
-                      className="btn ghost"
-                      onClick={() => setStep(1)}
-                    >
-                      Back
-                    </button>
+                  <div className="wizard-nav single">
                     <button
                       type="button"
                       className="btn"
                       onClick={() => setStep(3)}
                     >
-                      Continue
+                      {t('wizard.continue')}
                     </button>
                   </div>
                 </div>
@@ -1348,10 +1494,7 @@ export function ProfilePage() {
             {step === 3 && profile && (
               <div className="wizard-shell">
                 <h1>{t('wizard.s3.h1')}</h1>
-                <p className="wizard-sub">
-                  Search Australian occupations and pick one direction to plan
-                  towards.
-                </p>
+                <p className="wizard-sub">{t('wizard.s3.sub')}</p>
 
                 <div className="wizard-card">
                   <form onSubmit={submitTargetRole} noValidate>
@@ -1472,14 +1615,7 @@ export function ProfilePage() {
                     </p>
                   )}
 
-                  <div className="wizard-nav">
-                    <button
-                      type="button"
-                      className="btn ghost"
-                      onClick={() => setStep(2)}
-                    >
-                      Back
-                    </button>
+                  <div className="wizard-nav single">
                     {targetRole && (
                       <button
                         type="button"
@@ -1588,7 +1724,12 @@ export function ProfilePage() {
                 targetRole={targetRole}
                 requirements={requirements}
                 skills={skills}
+                profileCode={profile.code}
+                busy={skillsBusy}
                 onGoRole={() => setAppPage('role')}
+                onSkillStatus={(skill, status) => {
+                  void cycleSkillStatus(skill, status)
+                }}
               />
             )}
 
@@ -1645,23 +1786,23 @@ export function ProfilePage() {
       >
         {pendingTargetRole && targetRole && (
           <div className="confirm-dialog-card">
-            <p className="eyebrow">Target role</p>
-            <h2 id="target-role-confirm-title">Change your target role?</h2>
-            <p id="target-role-confirm-description">
-              Your matches, analysis, role details and pathway will refresh for
-              the new target.
-            </p>
+            <p className="eyebrow">{t('profile.targetRole')}</p>
+            <h2 id="target-role-confirm-title">{t('wizard.dialog.title')}</h2>
+            <p id="target-role-confirm-description">{t('wizard.dialog.sub')}</p>
 
-            <div className="role-change-summary" aria-label="Role change">
+            <div
+              className="role-change-summary"
+              aria-label={t('wizard.dialog.changeAria')}
+            >
               <span>
-                <small>Current target</small>
+                <small>{t('wizard.dialog.current')}</small>
                 <strong>{targetRole.title}</strong>
               </span>
               <span className="role-change-arrow" aria-hidden="true">
                 →
               </span>
               <span>
-                <small>New target</small>
+                <small>{t('wizard.dialog.new')}</small>
                 <strong>{pendingTargetRole.title}</strong>
               </span>
             </div>
@@ -1680,7 +1821,7 @@ export function ProfilePage() {
                 autoFocus
                 onClick={() => setPendingTargetRole(null)}
               >
-                Keep current role
+                {t('wizard.dialog.keep')}
               </button>
               <button
                 type="button"
@@ -1688,7 +1829,9 @@ export function ProfilePage() {
                 disabled={targetRoleBusy}
                 onClick={() => void confirmTargetRoleChange()}
               >
-                {targetRoleBusy ? 'Changing...' : 'Confirm change'}
+                {targetRoleBusy
+                  ? t('wizard.dialog.changing')
+                  : t('wizard.dialog.confirm')}
               </button>
             </div>
           </div>

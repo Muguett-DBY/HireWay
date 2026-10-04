@@ -44,17 +44,35 @@ export const es = {
   'landing.how.s3.title': 'Elige una dirección',
   'landing.how.s3.text':
     'Elige un puesto objetivo y mira la demanda que tiene.',
-  'entry.comingBack': '¿Vuelves?',
   'entry.codePlaceholder': 'Introduce tu código de recuperación',
   'entry.continue': 'Continuar',
   'entry.loading': 'Cargando...',
+  'entry.title': 'Comienza tu camino profesional',
+  'entry.sub':
+    'HireWay te ayuda a continuar tu camino o crear un perfil nuevo para explorar oportunidades y hacer crecer tu carrera.',
+  'entry.codeTitle': 'Introducir código anterior',
+  'entry.codeText': 'Continúa donde lo dejaste con tu código anterior.',
+  'entry.codeLabel': 'Código de recuperación',
+  'entry.createTitle': 'Crear perfil personal',
+  'entry.createText':
+    'Crea un perfil nuevo para obtener información personalizada y hacer crecer tu carrera.',
+  'entry.start': 'Comenzar',
+  'entry.dashboard': 'Abrir mi panel',
+  'entry.note':
+    'Tus datos están seguros y son privados. Estamos aquí para apoyar tu crecimiento.',
   'wizard.s1.h1': 'Cuéntanos tu formación',
   'wizard.s1.sub': 'Esto nos ayuda a personalizar tu hoja de ruta.',
-  'wizard.s1.study': '¿Qué estudiaste? *',
+  'wizard.s1.degreeMajor': 'Carrera / Especialidad',
+  'wizard.s1.degreeMajorPlaceholder':
+    'Busca tu carrera o especialidad, p. ej. Máster en Ciencia de Datos',
+  'wizard.s1.currentRole': 'Puesto actual (opcional)',
+  'wizard.s1.currentRolePlaceholder':
+    'Empieza a escribir, por ejemplo Analista de Datos',
+  'wizard.s1.currentRoleHelp':
+    'Opcional: déjalo vacío si no estás trabajando ahora.',
   'wizard.s1.studyHelp':
     'Elige tu curso exacto si aparece; si no, elige el campo más cercano, como Contabilidad.',
   'wizard.s1.level': 'Nivel de estudios *',
-  'wizard.s1.levelPlaceholder': 'Selecciona tu nivel de estudios',
   'wizard.s1.derived': 'según tu curso',
   'wizard.s1.derivedAuto': 'Se define automáticamente',
   'wizard.continue': 'Continuar',
@@ -98,6 +116,7 @@ export const es = {
   'wizard.dialog.keep': 'Mantener el actual',
   'wizard.dialog.confirm': 'Confirmar cambio',
   'wizard.dialog.changing': 'Cambiando...',
+  'wizard.dialog.changeAria': 'Cambio de puesto objetivo',
   'prompt.tag': 'Pregunta rápida',
   'prompt.question': 'Estudiaste {course}. ¿También usas {skill}?',
   'prompt.yes': 'Sí, lo uso',
@@ -150,4 +169,42 @@ export const es = {
   'matches.hint.thin':
     'Pocas habilidades guardadas: cada una que añadas mejora estas coincidencias.',
   'matches.empty': 'Aún no hay sugerencias disponibles.',
+
+  'analysis.covered': '{covered} de {total} cubiertas',
+  'analysis.missing': 'faltan {n}',
+  'analysis.removing': 'Quitando...',
+  'pathways.progress.tag': '{n}% preparado',
+  'pathways.priorities.tag': 'Lo más importante primero',
+  'pathways.training': 'Rutas de formación',
+  'pathways.noTrainingRole':
+    'Aún no hay rutas de formación vinculadas a este puesto: solo se muestran las rutas publicadas en los datos oficiales.',
+  'pathways.noTraining':
+    'Elige un puesto objetivo para ver sus rutas de formación vinculadas.',
+
+  'learning.start': 'Empezar a aprender',
+  'learning.view': 'Ver aprendizaje',
+  'learning.startAria': 'Empezar a aprender {name}',
+  'learning.viewAria': 'Ver el aprendizaje de {name}',
+  'learning.play': 'Reproducir el vídeo',
+  'learning.close': 'Cerrar',
+  'learning.courseVideos': 'Vídeos del curso',
+  'learning.focus': 'Tiempo de enfoque',
+  'learning.progress': '{n}% visto',
+  'learning.sessions': '{n} sesiones',
+  'learning.tabs': 'Detalles del vídeo',
+  'learning.overview': 'Resumen',
+  'learning.takeaways': 'Puntos clave',
+  'learning.overviewNote':
+    'Los vídeos proceden de canales oficiales y sus títulos y duraciones están verificados en YouTube. El tiempo de visionado cuenta para esta habilidad, y puedes marcarla como completada al terminar el curso.',
+  'learning.factChannel': 'Canal',
+  'learning.factDuration': 'Duración',
+  'learning.factVerified': 'Datos verificados',
+  'learning.tip1': 'Programa junto al instructor en lugar de solo mirar.',
+  'learning.tip2':
+    'Pausa y repite cualquier sección que vaya demasiado rápido.',
+  'learning.tip3':
+    'Tras el curso, crea un pequeño proyecto con {name} para afianzar la habilidad.',
+  'learning.watchOnYouTube': 'Ver en YouTube',
+  'learning.markCompleted': 'Marcar como completada',
+  'learning.marked': 'Completada',
 }

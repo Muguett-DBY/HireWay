@@ -4,6 +4,9 @@ import type { RoleSuggestion } from '../../lib/suggestionApi'
 import type { Skill } from '../../lib/skillsApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
 import { occupationTitle } from '../../lib/occupationTitle'
+import { Briefcase, CircleDollarSign, Target, TrendingUp } from 'lucide'
+import { MorphIcon } from 'morphicons/react'
+import { HeroScenery } from './HeroScenery'
 import { SuggestionCard } from './SuggestionCard'
 import { useI18n } from '../../lib/useI18n'
 
@@ -79,9 +82,13 @@ export function OverviewPage({
     },
   ]
 
+  // One icon per stat cell, in the same order as the stats array.
+  const statIcons = [Target, TrendingUp, CircleDollarSign, Briefcase]
+
   return (
     <>
       <section className="app-hero">
+        <HeroScenery />
         <p className="eyebrow">{t('overview.eyebrow')}</p>
         <h1>
           {targetRole
@@ -147,13 +154,28 @@ export function OverviewPage({
         </section>
       )}
 
-      <div className="stat-strip">
-        {stats.map((stat) => (
-          <article className="stat-card" key={stat.label}>
-            <strong>{stat.value ?? '—'}</strong>
-            <span>{stat.label}</span>
-          </article>
-        ))}
+      {/* One bordered panel with icon circles and divider lines, as in the mock. */}
+      <div className="stat-panel-wrap">
+        <div className="stat-panel">
+          {stats.map((stat, index) => {
+            return (
+              <div className="stat-panel-cell" key={stat.label}>
+                <span className="stat-icon" aria-hidden="true">
+                  <MorphIcon
+                    icon={statIcons[index]}
+                    size={20}
+                    strokeWidth={2}
+                    reducedMotion="user"
+                  />
+                </span>
+                <span className="stat-copy">
+                  <strong>{stat.value ?? '—'}</strong>
+                  <span>{stat.label}</span>
+                </span>
+              </div>
+            )
+          })}
+        </div>
       </div>
 
       <section className="page-section">
