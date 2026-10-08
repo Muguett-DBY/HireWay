@@ -1,8 +1,9 @@
 """Generate data/learning_videos.json from the verified video metadata.
 
-Every id, title, channel and durationSeconds below was verified on 2026-10-04
-with the chain recorded in meta.verifyCommand: the oEmbed endpoint confirms
-title and channel, the watch page lengthSeconds field confirms the duration.
+Original course metadata was verified on 2026-10-04 with the chain recorded
+in meta.verifyCommand: oEmbed confirms title and channel; the watch page
+lengthSeconds field confirms duration. HireWay introductions were checked
+in YouTube Studio and embedded playback on 2026-10-08.
 The human-readable duration string is derived here, never typed by hand.
 """
 import json
@@ -67,22 +68,35 @@ SKILLS = {
     "Swift": ["comQ1-x2a1Q"],
 }
 
+INTRODUCTIONS = {
+    "SQL": ("_T15TjsLyoo", "SQL Introduction | HireWay Skills", 91),
+    "Thomson Reuters Westlaw": ("reoIUYkbXLo", "Westlaw Legal Research Introduction | HireWay Skills", 92),
+    "Intuit QuickBooks": ("PlDo-YoHAVg", "QuickBooks Bookkeeping Introduction | HireWay Skills", 92),
+    "Google Analytics": ("wReTbggrUb0", "Google Analytics Marketing Introduction | HireWay Skills", 91),
+    "Autodesk AutoCAD": ("kD8UE6zzvGI", "AutoCAD Introduction | HireWay Skills", 91),
+}
+INTRO_CHANNEL_ID = "UCvp99-loCA8E4xm4LXVP0rg"
+INTRO_VERIFIED_AT = "2026-10-08"
+
 data = {
     "meta": {
-        "generated": VERIFIED_AT,
+        "generated": INTRO_VERIFIED_AT,
         "source": (
             "freeCodeCamp.org official channel uploads. Video IDs for the "
             "Kotlin, PostgreSQL (TimescaleDB) and Excel courses were taken "
             "from the channel's key-free RSS feed; older catalogue courses "
-            "were confirmed against the same channel. Each entry's title, "
+            "were confirmed against the same channel. Each original course's title, "
             "channel and duration were re-verified entry by entry with the "
-            "command below on the generated date."
+            "command below on 2026-10-04. Five HireWay introductions from the "
+            "jayfeather channel were checked in YouTube Studio and embedded "
+            "playback on 2026-10-08."
         ),
         "channels": {
             "freeCodeCamp.org": {
                 "channelId": CHANNEL_ID_FREECODECAMP,
                 "rss": f"https://www.youtube.com/feeds/videos.xml?channel_id={CHANNEL_ID_FREECODECAMP}",
             },
+            "jayfeather": {"channelId": INTRO_CHANNEL_ID},
         },
         "verifyCommand": (
             'curl -s "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v={id}&format=json" '
@@ -93,8 +107,19 @@ data = {
     "skills": {name: [video(vid) for vid in vids] for name, vids in SKILLS.items()},
 }
 
+for name, (video_id, title, seconds) in INTRODUCTIONS.items():
+    data["skills"].setdefault(name, []).append({
+        "id": video_id,
+        "title": title,
+        "channel": "jayfeather",
+        "channelId": INTRO_CHANNEL_ID,
+        "durationSeconds": seconds,
+        "duration": duration(seconds),
+        "verifiedAt": INTRO_VERIFIED_AT,
+    })
+
 with open("data/learning_videos.json", "w", encoding="utf-8", newline="\n") as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
     f.write("\n")
 
-print("wrote", sum(len(v) for v in SKILLS.values()), "videos across", len(SKILLS), "skills")
+print("wrote", sum(len(v) for v in data["skills"].values()), "videos across", len(data["skills"]), "skills")

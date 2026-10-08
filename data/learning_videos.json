@@ -1,11 +1,14 @@
 {
   "meta": {
-    "generated": "2026-10-04",
-    "source": "freeCodeCamp.org official channel uploads. Video IDs for the Kotlin, PostgreSQL (TimescaleDB) and Excel courses were taken from the channel's key-free RSS feed; older catalogue courses were confirmed against the same channel. Each entry's title, channel and duration were re-verified entry by entry with the command below on the generated date.",
+    "generated": "2026-10-08",
+    "source": "freeCodeCamp.org official channel uploads. Video IDs for the Kotlin, PostgreSQL (TimescaleDB) and Excel courses were taken from the channel's key-free RSS feed; older catalogue courses were confirmed against the same channel. Each original course's title, channel and duration were re-verified entry by entry with the command below on 2026-10-04. Five HireWay introductions from the jayfeather channel were checked in YouTube Studio and embedded playback on 2026-10-08.",
     "channels": {
       "freeCodeCamp.org": {
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=UC8butISFwT-Wl7EV0hUK0BQ"
+      },
+      "jayfeather": {
+        "channelId": "UCvp99-loCA8E4xm4LXVP0rg"
       }
     },
     "verifyCommand": "curl -s \"https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v={id}&format=json\" && curl -s \"https://www.youtube.com/watch?v={id}\" -H \"User-Agent: Mozilla/5.0\"  | grep -o '\"lengthSeconds\":\"[0-9]*\"'"
@@ -40,6 +43,15 @@
         "durationSeconds": 15639,
         "duration": "4:20:39",
         "verifiedAt": "2026-10-04"
+      },
+      {
+        "id": "_T15TjsLyoo",
+        "title": "SQL Introduction | HireWay Skills",
+        "channel": "jayfeather",
+        "channelId": "UCvp99-loCA8E4xm4LXVP0rg",
+        "durationSeconds": 91,
+        "duration": "0:01:31",
+        "verifiedAt": "2026-10-08"
       }
     ],
     "JavaScript": [
@@ -175,6 +187,50 @@
         "durationSeconds": 11398,
         "duration": "3:09:58",
         "verifiedAt": "2026-10-04"
+      }
+    ],
+    "Thomson Reuters Westlaw": [
+      {
+        "id": "reoIUYkbXLo",
+        "title": "Westlaw Legal Research Introduction | HireWay Skills",
+        "channel": "jayfeather",
+        "channelId": "UCvp99-loCA8E4xm4LXVP0rg",
+        "durationSeconds": 92,
+        "duration": "0:01:32",
+        "verifiedAt": "2026-10-08"
+      }
+    ],
+    "Intuit QuickBooks": [
+      {
+        "id": "PlDo-YoHAVg",
+        "title": "QuickBooks Bookkeeping Introduction | HireWay Skills",
+        "channel": "jayfeather",
+        "channelId": "UCvp99-loCA8E4xm4LXVP0rg",
+        "durationSeconds": 92,
+        "duration": "0:01:32",
+        "verifiedAt": "2026-10-08"
+      }
+    ],
+    "Google Analytics": [
+      {
+        "id": "wReTbggrUb0",
+        "title": "Google Analytics Marketing Introduction | HireWay Skills",
+        "channel": "jayfeather",
+        "channelId": "UCvp99-loCA8E4xm4LXVP0rg",
+        "durationSeconds": 91,
+        "duration": "0:01:31",
+        "verifiedAt": "2026-10-08"
+      }
+    ],
+    "Autodesk AutoCAD": [
+      {
+        "id": "kD8UE6zzvGI",
+        "title": "AutoCAD Introduction | HireWay Skills",
+        "channel": "jayfeather",
+        "channelId": "UCvp99-loCA8E4xm4LXVP0rg",
+        "durationSeconds": 91,
+        "duration": "0:01:31",
+        "verifiedAt": "2026-10-08"
       }
     ]
   }
