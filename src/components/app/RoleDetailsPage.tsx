@@ -204,6 +204,7 @@ export function RoleDetailsPage({
                           ? `${skill.name} is already saved`
                           : `Add ${skill.name} to your profile`
                       }
+                      title={skill.description}
                     >
                       <span className="skill-row-head">
                         <span>

@@ -347,7 +347,7 @@ export function AnalysisPage({
                           key={skill.code}
                           disabled={busy}
                           onClick={() => onAddSkill(skill)}
-                          title="From US O*NET 31.0 importance ratings via the ABS OSCA bridge"
+                          title={skill.description}
                           aria-label={t('analysis.addSkill', {
                             name: skill.name,
                           })}
