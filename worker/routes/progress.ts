@@ -112,42 +112,47 @@ export async function handleProgress(
     )
   }
 
-  // The profile must already track the skill; this also blocks progress
-  // entries for codes the profile never saved.
+  // The profile must already track the skill. Both writes run in one D1
+  // transaction so a failed progress insert cannot leave minutes committed.
+  // The INSERT checks ownership in the same transaction, including the case
+  // where the skill was removed immediately before this batch started.
   const minutes = Math.round(seconds / 60)
-  const owned = await env.DB.prepare(
-    `UPDATE profile_skill SET learning_minutes = learning_minutes + ?
-     WHERE profile_code = ? AND skill_code = ?`,
-  )
-    .bind(minutes, code, skillCode)
-    .run()
+  const watchedAt = new Date().toISOString()
+  const [owned, saved] = await env.DB.batch<{
+    progressPct: number
+    secondsTotal: number
+    sessions: number
+    lastSessionAt: string
+  }>([
+    env.DB.prepare(
+      `UPDATE profile_skill SET learning_minutes = learning_minutes + ?
+       WHERE profile_code = ? AND skill_code = ?`,
+    ).bind(minutes, code, skillCode),
+    // Progress only moves forward; watch time and sessions keep adding up.
+    env.DB.prepare(
+      `INSERT INTO profile_skill_progress
+         (profile_code, skill_code, progress_pct, seconds_total, sessions, last_session_at)
+       SELECT ?, ?, ?, ?, 1, ?
+       WHERE EXISTS (
+         SELECT 1 FROM profile_skill WHERE profile_code = ? AND skill_code = ?
+       )
+       ON CONFLICT (profile_code, skill_code) DO UPDATE SET
+         progress_pct = MAX(progress_pct, excluded.progress_pct),
+         seconds_total = seconds_total + excluded.seconds_total,
+         sessions = sessions + 1,
+         last_session_at = excluded.last_session_at
+       RETURNING progress_pct AS progressPct, seconds_total AS secondsTotal,
+                 sessions, last_session_at AS lastSessionAt`,
+    ).bind(code, skillCode, progressPct, seconds, watchedAt, code, skillCode),
+  ])
 
   if (owned.meta.changes === 0) {
     return Response.json({ error: 'Skill not found.' }, { status: 404 })
   }
 
-  // Progress only ever moves forward: a lower percentage never overwrites
-  // a higher one, and watch time and sessions keep adding up.
-  const watchedAt = new Date().toISOString()
-  const saved = await env.DB.prepare(
-    `INSERT INTO profile_skill_progress
-       (profile_code, skill_code, progress_pct, seconds_total, sessions, last_session_at)
-     VALUES (?, ?, ?, ?, 1, ?)
-     ON CONFLICT (profile_code, skill_code) DO UPDATE SET
-       progress_pct = MAX(progress_pct, excluded.progress_pct),
-       seconds_total = seconds_total + excluded.seconds_total,
-       sessions = sessions + 1,
-       last_session_at = excluded.last_session_at
-     RETURNING progress_pct AS progressPct, seconds_total AS secondsTotal,
-               sessions, last_session_at AS lastSessionAt`,
-  )
-    .bind(code, skillCode, progressPct, seconds, watchedAt)
-    .first<{
-      progressPct: number
-      secondsTotal: number
-      sessions: number
-      lastSessionAt: string
-    }>()
-
-  return Response.json({ skillCode, learningMinutes: minutes, ...saved })
+  return Response.json({
+    skillCode,
+    learningMinutes: minutes,
+    ...saved.results[0],
+  })
 }

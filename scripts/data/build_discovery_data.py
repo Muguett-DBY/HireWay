@@ -8,13 +8,14 @@ import json
 import math
 import re
 from collections import defaultdict
-from datetime import date
 from pathlib import Path
 
-from build_iteration_one_data import (
+from data_build_utils import (
+    DATA_SOURCE_CONFLICT, add_accessed_on_argument,
     batched,
     insert_many,
     insert_with_release,
+    release_statement,
     sql_value,
 )
 
@@ -173,7 +174,8 @@ def build_growth_percentiles(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.parse_args()
+    add_accessed_on_argument(parser)
+    arguments = parser.parse_args()
 
     skill_rows = read_rows(SOURCE_DIR / "onet_occupation_skill.csv")
     map_rows = read_rows(SOURCE_DIR / "occupation_onet_map.csv")
@@ -255,26 +257,6 @@ def main() -> None:
             skill_code: majority_type(votes)
             for skill_code, votes in type_votes.items()
         }
-    global_vector: dict[str, float] | None = None
-    global_types: dict[str, str] = {}
-    if group_vectors:
-        # A plain mean over groups backs the rare group with no members.
-        totals: dict[str, float] = defaultdict(float)
-        for group in group_vectors.values():
-            for skill_code, score in group.items():
-                totals[skill_code] += score
-        global_vector = {
-            skill_code: total / len(group_vectors)
-            for skill_code, total in totals.items()
-        }
-        type_votes: dict[str, list[str]] = defaultdict(list)
-        for types in group_types.values():
-            for skill_code, kind in types.items():
-                type_votes[skill_code].append(kind)
-        global_types = {
-            skill_code: majority_type(votes)
-            for skill_code, votes in type_votes.items()
-        }
 
     def infer_vector(
         occupation_code: str,
@@ -282,11 +264,8 @@ def main() -> None:
         anzsco4 = osca_to_anzsco.get(occupation_code)
         if anzsco4 in group_vectors:
             return group_vectors[anzsco4], group_types.get(anzsco4, {}), 'group'
-        if global_vector:
-            # The global mean carries no subject signal, so it is stored as a
-            # vector-less row: the role keeps its growth data but never shows
-            # up in skill matches.
-            return {}, {}, 'global'
+        # A global mean carries no subject signal: keep growth data without
+        # inventing skill matches for roles with no group-level evidence.
         return {}, {}, 'global'
 
     def infer_riasec(occupation_code: str) -> dict[str, float]:
@@ -417,12 +396,10 @@ def main() -> None:
                 "Creative Commons Attribution 4.0 International",
                 "Occupation, skill, technology, CIP and ESCO crosswalks. US "
                 "guidance used as a skill reference, not Australian employer rules.",
-                date.today().isoformat(),
+                arguments.accessed_on,
             )
         ],
-        "(name) DO UPDATE SET publisher = excluded.publisher, "
-        "source_url = excluded.source_url, licence = excluded.licence, "
-        "description = excluded.description, accessed_on = excluded.accessed_on",
+        DATA_SOURCE_CONFLICT,
     )
     statements.append(
         insert_release_statement(SOURCE_DIR / "onet_occupation_skill.csv")
@@ -485,8 +462,6 @@ def main() -> None:
 
 
 def insert_release_statement(path: Path) -> str:
-    from build_iteration_one_data import release_statement
-
     return release_statement(SOURCE_NAME, RELEASE_LABEL, None, path)
 
 

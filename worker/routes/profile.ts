@@ -28,6 +28,22 @@ export async function handleProfile(
     )
   }
 
+  // Creation is deliberately anonymous. Bound bursts before any database
+  // work using Cloudflare's trusted client address, never a caller-supplied ID.
+  // Existing profiles remain readable/editable when creation is throttled.
+  if (request.method === 'POST') {
+    const address = request.headers.get('CF-Connecting-IP') ?? 'unknown'
+    const { success } = await env.PROFILE_CREATE_LIMITER.limit({
+      key: `hireway:profile:create:${address}`,
+    })
+    if (!success) {
+      return Response.json(
+        { error: 'Too many new profiles. Please try again in a minute.' },
+        { status: 429, headers: { 'Retry-After': '60' } },
+      )
+    }
+  }
+
   // The recovery code acts as the key to an existing profile.
   const authorization = request.headers.get('Authorization') ?? ''
   const code =

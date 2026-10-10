@@ -17,3 +17,8 @@ The generated SQL and validation reports belong in `data/generated`. They are ig
 - O*NET occupational data and crosswalks are United States data licensed under the Creative Commons Attribution 4.0 International licence.
 
 O*NET content must be presented as general United States career guidance, not as a guarantee of what an Australian employer will require.
+
+## Rebuilding
+
+See [the build pipeline guide](../../docs/data/build-pipeline.md) for deterministic
+source dates, the `--accessed-on` override, video verification and regression checks.

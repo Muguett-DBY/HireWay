@@ -9,6 +9,8 @@ every field of study keeps a subject-shaped recommendation set.
 import csv
 from pathlib import Path
 
+from data_build_utils import sql_value as quote
+
 ROOT = Path(__file__).resolve().parents[2]
 
 # Curated ASCED narrow-field (first four digits of the major code) to CIP
@@ -97,8 +99,75 @@ NARROW_FIELD_FAMILIES = {
 }
 
 
-def quote(value):
-    return "'" + str(value).replace("'", "''") + "'"
+# Crosswalk generalists excluded from family-based recommendations. Exact
+# subject links and the final coverage fallback intentionally keep them.
+BRIDGE_OCCUPATIONS = (
+    '15-2021.00', '15-2041.00', '15-2041.01', '19-3022.00',
+    '13-2099.01', '19-1042.00', '11-9199.00', '11-9199.01',
+    '11-9199.02', '11-9199.08', '11-9121.00', '11-9121.01',
+    '11-9121.02', '13-1111.00', '13-2099.00', '13-2099.04',
+    '17-2199.00', '17-2199.03', '17-2199.05', '17-2199.06',
+    '17-2199.07', '17-2199.08', '17-2199.09', '17-2199.10', '17-2199.11',
+)
+CIP_FAMILY_JOIN = """JOIN education_program e ON e.code LIKE 'CIP:' || nf.family ||
+    CASE WHEN nf.family LIKE '%.%' THEN '%' ELSE '.%' END"""
+
+
+def family_links_sql(*, exclude_bridges: bool) -> str:
+    bridge_filter = (
+        'AND r.onet_code NOT IN (SELECT onet_code FROM bridge)'
+        if exclude_bridges else ''
+    )
+    return f"""
+ SELECT DISTINCT m.code major_code,r.onet_code,r.skill_code,r.score
+ FROM major_option m
+ JOIN nf ON substr(m.code,1,4)=nf.narrow_code
+ {CIP_FAMILY_JOIN}
+ JOIN education_onet_map em ON em.education_code=e.code
+ JOIN ratings r ON r.onet_code=em.onet_code
+ WHERE m.code NOT IN (SELECT DISTINCT major_code FROM study_skill_map)
+   {bridge_filter}
+"""
+
+
+def aggregation_sql(linked_sql: str, source: str, *, gated: bool = True) -> str:
+    """Share ratings/ranking while retaining the final fallback's scoring rule."""
+    bridge_values = ','.join(f'({quote(code)})' for code in BRIDGE_OCCUPATIONS)
+    bridge_cte = f', bridge(onet_code) AS (VALUES {bridge_values})' if gated else ''
+    field_cte = """, field_size AS (
+ SELECT major_code,COUNT(DISTINCT onet_code) linked_total FROM linked GROUP BY major_code
+)""" if gated else ''
+    field_join = 'JOIN field_size f ON f.major_code=ranked.major_code' if gated else ''
+    # Gated passes reward tools in proportion to their field's occupation count.
+    # The last fallback caps tool support at two and has no 15% coverage gate.
+    support_score = """CASE sk.kind WHEN 'tool'
+     THEN 10.0*ranked.occupation_count/f.linked_total
+     ELSE MIN(10,ranked.occupation_count) END""" if gated else (
+        "MIN(CASE sk.kind WHEN 'tool' THEN 2 ELSE 10 END, ranked.occupation_count)"
+    )
+    support_minimum = 'MAX(2,CAST(0.15*f.linked_total AS INT))' if gated else '2'
+    return f"""
+INSERT INTO study_skill_map
+WITH ratings AS (
+ SELECT onet_code,skill_code,score FROM onet_occupation_skill
+ UNION ALL SELECT onet_code,skill_code,score FROM study_occupation_knowledge
+), baseline AS (
+ SELECT skill_code,AVG(score) mean_score FROM ratings GROUP BY skill_code
+){bridge_cte}, linked AS ({linked_sql}){field_cte}, ranked AS (
+ SELECT l.major_code,l.skill_code,AVG(l.score) average_score,
+        COUNT(*) occupation_count, b.mean_score
+ FROM linked l JOIN baseline b ON b.skill_code=l.skill_code
+ GROUP BY l.major_code,l.skill_code
+)
+SELECT ranked.major_code,ranked.skill_code,
+ ranked.average_score + (CASE sk.kind
+   WHEN 'knowledge' THEN 2 WHEN 'tool' THEN 0 ELSE 1 END)
+   * MAX(0,ranked.average_score-mean_score) + {support_score},
+ {quote(source)}
+FROM ranked {field_join}
+JOIN skill sk ON sk.code=ranked.skill_code
+WHERE average_score >= 50 AND occupation_count >= {support_minimum};
+"""
 
 
 def build():
@@ -174,8 +243,7 @@ INSERT OR IGNORE INTO study_program_map
 SELECT DISTINCT m.code,e.code,'ASCED narrow-field to CIP family (project rule)'
 FROM major_option m
 JOIN nf ON substr(m.code,1,4)=nf.narrow_code
-JOIN education_program e ON e.code LIKE 'CIP:' || nf.family ||
-    CASE WHEN nf.family LIKE '%.%' THEN '%' ELSE '.%' END
+{CIP_FAMILY_JOIN}
 WHERE NOT EXISTS(SELECT 1 FROM study_program_map p WHERE p.major_code=m.code);
 """)
     # Shared aggregation block: links majors' programs to O*NET ratings and
@@ -191,52 +259,17 @@ WHERE NOT EXISTS(SELECT 1 FROM study_program_map p WHERE p.major_code=m.code);
     # such as English language scores highly everywhere; tools take no lift
     # so a rare tool cannot out-rank the field's everyday ones. The baseline is global, so chunked runs cannot change
     # the result; chunks keep every statement inside remote D1 time limits.
-    aggregate_sql = """
-INSERT INTO study_skill_map
-WITH ratings AS (
- SELECT onet_code,skill_code,score FROM onet_occupation_skill
- UNION ALL SELECT onet_code,skill_code,score FROM study_occupation_knowledge
-), baseline AS (
- SELECT skill_code,AVG(score) mean_score FROM ratings GROUP BY skill_code
-), bridge(onet_code) AS (VALUES
-  ('15-2021.00'),('15-2041.00'),('15-2041.01'),('19-3022.00'),
-  ('13-2099.01'),('19-1042.00'),('11-9199.00'),('11-9199.01'),
-  ('11-9199.02'),('11-9199.08'),('11-9121.00'),('11-9121.01'),
-  ('11-9121.02'),('13-1111.00'),('13-2099.00'),('13-2099.04'),
-  ('17-2199.00'),('17-2199.03'),('17-2199.05'),('17-2199.06'),
-  ('17-2199.07'),('17-2199.08'),('17-2199.09'),('17-2199.10'),('17-2199.11')
-), linked AS (
+    # One chunk per ASCED broad field (first two digits of the major code).
+    for broad_field in ['01', '02', '03', '04', '05', '06',
+                        '07', '08', '09', '10', '11', '12']:
+        statements.append(aggregation_sql(f"""
  SELECT DISTINCT p.major_code,r.onet_code,r.skill_code,r.score
  FROM study_program_map p
  JOIN education_onet_map e ON e.education_code=p.education_code
  JOIN ratings r ON r.onet_code=e.onet_code
- WHERE substr(p.major_code,1,2)='{chunk}'
+ WHERE substr(p.major_code,1,2)={quote(broad_field)}
    AND (p.source NOT LIKE '%family%' OR r.onet_code NOT IN (SELECT onet_code FROM bridge))
-), field_size AS (
- SELECT major_code,COUNT(DISTINCT onet_code) linked_total FROM linked GROUP BY major_code
-), ranked AS (
- SELECT l.major_code,l.skill_code,AVG(l.score) average_score,
-        COUNT(*) occupation_count, b.mean_score
- FROM linked l JOIN baseline b ON b.skill_code=l.skill_code
- GROUP BY l.major_code,l.skill_code
-)
-SELECT ranked.major_code,ranked.skill_code,
- ranked.average_score + (CASE sk.kind
-   WHEN 'knowledge' THEN 2 WHEN 'tool' THEN 0 ELSE 1 END)
-   * MAX(0,ranked.average_score-mean_score)
-   + CASE sk.kind WHEN 'tool'
-     THEN 10.0*ranked.occupation_count/f.linked_total
-     ELSE MIN(10,ranked.occupation_count) END,
- 'ASCED/CIP subject link -> CIP/O*NET occupations -> O*NET ratings'
-FROM ranked JOIN field_size f ON f.major_code=ranked.major_code
-JOIN skill sk ON sk.code=ranked.skill_code
-WHERE average_score >= 50
-  AND occupation_count >= MAX(2,CAST(0.15*f.linked_total AS INT));
-"""
-    # One chunk per ASCED broad field (first two digits of the major code).
-    for broad_field in ['01', '02', '03', '04', '05', '06',
-                        '07', '08', '09', '10', '11', '12']:
-        statements.append(aggregate_sql.format(chunk=broad_field))
+""", 'ASCED/CIP subject link -> CIP/O*NET occupations -> O*NET ratings'))
     # Coverage fallback: majors whose family links produced no qualifying rows
     # (typically the fine sub-families above) retry with their broad CIP
     # two-digit family, so every field of study keeps recommendations.
@@ -244,91 +277,22 @@ WHERE average_score >= 50
         '(' + quote(narrow) + ',' + quote(sorted({family.split('.')[0] for family in families})[0]) + ')'
         for narrow, families in sorted(NARROW_FIELD_FAMILIES.items())
     )
-    statements.append(f"""
+    family_cte = f"""
 WITH nf(narrow_code,family) AS (VALUES
   {broad_pairs}
 )
-INSERT INTO study_skill_map
-WITH ratings AS (
- SELECT onet_code,skill_code,score FROM onet_occupation_skill
- UNION ALL SELECT onet_code,skill_code,score FROM study_occupation_knowledge
-), baseline AS (
- SELECT skill_code,AVG(score) mean_score FROM ratings GROUP BY skill_code
-), bridge(onet_code) AS (VALUES
-  ('15-2021.00'),('15-2041.00'),('15-2041.01'),('19-3022.00'),
-  ('13-2099.01'),('19-1042.00'),('11-9199.00'),('11-9199.01'),
-  ('11-9199.02'),('11-9199.08'),('11-9121.00'),('11-9121.01'),
-  ('11-9121.02'),('13-1111.00'),('13-2099.00'),('13-2099.04'),
-  ('17-2199.00'),('17-2199.03'),('17-2199.05'),('17-2199.06'),
-  ('17-2199.07'),('17-2199.08'),('17-2199.09'),('17-2199.10'),('17-2199.11')
-), linked AS (
- SELECT DISTINCT m.code major_code,r.onet_code,r.skill_code,r.score
- FROM major_option m
- JOIN nf ON substr(m.code,1,4)=nf.narrow_code
- JOIN education_program e ON e.code LIKE 'CIP:' || nf.family ||
-    CASE WHEN nf.family LIKE '%.%' THEN '%' ELSE '.%' END
- JOIN education_onet_map em ON em.education_code=e.code
- JOIN ratings r ON r.onet_code=em.onet_code
- WHERE m.code NOT IN (SELECT DISTINCT major_code FROM study_skill_map)
-   AND r.onet_code NOT IN (SELECT onet_code FROM bridge)
-), field_size AS (
- SELECT major_code,COUNT(DISTINCT onet_code) linked_total FROM linked GROUP BY major_code
-), ranked AS (
- SELECT l.major_code,l.skill_code,AVG(l.score) average_score,
-        COUNT(*) occupation_count, b.mean_score
- FROM linked l JOIN baseline b ON b.skill_code=l.skill_code
- GROUP BY l.major_code,l.skill_code
-)
-SELECT ranked.major_code,ranked.skill_code,
- ranked.average_score + (CASE sk.kind
-   WHEN 'knowledge' THEN 2 WHEN 'tool' THEN 0 ELSE 1 END)
-   * MAX(0,ranked.average_score-mean_score)
-   + CASE sk.kind WHEN 'tool'
-     THEN 10.0*ranked.occupation_count/f.linked_total
-     ELSE MIN(10,ranked.occupation_count) END,
- 'ASCED narrow-field broad family -> CIP/O*NET occupations -> O*NET ratings'
-FROM ranked JOIN field_size f ON f.major_code=ranked.major_code
-JOIN skill sk ON sk.code=ranked.skill_code
-WHERE average_score >= 50
-  AND occupation_count >= MAX(2,CAST(0.15*f.linked_total AS INT));
-""")
-    # Last resort: a major still empty after the gated fallback (its subject
-    # family may only reach bridge occupations) retries the same broad family
-    # without the bridge filter, because some recommendation beats none.
-    statements.append(f"""
-WITH nf(narrow_code,family) AS (VALUES
-  {broad_pairs}
-)
-INSERT INTO study_skill_map
-WITH ratings AS (
- SELECT onet_code,skill_code,score FROM onet_occupation_skill
- UNION ALL SELECT onet_code,skill_code,score FROM study_occupation_knowledge
-), baseline AS (
- SELECT skill_code,AVG(score) mean_score FROM ratings GROUP BY skill_code
-), linked AS (
- SELECT DISTINCT m.code major_code,r.onet_code,r.skill_code,r.score
- FROM major_option m
- JOIN nf ON substr(m.code,1,4)=nf.narrow_code
- JOIN education_program e ON e.code LIKE 'CIP:' || nf.family ||
-    CASE WHEN nf.family LIKE '%.%' THEN '%' ELSE '.%' END
- JOIN education_onet_map em ON em.education_code=e.code
- JOIN ratings r ON r.onet_code=em.onet_code
- WHERE m.code NOT IN (SELECT DISTINCT major_code FROM study_skill_map)
-), ranked AS (
- SELECT l.major_code,l.skill_code,AVG(l.score) average_score,
-        COUNT(*) occupation_count, b.mean_score
- FROM linked l JOIN baseline b ON b.skill_code=l.skill_code
- GROUP BY l.major_code,l.skill_code
-)
-SELECT ranked.major_code,ranked.skill_code,
- ranked.average_score + (CASE sk.kind
-   WHEN 'knowledge' THEN 2 WHEN 'tool' THEN 0 ELSE 1 END)
-   * MAX(0,ranked.average_score-mean_score)
-   + MIN(CASE sk.kind WHEN 'tool' THEN 2 ELSE 10 END, ranked.occupation_count),
- 'ASCED narrow-field broad family, bridges included -> CIP/O*NET occupations -> O*NET ratings'
-FROM ranked JOIN skill sk ON sk.code=ranked.skill_code
-WHERE average_score >= 50 AND occupation_count >= 2;
-""")
+"""
+    statements.append(family_cte + aggregation_sql(
+        family_links_sql(exclude_bridges=True),
+        'ASCED narrow-field broad family -> CIP/O*NET occupations -> O*NET ratings',
+    ))
+    # The final fallback permits bridge occupations and retains its distinct
+    # support bonus / minimum, so the refactor does not change recommendations.
+    statements.append(family_cte + aggregation_sql(
+        family_links_sql(exclude_bridges=False),
+        'ASCED narrow-field broad family, bridges included -> CIP/O*NET occupations -> O*NET ratings',
+        gated=False,
+    ))
     destination = ROOT / 'data/generated/study_skills.sql'
     destination.parent.mkdir(exist_ok=True)
     destination.write_text('\n'.join(statements), encoding='utf-8')

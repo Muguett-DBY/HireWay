@@ -1,6 +1,15 @@
 // English source strings. Every key falls back to English when a
 // translation is missing in another language.
 export const en = {
+  'workspace.loadError.title': 'This page could not be loaded',
+  'workspace.loadError.message':
+    'Reload to try again. Your saved profile and learning progress will be restored.',
+  'workspace.loadError.reload': 'Reload page',
+  'common.loading': 'Loading…',
+  'money.perWeek': '{amount}/week',
+  'profile.copyError':
+    'Could not copy the recovery code. Select the code and copy it manually.',
+  'analysis.plannedSkill': '{name} is already in your learning plan',
   'nav.overview': 'Overview',
   'nav.matches': 'Matches',
   'nav.analysis': 'Analysis',

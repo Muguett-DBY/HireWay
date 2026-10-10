@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generated": "2026-10-10",
-    "source": "freeCodeCamp.org official channel uploads. Video IDs for the Kotlin, PostgreSQL (TimescaleDB) and Excel courses were taken from the channel's key-free RSS feed; older catalogue courses were confirmed against the same channel. Each original course's title, channel and duration were re-verified entry by entry with the command below on 2026-10-04. Five HireWay introductions from the HireWay channel were checked in YouTube Studio on 2026-10-10.",
+    "generated": "2026-10-11",
+    "source": "Curated freeCodeCamp.org courses and HireWay introductions. Recorded course metadata was checked on 2026-10-11; HireWay playback durations were checked on 2026-10-11. Normal builds verify every entry against YouTube before writing. Offline builds retain the recorded verification dates.",
     "channels": {
       "freeCodeCamp.org": {
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
@@ -11,7 +11,8 @@
         "channelId": "UCzii16yGyzYwcziU3RHzmoQ"
       }
     },
-    "verifyCommand": "curl -s \"https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v={id}&format=json\" && curl -s \"https://www.youtube.com/watch?v={id}\" -H \"User-Agent: Mozilla/5.0\"  | grep -o '\"lengthSeconds\":\"[0-9]*\"'"
+    "durationSource": "YouTube ytInitialPlayerResponse.videoDetails.lengthSeconds",
+    "verifyCommand": "python3 scripts/data/build_learning_videos.py --check"
   },
   "skills": {
     "Python": [
@@ -22,7 +23,7 @@
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "durationSeconds": 16012,
         "duration": "4:26:52",
-        "verifiedAt": "2026-10-04"
+        "verifiedAt": "2026-10-11"
       },
       {
         "id": "kLZgQWjnUz0",
@@ -31,7 +32,7 @@
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "durationSeconds": 14915,
         "duration": "4:08:35",
-        "verifiedAt": "2026-10-04"
+        "verifiedAt": "2026-10-11"
       }
     ],
     "SQL": [
@@ -42,16 +43,16 @@
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "durationSeconds": 15639,
         "duration": "4:20:39",
-        "verifiedAt": "2026-10-04"
+        "verifiedAt": "2026-10-11"
       },
       {
         "id": "E5e-l7C0CKc",
         "title": "SQL Introduction | HireWay Skills",
         "channel": "HireWay",
         "channelId": "UCzii16yGyzYwcziU3RHzmoQ",
-        "durationSeconds": 91,
-        "duration": "0:01:31",
-        "verifiedAt": "2026-10-10"
+        "durationSeconds": 90,
+        "duration": "0:01:30",
+        "verifiedAt": "2026-10-11"
       }
     ],
     "JavaScript": [
@@ -62,7 +63,7 @@
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "durationSeconds": 12403,
         "duration": "3:26:43",
-        "verifiedAt": "2026-10-04"
+        "verifiedAt": "2026-10-11"
       }
     ],
     "Kotlin": [
@@ -73,7 +74,7 @@
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "durationSeconds": 37693,
         "duration": "10:28:13",
-        "verifiedAt": "2026-10-04"
+        "verifiedAt": "2026-10-11"
       },
       {
         "id": "AeC4G-H-MQA",
@@ -82,7 +83,7 @@
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "durationSeconds": 14997,
         "duration": "4:09:57",
-        "verifiedAt": "2026-10-04"
+        "verifiedAt": "2026-10-11"
       },
       {
         "id": "EExSSotojVI",
@@ -91,7 +92,7 @@
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "durationSeconds": 47935,
         "duration": "13:18:55",
-        "verifiedAt": "2026-10-04"
+        "verifiedAt": "2026-10-11"
       }
     ],
     "PostgreSQL": [
@@ -102,7 +103,7 @@
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "durationSeconds": 15574,
         "duration": "4:19:34",
-        "verifiedAt": "2026-10-04"
+        "verifiedAt": "2026-10-11"
       },
       {
         "id": "gYTA8nQN030",
@@ -111,7 +112,7 @@
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "durationSeconds": 15601,
         "duration": "4:20:01",
-        "verifiedAt": "2026-10-04"
+        "verifiedAt": "2026-10-11"
       }
     ],
     "Microsoft Excel": [
@@ -122,7 +123,7 @@
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "durationSeconds": 8769,
         "duration": "2:26:09",
-        "verifiedAt": "2026-10-04"
+        "verifiedAt": "2026-10-11"
       },
       {
         "id": "gvhsKtjAmgc",
@@ -131,7 +132,7 @@
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "durationSeconds": 6075,
         "duration": "1:41:15",
-        "verifiedAt": "2026-10-04"
+        "verifiedAt": "2026-10-11"
       }
     ],
     "Tableau": [
@@ -142,7 +143,7 @@
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "durationSeconds": 1722,
         "duration": "0:28:42",
-        "verifiedAt": "2026-10-04"
+        "verifiedAt": "2026-10-11"
       }
     ],
     "Power BI": [
@@ -153,7 +154,7 @@
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "durationSeconds": 69826,
         "duration": "19:23:46",
-        "verifiedAt": "2026-10-04"
+        "verifiedAt": "2026-10-11"
       }
     ],
     "R": [
@@ -164,7 +165,7 @@
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "durationSeconds": 7839,
         "duration": "2:10:39",
-        "verifiedAt": "2026-10-04"
+        "verifiedAt": "2026-10-11"
       }
     ],
     "C++": [
@@ -175,7 +176,7 @@
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "durationSeconds": 14478,
         "duration": "4:01:18",
-        "verifiedAt": "2026-10-04"
+        "verifiedAt": "2026-10-11"
       }
     ],
     "Swift": [
@@ -186,7 +187,7 @@
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "durationSeconds": 11398,
         "duration": "3:09:58",
-        "verifiedAt": "2026-10-04"
+        "verifiedAt": "2026-10-11"
       }
     ],
     "Thomson Reuters Westlaw": [
@@ -195,9 +196,9 @@
         "title": "Westlaw Legal Research Introduction | HireWay Skills",
         "channel": "HireWay",
         "channelId": "UCzii16yGyzYwcziU3RHzmoQ",
-        "durationSeconds": 92,
-        "duration": "0:01:32",
-        "verifiedAt": "2026-10-10"
+        "durationSeconds": 91,
+        "duration": "0:01:31",
+        "verifiedAt": "2026-10-11"
       }
     ],
     "Intuit QuickBooks": [
@@ -208,7 +209,7 @@
         "channelId": "UCzii16yGyzYwcziU3RHzmoQ",
         "durationSeconds": 92,
         "duration": "0:01:32",
-        "verifiedAt": "2026-10-10"
+        "verifiedAt": "2026-10-11"
       }
     ],
     "Google Analytics": [
@@ -217,9 +218,9 @@
         "title": "Google Analytics Marketing Introduction | HireWay Skills",
         "channel": "HireWay",
         "channelId": "UCzii16yGyzYwcziU3RHzmoQ",
-        "durationSeconds": 91,
-        "duration": "0:01:31",
-        "verifiedAt": "2026-10-10"
+        "durationSeconds": 90,
+        "duration": "0:01:30",
+        "verifiedAt": "2026-10-11"
       }
     ],
     "Autodesk AutoCAD": [
@@ -228,9 +229,9 @@
         "title": "AutoCAD Introduction | HireWay Skills",
         "channel": "HireWay",
         "channelId": "UCzii16yGyzYwcziU3RHzmoQ",
-        "durationSeconds": 91,
-        "duration": "0:01:31",
-        "verifiedAt": "2026-10-10"
+        "durationSeconds": 90,
+        "duration": "0:01:30",
+        "verifiedAt": "2026-10-11"
       }
     ]
   }

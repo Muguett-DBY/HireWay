@@ -3,8 +3,7 @@ import type { TargetRole } from '../../lib/targetRoleApi'
 import { occupationTitle } from '../../lib/occupationTitle'
 import { factorPercents } from '../../lib/factorDisplay'
 import { useI18n } from '../../lib/useI18n'
-
-const money = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 })
+import { formatAud } from '../../lib/currency'
 
 type SuggestionCardProps = {
   suggestion: RoleSuggestion
@@ -26,7 +25,7 @@ export function SuggestionCard({
   compact = false,
   onPlan,
 }: SuggestionCardProps) {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
   const percents = factorPercents(suggestion.factors)
   const isTarget = targetRole?.code === suggestion.code
   const badge = isTarget
@@ -100,7 +99,9 @@ export function SuggestionCard({
         )}
         {suggestion.medianWeeklyEarnings !== null && (
           <span className="match-earn">
-            ${money.format(suggestion.medianWeeklyEarnings)}/wk
+            {t('money.perWeek', {
+              amount: formatAud(suggestion.medianWeeklyEarnings, lang),
+            })}
           </span>
         )}
       </div>

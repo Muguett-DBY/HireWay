@@ -15,11 +15,8 @@ type SavedSkillRow = {
   kind: string
 }
 
-type OverlapRow = {
-  code: string
-  name: string
-  contribution: number
-}
+type BridgeRow = { code: string; onet: string }
+type OverlapRow = { code: string; name: string; contribution: number }
 
 type Suggestion = {
   code: string
@@ -105,11 +102,13 @@ export async function handleRoleSuggestions(
     )
       .bind(code)
       .first<{ educationLevel: string; degreeCode: string | null }>(),
+    // Planned gap skills are not yet owned; current and completed skills
+    // keep contributing to recommendations as before.
     env.DB.prepare(
       `SELECT ps.skill_code AS skillCode, s.kind
        FROM profile_skill ps
        JOIN skill s ON s.code = ps.skill_code
-       WHERE ps.profile_code = ?`,
+       WHERE ps.profile_code = ? AND ps.status != 'upcoming'`,
     )
       .bind(code)
       .all<SavedSkillRow>(),
@@ -158,12 +157,10 @@ export async function handleRoleSuggestions(
     `SELECT skill_code AS code,
             COUNT(DISTINCT occupation_code) AS freq
      FROM occupation_skill_vector
-     WHERE skill_code IN (${Object.keys(userVectorRaw)
-       .map(() => '?')
-       .join(', ')})
+     WHERE skill_code IN (SELECT value FROM json_each(?))
      GROUP BY skill_code`,
   )
-    .bind(...Object.keys(userVectorRaw))
+    .bind(JSON.stringify(Object.keys(userVectorRaw)))
     .all<{ code: string; freq: number }>()
   const totalModelled = await env.DB.prepare(
     'SELECT COUNT(DISTINCT occupation_code) AS n FROM occupation_skill_vector',
@@ -173,7 +170,7 @@ export async function handleRoleSuggestions(
     freqResult.results.map((row) => [row.code, row.freq / total]),
   )
 
-  // The user vector is small, so the whole ranking runs in one query.
+  // Rank the full user vector in one query, regardless of saved skill count.
   const userVector: Record<string, number> = {}
   for (const skill of matchable) {
     const base =
@@ -190,13 +187,10 @@ export async function handleRoleSuggestions(
     ),
   )
 
-  const placeholders = Object.keys(userVector)
-    .map(() => '(?, ?)')
-    .join(', ')
-  const bindings = Object.entries(userVector).flatMap(([skillCode, weight]) => [
-    skillCode,
-    weight,
-  ])
+  // D1 allows only 100 bound parameters per query. Expand one JSON binding
+  // into rows instead of spending two bindings per saved skill. JSON stays
+  // parameterised; neither skill codes nor weights are interpolated into SQL.
+  const userVectorJson = JSON.stringify(userVector)
 
   // Every occupation sharing at least one skill enters the ranking; the
   // weighted score, not a skill-only pre-cut, decides who surfaces. Cutting
@@ -208,7 +202,7 @@ export async function handleRoleSuggestions(
   const SHRINKAGE = 500
   const skillCandidates = await env.DB.prepare(
     `WITH user_skills (skill_code, weight) AS (
-       VALUES ${placeholders}
+       SELECT key, value FROM json_each(?)
      )
      SELECT v.occupation_code AS code, o.title,
             SUM(v.score * user_skills.weight) / (m.skill_norm + ${SHRINKAGE})
@@ -233,7 +227,7 @@ export async function handleRoleSuggestions(
      GROUP BY v.occupation_code
      HAVING COUNT(DISTINCT v.skill_code) >= 1`,
   )
-    .bind(...bindings)
+    .bind(userVectorJson)
     .all<CandidateRow>()
 
   const candidates = new Map<string, CandidateRow>()
@@ -262,33 +256,41 @@ export async function handleRoleSuggestions(
     }
   }
 
-  function chunk<T>(items: T[], size: number): T[][] {
-    const parts: T[][] = []
-    for (let i = 0; i < items.length; i += size) {
-      parts.push(items.slice(i, i + size))
-    }
-    return parts
-  }
+  const candidateCodesJson = JSON.stringify([...candidates.keys()])
+  // Each list uses a single binding, removing the former serial chunk
+  // requests. D1 executes one query at a time per database; batching these
+  // independent reads saves round trips without flooding its request queue.
+  const [direct, overlapResult] = (await env.DB.batch([
+    env.DB.prepare(
+      `SELECT occupation_code AS code, onet_code AS onet
+       FROM occupation_onet_map
+       WHERE occupation_code IN (SELECT value FROM json_each(?))`,
+    ).bind(candidateCodesJson),
+    env.DB.prepare(
+      `WITH user_skills (skill_code, weight) AS (
+         SELECT key, value FROM json_each(?)
+       )
+       SELECT v.occupation_code AS code, s.name AS name,
+              v.score * user_skills.weight AS contribution
+       FROM user_skills
+       JOIN occupation_skill_vector v
+         ON v.skill_code = user_skills.skill_code
+       JOIN skill s ON s.code = v.skill_code
+       WHERE v.occupation_code IN (SELECT value FROM json_each(?))`,
+    ).bind(userVectorJson, candidateCodesJson),
+  ])) as [D1Result<BridgeRow>, D1Result<OverlapRow>]
 
   const basisByOccupation = new Map<string, Set<string>>()
-  for (const codes of chunk([...candidates.keys()], 50)) {
-    const direct = await env.DB.prepare(
-      `SELECT occupation_code AS code, onet_code AS onet
-       FROM occupation_onet_map WHERE occupation_code IN (${codes.map(() => '?').join(', ')})`,
-    )
-      .bind(...codes)
-      .all<{ code: string; onet: string }>()
-    for (const row of direct.results) {
-      if (!specificBridgeCodes.has(row.onet)) continue
-      const set = basisByOccupation.get(row.code) ?? new Set<string>()
-      set.add(row.onet)
-      basisByOccupation.set(row.code, set)
-    }
+  for (const row of direct.results) {
+    if (!specificBridgeCodes.has(row.onet)) continue
+    const set = basisByOccupation.get(row.code) ?? new Set<string>()
+    set.add(row.onet)
+    basisByOccupation.set(row.code, set)
   }
   const inheritedCodes = [...candidates.keys()].filter(
     (code) => !basisByOccupation.has(code),
   )
-  for (const codes of chunk(inheritedCodes, 50)) {
+  if (inheritedCodes.length > 0) {
     const sibling = await env.DB.prepare(
       `SELECT m1.occupation_code AS code, om.onet_code AS onet
        FROM occupation_anzsco_map m1
@@ -296,9 +298,9 @@ export async function handleRoleSuggestions(
          ON m2.anzsco_code = m1.anzsco_code AND m2.is_primary = 1
        JOIN occupation_onet_map om ON om.occupation_code = m2.occupation_code
        WHERE m1.is_primary = 1
-         AND m1.occupation_code IN (${codes.map(() => '?').join(', ')})`,
+         AND m1.occupation_code IN (SELECT value FROM json_each(?))`,
     )
-      .bind(...codes)
+      .bind(JSON.stringify(inheritedCodes))
       .all<{ code: string; onet: string }>()
     for (const row of sibling.results) {
       if (!specificBridgeCodes.has(row.onet)) continue
@@ -320,31 +322,12 @@ export async function handleRoleSuggestions(
     return Math.min(1, 0.3 + (0.7 * shared) / basis.size)
   }
 
-  // Skill overlaps are fetched once and reused for every explanation. The
-  // candidate pool is unbounded now, so the IN list is sent in chunks to stay
-  // inside the D1 bound-parameter limit.
+  // Reuse the overlap read for every explanation.
   const overlaps = new Map<string, { name: string; contribution: number }[]>()
-  for (const codes of chunk([...candidates.keys()], 50)) {
-    const overlapResult = await env.DB.prepare(
-      `WITH user_skills (skill_code, weight) AS (
-         VALUES ${placeholders}
-       )
-       SELECT v.occupation_code AS code, s.name AS name,
-              v.score * user_skills.weight AS contribution
-       FROM user_skills
-       JOIN occupation_skill_vector v
-         ON v.skill_code = user_skills.skill_code
-       JOIN skill s ON s.code = v.skill_code
-       WHERE v.occupation_code IN (${codes.map(() => '?').join(', ')})`,
-    )
-      .bind(...bindings, ...codes)
-      .all<OverlapRow>()
-
-    for (const row of overlapResult.results) {
-      const list = overlaps.get(row.code) ?? []
-      list.push({ name: row.name, contribution: row.contribution })
-      overlaps.set(row.code, list)
-    }
+  for (const row of overlapResult.results) {
+    const list = overlaps.get(row.code) ?? []
+    list.push({ name: row.name, contribution: row.contribution })
+    overlaps.set(row.code, list)
   }
 
   const userNormValue = userNorm || 1

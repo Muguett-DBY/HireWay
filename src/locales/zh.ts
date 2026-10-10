@@ -1,5 +1,14 @@
 // Simplified Chinese translations. Missing keys fall back to English.
 export const zh = {
+  'workspace.loadError.title': '暂时无法加载此页面',
+  'workspace.loadError.message':
+    '请重新加载后重试。已保存的个人资料和学习进度会自动恢复。',
+  'workspace.loadError.reload': '重新加载页面',
+  'common.loading': '加载中…',
+  'money.perWeek': '{amount}/周',
+  'profile.copyError': '无法复制恢复码，请选中恢复码并手动复制。',
+  'analysis.removeAria': '移除 {name}',
+  'analysis.plannedSkill': '{name}已加入你的学习计划',
   'nav.overview': '总览',
   'nav.matches': '职业匹配',
   'nav.analysis': '能力分析',

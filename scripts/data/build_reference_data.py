@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import csv
 import hashlib
 import json
@@ -9,13 +10,21 @@ import re
 import urllib.request
 from collections import defaultdict
 from dataclasses import dataclass
-from datetime import date
 from difflib import SequenceMatcher
+from functools import partial
 from pathlib import Path
-from typing import Iterable, Iterator, Sequence
+from typing import Iterator
 
 from openpyxl import load_workbook
 
+
+from data_build_utils import (
+    DATA_SOURCE_CONFLICT, SNAPSHOT_ACCESSED_ON, add_accessed_on_argument,
+    clean_text, insert_many as shared_insert_many, release_statement, sha256,
+)
+
+# Preserve the reference importer's existing statement size.
+insert_many = partial(shared_insert_many, batch_size=150)
 
 ROOT = Path(__file__).resolve().parents[2]
 # Keep the exact source snapshot beside the scripts that consume it.
@@ -106,14 +115,6 @@ def download_sources() -> dict[str, Path]:
             path.write_bytes(response.read())
 
     return paths
-
-
-def clean_text(value: object) -> str:
-    """Turn spreadsheet cells into compact display text."""
-
-    if value is None:
-        return ""
-    return re.sub(r"\s+", " ", str(value)).strip()
 
 
 def clean_code(value: object) -> str:
@@ -407,56 +408,6 @@ def read_onet_skills(paths: dict[str, Path]) -> tuple[dict, set, set]:
     }
 
 
-def sql_value(value: object) -> str:
-    """Encode generated values as SQLite literals."""
-
-    if value is None:
-        return "NULL"
-    if isinstance(value, (int, float)):
-        return str(value)
-    return "'" + str(value).replace("'", "''") + "'"
-
-
-def batched(items: Sequence[tuple], size: int = 150) -> Iterator[Sequence[tuple]]:
-    """Keep each generated SQL statement small enough for Wrangler and D1."""
-
-    for start in range(0, len(items), size):
-        yield items[start : start + size]
-
-
-def insert_many(
-    table: str,
-    columns: Sequence[str],
-    rows: Iterable[tuple],
-    conflict_sql: str = "DO NOTHING",
-) -> list[str]:
-    """Create compact multi-row upserts for the generated SQL file."""
-
-    ordered_rows = sorted(set(rows), key=lambda row: tuple(str(value) for value in row))
-    statements: list[str] = []
-    column_sql = ", ".join(columns)
-    for batch in batched(ordered_rows):
-        values = ",\n  ".join(
-            "(" + ", ".join(sql_value(value) for value in row) + ")"
-            for row in batch
-        )
-        statements.append(
-            f"INSERT INTO {table} ({column_sql}) VALUES\n  {values}\n"
-            f"ON CONFLICT {conflict_sql};"
-        )
-    return statements
-
-
-def sha256(path: Path) -> str:
-    """Record the exact downloaded release used for this build."""
-
-    digest = hashlib.sha256()
-    with path.open("rb") as source:
-        for chunk in iter(lambda: source.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
-
-
 def validate_reference_data(
     occupations: dict,
     occupation_aliases: set[tuple[str, str]],
@@ -527,7 +478,7 @@ def validate_reference_data(
     return {"status": "passed", "checks": checks}
 
 
-def build_sql(paths: dict[str, Path]) -> dict[str, object]:
+def build_sql(paths: dict[str, Path], accessed_on: str = SNAPSHOT_ACCESSED_ON) -> dict[str, object]:
     """Parse all sources and write one repeatable D1 import file."""
 
     occupations, occupation_aliases, osca_to_isco = read_osca(paths)
@@ -569,7 +520,7 @@ def build_sql(paths: dict[str, Path]) -> dict[str, object]:
             SOURCES["osca_descriptions"][1],
             "Creative Commons Attribution 4.0 International",
             "Australian occupation titles, aliases and descriptions.",
-            date.today().isoformat(),
+            accessed_on,
         ),
         (
             "O*NET 31.0",
@@ -577,7 +528,7 @@ def build_sql(paths: dict[str, Path]) -> dict[str, object]:
             "https://www.onetcenter.org/database.html",
             "Creative Commons Attribution 4.0 International",
             "Occupation, skill, technology, CIP and ESCO crosswalk data.",
-            date.today().isoformat(),
+            accessed_on,
         ),
     ]
 
@@ -590,25 +541,15 @@ def build_sql(paths: dict[str, Path]) -> dict[str, object]:
         "data_source",
         ("name", "publisher", "source_url", "licence", "description", "accessed_on"),
         source_rows,
-        "(name) DO UPDATE SET publisher = excluded.publisher, "
-        "source_url = excluded.source_url, licence = excluded.licence, "
-        "description = excluded.description, accessed_on = excluded.accessed_on",
+        DATA_SOURCE_CONFLICT,
     )
 
-    release_rows = []
-    for key, (filename, _) in SOURCES.items():
+    for key in SOURCES:
         source_name = "ABS OSCA 2024" if key.startswith("osca_") else "O*NET 31.0"
-        release_rows.append((source_name, filename, sha256(paths[key])))
-    for source_name, filename, checksum in release_rows:
-        statements.append(
-            "INSERT INTO dataset_release "
-            "(data_source_id, release_label, published_on, source_file, checksum_sha256) "
-            f"SELECT id, {sql_value('2024 v1.0' if source_name.startswith('ABS') else '31.0')}, "
-            f"NULL, {sql_value(filename)}, {sql_value(checksum)} FROM data_source "
-            f"WHERE name = {sql_value(source_name)} "
-            "ON CONFLICT (data_source_id, release_label, source_file) "
-            "DO UPDATE SET checksum_sha256 = excluded.checksum_sha256;"
-        )
+        statements.append(release_statement(
+            source_name, "2024 v1.0" if source_name.startswith("ABS") else "31.0",
+            None, paths[key], update_published_on=False,
+        ))
 
     statements += insert_many(
         "occupation",
@@ -740,8 +681,11 @@ def build_sql(paths: dict[str, Path]) -> dict[str, object]:
 def main() -> None:
     """Download, transform, and report the generated reference data."""
 
+    parser = argparse.ArgumentParser(description=__doc__)
+    add_accessed_on_argument(parser)
+    arguments = parser.parse_args()
     paths = download_sources()
-    report = build_sql(paths)
+    report = build_sql(paths, arguments.accessed_on)
     print(json.dumps(report["counts"], indent=2))
     print(f"Wrote {SQL_PATH.relative_to(ROOT)}")
     print(f"Wrote {REPORT_PATH.relative_to(ROOT)}")

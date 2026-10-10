@@ -24,6 +24,16 @@
     },
   ],
 
+  // Anonymous creation only; profile recovery and edits are unaffected.
+  // Counters are local to each Cloudflare location, not a global quota.
+  "ratelimits": [
+    {
+      "name": "PROFILE_CREATE_LIMITER",
+      "namespace_id": "512020261011",
+      "simple": { "limit": 10, "period": 60 },
+    },
+  ],
+
   // Keep backend errors visible after deployment.
   "observability": {
     "enabled": true,

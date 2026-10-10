@@ -1,5 +1,15 @@
 // Spanish translations. Missing keys fall back to English.
 export const es = {
+  'workspace.loadError.title': 'No se pudo cargar esta página',
+  'workspace.loadError.message':
+    'Recarga la página para volver a intentarlo. Se restaurarán tu perfil y tu progreso de aprendizaje guardados.',
+  'workspace.loadError.reload': 'Recargar página',
+  'common.loading': 'Cargando…',
+  'money.perWeek': '{amount}/semana',
+  'profile.copyError':
+    'No se pudo copiar el código de recuperación. Selecciónalo y cópialo manualmente.',
+  'analysis.removeAria': 'Quitar {name}',
+  'analysis.plannedSkill': '{name} ya está en tu plan de aprendizaje',
   'nav.overview': 'Resumen',
   'nav.matches': 'Coincidencias',
   'nav.analysis': 'Análisis',

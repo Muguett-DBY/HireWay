@@ -39,7 +39,9 @@ export function PathwaysPage({
   const [progress, setProgress] = useState<Map<string, SkillWithProgress>>(
     () => new Map(),
   )
-  const [activeSkill, setActiveSkill] = useState<Skill | null>(null)
+  const [activeSkillId, setActiveSkillId] = useState<number | null>(null)
+  // Keep the open player's status in sync after a successful completion.
+  const activeSkill = skills.find((skill) => skill.id === activeSkillId) ?? null
   const [sessionBusy, setSessionBusy] = useState(false)
 
   useEffect(() => {
@@ -148,7 +150,7 @@ export function PathwaysPage({
                 ? t('learning.viewAria', { name: skill.name })
                 : t('learning.startAria', { name: skill.name })
             }
-            onClick={() => setActiveSkill(skill)}
+            onClick={() => setActiveSkillId(skill.id)}
           >
             {pct > 0 ? t('learning.view') : t('learning.start')}
           </button>
@@ -291,12 +293,12 @@ export function PathwaysPage({
         progressPct={activeRecord?.progressPct ?? 0}
         secondsTotal={activeRecord?.secondsTotal ?? 0}
         sessions={activeRecord?.sessions ?? 0}
-        busy={sessionBusy}
+        busy={sessionBusy || busy}
         onMarkCompleted={(skill) => onSkillStatus(skill, 'completed')}
         onSession={(skillCode, seconds, candidatePct) => {
           void recordSession(skillCode, seconds, candidatePct)
         }}
-        onClose={() => setActiveSkill(null)}
+        onClose={() => setActiveSkillId(null)}
       />
     </>
   )

@@ -12,19 +12,7 @@ export type LearningVideo = {
   verifiedAt: string
 }
 
-export type LearningVideosMeta = {
-  generated: string
-  source: string
-  channels: Record<string, { channelId: string; rss?: string }>
-  verifyCommand: string
-}
-
-export const learningVideosMeta = rawData.meta as LearningVideosMeta
-
-const videoData = rawData as {
-  meta: LearningVideosMeta
-  skills: Record<string, LearningVideo[]>
-}
+const videoData = rawData as { skills: Record<string, LearningVideo[]> }
 
 // Look up videos by the skill name the profile displays. Skills without an
 // entry simply have no video block.

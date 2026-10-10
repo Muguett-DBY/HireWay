@@ -6,14 +6,15 @@ import argparse
 import csv
 import json
 from collections import defaultdict
-from datetime import date
 from pathlib import Path
 
 # Reuse the proven helpers so both imports produce the same SQL style.
-from build_iteration_one_data import (
+from data_build_utils import (
+    DATA_SOURCE_CONFLICT, add_accessed_on_argument,
     insert_many,
     insert_with_release,
     release_statement,
+    sql_value,
 )
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -70,7 +71,8 @@ def read_occupation_links(path: Path) -> dict[str, list[str]]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.parse_args()
+    add_accessed_on_argument(parser)
+    arguments = parser.parse_args()
 
     market_rows = read_market_rows(MARKET_CSV)
     occupation_links = read_occupation_links(CATALOG_CSV)
@@ -127,12 +129,10 @@ def main() -> None:
                 "Creative Commons Attribution 4.0 International",
                 "Employment projections, earnings and Internet Vacancy Chart "
                 "vacancies for Australian occupations. © Commonwealth of Australia.",
-                date.today().isoformat(),
+                arguments.accessed_on,
             )
         ],
-        "(name) DO UPDATE SET publisher = excluded.publisher, "
-        "source_url = excluded.source_url, licence = excluded.licence, "
-        "description = excluded.description, accessed_on = excluded.accessed_on",
+        DATA_SOURCE_CONFLICT,
     )
     statements.append(
         release_statement(SOURCE_NAME, RELEASE_LABEL, None, MARKET_CSV)
@@ -145,7 +145,7 @@ def main() -> None:
         "DELETE FROM occupation_anzsco_map WHERE dataset_release_id IN ("
         "SELECT release.id FROM dataset_release release "
         "JOIN data_source source ON source.id = release.data_source_id "
-        f"WHERE source.name = {SOURCE_NAME!r});",
+        f"WHERE source.name = {sql_value(SOURCE_NAME)});",
         "DELETE FROM anzsco_group WHERE classification_level = 4;",
     ]
 

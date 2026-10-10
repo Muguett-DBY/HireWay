@@ -9,6 +9,7 @@ import { MorphIcon } from 'morphicons/react'
 import { HeroScenery } from './HeroScenery'
 import { SuggestionCard } from './SuggestionCard'
 import { useI18n } from '../../lib/useI18n'
+import { formatAud } from '../../lib/currency'
 
 const numberFormat = new Intl.NumberFormat('en-AU', {
   maximumFractionDigits: 0,
@@ -44,7 +45,7 @@ export function OverviewPage({
   onGoWizard,
   onGoPage,
 }: OverviewPageProps) {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
   const targetSuggestion = suggestions.find(
     (item) => item.code === targetRole?.code,
   )
@@ -70,7 +71,7 @@ export function OverviewPage({
       label: t('overview.stat.earnings'),
       value:
         market?.medianWeeklyEarnings != null
-          ? `$${numberFormat.format(market.medianWeeklyEarnings)}`
+          ? formatAud(market.medianWeeklyEarnings, lang)
           : null,
     },
     {

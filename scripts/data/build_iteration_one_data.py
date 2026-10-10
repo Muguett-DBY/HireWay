@@ -9,9 +9,14 @@ import json
 import re
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field
-from datetime import date
 from pathlib import Path
-from typing import Iterable, Iterator, Sequence
+from typing import Iterator
+
+
+from data_build_utils import (
+    DATA_SOURCE_CONFLICT, SNAPSHOT_ACCESSED_ON, add_accessed_on_argument,
+    clean_text, insert_many, insert_with_release, release_statement, sha256, sql_value,
+)
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -39,14 +44,6 @@ class DegreeGroup:
     courses: set[tuple[str, str]] = field(default_factory=set)
     providers: set[str] = field(default_factory=set)
     majors: dict[str, int] = field(default_factory=dict)
-
-
-def clean_text(value: object) -> str:
-    """Trim display text and collapse repeated whitespace."""
-
-    if value is None:
-        return ""
-    return re.sub(r"\s+", " ", str(value)).strip()
 
 
 def normalise_title(value: str) -> str:
@@ -91,16 +88,6 @@ def csv_rows(
 
         for row in reader:
             yield {key: clean_text(value) for key, value in row.items()}
-
-
-def sha256(path: Path) -> str:
-    """Record the exact cleaned file used to build the import."""
-
-    digest = hashlib.sha256()
-    with path.open("rb") as source:
-        for chunk in iter(lambda: source.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
 
 
 def read_levels(path: Path) -> dict[str, tuple[int, int, int]]:
@@ -427,105 +414,7 @@ def read_pathways(
     return qualifications, links, metrics
 
 
-def sql_value(value: object) -> str:
-    """Encode generated values as SQLite literals."""
-
-    if value is None:
-        return "NULL"
-    if isinstance(value, (int, float)):
-        return str(value)
-    return "'" + str(value).replace("'", "''") + "'"
-
-
-def batched(items: Sequence[tuple], size: int = 120) -> Iterator[Sequence[tuple]]:
-    """Keep generated statements small enough for local and remote D1."""
-
-    for start in range(0, len(items), size):
-        yield items[start : start + size]
-
-
-def insert_many(
-    table: str,
-    columns: Sequence[str],
-    rows: Iterable[tuple],
-    conflict_sql: str,
-) -> list[str]:
-    """Create compact multi-row upserts without database parameters."""
-
-    ordered_rows = sorted(set(rows), key=lambda row: tuple(str(value) for value in row))
-    statements: list[str] = []
-    for batch in batched(ordered_rows):
-        values = ",\n  ".join(
-            "(" + ", ".join(sql_value(value) for value in row) + ")"
-            for row in batch
-        )
-        statements.append(
-            f"INSERT INTO {table} ({', '.join(columns)}) VALUES\n  {values}\n"
-            f"ON CONFLICT {conflict_sql};"
-        )
-    return statements
-
-
-def insert_with_release(
-    table: str,
-    columns: Sequence[str],
-    rows: Iterable[tuple],
-    source_name: str,
-    release_label: str,
-    source_file: str,
-    conflict_sql: str,
-) -> list[str]:
-    """Attach a generated row to the matching provenance record."""
-
-    ordered_rows = sorted(set(rows), key=lambda row: tuple(str(value) for value in row))
-    statements: list[str] = []
-    input_columns = ", ".join(columns)
-    output_columns = ", ".join([*columns, "dataset_release_id"])
-    selected_columns = ", ".join(f"input.{column}" for column in columns)
-
-    for batch in batched(ordered_rows):
-        values = ",\n    ".join(
-            "(" + ", ".join(sql_value(value) for value in row) + ")"
-            for row in batch
-        )
-        statements.append(
-            f"WITH input ({input_columns}) AS (\n  VALUES\n    {values}\n)\n"
-            f"INSERT INTO {table} ({output_columns})\n"
-            f"SELECT {selected_columns}, release.id\n"
-            "FROM input\n"
-            "JOIN data_source source\n"
-            f"  ON source.name = {sql_value(source_name)}\n"
-            "JOIN dataset_release release\n"
-            "  ON release.data_source_id = source.id\n"
-            f" AND release.release_label = {sql_value(release_label)}\n"
-            f" AND release.source_file = {sql_value(source_file)}\n"
-            "WHERE 1\n"
-            f"ON CONFLICT {conflict_sql};"
-        )
-    return statements
-
-
-def release_statement(
-    source_name: str,
-    release_label: str,
-    published_on: str | None,
-    path: Path,
-) -> str:
-    """Create or refresh one dataset release record."""
-
-    return (
-        "INSERT INTO dataset_release "
-        "(data_source_id, release_label, published_on, source_file, checksum_sha256) "
-        f"SELECT id, {sql_value(release_label)}, {sql_value(published_on)}, "
-        f"{sql_value(path.name)}, {sql_value(sha256(path))} "
-        f"FROM data_source WHERE name = {sql_value(source_name)} "
-        "ON CONFLICT (data_source_id, release_label, source_file) "
-        "DO UPDATE SET published_on = excluded.published_on, "
-        "checksum_sha256 = excluded.checksum_sha256;"
-    )
-
-
-def build_import(source_dir: Path) -> dict[str, object]:
+def build_import(source_dir: Path, accessed_on: str = SNAPSHOT_ACCESSED_ON) -> dict[str, object]:
     """Validate the cleaned dataset and write the repeatable D1 import."""
 
     paths = {key: source_dir / filename for key, filename in FILES.items()}
@@ -585,7 +474,6 @@ def build_import(source_dir: Path) -> dict[str, object]:
         raise ValueError("Iteration 1 data checks failed: " + ", ".join(failed))
 
     release_label = "cleaned_data_2"
-    accessed_on = date.today().isoformat()
     source_rows = [
         (
             "ABS OSCA 2024",
@@ -633,9 +521,7 @@ def build_import(source_dir: Path) -> dict[str, object]:
         "data_source",
         ("name", "publisher", "source_url", "licence", "description", "accessed_on"),
         source_rows,
-        "(name) DO UPDATE SET publisher = excluded.publisher, "
-        "source_url = excluded.source_url, licence = excluded.licence, "
-        "description = excluded.description, accessed_on = excluded.accessed_on",
+        DATA_SOURCE_CONFLICT,
     )
 
     releases = (
@@ -840,9 +726,10 @@ def main() -> None:
         default=DEFAULT_SOURCE_DIR,
         help="Path to cleaned_data_2 (defaults to data/sources/iteration-1)",
     )
+    add_accessed_on_argument(parser)
     arguments = parser.parse_args()
 
-    report = build_import(arguments.source_dir)
+    report = build_import(arguments.source_dir, arguments.accessed_on)
     print(json.dumps(report["counts"], indent=2))
     print(f"Quality: {report['quality']['status']}")
     print(f"Wrote {SQL_PATH.relative_to(ROOT)}")

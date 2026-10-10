@@ -40,3 +40,7 @@ Thumbs.db
 *.tsbuildinfo
 worker-configuration.d.ts
 .zcode/
+
+# Local audit and browser artifacts
+/output/
+/nul

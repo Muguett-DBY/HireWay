@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Check, Copy, Trash2 } from 'lucide'
 import { MorphIcon } from 'morphicons/react'
 import { occupationTitle } from '../../lib/occupationTitle'
@@ -22,7 +22,7 @@ type MyProfilePageProps = {
   skills: Skill[]
   targetRole: TargetRole | null
   busy: boolean
-  onAddSkill: (name: string, code: string) => void
+  onAddSkill: (name: string, code: string) => Promise<SaveSkillResult>
   onRemoveSkill: (skill: Skill) => Promise<SaveSkillResult>
   onSkillStatus: (skill: Skill, status: SkillStatus) => void
   onEditBackground: () => void
@@ -56,37 +56,72 @@ export function MyProfilePage({
   >([])
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
-  const searchTimer = useRef<number | null>(null)
+  const [copyError, setCopyError] = useState('')
+  const [promptError, setPromptError] = useState('')
+  const copyTimer = useRef<number | null>(null)
   const removeTarget = useRef<Skill | null>(null)
   const [confirmingId, setConfirmingId] = useState<number | null>(null)
 
-  // Debounced skill search against the same catalogue the wizard uses.
+  // Every new query cancels both the debounce and any in-flight request.
+  // The same cleanup runs on unmount, so stale searches cannot reopen a menu.
+  useEffect(() => {
+    if (query.trim().length < 2) return
+    const controller = new AbortController()
+    const timer = window.setTimeout(() => {
+      void searchOptions('skills', query.trim(), controller.signal)
+        .then((next) => {
+          if (!controller.signal.aborted) setOptions(next)
+        })
+        .catch(() => {
+          if (!controller.signal.aborted) setOptions([])
+        })
+    }, 180)
+    return () => {
+      window.clearTimeout(timer)
+      controller.abort()
+    }
+  }, [query])
+
+  useEffect(
+    () => () => {
+      if (copyTimer.current !== null) window.clearTimeout(copyTimer.current)
+    },
+    [],
+  )
+
   function updateSearch(value: string) {
     setQuery(value)
     setError('')
-    if (searchTimer.current) window.clearTimeout(searchTimer.current)
-    if (value.trim().length < 2) {
-      setOptions([])
-      return
-    }
-    searchTimer.current = window.setTimeout(() => {
-      void searchOptions('skills', value.trim())
-        .then(setOptions)
-        .catch(() => setOptions([]))
-    }, 180)
-  }
-
-  function addFromOption(code: string, label: string) {
     setOptions([])
-    setQuery('')
-    void onAddSkill(label, code)
   }
 
-  function copyCode() {
-    void navigator.clipboard.writeText(recoveryCode).then(() => {
+  async function addFromOption(code: string, label: string) {
+    setError('')
+    const result = await onAddSkill(label, code)
+    if (result.ok) {
+      setOptions([])
+      setQuery('')
+    } else setError(result.error)
+  }
+
+  async function answerPrompt() {
+    if (!promptSkill) return
+    setPromptError('')
+    const result = await onAddSkill(promptSkill.label, promptSkill.code)
+    if (!result.ok) setPromptError(result.error)
+  }
+
+  async function copyCode() {
+    setCopyError('')
+    setCopied(false)
+    try {
+      await navigator.clipboard.writeText(recoveryCode)
       setCopied(true)
-      window.setTimeout(() => setCopied(false), 1600)
-    })
+      if (copyTimer.current !== null) window.clearTimeout(copyTimer.current)
+      copyTimer.current = window.setTimeout(() => setCopied(false), 1600)
+    } catch {
+      setCopyError(t('profile.copyError'))
+    }
   }
 
   function askRemove(skill: Skill) {
@@ -131,6 +166,11 @@ export function MyProfilePage({
             {copied ? t('wizard.recovery.copied') : t('wizard.recovery.copy')}
           </button>
         </div>
+        {copyError && (
+          <p className="field-error" role="alert">
+            {copyError}
+          </p>
+        )}
       </section>
 
       <section className="page-section">
@@ -188,8 +228,12 @@ export function MyProfilePage({
             courseTitle={profile.qualification}
             skillLabel={promptSkill.label}
             busy={busy}
-            onYes={() => onAddSkill(promptSkill.label, promptSkill.code)}
-            onNotYet={() => onDeclineSkill(promptSkill.code)}
+            error={promptError}
+            onYes={() => void answerPrompt()}
+            onNotYet={() => {
+              setPromptError('')
+              onDeclineSkill(promptSkill.code)
+            }}
           />
         )}
 
@@ -212,7 +256,10 @@ export function MyProfilePage({
                 <li key={option.code}>
                   <button
                     type="button"
-                    onClick={() => addFromOption(option.code, option.label)}
+                    disabled={busy}
+                    onClick={() =>
+                      void addFromOption(option.code, option.label)
+                    }
                   >
                     <strong>{option.label}</strong>
                     <small>

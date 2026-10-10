@@ -1,5 +1,15 @@
 // Japanese translations. Missing keys fall back to English.
 export const ja = {
+  'workspace.loadError.title': 'ページを読み込めませんでした',
+  'workspace.loadError.message':
+    'ページを再読み込みしてお試しください。保存済みのプロフィールと学習状況は復元されます。',
+  'workspace.loadError.reload': 'ページを再読み込み',
+  'common.loading': '読み込み中…',
+  'money.perWeek': '{amount}/週',
+  'profile.copyError':
+    '復元コードをコピーできませんでした。コードを選択し、手動でコピーしてください。',
+  'analysis.removeAria': '{name} を削除',
+  'analysis.plannedSkill': '{name} は学習計画に追加済みです',
   'nav.overview': '概要',
   'nav.matches': 'マッチ',
   'nav.analysis': '分析',
@@ -122,7 +132,7 @@ export const ja = {
   'overview.chooseCta': '目標職を選ぶ',
   'overview.editCta': '目標職を編集',
   'overview.explore': 'マッチを見る →',
-  'overview.guide1.title': ' readiness を確認',
+  'overview.guide1.title': '準備状況を確認',
   'overview.guide1.sub': 'あなたのスキルと職種要件を比較します。',
   'overview.guide2.title': '職種の詳細を見る',
   'overview.guide2.sub': 'タスク、スキルグループ、学習ルート。',

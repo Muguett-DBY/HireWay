@@ -1,4 +1,11 @@
-import { useEffect, useRef, useState, type FormEvent } from 'react'
+import {
+  lazy,
+  Suspense,
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+} from 'react'
 import { ArrowLeft, Check, Copy } from 'lucide'
 import { MorphIcon } from 'morphicons/react'
 import {
@@ -24,29 +31,27 @@ import { MarketingLanding } from '../components/landing/MarketingLanding'
 import { LandingScreen } from '../components/landing/LandingScreen'
 import { AppNav, type AppPage } from '../components/app/AppNav'
 import { SkillPromptCard } from '../components/app/SkillPromptCard'
-import { MyProfilePage } from '../components/app/MyProfilePage'
+import { WorkspaceBoundary } from '../components/app/WorkspaceBoundary'
 import { LanguageSwitcher } from '../components/LanguageSwitcher'
 import { useI18n } from '../lib/useI18n'
-import { OverviewPage } from '../components/app/OverviewPage'
-import { MatchesPage } from '../components/app/MatchesPage'
-import { AnalysisPage } from '../components/app/AnalysisPage'
-import { RoleDetailsPage } from '../components/app/RoleDetailsPage'
-import { PathwaysPage } from '../components/app/PathwaysPage'
-import {
-  loadRoleRequirements,
-  type RoleRequirements as RequirementsData,
-  type RoleSkill,
-} from '../lib/roleRequirementsApi'
-import { loadRoleSuggestions, type RoleSuggestion } from '../lib/suggestionApi'
+import { useSkillPrompts } from '../hooks/useSkillPrompts'
+import { useStudyRecommendations } from '../hooks/useStudyRecommendations'
+import type { RoleSuggestion } from '../lib/suggestionApi'
+import { useWorkspaceData } from '../hooks/useWorkspaceData'
 
 import {
-  loadSkillRecommendations,
   searchOptions,
   searchStudyOptions,
   type CatalogueOption,
   type SkillRecommendation,
   type StudyOption,
 } from '../lib/optionsApi'
+
+const AppWorkspace = lazy(() =>
+  import('../components/app/AppWorkspace').then((module) => ({
+    default: module.AppWorkspace,
+  })),
+)
 
 type PendingTargetRoleChange = Pick<TargetRole, 'code' | 'title'> & {
   returnToOverview: boolean
@@ -136,17 +141,17 @@ export function ProfilePage() {
   const [pendingTargetRole, setPendingTargetRole] =
     useState<PendingTargetRoleChange | null>(null)
   const targetRoleDialogRef = useRef<HTMLDialogElement>(null)
-  const [recommendations, setRecommendations] = useState<SkillRecommendation[]>(
-    [],
-  )
-  const [recommendationsBusy, setRecommendationsBusy] = useState(false)
-  // Workspace data for the app pages, reloaded whenever something changes.
-  const [suggestions, setSuggestions] = useState<RoleSuggestion[]>([])
-  const [suggestionHint, setSuggestionHint] = useState<string | null>(null)
-  const [requirements, setRequirements] = useState<RequirementsData | null>(
-    null,
+  const { recommendations, recommendationsBusy } = useStudyRecommendations(
+    details.degreeCode,
+    details.majorCode,
   )
   const [refreshKey, setRefreshKey] = useState(0)
+  const { suggestions, suggestionHint, requirements } = useWorkspaceData(
+    screen === 'app',
+    profile,
+    targetRole,
+    refreshKey,
+  )
 
   const bumpRefresh = () => setRefreshKey((current) => current + 1)
 
@@ -162,78 +167,14 @@ export function ProfilePage() {
     }
   }, [pendingTargetRole])
 
-  // Do not suggest a skill the profile has already saved.
-  const suggestedSkills = recommendations.filter(
-    (suggestion) =>
-      !skills.some(
-        (skill) =>
-          skill.skillCode === suggestion.code ||
-          skill.name.toLowerCase() === suggestion.label.toLowerCase(),
-      ),
+  const { suggestedSkills, elicitation, recordAnswer } = useSkillPrompts(
+    profile?.code ?? null,
+    recommendations,
+    skills,
   )
-
-  // Elicitation: the overview asks about at most three study-pathway tools,
-  // one at a time, and only while the profile lacks a strong skill match.
-  // The stop line was re-derived after the shrinkage change compressed the
-  // cosine scale: weak profiles peak near 6 raw skill points and strong ones
-  // near 10, so 8 of the 60 raw points separates "keep asking" from "the
-  // matches are already there". A generic soft-skill profile clears the line
-  // on its own, and one high-weight tool such as Epic Systems crosses it in
-  // a single answer.
-  const SKILL_PROMPT_KEY = 'hireway.skillPrompt'
-  const SKILL_PROMPT_LIMIT = 3
   const SKILL_PROMPT_QUALITY = 8
   const [skillPromptBusy, setSkillPromptBusy] = useState(false)
-  // Re-render trigger when an answer is recorded; the prompt itself is
-  // recomputed from localStorage on every render.
-  const [promptEpoch, setPromptEpoch] = useState(0)
-
-  function readPromptHistory(): {
-    asked: { code: string; skill: string }[]
-    notYet: { code: string; skill: string }[]
-  } {
-    try {
-      const raw = window.localStorage.getItem(SKILL_PROMPT_KEY)
-      if (raw) return { asked: [], notYet: [], ...JSON.parse(raw) }
-    } catch {
-      // fall through to a fresh history
-    }
-    return { asked: [], notYet: [] }
-  }
-
-  function writePromptHistory(history: {
-    asked: { code: string; skill: string }[]
-    notYet: { code: string; skill: string }[]
-  }) {
-    window.localStorage.setItem(SKILL_PROMPT_KEY, JSON.stringify(history))
-  }
-
-  // Elicitation candidate shared by the wizard skills step and the overview
-  // card: the first study-pathway tool the profile has neither answered nor
-  // declined yet. The cap counts answers per profile across both surfaces.
-  let elicitation: { code: string; label: string } | null = null
-  if (profile) {
-    void promptEpoch
-    const history = readPromptHistory()
-    const askedCount = history.asked.filter(
-      (entry) => entry.code === profile.code,
-    ).length
-    const candidate = suggestedSkills.find(
-      (suggestion) =>
-        suggestion.kind === 'tool' &&
-        !history.notYet.some(
-          (entry) =>
-            entry.code === profile.code && entry.skill === suggestion.code,
-        ) &&
-        !history.asked.some(
-          (entry) =>
-            entry.code === profile.code && entry.skill === suggestion.code,
-        ),
-    )
-    if (askedCount < SKILL_PROMPT_LIMIT && candidate) {
-      elicitation = { code: candidate.code, label: candidate.label }
-    }
-  }
+  const [skillPromptError, setSkillPromptError] = useState('')
 
   let skillPrompt: { code: string; label: string } | null = null
   if (screen === 'app' && profile) {
@@ -258,32 +199,22 @@ export function ProfilePage() {
       ? elicitation
       : null
 
-  function rememberAsked(skillCode: string) {
-    if (!profile) return
-    const history = readPromptHistory()
-    history.asked.push({ code: profile.code, skill: skillCode })
-    writePromptHistory(history)
-  }
-
   async function answerPromptYes(
     target: { code: string; label: string } | null,
   ) {
     if (!profile || !target) return
     setSkillPromptBusy(true)
+    setSkillPromptError('')
     const result = await saveSkill(target.label, target.code)
     setSkillPromptBusy(false)
-    if (result.ok) {
-      rememberAsked(target.code)
-      setPromptEpoch((current) => current + 1)
-    }
+    if (result.ok) recordAnswer(target.code, 'asked')
+    else setSkillPromptError(result.error)
   }
 
   function answerPromptNotYet(target: { code: string; label: string } | null) {
-    if (!profile || !target) return
-    const history = readPromptHistory()
-    history.notYet.push({ code: profile.code, skill: target.code })
-    writePromptHistory(history)
-    setPromptEpoch((current) => current + 1)
+    if (!target) return
+    setSkillPromptError('')
+    recordAnswer(target.code, 'notYet')
   }
 
   // Wait briefly before searching so quick typing does not send every keystroke.
@@ -351,7 +282,9 @@ export function ProfilePage() {
         details.currentRole.trim(),
         controller.signal,
       )
-        .then(setCurrentRoleOptions)
+        .then((options) => {
+          if (!controller.signal.aborted) setCurrentRoleOptions(options)
+        })
         .catch(() => {
           if (!controller.signal.aborted) setCurrentRoleOptions([])
         })
@@ -384,83 +317,6 @@ export function ProfilePage() {
     }
   }, [skillCode, skillName])
 
-  // Refresh suggestions whenever a saved study choice or target role changes.
-  useEffect(() => {
-    if (
-      !details.qualificationCode &&
-      !details.degreeCode &&
-      !details.majorCode &&
-      !targetRole
-    ) {
-      return
-    }
-
-    const controller = new AbortController()
-    const timer = window.setTimeout(() => {
-      setRecommendationsBusy(true)
-      void loadSkillRecommendations(
-        details.degreeCode,
-        details.majorCode,
-        controller.signal,
-      )
-        .then(setRecommendations)
-        .catch(() => {
-          if (!controller.signal.aborted) setRecommendations([])
-        })
-        .finally(() => {
-          if (!controller.signal.aborted) setRecommendationsBusy(false)
-        })
-    }, 0)
-
-    return () => {
-      window.clearTimeout(timer)
-      controller.abort()
-    }
-  }, [
-    details.degreeCode,
-    details.majorCode,
-    details.qualificationCode,
-    targetRole,
-  ])
-
-  // The workspace pages read from one shared load: suggestions always, role
-  // requirements once a target role exists. Refreshes re-run the same pair.
-  useEffect(() => {
-    if (screen !== 'app' || !profile) return
-
-    const controller = new AbortController()
-    void loadRoleSuggestions(profile.code, controller.signal)
-      .then((result) => {
-        if (result.ok) {
-          setSuggestions(result.data.suggestions)
-          setSuggestionHint(result.data.hint ?? null)
-        } else {
-          setSuggestions([])
-          setSuggestionHint(null)
-        }
-      })
-      .catch(() => {
-        if (!controller.signal.aborted) setSuggestions([])
-      })
-
-    // With a target role the requirements load too; without one they clear.
-    const requirementsTask = targetRole
-      ? loadRoleRequirements(profile.code, controller.signal).then((result) =>
-          result.ok ? result.data : null,
-        )
-      : Promise.resolve(null)
-
-    void requirementsTask
-      .then((data) => {
-        if (!controller.signal.aborted) setRequirements(data)
-      })
-      .catch(() => {
-        if (!controller.signal.aborted) setRequirements(null)
-      })
-
-    return () => controller.abort()
-  }, [screen, profile, targetRole, refreshKey])
-
   // Each page swap starts from the top, like a real page change should.
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -481,6 +337,7 @@ export function ProfilePage() {
     setErrors({})
     setStudyOptions([])
     setCurrentRoleOptions([])
+    setCurrentRolePicked(true)
   }
 
   // On the first render, resume the login this browser remembers. The work
@@ -542,10 +399,6 @@ export function ProfilePage() {
       return next
     })
     setStudyOptions([])
-    if (!targetRole) {
-      setRecommendations([])
-      setRecommendationsBusy(false)
-    }
     setErrors((current) => ({ ...current, qualification: undefined }))
     setMessage('')
   }
@@ -607,14 +460,14 @@ export function ProfilePage() {
     setSkillOptions([])
     setSkillError('')
     setCurrentRoleOptions([])
+    setCurrentRolePicked(true)
+    setSkillPromptError('')
     setTargetRole(null)
     setTargetRoleQuery('')
     setTargetRoleCode(null)
     setTargetRoleOptions([])
     setTargetRoleError('')
     setTargetRoleMessage('')
-    setRecommendations([])
-    setRecommendationsBusy(false)
     setStep(1)
     setScreen('wizard')
   }
@@ -656,6 +509,7 @@ export function ProfilePage() {
     setSkillCode(null)
     setSkillOptions([])
     setSkillError('')
+    setSkillPromptError('')
     setCurrentRoleOptions([])
     setTargetRole(bundle.targetRole)
     setTargetRoleQuery(bundle.targetRole?.title ?? '')
@@ -663,8 +517,6 @@ export function ProfilePage() {
     setTargetRoleOptions([])
     setTargetRoleError('')
     setTargetRoleMessage('')
-    setRecommendations([])
-    setRecommendationsBusy(false)
   }
 
   // Use a recovery code to load an existing record.
@@ -781,8 +633,8 @@ export function ProfilePage() {
     }
   }
 
-  // Both suggested and searched skills use the same API request and land as
-  // current strengths; the progress pills on the analysis page adjust later.
+  // Confirmed strengths start as current; skills selected from a gap or
+  // role requirement start as upcoming until the learner updates progress.
   async function saveSkill(
     name: string,
     selectedCode: string,
@@ -1009,7 +861,7 @@ export function ProfilePage() {
 
         <div className="header-end">
           {screen === 'app' && profile && (
-            <AppNav page={appPage} onSelect={(page) => setAppPage(page)} />
+            <AppNav page={appPage} onSelect={setAppPage} />
           )}
           <LanguageSwitcher />
         </div>
@@ -1472,6 +1324,7 @@ export function ProfilePage() {
                       courseTitle={profile?.qualification ?? ''}
                       skillLabel={wizardElicitation.label}
                       busy={skillsBusy}
+                      error={skillPromptError}
                       onYes={() => void answerPromptYes(wizardElicitation)}
                       onNotYet={() => answerPromptNotYet(wizardElicitation)}
                     />
@@ -1641,130 +1494,48 @@ export function ProfilePage() {
         )}
 
         {screen === 'app' && profile && (
-          <>
-            {appPage === 'overview' && (
-              <>
-                {skillPrompt && (
-                  <SkillPromptCard
-                    courseTitle={profile.qualification}
-                    skillLabel={skillPrompt.label}
-                    busy={skillPromptBusy}
-                    onYes={() => void answerPromptYes(skillPrompt)}
-                    onNotYet={() => answerPromptNotYet(skillPrompt)}
-                  />
-                )}
-                <OverviewPage
-                  profile={profile}
-                  skills={skills}
-                  targetRole={targetRole}
-                  suggestions={suggestions}
-                  requirements={requirements}
-                  busy={skillsBusy || targetRoleBusy}
-                  onEditTargetRole={() => {
-                    setStep(3)
-                    setScreen('wizard')
-                  }}
-                  onPlan={chooseSuggestedRole}
-                  onGoMatches={() => setAppPage('matches')}
-                  onGoWizard={() => {
-                    setStep(1)
-                    setScreen('wizard')
-                  }}
-                  onGoPage={(page) => setAppPage(page)}
-                />
-              </>
-            )}
-
-            {appPage === 'matches' && (
-              <MatchesPage
-                suggestions={suggestions}
-                targetRole={targetRole}
-                hint={suggestionHint}
-                skillsCount={skills.length}
-                busy={skillsBusy || targetRoleBusy}
-                onPlan={chooseSuggestedRole}
-              />
-            )}
-
-            {appPage === 'analysis' && (
-              <AnalysisPage
-                skills={skills}
-                targetRole={targetRole}
-                suggestions={suggestions}
-                requirements={requirements}
-                busy={skillsBusy}
-                onAddSkill={(skill: RoleSkill) => {
-                  void saveSkill(skill.name, skill.code)
-                }}
-                onSkillStatus={(skill: Skill, status: SkillStatus) => {
-                  void cycleSkillStatus(skill, status)
-                }}
-                onRemoveSkill={(skill: Skill) => deleteSkill(skill.id)}
-                onGoMatches={() => setAppPage('matches')}
-                onEditTargetRole={() => {
-                  setStep(3)
-                  setScreen('wizard')
-                }}
-              />
-            )}
-
-            {appPage === 'role' && (
-              <RoleDetailsPage
-                targetRole={targetRole}
-                skills={skills}
-                requirements={requirements}
-                busy={skillsBusy}
-                onAddSkill={saveSkill}
-                onGoPathways={() => setAppPage('pathways')}
-              />
-            )}
-
-            {appPage === 'pathways' && (
-              <PathwaysPage
-                targetRole={targetRole}
-                requirements={requirements}
-                skills={skills}
-                profileCode={profile.code}
-                busy={skillsBusy}
-                onGoRole={() => setAppPage('role')}
-                onSkillStatus={(skill, status) => {
-                  void cycleSkillStatus(skill, status)
-                }}
-              />
-            )}
-
-            {appPage === 'profile' && (
-              <MyProfilePage
+          <WorkspaceBoundary>
+            <Suspense
+              fallback={
+                <p className="empty-note" role="status">
+                  {t('common.loading')}
+                </p>
+              }
+            >
+              <AppWorkspace
+                page={appPage}
+                onGoPage={setAppPage}
                 profile={profile}
                 recoveryCode={recoveryCode || profile.code}
                 skills={skills}
                 targetRole={targetRole}
-                busy={skillsBusy || targetRoleBusy}
-                onAddSkill={(name, code) => {
-                  void saveSkill(name, code)
-                }}
-                onRemoveSkill={(skill) => deleteSkill(skill.id)}
-                onSkillStatus={(skill, status) => {
-                  void cycleSkillStatus(skill, status)
+                suggestions={suggestions}
+                suggestionHint={suggestionHint}
+                requirements={requirements}
+                skillsBusy={skillsBusy}
+                targetRoleBusy={targetRoleBusy}
+                skillPrompt={skillPrompt}
+                elicitation={elicitation}
+                skillPromptBusy={skillPromptBusy}
+                skillPromptError={skillPromptError}
+                onPromptYes={answerPromptYes}
+                onPromptNotYet={answerPromptNotYet}
+                onAddSkill={saveSkill}
+                onRemoveSkill={deleteSkill}
+                onSkillStatus={cycleSkillStatus}
+                onPlan={chooseSuggestedRole}
+                onEditTargetRole={() => {
+                  setStep(3)
+                  setScreen('wizard')
                 }}
                 onEditBackground={() => {
                   setStep(1)
                   setScreen('wizard')
                 }}
-                onEditTargetRole={() => {
-                  setStep(3)
-                  setScreen('wizard')
-                }}
-                promptSkill={elicitation}
-                onDeclineSkill={(code) => {
-                  const history = readPromptHistory()
-                  history.notYet.push({ code: profile.code, skill: code })
-                  writePromptHistory(history)
-                  setPromptEpoch((current) => current + 1)
-                }}
+                onPromptAccepted={(code) => recordAnswer(code, 'asked')}
               />
-            )}
-          </>
+            </Suspense>
+          </WorkspaceBoundary>
         )}
       </main>
 

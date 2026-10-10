@@ -4,6 +4,7 @@ type SkillPromptCardProps = {
   courseTitle: string
   skillLabel: string
   busy: boolean
+  error?: string
   onYes: () => void
   onNotYet: () => void
 }
@@ -15,6 +16,7 @@ export function SkillPromptCard({
   courseTitle,
   skillLabel,
   busy,
+  error,
   onYes,
   onNotYet,
 }: SkillPromptCardProps) {
@@ -25,6 +27,11 @@ export function SkillPromptCard({
       <p className="skill-prompt-text">
         {t('prompt.question', { course: courseTitle, skill: skillLabel })}
       </p>
+      {error && (
+        <p className="field-error" role="alert">
+          {error}
+        </p>
+      )}
       <div className="skill-prompt-actions">
         <button type="button" className="btn" disabled={busy} onClick={onYes}>
           {t('prompt.yes')}

@@ -7,6 +7,7 @@ import type { SaveSkillResult, Skill } from '../../lib/skillsApi'
 import type { TargetRole } from '../../lib/targetRoleApi'
 import { occupationTitle } from '../../lib/occupationTitle'
 import { useI18n } from '../../lib/useI18n'
+import { formatAud } from '../../lib/currency'
 
 const numberFormat = new Intl.NumberFormat('en-AU', {
   maximumFractionDigits: 0,
@@ -50,7 +51,14 @@ export function RoleDetailsPage({
   onAddSkill,
   onGoPathways,
 }: RoleDetailsPageProps) {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
+  const [addError, setAddError] = useState('')
+
+  async function planSkill(skill: RoleSkill) {
+    setAddError('')
+    const result = await onAddSkill(skill.name, skill.code)
+    if (!result.ok) setAddError(result.error)
+  }
   if (!targetRole) {
     return (
       <section className="app-hero">
@@ -120,7 +128,7 @@ export function RoleDetailsPage({
               <article className="stat-card">
                 <strong>
                   {market.medianWeeklyEarnings != null
-                    ? `$${numberFormat.format(market.medianWeeklyEarnings)}`
+                    ? formatAud(market.medianWeeklyEarnings, lang)
                     : '—'}
                 </strong>
                 <span>{t('role.earnings')}</span>
@@ -177,6 +185,11 @@ export function RoleDetailsPage({
           <h2>{t('role.skillsTools')}</h2>
           <span className="section-tag">{t('role.skillsNote')}</span>
         </div>
+        {addError && (
+          <p className="field-error" role="alert">
+            {addError}
+          </p>
+        )}
         {requirements && requirements.skills.length > 0 ? (
           <div className="skill-panels">
             {groups.map((group) => {
@@ -198,7 +211,7 @@ export function RoleDetailsPage({
                       className={has(skill) ? 'skill-row saved' : 'skill-row'}
                       key={skill.code}
                       disabled={has(skill) || busy}
-                      onClick={() => onAddSkill(skill.name, skill.code)}
+                      onClick={() => void planSkill(skill)}
                       aria-label={
                         has(skill)
                           ? `${skill.name} is already saved`

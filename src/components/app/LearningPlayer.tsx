@@ -86,7 +86,16 @@ export function LearningPlayer({
   // stops the focus timer and session reporter from outliving the dialog
   // and makes reopening the same skill start fresh instead of resuming.
   useEffect(() => {
-    if (open && skillRef.current === skill) return
+    // A status update replaces the skill object but keeps the same session.
+    // Keep the latest status without discarding seconds awaiting a report.
+    if (
+      open &&
+      skillRef.current?.id === skill?.id &&
+      skillRef.current?.skillCode === skill?.skillCode
+    ) {
+      skillRef.current = skill
+      return
+    }
 
     skillRef.current = open ? skill : null
     setVideoIndex(0)

@@ -61,6 +61,13 @@ export default {
       'Cache-Control',
       isPublicCatalogue ? 'public, max-age=3600' : 'no-store',
     )
+    response.headers.set('X-Content-Type-Options', 'nosniff')
+    response.headers.set('X-Frame-Options', 'DENY')
+    response.headers.set(
+      'Content-Security-Policy',
+      "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    )
+    response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
     return response
   },
 } satisfies ExportedHandler<Env>

@@ -19,7 +19,7 @@ type AnalysisPageProps = {
   suggestions: RoleSuggestion[]
   requirements: RequirementsData | null
   busy: boolean
-  onAddSkill: (skill: RoleSkill) => void
+  onAddSkill: (skill: RoleSkill) => Promise<SaveSkillResult>
   onSkillStatus: (skill: Skill, status: SkillStatus) => void
   onRemoveSkill: (skill: Skill) => Promise<SaveSkillResult>
   onGoMatches: () => void
@@ -128,6 +128,7 @@ export function AnalysisPage({
   const [pendingRemoval, setPendingRemoval] = useState<Skill | null>(null)
   const [removingSkillId, setRemovingSkillId] = useState<number | null>(null)
   const [removeError, setRemoveError] = useState('')
+  const [addError, setAddError] = useState('')
   const removeDialogRef = useRef<HTMLDialogElement>(null)
   const skillListRef = useRef<HTMLDivElement>(null)
 
@@ -164,6 +165,12 @@ export function AnalysisPage({
 
     return () => context.revert()
   }, [skills.length])
+
+  async function planSkill(skill: RoleSkill) {
+    setAddError('')
+    const result = await onAddSkill(skill)
+    if (!result.ok) setAddError(result.error)
+  }
 
   async function confirmRemoval() {
     if (!pendingRemoval) return
@@ -208,6 +215,12 @@ export function AnalysisPage({
   )
   const analysis = requirements ? readiness(skills, requirements) : null
   const hasNoSkills = skills.length === 0
+  const isPlanned = (required: RoleSkill) =>
+    skills.some(
+      (skill) =>
+        skill.skillCode === required.code ||
+        skill.name.toLowerCase() === required.name.toLowerCase(),
+    )
 
   return (
     <>
@@ -321,6 +334,11 @@ export function AnalysisPage({
               <h2>{t('analysis.gaps')}</h2>
               <span className="section-tag">{t('analysis.gaps.evidence')}</span>
             </div>
+            {addError && (
+              <p className="field-error" role="alert">
+                {addError}
+              </p>
+            )}
             {analysis.rows.map((row) => {
               if (row.total === 0) return null
 
@@ -345,14 +363,17 @@ export function AnalysisPage({
                           type="button"
                           className="gap-chip"
                           key={skill.code}
-                          disabled={busy}
-                          onClick={() => onAddSkill(skill)}
+                          disabled={busy || isPlanned(skill)}
+                          onClick={() => void planSkill(skill)}
                           title={skill.description}
-                          aria-label={t('analysis.addSkill', {
-                            name: skill.name,
-                          })}
+                          aria-label={
+                            isPlanned(skill)
+                              ? t('analysis.plannedSkill', { name: skill.name })
+                              : t('analysis.addSkill', { name: skill.name })
+                          }
                         >
-                          + {skill.name}
+                          {isPlanned(skill) ? '✓ ' : '+ '}
+                          {skill.name}
                           <small>{skill.score}</small>
                         </button>
                       ))}
@@ -438,7 +459,9 @@ export function AnalysisPage({
                             aria-label={t('analysis.removeAria', {
                               name: skill.name,
                             })}
-                            title={`Remove ${skill.name}`}
+                            title={t('analysis.removeAria', {
+                              name: skill.name,
+                            })}
                             onClick={() => {
                               setRemoveError('')
                               setPendingRemoval(skill)
