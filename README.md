@@ -1,76 +1,57 @@
-HireWay
+<p align="center">
+  <img src="./docs/images/hireway-banner.svg" width="100%" alt="HireWay — A clearer direction, one step at a time." />
+</p>
 
-Career guidance powered by Australian labour market data
+<h1 align="center">HireWay</h1>
 
-HireWay is a web-based career exploration platform designed to help young people explore potential careers, understand job requirements, identify skill gaps, and make more informed career decisions.
+<p align="center">
+  <strong>Turn what you know into a career path you can act on.</strong>
+</p>
 
-Live Website: https://hireway.custard.top
+<p align="center">
+  <a href="https://hireway.custard.top"><strong>Explore HireWay ↗</strong></a>
+  &nbsp; · &nbsp;
+  <a href="#what-is-hireway">About the project</a>
+  &nbsp; · &nbsp;
+  <a href="#what-you-can-do">What you can do</a>
+</p>
 
-`About the Project
+## What is HireWay?
 
-Choosing a future career can be difficult, especially for young people who may not know what skills, qualifications, or opportunities are available.
+Choosing a career is easier when you can connect what you already know with what a role actually needs.
 
-HireWay aims to simplify career exploration by transforming Australian open labour-market data into clear and useful career information.
+HireWay helps students, graduates, and early-career explorers find a direction in the Australian job market. It brings your education and skills together with occupation and labour-market information, so you can explore possibilities and plan your next step.
 
-Users can explore occupations and understand:
+<p align="center">
+  <img src="./docs/images/hireway-homepage.png" width="100%" alt="HireWay's public homepage, with an illustrative career pathway preview." />
+</p>
 
-`Career requirements
-Required skills and knowledge
-Education and training pathways
-Employment outlook
-Labour-market demand
-Potential skill gaps
+<sub>Public homepage captured on 10 October 2026. The pathway card is an illustrative example.</sub>
 
-`Data Sources
+## A clearer direction in three steps
 
-HireWay uses Australian open data and occupational datasets, including information related to:
+| **01 · Start with you**                                      | **02 · Explore the possibilities**                                   | **03 · Plan your next step**                                              |
+| ------------------------------------------------------------ | -------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Bring together your study background, skills, and strengths. | Discover career matches and understand what different roles involve. | Choose a target role, identify skill gaps, and explore learning pathways. |
 
-Occupations
-Skills
-Education and training
-Job vacancies
-Labour-market trends
-Employment outlook
+## What you can do
 
-The data is processed and integrated to support career exploration and recommendation features.
+- **Discover career options** that connect with your background and current skills.
+- **Understand a role** through its day-to-day tasks, required abilities, and useful skills.
+- **See the Australian outlook** with employment trends, earnings, and demand information where available.
+- **Find what to work on next** by comparing your skills with a target role's requirements.
+- **Build a learning pathway** with suggested learning resources and progress tracking.
 
-`Technology Stack
-React
-TypeScript
-Vite
-Cloudflare Workers / Wrangler
-Australian Open Data
+You can begin without creating an account and return to your profile using your private recovery code.
 
-Development
+## The idea behind HireWay
 
-Install dependencies:
+Career information is often scattered across job descriptions, course pages, and labour-market reports. HireWay brings the useful pieces together around one practical question:
 
-npm install
+> **“Where could I go, and what should I do next?”**
 
-Start the development server:
+The goal is to help you move from a possible career interest to a clearer, more informed plan.
 
-npm run dev
-
-Build the project:
-
-npm run build
-
-Run project checks:
-
-npm run check
-
-Deploy:
-
-npm run deploy
-Project Goal
-
-Our goal is to make Australian career and labour-market information easier to understand and more accessible, helping users move from:
-
-“I want to become…”
-
-to
-
-“Here is what I need to do next.”
-
-`Team
-Developed as part of the Monash University FIT5120 Industry Experience project.
+<p align="center">
+  <a href="https://hireway.custard.top"><strong>Find your next direction with HireWay ↗</strong></a>
+</p>

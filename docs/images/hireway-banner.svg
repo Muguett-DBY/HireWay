@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="300" viewBox="0 0 1080 300" role="img" aria-labelledby="title description">
+  <title id="title">HireWay</title>
+  <desc id="description">A clearer direction, one step at a time. Career exploration for Australia.</desc>
+  <defs>
+    <linearGradient id="background" x2="1" y2="1">
+      <stop stop-color="#f0faf4" />
+      <stop offset="1" stop-color="#d9f0e4" />
+    </linearGradient>
+    <linearGradient id="path" x2="1" y2="0">
+      <stop stop-color="#9acfb2" />
+      <stop offset="1" stop-color="#16984e" />
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="300" rx="22" fill="url(#background)" />
+  <circle cx="985" cy="14" r="168" fill="#ffffff" opacity=".38" />
+  <circle cx="932" cy="294" r="129" fill="#b8dfc8" opacity=".4" />
+  <g font-family="Segoe UI,Arial,sans-serif">
+    <text x="48" y="52" fill="#267447" font-size="12" font-weight="700" letter-spacing="2">CAREER EXPLORATION / AUSTRALIA</text>
+    <text x="44" y="132" fill="#074d2e" font-size="68" font-weight="800">Hire<tspan fill="#159b4e">Way</tspan></text>
+    <text x="48" y="181" fill="#335d49" font-size="22">A clearer direction, one step at a time.</text>
+    <text x="48" y="232" fill="#5a7867" font-size="15">Build on what you know. Explore what comes next.</text>
+  </g>
+  <path d="M667 217C694 217 690 155 752 155S834 189 873 126 924 82 992 82" fill="none" stroke="#ffffff" stroke-width="24" stroke-linecap="round" opacity=".72" />
+  <path d="M667 217C694 217 690 155 752 155S834 189 873 126 924 82 992 82" fill="none" stroke="url(#path)" stroke-width="5" stroke-linecap="round" />
+  <g stroke="#ffffff" stroke-width="5">
+    <circle cx="667" cy="217" r="13" fill="#91c6a7" />
+    <circle cx="796" cy="160" r="13" fill="#4bae79" />
+    <circle cx="992" cy="82" r="15" fill="#14964b" />
+  </g>
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#36664c" text-anchor="middle">
+    <text x="666" y="259">Your background</text>
+    <text x="796" y="119">Your possibilities</text>
+    <text x="979" y="48">Your next step</text>
+  </g>
+</svg>
