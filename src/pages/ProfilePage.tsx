@@ -20,6 +20,7 @@ import { requestTargetRole, type TargetRole } from '../lib/targetRoleApi'
 import { occupationTitle } from '../lib/occupationTitle'
 import { Stepper } from '../components/Stepper'
 import { EducationLevelSelect } from '../components/EducationLevelSelect'
+import { MarketingLanding } from '../components/landing/MarketingLanding'
 import { LandingScreen } from '../components/landing/LandingScreen'
 import { AppNav, type AppPage } from '../components/app/AppNav'
 import { SkillPromptCard } from '../components/app/SkillPromptCard'
@@ -1017,13 +1018,25 @@ export function ProfilePage() {
       <main
         className={
           screen === 'home'
-            ? 'landing-page'
-            : screen === 'wizard'
-              ? 'wizard-page'
-              : 'app-page'
+            ? 'marketing-page'
+            : screen === 'entry'
+              ? 'landing-page'
+              : screen === 'wizard'
+                ? 'wizard-page'
+                : 'app-page'
         }
       >
         {screen === 'home' && (
+          <MarketingLanding
+            onEnterProfile={() => {
+              setScreen('entry')
+              setMessage('')
+              setFailed(false)
+            }}
+          />
+        )}
+
+        {screen === 'entry' && (
           <LandingScreen
             recoveryCode={recoveryCode}
             busy={busy}
@@ -1055,9 +1068,9 @@ export function ProfilePage() {
                 onClick={() => {
                   if (step > 1) setStep((step - 1) as 1 | 2 | 3)
                   else {
-                    // Step one has no earlier step; the landing is the
+                    // Step one has no earlier step; the entry screen is the
                     // funnel parent of the wizard.
-                    setScreen('home')
+                    setScreen('entry')
                     setMessage('')
                     setFailed(false)
                   }
