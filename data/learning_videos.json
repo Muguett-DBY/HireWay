@@ -1,14 +1,14 @@
 {
   "meta": {
-    "generated": "2026-10-08",
-    "source": "freeCodeCamp.org official channel uploads. Video IDs for the Kotlin, PostgreSQL (TimescaleDB) and Excel courses were taken from the channel's key-free RSS feed; older catalogue courses were confirmed against the same channel. Each original course's title, channel and duration were re-verified entry by entry with the command below on 2026-10-04. Five HireWay introductions from the jayfeather channel were checked in YouTube Studio and embedded playback on 2026-10-08.",
+    "generated": "2026-10-10",
+    "source": "freeCodeCamp.org official channel uploads. Video IDs for the Kotlin, PostgreSQL (TimescaleDB) and Excel courses were taken from the channel's key-free RSS feed; older catalogue courses were confirmed against the same channel. Each original course's title, channel and duration were re-verified entry by entry with the command below on 2026-10-04. Five HireWay introductions from the HireWay channel were checked in YouTube Studio on 2026-10-10.",
     "channels": {
       "freeCodeCamp.org": {
         "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
         "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=UC8butISFwT-Wl7EV0hUK0BQ"
       },
-      "jayfeather": {
-        "channelId": "UCvp99-loCA8E4xm4LXVP0rg"
+      "HireWay": {
+        "channelId": "UCzii16yGyzYwcziU3RHzmoQ"
       }
     },
     "verifyCommand": "curl -s \"https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v={id}&format=json\" && curl -s \"https://www.youtube.com/watch?v={id}\" -H \"User-Agent: Mozilla/5.0\"  | grep -o '\"lengthSeconds\":\"[0-9]*\"'"
@@ -45,13 +45,13 @@
         "verifiedAt": "2026-10-04"
       },
       {
-        "id": "_T15TjsLyoo",
+        "id": "E5e-l7C0CKc",
         "title": "SQL Introduction | HireWay Skills",
-        "channel": "jayfeather",
-        "channelId": "UCvp99-loCA8E4xm4LXVP0rg",
+        "channel": "HireWay",
+        "channelId": "UCzii16yGyzYwcziU3RHzmoQ",
         "durationSeconds": 91,
         "duration": "0:01:31",
-        "verifiedAt": "2026-10-08"
+        "verifiedAt": "2026-10-10"
       }
     ],
     "JavaScript": [
@@ -191,46 +191,46 @@
     ],
     "Thomson Reuters Westlaw": [
       {
-        "id": "reoIUYkbXLo",
+        "id": "IUUvvRpbOWg",
         "title": "Westlaw Legal Research Introduction | HireWay Skills",
-        "channel": "jayfeather",
-        "channelId": "UCvp99-loCA8E4xm4LXVP0rg",
+        "channel": "HireWay",
+        "channelId": "UCzii16yGyzYwcziU3RHzmoQ",
         "durationSeconds": 92,
         "duration": "0:01:32",
-        "verifiedAt": "2026-10-08"
+        "verifiedAt": "2026-10-10"
       }
     ],
     "Intuit QuickBooks": [
       {
-        "id": "PlDo-YoHAVg",
+        "id": "CaveHUCSBAE",
         "title": "QuickBooks Bookkeeping Introduction | HireWay Skills",
-        "channel": "jayfeather",
-        "channelId": "UCvp99-loCA8E4xm4LXVP0rg",
+        "channel": "HireWay",
+        "channelId": "UCzii16yGyzYwcziU3RHzmoQ",
         "durationSeconds": 92,
         "duration": "0:01:32",
-        "verifiedAt": "2026-10-08"
+        "verifiedAt": "2026-10-10"
       }
     ],
     "Google Analytics": [
       {
-        "id": "wReTbggrUb0",
+        "id": "wa58lNINq9o",
         "title": "Google Analytics Marketing Introduction | HireWay Skills",
-        "channel": "jayfeather",
-        "channelId": "UCvp99-loCA8E4xm4LXVP0rg",
+        "channel": "HireWay",
+        "channelId": "UCzii16yGyzYwcziU3RHzmoQ",
         "durationSeconds": 91,
         "duration": "0:01:31",
-        "verifiedAt": "2026-10-08"
+        "verifiedAt": "2026-10-10"
       }
     ],
     "Autodesk AutoCAD": [
       {
-        "id": "kD8UE6zzvGI",
+        "id": "jqNQqgzTRRI",
         "title": "AutoCAD Introduction | HireWay Skills",
-        "channel": "jayfeather",
-        "channelId": "UCvp99-loCA8E4xm4LXVP0rg",
+        "channel": "HireWay",
+        "channelId": "UCzii16yGyzYwcziU3RHzmoQ",
         "durationSeconds": 91,
         "duration": "0:01:31",
-        "verifiedAt": "2026-10-08"
+        "verifiedAt": "2026-10-10"
       }
     ]
   }

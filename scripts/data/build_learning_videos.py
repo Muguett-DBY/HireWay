@@ -3,7 +3,7 @@
 Original course metadata was verified on 2026-10-04 with the chain recorded
 in meta.verifyCommand: oEmbed confirms title and channel; the watch page
 lengthSeconds field confirms duration. HireWay introductions were checked
-in YouTube Studio and embedded playback on 2026-10-08.
+in YouTube Studio on 2026-10-10.
 The human-readable duration string is derived here, never typed by hand.
 """
 import json
@@ -69,14 +69,14 @@ SKILLS = {
 }
 
 INTRODUCTIONS = {
-    "SQL": ("_T15TjsLyoo", "SQL Introduction | HireWay Skills", 91),
-    "Thomson Reuters Westlaw": ("reoIUYkbXLo", "Westlaw Legal Research Introduction | HireWay Skills", 92),
-    "Intuit QuickBooks": ("PlDo-YoHAVg", "QuickBooks Bookkeeping Introduction | HireWay Skills", 92),
-    "Google Analytics": ("wReTbggrUb0", "Google Analytics Marketing Introduction | HireWay Skills", 91),
-    "Autodesk AutoCAD": ("kD8UE6zzvGI", "AutoCAD Introduction | HireWay Skills", 91),
+    "SQL": ("E5e-l7C0CKc", "SQL Introduction | HireWay Skills", 91),
+    "Thomson Reuters Westlaw": ("IUUvvRpbOWg", "Westlaw Legal Research Introduction | HireWay Skills", 92),
+    "Intuit QuickBooks": ("CaveHUCSBAE", "QuickBooks Bookkeeping Introduction | HireWay Skills", 92),
+    "Google Analytics": ("wa58lNINq9o", "Google Analytics Marketing Introduction | HireWay Skills", 91),
+    "Autodesk AutoCAD": ("jqNQqgzTRRI", "AutoCAD Introduction | HireWay Skills", 91),
 }
-INTRO_CHANNEL_ID = "UCvp99-loCA8E4xm4LXVP0rg"
-INTRO_VERIFIED_AT = "2026-10-08"
+INTRO_CHANNEL_ID = "UCzii16yGyzYwcziU3RHzmoQ"
+INTRO_VERIFIED_AT = "2026-10-10"
 
 data = {
     "meta": {
@@ -88,15 +88,14 @@ data = {
             "were confirmed against the same channel. Each original course's title, "
             "channel and duration were re-verified entry by entry with the "
             "command below on 2026-10-04. Five HireWay introductions from the "
-            "jayfeather channel were checked in YouTube Studio and embedded "
-            "playback on 2026-10-08."
+            "HireWay channel were checked in YouTube Studio on 2026-10-10."
         ),
         "channels": {
             "freeCodeCamp.org": {
                 "channelId": CHANNEL_ID_FREECODECAMP,
                 "rss": f"https://www.youtube.com/feeds/videos.xml?channel_id={CHANNEL_ID_FREECODECAMP}",
             },
-            "jayfeather": {"channelId": INTRO_CHANNEL_ID},
+            "HireWay": {"channelId": INTRO_CHANNEL_ID},
         },
         "verifyCommand": (
             'curl -s "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v={id}&format=json" '
@@ -111,7 +110,7 @@ for name, (video_id, title, seconds) in INTRODUCTIONS.items():
     data["skills"].setdefault(name, []).append({
         "id": video_id,
         "title": title,
-        "channel": "jayfeather",
+        "channel": "HireWay",
         "channelId": INTRO_CHANNEL_ID,
         "durationSeconds": seconds,
         "duration": duration(seconds),
