@@ -192,7 +192,7 @@ export const en = {
   'analysis.eyebrow': 'Career analysis',
   'analysis.h1': 'How ready you are for {role}',
   'analysis.sub':
-    'Coverage of the skills and tools commonly listed for this role, weighted towards core skills. A related skill counts half towards coverage.',
+    'Coverage of the skills and tools commonly listed for this role, weighted towards core skills.',
   'analysis.chooseFirst': 'Choose a target role first',
   'analysis.chooseFirst.sub':
     "The analysis compares your profile against one occupation's requirements, so pick a direction to measure against.",
@@ -206,7 +206,7 @@ export const en = {
   'analysis.weightedCoverage': 'Weighted skill coverage',
   'analysis.byCategory': 'Readiness by category',
   'analysis.categoryCaption':
-    'A skill counts as covered when your profile lists it, or a skill from the same O*NET family.',
+    'A skill counts as covered when it is listed as Current or Completed in your profile.',
   'analysis.whyRank': 'Why the engine ranks this role',
   'analysis.gaps': 'Skill gaps to close',
   'analysis.gaps.evidence':

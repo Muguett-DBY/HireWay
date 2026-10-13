@@ -40,16 +40,8 @@ const groups = [
   { key: 'bonus', title: 'Common tools', weight: 1 },
 ] as const
 
-// Knowledge entries share an O*NET family prefix (2.C.1.a -> 2.C.1), so a
-// saved sibling counts as "improve" rather than a full match. Tools carry
-// opaque codes and only ever match exactly.
-function sameFamily(requiredCode: string, savedCode: string): boolean {
-  const family = (code: string) => code.split('.').slice(0, 3).join('.')
-  return family(requiredCode) === family(savedCode)
-}
-
-// Readiness per category with every requirement sorted into matched,
-// improve or missing. Only current and completed skills count as owned -
+// Readiness per category counts exact matches and lists missing requirements.
+// Only current and completed skills count as owned -
 // upcoming items are plans, not strengths yet.
 function readiness(skills: Skill[], requirements: RequirementsData) {
   const owned = skills.filter((skill) => skill.status !== 'upcoming')
@@ -68,32 +60,24 @@ function readiness(skills: Skill[], requirements: RequirementsData) {
       (skill) => skill.priority === group.key,
     )
     let matched = 0
-    let improve = 0
     const missing: RoleSkill[] = []
     for (const item of items) {
       if (byCode.has(item.code) || byCode.has(item.name.toLowerCase())) {
         matched += 1
-      } else if (
-        [...byCode.keys()].some((saved) => sameFamily(item.code, saved))
-      ) {
-        improve += 1
       } else {
         missing.push(item)
       }
     }
-    weightedHas += (matched + improve) * group.weight
+    weightedHas += matched * group.weight
     weightedTotal += items.length * group.weight
     return {
       key: group.key,
       title: group.title,
       total: items.length,
       matched,
-      improve,
       missing,
-      covered: matched + improve,
-      percent: items.length
-        ? Math.round(((matched + improve) / items.length) * 100)
-        : 100,
+      covered: matched,
+      percent: items.length ? Math.round((matched / items.length) * 100) : 100,
     }
   })
 
@@ -276,7 +260,7 @@ export function AnalysisPage({
                       <span style={{ width: `${row.percent}%` }} />
                     </span>
                     <small>
-                      {row.matched + row.improve}/{row.total}
+                      {row.covered}/{row.total}
                     </small>
                   </div>
                 ))}
@@ -315,7 +299,7 @@ export function AnalysisPage({
             )}
           </div>
 
-          {/* Skill gaps sorted into matched, improve and missing buckets. */}
+          {/* Skill gaps show requirements not yet covered by saved skills. */}
           <section className="page-section">
             <div className="section-row">
               <h2>{t('analysis.gaps')}</h2>
